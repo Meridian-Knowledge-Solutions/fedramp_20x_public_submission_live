@@ -48,7 +48,17 @@
     <label><input type="checkbox" id="filterFailed" onchange="toggleFailed()"> Show only ❌ failed validations</label>
     <button onclick="downloadJSON()" style="float:right;">⬇️ Download JSON</button>
   </div>
-  <table>
+  <div id="summaryRow" style="
+      margin-bottom: 16px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #0f172a;
+      padding: 6px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #f8fafc;
+    "></div>
+<table>
     <thead>
       <tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Evidence</th><th>Trace</th></tr>
     </thead>
@@ -106,7 +116,9 @@ async function loadDashboard() {
     row.innerHTML = `
       <td>${item.ksi_id}</td>
       <td>${item.title || "—"}</td>
-      <td><span class="badge ${passed ? "pass" : "fail"}">${passed ? "✅ Pass" : "❌ Fail"}</span></td>
+      <td><span class="badge ${passed ? "pass" : "fail"}" title="${item.assertion_reason || ''}">${passed ? "✅ Pass" : "❌ Fail"}</span>
+        ${!passed ? `<br/><a href="https://github.com/Meridian-Knowledge-Solutions/fedramp-20x-submission-final/issues/new?title=KSI+${item.ksi_id}+Needs+Clarification&body=KSI ID: ${item.ksi_id}%0AValidation ID: ${item.validation_id || ''}%0ATitle: ${item.title || ''}%0ACLI Command: ${item.cli_command || ''}" target="_blank" style="font-size:0.85em;">🛠 Clarify</a>` : ""}
+    </td>
       <td>
         <span class="cli-toggle" onclick="toggleCLI('${cliId}')">View CLI</span>
         <div class="cli-content" id="${cliId}">${item.cli_command || "—"}</div>
@@ -119,7 +131,14 @@ async function loadDashboard() {
   if (timestamps.length) {
     const last = new Date(Math.max(...timestamps));
     const next = new Date(last.getTime() + 86400000);
-    document.getElementById("run-info").textContent = `📅 Last Updated: ${last.toLocaleString()} | 🔁 Next Run: ${next.toLocaleString()}`;
+    
+  const total = data.length;
+  const failed = data.filter(i => i.assertion !== true && i.assertion !== "true").length;
+  const passed = total - failed;
+  const percent = Math.round((passed / total) * 100);
+  document.getElementById("summaryRow").textContent =
+    "Summary: " + passed + " passed / " + failed + " failed (" + percent + "%)";
+document.getElementById("run-info").textContent = `📅 Last Updated: ${last.toLocaleString()} | 🔁 Next Run: ${next.toLocaleString()}`;
   }
 }
 
