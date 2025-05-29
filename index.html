@@ -43,7 +43,7 @@
 </div>
 
 <div class="dashboard-card">
-  <h3>Unified KSI Validations</h3>
+  <h3>Low Impact 20x KSI Validations</h3>
   <div style="margin-bottom:10px;">
     <label><input type="checkbox" id="filterFailed" onchange="toggleFailed()"> Show only ❌ failed validations</label>
     <button onclick="downloadJSON()" style="float:right;">⬇️ Download JSON</button>
@@ -60,7 +60,7 @@
     "></div>
 <table>
     <thead>
-      <tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Evidence</th><th>Trace</th></tr>
+      <tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Command Trace</th><th>Commit Trace</th></tr>
     </thead>
     <tbody id="dashboardBody"></tbody>
   </table>
@@ -95,6 +95,62 @@ function downloadJSON() {
     });
 }
 
+
+const ksiTitles = {
+  "KSI-CNA-01": "Limit inbound and outbound traffic",
+  "KSI-CNA-02": "Minimize attack surface and lateral movement",
+  "KSI-CNA-03": "Enforce traffic flow controls",
+  "KSI-CNA-04": "Use immutable infrastructure",
+  "KSI-CNA-05": "Denial of service protection",
+  "KSI-CNA-06": "Design for high availability and rapid recovery",
+  "KSI-CNA-07": "Implement cloud-native best practices",
+  "KSI-SVC-01": "Harden and review configurations",
+  "KSI-SVC-02": "Secure network traffic",
+  "KSI-SVC-03": "Encrypt sensitive data at rest",
+  "KSI-SVC-04": "Centralized configuration management",
+  "KSI-SVC-05": "Ensure integrity via cryptographic means",
+  "KSI-SVC-06": "Automated key management",
+  "KSI-SVC-07": "Consistent patch management",
+  "KSI-IAM-01": "Enforce phishing-resistant MFA",
+  "KSI-IAM-02": "Use secure passwordless authentication",
+  "KSI-IAM-03": "Secure non-user account auth",
+  "KSI-IAM-04": "Least-privilege, RBAC, JIT access",
+  "KSI-IAM-05": "Apply zero trust design",
+  "KSI-IAM-06": "Auto-disable suspicious privileged accounts",
+  "KSI-MLA-01": "Operate centralized logging/SIEM",
+  "KSI-MLA-02": "Audit and review logs",
+  "KSI-MLA-03": "Detect and remediate vulnerabilities",
+  "KSI-MLA-04": "Authenticated vulnerability scanning",
+  "KSI-MLA-05": "IaC evaluation and testing",
+  "KSI-MLA-06": "Track and prioritize remediations",
+  "KSI-CMT-01": "Log and monitor changes",
+  "KSI-CMT-02": "Redeploy changes via version control",
+  "KSI-CMT-03": "Automated testing of changes",
+  "KSI-CMT-04": "Documented change management",
+  "KSI-CMT-05": "Evaluate risk/impact of changes",
+  "KSI-PIY-01": "Inventory of all assets/resources",
+  "KSI-PIY-02": "Documented security policies",
+  "KSI-PIY-03": "Vulnerability disclosure program",
+  "KSI-PIY-04": "Secure development lifecycle",
+  "KSI-PIY-05": "Evaluation methodology documentation",
+  "KSI-PIY-06": "Security staffing and executive support",
+  "KSI-PIY-07": "Supply chain risk management",
+  "KSI-TPR-01": "Identify third-party resources",
+  "KSI-TPR-02": "Ensure FedRAMP-authorized third parties",
+  "KSI-TPR-03": "Mitigate supply chain risks",
+  "KSI-TPR-04": "Monitor upstream vulnerabilities",
+  "KSI-CED-01": "Employee security awareness training",
+  "KSI-CED-02": "Role-specific training for high-risk roles",
+  "KSI-RPL-01": "Define recovery time objectives (RTO/RPO)",
+  "KSI-RPL-02": "Maintain a recovery plan",
+  "KSI-RPL-03": "Perform system backups",
+  "KSI-RPL-04": "Test recovery capabilities",
+  "KSI-INR-01": "Report incidents per FedRAMP policy",
+  "KSI-INR-02": "Maintain incident logs and patterns",
+  "KSI-INR-03": "Generate after-action reports"
+};
+
+
 async function loadDashboard() {
   const [res1, res2] = await Promise.all([fetch(dataURL), fetch(metaURL)]);
   const data = await res1.json();
@@ -115,7 +171,7 @@ async function loadDashboard() {
     const cliId = `cli-${index}`;
     row.innerHTML = `
       <td>${item.ksi_id}</td>
-      <td>${item.title || "—"}</td>
+      <td>${item.title || ksiTitles[item.validation_id] || item.ksi_id}</td>
       <td><span class="badge ${passed ? "pass" : "fail"}" title="${item.assertion_reason || ''}">${passed ? "✅ Pass" : "❌ Fail"}</span>
         ${!passed ? `<br/><a href="https://github.com/Meridian-Knowledge-Solutions/fedramp-20x-submission-final/issues/new?title=KSI+${item.ksi_id}+Needs+Clarification&body=KSI ID: ${item.ksi_id}%0AValidation ID: ${item.validation_id || ''}%0ATitle: ${item.title || ''}%0ACLI Command: ${item.cli_command || ''}" target="_blank" style="font-size:0.85em;">🛠 Clarify</a>` : ""}
     </td>
@@ -123,7 +179,15 @@ async function loadDashboard() {
         <span class="cli-toggle" onclick="toggleCLI('${cliId}')">View CLI</span>
         <div class="cli-content" id="${cliId}">${item.cli_command || "—"}</div>
       </td>
-      <td><code>${sha}</code><br/><span style="font-size: 0.85em;">${time}</span></td>
+      
+<td>
+  <div style="font-family:monospace; font-size:0.9em;">
+    ${sha}<br/>
+    <span style="font-size: 0.85em; color: #555;">${time}</span><br/>
+    ${item.evidence_path ? `<a href='https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/${item.evidence_path}' target='_blank'>🔗 Request Access</a>` : ""}
+  </div>
+</td>
+
     `;
     tbody.appendChild(row);
   });
