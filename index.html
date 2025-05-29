@@ -1,623 +1,134 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>FedRAMP 20x Unified Dashboard</title>
-<style>
-    body { font-family: 'Segoe UI', sans-serif; background-color: #f8fafc; margin: 0; padding: 0; }
-    header { background-color: #004080; color: white; padding: 20px; text-align: center; }
-    .tabs { display: flex; justify-content: center; margin-top: 10px; }
-    .tabs button { padding: 10px 20px; margin: 5px; cursor: pointer; font-weight: bold; border: none; border-radius: 5px; }
-    .tabs button.active { background-color: #1e3a8a; color: white; }
-    .section { display: none; padding: 20px; }
-    .section.active { display: block; }
-    .summary, .banner { text-align: center; margin: 10px auto; font-size: 0.95em; color: #0369a1; font-weight: 500; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
-    th, td { padding: 12px 16px; border: 1px solid #d0d7de; }
-    th { background-color: #1e3a8a; color: white; }
-    tr:nth-child(even) { background-color: #f2f6fb; }
-    tr:hover { background-color: #e6f0ff; }
-    .status { font-size: 1.2em; }
-    .status[title] { cursor: help; text-decoration: underline dotted; }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: 600; color: white; }
-    .badge.pass { background-color: #16a34a; }
-    .badge.fail { background-color: #dc2626; }
-    .badge.restrict { background-color: #52525b; }
-    .badge.static { background-color: #facc15; color: #1c1917; }
-    .badge.cli { background-color: #2563eb; }
-    .badge.manual { background-color: #a855f7; }
-    .badge.terraform { background-color: #14b8a6; }
-    .badge.awscli { background-color: #1d4ed8; }
-    .dashboard-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 1100px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
-    .dashboard-card h3 { margin-top: 0; font-size: 1.15em; color: #1e3a8a; }
+  <meta charset="UTF-8" />
+  <title>FedRAMP 20x Trust Dashboard</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9fafb; color: #1e293b; }
+    header { background: #0f172a; color: white; padding: 20px; text-align: center; position: relative; }
+    h1 { margin: 0; font-size: 1.75em; }
+    .run-info { font-size: 0.9em; margin-bottom: 10px; }
+    .dark-toggle { position: absolute; top: 20px; right: 20px; background: #1e40af; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+
+    .gpg-banner { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; padding: 10px; margin: 20px auto; max-width: 960px; border-radius: 6px; text-align: center; }
+
+    .dashboard-card { background: white; max-width: 960px; margin: 20px auto; padding: 20px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+    .dashboard-card h3 { margin-top: 0; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    th, td { border: 1px solid #d1d5db; padding: 10px; text-align: left; font-size: 0.9em; }
+    th { background: #1e3a8a; color: white; }
+    tr[data-passed="false"] { background: #fef2f2; }
+    tr:hover { background: #f1f5f9; }
+
+    .badge { padding: 2px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold; color: white; }
+    .pass { background: #16a34a; }
+    .fail { background: #dc2626; }
+
+    .cli-toggle { cursor: pointer; text-decoration: underline; color: #0369a1; }
+    .cli-content { display: none; white-space: pre-wrap; font-family: monospace; background: #f1f5f9; padding: 8px; border-radius: 4px; margin-top: 6px; }
   </style>
-<style>
-    .cli-command-toggle { cursor: pointer; color: #0369a1; text-decoration: underline; }
-    .cli-command-content { display: none; margin-top: 5px; font-family: monospace; color: #333; }
-  </style>
-<script>
-    function toggleCommand(id) {
-       el = document.getElementById(id);
-      el.style.display = el.style.display === "block" ? "none" : "block";
-    }
-  
-    const metadataUrl = 'https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/evidence_commit_metadata.json';
-
-    fetch(metadataUrl)
-      .then(response => response.json())
-      .then(metadata => {
-        document.querySelectorAll("tr[data-ksi]").forEach(row => {
-          const ksiId = row.getAttribute("data-ksi");
-          const traceCell = row.querySelector(".trace-cell");
-          const filePath = `evidence_v2/${ksiId}/raw_output.json`;
-          const meta = metadata[filePath];
-          if (meta) {
-            traceCell.innerHTML = `<code>${meta.commit_sha}</code><br><span style="font-size: 0.8em; color: #666;">${meta.commit_time}</span>`;
-          } else {
-            traceCell.innerHTML = '<span style="color: #aaa;">(uncommitted)</span>';
-          }
-        });
-      })
-      .catch(err => {
-        console.error("Failed to load commit metadata:", err);
-        document.querySelectorAll(".trace-cell").forEach(cell => {
-          cell.innerHTML = '<span style="color: #aaa;">(metadata error)</span>';
-        });
-      });
-
-</script>
-<style>
-    .cli-command-toggle { cursor: pointer; color: #0369a1; text-decoration: underline; }
-    .cli-command-content {
-      display: none;
-      margin-top: 5px;
-      background: #f9fafb;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      padding: 8px;
-      position: relative;
-      font-family: monospace;
-    }
-    .cli-copy-button {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      font-size: 0.75em;
-      padding: 2px 6px;
-      cursor: pointer;
-      background: #e2e8f0;
-      border: 1px solid #cbd5e1;
-      border-radius: 4px;
-    }
-  </style>
-<script>
-    function toggleCommand(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === "block" ? "none" : "block";
-    }
-    function copyCommand(preId) {
-      const text = document.getElementById(preId).textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Copied CLI command to clipboard.");
-      });
-    }
-  
-    const metadataUrl = 'https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/evidence_commit_metadata.json';
-
-    fetch(metadataUrl)
-      .then(response => response.json())
-      .then(metadata => {
-        document.querySelectorAll("tr[data-ksi]").forEach(row => {
-          const ksiId = row.getAttribute("data-ksi");
-          const traceCell = row.querySelector(".trace-cell");
-          const filePath = `evidence_v2/${ksiId}/raw_output.json`;
-          const meta = metadata[filePath];
-          if (meta) {
-            traceCell.innerHTML = `<code>${meta.commit_sha}</code><br><span style="font-size: 0.8em; color: #666;">${meta.commit_time}</span>`;
-          } else {
-            traceCell.innerHTML = '<span style="color: #aaa;">(uncommitted)</span>';
-          }
-        });
-      })
-      .catch(err => {
-        console.error("Failed to load commit metadata:", err);
-        document.querySelectorAll(".trace-cell").forEach(cell => {
-          cell.innerHTML = '<span style="color: #aaa;">(metadata error)</span>';
-        });
-      });
-
-</script>
-<style>
-  .gpg-banner {
-    background: #ecfdf5;
-    color: #065f46;
-    border: 1px solid #a7f3d0;
-    padding: 10px 16px;
-    margin: 10px auto;
-    border-radius: 6px;
-    font-size: 0.95em;
-    max-width: 1000px;
-    text-align: center;
-  }
-  .run-info {
-    text-align: center;
-    font-size: 0.9em;
-    color: #4b5563;
-    margin-bottom: 10px;
-  }
-</style>
-<script>
-  function updateRunTiming() {
-    const now = new Date();
-    const next = new Date(now.getTime() + 24 * 60 * 60 * 1000);
-    document.getElementById("run-info-header").textContent = `📅 Last Updated:  ${now.toLocaleString()} | 🔁 Next Run: ${next.toLocaleString()}`;
-  }
-  window.addEventListener("DOMContentLoaded", updateRunTimingFromValidation);
-
-    const metadataUrl = 'https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/evidence_commit_metadata.json';
-
-    fetch(metadataUrl)
-      .then(response => response.json())
-      .then(metadata => {
-        document.querySelectorAll("tr[data-ksi]").forEach(row => {
-          const ksiId = row.getAttribute("data-ksi");
-          const traceCell = row.querySelector(".trace-cell");
-          const filePath = `evidence_v2/${ksiId}/raw_output.json`;
-          const meta = metadata[filePath];
-          if (meta) {
-            traceCell.innerHTML = `<code>${meta.commit_sha}</code><br><span style="font-size: 0.8em; color: #666;">${meta.commit_time}</span>`;
-          } else {
-            traceCell.innerHTML = '<span style="color: #aaa;">(uncommitted)</span>';
-          }
-        });
-      })
-      .catch(err => {
-        console.error("Failed to load commit metadata:", err);
-        document.querySelectorAll(".trace-cell").forEach(cell => {
-          cell.innerHTML = '<span style="color: #aaa;">(metadata error)</span>';
-        });
-      });
-
-</script>
-<script>
-  async function updateRunTimingFromValidation() {
-    try {
-      const res = await fetch("https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/unified_ksi_validations.json");
-      const data = await res.json();
-      const timestamps = data.ksi_validations.map(v => new Date(v.validation_timestamp)).filter(d => !isNaN(d));
-      const latest = new Date(Math.max.apply(null, timestamps));
-      const next = new Date(latest.getTime() + 24 * 60 * 60 * 1000);
-
-      document.getElementById("run-info-header").textContent = `📅 Last Updated:  ${latest.toLocaleString()} | 🔁 Next Run: ${next.toLocaleString()}`;
-    } catch (err) {
-      document.getElementById("run-info-header").textContent = "⚠️ Unable to load timing data from unified_ksi_validations.json";
-    }
-  }
-  window.addEventListener("DOMContentLoaded", updateRunTimingFromValidation);
-
-    const metadataUrl = 'https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/evidence_commit_metadata.json';
-
-    fetch(metadataUrl)
-      .then(response => response.json())
-      .then(metadata => {
-        document.querySelectorAll("tr[data-ksi]").forEach(row => {
-          const ksiId = row.getAttribute("data-ksi");
-          const traceCell = row.querySelector(".trace-cell");
-          const filePath = `evidence_v2/${ksiId}/raw_output.json`;
-          const meta = metadata[filePath];
-          if (meta) {
-            traceCell.innerHTML = `<code>${meta.commit_sha}</code><br><span style="font-size: 0.8em; color: #666;">${meta.commit_time}</span>`;
-          } else {
-            traceCell.innerHTML = '<span style="color: #aaa;">(uncommitted)</span>';
-          }
-        });
-      })
-      .catch(err => {
-        console.error("Failed to load commit metadata:", err);
-        document.querySelectorAll(".trace-cell").forEach(cell => {
-          cell.innerHTML = '<span style="color: #aaa;">(metadata error)</span>';
-        });
-      });
-
-</script>
-<script>
-  function forceDownloadJSON() {
-    fetch("https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/unified_ksi_validations.json")
-      .then(res => res.blob())
-      .then(blob => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = "unified_ksi_validations.json";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        window.URL.revokeObjectURL(url);
-      })
-      .catch(err => alert("❌ Failed to download file."));
-  }
-
-    const metadataUrl = 'https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/evidence_commit_metadata.json';
-
-    fetch(metadataUrl)
-      .then(response => response.json())
-      .then(metadata => {
-        document.querySelectorAll("tr[data-ksi]").forEach(row => {
-          const ksiId = row.getAttribute("data-ksi");
-          const traceCell = row.querySelector(".trace-cell");
-          const filePath = `evidence_v2/${ksiId}/raw_output.json`;
-          const meta = metadata[filePath];
-          if (meta) {
-            traceCell.innerHTML = `<code>${meta.commit_sha}</code><br><span style="font-size: 0.8em; color: #666;">${meta.commit_time}</span>`;
-          } else {
-            traceCell.innerHTML = '<span style="color: #aaa;">(uncommitted)</span>';
-          }
-        });
-      })
-      .catch(err => {
-        console.error("Failed to load commit metadata:", err);
-        document.querySelectorAll(".trace-cell").forEach(cell => {
-          cell.innerHTML = '<span style="color: #aaa;">(metadata error)</span>';
-        });
-      });
-
-</script>
-<style>
-  body.dark-mode {
-    background-color: #1e293b;
-    color: #e2e8f0;
-  }
-  body.dark-mode header {
-    background-color: #0f172a;
-    color: #f8fafc;
-  }
-  body.dark-mode .dashboard-card {
-    background: #334155;
-    border-color: #475569;
-    color: #f1f5f9;
-  }
-  body.dark-mode table {
-    background: #1e293b;
-  }
-  body.dark-mode th {
-    background-color: #0f172a;
-    color: #f8fafc;
-  }
-  body.dark-mode td {
-    border-color: #475569;
-  }
-  body.dark-mode tr:nth-child(even) {
-    background-color: #273549;
-  }
-  body.dark-mode tr:hover {
-    background-color: #334155;
-  }
-  body.dark-mode .cli-command-content {
-    background: #475569;
-    color: #f8fafc;
-  }
-  body.dark-mode .cli-copy-button {
-    background: #64748b;
-    color: #f8fafc;
-  }
-  body.dark-mode .gpg-banner {
-    background: #2dd4bf;
-    color: #0f172a;
-    border-color: #0f766e;
-  }
-  .dark-toggle {
-    position: absolute;
-    top: 22px;
-    right: 20px;
-    font-size: 0.85em;
-    background-color: #1e3a8a;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-  }
-</style>
-<script>
-  function toggleDarkMode() {
-    const body = document.body;
-    body.classList.toggle("dark-mode");
-    const darkEnabled = body.classList.contains("dark-mode");
-    localStorage.setItem("darkMode", darkEnabled ? "true" : "false");
-  }
-
-  window.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem("darkMode") === "true") {
-      document.body.classList.add("dark-mode");
-    }
-  });
-
-    const metadataUrl = 'https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/evidence_commit_metadata.json';
-
-    fetch(metadataUrl)
-      .then(response => response.json())
-      .then(metadata => {
-        document.querySelectorAll("tr[data-ksi]").forEach(row => {
-          const ksiId = row.getAttribute("data-ksi");
-          const traceCell = row.querySelector(".trace-cell");
-          const filePath = `evidence_v2/${ksiId}/raw_output.json`;
-          const meta = metadata[filePath];
-          if (meta) {
-            traceCell.innerHTML = `<code>${meta.commit_sha}</code><br><span style="font-size: 0.8em; color: #666;">${meta.commit_time}</span>`;
-          } else {
-            traceCell.innerHTML = '<span style="color: #aaa;">(uncommitted)</span>';
-          }
-        });
-      })
-      .catch(err => {
-        console.error("Failed to load commit metadata:", err);
-        document.querySelectorAll(".trace-cell").forEach(cell => {
-          cell.innerHTML = '<span style="color: #aaa;">(metadata error)</span>';
-        });
-      });
-
-</script>
-<style>
-body.dark-mode a {
-  color: #38bdf8;
-}
-
-body.dark-mode .badge {
-  color: white !important;
-}
-
-body.dark-mode .badge.static {
-  background-color: #facc15;
-  color: #1e293b !important;
-}
-
-body.dark-mode .badge.manual {
-  background-color: #a855f7;
-}
-
-body.dark-mode .badge.cli {
-  background-color: #2563eb;
-}
-
-body.dark-mode .badge.pass {
-  background-color: #16a34a;
-}
-
-body.dark-mode .badge.fail {
-  background-color: #dc2626;
-}
-
-body.dark-mode .badge.restrict {
-  background-color: #64748b;
-}
-
-body.dark-mode #summaryStats {
-  color: #e2e8f0;
-}
-</style>
-<style>
-body.dark-mode .dashboard-card,
-body.dark-mode .dashboard-card * {
-  color: #e2e8f0 !important;
-}
-
-body.dark-mode code {
-  background-color: #1e293b;
-  color: #e2e8f0;
-}
-
-body.dark-mode .dashboard-card span,
-body.dark-mode .dashboard-card strong,
-body.dark-mode .dashboard-card p {
-  color: #e2e8f0 !important;
-}
-</style>
-<style>
-body.dark-mode .gpg-banner,
-body.dark-mode .gpg-banner * {
-  color: #0f172a !important;
-}
-
-body.dark-mode .gpg-banner a {
-  color: #0c4a6e !important;
-  font-weight: bold;
-}
-</style>
-<style>
-body.dark-mode .gpg-banner {
-  background: #2dd4bf;
-  color: #0f172a;
-  border-color: #0f766e;
-}
-
-body.dark-mode .gpg-banner code {
-  background-color: #d1fae5;
-  color: #065f46;
-  padding: 2px 4px;
-  border-radius: 4px;
-}
-</style>
-
-<style>
-  tr[data-passed="false"] {
-    background-color: #fef2f2;
-  }
-</style>
-
 </head>
 <body>
 <header>
-<button class="dark-toggle" onclick="toggleDarkMode()">🌙 Night Mode</button>
-<div style="text-align: left; font-size: 0.85em; color: #dbeafe;" id="run-info-header">📅 Last Updated: — | 🔁 Next Run: —</div>
-<h1>FedRAMP 20x Trust Dashboard</h1>
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Night Mode</button>
+  <div class="run-info" id="run-info">📅 Last Updated: — | 🔁 Next Run: —</div>
+  <h1>FedRAMP 20x Trust Dashboard</h1>
 </header>
+
 <div class="gpg-banner">
   🔐 <strong>3PAO Attestation Verified</strong><br/>
-  This submission includes commits <strong>cryptographically signed</strong> by the 3PAO using GPG.
-  <ul style="text-align:left; display:inline-block; margin-top:6px;">
-<li><strong>Key ID:</strong> <code>6C8481C18765D19D</code></li>
-<li><strong>Status:</strong> ✅ Verified via GitHub</li>
-</ul>
-<a href="https://keys.openpgp.org/search?q=6C8481C18765D19D" target="_blank">🔍 View public GPG key</a>
+  This submission includes commits <strong>cryptographically signed</strong> by the 3PAO using GPG.<br/>
+  <code>Key ID: 6C8481C18765D19D</code> · ✅ Verified via GitHub · <a href="https://keys.openpgp.org/search?q=6C8481C18765D19D" target="_blank">🔍 View Key</a>
 </div>
 
-<div class="banner">Transparency-first implementation of the FedRAMP 20x pilot.</div>
-<div class="dashboard-card" style="margin-top: 0;">
-<h3 style="margin-bottom: 6px;">📄 KSI Validations</h3>
-<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-<div style="max-width: 75%;"><p style="font-size: 0.9em; color: #334155;">Source of truth for CLI, static, and manual evidence. Updated daily.</p></div>
-<div style="display: flex; flex-wrap: nowrap; gap: 10px;">
-<span class="badge cli">🟢 GPG Verified</span>
-<button onclick="forceDownloadJSON()" style="font-size: 0.85em; background-color: #1e3a8a; color: white; padding: 6px 12px; border-radius: 6px; border: none; cursor: pointer;">
-        ⬇️ Download JSON
-      </button>
-</div>
-</div>
-</div>
 <div class="dashboard-card">
-<div style="display: flex; justify-content: space-between; align-items: center;"><h3>Unified Validations</h3><div class="summary" id="summaryStats" style="margin: 0;"></div></div>
-
-<label style="margin-left:20px;"><input id="filterFailed" onchange="toggleFailures()" type="checkbox"/> Show only ❌ failed validations</label>
-<label>Filter by KSI:
-    <select id="ksiFilter" onchange="applyKsiFilter()">
-<option value="">All KSIs</option>
-</select>
-</label>
-<table>
-<thead>
-<tr>
-<th>KSI ID</th><th>Title</th><th>Description</th><th>Assertion</th><th>Evidence</th><th>Collected By</th><th>Evidence Trace</th>
-</tr>
-</thead>
-<tbody id="dashboardBody"></tbody>
-</table>
+  <h3>Unified KSI Validations</h3>
+  <div style="margin-bottom:10px;">
+    <label><input type="checkbox" id="filterFailed" onchange="toggleFailed()"> Show only ❌ failed validations</label>
+    <button onclick="downloadJSON()" style="float:right;">⬇️ Download JSON</button>
+  </div>
+  <table>
+    <thead>
+      <tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Evidence</th><th>Trace</th></tr>
+    </thead>
+    <tbody id="dashboardBody"></tbody>
+  </table>
 </div>
-<script>
-const URL = "https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/unified_ksi_validations.json";
 
-function toggleFailures() {
-  const showOnlyFailed = document.getElementById("filterFailed").checked;
+<script>
+const dataURL = "https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/unified_ksi_validations.json";
+const metaURL = "https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/evidence_commit_metadata.json";
+
+function toggleFailed() {
+  const showFailed = document.getElementById("filterFailed").checked;
   document.querySelectorAll("#dashboardBody tr").forEach(row => {
     const passed = row.getAttribute("data-passed") === "true";
-    row.style.display = showOnlyFailed && passed ? "none" : "";
+    row.style.display = showFailed && passed ? "none" : "";
   });
 }
 
-function applyKsiFilter() {
-  const selected = document.getElementById("ksiFilter").value;
-  document.querySelectorAll("#dashboardBody tr").forEach(row => {
-    const rowKsi = row.getAttribute("data-ksi");
-    row.style.display = !selected || rowKsi === selected ? "" : "none";
-  });
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
 }
 
-function formatTrace(commit_sha, timestamp) {
-  if (!commit_sha && !timestamp) return "—";
-  const local = new Date(timestamp).toLocaleString();
-  const utc = timestamp ? timestamp.slice(0, 16).replace("T", " ") : "";
-  const shortSHA = commit_sha ? commit_sha.slice(0, 7) : "";
-  return `🔹 SHA: <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/blob/main/evidence_commit_metadata.json#commit-${commit_sha}" target="_blank" title="View full SHA on GitHub"><code>${shortSHA}</code></a><br/>⏱ UTC: ${utc}<br/>🕒 Local: ${local}`;
-}
-
-function getBadge(method, via) {
-  if (method === "static") return `<span class="badge manual">Manual</span>`;
-  if (via === "terraform") return `<span class="badge terraform">Terraform</span>`;
-  if (via === "aws-cli") return `<span class="badge awscli">AWS CLI</span>`;
-  return `<span class="badge cli">CLI</span>`;
+function downloadJSON() {
+  fetch(dataURL)
+    .then(res => res.blob())
+    .then(blob => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "unified_ksi_validations.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
 }
 
 async function loadDashboard() {
-  const res = await fetch(URL);
-  const data = await res.json();
+  const [res1, res2] = await Promise.all([fetch(dataURL), fetch(metaURL)]);
+  const data = await res1.json();
+  const meta = await res2.json();
+
   const tbody = document.getElementById("dashboardBody");
-  const ksiSet = new Set();
-  let pass = 0, fail = 0;
   const timestamps = [];
 
   data.forEach((item, index) => {
     const passed = item.assertion === true || item.assertion === "true";
-    if (passed) pass++; else fail++;
-    if (item.validation_timestamp) timestamps.push(item.validation_timestamp);
-
-    ksiSet.add(item.ksi_id);
+    const sha = meta[`evidence_v2/${item.ksi_id}/raw_output.json`]?.commit_sha || "—";
+    const time = meta[`evidence_v2/${item.ksi_id}/raw_output.json`]?.commit_time || "—";
+    if (item.validation_timestamp) timestamps.push(new Date(item.validation_timestamp));
 
     const row = document.createElement("tr");
     row.setAttribute("data-passed", passed);
-    row.setAttribute("data-ksi", item.ksi_id);
 
-    let assertion = `<span class="status"${item.assertion_reason ? ` title="${item.assertion_reason}"` : ''}>${passed ? '✅' : '❌'}</span>`;
-    if (!passed) {
-      assertion += `<div style='margin-top:4px;'><a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/issues/new?title=Validation+Failure:+${encodeURIComponent(item.ksi_id)}&body=Failed+validation+for+${encodeURIComponent(item.ksi_id)}%0ATitle:+${encodeURIComponent(item.title)}%0ADescription:+${encodeURIComponent(item.description)}" target="_blank" style="font-size: 0.8em; color: #0369a1; text-decoration: underline;">🛠 Open Issue</a></div>`;
-    }
-
-    let evidence;
-    if (item.validation_method === "static") {
-      evidence = `🔒 <a class="locked" href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/issues/new?title=Request+Access:+${item.ksi_id}&body=Request+access+to:+${item.evidence_path}" target="_blank">Request Access</a>`;
-    } else {
-      const cmdID = "cli-command-" + index;
-      evidence = `<span class='cli-command-toggle' onclick="toggleCommand('${cmdID}')">Show CLI</span><div id='${cmdID}' class='cli-command-content'>${item.cli_command || "—"}</div>`;
-    }
-
+    const cliId = `cli-${index}`;
     row.innerHTML = `
       <td>${item.ksi_id}</td>
-      <td>${item.title}</td>
-      <td>${item.description}</td>
-      <td>${assertion}</td>
-      <td>${evidence}</td>
-      <td>${getBadge(item.validation_method, item.gathered_via)}</td>
-      <td>${formatTrace(item.commit_sha, item.validation_timestamp)}</td>
+      <td>${item.title || "—"}</td>
+      <td><span class="badge ${passed ? "pass" : "fail"}">${passed ? "✅ Pass" : "❌ Fail"}</span></td>
+      <td>
+        <span class="cli-toggle" onclick="toggleCLI('${cliId}')">View CLI</span>
+        <div class="cli-content" id="${cliId}">${item.cli_command || "—"}</div>
+      </td>
+      <td><code>${sha}</code><br/><span style="font-size: 0.85em;">${time}</span></td>
     `;
-
     tbody.appendChild(row);
   });
 
-  const latest = timestamps.sort().reverse()[0];document.getElementById("summaryStats").innerHTML =
-    `Validations: ${pass + fail} | <span class="badge pass">✅ Passed: ${pass}</span> | <span class="badge fail">❌ Failed: ${fail}</span>`;
-
-  const filter = document.getElementById("ksiFilter");
-  Array.from(ksiSet).sort().forEach(k => {
-    const opt = document.createElement("option");
-    opt.value = k;
-    opt.textContent = k;
-    filter.appendChild(opt);
-  });
+  if (timestamps.length) {
+    const last = new Date(Math.max(...timestamps));
+    const next = new Date(last.getTime() + 86400000);
+    document.getElementById("run-info").textContent = `📅 Last Updated: ${last.toLocaleString()} | 🔁 Next Run: ${next.toLocaleString()}`;
+  }
 }
 
-loadDashboard();
+function toggleCLI(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
 
-    const metadataUrl = 'https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/evidence_commit_metadata.json';
-
-    fetch(metadataUrl)
-      .then(response => response.json())
-      .then(metadata => {
-        document.querySelectorAll("tr[data-ksi]").forEach(row => {
-          const ksiId = row.getAttribute("data-ksi");
-          const traceCell = row.querySelector(".trace-cell");
-          const filePath = `evidence_v2/${ksiId}/raw_output.json`;
-          const meta = metadata[filePath];
-          if (meta) {
-            traceCell.innerHTML = `<code>${meta.commit_sha}</code><br><span style="font-size: 0.8em; color: #666;">${meta.commit_time}</span>`;
-          } else {
-            traceCell.innerHTML = '<span style="color: #aaa;">(uncommitted)</span>';
-          }
-        });
-      })
-      .catch(err => {
-        console.error("Failed to load commit metadata:", err);
-        document.querySelectorAll(".trace-cell").forEach(cell => {
-          cell.innerHTML = '<span style="color: #aaa;">(metadata error)</span>';
-        });
-      });
-
+document.addEventListener("DOMContentLoaded", loadDashboard);
 </script>
 </body>
 </html>
-
-<style>
-  .dashboard-card + .dashboard-card {
-    margin-top: 30px;
-    border-top: 1px solid #e2e8f0;
-  }
-</style>
