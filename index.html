@@ -39,7 +39,7 @@
   </style>
 <script>
     function toggleCommand(id) {
-      const el = document.getElementById(id);
+       el = document.getElementById(id);
       el.style.display = el.style.display === "block" ? "none" : "block";
     }
   
@@ -184,7 +184,7 @@
 <script>
   async function updateRunTimingFromValidation() {
     try {
-      const res = await fetch("https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission/main/unified_ksi_validations.json");
+      const res = await fetch("https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/unified_ksi_validations.json");
       const data = await res.json();
       const timestamps = data.ksi_validations.map(v => new Date(v.validation_timestamp)).filter(d => !isNaN(d));
       const latest = new Date(Math.max.apply(null, timestamps));
@@ -224,7 +224,7 @@
 </script>
 <script>
   function forceDownloadJSON() {
-    fetch("https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission/main/unified_ksi_validations.json")
+    fetch("https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/unified_ksi_validations.json")
       .then(res => res.blob())
       .then(blob => {
         const url = window.URL.createObjectURL(blob);
@@ -495,7 +495,7 @@ body.dark-mode .gpg-banner code {
 </table>
 </div>
 <script>
-const URL = "https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission/main/unified_ksi_validations.json";
+const URL = "https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/unified_ksi_validations.json";
 
 function toggleFailures() {
   const showOnlyFailed = document.getElementById("filterFailed").checked;
@@ -518,7 +518,7 @@ function formatTrace(commit_sha, timestamp) {
   const local = new Date(timestamp).toLocaleString();
   const utc = timestamp ? timestamp.slice(0, 16).replace("T", " ") : "";
   const shortSHA = commit_sha ? commit_sha.slice(0, 7) : "";
-  return `🔹 SHA: <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission/blob/main/evidence_commit_metadata.json#commit-${commit_sha}" target="_blank" title="View full SHA on GitHub"><code>${shortSHA}</code></a><br/>⏱ UTC: ${utc}<br/>🕒 Local: ${local}`;
+  return `🔹 SHA: <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/blob/main/evidence_commit_metadata.json#commit-${commit_sha}" target="_blank" title="View full SHA on GitHub"><code>${shortSHA}</code></a><br/>⏱ UTC: ${utc}<br/>🕒 Local: ${local}`;
 }
 
 function getBadge(method, via) {
@@ -549,12 +549,12 @@ async function loadDashboard() {
 
     let assertion = `<span class="status"${item.assertion_reason ? ` title="${item.assertion_reason}"` : ''}>${passed ? '✅' : '❌'}</span>`;
     if (!passed) {
-      assertion += `<div style='margin-top:4px;'><a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission/issues/new?title=Validation+Failure:+${encodeURIComponent(item.ksi_id)}&body=Failed+validation+for+${encodeURIComponent(item.ksi_id)}%0ATitle:+${encodeURIComponent(item.title)}%0ADescription:+${encodeURIComponent(item.description)}" target="_blank" style="font-size: 0.8em; color: #0369a1; text-decoration: underline;">🛠 Open Issue</a></div>`;
+      assertion += `<div style='margin-top:4px;'><a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/issues/new?title=Validation+Failure:+${encodeURIComponent(item.ksi_id)}&body=Failed+validation+for+${encodeURIComponent(item.ksi_id)}%0ATitle:+${encodeURIComponent(item.title)}%0ADescription:+${encodeURIComponent(item.description)}" target="_blank" style="font-size: 0.8em; color: #0369a1; text-decoration: underline;">🛠 Open Issue</a></div>`;
     }
 
     let evidence;
     if (item.validation_method === "static") {
-      evidence = `🔒 <a class="locked" href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission/issues/new?title=Request+Access:+${item.ksi_id}&body=Request+access+to:+${item.evidence_path}" target="_blank">Request Access</a>`;
+      evidence = `🔒 <a class="locked" href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/issues/new?title=Request+Access:+${item.ksi_id}&body=Request+access+to:+${item.evidence_path}" target="_blank">Request Access</a>`;
     } else {
       const cmdID = "cli-command-" + index;
       evidence = `<span class='cli-command-toggle' onclick="toggleCommand('${cmdID}')">Show CLI</span><div id='${cmdID}' class='cli-command-content'>${item.cli_command || "—"}</div>`;
