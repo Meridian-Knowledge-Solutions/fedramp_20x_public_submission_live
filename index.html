@@ -536,7 +536,7 @@ async function loadDashboard() {
   let pass = 0, fail = 0;
   const timestamps = [];
 
-  data.ksi_validations.forEach((item, index) => {
+  data.forEach((item, index) => {
     const passed = item.assertion === true || item.assertion === "true";
     if (passed) pass++; else fail++;
     if (item.validation_timestamp) timestamps.push(item.validation_timestamp);
