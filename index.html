@@ -43,7 +43,7 @@
 </div>
 
 <div class="dashboard-card">
-  <h3>Low Impact 20x KSI Validations</h3>
+  <h3>Unified KSI Validations</h3>
   <div style="margin-bottom:10px;">
     <label><input type="checkbox" id="filterFailed" onchange="toggleFailed()"> Show only ❌ failed validations</label>
     <button onclick="downloadJSON()" style="float:right;">⬇️ Download JSON</button>
@@ -60,7 +60,7 @@
     "></div>
 <table>
     <thead>
-      <tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Command Trace</th><th>Commit Trace</th></tr>
+      <tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Command Trace</th><th>Trace</th></tr>
     </thead>
     <tbody id="dashboardBody"></tbody>
   </table>
@@ -170,7 +170,7 @@ async function loadDashboard() {
 
     const cliId = `cli-${index}`;
     row.innerHTML = `
-      <td>${item.ksi_id}</td>
+      <td title="${item.requirement || ''}">${item.ksi_id}</td>
       <td>${item.title || ksiTitles[item.validation_id] || item.ksi_id}</td>
       <td><span class="badge ${passed ? "pass" : "fail"}" title="${item.assertion_reason || ''}">${passed ? "✅ Pass" : "❌ Fail"}</span>
         ${!passed ? `<br/><a href="https://github.com/Meridian-Knowledge-Solutions/fedramp-20x-submission-final/issues/new?title=KSI+${item.ksi_id}+Needs+Clarification&body=KSI ID: ${item.ksi_id}%0AValidation ID: ${item.validation_id || ''}%0ATitle: ${item.title || ''}%0ACLI Command: ${item.cli_command || ''}" target="_blank" style="font-size:0.85em;">🛠 Clarify</a>` : ""}
