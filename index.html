@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>FedRAMP 20x Trust Dashboard</title>
-  <style>
+<meta charset="utf-8"/>
+<title>FedRAMP 20x Trust Dashboard</title>
+<style>
     body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9fafb; color: #1e293b; }
     header { background: #0f172a; color: white; padding: 20px; text-align: center; position: relative; }
     h1 { margin: 0; font-size: 1.75em; }
@@ -31,24 +32,22 @@
 </head>
 <body>
 <header>
-  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Night Mode</button>
-  <div class="run-info" id="run-info">📅 Last Updated: — | 🔁 Next Run: —</div>
-  <h1>FedRAMP 20x Trust Dashboard</h1>
+<button class="dark-toggle" onclick="toggleDarkMode()">🌙 Night Mode</button>
+<div class="run-info" id="run-info">📅 Last Updated: — | 🔁 Next Run: —</div>
+<h1>FedRAMP 20x Trust Dashboard</h1>
 </header>
-
 <div class="gpg-banner">
   🔐 <strong>3PAO Attestation Verified</strong><br/>
   This submission includes commits <strong>cryptographically signed</strong> by the 3PAO using GPG.<br/>
-  <code>Key ID: 6C8481C18765D19D</code> · ✅ Verified via GitHub · <a href="https://keys.openpgp.org/search?q=6C8481C18765D19D" target="_blank">🔍 View Key</a>
+<code>Key ID: 6C8481C18765D19D</code> · ✅ Verified via GitHub · <a href="https://keys.openpgp.org/search?q=6C8481C18765D19D" target="_blank">🔍 View Key</a>
 </div>
-
 <div class="dashboard-card">
-  <h3>Unified KSI Validations</h3>
-  <div style="margin-bottom:10px;">
-    <label><input type="checkbox" id="filterFailed" onchange="toggleFailed()"> Show only ❌ failed validations</label>
-    <button onclick="downloadJSON()" style="float:right;">⬇️ Download JSON</button>
-  </div>
-  <div id="summaryRow" style="
+<h3>Unified KSI Validations</h3>
+<div style="margin-bottom:10px;">
+<label><input id="filterFailed" onchange="toggleFailed()" type="checkbox"/> Show only ❌ failed validations</label>
+<div style="float:right;"><button onclick="downloadJSON()">⬇️ Download JSON</button><a download="" href="https://github.com/Meridian-Knowledge-Solutions/fedramp-20x-submission-final/raw/main/failed_ksi_report_readable.md" style="margin-left:10px; background:#1e3a8a; color:white; padding:6px 10px; border-radius:4px; text-decoration:none;">📄 Failed Report</a></div>
+</div>
+<div id="summaryRow" style="
       margin-bottom: 16px;
       font-weight: 600;
       font-size: 1rem;
@@ -59,13 +58,12 @@
       background: #f8fafc;
     "></div>
 <table>
-    <thead>
-      <tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Command Trace</th><th>Trace</th></tr>
-    </thead>
-    <tbody id="dashboardBody"></tbody>
-  </table>
+<thead>
+<tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Command Trace</th><th>Trace</th></tr>
+</thead>
+<tbody id="dashboardBody"></tbody>
+</table>
 </div>
-
 <script>
 const dataURL = "https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/unified_ksi_validations.json";
 const metaURL = "https://raw.githubusercontent.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/main/evidence_commit_metadata.json";
