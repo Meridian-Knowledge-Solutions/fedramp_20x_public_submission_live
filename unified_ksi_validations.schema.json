@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FedRAMP 20x Unified KSI Validations",
+  "type": "object",
+  "required": [
+    "metadata",
+    "validations"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": [
+        "last_updated"
+      ],
+      "properties": {
+        "last_updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "validations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ksi_id",
+          "validation_id",
+          "assertion",
+          "assertion_reason",
+          "cli_command",
+          "cli_output_digest",
+          "cli_output_interpretation",
+          "timestamp"
+        ],
+        "properties": {
+          "ksi_id": {
+            "type": "string"
+          },
+          "validation_id": {
+            "type": "string"
+          },
+          "assertion": {
+            "type": "boolean"
+          },
+          "assertion_reason": {
+            "type": "string"
+          },
+          "cli_command": {
+            "type": "string"
+          },
+          "cli_output_digest": {
+            "type": "string"
+          },
+          "cli_output_interpretation": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "title": {
+            "type": "string"
+          },
+          "evidence_path": {
+            "type": "string"
+          },
+          "cli_output_snippet": {
+            "type": "string"
+          },
+          "raw_cli_output": {
+            "type": "object"
+          },
+          "requirement": {
+            "type": "string"
+          },
+          "long_name": {
+            "type": "string"
+          },
+          "interpretation": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
