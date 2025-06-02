@@ -59,7 +59,7 @@
     "></div>
 <table>
 <thead>
-<tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Command Trace</th><th>Trace</th></tr>
+<tr><th>KSI ID</th><th>Title</th><th>Assertion</th><th>Command Trace</th><th>Commit Trace</th></tr>
 </thead>
 <tbody id="dashboardBody"></tbody>
 </table>
@@ -210,6 +210,64 @@ function toggleCLI(id) {
 }
 
 document.addEventListener("DOMContentLoaded", loadDashboard);
+
+function loadDashboard() {
+  Promise.all([fetch(dataURL), fetch(metaURL)])
+    .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+    .then(([data, meta]) => {
+      const validations = Array.isArray(data.validations) ? data.validations : data;
+      const tbody = document.getElementById("dashboardBody");
+      const timestamps = [];
+
+      validations.forEach((item, index) => {
+        const passed = item.assertion === true || item.assertion === "true";
+        const sha = meta[`evidence_v2/${item.ksi_id}/raw_output.json`]?.commit_sha || "—";
+        const time = meta[`evidence_v2/${item.ksi_id}/raw_output.json`]?.commit_time || "—";
+        const cliId = `cli-${index}`;
+
+        if (item.validation_timestamp) {
+          timestamps.push(new Date(item.validation_timestamp));
+        }
+
+        const row = document.createElement("tr");
+        row.setAttribute("data-passed", passed);
+        row.innerHTML = `
+          <td title="${item.requirement || ''}">${item.ksi_id}</td>
+          <td>${item.title || ksiTitles[item.validation_id] || item.ksi_id}</td>
+          <td><span class="badge ${passed ? "pass" : "fail"}" title="${item.assertion_reason || ''}">${passed ? "✅ Pass" : "❌ Fail"}</span>
+            ${!passed ? `<br/><a href="https://github.com/Meridian-Knowledge-Solutions/fedramp-20x-submission-final/issues/new?title=KSI+${item.ksi_id}+Needs+Clarification&body=KSI ID: ${item.ksi_id}%0AValidation ID: ${item.validation_id || ''}%0ATitle: ${item.title || ''}%0ACLI Command: ${item.cli_command || ''}" target="_blank" style="font-size:0.85em;">🛠 Clarify</a>` : ""}
+          </td>
+          <td>
+            <span class="cli-toggle" onclick="toggleCLI('${cliId}')">View CLI</span>
+            <div class="cli-content" id="${cliId}">${item.cli_command || "—"}</div>
+          </td>
+          <td>
+            <div style="font-family:monospace; font-size:0.9em;">
+              ${sha}<br/>
+              <span style="font-size: 0.85em; color: #555;">${time}</span><br/>
+              ${item.evidence_path ? `<a href='https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/${item.evidence_path}' target='_blank'>🔗 Request Access</a>` : ""}
+            </div>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      const total = validations.length;
+      const failed = validations.filter(i => i.assertion !== true && i.assertion !== "true").length;
+      const passedCount = total - failed;
+      const percent = Math.round((passedCount / total) * 100);
+      document.getElementById("summaryRow").textContent =
+        "Summary: " + passedCount + " passed / " + failed + " failed (" + percent + "%)";
+
+      const lastUpdated = data?.metadata?.last_updated;
+      if (lastUpdated) {
+        const last = new Date(lastUpdated);
+        const next = new Date(last.getTime() + 86400000);
+        document.getElementById("run-info").textContent = `📅 Last Updated: ${last.toLocaleString()} | 🔁 Next Run: ${next.toLocaleString()}`;
+      }
+    });
+}
+
 </script>
 </body>
 </html>
