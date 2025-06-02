@@ -7,7 +7,7 @@
     "cli_command": "aws ec2 describe-subnets",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.846403"
+    "timestamp": "2025-06-02T05:12:43.776365"
   },
   {
     "ksi_id": "KSI-CMT-03",
@@ -17,7 +17,7 @@
     "cli_command": "aws codebuild batch-get-projects",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.846487"
+    "timestamp": "2025-06-02T05:12:43.776447"
   },
   {
     "ksi_id": "KSI-IAM-06",
@@ -27,7 +27,7 @@
     "cli_command": "aws iam get-account-password-policy",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.846554"
+    "timestamp": "2025-06-02T05:12:43.776514"
   },
   {
     "ksi_id": "KSI-SVC-07",
@@ -37,7 +37,7 @@
     "cli_command": "aws ssm describe-patch-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.846615"
+    "timestamp": "2025-06-02T05:12:43.776575"
   },
   {
     "ksi_id": "KSI-CNA-01",
@@ -47,7 +47,7 @@
     "cli_command": "aws ec2 describe-network-acls",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.846682"
+    "timestamp": "2025-06-02T05:12:43.776643"
   },
   {
     "ksi_id": "KSI-IAM-01",
@@ -57,7 +57,7 @@
     "cli_command": "aws iam list-virtual-mfa-devices",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.846757"
+    "timestamp": "2025-06-02T05:12:43.776720"
   },
   {
     "ksi_id": "KSI-CED-01",
@@ -67,7 +67,7 @@
     "cli_command": "aws sso list-users --instance-arn arn:aws:sso:::instance/ssoins-1234567890abcdef",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.846818"
+    "timestamp": "2025-06-02T05:12:43.776783"
   },
   {
     "ksi_id": "KSI-CMT-01",
@@ -77,7 +77,7 @@
     "cli_command": "AttributeValue=Modify\"",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.846927"
+    "timestamp": "2025-06-02T05:12:43.776854"
   },
   {
     "ksi_id": "KSI-MLA-02",
@@ -87,7 +87,7 @@
     "cli_command": "aws logs describe-metric-filters",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.846996"
+    "timestamp": "2025-06-02T05:12:43.776939"
   },
   {
     "ksi_id": "KSI-PIY-03",
@@ -97,7 +97,7 @@
     "cli_command": "aws support describe-trusted-advisor-checks --language en",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.847052"
+    "timestamp": "2025-06-02T05:12:43.777014"
   },
   {
     "ksi_id": "KSI-SVC-01",
@@ -107,7 +107,7 @@
     "cli_command": "aws wafv2 list-web-acls",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.847108"
+    "timestamp": "2025-06-02T05:12:43.777070"
   },
   {
     "ksi_id": "KSI-CNA-07",
@@ -117,7 +117,7 @@
     "cli_command": "aws wellarchitected list-workloads",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.847159"
+    "timestamp": "2025-06-02T05:12:43.777122"
   },
   {
     "ksi_id": "KSI-PIY-06",
@@ -127,7 +127,7 @@
     "cli_command": "aws organizations describe-organization",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.847213"
+    "timestamp": "2025-06-02T05:12:43.777174"
   },
   {
     "ksi_id": "KSI-RPL-01",
@@ -137,7 +137,7 @@
     "cli_command": "aws backup list-backup-plans",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.847278"
+    "timestamp": "2025-06-02T05:12:43.777229"
   },
   {
     "ksi_id": "KSI-CMT-04",
@@ -147,7 +147,7 @@
     "cli_command": "aws ssm list-documents",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.849116"
+    "timestamp": "2025-06-02T05:12:43.778967"
   },
   {
     "ksi_id": "KSI-MLA-06",
@@ -157,7 +157,7 @@
     "cli_command": "aws inspector2 list-vulnerabilities",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.849328"
+    "timestamp": "2025-06-02T05:12:43.779180"
   },
   {
     "ksi_id": "KSI-TPR-04",
@@ -167,7 +167,7 @@
     "cli_command": "aws inspector2 list-findings",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.849388"
+    "timestamp": "2025-06-02T05:12:43.779239"
   },
   {
     "ksi_id": "KSI-INR-02",
@@ -177,7 +177,7 @@
     "cli_command": "aws securityhub get-findings",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.868906"
+    "timestamp": "2025-06-02T05:12:43.797027"
   },
   {
     "ksi_id": "KSI-PIY-05",
@@ -187,7 +187,7 @@
     "cli_command": "aws config describe-compliance-by-config-rule",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.870326"
+    "timestamp": "2025-06-02T05:12:43.798387"
   },
   {
     "ksi_id": "KSI-RPL-04",
@@ -197,7 +197,7 @@
     "cli_command": "aws backup list-restore-jobs",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.870400"
+    "timestamp": "2025-06-02T05:12:43.798466"
   },
   {
     "ksi_id": "KSI-INR-03",
@@ -207,7 +207,7 @@
     "cli_command": "aws inspector list-findings",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.870458"
+    "timestamp": "2025-06-02T05:12:43.798525"
   },
   {
     "ksi_id": "KSI-PIY-02",
@@ -217,7 +217,7 @@
     "cli_command": "aws iam list-policies",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873070"
+    "timestamp": "2025-06-02T05:12:43.801065"
   },
   {
     "ksi_id": "KSI-CNA-05",
@@ -227,7 +227,7 @@
     "cli_command": "aws ec2 describe-vpcs",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873272"
+    "timestamp": "2025-06-02T05:12:43.801253"
   },
   {
     "ksi_id": "KSI-MLA-03",
@@ -237,7 +237,7 @@
     "cli_command": "aws logs describe-subscription-filters",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873332"
+    "timestamp": "2025-06-02T05:12:43.801312"
   },
   {
     "ksi_id": "KSI-SVC-04",
@@ -247,7 +247,7 @@
     "cli_command": "aws config describe-configuration-recorder-status",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873417"
+    "timestamp": "2025-06-02T05:12:43.801398"
   },
   {
     "ksi_id": "KSI-CNA-06",
@@ -257,7 +257,7 @@
     "cli_command": "aws ec2 describe-route-tables",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873475"
+    "timestamp": "2025-06-02T05:12:43.801456"
   },
   {
     "ksi_id": "KSI-PIY-01",
@@ -267,7 +267,7 @@
     "cli_command": "aws config list-discovered-resources --resource-type AWS::EC2::Instance",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873559"
+    "timestamp": "2025-06-02T05:12:43.801540"
   },
   {
     "ksi_id": "KSI-PIY-04",
@@ -277,7 +277,7 @@
     "cli_command": "aws codecommit list-repositories",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873610"
+    "timestamp": "2025-06-02T05:12:43.801590"
   },
   {
     "ksi_id": "KSI-CNA-04",
@@ -287,7 +287,7 @@
     "cli_command": "aws ec2 describe-instances",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873659"
+    "timestamp": "2025-06-02T05:12:43.801639"
   },
   {
     "ksi_id": "KSI-CED-02",
@@ -297,7 +297,7 @@
     "cli_command": "aws iam list-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873706"
+    "timestamp": "2025-06-02T05:12:43.801686"
   },
   {
     "ksi_id": "KSI-TPR-01",
@@ -307,7 +307,7 @@
     "cli_command": "aws config list-discovered-resources --resource-type AWS::CloudFormation::Stack",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873786"
+    "timestamp": "2025-06-02T05:12:43.801767"
   },
   {
     "ksi_id": "KSI-CMT-02",
@@ -317,7 +317,7 @@
     "cli_command": "aws s3api list-object-versions --bucket your-terraform-state-bucket",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873837"
+    "timestamp": "2025-06-02T05:12:43.801817"
   },
   {
     "ksi_id": "KSI-SVC-03",
@@ -327,7 +327,7 @@
     "cli_command": "aws kms list-keys",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873907"
+    "timestamp": "2025-06-02T05:12:43.801869"
   },
   {
     "ksi_id": "KSI-TPR-02",
@@ -337,7 +337,7 @@
     "cli_command": "aws securityhub get-findings --filters ProductArn={Value=arn:aws:securityhub:::product/aws/fedramp-moderate;Comparison=EQUALS}",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.873961"
+    "timestamp": "2025-06-02T05:12:43.801946"
   },
   {
     "ksi_id": "KSI-SVC-05",
@@ -347,7 +347,7 @@
     "cli_command": "aws shield describe-drt-access",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.874008"
+    "timestamp": "2025-06-02T05:12:43.802010"
   },
   {
     "ksi_id": "KSI-RPL-02",
@@ -357,7 +357,7 @@
     "cli_command": "aws backup list-recovery-points-by-backup-vault --backup-vault-name default",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.874054"
+    "timestamp": "2025-06-02T05:12:43.802059"
   },
   {
     "ksi_id": "KSI-MLA-05",
@@ -367,7 +367,7 @@
     "cli_command": "aws config describe-config-rules",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.874133"
+    "timestamp": "2025-06-02T05:12:43.802138"
   },
   {
     "ksi_id": "KSI-MLA-04",
@@ -377,7 +377,7 @@
     "cli_command": "aws logs describe-destinations",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.874182"
+    "timestamp": "2025-06-02T05:12:43.802186"
   },
   {
     "ksi_id": "KSI-IAM-04",
@@ -387,7 +387,7 @@
     "cli_command": "aws iam list-role-policies",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.874229"
+    "timestamp": "2025-06-02T05:12:43.802235"
   },
   {
     "ksi_id": "KSI-SVC-06",
@@ -397,7 +397,7 @@
     "cli_command": "aws kms list-key-rotation-status",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.874281"
+    "timestamp": "2025-06-02T05:12:43.802288"
   },
   {
     "ksi_id": "KSI-TPR-03",
@@ -407,7 +407,7 @@
     "cli_command": "aws securityhub describe-hub",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.874327"
+    "timestamp": "2025-06-02T05:12:43.802335"
   },
   {
     "ksi_id": "KSI-SVC-02",
@@ -417,7 +417,7 @@
     "cli_command": "aws ec2 describe-vpn-connections",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.874372"
+    "timestamp": "2025-06-02T05:12:43.802381"
   },
   {
     "ksi_id": "KSI-IAM-05",
@@ -427,7 +427,7 @@
     "cli_command": "aws iam get-account-authorization-details",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.912169"
+    "timestamp": "2025-06-02T05:12:43.839635"
   },
   {
     "ksi_id": "KSI-PIY-07",
@@ -437,7 +437,7 @@
     "cli_command": "aws ssm describe-document-permissions",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.915884"
+    "timestamp": "2025-06-02T05:12:43.843134"
   },
   {
     "ksi_id": "KSI-INR-01",
@@ -447,7 +447,7 @@
     "cli_command": "aws securityhub list-insights",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.915987"
+    "timestamp": "2025-06-02T05:12:43.843236"
   },
   {
     "ksi_id": "KSI-CNA-03",
@@ -457,7 +457,7 @@
     "cli_command": "aws ec2 describe-security-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.916055"
+    "timestamp": "2025-06-02T05:12:43.843303"
   },
   {
     "ksi_id": "KSI-IAM-02",
@@ -467,7 +467,7 @@
     "cli_command": "aws iam list-users",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.916116"
+    "timestamp": "2025-06-02T05:12:43.843364"
   },
   {
     "ksi_id": "KSI-CMT-05",
@@ -477,17 +477,17 @@
     "cli_command": "aws cloudwatch describe-alarms",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.916170"
+    "timestamp": "2025-06-02T05:12:43.843448"
   },
   {
     "ksi_id": "KSI-RPL-03",
     "validation_id": "KSI-RPL-03",
     "assertion": true,
-    "assertion_reason": "\u2705 Found 366 backup jobs",
+    "assertion_reason": "\u2705 Found 362 backup jobs",
     "cli_command": "aws backup list-backup-jobs",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.918408"
+    "timestamp": "2025-06-02T05:12:43.845111"
   },
   {
     "ksi_id": "KSI-IAM-03",
@@ -497,7 +497,7 @@
     "cli_command": "aws iam list-roles",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.918694"
+    "timestamp": "2025-06-02T05:12:43.845381"
   },
   {
     "ksi_id": "KSI-MLA-01",
@@ -507,6 +507,6 @@
     "cli_command": "aws logs describe-log-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-02T03:18:30.918769"
+    "timestamp": "2025-06-02T05:12:43.845455"
   }
 ]
