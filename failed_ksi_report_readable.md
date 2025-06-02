@@ -1,6 +1,6 @@
 # ❌ Failed KSI Validation Report
 
-**Generated:** `2025-06-02T07:33:12.313856Z`
+**Generated:** `2025-06-02T07:54:32.276959Z`
 **Total Failures:** 35
 
 ## ❌ KSI-CMT-03: Untitled
