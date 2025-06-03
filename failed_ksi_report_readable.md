@@ -1,7 +1,7 @@
 # ❌ Failed KSI Validation Report
 
-**Generated:** 2025-06-02T08:08:08.112732Z
-**Total Failures:** 35
+**Generated:** 2025-06-03T01:06:31.218252Z
+**Total Failures:** 43
 
 ---
 
@@ -10,9 +10,9 @@
 - **Validation ID:** `KSI-CMT-03`  
 - **KSI Family:** Change Management  
 - **Assertion Reason:** ❌ No rule defined for this KSI  
-- **CLI Command:** `aws codebuild batch-get-projects`  
+- **CLI Command:** `aws codebuild list-projects`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.998381  
+- **Timestamp:** 2025-06-03T01:06:31.175612  
 
 ---
 
@@ -21,9 +21,9 @@
 - **Validation ID:** `KSI-IAM-06`  
 - **KSI Family:** Identity and Access Management  
 - **Assertion Reason:** ❌ No password policy found  
-- **CLI Command:** `aws iam get-account-password-policy`  
+- **CLI Command:** `aws iam get-account-authorization-details`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.998489  
+- **Timestamp:** 2025-06-03T01:06:31.175672  
 
 ---
 
@@ -34,18 +34,18 @@
 - **Assertion Reason:** ❌ No patch groups found  
 - **CLI Command:** `aws ssm describe-patch-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.998559  
+- **Timestamp:** 2025-06-03T01:06:31.175726  
 
 ---
 
-## ❌ KSI-CED-01: Cybersecurity Education
+## ❌ KSI-CNA-01: Cloud Native Architecture
 
-- **Validation ID:** `KSI-CED-01`  
-- **KSI Family:** Cybersecurity Education  
-- **Assertion Reason:** ❌ No SSO users found  
-- **CLI Command:** `aws sso list-users --instance-arn arn:aws:sso:::instance/ssoins-1234567890abcdef`  
+- **Validation ID:** `KSI-CNA-01`  
+- **KSI Family:** Cloud Native Architecture  
+- **Assertion Reason:** ❌ No Network ACLs found  
+- **CLI Command:** `aws ec2 describe-security-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.998764  
+- **Timestamp:** 2025-06-03T01:06:31.175784  
 
 ---
 
@@ -54,9 +54,9 @@
 - **Validation ID:** `KSI-CMT-01`  
 - **KSI Family:** Change Management  
 - **Assertion Reason:** ❌ No rule defined for this KSI  
-- **CLI Command:** `AttributeValue=Modify"`  
+- **CLI Command:** `aws config describe-configuration-recorders`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.998835  
+- **Timestamp:** 2025-06-03T01:06:31.175978  
 
 ---
 
@@ -65,9 +65,9 @@
 - **Validation ID:** `KSI-MLA-02`  
 - **KSI Family:** Monitoring, Logging, and Auditing  
 - **Assertion Reason:** ❌ No metric filters found  
-- **CLI Command:** `aws logs describe-metric-filters`  
+- **CLI Command:** `aws logs describe-destinations`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.998890  
+- **Timestamp:** 2025-06-03T01:06:31.176030  
 
 ---
 
@@ -76,9 +76,9 @@
 - **Validation ID:** `KSI-PIY-03`  
 - **KSI Family:** Policy and Inventory  
 - **Assertion Reason:** ❌ No Trusted Advisor checks found  
-- **CLI Command:** `aws support describe-trusted-advisor-checks --language en`  
+- **CLI Command:** `aws iam list-policies`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.998943  
+- **Timestamp:** 2025-06-03T01:06:31.176080  
 
 ---
 
@@ -87,9 +87,9 @@
 - **Validation ID:** `KSI-SVC-01`  
 - **KSI Family:** Service Configuration  
 - **Assertion Reason:** ❌ No web ACLs found  
-- **CLI Command:** `aws wafv2 list-web-acls`  
+- **CLI Command:** `aws ssm describe-instance-information`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.998995  
+- **Timestamp:** 2025-06-03T01:06:31.176162  
 
 ---
 
@@ -98,9 +98,9 @@
 - **Validation ID:** `KSI-CNA-07`  
 - **KSI Family:** Cloud Native Architecture  
 - **Assertion Reason:** ❌ No Well-Architected workloads found  
-- **CLI Command:** `aws wellarchitected list-workloads`  
+- **CLI Command:** `aws ec2 describe-images`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.999043  
+- **Timestamp:** 2025-06-03T01:06:31.176220  
 
 ---
 
@@ -109,9 +109,9 @@
 - **Validation ID:** `KSI-PIY-06`  
 - **KSI Family:** Policy and Inventory  
 - **Assertion Reason:** ❌ No organization structure found  
-- **CLI Command:** `aws organizations describe-organization`  
+- **CLI Command:** `aws iam list-users`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:07.999095  
+- **Timestamp:** 2025-06-03T01:06:31.176278  
 
 ---
 
@@ -120,9 +120,9 @@
 - **Validation ID:** `KSI-CMT-04`  
 - **KSI Family:** Change Management  
 - **Assertion Reason:** ❌ No rule defined for this KSI  
-- **CLI Command:** `aws ssm list-documents`  
+- **CLI Command:** `aws codebuild list-projects`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.000995  
+- **Timestamp:** 2025-06-03T01:06:31.176380  
 
 ---
 
@@ -131,9 +131,9 @@
 - **Validation ID:** `KSI-MLA-06`  
 - **KSI Family:** Monitoring, Logging, and Auditing  
 - **Assertion Reason:** ❌ No vulnerabilities found  
-- **CLI Command:** `aws inspector2 list-vulnerabilities`  
+- **CLI Command:** `aws securityhub get-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.001248  
+- **Timestamp:** 2025-06-03T01:06:31.176454  
 
 ---
 
@@ -142,9 +142,20 @@
 - **Validation ID:** `KSI-TPR-04`  
 - **KSI Family:** Third-Party Information Resources  
 - **Assertion Reason:** ❌ No Inspector findings found  
-- **CLI Command:** `aws inspector2 list-findings`  
+- **CLI Command:** `aws securityhub get-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.001334  
+- **Timestamp:** 2025-06-03T01:06:31.176501  
+
+---
+
+## ❌ KSI-INR-02: Incident Reporting
+
+- **Validation ID:** `KSI-INR-02`  
+- **KSI Family:** Incident Reporting  
+- **Assertion Reason:** ❌ No SecurityHub findings found  
+- **CLI Command:** `aws securityhub get-findings`  
+- **Interpretation:** ⚠️ No evidence path specified.  
+- **Timestamp:** 2025-06-03T01:06:31.176545  
 
 ---
 
@@ -153,9 +164,9 @@
 - **Validation ID:** `KSI-PIY-05`  
 - **KSI Family:** Policy and Inventory  
 - **Assertion Reason:** ❌ No compliance rules found  
-- **CLI Command:** `aws config describe-compliance-by-config-rule`  
+- **CLI Command:** `aws config describe-config-rules`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.021583  
+- **Timestamp:** 2025-06-03T01:06:31.176593  
 
 ---
 
@@ -164,9 +175,9 @@
 - **Validation ID:** `KSI-RPL-04`  
 - **KSI Family:** Recovery Planning  
 - **Assertion Reason:** ❌ No restore jobs found  
-- **CLI Command:** `aws backup list-restore-jobs`  
+- **CLI Command:** `aws backup list-backup-jobs`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.021678  
+- **Timestamp:** 2025-06-03T01:06:31.176638  
 
 ---
 
@@ -175,9 +186,31 @@
 - **Validation ID:** `KSI-INR-03`  
 - **KSI Family:** Incident Reporting  
 - **Assertion Reason:** ❌ No Inspector findings found  
-- **CLI Command:** `aws inspector list-findings`  
+- **CLI Command:** `aws securityhub get-insight-results`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.021738  
+- **Timestamp:** 2025-06-03T01:06:31.176684  
+
+---
+
+## ❌ KSI-PIY-02: Policy and Inventory
+
+- **Validation ID:** `KSI-PIY-02`  
+- **KSI Family:** Policy and Inventory  
+- **Assertion Reason:** ❌ No IAM policies found  
+- **CLI Command:** `aws iam list-policies`  
+- **Interpretation:** ⚠️ No evidence path specified.  
+- **Timestamp:** 2025-06-03T01:06:31.176727  
+
+---
+
+## ❌ KSI-CNA-05: Cloud Native Architecture
+
+- **Validation ID:** `KSI-CNA-05`  
+- **KSI Family:** Cloud Native Architecture  
+- **Assertion Reason:** ❌ No VPCs found  
+- **CLI Command:** `aws ec2 describe-network-interfaces`  
+- **Interpretation:** ⚠️ No evidence path specified.  
+- **Timestamp:** 2025-06-03T01:06:31.176770  
 
 ---
 
@@ -186,9 +219,9 @@
 - **Validation ID:** `KSI-MLA-03`  
 - **KSI Family:** Monitoring, Logging, and Auditing  
 - **Assertion Reason:** ❌ No subscription filters found  
-- **CLI Command:** `aws logs describe-subscription-filters`  
+- **CLI Command:** `aws inspector2 list-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.024622  
+- **Timestamp:** 2025-06-03T01:06:31.176812  
 
 ---
 
@@ -197,9 +230,9 @@
 - **Validation ID:** `KSI-SVC-04`  
 - **KSI Family:** Service Configuration  
 - **Assertion Reason:** ❌ No configuration recorder statuses found  
-- **CLI Command:** `aws config describe-configuration-recorder-status`  
+- **CLI Command:** `aws ssm list-associations`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.024711  
+- **Timestamp:** 2025-06-03T01:06:31.176855  
 
 ---
 
@@ -208,9 +241,9 @@
 - **Validation ID:** `KSI-PIY-01`  
 - **KSI Family:** Policy and Inventory  
 - **Assertion Reason:** ❌ No discovered resources  
-- **CLI Command:** `aws config list-discovered-resources --resource-type AWS::EC2::Instance`  
+- **CLI Command:** `aws ec2 describe-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.024854  
+- **Timestamp:** 2025-06-03T01:06:31.176949  
 
 ---
 
@@ -219,9 +252,9 @@
 - **Validation ID:** `KSI-PIY-04`  
 - **KSI Family:** Policy and Inventory  
 - **Assertion Reason:** ❌ No CodeCommit repositories found  
-- **CLI Command:** `aws codecommit list-repositories`  
+- **CLI Command:** `aws codepipeline list-pipelines`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.024905  
+- **Timestamp:** 2025-06-03T01:06:31.176992  
 
 ---
 
@@ -232,7 +265,7 @@
 - **Assertion Reason:** ❌ No EC2 reservations found  
 - **CLI Command:** `aws ec2 describe-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.024954  
+- **Timestamp:** 2025-06-03T01:06:31.177035  
 
 ---
 
@@ -243,7 +276,7 @@
 - **Assertion Reason:** ❌ No IAM groups found  
 - **CLI Command:** `aws iam list-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025002  
+- **Timestamp:** 2025-06-03T01:06:31.177077  
 
 ---
 
@@ -252,9 +285,9 @@
 - **Validation ID:** `KSI-TPR-01`  
 - **KSI Family:** Third-Party Information Resources  
 - **Assertion Reason:** ❌ No CloudFormation stack resources found  
-- **CLI Command:** `aws config list-discovered-resources --resource-type AWS::CloudFormation::Stack`  
+- **CLI Command:** `aws iam list-roles`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025083  
+- **Timestamp:** 2025-06-03T01:06:31.177136  
 
 ---
 
@@ -263,9 +296,20 @@
 - **Validation ID:** `KSI-CMT-02`  
 - **KSI Family:** Change Management  
 - **Assertion Reason:** ❌ No rule defined for this KSI  
-- **CLI Command:** `aws s3api list-object-versions --bucket your-terraform-state-bucket`  
+- **CLI Command:** `aws ec2 describe-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025138  
+- **Timestamp:** 2025-06-03T01:06:31.177186  
+
+---
+
+## ❌ KSI-SVC-03: Service Configuration
+
+- **Validation ID:** `KSI-SVC-03`  
+- **KSI Family:** Service Configuration  
+- **Assertion Reason:** ❌ No KMS keys found  
+- **CLI Command:** `aws ec2 describe-volumes`  
+- **Interpretation:** ⚠️ No evidence path specified.  
+- **Timestamp:** 2025-06-03T01:06:31.177231  
 
 ---
 
@@ -274,9 +318,9 @@
 - **Validation ID:** `KSI-TPR-02`  
 - **KSI Family:** Third-Party Information Resources  
 - **Assertion Reason:** ❌ No SecurityHub findings for FedRAMP Moderate  
-- **CLI Command:** `aws securityhub get-findings --filters ProductArn={Value=arn:aws:securityhub:::product/aws/fedramp-moderate;Comparison=EQUALS}`  
+- **CLI Command:** `aws ec2 describe-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025241  
+- **Timestamp:** 2025-06-03T01:06:31.177275  
 
 ---
 
@@ -285,9 +329,9 @@
 - **Validation ID:** `KSI-SVC-05`  
 - **KSI Family:** Service Configuration  
 - **Assertion Reason:** ❌ No DRT access role found  
-- **CLI Command:** `aws shield describe-drt-access`  
+- **CLI Command:** `aws ec2 describe-images`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025289  
+- **Timestamp:** 2025-06-03T01:06:31.177316  
 
 ---
 
@@ -296,9 +340,9 @@
 - **Validation ID:** `KSI-RPL-02`  
 - **KSI Family:** Recovery Planning  
 - **Assertion Reason:** ❌ No recovery points found  
-- **CLI Command:** `aws backup list-recovery-points-by-backup-vault --backup-vault-name default`  
+- **CLI Command:** `aws backup list-backup-selections`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025336  
+- **Timestamp:** 2025-06-03T01:06:31.177360  
 
 ---
 
@@ -309,7 +353,7 @@
 - **Assertion Reason:** ❌ No config rules found  
 - **CLI Command:** `aws config describe-config-rules`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025431  
+- **Timestamp:** 2025-06-03T01:06:31.177405  
 
 ---
 
@@ -318,9 +362,9 @@
 - **Validation ID:** `KSI-MLA-04`  
 - **KSI Family:** Monitoring, Logging, and Auditing  
 - **Assertion Reason:** ❌ No destinations found  
-- **CLI Command:** `aws logs describe-destinations`  
+- **CLI Command:** `aws inspector2 list-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025484  
+- **Timestamp:** 2025-06-03T01:06:31.177448  
 
 ---
 
@@ -329,9 +373,9 @@
 - **Validation ID:** `KSI-SVC-06`  
 - **KSI Family:** Service Configuration  
 - **Assertion Reason:** ❌ No key rotation status  
-- **CLI Command:** `aws kms list-key-rotation-status`  
+- **CLI Command:** `REDACTED_FOR_SECURITY`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025590  
+- **Timestamp:** 2025-06-03T01:06:31.177540  
 
 ---
 
@@ -340,9 +384,9 @@
 - **Validation ID:** `KSI-TPR-03`  
 - **KSI Family:** Third-Party Information Resources  
 - **Assertion Reason:** ❌ SecurityHub hub not described  
-- **CLI Command:** `aws securityhub describe-hub`  
+- **CLI Command:** `aws inspector2 list-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025638  
+- **Timestamp:** 2025-06-03T01:06:31.177584  
 
 ---
 
@@ -351,9 +395,20 @@
 - **Validation ID:** `KSI-SVC-02`  
 - **KSI Family:** Service Configuration  
 - **Assertion Reason:** ❌ No VPN connections found  
-- **CLI Command:** `aws ec2 describe-vpn-connections`  
+- **CLI Command:** `aws elbv2 describe-load-balancers`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.025685  
+- **Timestamp:** 2025-06-03T01:06:31.177626  
+
+---
+
+## ❌ KSI-IAM-05: Identity and Access Management
+
+- **Validation ID:** `KSI-IAM-05`  
+- **KSI Family:** Identity and Access Management  
+- **Assertion Reason:** ❌ No account authorization details found  
+- **CLI Command:** `aws iam get-account-summary`  
+- **Interpretation:** ⚠️ No evidence path specified.  
+- **Timestamp:** 2025-06-03T01:06:31.177682  
 
 ---
 
@@ -362,9 +417,9 @@
 - **Validation ID:** `KSI-PIY-07`  
 - **KSI Family:** Policy and Inventory  
 - **Assertion Reason:** ❌ No document permissions found  
-- **CLI Command:** `aws ssm describe-document-permissions`  
+- **CLI Command:** `REDACTED_FOR_SECURITY`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.066662  
+- **Timestamp:** 2025-06-03T01:06:31.177730  
 
 ---
 
@@ -373,9 +428,20 @@
 - **Validation ID:** `KSI-INR-01`  
 - **KSI Family:** Incident Reporting  
 - **Assertion Reason:** ❌ No SecurityHub insights found  
-- **CLI Command:** `aws securityhub list-insights`  
+- **CLI Command:** `aws securityhub get-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.066791  
+- **Timestamp:** 2025-06-03T01:06:31.177775  
+
+---
+
+## ❌ KSI-CNA-03: Cloud Native Architecture
+
+- **Validation ID:** `KSI-CNA-03`  
+- **KSI Family:** Cloud Native Architecture  
+- **Assertion Reason:** ❌ No security groups found  
+- **CLI Command:** `aws ec2 describe-route-tables`  
+- **Interpretation:** ⚠️ No evidence path specified.  
+- **Timestamp:** 2025-06-03T01:06:31.177822  
 
 ---
 
@@ -384,9 +450,31 @@
 - **Validation ID:** `KSI-CMT-05`  
 - **KSI Family:** Change Management  
 - **Assertion Reason:** ❌ No rule defined for this KSI  
-- **CLI Command:** `aws cloudwatch describe-alarms`  
+- **CLI Command:** `aws ssm describe-document`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-02T08:08:08.066974  
+- **Timestamp:** 2025-06-03T01:06:31.177921  
+
+---
+
+## ❌ KSI-RPL-03: Recovery Planning
+
+- **Validation ID:** `KSI-RPL-03`  
+- **KSI Family:** Recovery Planning  
+- **Assertion Reason:** ❌ No backup jobs found  
+- **CLI Command:** `aws backup list-recovery-points-by-backup-vault`  
+- **Interpretation:** ⚠️ No evidence path specified.  
+- **Timestamp:** 2025-06-03T01:06:31.177965  
+
+---
+
+## ❌ KSI-IAM-03: Identity and Access Management
+
+- **Validation ID:** `KSI-IAM-03`  
+- **KSI Family:** Identity and Access Management  
+- **Assertion Reason:** ❌ No IAM roles found  
+- **CLI Command:** `aws iam list-roles`  
+- **Interpretation:** ⚠️ No evidence path specified.  
+- **Timestamp:** 2025-06-03T01:06:31.178008  
 
 ---
 
