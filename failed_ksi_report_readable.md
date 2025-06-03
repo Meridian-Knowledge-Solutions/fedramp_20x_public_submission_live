@@ -1,6 +1,6 @@
 # ❌ Failed KSI Validation Report
 
-**Generated:** 2025-06-03T01:06:31.218252Z
+**Generated:** 2025-06-03T03:15:19.957738Z
 **Total Failures:** 43
 
 ---
@@ -12,7 +12,7 @@
 - **Assertion Reason:** ❌ No rule defined for this KSI  
 - **CLI Command:** `aws codebuild list-projects`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.175612  
+- **Timestamp:** 2025-06-03T03:15:19.907545  
 
 ---
 
@@ -23,7 +23,7 @@
 - **Assertion Reason:** ❌ No password policy found  
 - **CLI Command:** `aws iam get-account-authorization-details`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.175672  
+- **Timestamp:** 2025-06-03T03:15:19.907604  
 
 ---
 
@@ -34,7 +34,7 @@
 - **Assertion Reason:** ❌ No patch groups found  
 - **CLI Command:** `aws ssm describe-patch-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.175726  
+- **Timestamp:** 2025-06-03T03:15:19.907658  
 
 ---
 
@@ -45,7 +45,7 @@
 - **Assertion Reason:** ❌ No Network ACLs found  
 - **CLI Command:** `aws ec2 describe-security-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.175784  
+- **Timestamp:** 2025-06-03T03:15:19.907721  
 
 ---
 
@@ -56,7 +56,7 @@
 - **Assertion Reason:** ❌ No rule defined for this KSI  
 - **CLI Command:** `aws config describe-configuration-recorders`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.175978  
+- **Timestamp:** 2025-06-03T03:15:19.907910  
 
 ---
 
@@ -67,7 +67,7 @@
 - **Assertion Reason:** ❌ No metric filters found  
 - **CLI Command:** `aws logs describe-destinations`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176030  
+- **Timestamp:** 2025-06-03T03:15:19.907961  
 
 ---
 
@@ -78,7 +78,7 @@
 - **Assertion Reason:** ❌ No Trusted Advisor checks found  
 - **CLI Command:** `aws iam list-policies`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176080  
+- **Timestamp:** 2025-06-03T03:15:19.908008  
 
 ---
 
@@ -89,7 +89,7 @@
 - **Assertion Reason:** ❌ No web ACLs found  
 - **CLI Command:** `aws ssm describe-instance-information`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176162  
+- **Timestamp:** 2025-06-03T03:15:19.908054  
 
 ---
 
@@ -100,7 +100,7 @@
 - **Assertion Reason:** ❌ No Well-Architected workloads found  
 - **CLI Command:** `aws ec2 describe-images`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176220  
+- **Timestamp:** 2025-06-03T03:15:19.908098  
 
 ---
 
@@ -111,7 +111,7 @@
 - **Assertion Reason:** ❌ No organization structure found  
 - **CLI Command:** `aws iam list-users`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176278  
+- **Timestamp:** 2025-06-03T03:15:19.908169  
 
 ---
 
@@ -122,7 +122,7 @@
 - **Assertion Reason:** ❌ No rule defined for this KSI  
 - **CLI Command:** `aws codebuild list-projects`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176380  
+- **Timestamp:** 2025-06-03T03:15:19.908276  
 
 ---
 
@@ -133,7 +133,7 @@
 - **Assertion Reason:** ❌ No vulnerabilities found  
 - **CLI Command:** `aws securityhub get-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176454  
+- **Timestamp:** 2025-06-03T03:15:19.908348  
 
 ---
 
@@ -144,7 +144,7 @@
 - **Assertion Reason:** ❌ No Inspector findings found  
 - **CLI Command:** `aws securityhub get-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176501  
+- **Timestamp:** 2025-06-03T03:15:19.908393  
 
 ---
 
@@ -155,7 +155,7 @@
 - **Assertion Reason:** ❌ No SecurityHub findings found  
 - **CLI Command:** `aws securityhub get-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176545  
+- **Timestamp:** 2025-06-03T03:15:19.908438  
 
 ---
 
@@ -166,7 +166,7 @@
 - **Assertion Reason:** ❌ No compliance rules found  
 - **CLI Command:** `aws config describe-config-rules`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176593  
+- **Timestamp:** 2025-06-03T03:15:19.908485  
 
 ---
 
@@ -177,7 +177,7 @@
 - **Assertion Reason:** ❌ No restore jobs found  
 - **CLI Command:** `aws backup list-backup-jobs`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176638  
+- **Timestamp:** 2025-06-03T03:15:19.908529  
 
 ---
 
@@ -188,7 +188,7 @@
 - **Assertion Reason:** ❌ No Inspector findings found  
 - **CLI Command:** `aws securityhub get-insight-results`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176684  
+- **Timestamp:** 2025-06-03T03:15:19.908574  
 
 ---
 
@@ -199,7 +199,7 @@
 - **Assertion Reason:** ❌ No IAM policies found  
 - **CLI Command:** `aws iam list-policies`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176727  
+- **Timestamp:** 2025-06-03T03:15:19.908618  
 
 ---
 
@@ -210,7 +210,7 @@
 - **Assertion Reason:** ❌ No VPCs found  
 - **CLI Command:** `aws ec2 describe-network-interfaces`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176770  
+- **Timestamp:** 2025-06-03T03:15:19.908663  
 
 ---
 
@@ -221,7 +221,7 @@
 - **Assertion Reason:** ❌ No subscription filters found  
 - **CLI Command:** `aws inspector2 list-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176812  
+- **Timestamp:** 2025-06-03T03:15:19.908707  
 
 ---
 
@@ -232,7 +232,7 @@
 - **Assertion Reason:** ❌ No configuration recorder statuses found  
 - **CLI Command:** `aws ssm list-associations`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176855  
+- **Timestamp:** 2025-06-03T03:15:19.908750  
 
 ---
 
@@ -243,7 +243,7 @@
 - **Assertion Reason:** ❌ No discovered resources  
 - **CLI Command:** `aws ec2 describe-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176949  
+- **Timestamp:** 2025-06-03T03:15:19.908846  
 
 ---
 
@@ -254,7 +254,7 @@
 - **Assertion Reason:** ❌ No CodeCommit repositories found  
 - **CLI Command:** `aws codepipeline list-pipelines`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.176992  
+- **Timestamp:** 2025-06-03T03:15:19.908890  
 
 ---
 
@@ -265,7 +265,7 @@
 - **Assertion Reason:** ❌ No EC2 reservations found  
 - **CLI Command:** `aws ec2 describe-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177035  
+- **Timestamp:** 2025-06-03T03:15:19.908933  
 
 ---
 
@@ -276,7 +276,7 @@
 - **Assertion Reason:** ❌ No IAM groups found  
 - **CLI Command:** `aws iam list-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177077  
+- **Timestamp:** 2025-06-03T03:15:19.908976  
 
 ---
 
@@ -287,7 +287,7 @@
 - **Assertion Reason:** ❌ No CloudFormation stack resources found  
 - **CLI Command:** `aws iam list-roles`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177136  
+- **Timestamp:** 2025-06-03T03:15:19.909019  
 
 ---
 
@@ -298,7 +298,7 @@
 - **Assertion Reason:** ❌ No rule defined for this KSI  
 - **CLI Command:** `aws ec2 describe-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177186  
+- **Timestamp:** 2025-06-03T03:15:19.909065  
 
 ---
 
@@ -309,7 +309,7 @@
 - **Assertion Reason:** ❌ No KMS keys found  
 - **CLI Command:** `aws ec2 describe-volumes`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177231  
+- **Timestamp:** 2025-06-03T03:15:19.909109  
 
 ---
 
@@ -320,7 +320,7 @@
 - **Assertion Reason:** ❌ No SecurityHub findings for FedRAMP Moderate  
 - **CLI Command:** `aws ec2 describe-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177275  
+- **Timestamp:** 2025-06-03T03:15:19.909168  
 
 ---
 
@@ -331,7 +331,7 @@
 - **Assertion Reason:** ❌ No DRT access role found  
 - **CLI Command:** `aws ec2 describe-images`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177316  
+- **Timestamp:** 2025-06-03T03:15:19.909218  
 
 ---
 
@@ -342,7 +342,7 @@
 - **Assertion Reason:** ❌ No recovery points found  
 - **CLI Command:** `aws backup list-backup-selections`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177360  
+- **Timestamp:** 2025-06-03T03:15:19.909263  
 
 ---
 
@@ -353,7 +353,7 @@
 - **Assertion Reason:** ❌ No config rules found  
 - **CLI Command:** `aws config describe-config-rules`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177405  
+- **Timestamp:** 2025-06-03T03:15:19.909310  
 
 ---
 
@@ -364,7 +364,7 @@
 - **Assertion Reason:** ❌ No destinations found  
 - **CLI Command:** `aws inspector2 list-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177448  
+- **Timestamp:** 2025-06-03T03:15:19.909354  
 
 ---
 
@@ -375,7 +375,7 @@
 - **Assertion Reason:** ❌ No key rotation status  
 - **CLI Command:** `REDACTED_FOR_SECURITY`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177540  
+- **Timestamp:** 2025-06-03T03:15:19.909447  
 
 ---
 
@@ -386,7 +386,7 @@
 - **Assertion Reason:** ❌ SecurityHub hub not described  
 - **CLI Command:** `aws inspector2 list-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177584  
+- **Timestamp:** 2025-06-03T03:15:19.909534  
 
 ---
 
@@ -397,7 +397,7 @@
 - **Assertion Reason:** ❌ No VPN connections found  
 - **CLI Command:** `aws elbv2 describe-load-balancers`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177626  
+- **Timestamp:** 2025-06-03T03:15:19.909617  
 
 ---
 
@@ -408,7 +408,7 @@
 - **Assertion Reason:** ❌ No account authorization details found  
 - **CLI Command:** `aws iam get-account-summary`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177682  
+- **Timestamp:** 2025-06-03T03:15:19.909719  
 
 ---
 
@@ -419,7 +419,7 @@
 - **Assertion Reason:** ❌ No document permissions found  
 - **CLI Command:** `REDACTED_FOR_SECURITY`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177730  
+- **Timestamp:** 2025-06-03T03:15:19.909791  
 
 ---
 
@@ -430,7 +430,7 @@
 - **Assertion Reason:** ❌ No SecurityHub insights found  
 - **CLI Command:** `aws securityhub get-findings`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177775  
+- **Timestamp:** 2025-06-03T03:15:19.909854  
 
 ---
 
@@ -441,7 +441,7 @@
 - **Assertion Reason:** ❌ No security groups found  
 - **CLI Command:** `aws ec2 describe-route-tables`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177822  
+- **Timestamp:** 2025-06-03T03:15:19.909935  
 
 ---
 
@@ -452,7 +452,7 @@
 - **Assertion Reason:** ❌ No rule defined for this KSI  
 - **CLI Command:** `aws ssm describe-document`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177921  
+- **Timestamp:** 2025-06-03T03:15:19.910095  
 
 ---
 
@@ -463,7 +463,7 @@
 - **Assertion Reason:** ❌ No backup jobs found  
 - **CLI Command:** `aws backup list-recovery-points-by-backup-vault`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.177965  
+- **Timestamp:** 2025-06-03T03:15:19.910194  
 
 ---
 
@@ -474,7 +474,7 @@
 - **Assertion Reason:** ❌ No IAM roles found  
 - **CLI Command:** `aws iam list-roles`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-03T01:06:31.178008  
+- **Timestamp:** 2025-06-03T03:15:19.910268  
 
 ---
 
