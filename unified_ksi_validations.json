@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "last_updated": "2025-06-03T23:19:06.481368Z"
+    "last_updated": "2025-06-03T23:42:53.205114Z"
   },
   "validations": [
     {
@@ -11,7 +11,7 @@
       "cli_command": "aws ec2 describe-subnets",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.436772",
+      "timestamp": "2025-06-03T23:42:53.160595",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
       "long_name": "Cloud Native Architecture"
     },
@@ -23,7 +23,7 @@
       "cli_command": "aws codebuild list-projects",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.436853",
+      "timestamp": "2025-06-03T23:42:53.160672",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
       "long_name": "Change Management"
     },
@@ -35,7 +35,7 @@
       "cli_command": "aws iam get-account-authorization-details",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.436915",
+      "timestamp": "2025-06-03T23:42:53.160734",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
       "long_name": "Identity and Access Management"
     },
@@ -47,7 +47,7 @@
       "cli_command": "aws ssm describe-patch-groups",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.436971",
+      "timestamp": "2025-06-03T23:42:53.160789",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
       "long_name": "Service Configuration"
     },
@@ -59,7 +59,7 @@
       "cli_command": "aws ec2 describe-security-groups",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437029",
+      "timestamp": "2025-06-03T23:42:53.160850",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
       "long_name": "Cloud Native Architecture"
     },
@@ -71,7 +71,7 @@
       "cli_command": "aws identitystore list-users --identity-store-id <ID_STORE_ID>",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437083",
+      "timestamp": "2025-06-03T23:42:53.160906",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
       "long_name": "Identity and Access Management"
     },
@@ -83,7 +83,7 @@
       "cli_command": "aws iam list-users",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437143",
+      "timestamp": "2025-06-03T23:42:53.160968",
       "requirement": "A secure cloud service provider will continuously educate their employees on cybersecurity measures, testing them regularly to ensure their knowledge is satisfactory.",
       "long_name": "Cybersecurity Education"
     },
@@ -95,7 +95,7 @@
       "cli_command": "aws config describe-configuration-recorders",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437209",
+      "timestamp": "2025-06-03T23:42:53.161035",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
       "long_name": "Change Management"
     },
@@ -107,7 +107,7 @@
       "cli_command": "aws cloudtrail describe-trails",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437270",
+      "timestamp": "2025-06-03T23:42:53.161104",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
       "long_name": "Monitoring, Logging, and Auditing"
     },
@@ -119,7 +119,7 @@
       "cli_command": "aws iam list-policies",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437324",
+      "timestamp": "2025-06-03T23:42:53.161160",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
       "long_name": "Policy and Inventory"
     },
@@ -131,7 +131,7 @@
       "cli_command": "aws ssm describe-instance-information --max-results 50",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437373",
+      "timestamp": "2025-06-03T23:42:53.161209",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
       "long_name": "Service Configuration"
     },
@@ -143,7 +143,7 @@
       "cli_command": "aws ec2 describe-images --owners self",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437420",
+      "timestamp": "2025-06-03T23:42:53.161258",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
       "long_name": "Cloud Native Architecture"
     },
@@ -155,7 +155,7 @@
       "cli_command": "aws iam list-users",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437478",
+      "timestamp": "2025-06-03T23:42:53.161317",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
       "long_name": "Policy and Inventory"
     },
@@ -167,7 +167,7 @@
       "cli_command": "aws backup list-backup-plans",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437533",
+      "timestamp": "2025-06-03T23:42:53.161374",
       "requirement": "A secure cloud service offering will define, maintain, and test incident response plan(s) and recovery capabilities to ensure minimal service disruption and data loss during incidents and contingencies.",
       "long_name": "Recovery Planning"
     },
@@ -179,7 +179,7 @@
       "cli_command": "aws codebuild list-projects",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437580",
+      "timestamp": "2025-06-03T23:42:53.161420",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
       "long_name": "Change Management"
     },
@@ -191,7 +191,7 @@
       "cli_command": "aws securityhub get-findings --max-results 25",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437645",
+      "timestamp": "2025-06-03T23:42:53.161506",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
       "long_name": "Monitoring, Logging, and Auditing"
     },
@@ -203,7 +203,7 @@
       "cli_command": "aws securityhub get-findings",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437689",
+      "timestamp": "2025-06-03T23:42:53.161554",
       "requirement": "A secure cloud service offering will understand, monitor, and manage supply chain risks from third-party information resources.",
       "long_name": "Third-Party Information Resources"
     },
@@ -215,7 +215,7 @@
       "cli_command": "aws securityhub get-findings",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437757",
+      "timestamp": "2025-06-03T23:42:53.161601",
       "requirement": "A secure cloud service offering will document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement.",
       "long_name": "Incident Reporting"
     },
@@ -227,7 +227,7 @@
       "cli_command": "aws config describe-config-rules",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437807",
+      "timestamp": "2025-06-03T23:42:53.161651",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
       "long_name": "Policy and Inventory"
     },
@@ -239,7 +239,7 @@
       "cli_command": "aws backup list-backup-jobs",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437853",
+      "timestamp": "2025-06-03T23:42:53.161696",
       "requirement": "A secure cloud service offering will define, maintain, and test incident response plan(s) and recovery capabilities to ensure minimal service disruption and data loss during incidents and contingencies.",
       "long_name": "Recovery Planning"
     },
@@ -251,7 +251,7 @@
       "cli_command": "aws securityhub get-findings --filters SeverityLabel=CRITICAL --max-results 20",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437898",
+      "timestamp": "2025-06-03T23:42:53.161742",
       "requirement": "A secure cloud service offering will document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement.",
       "long_name": "Incident Reporting"
     },
@@ -263,7 +263,7 @@
       "cli_command": "aws iam list-policies",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437942",
+      "timestamp": "2025-06-03T23:42:53.161786",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
       "long_name": "Policy and Inventory"
     },
@@ -275,7 +275,7 @@
       "cli_command": "aws wafv2 list-web-acls --scope REGIONAL",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.437985",
+      "timestamp": "2025-06-03T23:42:53.161828",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
       "long_name": "Cloud Native Architecture"
     },
@@ -287,7 +287,7 @@
       "cli_command": "aws inspector2 list-findings --filter vulnerabilitySource=CVE --max-results 25",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438029",
+      "timestamp": "2025-06-03T23:42:53.161873",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
       "long_name": "Monitoring, Logging, and Auditing"
     },
@@ -299,7 +299,7 @@
       "cli_command": "aws ssm list-associations",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438076",
+      "timestamp": "2025-06-03T23:42:53.161921",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
       "long_name": "Service Configuration"
     },
@@ -311,7 +311,7 @@
       "cli_command": "aws ec2 describe-route-tables",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438128",
+      "timestamp": "2025-06-03T23:42:53.161972",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
       "long_name": "Cloud Native Architecture"
     },
@@ -323,7 +323,7 @@
       "cli_command": "aws ec2 describe-instances",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438174",
+      "timestamp": "2025-06-03T23:42:53.162017",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
       "long_name": "Policy and Inventory"
     },
@@ -335,7 +335,7 @@
       "cli_command": "aws cloudformation list-stack-sets --status ACTIVE",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438231",
+      "timestamp": "2025-06-03T23:42:53.162072",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
       "long_name": "Policy and Inventory"
     },
@@ -347,7 +347,7 @@
       "cli_command": "aws ec2 describe-instances",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438282",
+      "timestamp": "2025-06-03T23:42:53.162122",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
       "long_name": "Cloud Native Architecture"
     },
@@ -359,7 +359,7 @@
       "cli_command": "aws iam list-groups",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438325",
+      "timestamp": "2025-06-03T23:42:53.162166",
       "requirement": "A secure cloud service provider will continuously educate their employees on cybersecurity measures, testing them regularly to ensure their knowledge is satisfactory.",
       "long_name": "Cybersecurity Education"
     },
@@ -371,7 +371,7 @@
       "cli_command": "aws iam list-roles",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438368",
+      "timestamp": "2025-06-03T23:42:53.162210",
       "requirement": "A secure cloud service offering will understand, monitor, and manage supply chain risks from third-party information resources.",
       "long_name": "Third-Party Information Resources"
     },
@@ -383,7 +383,7 @@
       "cli_command": "aws ec2 describe-instances",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438412",
+      "timestamp": "2025-06-03T23:42:53.162253",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
       "long_name": "Change Management"
     },
@@ -395,7 +395,7 @@
       "cli_command": "aws rds describe-db-instances && aws ec2 describe-volumes && aws s3api get-bucket-encryption",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438460",
+      "timestamp": "2025-06-03T23:42:53.162301",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
       "long_name": "Service Configuration"
     },
@@ -407,7 +407,7 @@
       "cli_command": "aws ec2 describe-instances",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438505",
+      "timestamp": "2025-06-03T23:42:53.162347",
       "requirement": "A secure cloud service offering will understand, monitor, and manage supply chain risks from third-party information resources.",
       "long_name": "Third-Party Information Resources"
     },
@@ -419,7 +419,7 @@
       "cli_command": "aws ec2 describe-images",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438547",
+      "timestamp": "2025-06-03T23:42:53.162390",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
       "long_name": "Service Configuration"
     },
@@ -431,7 +431,7 @@
       "cli_command": "aws backup list-backup-selections",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438590",
+      "timestamp": "2025-06-03T23:42:53.162459",
       "requirement": "A secure cloud service offering will define, maintain, and test incident response plan(s) and recovery capabilities to ensure minimal service disruption and data loss during incidents and contingencies.",
       "long_name": "Recovery Planning"
     },
@@ -443,7 +443,7 @@
       "cli_command": "aws config describe-config-rules",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438635",
+      "timestamp": "2025-06-03T23:42:53.162534",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
       "long_name": "Monitoring, Logging, and Auditing"
     },
@@ -455,7 +455,7 @@
       "cli_command": "aws ssm describe-instance-information",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438678",
+      "timestamp": "2025-06-03T23:42:53.162583",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
       "long_name": "Monitoring, Logging, and Auditing"
     },
@@ -467,7 +467,7 @@
       "cli_command": "aws iam get-account-authorization-details",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438739",
+      "timestamp": "2025-06-03T23:42:53.162628",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
       "long_name": "Identity and Access Management"
     },
@@ -479,7 +479,7 @@
       "cli_command": "REDACTED_FOR_SECURITY",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438793",
+      "timestamp": "2025-06-03T23:42:53.162680",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
       "long_name": "Service Configuration"
     },
@@ -491,7 +491,7 @@
       "cli_command": "aws inspector2 list-findings",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438838",
+      "timestamp": "2025-06-03T23:42:53.162725",
       "requirement": "A secure cloud service offering will understand, monitor, and manage supply chain risks from third-party information resources.",
       "long_name": "Third-Party Information Resources"
     },
@@ -503,7 +503,7 @@
       "cli_command": "aws elbv2 describe-load-balancers",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438881",
+      "timestamp": "2025-06-03T23:42:53.162767",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
       "long_name": "Service Configuration"
     },
@@ -515,7 +515,7 @@
       "cli_command": "aws iam get-account-summary",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438945",
+      "timestamp": "2025-06-03T23:42:53.162822",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
       "long_name": "Identity and Access Management"
     },
@@ -527,7 +527,7 @@
       "cli_command": "REDACTED_FOR_SECURITY",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.438992",
+      "timestamp": "2025-06-03T23:42:53.162872",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
       "long_name": "Policy and Inventory"
     },
@@ -539,7 +539,7 @@
       "cli_command": "aws securityhub get-findings",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.439036",
+      "timestamp": "2025-06-03T23:42:53.162917",
       "requirement": "A secure cloud service offering will document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement.",
       "long_name": "Incident Reporting"
     },
@@ -551,7 +551,7 @@
       "cli_command": "aws ec2 describe-route-tables",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.439086",
+      "timestamp": "2025-06-03T23:42:53.162966",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
       "long_name": "Cloud Native Architecture"
     },
@@ -563,7 +563,7 @@
       "cli_command": "aws iam list-users",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.439137",
+      "timestamp": "2025-06-03T23:42:53.163018",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
       "long_name": "Identity and Access Management"
     },
@@ -575,7 +575,7 @@
       "cli_command": "aws ssm describe-document",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.439183",
+      "timestamp": "2025-06-03T23:42:53.163064",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
       "long_name": "Change Management"
     },
@@ -587,7 +587,7 @@
       "cli_command": "aws backup list-recovery-points-by-backup-vault",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.439227",
+      "timestamp": "2025-06-03T23:42:53.163107",
       "requirement": "A secure cloud service offering will define, maintain, and test incident response plan(s) and recovery capabilities to ensure minimal service disruption and data loss during incidents and contingencies.",
       "long_name": "Recovery Planning"
     },
@@ -599,7 +599,7 @@
       "cli_command": "aws iam list-roles",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.439268",
+      "timestamp": "2025-06-03T23:42:53.163150",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
       "long_name": "Identity and Access Management"
     },
@@ -611,7 +611,7 @@
       "cli_command": "aws logs describe-log-groups",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-03T23:19:06.439320",
+      "timestamp": "2025-06-03T23:42:53.163204",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
       "long_name": "Monitoring, Logging, and Auditing"
     }
