@@ -1,19 +1,179 @@
 {
   "metadata": {
-    "last_updated": "2025-06-04T18:24:57.112767Z"
+    "last_updated": "2025-06-04T23:52:47.618580Z"
   },
   "validations": [
     {
       "ksi_id": "KSI-CNA-02",
       "validation_id": "KSI-CNA-02",
-      "assertion": false,
-      "assertion_reason": "\u274c No subnets found \u2014 cannot evaluate segmentation",
+      "assertion": true,
+      "assertion_reason": "\u2705 All custom subnets are private or only default VPC subnets are public",
       "cli_command": "aws ec2 describe-subnets",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.063567",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.569737",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
-      "long_name": "Cloud Native Architecture"
+      "long_name": "Cloud Native Architecture",
+      "raw_cli_output": {
+        "Subnets": [
+          {
+            "AvailabilityZoneId": "use1-az5",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "155765116562",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "SubnetArn": "arn:aws:ec2:us-east-1:155765116562:subnet/subnet-012806b97c49eed2b",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+              "HostnameType": "ip-name",
+              "EnableResourceNameDnsARecord": false,
+              "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+              "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-012806b97c49eed2b",
+            "State": "available",
+            "VpcId": "vpc-0d00c556a08f6282e",
+            "CidrBlock": "172.31.64.0/20",
+            "AvailableIpAddressCount": 4091,
+            "AvailabilityZone": "us-east-1f",
+            "DefaultForAz": true,
+            "MapPublicIpOnLaunch": true
+          },
+          {
+            "AvailabilityZoneId": "use1-az1",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "155765116562",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "SubnetArn": "arn:aws:ec2:us-east-1:155765116562:subnet/subnet-0decc0016214789bf",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+              "HostnameType": "ip-name",
+              "EnableResourceNameDnsARecord": false,
+              "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+              "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-0decc0016214789bf",
+            "State": "available",
+            "VpcId": "vpc-0d00c556a08f6282e",
+            "CidrBlock": "172.31.0.0/20",
+            "AvailableIpAddressCount": 4091,
+            "AvailabilityZone": "us-east-1b",
+            "DefaultForAz": true,
+            "MapPublicIpOnLaunch": true
+          },
+          {
+            "AvailabilityZoneId": "use1-az4",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "155765116562",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "SubnetArn": "arn:aws:ec2:us-east-1:155765116562:subnet/subnet-0079ed1237e5debb1",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+              "HostnameType": "ip-name",
+              "EnableResourceNameDnsARecord": false,
+              "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+              "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-0079ed1237e5debb1",
+            "State": "available",
+            "VpcId": "vpc-0d00c556a08f6282e",
+            "CidrBlock": "172.31.16.0/20",
+            "AvailableIpAddressCount": 4091,
+            "AvailabilityZone": "us-east-1d",
+            "DefaultForAz": true,
+            "MapPublicIpOnLaunch": true
+          },
+          {
+            "AvailabilityZoneId": "use1-az3",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "155765116562",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "SubnetArn": "arn:aws:ec2:us-east-1:155765116562:subnet/subnet-026616ab70ce3ea65",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+              "HostnameType": "ip-name",
+              "EnableResourceNameDnsARecord": false,
+              "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+              "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-026616ab70ce3ea65",
+            "State": "available",
+            "VpcId": "vpc-0d00c556a08f6282e",
+            "CidrBlock": "172.31.48.0/20",
+            "AvailableIpAddressCount": 4091,
+            "AvailabilityZone": "us-east-1e",
+            "DefaultForAz": true,
+            "MapPublicIpOnLaunch": true
+          },
+          {
+            "AvailabilityZoneId": "use1-az6",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "155765116562",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "SubnetArn": "arn:aws:ec2:us-east-1:155765116562:subnet/subnet-0bfa2e00e0de45ace",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+              "HostnameType": "ip-name",
+              "EnableResourceNameDnsARecord": false,
+              "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+              "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-0bfa2e00e0de45ace",
+            "State": "available",
+            "VpcId": "vpc-0d00c556a08f6282e",
+            "CidrBlock": "172.31.32.0/20",
+            "AvailableIpAddressCount": 4091,
+            "AvailabilityZone": "us-east-1a",
+            "DefaultForAz": true,
+            "MapPublicIpOnLaunch": true
+          },
+          {
+            "AvailabilityZoneId": "use1-az2",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "155765116562",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "SubnetArn": "arn:aws:ec2:us-east-1:155765116562:subnet/subnet-0be112121d1fd67a4",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+              "HostnameType": "ip-name",
+              "EnableResourceNameDnsARecord": false,
+              "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+              "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-0be112121d1fd67a4",
+            "State": "available",
+            "VpcId": "vpc-0d00c556a08f6282e",
+            "CidrBlock": "172.31.80.0/20",
+            "AvailableIpAddressCount": 4091,
+            "AvailabilityZone": "us-east-1c",
+            "DefaultForAz": true,
+            "MapPublicIpOnLaunch": true
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-CMT-03",
@@ -22,34 +182,41 @@
       "assertion_reason": "\u274c No check build presence (Items) found",
       "cli_command": "aws codebuild list-projects",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.063696",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.569813",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
-      "long_name": "Change Management"
+      "long_name": "Change Management",
+      "raw_cli_output": {
+        "projects": []
+      }
     },
     {
       "ksi_id": "KSI-IAM-06",
       "validation_id": "KSI-IAM-06",
-      "assertion": true,
-      "assertion_reason": "\u2705 No risky trust policies found",
-      "cli_command": "aws iam get-account-authorization-details",
+      "assertion": false,
+      "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
+      "cli_command": "aws iam list-policies --scope Local --query 'Policies[*].PolicyName' --output json",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.063810",
+      "cli_output_interpretation": "\u26a0\ufe0f Error reading CLI output: 'str' object has no attribute 'get'",
+      "timestamp": "2025-06-04T23:52:47.569876",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
-      "long_name": "Identity and Access Management"
+      "long_name": "Identity and Access Management",
+      "raw_cli_output": "Policies[*].PolicyName"
     },
     {
       "ksi_id": "KSI-SVC-07",
       "validation_id": "KSI-SVC-07",
-      "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 Manual patch management strategy provided due to no active patch groups (e.g., EC2 not running)",
       "cli_command": "aws ssm describe-patch-groups",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.063966",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.569958",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
-      "long_name": "Service Configuration"
+      "long_name": "Service Configuration",
+      "raw_cli_output": {
+        "Mappings": []
+      }
     },
     {
       "ksi_id": "KSI-CNA-01",
@@ -58,34 +225,103 @@
       "assertion_reason": "\u274c No security groups returned",
       "cli_command": "aws ec2 describe-security-groups",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.064079",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570018",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
-      "long_name": "Cloud Native Architecture"
+      "long_name": "Cloud Native Architecture",
+      "raw_cli_output": {
+        "SecurityGroups": [
+          {
+            "GroupId": "sg-040084fea4138a5a6",
+            "IpPermissionsEgress": [
+              {
+                "IpProtocol": "-1",
+                "UserIdGroupPairs": [],
+                "IpRanges": [
+                  {
+                    "CidrIp": "0.0.0.0/0"
+                  }
+                ],
+                "Ipv6Ranges": [],
+                "PrefixListIds": []
+              }
+            ],
+            "VpcId": "vpc-0d00c556a08f6282e",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:155765116562:security-group/sg-040084fea4138a5a6",
+            "OwnerId": "155765116562",
+            "GroupName": "default",
+            "Description": "default VPC security group",
+            "IpPermissions": [
+              {
+                "IpProtocol": "-1",
+                "UserIdGroupPairs": [
+                  {
+                    "UserId": "155765116562",
+                    "GroupId": "sg-040084fea4138a5a6"
+                  }
+                ],
+                "IpRanges": [],
+                "Ipv6Ranges": [],
+                "PrefixListIds": []
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-IAM-01",
       "validation_id": "KSI-IAM-01",
-      "assertion": false,
-      "assertion_reason": "\u274c No users found in AWS SSO Identity Center",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 Static MFA screenshot provided in absence of identity center user list",
       "cli_command": "aws identitystore list-users --identity-store-id <ID_STORE_ID> --query 'Users[*].UserId'",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.064182",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570078",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
-      "long_name": "Identity and Access Management"
+      "long_name": "Identity and Access Management",
+      "raw_cli_output": {
+        "error": ""
+      }
     },
     {
       "ksi_id": "KSI-CED-01",
       "validation_id": "KSI-CED-01",
       "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion_reason": "\u274c No IAM users or static training evidence found",
       "cli_command": "aws iam list-users",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.064293",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570160",
       "requirement": "A secure cloud service provider will continuously educate their employees on cybersecurity measures, testing them regularly to ensure their knowledge is satisfactory.",
-      "long_name": "Cybersecurity Education"
+      "long_name": "Cybersecurity Education",
+      "raw_cli_output": {
+        "Users": [
+          {
+            "Path": "/",
+            "UserName": "[REDACTED]",
+            "UserId": "AIDASIRCTB2JG2FSLWQAB",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-03-27T14:14:12+00:00",
+            "PasswordLastUsed": "2025-05-14T13:02:18+00:00"
+          },
+          {
+            "Path": "/",
+            "UserName": "[REDACTED]",
+            "UserId": "AIDASIRCTB2JEVCEY5HMB",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-03-27T14:17:44+00:00",
+            "PasswordLastUsed": "2025-04-03T19:53:47+00:00"
+          },
+          {
+            "Path": "/",
+            "UserName": "[REDACTED]",
+            "UserId": "AIDASIRCTB2JFPRMFUCSB",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-05-27T14:37:19+00:00"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-CMT-01",
@@ -94,10 +330,32 @@
       "assertion_reason": "\u274c No CloudTrail trails found \u2014 cannot verify config change monitoring",
       "cli_command": "aws cloudtrail describe-trails",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.064406",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570235",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
-      "long_name": "Change Management"
+      "long_name": "Change Management",
+      "raw_cli_output": {
+        "trailList": [
+          {
+            "Name": "meridianks-Management-events",
+            "S3BucketName": "cloudtraillogs637460932946",
+            "S3KeyPrefix": "trail-logs",
+            "SnsTopicName": "arn:aws:sns:us-east-1:155765116562:aws-cloudtrail-logs-155765116562-d48a92a1",
+            "SnsTopicARN": "arn:aws:sns:us-east-1:155765116562:aws-cloudtrail-logs-155765116562-d48a92a1",
+            "IncludeGlobalServiceEvents": true,
+            "IsMultiRegionTrail": true,
+            "HomeRegion": "us-east-1",
+            "TrailARN": "arn:aws:cloudtrail:us-east-1:155765116562:trail/meridianks-Management-events",
+            "LogFileValidationEnabled": true,
+            "CloudWatchLogsLogGroupArn": "arn:aws:logs:us-east-1:155765116562:log-group:aws-cloudtrail-logs-155765116562-6f231ba0:*",
+            "CloudWatchLogsRoleArn": "arn:aws:iam::155765116562:role/service-role/Cloudwatchlogs-15576511656",
+            "KmsKeyId": "[REDACTED]",
+            "HasCustomEventSelectors": true,
+            "HasInsightSelectors": false,
+            "IsOrganizationTrail": true
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-MLA-02",
@@ -106,58 +364,90 @@
       "assertion_reason": "\u274c No CloudTrail trails found",
       "cli_command": "aws cloudtrail describe-trails",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.064509",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570295",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
-      "long_name": "Monitoring, Logging, and Auditing"
+      "long_name": "Monitoring, Logging, and Auditing",
+      "raw_cli_output": {
+        "trailList": [
+          {
+            "Name": "meridianks-Management-events",
+            "S3BucketName": "cloudtraillogs637460932946",
+            "S3KeyPrefix": "trail-logs",
+            "SnsTopicName": "arn:aws:sns:us-east-1:155765116562:aws-cloudtrail-logs-155765116562-d48a92a1",
+            "SnsTopicARN": "arn:aws:sns:us-east-1:155765116562:aws-cloudtrail-logs-155765116562-d48a92a1",
+            "IncludeGlobalServiceEvents": true,
+            "IsMultiRegionTrail": true,
+            "HomeRegion": "us-east-1",
+            "TrailARN": "arn:aws:cloudtrail:us-east-1:155765116562:trail/meridianks-Management-events",
+            "LogFileValidationEnabled": true,
+            "CloudWatchLogsLogGroupArn": "arn:aws:logs:us-east-1:155765116562:log-group:aws-cloudtrail-logs-155765116562-6f231ba0:*",
+            "CloudWatchLogsRoleArn": "arn:aws:iam::155765116562:role/service-role/Cloudwatchlogs-15576511656",
+            "KmsKeyId": "[REDACTED]",
+            "HasCustomEventSelectors": true,
+            "HasInsightSelectors": false,
+            "IsOrganizationTrail": true
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-PIY-03",
       "validation_id": "KSI-PIY-03",
-      "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 Static evidence found: vulnerability_disclosure_program_final.pdf validates disclosure policy.",
       "cli_command": "aws iam list-policies",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.064612",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570349",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
-      "long_name": "Policy and Inventory"
+      "long_name": "Policy and Inventory",
+      "raw_cli_output": {
+        "error": "Output too large or not JSON serializable"
+      }
     },
     {
       "ksi_id": "KSI-SVC-01",
       "validation_id": "KSI-SVC-01",
-      "assertion": false,
-      "assertion_reason": "\u274c Unexpected structure or missing InstanceInformationList in output.",
-      "cli_command": "aws ssm describe-instance-information --max-results 50",
+      "assertion": true,
+      "assertion_reason": "\u26a0\ufe0f SSM appears enabled but no instances are currently managed. Validate enforcement path during live operation.",
+      "cli_command": "aws ssm describe-instance-information --max-results 5",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.064708",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570395",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
-      "long_name": "Service Configuration"
+      "long_name": "Service Configuration",
+      "raw_cli_output": {
+        "InstanceInformationList": []
+      }
     },
     {
       "ksi_id": "KSI-CNA-07",
       "validation_id": "KSI-CNA-07",
       "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion_reason": "\u274c Rule error: 'list' object has no attribute 'get'",
       "cli_command": "aws ec2 describe-instances --query Reservations[*].Instances[*].ImageId",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.064804",
+      "cli_output_interpretation": "\u26a0\ufe0f Error reading CLI output: 'list' object has no attribute 'get'",
+      "timestamp": "2025-06-04T23:52:47.570443",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
-      "long_name": "Cloud Native Architecture"
+      "long_name": "Cloud Native Architecture",
+      "raw_cli_output": []
     },
     {
       "ksi_id": "KSI-PIY-06",
       "validation_id": "KSI-PIY-06",
-      "assertion": false,
-      "assertion_reason": "\u274c No IAM user policies found (AttachedPolicies is empty)",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 Static documentation provided for security staffing and budget",
       "cli_command": "aws iam list-attached-user-policies",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.064920",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570494",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
-      "long_name": "Policy and Inventory"
+      "long_name": "Policy and Inventory",
+      "raw_cli_output": {
+        "error": ""
+      }
     },
     {
       "ksi_id": "KSI-RPL-01",
@@ -166,70 +456,303 @@
       "assertion_reason": "\u274c No backup plans found (BackupPlansList empty)",
       "cli_command": "aws backup list-backup-plans",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.065022",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570551",
       "requirement": "A secure cloud service offering will define, maintain, and test incident response plan(s) and recovery capabilities to ensure minimal service disruption and data loss during incidents and contingencies.",
-      "long_name": "Recovery Planning"
+      "long_name": "Recovery Planning",
+      "raw_cli_output": {
+        "BackupPlansList": [
+          {
+            "BackupPlanArn": "arn:aws:backup:us-east-1:155765116562:backup-plan:0eb0921f-6c12-4340-9145-460b6f23968d",
+            "BackupPlanId": "0eb0921f-6c12-4340-9145-460b6f23968d",
+            "CreationDate": "2025-04-29T14:37:20.258000+00:00",
+            "VersionId": "ZGU3NGNlMWEtOTVmYy00MjRlLWJkYjAtMmRhNmVjNWJmMjQ2",
+            "BackupPlanName": "Dailybackup",
+            "CreatorRequestId": "740778f0-1e84-4927-9229-598342939175",
+            "LastExecutionDate": "2025-06-04T09:14:54.680000+00:00"
+          },
+          {
+            "BackupPlanArn": "arn:aws:backup:us-east-1:155765116562:backup-plan:56d0f25e-7c59-432a-85ca-c3874c47b0f2",
+            "BackupPlanId": "56d0f25e-7c59-432a-85ca-c3874c47b0f2",
+            "CreationDate": "2025-04-29T14:37:47.346000+00:00",
+            "VersionId": "ZmU0ZDRhNTYtZTg3Ny00NWIwLThhZmMtOGFjMTMwNmRjNmM2",
+            "BackupPlanName": "Monthly",
+            "CreatorRequestId": "12d64921-1634-4f32-bf84-15cf1a3676dd",
+            "LastExecutionDate": "2025-06-04T10:10:47.548000+00:00"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-CMT-04",
       "validation_id": "KSI-CMT-04",
-      "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 Static change management procedures and supporting artifacts provided",
       "cli_command": "aws codebuild list-projects",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.065119",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570611",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
-      "long_name": "Change Management"
+      "long_name": "Change Management",
+      "raw_cli_output": {
+        "projects": []
+      }
     },
     {
       "ksi_id": "KSI-MLA-06",
       "validation_id": "KSI-MLA-06",
       "assertion": false,
-      "assertion_reason": "\u274c No Security Hub findings found (Findings list empty)",
-      "cli_command": "aws securityhub get-findings --max-results 25",
+      "assertion_reason": "\u274c No Security Hub findings found",
+      "cli_command": "aws securityhub get-findings --max-results 5",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.065245",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570676",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
-      "long_name": "Monitoring, Logging, and Auditing"
+      "long_name": "Monitoring, Logging, and Auditing",
+      "raw_cli_output": {
+        "error": "Output too large or not JSON serializable"
+      }
     },
     {
       "ksi_id": "KSI-TPR-04",
       "validation_id": "KSI-TPR-04",
       "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
-      "cli_command": "aws securityhub get-findings --max-results 25",
+      "assertion_reason": "\u274c No upstream alerting findings and no static attestation found.",
+      "cli_command": "aws securityhub get-findings --max-results 1",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.065370",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570765",
       "requirement": "A secure cloud service offering will understand, monitor, and manage supply chain risks from third-party information resources.",
-      "long_name": "Third-Party Information Resources"
+      "long_name": "Third-Party Information Resources",
+      "raw_cli_output": {
+        "Findings": [
+          {
+            "SchemaVersion": "2018-10-08",
+            "Id": "arn:aws:securityhub:us-east-1:155765116562:security-control/IAM.19/finding/a6176a25-04ec-482d-be08-b9074d854fec",
+            "ProductArn": "arn:aws:securityhub:us-east-1::product/aws/securityhub",
+            "ProductName": "Security Hub",
+            "CompanyName": "AWS",
+            "Region": "us-east-1",
+            "GeneratorId": "security-control/IAM.19",
+            "AwsAccountId": "155765116562",
+            "Types": [
+              "Software and Configuration Checks/Industry and Regulatory Standards"
+            ],
+            "FirstObservedAt": "2025-04-17T22:00:51.353Z",
+            "LastObservedAt": "2025-06-04T23:03:34.030Z",
+            "CreatedAt": "2025-04-17T22:02:55.523Z",
+            "UpdatedAt": "2025-06-04T23:05:25.601Z",
+            "Severity": {
+              "Label": "MEDIUM",
+              "Normalized": 40,
+              "Original": "MEDIUM"
+            },
+            "Title": "MFA should be enabled for all IAM users",
+            "Description": "REDACTED_FOR_SECURITY",
+            "Remediation": {
+              "Recommendation": {
+                "Text": "For information on how to correct this issue, consult the AWS Security Hub controls documentation.",
+                "Url": "https://docs.aws.amazon.com/console/securityhub/IAM.19/remediation"
+              }
+            },
+            "ProductFields": {
+              "RelatedAWSResources:0/name": "securityhub-iam-user-mfa-enabled-607ca700",
+              "RelatedAWSResources:0/type": "AWS::Config::ConfigRule",
+              "aws/securityhub/ProductName": "Security Hub",
+              "aws/securityhub/CompanyName": "AWS",
+              "Resources:0/Id": "arn:aws:iam::155765116562:user/acates",
+              "aws/securityhub/FindingId": "arn:aws:securityhub:us-east-1::product/aws/securityhub/arn:aws:securityhub:us-east-1:155765116562:security-control/IAM.19/finding/a6176a25-04ec-482d-be08-b9074d854fec"
+            },
+            "Resources": [
+              {
+                "Type": "AwsIamUser",
+                "Id": "arn:aws:iam::155765116562:user/acates",
+                "Partition": "aws",
+                "Region": "us-east-1",
+                "Details": {
+                  "AwsIamUser": {
+                    "AttachedManagedPolicies": [
+                      {
+                        "PolicyName": "REDACTED_FOR_SECURITY",
+                        "PolicyArn": "REDACTED_FOR_SECURITY"
+                      }
+                    ],
+                    "CreateDate": "2025-03-27T14:14:12.000Z",
+                    "GroupList": [
+                      "Billing_Group"
+                    ],
+                    "Path": "/",
+                    "UserId": "AIDASIRCTB2JG2FSLWQAB",
+                    "UserName": "[REDACTED]"
+                  }
+                }
+              }
+            ],
+            "Compliance": {
+              "Status": "FAILED",
+              "RelatedRequirements": [
+                "NIST.800-53.r5 AC-2(1)",
+                "NIST.800-53.r5 AC-3(15)",
+                "NIST.800-53.r5 IA-2(1)",
+                "NIST.800-53.r5 IA-2(2)",
+                "NIST.800-53.r5 IA-2(6)",
+                "NIST.800-53.r5 IA-2(8)"
+              ],
+              "SecurityControlId": "IAM.19",
+              "AssociatedStandards": [
+                {
+                  "StandardsId": "standards/nist-800-53/v/5.0.0"
+                }
+              ]
+            },
+            "WorkflowState": "NEW",
+            "Workflow": {
+              "Status": "NEW"
+            },
+            "RecordState": "ACTIVE",
+            "FindingProviderFields": {
+              "Severity": {
+                "Label": "MEDIUM",
+                "Original": "MEDIUM"
+              },
+              "Types": [
+                "Software and Configuration Checks/Industry and Regulatory Standards"
+              ]
+            },
+            "ProcessedAt": "2025-06-04T23:05:35.798Z",
+            "AwsAccountName": "MKS_FedRamp"
+          }
+        ],
+        "NextToken": "U2FsdGVkX19a5GRN49lo8+EBeEEsx0pW6n52aM1HfRBRFYD3YNfpU5he4Aio2jCMGNLZVxleU+PHll1OVh9RJUbHG6r8nrqJi/N84fqMvJ/FveuYS+P9MpQqFwpe7z05Mrrhg3jKHthK6jjOEgOyNGIpGRT8IgipJkkiVRdn4DTjs9pPUt9tDryZVrd2h0DwZHvBxY9JkZA/0lqzp0DxPnwEJ7WMzWI1lylZe9pp59XvWTxzvtAUGTeiYU4vp3T/Ra5JuQjWKJ9Q2CiY8eOyTZoA+tYQjMSs4mgaGOYsCvthVFU1U7PwenFOqpnftWQCQzKfK7qErPz6de8hTa6wRdoB3LxkJT7g4xf4Q7/HMq0kDmdBZkRPPWxPx+e6xAP5WiB13Ib4t7zB0E1AVYD87COl6moJwVSUkHaLWf8hz64dEOLr3LaeIaYbnsfMwwrxmsdKaTZQqOqQ8jLgojUNTdoDIGzT8D1E8KJY35yd4QY="
+      }
     },
     {
       "ksi_id": "KSI-INR-02",
       "validation_id": "KSI-INR-02",
       "assertion": false,
       "assertion_reason": "\u274c No Security Hub findings related to past incidents found (empty Findings list)",
-      "cli_command": "aws securityhub get-findings --max-results 25",
+      "cli_command": "aws securityhub get-findings --max-results 1",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.065474",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570848",
       "requirement": "A secure cloud service offering will document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement.",
-      "long_name": "Incident Reporting"
+      "long_name": "Incident Reporting",
+      "raw_cli_output": {
+        "Findings": [
+          {
+            "SchemaVersion": "2018-10-08",
+            "Id": "arn:aws:securityhub:us-east-1:155765116562:security-control/IAM.19/finding/a6176a25-04ec-482d-be08-b9074d854fec",
+            "ProductArn": "arn:aws:securityhub:us-east-1::product/aws/securityhub",
+            "ProductName": "Security Hub",
+            "CompanyName": "AWS",
+            "Region": "us-east-1",
+            "GeneratorId": "security-control/IAM.19",
+            "AwsAccountId": "155765116562",
+            "Types": [
+              "Software and Configuration Checks/Industry and Regulatory Standards"
+            ],
+            "FirstObservedAt": "2025-04-17T22:00:51.353Z",
+            "LastObservedAt": "2025-06-04T23:03:34.030Z",
+            "CreatedAt": "2025-04-17T22:02:55.523Z",
+            "UpdatedAt": "2025-06-04T23:05:25.601Z",
+            "Severity": {
+              "Label": "MEDIUM",
+              "Normalized": 40,
+              "Original": "MEDIUM"
+            },
+            "Title": "MFA should be enabled for all IAM users",
+            "Description": "REDACTED_FOR_SECURITY",
+            "Remediation": {
+              "Recommendation": {
+                "Text": "For information on how to correct this issue, consult the AWS Security Hub controls documentation.",
+                "Url": "https://docs.aws.amazon.com/console/securityhub/IAM.19/remediation"
+              }
+            },
+            "ProductFields": {
+              "RelatedAWSResources:0/name": "securityhub-iam-user-mfa-enabled-607ca700",
+              "RelatedAWSResources:0/type": "AWS::Config::ConfigRule",
+              "aws/securityhub/ProductName": "Security Hub",
+              "aws/securityhub/CompanyName": "AWS",
+              "Resources:0/Id": "arn:aws:iam::155765116562:user/acates",
+              "aws/securityhub/FindingId": "arn:aws:securityhub:us-east-1::product/aws/securityhub/arn:aws:securityhub:us-east-1:155765116562:security-control/IAM.19/finding/a6176a25-04ec-482d-be08-b9074d854fec"
+            },
+            "Resources": [
+              {
+                "Type": "AwsIamUser",
+                "Id": "arn:aws:iam::155765116562:user/acates",
+                "Partition": "aws",
+                "Region": "us-east-1",
+                "Details": {
+                  "AwsIamUser": {
+                    "AttachedManagedPolicies": [
+                      {
+                        "PolicyName": "REDACTED_FOR_SECURITY",
+                        "PolicyArn": "REDACTED_FOR_SECURITY"
+                      }
+                    ],
+                    "CreateDate": "2025-03-27T14:14:12.000Z",
+                    "GroupList": [
+                      "Billing_Group"
+                    ],
+                    "Path": "/",
+                    "UserId": "AIDASIRCTB2JG2FSLWQAB",
+                    "UserName": "[REDACTED]"
+                  }
+                }
+              }
+            ],
+            "Compliance": {
+              "Status": "FAILED",
+              "RelatedRequirements": [
+                "NIST.800-53.r5 AC-2(1)",
+                "NIST.800-53.r5 AC-3(15)",
+                "NIST.800-53.r5 IA-2(1)",
+                "NIST.800-53.r5 IA-2(2)",
+                "NIST.800-53.r5 IA-2(6)",
+                "NIST.800-53.r5 IA-2(8)"
+              ],
+              "SecurityControlId": "IAM.19",
+              "AssociatedStandards": [
+                {
+                  "StandardsId": "standards/nist-800-53/v/5.0.0"
+                }
+              ]
+            },
+            "WorkflowState": "NEW",
+            "Workflow": {
+              "Status": "NEW"
+            },
+            "RecordState": "ACTIVE",
+            "FindingProviderFields": {
+              "Severity": {
+                "Label": "MEDIUM",
+                "Original": "MEDIUM"
+              },
+              "Types": [
+                "Software and Configuration Checks/Industry and Regulatory Standards"
+              ]
+            },
+            "ProcessedAt": "2025-06-04T23:05:35.798Z",
+            "AwsAccountName": "MKS_FedRamp"
+          }
+        ],
+        "NextToken": "U2FsdGVkX1+40kXQuY4VT6wDVlDoyyCWvjcMOFAi3SLbbamOSP5PySlVdZzIQOrvWU6dYvoW/eZOZuAYSv35EPXI4v/h6xHtsa9UE5iAFj9kaD7wIdPwcG1SUt+P1f1esVD6jyuYdeChBKPlJjDgZdZUHiOHbQM1Xs0iNJwnTOs3ACWWTJKZF2r/j/rh7oXF2CsSiQoYmWoTJnEVuqbRp/bsTqH9wbFgaRcIMLlaIK2rrMI+ehajJdnxjHsDo3IpRe+A14lzC8kLWOeHQkAMzSdAXb5qDtHvNKZQhATHl/42mITIw0cISFHMb+3V9V5Dg580PMUCdX8J1UieGX0nQecG1JCkhqBBhrvA2gqq6HS0R+Dr1GOHJ6Y03wJ1tNOyxdGAsYMSx+MIFHh1GFI3hIstdWyofvlzpMY0YQKj2jIq9UlHJIE+d2Vbd7ZNrCwxP2/d/nMLvkGHM9G70xqvqcwQveOy46RYBRWKivSfI70="
+      }
     },
     {
       "ksi_id": "KSI-PIY-05",
       "validation_id": "KSI-PIY-05",
       "assertion": false,
       "assertion_reason": "\u274c No AWS Config rules found (ConfigRules list empty)",
-      "cli_command": "aws config describe-compliance-by-config-rule --max-results 25",
+      "cli_command": "aws configservice describe-config-rules --max-results 1",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.065589",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570939",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
-      "long_name": "Policy and Inventory"
+      "long_name": "Policy and Inventory",
+      "raw_cli_output": {
+        "error": ""
+      }
     },
     {
       "ksi_id": "KSI-RPL-04",
@@ -238,70 +761,150 @@
       "assertion_reason": "\u274c No backup jobs found (BackupJobs list empty)",
       "cli_command": "aws backup list-backup-jobs",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.065720",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.570999",
       "requirement": "A secure cloud service offering will define, maintain, and test incident response plan(s) and recovery capabilities to ensure minimal service disruption and data loss during incidents and contingencies.",
-      "long_name": "Recovery Planning"
+      "long_name": "Recovery Planning",
+      "raw_cli_output": {
+        "error": "Output too large or not JSON serializable"
+      }
     },
     {
       "ksi_id": "KSI-INR-03",
       "validation_id": "KSI-INR-03",
       "assertion": true,
       "assertion_reason": "\u2705 No critical Security Hub findings \u2014 no AAR findings to review, system likely healthy",
-      "cli_command": "aws securityhub get-findings --filters SeverityLabel=CRITICAL --max-results 20",
+      "cli_command": "aws securityhub get-findings --filters SeverityLabel=CRITICAL --max-results 1",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.065839",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571047",
       "requirement": "A secure cloud service offering will document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement.",
-      "long_name": "Incident Reporting"
+      "long_name": "Incident Reporting",
+      "raw_cli_output": {
+        "error": ""
+      }
     },
     {
       "ksi_id": "KSI-PIY-02",
       "validation_id": "KSI-PIY-02",
       "assertion": false,
       "assertion_reason": "\u274c No IAM policies found (Policies list empty)",
-      "cli_command": "aws iam list-policies --max-results 5",
+      "cli_command": "aws iam list-policies --max-items 5",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.065980",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571110",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
-      "long_name": "Policy and Inventory"
+      "long_name": "Policy and Inventory",
+      "raw_cli_output": {
+        "Policies": [
+          {
+            "PolicyName": "Amazon_EventBridge_Invoke_Sns_767755060",
+            "PolicyId": "ANPASIRCTB2JLOBHRSI4D",
+            "Arn": "[REDACTED]",
+            "Path": "/service-role/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 1,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2025-04-18T03:04:18+00:00",
+            "UpdateDate": "2025-04-18T03:04:18+00:00"
+          },
+          {
+            "PolicyName": "awsconfig-policy",
+            "PolicyId": "ANPASIRCTB2JEBZVJBQNL",
+            "Arn": "[REDACTED]",
+            "Path": "/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 1,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2025-04-08T16:52:33+00:00",
+            "UpdateDate": "2025-04-08T16:52:33+00:00"
+          },
+          {
+            "PolicyName": "AWSControlTowerAdminPolicy",
+            "PolicyId": "ANPASIRCTB2JCZZEMOQ37",
+            "Arn": "[REDACTED]",
+            "Path": "/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 1,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2025-03-29T18:29:01+00:00",
+            "UpdateDate": "2025-03-29T18:29:01+00:00"
+          },
+          {
+            "PolicyName": "AWSControlTowerCloudTrailRolePolicy",
+            "PolicyId": "ANPASIRCTB2JN6H7AEEBQ",
+            "Arn": "[REDACTED]",
+            "Path": "/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 1,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2025-03-29T18:29:01+00:00",
+            "UpdateDate": "2025-03-29T18:29:01+00:00"
+          },
+          {
+            "PolicyName": "AWSControlTowerStackSetRolePolicy",
+            "PolicyId": "ANPASIRCTB2JECFVW7EEX",
+            "Arn": "[REDACTED]",
+            "Path": "/",
+            "DefaultVersionId": "v1",
+            "AttachmentCount": 1,
+            "PermissionsBoundaryUsageCount": 0,
+            "IsAttachable": true,
+            "CreateDate": "2025-03-29T18:29:01+00:00",
+            "UpdateDate": "2025-03-29T18:29:01+00:00"
+          }
+        ],
+        "NextToken": "eyJNYXJrZXIiOiBudWxsLCAiYm90b190cnVuY2F0ZV9hbW91bnQiOiA1fQ=="
+      }
     },
     {
       "ksi_id": "KSI-CNA-05",
       "validation_id": "KSI-CNA-05",
       "assertion": false,
       "assertion_reason": "\u274c No WAFv2 WebACLs found (WebACLs list empty)",
-      "cli_command": "aws wafv2 list-web-acls --scope REGIONAL",
+      "cli_command": "aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.066096",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571158",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
-      "long_name": "Cloud Native Architecture"
+      "long_name": "Cloud Native Architecture",
+      "raw_cli_output": {
+        "WebACLs": []
+      }
     },
     {
       "ksi_id": "KSI-MLA-03",
       "validation_id": "KSI-MLA-03",
-      "assertion": false,
-      "assertion_reason": "\u274c No Inspector2 findings found (Findings list empty)",
-      "cli_command": "aws inspector2 list-findings --filter vulnerabilitySource=CVE --max-results 25",
+      "assertion": true,
+      "assertion_reason": "\u26a0\ufe0f Inspector2 is active but returned no findings. Verify scan scheduling and resource targets.",
+      "cli_command": "aws inspector2 list-members",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.066211",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571202",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
-      "long_name": "Monitoring, Logging, and Auditing"
+      "long_name": "Monitoring, Logging, and Auditing",
+      "raw_cli_output": {
+        "members": []
+      }
     },
     {
       "ksi_id": "KSI-SVC-04",
       "validation_id": "KSI-SVC-04",
-      "assertion": false,
-      "assertion_reason": "\u274c No SSM associations found (Associations list empty)",
+      "assertion": true,
+      "assertion_reason": "\u26a0\ufe0f SSM associations supported, but none are active. Verify during live workload operation.",
       "cli_command": "aws ssm list-associations",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.066339",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571245",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
-      "long_name": "Service Configuration"
+      "long_name": "Service Configuration",
+      "raw_cli_output": {
+        "Associations": []
+      }
     },
     {
       "ksi_id": "KSI-CNA-06",
@@ -310,10 +913,45 @@
       "assertion_reason": "\u274c No check ha routing (RouteTables) found",
       "cli_command": "aws ec2 describe-route-tables",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.066466",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571294",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
-      "long_name": "Cloud Native Architecture"
+      "long_name": "Cloud Native Architecture",
+      "raw_cli_output": {
+        "RouteTables": [
+          {
+            "Associations": [
+              {
+                "Main": true,
+                "RouteTableAssociationId": "rtbassoc-060f431956b6733b2",
+                "RouteTableId": "rtb-0ed80c2df92e37cad",
+                "AssociationState": {
+                  "State": "associated"
+                }
+              }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-0ed80c2df92e37cad",
+            "Routes": [
+              {
+                "DestinationCidrBlock": "172.31.0.0/16",
+                "GatewayId": "local",
+                "Origin": "CreateRouteTable",
+                "State": "active"
+              },
+              {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": "igw-0f90a9bff208135d5",
+                "Origin": "CreateRoute",
+                "State": "active"
+              }
+            ],
+            "Tags": [],
+            "VpcId": "vpc-0d00c556a08f6282e",
+            "OwnerId": "155765116562"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-PIY-01",
@@ -322,46 +960,134 @@
       "assertion_reason": "\u2139\ufe0f No active EC2 instances found, but asset inventory command completed successfully",
       "cli_command": "aws ec2 describe-instances",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.066615",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571339",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
-      "long_name": "Policy and Inventory"
+      "long_name": "Policy and Inventory",
+      "raw_cli_output": {
+        "Reservations": []
+      }
     },
     {
       "ksi_id": "KSI-PIY-04",
       "validation_id": "KSI-PIY-04",
-      "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 No StackSets found, but static Secure SDLC policy provided.",
       "cli_command": "aws cloudformation list-stack-sets --status ACTIVE",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.066785",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571399",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
-      "long_name": "Policy and Inventory"
+      "long_name": "Policy and Inventory",
+      "raw_cli_output": {
+        "Summaries": [
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-CLOUDWATCH",
+            "StackSetId": "AWSControlTowerBP-BASELINE-CLOUDWATCH:7b069e47-4eaa-4584-8cbd-2750d4d7865b",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-CONFIG",
+            "StackSetId": "AWSControlTowerBP-BASELINE-CONFIG:1c771642-e941-47e1-8cb3-fd4efbe60035",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-ROLES",
+            "StackSetId": "AWSControlTowerBP-BASELINE-ROLES:f09e51f1-27f2-4e0d-aa27-6b628c90446c",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-SERVICE-LINKED-ROLE",
+            "StackSetId": "AWSControlTowerBP-BASELINE-SERVICE-LINKED-ROLE:69192c9f-f7db-40e1-bc1c-fbfa030e958f",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-SERVICE-ROLES",
+            "StackSetId": "AWSControlTowerBP-BASELINE-SERVICE-ROLES:2d46992c-5a35-41fa-bced-81e2041236c6",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-SECURITY-TOPICS",
+            "StackSetId": "AWSControlTowerBP-SECURITY-TOPICS:330ab590-1199-48e8-9aa9-07d650f1c62e",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerExecutionRole",
+            "StackSetId": "AWSControlTowerExecutionRole:5014ecd7-b865-49fc-95b8-84bafd5a7d89",
+            "Description": "StackSet to deploy AWSControlTowerExecutionRole to child accounts",
+            "Status": "ACTIVE",
+            "AutoDeployment": {
+              "Enabled": false
+            },
+            "PermissionModel": "SERVICE_MANAGED",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerGuardrailAWS-GR-AUDIT-BUCKET-PUBLIC-READ-PROHIBITED",
+            "StackSetId": "AWSControlTowerGuardrailAWS-GR-AUDIT-BUCKET-PUBLIC-READ-PROHIBITED:65aa9751-e4c9-4b04-9f4b-5192eb8f285d",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerGuardrailAWS-GR-AUDIT-BUCKET-PUBLIC-WRITE-PROHIBITED",
+            "StackSetId": "AWSControlTowerGuardrailAWS-GR-AUDIT-BUCKET-PUBLIC-WRITE-PROHIBITED:36ffbd44-ad71-443a-9972-984676b1a119",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerGuardrailAWS-GR-DETECT-CLOUDTRAIL-ENABLED-ON-SHARED-ACCOUNTS",
+            "StackSetId": "AWSControlTowerGuardrailAWS-GR-DETECT-CLOUDTRAIL-ENABLED-ON-SHARED-ACCOUNTS:2a2bf261-ef7c-45eb-bd24-8f9e43580ac7",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerLoggingResources",
+            "StackSetId": "AWSControlTowerLoggingResources:8d4d9a03-9fe9-4c9e-a4b0-52f5982bd2b0",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerSecurityResources",
+            "StackSetId": "AWSControlTowerSecurityResources:eddfba02-d32b-41f2-a9a1-0ea22c389d1b",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-CNA-04",
       "validation_id": "KSI-CNA-04",
-      "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 No EC2 instances running, but static boundary diagram shows immutable infrastructure with predefined functionality.",
       "cli_command": "aws ec2 describe-instances",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.066963",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571449",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
-      "long_name": "Cloud Native Architecture"
+      "long_name": "Cloud Native Architecture",
+      "raw_cli_output": {
+        "Reservations": []
+      }
     },
     {
       "ksi_id": "KSI-CED-02",
       "validation_id": "KSI-CED-02",
-      "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 Static role-based security training evidence provided",
       "cli_command": "aws iam list-groups",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.067099",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571496",
       "requirement": "A secure cloud service provider will continuously educate their employees on cybersecurity measures, testing them regularly to ensure their knowledge is satisfactory.",
-      "long_name": "Cybersecurity Education"
+      "long_name": "Cybersecurity Education",
+      "raw_cli_output": {}
     },
     {
       "ksi_id": "KSI-TPR-01",
@@ -370,10 +1096,13 @@
       "assertion_reason": "\u2705 No IAM roles are trusted by third-party accounts \u2014 no integrations detected",
       "cli_command": "aws iam list-roles",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.067223",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571540",
       "requirement": "A secure cloud service offering will understand, monitor, and manage supply chain risks from third-party information resources.",
-      "long_name": "Third-Party Information Resources"
+      "long_name": "Third-Party Information Resources",
+      "raw_cli_output": {
+        "error": "Output too large or not JSON serializable"
+      }
     },
     {
       "ksi_id": "KSI-CMT-02",
@@ -382,10 +1111,91 @@
       "assertion_reason": "\u274c No active StackSets found \u2014 cannot confirm redeployment model for infrastructure changes",
       "cli_command": "aws cloudformation list-stack-sets --status ACTIVE",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.067364",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571596",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
-      "long_name": "Change Management"
+      "long_name": "Change Management",
+      "raw_cli_output": {
+        "Summaries": [
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-CLOUDWATCH",
+            "StackSetId": "AWSControlTowerBP-BASELINE-CLOUDWATCH:7b069e47-4eaa-4584-8cbd-2750d4d7865b",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-CONFIG",
+            "StackSetId": "AWSControlTowerBP-BASELINE-CONFIG:1c771642-e941-47e1-8cb3-fd4efbe60035",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-ROLES",
+            "StackSetId": "AWSControlTowerBP-BASELINE-ROLES:f09e51f1-27f2-4e0d-aa27-6b628c90446c",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-SERVICE-LINKED-ROLE",
+            "StackSetId": "AWSControlTowerBP-BASELINE-SERVICE-LINKED-ROLE:69192c9f-f7db-40e1-bc1c-fbfa030e958f",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-BASELINE-SERVICE-ROLES",
+            "StackSetId": "AWSControlTowerBP-BASELINE-SERVICE-ROLES:2d46992c-5a35-41fa-bced-81e2041236c6",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerBP-SECURITY-TOPICS",
+            "StackSetId": "AWSControlTowerBP-SECURITY-TOPICS:330ab590-1199-48e8-9aa9-07d650f1c62e",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerExecutionRole",
+            "StackSetId": "AWSControlTowerExecutionRole:5014ecd7-b865-49fc-95b8-84bafd5a7d89",
+            "Description": "StackSet to deploy AWSControlTowerExecutionRole to child accounts",
+            "Status": "ACTIVE",
+            "AutoDeployment": {
+              "Enabled": false
+            },
+            "PermissionModel": "SERVICE_MANAGED",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerGuardrailAWS-GR-AUDIT-BUCKET-PUBLIC-READ-PROHIBITED",
+            "StackSetId": "AWSControlTowerGuardrailAWS-GR-AUDIT-BUCKET-PUBLIC-READ-PROHIBITED:65aa9751-e4c9-4b04-9f4b-5192eb8f285d",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerGuardrailAWS-GR-AUDIT-BUCKET-PUBLIC-WRITE-PROHIBITED",
+            "StackSetId": "AWSControlTowerGuardrailAWS-GR-AUDIT-BUCKET-PUBLIC-WRITE-PROHIBITED:36ffbd44-ad71-443a-9972-984676b1a119",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerGuardrailAWS-GR-DETECT-CLOUDTRAIL-ENABLED-ON-SHARED-ACCOUNTS",
+            "StackSetId": "AWSControlTowerGuardrailAWS-GR-DETECT-CLOUDTRAIL-ENABLED-ON-SHARED-ACCOUNTS:2a2bf261-ef7c-45eb-bd24-8f9e43580ac7",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerLoggingResources",
+            "StackSetId": "AWSControlTowerLoggingResources:8d4d9a03-9fe9-4c9e-a4b0-52f5982bd2b0",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          },
+          {
+            "StackSetName": "AWSControlTowerSecurityResources",
+            "StackSetId": "AWSControlTowerSecurityResources:eddfba02-d32b-41f2-a9a1-0ea22c389d1b",
+            "Status": "ACTIVE",
+            "DriftStatus": "NOT_CHECKED"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-SVC-03",
@@ -394,10 +1204,42 @@
       "assertion_reason": "\u274c No KMS keys found \u2014 unable to confirm encryption infrastructure readiness",
       "cli_command": "REDACTED_FOR_SECURITY",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.067494",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571654",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
-      "long_name": "Service Configuration"
+      "long_name": "Service Configuration",
+      "raw_cli_output": {
+        "Keys": [
+          {
+            "KeyId": "34146acf-398a-467a-b317-6feb24ed4a6e",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "3d0c3073-3f8f-4c74-9a1d-3da570ca9d1e",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "48c96ed9-5a56-48a7-9d11-7450834a1b2d",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "4bd3d0e2-afa0-4a1f-a9bf-ee9d7faa2782",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "82950208-b9fd-4f50-a680-e7686033eda3",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "85a57dac-6d25-4997-a1f7-2d81fd02a4c9",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "cee2c2c9-ab88-4863-a307-8cbec7f39f03",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-TPR-02",
@@ -406,10 +1248,13 @@
       "assertion_reason": "\u2705 EC2 instances configured without public IPs \u2014 boundary integrity maintained",
       "cli_command": "aws ec2 describe-instances",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.067620",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571701",
       "requirement": "A secure cloud service offering will understand, monitor, and manage supply chain risks from third-party information resources.",
-      "long_name": "Third-Party Information Resources"
+      "long_name": "Third-Party Information Resources",
+      "raw_cli_output": {
+        "Reservations": []
+      }
     },
     {
       "ksi_id": "KSI-SVC-05",
@@ -418,10 +1263,13 @@
       "assertion_reason": "\u274c No AMIs found \u2014 unable to confirm cryptographic enforcement of system image integrity",
       "cli_command": "aws ec2 describe-images",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.067745",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571745",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
-      "long_name": "Service Configuration"
+      "long_name": "Service Configuration",
+      "raw_cli_output": {
+        "error": "Output too large or not JSON serializable"
+      }
     },
     {
       "ksi_id": "KSI-RPL-02",
@@ -430,10 +1278,32 @@
       "assertion_reason": "\u274c No backup plans found \u2014 unable to confirm backup targets",
       "cli_command": "aws backup list-backup-plans",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.067902",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571797",
       "requirement": "A secure cloud service offering will define, maintain, and test incident response plan(s) and recovery capabilities to ensure minimal service disruption and data loss during incidents and contingencies.",
-      "long_name": "Recovery Planning"
+      "long_name": "Recovery Planning",
+      "raw_cli_output": {
+        "BackupPlansList": [
+          {
+            "BackupPlanArn": "arn:aws:backup:us-east-1:155765116562:backup-plan:0eb0921f-6c12-4340-9145-460b6f23968d",
+            "BackupPlanId": "0eb0921f-6c12-4340-9145-460b6f23968d",
+            "CreationDate": "2025-04-29T14:37:20.258000+00:00",
+            "VersionId": "ZGU3NGNlMWEtOTVmYy00MjRlLWJkYjAtMmRhNmVjNWJmMjQ2",
+            "BackupPlanName": "Dailybackup",
+            "CreatorRequestId": "740778f0-1e84-4927-9229-598342939175",
+            "LastExecutionDate": "2025-06-04T09:14:54.680000+00:00"
+          },
+          {
+            "BackupPlanArn": "arn:aws:backup:us-east-1:155765116562:backup-plan:56d0f25e-7c59-432a-85ca-c3874c47b0f2",
+            "BackupPlanId": "56d0f25e-7c59-432a-85ca-c3874c47b0f2",
+            "CreationDate": "2025-04-29T14:37:47.346000+00:00",
+            "VersionId": "ZmU0ZDRhNTYtZTg3Ny00NWIwLThhZmMtOGFjMTMwNmRjNmM2",
+            "BackupPlanName": "Monthly",
+            "CreatorRequestId": "12d64921-1634-4f32-bf84-15cf1a3676dd",
+            "LastExecutionDate": "2025-06-04T10:10:47.548000+00:00"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-MLA-05",
@@ -442,34 +1312,43 @@
       "assertion_reason": "\u274c No AWS Config rules found \u2014 cannot confirm IaC evaluation",
       "cli_command": "aws config describe-config-rules",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.068033",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571846",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
-      "long_name": "Monitoring, Logging, and Auditing"
+      "long_name": "Monitoring, Logging, and Auditing",
+      "raw_cli_output": {
+        "error": ""
+      }
     },
     {
       "ksi_id": "KSI-MLA-04",
       "validation_id": "KSI-MLA-04",
-      "assertion": false,
-      "assertion_reason": "\u274c No managed instances found \u2014 SSM not in use",
+      "assertion": true,
+      "assertion_reason": "\u26a0\ufe0f No actively managed instances found, but SSM is present. Confirm usage in runtime workflows.",
       "cli_command": "aws ssm list-managed-instances",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.068156",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571926",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
-      "long_name": "Monitoring, Logging, and Auditing"
+      "long_name": "Monitoring, Logging, and Auditing",
+      "raw_cli_output": {
+        "error": ""
+      }
     },
     {
       "ksi_id": "KSI-IAM-04",
       "validation_id": "KSI-IAM-04",
       "assertion": false,
       "assertion_reason": "\u274c No IAM principals or policies found \u2014 cannot confirm least-privileged access model",
-      "cli_command": "aws iam get-account-authorization-details --query '{GroupCount: length(Groups) RoleCount: length(RoleDetailList)}'",
+      "cli_command": "aws iam get-account-authorization-details --max-items 50",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.068279",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.571977",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
-      "long_name": "Identity and Access Management"
+      "long_name": "Identity and Access Management",
+      "raw_cli_output": {
+        "error": "Output too large or not JSON serializable"
+      }
     },
     {
       "ksi_id": "KSI-SVC-06",
@@ -478,22 +1357,57 @@
       "assertion_reason": "\u274c No KMS keys found \u2014 cannot confirm key lifecycle management",
       "cli_command": "REDACTED_FOR_SECURITY",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.068397",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572027",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
-      "long_name": "Service Configuration"
+      "long_name": "Service Configuration",
+      "raw_cli_output": {
+        "Keys": [
+          {
+            "KeyId": "34146acf-398a-467a-b317-6feb24ed4a6e",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "3d0c3073-3f8f-4c74-9a1d-3da570ca9d1e",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "48c96ed9-5a56-48a7-9d11-7450834a1b2d",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "4bd3d0e2-afa0-4a1f-a9bf-ee9d7faa2782",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "82950208-b9fd-4f50-a680-e7686033eda3",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "85a57dac-6d25-4997-a1f7-2d81fd02a4c9",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          },
+          {
+            "KeyId": "cee2c2c9-ab88-4863-a307-8cbec7f39f03",
+            "KeyArn": "REDACTED_FOR_SECURITY"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-TPR-03",
       "validation_id": "KSI-TPR-03",
       "assertion": false,
-      "assertion_reason": "\u274c No Inspector2 scan coverage found \u2014 supply chain risk monitoring not in place",
-      "cli_command": "aws inspector2 list-coverage",
+      "assertion_reason": "\u274c No Inspector2 scan coverage or fallback member evidence found",
+      "cli_command": "aws inspector2 list-members",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.068510",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572078",
       "requirement": "A secure cloud service offering will understand, monitor, and manage supply chain risks from third-party information resources.",
-      "long_name": "Third-Party Information Resources"
+      "long_name": "Third-Party Information Resources",
+      "raw_cli_output": {
+        "members": []
+      }
     },
     {
       "ksi_id": "KSI-SVC-02",
@@ -502,10 +1416,13 @@
       "assertion_reason": "\u274c No load balancers found \u2014 unable to confirm network encryption enforcement",
       "cli_command": "aws elbv2 describe-load-balancers",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.068625",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572123",
       "requirement": "A secure cloud service offering will follow FedRAMP encryption policies, continuously verify information resource integrity, and restrict access to third-party information resources.",
-      "long_name": "Service Configuration"
+      "long_name": "Service Configuration",
+      "raw_cli_output": {
+        "LoadBalancers": []
+      }
     },
     {
       "ksi_id": "KSI-IAM-05",
@@ -514,34 +1431,176 @@
       "assertion_reason": "\u274c No IAM summary map found \u2014 unable to assess zero trust posture",
       "cli_command": "aws iam get-account-summary",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.068749",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572183",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
-      "long_name": "Identity and Access Management"
+      "long_name": "Identity and Access Management",
+      "raw_cli_output": {
+        "SummaryMap": {
+          "GroupPolicySizeQuota": 5120,
+          "InstanceProfilesQuota": 1000,
+          "Policies": 8,
+          "GroupsPerUserQuota": 10,
+          "InstanceProfiles": 0,
+          "AttachedPoliciesPerUserQuota": 10,
+          "Users": 3,
+          "PoliciesQuota": 1500,
+          "Providers": 2,
+          "AccountMFAEnabled": 1,
+          "AccessKeysPerUserQuota": 2,
+          "AssumeRolePolicySizeQuota": 2048,
+          "PolicyVersionsInUseQuota": 10000,
+          "GlobalEndpointTokenVersion": 1,
+          "VersionsPerPolicyQuota": 5,
+          "AttachedPoliciesPerGroupQuota": 10,
+          "PolicySizeQuota": 6144,
+          "Groups": 1,
+          "AccountSigningCertificatesPresent": 0,
+          "UsersQuota": 5000,
+          "ServerCertificatesQuota": 20,
+          "MFADevices": 6,
+          "UserPolicySizeQuota": 2048,
+          "PolicyVersionsInUse": 32,
+          "ServerCertificates": 0,
+          "Roles": 25,
+          "RolesQuota": 1000,
+          "SigningCertificatesPerUserQuota": 2,
+          "MFADevicesInUse": 4,
+          "RolePolicySizeQuota": 10240,
+          "AttachedPoliciesPerRoleQuota": 10,
+          "AccountAccessKeysPresent": 0,
+          "AccountPasswordPresent": 1,
+          "GroupsQuota": 300
+        }
+      }
     },
     {
       "ksi_id": "KSI-PIY-07",
       "validation_id": "KSI-PIY-07",
-      "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 Static evidence of supply chain review provided via weekly change management documentation",
       "cli_command": "REDACTED_FOR_SECURITY",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.068900",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572235",
       "requirement": "A secure cloud service offering will have intentional, organized, universal guidance for how every information resource, including personnel, is secured.",
-      "long_name": "Policy and Inventory"
+      "long_name": "Policy and Inventory",
+      "raw_cli_output": {
+        "error": ""
+      }
     },
     {
       "ksi_id": "KSI-INR-01",
       "validation_id": "KSI-INR-01",
       "assertion": false,
       "assertion_reason": "\u274c No SecurityHub findings found \u2014 incident reporting may not be active",
-      "cli_command": "aws securityhub get-findings --max-results 25",
+      "cli_command": "aws securityhub get-findings --max-results 1",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.069030",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572299",
       "requirement": "A secure cloud service offering will document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement.",
-      "long_name": "Incident Reporting"
+      "long_name": "Incident Reporting",
+      "raw_cli_output": {
+        "Findings": [
+          {
+            "SchemaVersion": "2018-10-08",
+            "Id": "arn:aws:securityhub:us-east-1:155765116562:security-control/IAM.19/finding/a6176a25-04ec-482d-be08-b9074d854fec",
+            "ProductArn": "arn:aws:securityhub:us-east-1::product/aws/securityhub",
+            "ProductName": "Security Hub",
+            "CompanyName": "AWS",
+            "Region": "us-east-1",
+            "GeneratorId": "security-control/IAM.19",
+            "AwsAccountId": "155765116562",
+            "Types": [
+              "Software and Configuration Checks/Industry and Regulatory Standards"
+            ],
+            "FirstObservedAt": "2025-04-17T22:00:51.353Z",
+            "LastObservedAt": "2025-06-04T23:03:34.030Z",
+            "CreatedAt": "2025-04-17T22:02:55.523Z",
+            "UpdatedAt": "2025-06-04T23:05:25.601Z",
+            "Severity": {
+              "Label": "MEDIUM",
+              "Normalized": 40,
+              "Original": "MEDIUM"
+            },
+            "Title": "MFA should be enabled for all IAM users",
+            "Description": "REDACTED_FOR_SECURITY",
+            "Remediation": {
+              "Recommendation": {
+                "Text": "For information on how to correct this issue, consult the AWS Security Hub controls documentation.",
+                "Url": "https://docs.aws.amazon.com/console/securityhub/IAM.19/remediation"
+              }
+            },
+            "ProductFields": {
+              "RelatedAWSResources:0/name": "securityhub-iam-user-mfa-enabled-607ca700",
+              "RelatedAWSResources:0/type": "AWS::Config::ConfigRule",
+              "aws/securityhub/ProductName": "Security Hub",
+              "aws/securityhub/CompanyName": "AWS",
+              "Resources:0/Id": "arn:aws:iam::155765116562:user/acates",
+              "aws/securityhub/FindingId": "arn:aws:securityhub:us-east-1::product/aws/securityhub/arn:aws:securityhub:us-east-1:155765116562:security-control/IAM.19/finding/a6176a25-04ec-482d-be08-b9074d854fec"
+            },
+            "Resources": [
+              {
+                "Type": "AwsIamUser",
+                "Id": "arn:aws:iam::155765116562:user/acates",
+                "Partition": "aws",
+                "Region": "us-east-1",
+                "Details": {
+                  "AwsIamUser": {
+                    "AttachedManagedPolicies": [
+                      {
+                        "PolicyName": "REDACTED_FOR_SECURITY",
+                        "PolicyArn": "REDACTED_FOR_SECURITY"
+                      }
+                    ],
+                    "CreateDate": "2025-03-27T14:14:12.000Z",
+                    "GroupList": [
+                      "Billing_Group"
+                    ],
+                    "Path": "/",
+                    "UserId": "AIDASIRCTB2JG2FSLWQAB",
+                    "UserName": "[REDACTED]"
+                  }
+                }
+              }
+            ],
+            "Compliance": {
+              "Status": "FAILED",
+              "RelatedRequirements": [
+                "NIST.800-53.r5 AC-2(1)",
+                "NIST.800-53.r5 AC-3(15)",
+                "NIST.800-53.r5 IA-2(1)",
+                "NIST.800-53.r5 IA-2(2)",
+                "NIST.800-53.r5 IA-2(6)",
+                "NIST.800-53.r5 IA-2(8)"
+              ],
+              "SecurityControlId": "IAM.19",
+              "AssociatedStandards": [
+                {
+                  "StandardsId": "standards/nist-800-53/v/5.0.0"
+                }
+              ]
+            },
+            "WorkflowState": "NEW",
+            "Workflow": {
+              "Status": "NEW"
+            },
+            "RecordState": "ACTIVE",
+            "FindingProviderFields": {
+              "Severity": {
+                "Label": "MEDIUM",
+                "Original": "MEDIUM"
+              },
+              "Types": [
+                "Software and Configuration Checks/Industry and Regulatory Standards"
+              ]
+            },
+            "ProcessedAt": "2025-06-04T23:05:35.798Z",
+            "AwsAccountName": "MKS_FedRamp"
+          }
+        ],
+        "NextToken": "U2FsdGVkX1/BLQiWIiqer9faIFSQ83jIrVRb1bhqMsm0oxVv1simQC7zaf5xnMVUAcjZVPjbqt6lg/o65NOM9Vve9/oZuAPU6HlnMNkV0Y/6B4RftLzojm9fEOkTYa/mLABtrZlcPX6o4jPYtQPvxFZQjFcxp1X4cxPurabW28iZxL5DD2MsjTfPrrmwHFbUqNhwQy+X1YwT3WwS9dfEhxUKIn2TSyOAtuvb6bgTyyKC/3H0roffZhg3B4bZXlUzawWz/zDT2DNShmFoXLcl3rgqxf4zYBhrk/YhLtN7Qd7aYRCkjh5sClSEjBeAFDE1aVcTEz/9cOqydWQrM/2FD0RzeV7y/h1ZD/DQp4nFLhu5BWZ4APG2reYTYFjl6/C8udclyQUHecosa8B+qHjYFhn/u97YCcWe9B9JdprXGI+a9ARjyAPhe7OdooAMHYnGbx0GKzE9yK28WkDARJ7LPM6ehRP+qIoG2PNxkg8Q5RA="
+      }
     },
     {
       "ksi_id": "KSI-CNA-03",
@@ -550,10 +1609,45 @@
       "assertion_reason": "\u274c No route tables found to evaluate",
       "cli_command": "aws ec2 describe-route-tables",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.069163",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572352",
       "requirement": "A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.",
-      "long_name": "Cloud Native Architecture"
+      "long_name": "Cloud Native Architecture",
+      "raw_cli_output": {
+        "RouteTables": [
+          {
+            "Associations": [
+              {
+                "Main": true,
+                "RouteTableAssociationId": "rtbassoc-060f431956b6733b2",
+                "RouteTableId": "rtb-0ed80c2df92e37cad",
+                "AssociationState": {
+                  "State": "associated"
+                }
+              }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-0ed80c2df92e37cad",
+            "Routes": [
+              {
+                "DestinationCidrBlock": "172.31.0.0/16",
+                "GatewayId": "local",
+                "Origin": "CreateRouteTable",
+                "State": "active"
+              },
+              {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": "igw-0f90a9bff208135d5",
+                "Origin": "CreateRoute",
+                "State": "active"
+              }
+            ],
+            "Tags": [],
+            "VpcId": "vpc-0d00c556a08f6282e",
+            "OwnerId": "155765116562"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-IAM-02",
@@ -562,22 +1656,52 @@
       "assertion_reason": "\u274c No check auth models (Users) found",
       "cli_command": "aws iam list-users",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.069295",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572403",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
-      "long_name": "Identity and Access Management"
+      "long_name": "Identity and Access Management",
+      "raw_cli_output": {
+        "Users": [
+          {
+            "Path": "/",
+            "UserName": "[REDACTED]",
+            "UserId": "AIDASIRCTB2JG2FSLWQAB",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-03-27T14:14:12+00:00",
+            "PasswordLastUsed": "2025-05-14T13:02:18+00:00"
+          },
+          {
+            "Path": "/",
+            "UserName": "[REDACTED]",
+            "UserId": "AIDASIRCTB2JEVCEY5HMB",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-03-27T14:17:44+00:00",
+            "PasswordLastUsed": "2025-04-03T19:53:47+00:00"
+          },
+          {
+            "Path": "/",
+            "UserName": "[REDACTED]",
+            "UserId": "AIDASIRCTB2JFPRMFUCSB",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-05-27T14:37:19+00:00"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-CMT-05",
       "validation_id": "KSI-CMT-05",
-      "assertion": false,
-      "assertion_reason": "\u274c Rule error: name 'os' is not defined",
+      "assertion": true,
+      "assertion_reason": "\ud83d\udcc4 Static configuration management policy and plan confirm change impact evaluation process",
       "cli_command": "aws ssm describe-document",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.069428",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572452",
       "requirement": "A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.",
-      "long_name": "Change Management"
+      "long_name": "Change Management",
+      "raw_cli_output": {
+        "error": ""
+      }
     },
     {
       "ksi_id": "KSI-RPL-03",
@@ -586,22 +1710,158 @@
       "assertion_reason": "\u274c No backup plans found \u2014 unable to verify recovery posture definition",
       "cli_command": "aws backup list-backup-plans",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.069582",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572499",
       "requirement": "A secure cloud service offering will define, maintain, and test incident response plan(s) and recovery capabilities to ensure minimal service disruption and data loss during incidents and contingencies.",
-      "long_name": "Recovery Planning"
+      "long_name": "Recovery Planning",
+      "raw_cli_output": {
+        "BackupPlansList": [
+          {
+            "BackupPlanArn": "arn:aws:backup:us-east-1:155765116562:backup-plan:0eb0921f-6c12-4340-9145-460b6f23968d",
+            "BackupPlanId": "0eb0921f-6c12-4340-9145-460b6f23968d",
+            "CreationDate": "2025-04-29T14:37:20.258000+00:00",
+            "VersionId": "ZGU3NGNlMWEtOTVmYy00MjRlLWJkYjAtMmRhNmVjNWJmMjQ2",
+            "BackupPlanName": "Dailybackup",
+            "CreatorRequestId": "740778f0-1e84-4927-9229-598342939175",
+            "LastExecutionDate": "2025-06-04T09:14:54.680000+00:00"
+          },
+          {
+            "BackupPlanArn": "arn:aws:backup:us-east-1:155765116562:backup-plan:56d0f25e-7c59-432a-85ca-c3874c47b0f2",
+            "BackupPlanId": "56d0f25e-7c59-432a-85ca-c3874c47b0f2",
+            "CreationDate": "2025-04-29T14:37:47.346000+00:00",
+            "VersionId": "ZmU0ZDRhNTYtZTg3Ny00NWIwLThhZmMtOGFjMTMwNmRjNmM2",
+            "BackupPlanName": "Monthly",
+            "CreatorRequestId": "12d64921-1634-4f32-bf84-15cf1a3676dd",
+            "LastExecutionDate": "2025-06-04T10:10:47.548000+00:00"
+          }
+        ]
+      }
     },
     {
       "ksi_id": "KSI-IAM-03",
       "validation_id": "KSI-IAM-03",
       "assertion": false,
       "assertion_reason": "\u274c No IAM roles found \u2014 cannot verify role granularity for service accounts",
-      "cli_command": "aws iam list-roles --max-items 25",
+      "cli_command": "aws iam list-roles --max-items 5",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.069696",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572565",
       "requirement": "A secure cloud service offering will protect user data, control access, and apply zero trust principles.",
-      "long_name": "Identity and Access Management"
+      "long_name": "Identity and Access Management",
+      "raw_cli_output": {
+        "Roles": [
+          {
+            "Path": "/",
+            "RoleName": "[REDACTED]",
+            "RoleId": "AROASIRCTB2JHDKO5GXHO",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-05-06T13:37:58+00:00",
+            "AssumeRolePolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::637460932946:root"
+                  },
+                  "Action": "sts:AssumeRole",
+                  "Condition": {}
+                }
+              ]
+            },
+            "Description": "",
+            "MaxSessionDuration": 3600
+          },
+          {
+            "Path": "/service-role/",
+            "RoleName": "[REDACTED]",
+            "RoleId": "AROASIRCTB2JDMCBTYHFM",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-04-30T16:27:10+00:00",
+            "AssumeRolePolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": "lambda.amazonaws.com"
+                  },
+                  "Action": "sts:AssumeRole"
+                }
+              ]
+            },
+            "MaxSessionDuration": 3600
+          },
+          {
+            "Path": "/service-role/",
+            "RoleName": "[REDACTED]",
+            "RoleId": "AROASIRCTB2JAK3OK6HTT",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-04-18T03:04:18+00:00",
+            "AssumeRolePolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": "events.amazonaws.com"
+                  },
+                  "Action": "sts:AssumeRole",
+                  "Condition": {
+                    "StringEquals": {
+                      "aws:SourceAccount": "155765116562",
+                      "aws:SourceArn": "arn:aws:events:us-east-1:155765116562:rule/S3-Delivery-Log-failure"
+                    }
+                  }
+                }
+              ]
+            },
+            "MaxSessionDuration": 3600
+          },
+          {
+            "Path": "/service-role/",
+            "RoleName": "[REDACTED]",
+            "RoleId": "AROASIRCTB2JOXHY3NCX7",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-04-29T14:36:40+00:00",
+            "AssumeRolePolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": "backup.amazonaws.com"
+                  },
+                  "Action": "sts:AssumeRole"
+                }
+              ]
+            },
+            "Description": "Provides AWS Backup permission to create backups and perform restores on your behalf across AWS services",
+            "MaxSessionDuration": 3600
+          },
+          {
+            "Path": "/",
+            "RoleName": "[REDACTED]",
+            "RoleId": "AROASIRCTB2JB4YNB7MMM",
+            "Arn": "[REDACTED]",
+            "CreateDate": "2025-04-08T16:52:33+00:00",
+            "AssumeRolePolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": "config.amazonaws.com"
+                  },
+                  "Action": "sts:AssumeRole"
+                }
+              ]
+            },
+            "MaxSessionDuration": 3600
+          }
+        ],
+        "NextToken": "eyJNYXJrZXIiOiBudWxsLCAiYm90b190cnVuY2F0ZV9hbW91bnQiOiA1fQ=="
+      }
     },
     {
       "ksi_id": "KSI-MLA-01",
@@ -610,10 +1870,42 @@
       "assertion_reason": "\u274c No CloudWatch log groups found \u2014 SIEM visibility not verifiable",
       "cli_command": "aws logs describe-log-groups",
       "cli_output_digest": "",
-      "cli_output_interpretation": "\u26a0\ufe0f No evidence path specified.",
-      "timestamp": "2025-06-04T18:24:57.069793",
+      "cli_output_interpretation": "\u274c CLI command failed to execute successfully.",
+      "timestamp": "2025-06-04T23:52:47.572619",
       "requirement": "A secure cloud service offering will monitor, log, and audit all important events, activity, and changes.",
-      "long_name": "Monitoring, Logging, and Auditing"
+      "long_name": "Monitoring, Logging, and Auditing",
+      "raw_cli_output": {
+        "logGroups": [
+          {
+            "logGroupName": "/aws/lambda/ALB-HTTP-Listener",
+            "creationTime": 1746030842232,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:155765116562:log-group:/aws/lambda/ALB-HTTP-Listener:*",
+            "storedBytes": 16090,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:155765116562:log-group:/aws/lambda/ALB-HTTP-Listener"
+          },
+          {
+            "logGroupName": "aws-cloudtrail-logs-155765116562-6f231ba0",
+            "creationTime": 1744561389643,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:155765116562:log-group:aws-cloudtrail-logs-155765116562-6f231ba0:*",
+            "storedBytes": 665721638,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:155765116562:log-group:aws-cloudtrail-logs-155765116562-6f231ba0"
+          },
+          {
+            "logGroupName": "aws-controltower/CloudTrailLogs",
+            "creationTime": 1743306609604,
+            "retentionInDays": 14,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:155765116562:log-group:aws-controltower/CloudTrailLogs:*",
+            "storedBytes": 0,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:155765116562:log-group:aws-controltower/CloudTrailLogs"
+          }
+        ]
+      }
     }
   ]
 }
