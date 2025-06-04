@@ -1,6 +1,6 @@
 # ❌ Failed KSI Validation Report
 
-**Generated:** 2025-06-04T15:58:32.224143Z
+**Generated:** 2025-06-04T18:24:57.112767Z
 **Total Failures:** 46
 
 ---
@@ -12,7 +12,7 @@
 - **Assertion Reason:** ❌ No subnets found — cannot evaluate segmentation  
 - **CLI Command:** `aws ec2 describe-subnets`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162153  
+- **Timestamp:** 2025-06-04T18:24:57.063567  
 
 ---
 
@@ -23,7 +23,7 @@
 - **Assertion Reason:** ❌ No check build presence (Items) found  
 - **CLI Command:** `aws codebuild list-projects`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162231  
+- **Timestamp:** 2025-06-04T18:24:57.063696  
 
 ---
 
@@ -34,7 +34,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws ssm describe-patch-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162371  
+- **Timestamp:** 2025-06-04T18:24:57.063966  
 
 ---
 
@@ -45,7 +45,7 @@
 - **Assertion Reason:** ❌ No security groups returned  
 - **CLI Command:** `aws ec2 describe-security-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162431  
+- **Timestamp:** 2025-06-04T18:24:57.064079  
 
 ---
 
@@ -56,7 +56,7 @@
 - **Assertion Reason:** ❌ No users found in AWS SSO Identity Center  
 - **CLI Command:** `aws identitystore list-users --identity-store-id <ID_STORE_ID> --query 'Users[*].UserId'`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162488  
+- **Timestamp:** 2025-06-04T18:24:57.064182  
 
 ---
 
@@ -67,7 +67,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws iam list-users`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162553  
+- **Timestamp:** 2025-06-04T18:24:57.064293  
 
 ---
 
@@ -78,7 +78,7 @@
 - **Assertion Reason:** ❌ No CloudTrail trails found — cannot verify config change monitoring  
 - **CLI Command:** `aws cloudtrail describe-trails`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162626  
+- **Timestamp:** 2025-06-04T18:24:57.064406  
 
 ---
 
@@ -89,7 +89,7 @@
 - **Assertion Reason:** ❌ No CloudTrail trails found  
 - **CLI Command:** `aws cloudtrail describe-trails`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162723  
+- **Timestamp:** 2025-06-04T18:24:57.064509  
 
 ---
 
@@ -100,7 +100,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws iam list-policies`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162787  
+- **Timestamp:** 2025-06-04T18:24:57.064612  
 
 ---
 
@@ -111,7 +111,7 @@
 - **Assertion Reason:** ❌ Unexpected structure or missing InstanceInformationList in output.  
 - **CLI Command:** `aws ssm describe-instance-information --max-results 50`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162839  
+- **Timestamp:** 2025-06-04T18:24:57.064708  
 
 ---
 
@@ -122,7 +122,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws ec2 describe-instances --query Reservations[*].Instances[*].ImageId`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162889  
+- **Timestamp:** 2025-06-04T18:24:57.064804  
 
 ---
 
@@ -133,7 +133,7 @@
 - **Assertion Reason:** ❌ No IAM user policies found (AttachedPolicies is empty)  
 - **CLI Command:** `aws iam list-attached-user-policies`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.162939  
+- **Timestamp:** 2025-06-04T18:24:57.064920  
 
 ---
 
@@ -144,7 +144,7 @@
 - **Assertion Reason:** ❌ No backup plans found (BackupPlansList empty)  
 - **CLI Command:** `aws backup list-backup-plans`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163008  
+- **Timestamp:** 2025-06-04T18:24:57.065022  
 
 ---
 
@@ -155,7 +155,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws codebuild list-projects`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163059  
+- **Timestamp:** 2025-06-04T18:24:57.065119  
 
 ---
 
@@ -166,7 +166,7 @@
 - **Assertion Reason:** ❌ No Security Hub findings found (Findings list empty)  
 - **CLI Command:** `aws securityhub get-findings --max-results 25`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163125  
+- **Timestamp:** 2025-06-04T18:24:57.065245  
 
 ---
 
@@ -177,7 +177,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws securityhub get-findings --max-results 25`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163174  
+- **Timestamp:** 2025-06-04T18:24:57.065370  
 
 ---
 
@@ -188,7 +188,7 @@
 - **Assertion Reason:** ❌ No Security Hub findings related to past incidents found (empty Findings list)  
 - **CLI Command:** `aws securityhub get-findings --max-results 25`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163225  
+- **Timestamp:** 2025-06-04T18:24:57.065474  
 
 ---
 
@@ -199,7 +199,7 @@
 - **Assertion Reason:** ❌ No AWS Config rules found (ConfigRules list empty)  
 - **CLI Command:** `aws config describe-compliance-by-config-rule --max-results 25`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163277  
+- **Timestamp:** 2025-06-04T18:24:57.065589  
 
 ---
 
@@ -210,7 +210,7 @@
 - **Assertion Reason:** ❌ No backup jobs found (BackupJobs list empty)  
 - **CLI Command:** `aws backup list-backup-jobs`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163324  
+- **Timestamp:** 2025-06-04T18:24:57.065720  
 
 ---
 
@@ -221,7 +221,7 @@
 - **Assertion Reason:** ❌ No IAM policies found (Policies list empty)  
 - **CLI Command:** `aws iam list-policies --max-results 5`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163415  
+- **Timestamp:** 2025-06-04T18:24:57.065980  
 
 ---
 
@@ -232,7 +232,7 @@
 - **Assertion Reason:** ❌ No WAFv2 WebACLs found (WebACLs list empty)  
 - **CLI Command:** `aws wafv2 list-web-acls --scope REGIONAL`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163459  
+- **Timestamp:** 2025-06-04T18:24:57.066096  
 
 ---
 
@@ -243,7 +243,7 @@
 - **Assertion Reason:** ❌ No Inspector2 findings found (Findings list empty)  
 - **CLI Command:** `aws inspector2 list-findings --filter vulnerabilitySource=CVE --max-results 25`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163503  
+- **Timestamp:** 2025-06-04T18:24:57.066211  
 
 ---
 
@@ -254,7 +254,7 @@
 - **Assertion Reason:** ❌ No SSM associations found (Associations list empty)  
 - **CLI Command:** `aws ssm list-associations`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163546  
+- **Timestamp:** 2025-06-04T18:24:57.066339  
 
 ---
 
@@ -265,7 +265,7 @@
 - **Assertion Reason:** ❌ No check ha routing (RouteTables) found  
 - **CLI Command:** `aws ec2 describe-route-tables`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163595  
+- **Timestamp:** 2025-06-04T18:24:57.066466  
 
 ---
 
@@ -276,7 +276,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws cloudformation list-stack-sets --status ACTIVE`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163722  
+- **Timestamp:** 2025-06-04T18:24:57.066785  
 
 ---
 
@@ -287,7 +287,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws ec2 describe-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163785  
+- **Timestamp:** 2025-06-04T18:24:57.066963  
 
 ---
 
@@ -298,7 +298,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws iam list-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163833  
+- **Timestamp:** 2025-06-04T18:24:57.067099  
 
 ---
 
@@ -309,7 +309,7 @@
 - **Assertion Reason:** ❌ No active StackSets found — cannot confirm redeployment model for infrastructure changes  
 - **CLI Command:** `aws cloudformation list-stack-sets --status ACTIVE`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163936  
+- **Timestamp:** 2025-06-04T18:24:57.067364  
 
 ---
 
@@ -320,7 +320,7 @@
 - **Assertion Reason:** ❌ No KMS keys found — unable to confirm encryption infrastructure readiness  
 - **CLI Command:** `REDACTED_FOR_SECURITY`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.163995  
+- **Timestamp:** 2025-06-04T18:24:57.067494  
 
 ---
 
@@ -331,7 +331,7 @@
 - **Assertion Reason:** ❌ No AMIs found — unable to confirm cryptographic enforcement of system image integrity  
 - **CLI Command:** `aws ec2 describe-images`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164090  
+- **Timestamp:** 2025-06-04T18:24:57.067745  
 
 ---
 
@@ -342,7 +342,7 @@
 - **Assertion Reason:** ❌ No backup plans found — unable to confirm backup targets  
 - **CLI Command:** `aws backup list-backup-plans`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164143  
+- **Timestamp:** 2025-06-04T18:24:57.067902  
 
 ---
 
@@ -353,7 +353,7 @@
 - **Assertion Reason:** ❌ No AWS Config rules found — cannot confirm IaC evaluation  
 - **CLI Command:** `aws config describe-config-rules`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164193  
+- **Timestamp:** 2025-06-04T18:24:57.068033  
 
 ---
 
@@ -364,7 +364,7 @@
 - **Assertion Reason:** ❌ No managed instances found — SSM not in use  
 - **CLI Command:** `aws ssm list-managed-instances`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164242  
+- **Timestamp:** 2025-06-04T18:24:57.068156  
 
 ---
 
@@ -375,7 +375,7 @@
 - **Assertion Reason:** ❌ No IAM principals or policies found — cannot confirm least-privileged access model  
 - **CLI Command:** `aws iam get-account-authorization-details --query '{GroupCount: length(Groups) RoleCount: length(RoleDetailList)}'`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164287  
+- **Timestamp:** 2025-06-04T18:24:57.068279  
 
 ---
 
@@ -386,7 +386,7 @@
 - **Assertion Reason:** ❌ No KMS keys found — cannot confirm key lifecycle management  
 - **CLI Command:** `REDACTED_FOR_SECURITY`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164337  
+- **Timestamp:** 2025-06-04T18:24:57.068397  
 
 ---
 
@@ -397,7 +397,7 @@
 - **Assertion Reason:** ❌ No Inspector2 scan coverage found — supply chain risk monitoring not in place  
 - **CLI Command:** `aws inspector2 list-coverage`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164382  
+- **Timestamp:** 2025-06-04T18:24:57.068510  
 
 ---
 
@@ -408,7 +408,7 @@
 - **Assertion Reason:** ❌ No load balancers found — unable to confirm network encryption enforcement  
 - **CLI Command:** `aws elbv2 describe-load-balancers`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164431  
+- **Timestamp:** 2025-06-04T18:24:57.068625  
 
 ---
 
@@ -419,7 +419,7 @@
 - **Assertion Reason:** ❌ No IAM summary map found — unable to assess zero trust posture  
 - **CLI Command:** `aws iam get-account-summary`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164490  
+- **Timestamp:** 2025-06-04T18:24:57.068749  
 
 ---
 
@@ -430,7 +430,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `REDACTED_FOR_SECURITY`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164541  
+- **Timestamp:** 2025-06-04T18:24:57.068900  
 
 ---
 
@@ -441,7 +441,7 @@
 - **Assertion Reason:** ❌ No SecurityHub findings found — incident reporting may not be active  
 - **CLI Command:** `aws securityhub get-findings --max-results 25`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164587  
+- **Timestamp:** 2025-06-04T18:24:57.069030  
 
 ---
 
@@ -452,7 +452,7 @@
 - **Assertion Reason:** ❌ No route tables found to evaluate  
 - **CLI Command:** `aws ec2 describe-route-tables`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164637  
+- **Timestamp:** 2025-06-04T18:24:57.069163  
 
 ---
 
@@ -463,7 +463,7 @@
 - **Assertion Reason:** ❌ No check auth models (Users) found  
 - **CLI Command:** `aws iam list-users`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164689  
+- **Timestamp:** 2025-06-04T18:24:57.069295  
 
 ---
 
@@ -474,7 +474,7 @@
 - **Assertion Reason:** ❌ Rule error: name 'os' is not defined  
 - **CLI Command:** `aws ssm describe-document`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164783  
+- **Timestamp:** 2025-06-04T18:24:57.069428  
 
 ---
 
@@ -485,7 +485,7 @@
 - **Assertion Reason:** ❌ No backup plans found — unable to verify recovery posture definition  
 - **CLI Command:** `aws backup list-backup-plans`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164841  
+- **Timestamp:** 2025-06-04T18:24:57.069582  
 
 ---
 
@@ -496,7 +496,7 @@
 - **Assertion Reason:** ❌ No IAM roles found — cannot verify role granularity for service accounts  
 - **CLI Command:** `aws iam list-roles --max-items 25`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164886  
+- **Timestamp:** 2025-06-04T18:24:57.069696  
 
 ---
 
@@ -507,7 +507,7 @@
 - **Assertion Reason:** ❌ No CloudWatch log groups found — SIEM visibility not verifiable  
 - **CLI Command:** `aws logs describe-log-groups`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-04T15:58:32.164937  
+- **Timestamp:** 2025-06-04T18:24:57.069793  
 
 ---
 
