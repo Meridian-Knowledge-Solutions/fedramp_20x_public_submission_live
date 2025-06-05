@@ -5,9 +5,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 All custom subnets are private or only default VPC subnets are public",
     "cli_command": "aws ec2 describe-subnets",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.374646"
+    "timestamp": "2025-06-05T21:22:21.240695Z"
   },
   {
     "ksi_id": "KSI-CMT-03",
@@ -15,9 +13,7 @@
     "assertion": false,
     "assertion_reason": "\u274c No check build presence (Items) found",
     "cli_command": "aws codebuild list-projects",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.374731"
+    "timestamp": "2025-06-05T21:22:21.240770Z"
   },
   {
     "ksi_id": "KSI-IAM-06",
@@ -25,9 +21,7 @@
     "assertion": false,
     "assertion_reason": "\u274c No IAM roles found \u2014 cannot evaluate privileged disablement readiness",
     "cli_command": "aws iam list-account-authorization-details --query 'RoleDetailList[*].RoleName'",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.374797"
+    "timestamp": "2025-06-05T21:22:21.240832Z"
   },
   {
     "ksi_id": "KSI-SVC-07",
@@ -35,9 +29,7 @@
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 Manual patch management strategy provided due to no active patch groups (e.g., EC2 not running)",
     "cli_command": "aws ssm describe-patch-groups",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.374858"
+    "timestamp": "2025-06-05T21:22:21.240895Z"
   },
   {
     "ksi_id": "KSI-CNA-01",
@@ -45,9 +37,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 All security groups restrict inbound traffic \u2014 no 0.0.0.0/0 ingress rules found",
     "cli_command": "aws ec2 describe-security-groups",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.374917"
+    "timestamp": "2025-06-05T21:22:21.240955Z"
   },
   {
     "ksi_id": "KSI-IAM-01",
@@ -55,9 +45,7 @@
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 Static MFA screenshot provided in absence of identity center user list",
     "cli_command": "aws identitystore list-users --identity-store-id $ID_STORE_ID --query Users[*].UserId",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.374979"
+    "timestamp": "2025-06-05T21:22:21.241014Z"
   },
   {
     "ksi_id": "KSI-CED-01",
@@ -65,9 +53,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 3 IAM users requiring training. Static evidence should confirm training completion.",
     "cli_command": "aws iam list-users",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375041"
+    "timestamp": "2025-06-05T21:22:21.241073Z"
   },
   {
     "ksi_id": "KSI-CMT-01",
@@ -75,9 +61,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 1 CloudTrail trail(s) \u2014 confirms system modification logging",
     "cli_command": "aws cloudtrail describe-trails",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375113"
+    "timestamp": "2025-06-05T21:22:21.241139Z"
   },
   {
     "ksi_id": "KSI-MLA-02",
@@ -85,9 +69,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 1 active CloudTrail trails",
     "cli_command": "aws cloudtrail describe-trails",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375175"
+    "timestamp": "2025-06-05T21:22:21.241197Z"
   },
   {
     "ksi_id": "KSI-PIY-03",
@@ -95,9 +77,7 @@
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 Static evidence found: vulnerability_disclosure_program_final.pdf validates disclosure policy.",
     "cli_command": "aws iam list-policies",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375231"
+    "timestamp": "2025-06-05T21:22:21.241249Z"
   },
   {
     "ksi_id": "KSI-SVC-01",
@@ -105,19 +85,15 @@
     "assertion": true,
     "assertion_reason": "\u26a0\ufe0f SSM appears enabled but no instances are currently managed. Validate enforcement path during live operation.",
     "cli_command": "aws ssm describe-instance-information --max-results 5",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375305"
+    "timestamp": "2025-06-05T21:22:21.241293Z"
   },
   {
     "ksi_id": "KSI-CNA-07",
     "validation_id": "KSI-CNA-07",
-    "assertion": true,
-    "assertion_reason": "\ud83d\udcc4 Static evidence provided for AMI best practices and cloud-native provisioning",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'list' object has no attribute 'get'",
     "cli_command": "aws ec2 describe-instances --query Reservations[*].Instances[*].ImageId",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375360"
+    "timestamp": "2025-06-05T21:22:21.241339Z"
   },
   {
     "ksi_id": "KSI-PIY-06",
@@ -125,9 +101,7 @@
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 Static documentation provided for security staffing and budget",
     "cli_command": "aws iam list-attached-user-policies",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375412"
+    "timestamp": "2025-06-05T21:22:21.241419Z"
   },
   {
     "ksi_id": "KSI-RPL-01",
@@ -135,9 +109,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 2 backup plans with recent execution timestamps",
     "cli_command": "aws backup list-backup-plans",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375465"
+    "timestamp": "2025-06-05T21:22:21.241498Z"
   },
   {
     "ksi_id": "KSI-CMT-04",
@@ -145,39 +117,31 @@
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 Static change management procedures and supporting artifacts provided",
     "cli_command": "aws codebuild list-projects",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375527"
+    "timestamp": "2025-06-05T21:22:21.241555Z"
   },
   {
     "ksi_id": "KSI-MLA-06",
     "validation_id": "KSI-MLA-06",
-    "assertion": true,
-    "assertion_reason": "\u2705 Security Hub is active. Findings exist.",
+    "assertion": false,
+    "assertion_reason": "\u274c No Security Hub findings found",
     "cli_command": "aws securityhub get-findings --max-results 5",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375592"
+    "timestamp": "2025-06-05T21:22:21.241601Z"
   },
   {
     "ksi_id": "KSI-TPR-04",
     "validation_id": "KSI-TPR-04",
-    "assertion": true,
-    "assertion_reason": "\u2705 Found 1 Security Hub findings (likely includes upstream CVE alerts)",
+    "assertion": false,
+    "assertion_reason": "\u274c No upstream alerting findings and no static attestation found.",
     "cli_command": "aws securityhub get-findings --max-results 1",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375663"
+    "timestamp": "2025-06-05T21:22:21.241699Z"
   },
   {
     "ksi_id": "KSI-INR-02",
     "validation_id": "KSI-INR-02",
-    "assertion": true,
-    "assertion_reason": "\u2705 Found 1 incident-related findings in Security Hub",
+    "assertion": false,
+    "assertion_reason": "\u274c No Security Hub findings related to past incidents found (empty Findings list)",
     "cli_command": "aws securityhub get-findings --max-results 1",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375739"
+    "timestamp": "2025-06-05T21:22:21.241788Z"
   },
   {
     "ksi_id": "KSI-PIY-05",
@@ -185,19 +149,15 @@
     "assertion": false,
     "assertion_reason": "\u274c No AWS Config rules found (ConfigRules list empty)",
     "cli_command": "aws configservice describe-config-rules --max-results 1",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375792"
+    "timestamp": "2025-06-05T21:22:21.241839Z"
   },
   {
     "ksi_id": "KSI-RPL-04",
     "validation_id": "KSI-RPL-04",
-    "assertion": true,
-    "assertion_reason": "\u2705 Backup jobs exist. Output too large to parse, but recent drills likely present.",
+    "assertion": false,
+    "assertion_reason": "\u274c No backup jobs found (BackupJobs list empty)",
     "cli_command": "aws backup list-backup-jobs",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375838"
+    "timestamp": "2025-06-05T21:22:21.241882Z"
   },
   {
     "ksi_id": "KSI-INR-03",
@@ -205,9 +165,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 No critical Security Hub findings \u2014 no AAR findings to review, system likely healthy",
     "cli_command": "aws securityhub get-findings --filters SeverityLabel=CRITICAL --max-results 1",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375883"
+    "timestamp": "2025-06-05T21:22:21.241925Z"
   },
   {
     "ksi_id": "KSI-PIY-02",
@@ -215,9 +173,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 5 IAM policies",
     "cli_command": "aws iam list-policies --max-items 5",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375942"
+    "timestamp": "2025-06-05T21:22:21.241980Z"
   },
   {
     "ksi_id": "KSI-CNA-05",
@@ -225,9 +181,7 @@
     "assertion": false,
     "assertion_reason": "\u274c No WAFv2 WebACLs found (WebACLs list empty)",
     "cli_command": "aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.375990"
+    "timestamp": "2025-06-05T21:22:21.242024Z"
   },
   {
     "ksi_id": "KSI-MLA-03",
@@ -235,9 +189,7 @@
     "assertion": true,
     "assertion_reason": "\u26a0\ufe0f Inspector2 is active but returned no findings. Verify scan scheduling and resource targets.",
     "cli_command": "aws inspector2 list-members",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376035"
+    "timestamp": "2025-06-05T21:22:21.242064Z"
   },
   {
     "ksi_id": "KSI-SVC-04",
@@ -245,9 +197,7 @@
     "assertion": true,
     "assertion_reason": "\u26a0\ufe0f SSM associations supported, but none are active. Verify during live workload operation.",
     "cli_command": "aws ssm list-associations",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376078"
+    "timestamp": "2025-06-05T21:22:21.242104Z"
   },
   {
     "ksi_id": "KSI-CNA-06",
@@ -255,9 +205,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 1 route table(s) for HA routing evaluation",
     "cli_command": "aws ec2 describe-route-tables",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376128"
+    "timestamp": "2025-06-05T21:22:21.242149Z"
   },
   {
     "ksi_id": "KSI-PIY-01",
@@ -265,19 +213,15 @@
     "assertion": true,
     "assertion_reason": "\u2139\ufe0f No active EC2 instances found, but asset inventory command completed successfully",
     "cli_command": "aws ec2 describe-instances",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376173"
+    "timestamp": "2025-06-05T21:22:21.242191Z"
   },
   {
     "ksi_id": "KSI-PIY-04",
     "validation_id": "KSI-PIY-04",
     "assertion": true,
-    "assertion_reason": "\u2705 Found 12 CloudFormation StackSets (governed SDLC via IaC)",
+    "assertion_reason": "\ud83d\udcc4 No StackSets found, but static Secure SDLC policy provided.",
     "cli_command": "aws cloudformation list-stack-sets --status ACTIVE",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376229"
+    "timestamp": "2025-06-05T21:22:21.242246Z"
   },
   {
     "ksi_id": "KSI-CNA-04",
@@ -285,9 +229,7 @@
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 No EC2 instances running, but static boundary diagram shows immutable infrastructure with predefined functionality.",
     "cli_command": "aws ec2 describe-instances",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376301"
+    "timestamp": "2025-06-05T21:22:21.242291Z"
   },
   {
     "ksi_id": "KSI-CED-02",
@@ -295,9 +237,7 @@
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 Static role-based security training evidence provided",
     "cli_command": "aws iam list-groups",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376350"
+    "timestamp": "2025-06-05T21:22:21.242334Z"
   },
   {
     "ksi_id": "KSI-TPR-01",
@@ -305,29 +245,23 @@
     "assertion": false,
     "assertion_reason": "\u274c No active Access Analyzers found \u2014 unable to evaluate third-party access risk",
     "cli_command": "REDACTED_FOR_SECURITY",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376398"
+    "timestamp": "2025-06-05T21:22:21.242379Z"
   },
   {
     "ksi_id": "KSI-CMT-02",
     "validation_id": "KSI-CMT-02",
-    "assertion": true,
-    "assertion_reason": "\u2705 Found 12 active StackSets \u2014 changes managed via redeployment of version-controlled infra",
+    "assertion": false,
+    "assertion_reason": "\u274c No active StackSets found \u2014 cannot confirm redeployment model for infrastructure changes",
     "cli_command": "aws cloudformation list-stack-sets --status ACTIVE",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376456"
+    "timestamp": "2025-06-05T21:22:21.242457Z"
   },
   {
     "ksi_id": "KSI-SVC-03",
     "validation_id": "KSI-SVC-03",
-    "assertion": true,
-    "assertion_reason": "\u2705 Found 7 KMS keys \u2014 encryption at rest infrastructure is in place",
+    "assertion": false,
+    "assertion_reason": "\u274c No KMS keys found \u2014 unable to confirm encryption infrastructure readiness",
     "cli_command": "REDACTED_FOR_SECURITY",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376510"
+    "timestamp": "2025-06-05T21:22:21.242508Z"
   },
   {
     "ksi_id": "KSI-TPR-02",
@@ -335,19 +269,15 @@
     "assertion": true,
     "assertion_reason": "\u2705 EC2 instances configured without public IPs \u2014 boundary integrity maintained",
     "cli_command": "aws ec2 describe-instances",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376559"
+    "timestamp": "2025-06-05T21:22:21.242565Z"
   },
   {
     "ksi_id": "KSI-SVC-05",
     "validation_id": "KSI-SVC-05",
-    "assertion": true,
-    "assertion_reason": "\u2705 AMI list too large to serialize \u2014 images present and available for signature evaluation",
+    "assertion": false,
+    "assertion_reason": "\u274c No AMIs found \u2014 unable to confirm cryptographic enforcement of system image integrity",
     "cli_command": "aws ec2 describe-images",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376602"
+    "timestamp": "2025-06-05T21:22:21.242607Z"
   },
   {
     "ksi_id": "KSI-RPL-02",
@@ -355,9 +285,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 2 backup plans configured \u2014 implies backup targets are managed",
     "cli_command": "aws backup list-backup-plans",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376657"
+    "timestamp": "2025-06-05T21:22:21.242652Z"
   },
   {
     "ksi_id": "KSI-MLA-05",
@@ -365,9 +293,7 @@
     "assertion": false,
     "assertion_reason": "\u274c No AWS Config rules found \u2014 cannot confirm IaC evaluation",
     "cli_command": "aws config describe-config-rules",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376707"
+    "timestamp": "2025-06-05T21:22:21.242697Z"
   },
   {
     "ksi_id": "KSI-MLA-04",
@@ -375,9 +301,7 @@
     "assertion": true,
     "assertion_reason": "\u26a0\ufe0f No actively managed instances found, but SSM is present. Confirm usage in runtime workflows.",
     "cli_command": "aws ssm list-managed-instances",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376756"
+    "timestamp": "2025-06-05T21:22:21.242741Z"
   },
   {
     "ksi_id": "KSI-IAM-04",
@@ -385,19 +309,15 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 0 users, 0 roles, and 8 policies \u2014 policy model can be reviewed for least privilege",
     "cli_command": "aws iam list-policies --scope Local",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376819"
+    "timestamp": "2025-06-05T21:22:21.242806Z"
   },
   {
     "ksi_id": "KSI-SVC-06",
     "validation_id": "KSI-SVC-06",
-    "assertion": true,
-    "assertion_reason": "\u2705 Found 7 KMS keys \u2014 automated key lifecycle management confirmed via AWS KMS",
+    "assertion": false,
+    "assertion_reason": "\u274c No KMS keys found \u2014 cannot confirm key lifecycle management",
     "cli_command": "REDACTED_FOR_SECURITY",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376876"
+    "timestamp": "2025-06-05T21:22:21.242857Z"
   },
   {
     "ksi_id": "KSI-TPR-03",
@@ -405,9 +325,7 @@
     "assertion": false,
     "assertion_reason": "\u274c No Inspector2 scan coverage or fallback member evidence found",
     "cli_command": "aws inspector2 list-members",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376932"
+    "timestamp": "2025-06-05T21:22:21.242906Z"
   },
   {
     "ksi_id": "KSI-SVC-02",
@@ -415,9 +333,7 @@
     "assertion": false,
     "assertion_reason": "\u274c No load balancers found \u2014 unable to confirm network encryption enforcement",
     "cli_command": "aws elbv2 describe-load-balancers",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.376978"
+    "timestamp": "2025-06-05T21:22:21.242949Z"
   },
   {
     "ksi_id": "KSI-IAM-05",
@@ -425,9 +341,7 @@
     "assertion": false,
     "assertion_reason": "\u274c No IAM summary map found \u2014 unable to assess zero trust posture",
     "cli_command": "aws iam get-account-summary",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.377034"
+    "timestamp": "2025-06-05T21:22:21.243001Z"
   },
   {
     "ksi_id": "KSI-PIY-07",
@@ -435,19 +349,15 @@
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 Static evidence of supply chain review provided via weekly change management documentation",
     "cli_command": "REDACTED_FOR_SECURITY",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.377086"
+    "timestamp": "2025-06-05T21:22:21.243049Z"
   },
   {
     "ksi_id": "KSI-INR-01",
     "validation_id": "KSI-INR-01",
-    "assertion": true,
-    "assertion_reason": "\u2705 Found 1 SecurityHub findings \u2014 incidents are being monitored and reportable",
+    "assertion": false,
+    "assertion_reason": "\u274c No SecurityHub findings found \u2014 incident reporting may not be active",
     "cli_command": "aws securityhub get-findings --max-results 1",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.377149"
+    "timestamp": "2025-06-05T21:22:21.243139Z"
   },
   {
     "ksi_id": "KSI-CNA-03",
@@ -455,9 +365,7 @@
     "assertion": false,
     "assertion_reason": "\u274c Found 1 public route(s) not scoped for utility/bastion use: rtb-0ed80c2df92e37cad",
     "cli_command": "aws ec2 describe-route-tables",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.377209"
+    "timestamp": "2025-06-05T21:22:21.243205Z"
   },
   {
     "ksi_id": "KSI-IAM-02",
@@ -465,9 +373,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 3 user(s) \u2014 confirms identity model is populated",
     "cli_command": "aws iam list-users",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.377282"
+    "timestamp": "2025-06-05T21:22:21.243257Z"
   },
   {
     "ksi_id": "KSI-CMT-05",
@@ -475,9 +381,7 @@
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 Static configuration management policy and plan confirm change impact evaluation process",
     "cli_command": "aws ssm describe-document",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.377337"
+    "timestamp": "2025-06-05T21:22:21.243305Z"
   },
   {
     "ksi_id": "KSI-RPL-03",
@@ -485,9 +389,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 2 backup plans \u2014 indicates defined restore capability and alignment with recovery objectives",
     "cli_command": "aws backup list-backup-plans",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.377387"
+    "timestamp": "2025-06-05T21:22:21.243351Z"
   },
   {
     "ksi_id": "KSI-IAM-03",
@@ -495,9 +397,7 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 5 IAM roles \u2014 validates existence of role-based non-user auth controls",
     "cli_command": "aws iam list-roles --max-items 5",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.377455"
+    "timestamp": "2025-06-05T21:22:21.243429Z"
   },
   {
     "ksi_id": "KSI-MLA-01",
@@ -505,8 +405,6 @@
     "assertion": true,
     "assertion_reason": "\u2705 Found 3 log groups \u2014 CloudWatch logs present for SIEM visibility",
     "cli_command": "aws logs describe-log-groups",
-    "cli_output_digest": "",
-    "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T08:01:49.377512"
+    "timestamp": "2025-06-05T21:22:21.243485Z"
   }
 ]
