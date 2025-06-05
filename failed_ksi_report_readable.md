@@ -1,7 +1,7 @@
 # ❌ Failed KSI Validation Report
 
-**Generated:** 2025-06-05T03:14:02.082472Z
-**Total Failures:** 10
+**Generated:** 2025-06-05T03:40:19.058529Z
+**Total Failures:** 11
 
 ---
 
@@ -12,7 +12,7 @@
 - **Assertion Reason:** ❌ No check build presence (Items) found  
 - **CLI Command:** `aws codebuild list-projects`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.039596  
+- **Timestamp:** 2025-06-05T03:40:19.015932  
 
 ---
 
@@ -23,7 +23,18 @@
 - **Assertion Reason:** ❌ No IAM roles found — cannot evaluate privileged disablement readiness  
 - **CLI Command:** `aws iam list-account-authorization-details --query 'RoleDetailList[*].RoleName'`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.039682  
+- **Timestamp:** 2025-06-05T03:40:19.015997  
+
+---
+
+## ❌ KSI-CNA-01: Cloud Native Architecture
+
+- **Validation ID:** `KSI-CNA-01`  
+- **KSI Family:** Cloud Native Architecture  
+- **Assertion Reason:** ❌ Rule error: 'str' object has no attribute 'get'  
+- **CLI Command:** `aws ec2 describe-security-groups --query 'SecurityGroups[*].GroupId'`  
+- **Interpretation:** ⚠️ No evidence path specified.  
+- **Timestamp:** 2025-06-05T03:40:19.016113  
 
 ---
 
@@ -34,7 +45,7 @@
 - **Assertion Reason:** ❌ No AWS Config rules found (ConfigRules list empty)  
 - **CLI Command:** `aws configservice describe-config-rules --max-results 1`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.040687  
+- **Timestamp:** 2025-06-05T03:40:19.016978  
 
 ---
 
@@ -45,7 +56,7 @@
 - **Assertion Reason:** ❌ No WAFv2 WebACLs found (WebACLs list empty)  
 - **CLI Command:** `aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.040899  
+- **Timestamp:** 2025-06-05T03:40:19.017178  
 
 ---
 
@@ -56,7 +67,7 @@
 - **Assertion Reason:** ❌ No active Access Analyzers found — unable to evaluate third-party access risk  
 - **CLI Command:** `REDACTED_FOR_SECURITY`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.041271  
+- **Timestamp:** 2025-06-05T03:40:19.017613  
 
 ---
 
@@ -67,7 +78,7 @@
 - **Assertion Reason:** ❌ No AWS Config rules found — cannot confirm IaC evaluation  
 - **CLI Command:** `aws config describe-config-rules`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.041573  
+- **Timestamp:** 2025-06-05T03:40:19.017920  
 
 ---
 
@@ -78,7 +89,7 @@
 - **Assertion Reason:** ❌ No Inspector2 scan coverage or fallback member evidence found  
 - **CLI Command:** `aws inspector2 list-members`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.041814  
+- **Timestamp:** 2025-06-05T03:40:19.018134  
 
 ---
 
@@ -89,7 +100,7 @@
 - **Assertion Reason:** ❌ No load balancers found — unable to confirm network encryption enforcement  
 - **CLI Command:** `aws elbv2 describe-load-balancers`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.041858  
+- **Timestamp:** 2025-06-05T03:40:19.018179  
 
 ---
 
@@ -100,7 +111,7 @@
 - **Assertion Reason:** ❌ No IAM summary map found — unable to assess zero trust posture  
 - **CLI Command:** `aws iam get-account-summary`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.041911  
+- **Timestamp:** 2025-06-05T03:40:19.018235  
 
 ---
 
@@ -111,7 +122,7 @@
 - **Assertion Reason:** ❌ Found 1 public route(s) not scoped for utility/bastion use: rtb-0ed80c2df92e37cad  
 - **CLI Command:** `aws ec2 describe-route-tables`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T03:14:02.042083  
+- **Timestamp:** 2025-06-05T03:40:19.018429  
 
 ---
 
