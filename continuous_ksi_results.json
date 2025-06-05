@@ -7,7 +7,7 @@
     "cli_command": "aws ec2 describe-subnets",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740004"
+    "timestamp": "2025-06-05T23:49:48.252526"
   },
   {
     "ksi_id": "KSI-CMT-03",
@@ -17,17 +17,57 @@
     "cli_command": "aws codebuild list-projects",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740090"
+    "timestamp": "2025-06-05T23:49:48.252609"
   },
   {
     "ksi_id": "KSI-IAM-06",
     "validation_id": "KSI-IAM-06",
     "assertion": false,
     "assertion_reason": "\u274c No IAM roles found \u2014 cannot evaluate privileged disablement readiness",
-    "cli_command": "aws iam list-account-authorization-details --query 'RoleDetailList[*].RoleName'",
+    "cli_command": "aws iam list-users --query 'Users[?contains(UserName, `admin`) || contains(UserName, `root`)]' --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740152"
+    "timestamp": "2025-06-05T23:49:48.252685"
+  },
+  {
+    "ksi_id": "KSI-IAM-06",
+    "validation_id": "KSI-IAM-06",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM roles found \u2014 cannot evaluate privileged disablement readiness",
+    "cli_command": "aws logs describe-log-groups --log-group-name-prefix '/aws/lambda' --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.252688"
+  },
+  {
+    "ksi_id": "KSI-IAM-06",
+    "validation_id": "KSI-IAM-06",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM roles found \u2014 cannot evaluate privileged disablement readiness",
+    "cli_command": "aws events list-rules --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.252691"
+  },
+  {
+    "ksi_id": "KSI-IAM-06",
+    "validation_id": "KSI-IAM-06",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM roles found \u2014 cannot evaluate privileged disablement readiness",
+    "cli_command": "aws cloudwatch describe-alarms --alarm-names 'HighPrivilegedActivity' --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.252695"
+  },
+  {
+    "ksi_id": "KSI-IAM-06",
+    "validation_id": "KSI-IAM-06",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM roles found \u2014 cannot evaluate privileged disablement readiness",
+    "cli_command": "aws iam generate-credential-report --output json && aws iam get-credential-report --output text",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.252698"
   },
   {
     "ksi_id": "KSI-SVC-07",
@@ -37,7 +77,7 @@
     "cli_command": "aws ssm describe-patch-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740211"
+    "timestamp": "2025-06-05T23:49:48.252761"
   },
   {
     "ksi_id": "KSI-CNA-01",
@@ -47,17 +87,47 @@
     "cli_command": "aws ec2 describe-security-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740275"
+    "timestamp": "2025-06-05T23:49:48.252820"
+  },
+  {
+    "ksi_id": "KSI-IAM-01",
+    "validation_id": "KSI-IAM-01",
+    "assertion": true,
+    "assertion_reason": "\u2705 Found 3 users. MFA enforcement confirmed via static screenshot.",
+    "cli_command": "aws iam list-users --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.252909"
   },
   {
     "ksi_id": "KSI-IAM-01",
     "validation_id": "KSI-IAM-01",
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 Static MFA screenshot provided in absence of identity center user list",
-    "cli_command": "aws identitystore list-users --identity-store-id $ID_STORE_ID --query Users[*].UserId",
+    "cli_command": "aws iam list-mfa-devices --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740337"
+    "timestamp": "2025-06-05T23:49:48.252916"
+  },
+  {
+    "ksi_id": "KSI-IAM-01",
+    "validation_id": "KSI-IAM-01",
+    "assertion": true,
+    "assertion_reason": "\ud83d\udcc4 Static MFA screenshot provided in absence of identity center user list",
+    "cli_command": "aws iam list-virtual-mfa-devices --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.252920"
+  },
+  {
+    "ksi_id": "KSI-IAM-01",
+    "validation_id": "KSI-IAM-01",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
+    "cli_command": "REDACTED_FOR_SECURITY",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.252925"
   },
   {
     "ksi_id": "KSI-CED-01",
@@ -67,7 +137,7 @@
     "cli_command": "aws iam list-users",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740398"
+    "timestamp": "2025-06-05T23:49:48.253021"
   },
   {
     "ksi_id": "KSI-CMT-01",
@@ -77,17 +147,57 @@
     "cli_command": "aws cloudtrail describe-trails",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740466"
+    "timestamp": "2025-06-05T23:49:48.253100"
   },
   {
     "ksi_id": "KSI-MLA-02",
     "validation_id": "KSI-MLA-02",
-    "assertion": true,
-    "assertion_reason": "\u2705 Found 1 active CloudTrail trails",
-    "cli_command": "aws cloudtrail describe-trails",
+    "assertion": false,
+    "assertion_reason": "\u274c No CloudTrail trails found",
+    "cli_command": "aws cloudwatch describe-alarms --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740525"
+    "timestamp": "2025-06-05T23:49:48.253163"
+  },
+  {
+    "ksi_id": "KSI-MLA-02",
+    "validation_id": "KSI-MLA-02",
+    "assertion": false,
+    "assertion_reason": "\u274c No CloudTrail trails found",
+    "cli_command": "aws logs describe-metric-filters --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.253166"
+  },
+  {
+    "ksi_id": "KSI-MLA-02",
+    "validation_id": "KSI-MLA-02",
+    "assertion": false,
+    "assertion_reason": "\u274c No CloudTrail trails found",
+    "cli_command": "aws events list-rules --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.253168"
+  },
+  {
+    "ksi_id": "KSI-MLA-02",
+    "validation_id": "KSI-MLA-02",
+    "assertion": false,
+    "assertion_reason": "\u274c No CloudTrail trails found",
+    "cli_command": "aws lambda list-functions --query 'Functions[?contains(FunctionName, `log`) || contains(FunctionName, `audit`)]' --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.253170"
+  },
+  {
+    "ksi_id": "KSI-MLA-02",
+    "validation_id": "KSI-MLA-02",
+    "assertion": false,
+    "assertion_reason": "\u274c No CloudTrail trails found",
+    "cli_command": "aws opensearch list-domain-names --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.253172"
   },
   {
     "ksi_id": "KSI-PIY-03",
@@ -97,7 +207,7 @@
     "cli_command": "aws iam list-policies",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740579"
+    "timestamp": "2025-06-05T23:49:48.253225"
   },
   {
     "ksi_id": "KSI-SVC-01",
@@ -107,7 +217,7 @@
     "cli_command": "aws ssm describe-instance-information --max-results 5",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740626"
+    "timestamp": "2025-06-05T23:49:48.253273"
   },
   {
     "ksi_id": "KSI-CNA-07",
@@ -117,7 +227,7 @@
     "cli_command": "aws ec2 describe-instances --query Reservations[*].Instances[*].ImageId",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740720"
+    "timestamp": "2025-06-05T23:49:48.253325"
   },
   {
     "ksi_id": "KSI-PIY-06",
@@ -127,7 +237,7 @@
     "cli_command": "aws iam list-attached-user-policies",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740780"
+    "timestamp": "2025-06-05T23:49:48.253375"
   },
   {
     "ksi_id": "KSI-RPL-01",
@@ -137,7 +247,7 @@
     "cli_command": "aws backup list-backup-plans",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740835"
+    "timestamp": "2025-06-05T23:49:48.253428"
   },
   {
     "ksi_id": "KSI-CMT-04",
@@ -147,17 +257,57 @@
     "cli_command": "aws codebuild list-projects",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740898"
+    "timestamp": "2025-06-05T23:49:48.253485"
   },
   {
     "ksi_id": "KSI-MLA-06",
     "validation_id": "KSI-MLA-06",
-    "assertion": true,
-    "assertion_reason": "\u2705 Security Hub is active. Findings exist.",
-    "cli_command": "aws securityhub get-findings --max-results 5",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'list' object has no attribute 'get'",
+    "cli_command": "aws securityhub get-findings --query 'Findings[?Compliance.Status==`FAILED`]' --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.740962"
+    "timestamp": "2025-06-05T23:49:48.256651"
+  },
+  {
+    "ksi_id": "KSI-MLA-06",
+    "validation_id": "KSI-MLA-06",
+    "assertion": false,
+    "assertion_reason": "\u274c No Security Hub findings found",
+    "cli_command": "aws ssm describe-patch-group-state --patch-group production --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.256657"
+  },
+  {
+    "ksi_id": "KSI-MLA-06",
+    "validation_id": "KSI-MLA-06",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
+    "cli_command": "aws inspector2 list-findings --filter-criteria '{\"severities\":[{\"comparison\":\"EQUALS\",\"value\":\"CRITICAL\"},{\"comparison\":\"EQUALS\",\"value\":\"HIGH\"}]}' --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.256661"
+  },
+  {
+    "ksi_id": "KSI-MLA-06",
+    "validation_id": "KSI-MLA-06",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
+    "cli_command": "aws support describe-cases --language en --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.256664"
+  },
+  {
+    "ksi_id": "KSI-MLA-06",
+    "validation_id": "KSI-MLA-06",
+    "assertion": false,
+    "assertion_reason": "\u274c No Security Hub findings found",
+    "cli_command": "aws organizations list-accounts --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.256666"
   },
   {
     "ksi_id": "KSI-TPR-04",
@@ -167,7 +317,7 @@
     "cli_command": "aws securityhub get-findings --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741045"
+    "timestamp": "2025-06-05T23:49:48.256908"
   },
   {
     "ksi_id": "KSI-INR-02",
@@ -177,7 +327,7 @@
     "cli_command": "aws securityhub get-findings --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741136"
+    "timestamp": "2025-06-05T23:49:48.257015"
   },
   {
     "ksi_id": "KSI-PIY-05",
@@ -187,7 +337,7 @@
     "cli_command": "aws configservice describe-config-rules --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741190"
+    "timestamp": "2025-06-05T23:49:48.257080"
   },
   {
     "ksi_id": "KSI-RPL-04",
@@ -197,7 +347,7 @@
     "cli_command": "aws backup list-backup-jobs",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741236"
+    "timestamp": "2025-06-05T23:49:48.257130"
   },
   {
     "ksi_id": "KSI-INR-03",
@@ -207,7 +357,7 @@
     "cli_command": "aws securityhub get-findings --filters SeverityLabel=CRITICAL --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741281"
+    "timestamp": "2025-06-05T23:49:48.257179"
   },
   {
     "ksi_id": "KSI-PIY-02",
@@ -217,7 +367,7 @@
     "cli_command": "aws iam list-policies --max-items 5",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741339"
+    "timestamp": "2025-06-05T23:49:48.257240"
   },
   {
     "ksi_id": "KSI-CNA-05",
@@ -227,17 +377,57 @@
     "cli_command": "aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741385"
+    "timestamp": "2025-06-05T23:49:48.257288"
   },
   {
     "ksi_id": "KSI-MLA-03",
     "validation_id": "KSI-MLA-03",
     "assertion": true,
     "assertion_reason": "\u26a0\ufe0f Inspector2 is active but returned no findings. Verify scan scheduling and resource targets.",
-    "cli_command": "aws inspector2 list-members",
+    "cli_command": "aws securityhub get-enabled-standards --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741429"
+    "timestamp": "2025-06-05T23:49:48.257363"
+  },
+  {
+    "ksi_id": "KSI-MLA-03",
+    "validation_id": "KSI-MLA-03",
+    "assertion": true,
+    "assertion_reason": "\u26a0\ufe0f Inspector2 is active but returned no findings. Verify scan scheduling and resource targets.",
+    "cli_command": "aws inspector2 list-findings --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.257366"
+  },
+  {
+    "ksi_id": "KSI-MLA-03",
+    "validation_id": "KSI-MLA-03",
+    "assertion": true,
+    "assertion_reason": "\u26a0\ufe0f Inspector2 is active but returned no findings. Verify scan scheduling and resource targets.",
+    "cli_command": "aws ssm describe-patch-baselines --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.257369"
+  },
+  {
+    "ksi_id": "KSI-MLA-03",
+    "validation_id": "KSI-MLA-03",
+    "assertion": true,
+    "assertion_reason": "\u26a0\ufe0f Inspector2 is active but returned no findings. Verify scan scheduling and resource targets.",
+    "cli_command": "aws lambda list-functions --query 'Functions[?contains(FunctionName, `remediat`) || contains(FunctionName, `patch`)]' --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.257371"
+  },
+  {
+    "ksi_id": "KSI-MLA-03",
+    "validation_id": "KSI-MLA-03",
+    "assertion": true,
+    "assertion_reason": "\u26a0\ufe0f Inspector2 is active but returned no findings. Verify scan scheduling and resource targets.",
+    "cli_command": "aws events list-rules --query 'Rules[?contains(Name, `security`) || contains(Name, `vuln`)]' --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.257373"
   },
   {
     "ksi_id": "KSI-SVC-04",
@@ -247,7 +437,7 @@
     "cli_command": "aws ssm list-associations",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741473"
+    "timestamp": "2025-06-05T23:49:48.257421"
   },
   {
     "ksi_id": "KSI-CNA-06",
@@ -257,7 +447,7 @@
     "cli_command": "aws ec2 describe-route-tables",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741521"
+    "timestamp": "2025-06-05T23:49:48.257471"
   },
   {
     "ksi_id": "KSI-PIY-01",
@@ -267,7 +457,7 @@
     "cli_command": "aws ec2 describe-instances",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741565"
+    "timestamp": "2025-06-05T23:49:48.257517"
   },
   {
     "ksi_id": "KSI-PIY-04",
@@ -277,7 +467,7 @@
     "cli_command": "aws cloudformation list-stack-sets --status ACTIVE",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741619"
+    "timestamp": "2025-06-05T23:49:48.257573"
   },
   {
     "ksi_id": "KSI-CNA-04",
@@ -287,7 +477,7 @@
     "cli_command": "aws ec2 describe-instances",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741687"
+    "timestamp": "2025-06-05T23:49:48.257623"
   },
   {
     "ksi_id": "KSI-CED-02",
@@ -297,7 +487,7 @@
     "cli_command": "aws iam list-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741736"
+    "timestamp": "2025-06-05T23:49:48.257670"
   },
   {
     "ksi_id": "KSI-TPR-01",
@@ -307,7 +497,7 @@
     "cli_command": "REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741782"
+    "timestamp": "2025-06-05T23:49:48.257714"
   },
   {
     "ksi_id": "KSI-CMT-02",
@@ -317,7 +507,7 @@
     "cli_command": "aws cloudformation list-stack-sets --status ACTIVE",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741837"
+    "timestamp": "2025-06-05T23:49:48.257770"
   },
   {
     "ksi_id": "KSI-SVC-03",
@@ -327,7 +517,7 @@
     "cli_command": "REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741892"
+    "timestamp": "2025-06-05T23:49:48.257824"
   },
   {
     "ksi_id": "KSI-TPR-02",
@@ -337,7 +527,7 @@
     "cli_command": "aws ec2 describe-instances",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741939"
+    "timestamp": "2025-06-05T23:49:48.257871"
   },
   {
     "ksi_id": "KSI-SVC-05",
@@ -347,7 +537,7 @@
     "cli_command": "aws ec2 describe-images",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.741982"
+    "timestamp": "2025-06-05T23:49:48.257915"
   },
   {
     "ksi_id": "KSI-RPL-02",
@@ -357,37 +547,157 @@
     "cli_command": "aws backup list-backup-plans",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742034"
+    "timestamp": "2025-06-05T23:49:48.257963"
+  },
+  {
+    "ksi_id": "KSI-MLA-05",
+    "validation_id": "KSI-MLA-05",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
+    "cli_command": "aws config describe-config-rules --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.258046"
   },
   {
     "ksi_id": "KSI-MLA-05",
     "validation_id": "KSI-MLA-05",
     "assertion": false,
     "assertion_reason": "\u274c No AWS Config rules found \u2014 cannot confirm IaC evaluation",
-    "cli_command": "aws config describe-config-rules",
+    "cli_command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742079"
+    "timestamp": "2025-06-05T23:49:48.258050"
+  },
+  {
+    "ksi_id": "KSI-MLA-05",
+    "validation_id": "KSI-MLA-05",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
+    "cli_command": "aws cloudformation detect-stack-drift --stack-name production-stack --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.258052"
+  },
+  {
+    "ksi_id": "KSI-MLA-05",
+    "validation_id": "KSI-MLA-05",
+    "assertion": false,
+    "assertion_reason": "\u274c No AWS Config rules found \u2014 cannot confirm IaC evaluation",
+    "cli_command": "aws codeartifact list-repositories --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.258054"
+  },
+  {
+    "ksi_id": "KSI-MLA-05",
+    "validation_id": "KSI-MLA-05",
+    "assertion": false,
+    "assertion_reason": "\u274c No AWS Config rules found \u2014 cannot confirm IaC evaluation",
+    "cli_command": "aws codebuild list-projects --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.258056"
+  },
+  {
+    "ksi_id": "KSI-MLA-04",
+    "validation_id": "KSI-MLA-04",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
+    "cli_command": "aws inspector2 get-configuration --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.260208"
   },
   {
     "ksi_id": "KSI-MLA-04",
     "validation_id": "KSI-MLA-04",
     "assertion": true,
     "assertion_reason": "\u26a0\ufe0f No actively managed instances found, but SSM is present. Confirm usage in runtime workflows.",
-    "cli_command": "aws ssm list-managed-instances",
+    "cli_command": "aws inspector2 list-coverage --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742122"
+    "timestamp": "2025-06-05T23:49:48.260216"
+  },
+  {
+    "ksi_id": "KSI-MLA-04",
+    "validation_id": "KSI-MLA-04",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'list' object has no attribute 'get'",
+    "cli_command": "aws securityhub get-findings --query 'Findings[?ProductName==`Inspector`]' --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.260223"
+  },
+  {
+    "ksi_id": "KSI-MLA-04",
+    "validation_id": "KSI-MLA-04",
+    "assertion": true,
+    "assertion_reason": "\u26a0\ufe0f No actively managed instances found, but SSM is present. Confirm usage in runtime workflows.",
+    "cli_command": "aws ssm describe-instance-information --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.260227"
+  },
+  {
+    "ksi_id": "KSI-MLA-04",
+    "validation_id": "KSI-MLA-04",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'list' object has no attribute 'get'",
+    "cli_command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].{InstanceId:InstanceId,State:State.Name,SecurityGroups:SecurityGroups}' --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.260231"
+  },
+  {
+    "ksi_id": "KSI-IAM-04",
+    "validation_id": "KSI-IAM-04",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM principals or policies found \u2014 cannot confirm least-privileged access model",
+    "cli_command": "aws iam list-roles --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.260639"
   },
   {
     "ksi_id": "KSI-IAM-04",
     "validation_id": "KSI-IAM-04",
     "assertion": true,
     "assertion_reason": "\u2705 Found 0 users, 0 roles, and 8 policies \u2014 policy model can be reviewed for least privilege",
-    "cli_command": "aws iam list-policies --scope Local",
+    "cli_command": "aws iam list-policies --scope Local --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742184"
+    "timestamp": "2025-06-05T23:49:48.260649"
+  },
+  {
+    "ksi_id": "KSI-IAM-04",
+    "validation_id": "KSI-IAM-04",
+    "assertion": false,
+    "assertion_reason": "\u274c Unexpected output format",
+    "cli_command": "aws iam list-attached-role-policies --role-name AdminRole --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.260653"
+  },
+  {
+    "ksi_id": "KSI-IAM-04",
+    "validation_id": "KSI-IAM-04",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM principals or policies found \u2014 cannot confirm least-privileged access model",
+    "cli_command": "aws iam generate-credential-report --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.260658"
+  },
+  {
+    "ksi_id": "KSI-IAM-04",
+    "validation_id": "KSI-IAM-04",
+    "assertion": false,
+    "assertion_reason": "\u274c Unexpected output format",
+    "cli_command": "aws iam get-credential-report --output text",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.260661"
   },
   {
     "ksi_id": "KSI-SVC-06",
@@ -397,7 +707,7 @@
     "cli_command": "REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742237"
+    "timestamp": "2025-06-05T23:49:48.260780"
   },
   {
     "ksi_id": "KSI-TPR-03",
@@ -407,7 +717,7 @@
     "cli_command": "aws inspector2 list-members",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742290"
+    "timestamp": "2025-06-05T23:49:48.260889"
   },
   {
     "ksi_id": "KSI-SVC-02",
@@ -417,17 +727,57 @@
     "cli_command": "aws elbv2 describe-load-balancers",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742334"
+    "timestamp": "2025-06-05T23:49:48.261010"
+  },
+  {
+    "ksi_id": "KSI-IAM-05",
+    "validation_id": "KSI-IAM-05",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'list' object has no attribute 'get'",
+    "cli_command": "aws iam list-policies --scope AWS --query 'Policies[?contains(PolicyName, `Condition`)]' --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261151"
   },
   {
     "ksi_id": "KSI-IAM-05",
     "validation_id": "KSI-IAM-05",
     "assertion": false,
     "assertion_reason": "\u274c No IAM summary map found \u2014 unable to assess zero trust posture",
-    "cli_command": "aws iam get-account-summary",
+    "cli_command": "aws logs describe-log-groups --log-group-name-prefix '/aws/cloudtrail' --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742391"
+    "timestamp": "2025-06-05T23:49:48.261156"
+  },
+  {
+    "ksi_id": "KSI-IAM-05",
+    "validation_id": "KSI-IAM-05",
+    "assertion": false,
+    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
+    "cli_command": "REDACTED_FOR_SECURITY",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261161"
+  },
+  {
+    "ksi_id": "KSI-IAM-05",
+    "validation_id": "KSI-IAM-05",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM summary map found \u2014 unable to assess zero trust posture",
+    "cli_command": "aws organizations list-accounts --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261164"
+  },
+  {
+    "ksi_id": "KSI-IAM-05",
+    "validation_id": "KSI-IAM-05",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM summary map found \u2014 unable to assess zero trust posture",
+    "cli_command": "REDACTED_FOR_SECURITY",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261167"
   },
   {
     "ksi_id": "KSI-PIY-07",
@@ -437,7 +787,7 @@
     "cli_command": "REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742438"
+    "timestamp": "2025-06-05T23:49:48.261242"
   },
   {
     "ksi_id": "KSI-INR-01",
@@ -447,7 +797,7 @@
     "cli_command": "aws securityhub get-findings --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742509"
+    "timestamp": "2025-06-05T23:49:48.261321"
   },
   {
     "ksi_id": "KSI-CNA-03",
@@ -457,27 +807,47 @@
     "cli_command": "aws ec2 describe-route-tables",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742569"
+    "timestamp": "2025-06-05T23:49:48.261384"
   },
   {
     "ksi_id": "KSI-IAM-02",
     "validation_id": "KSI-IAM-02",
     "assertion": true,
     "assertion_reason": "\u2705 Found 3 user(s) \u2014 confirms identity model is populated",
-    "cli_command": "aws iam list-users --query 'Users[*].UserName' --output json",
+    "cli_command": "REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742618"
+    "timestamp": "2025-06-05T23:49:48.261456"
   },
   {
     "ksi_id": "KSI-IAM-02",
     "validation_id": "KSI-IAM-02",
-    "assertion": true,
-    "assertion_reason": "\u2705 Found 1 user(s) \u2014 confirms identity model is populated",
-    "cli_command": "aws iam list-mfa-devices --query 'MFADevices[*].{UserName:UserName,SerialNumber:SerialNumber}' --output json",
+    "assertion": false,
+    "assertion_reason": "\u274c No users found \u2014 identity model appears empty",
+    "cli_command": "aws iam list-mfa-devices --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742621"
+    "timestamp": "2025-06-05T23:49:48.261459"
+  },
+  {
+    "ksi_id": "KSI-IAM-02",
+    "validation_id": "KSI-IAM-02",
+    "assertion": false,
+    "assertion_reason": "\u274c Unexpected output format",
+    "cli_command": "REDACTED_FOR_SECURITY",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261461"
+  },
+  {
+    "ksi_id": "KSI-IAM-02",
+    "validation_id": "KSI-IAM-02",
+    "assertion": false,
+    "assertion_reason": "\u274c No users found \u2014 identity model appears empty",
+    "cli_command": "REDACTED_FOR_SECURITY",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261463"
   },
   {
     "ksi_id": "KSI-CMT-05",
@@ -487,7 +857,7 @@
     "cli_command": "aws ssm describe-document",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742689"
+    "timestamp": "2025-06-05T23:49:48.261516"
   },
   {
     "ksi_id": "KSI-RPL-03",
@@ -497,26 +867,96 @@
     "cli_command": "aws backup list-backup-plans",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742742"
+    "timestamp": "2025-06-05T23:49:48.261567"
   },
   {
     "ksi_id": "KSI-IAM-03",
     "validation_id": "KSI-IAM-03",
     "assertion": true,
-    "assertion_reason": "\u2705 Found 5 IAM roles \u2014 validates existence of role-based non-user auth controls",
-    "cli_command": "aws iam list-roles --max-items 5",
+    "assertion_reason": "\u2705 Found 25 IAM roles \u2014 validates existence of role-based non-user auth controls",
+    "cli_command": "aws iam list-roles --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742810"
+    "timestamp": "2025-06-05T23:49:48.261684"
+  },
+  {
+    "ksi_id": "KSI-IAM-03",
+    "validation_id": "KSI-IAM-03",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM roles found \u2014 cannot verify role granularity for service accounts",
+    "cli_command": "aws iam list-instance-profiles --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261688"
+  },
+  {
+    "ksi_id": "KSI-IAM-03",
+    "validation_id": "KSI-IAM-03",
+    "assertion": false,
+    "assertion_reason": "\u274c No IAM roles found \u2014 cannot verify role granularity for service accounts",
+    "cli_command": "aws sts get-caller-identity --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261690"
+  },
+  {
+    "ksi_id": "KSI-IAM-03",
+    "validation_id": "KSI-IAM-03",
+    "assertion": false,
+    "assertion_reason": "\u274c Unexpected output format",
+    "cli_command": "aws iam list-service-linked-roles --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261691"
+  },
+  {
+    "ksi_id": "KSI-MLA-01",
+    "validation_id": "KSI-MLA-01",
+    "assertion": false,
+    "assertion_reason": "\u274c No CloudWatch log groups found \u2014 SIEM visibility not verifiable",
+    "cli_command": "aws cloudtrail describe-trails --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261767"
   },
   {
     "ksi_id": "KSI-MLA-01",
     "validation_id": "KSI-MLA-01",
     "assertion": true,
     "assertion_reason": "\u2705 Found 3 log groups \u2014 CloudWatch logs present for SIEM visibility",
-    "cli_command": "aws logs describe-log-groups",
+    "cli_command": "aws logs describe-log-groups --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T23:25:40.742866"
+    "timestamp": "2025-06-05T23:49:48.261771"
+  },
+  {
+    "ksi_id": "KSI-MLA-01",
+    "validation_id": "KSI-MLA-01",
+    "assertion": false,
+    "assertion_reason": "\u274c Unexpected output format",
+    "cli_command": "aws config describe-configuration-recorders --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261773"
+  },
+  {
+    "ksi_id": "KSI-MLA-01",
+    "validation_id": "KSI-MLA-01",
+    "assertion": false,
+    "assertion_reason": "\u274c Unexpected output format",
+    "cli_command": "aws s3api get-bucket-logging --bucket cloudtrail-logs --output json",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261775"
+  },
+  {
+    "ksi_id": "KSI-MLA-01",
+    "validation_id": "KSI-MLA-01",
+    "assertion": false,
+    "assertion_reason": "\u274c No CloudWatch log groups found \u2014 SIEM visibility not verifiable",
+    "cli_command": "REDACTED_FOR_SECURITY",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-06-05T23:49:48.261777"
   }
 ]
