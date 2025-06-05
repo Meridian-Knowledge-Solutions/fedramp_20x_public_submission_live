@@ -2,12 +2,12 @@
   {
     "ksi_id": "KSI-CNA-02",
     "validation_id": "KSI-CNA-02",
-    "assertion": false,
-    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
-    "cli_command": "aws ec2 describe-subnets --query 'Subnets[*].SubnetId'",
+    "assertion": true,
+    "assertion_reason": "\u2705 All custom subnets are private or only default VPC subnets are public",
+    "cli_command": "aws ec2 describe-subnets",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.434515"
+    "timestamp": "2025-06-05T08:01:49.374646"
   },
   {
     "ksi_id": "KSI-CMT-03",
@@ -17,7 +17,7 @@
     "cli_command": "aws codebuild list-projects",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.434588"
+    "timestamp": "2025-06-05T08:01:49.374731"
   },
   {
     "ksi_id": "KSI-IAM-06",
@@ -27,7 +27,7 @@
     "cli_command": "aws iam list-account-authorization-details --query 'RoleDetailList[*].RoleName'",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.434652"
+    "timestamp": "2025-06-05T08:01:49.374797"
   },
   {
     "ksi_id": "KSI-SVC-07",
@@ -37,17 +37,17 @@
     "cli_command": "aws ssm describe-patch-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.434716"
+    "timestamp": "2025-06-05T08:01:49.374858"
   },
   {
     "ksi_id": "KSI-CNA-01",
     "validation_id": "KSI-CNA-01",
-    "assertion": false,
-    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
-    "cli_command": "aws ec2 describe-security-groups --query 'SecurityGroups[*].GroupId'",
+    "assertion": true,
+    "assertion_reason": "\u2705 All security groups restrict inbound traffic \u2014 no 0.0.0.0/0 ingress rules found",
+    "cli_command": "aws ec2 describe-security-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.434774"
+    "timestamp": "2025-06-05T08:01:49.374917"
   },
   {
     "ksi_id": "KSI-IAM-01",
@@ -57,37 +57,37 @@
     "cli_command": "aws identitystore list-users --identity-store-id $ID_STORE_ID --query Users[*].UserId",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.434839"
+    "timestamp": "2025-06-05T08:01:49.374979"
   },
   {
     "ksi_id": "KSI-CED-01",
     "validation_id": "KSI-CED-01",
     "assertion": true,
     "assertion_reason": "\u2705 Found 3 IAM users requiring training. Static evidence should confirm training completion.",
-    "cli_command": "aws iam list-users --query 'Users[*].UserId'",
+    "cli_command": "aws iam list-users",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.434893"
+    "timestamp": "2025-06-05T08:01:49.375041"
   },
   {
     "ksi_id": "KSI-CMT-01",
     "validation_id": "KSI-CMT-01",
     "assertion": true,
     "assertion_reason": "\u2705 Found 1 CloudTrail trail(s) \u2014 confirms system modification logging",
-    "cli_command": "aws cloudtrail describe-trails --query 'trailList[*].Name'",
+    "cli_command": "aws cloudtrail describe-trails",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.434955"
+    "timestamp": "2025-06-05T08:01:49.375113"
   },
   {
     "ksi_id": "KSI-MLA-02",
     "validation_id": "KSI-MLA-02",
-    "assertion": false,
-    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
-    "cli_command": "aws cloudtrail describe-trails --query 'trailList[*].Name'",
+    "assertion": true,
+    "assertion_reason": "\u2705 Found 1 active CloudTrail trails",
+    "cli_command": "aws cloudtrail describe-trails",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435008"
+    "timestamp": "2025-06-05T08:01:49.375175"
   },
   {
     "ksi_id": "KSI-PIY-03",
@@ -97,7 +97,7 @@
     "cli_command": "aws iam list-policies",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435061"
+    "timestamp": "2025-06-05T08:01:49.375231"
   },
   {
     "ksi_id": "KSI-SVC-01",
@@ -107,7 +107,7 @@
     "cli_command": "aws ssm describe-instance-information --max-results 5",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435108"
+    "timestamp": "2025-06-05T08:01:49.375305"
   },
   {
     "ksi_id": "KSI-CNA-07",
@@ -117,7 +117,7 @@
     "cli_command": "aws ec2 describe-instances --query Reservations[*].Instances[*].ImageId",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435159"
+    "timestamp": "2025-06-05T08:01:49.375360"
   },
   {
     "ksi_id": "KSI-PIY-06",
@@ -127,17 +127,17 @@
     "cli_command": "aws iam list-attached-user-policies",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435209"
+    "timestamp": "2025-06-05T08:01:49.375412"
   },
   {
     "ksi_id": "KSI-RPL-01",
     "validation_id": "KSI-RPL-01",
-    "assertion": false,
-    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
-    "cli_command": "aws backup list-backup-plans --query 'BackupPlansList[*].BackupPlanName'",
+    "assertion": true,
+    "assertion_reason": "\u2705 Found 2 backup plans with recent execution timestamps",
+    "cli_command": "aws backup list-backup-plans",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435304"
+    "timestamp": "2025-06-05T08:01:49.375465"
   },
   {
     "ksi_id": "KSI-CMT-04",
@@ -147,7 +147,7 @@
     "cli_command": "aws codebuild list-projects",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435369"
+    "timestamp": "2025-06-05T08:01:49.375527"
   },
   {
     "ksi_id": "KSI-MLA-06",
@@ -157,7 +157,7 @@
     "cli_command": "aws securityhub get-findings --max-results 5",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435435"
+    "timestamp": "2025-06-05T08:01:49.375592"
   },
   {
     "ksi_id": "KSI-TPR-04",
@@ -167,7 +167,7 @@
     "cli_command": "aws securityhub get-findings --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435517"
+    "timestamp": "2025-06-05T08:01:49.375663"
   },
   {
     "ksi_id": "KSI-INR-02",
@@ -177,7 +177,7 @@
     "cli_command": "aws securityhub get-findings --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435594"
+    "timestamp": "2025-06-05T08:01:49.375739"
   },
   {
     "ksi_id": "KSI-PIY-05",
@@ -187,17 +187,17 @@
     "cli_command": "aws configservice describe-config-rules --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435647"
+    "timestamp": "2025-06-05T08:01:49.375792"
   },
   {
     "ksi_id": "KSI-RPL-04",
     "validation_id": "KSI-RPL-04",
     "assertion": true,
     "assertion_reason": "\u2705 Backup jobs exist. Output too large to parse, but recent drills likely present.",
-    "cli_command": "aws backup list-backup-jobs --query 'BackupJobs[*].BackupJobId'",
+    "cli_command": "aws backup list-backup-jobs",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435693"
+    "timestamp": "2025-06-05T08:01:49.375838"
   },
   {
     "ksi_id": "KSI-INR-03",
@@ -207,37 +207,37 @@
     "cli_command": "aws securityhub get-findings --filters SeverityLabel=CRITICAL --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435740"
+    "timestamp": "2025-06-05T08:01:49.375883"
   },
   {
     "ksi_id": "KSI-PIY-02",
     "validation_id": "KSI-PIY-02",
     "assertion": true,
     "assertion_reason": "\u2705 Found 5 IAM policies",
-    "cli_command": "aws iam list-policies --max-items 5 --query 'Policies[*].PolicyName'",
+    "cli_command": "aws iam list-policies --max-items 5",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435788"
+    "timestamp": "2025-06-05T08:01:49.375942"
   },
   {
     "ksi_id": "KSI-CNA-05",
     "validation_id": "KSI-CNA-05",
     "assertion": false,
     "assertion_reason": "\u274c No WAFv2 WebACLs found (WebACLs list empty)",
-    "cli_command": "aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1 --query 'WebACLs[*].Name'",
+    "cli_command": "aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435833"
+    "timestamp": "2025-06-05T08:01:49.375990"
   },
   {
     "ksi_id": "KSI-MLA-03",
     "validation_id": "KSI-MLA-03",
     "assertion": true,
     "assertion_reason": "\u26a0\ufe0f Inspector2 is active but returned no findings. Verify scan scheduling and resource targets.",
-    "cli_command": "aws inspector2 list-members --query 'members[*].accountId'",
+    "cli_command": "aws inspector2 list-members",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435876"
+    "timestamp": "2025-06-05T08:01:49.376035"
   },
   {
     "ksi_id": "KSI-SVC-04",
@@ -247,27 +247,27 @@
     "cli_command": "aws ssm list-associations",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435920"
+    "timestamp": "2025-06-05T08:01:49.376078"
   },
   {
     "ksi_id": "KSI-CNA-06",
     "validation_id": "KSI-CNA-06",
     "assertion": true,
     "assertion_reason": "\u2705 Found 1 route table(s) for HA routing evaluation",
-    "cli_command": "aws ec2 describe-route-tables --query 'RouteTables[*].RouteTableId'",
+    "cli_command": "aws ec2 describe-route-tables",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.435964"
+    "timestamp": "2025-06-05T08:01:49.376128"
   },
   {
     "ksi_id": "KSI-PIY-01",
     "validation_id": "KSI-PIY-01",
     "assertion": true,
     "assertion_reason": "\u2139\ufe0f No active EC2 instances found, but asset inventory command completed successfully",
-    "cli_command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId'",
+    "cli_command": "aws ec2 describe-instances",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436007"
+    "timestamp": "2025-06-05T08:01:49.376173"
   },
   {
     "ksi_id": "KSI-PIY-04",
@@ -277,17 +277,17 @@
     "cli_command": "aws cloudformation list-stack-sets --status ACTIVE",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436061"
+    "timestamp": "2025-06-05T08:01:49.376229"
   },
   {
     "ksi_id": "KSI-CNA-04",
     "validation_id": "KSI-CNA-04",
     "assertion": true,
     "assertion_reason": "\ud83d\udcc4 No EC2 instances running, but static boundary diagram shows immutable infrastructure with predefined functionality.",
-    "cli_command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId'",
+    "cli_command": "aws ec2 describe-instances",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436110"
+    "timestamp": "2025-06-05T08:01:49.376301"
   },
   {
     "ksi_id": "KSI-CED-02",
@@ -297,7 +297,7 @@
     "cli_command": "aws iam list-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436156"
+    "timestamp": "2025-06-05T08:01:49.376350"
   },
   {
     "ksi_id": "KSI-TPR-01",
@@ -307,7 +307,7 @@
     "cli_command": "REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436202"
+    "timestamp": "2025-06-05T08:01:49.376398"
   },
   {
     "ksi_id": "KSI-CMT-02",
@@ -317,7 +317,7 @@
     "cli_command": "aws cloudformation list-stack-sets --status ACTIVE",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436280"
+    "timestamp": "2025-06-05T08:01:49.376456"
   },
   {
     "ksi_id": "KSI-SVC-03",
@@ -327,17 +327,17 @@
     "cli_command": "REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436336"
+    "timestamp": "2025-06-05T08:01:49.376510"
   },
   {
     "ksi_id": "KSI-TPR-02",
     "validation_id": "KSI-TPR-02",
     "assertion": true,
     "assertion_reason": "\u2705 EC2 instances configured without public IPs \u2014 boundary integrity maintained",
-    "cli_command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].InstanceId'",
+    "cli_command": "aws ec2 describe-instances",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436384"
+    "timestamp": "2025-06-05T08:01:49.376559"
   },
   {
     "ksi_id": "KSI-SVC-05",
@@ -347,17 +347,17 @@
     "cli_command": "aws ec2 describe-images",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436428"
+    "timestamp": "2025-06-05T08:01:49.376602"
   },
   {
     "ksi_id": "KSI-RPL-02",
     "validation_id": "KSI-RPL-02",
     "assertion": true,
     "assertion_reason": "\u2705 Found 2 backup plans configured \u2014 implies backup targets are managed",
-    "cli_command": "aws backup list-backup-plans --query 'BackupPlansList[*].BackupPlanName'",
+    "cli_command": "aws backup list-backup-plans",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436476"
+    "timestamp": "2025-06-05T08:01:49.376657"
   },
   {
     "ksi_id": "KSI-MLA-05",
@@ -367,27 +367,27 @@
     "cli_command": "aws config describe-config-rules",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436528"
+    "timestamp": "2025-06-05T08:01:49.376707"
   },
   {
     "ksi_id": "KSI-MLA-04",
     "validation_id": "KSI-MLA-04",
     "assertion": true,
     "assertion_reason": "\u26a0\ufe0f No actively managed instances found, but SSM is present. Confirm usage in runtime workflows.",
-    "cli_command": "aws ssm list-managed-instances --query 'InstanceInformationList[*].InstanceId'",
+    "cli_command": "aws ssm list-managed-instances",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436577"
+    "timestamp": "2025-06-05T08:01:49.376756"
   },
   {
     "ksi_id": "KSI-IAM-04",
     "validation_id": "KSI-IAM-04",
-    "assertion": false,
-    "assertion_reason": "\u274c No IAM principals or policies found \u2014 cannot confirm least-privileged access model",
-    "cli_command": "aws iam list-policies --scope Local --query 'Policies[*].PolicyName'",
+    "assertion": true,
+    "assertion_reason": "\u2705 Found 0 users, 0 roles, and 8 policies \u2014 policy model can be reviewed for least privilege",
+    "cli_command": "aws iam list-policies --scope Local",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436624"
+    "timestamp": "2025-06-05T08:01:49.376819"
   },
   {
     "ksi_id": "KSI-SVC-06",
@@ -397,17 +397,17 @@
     "cli_command": "REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436674"
+    "timestamp": "2025-06-05T08:01:49.376876"
   },
   {
     "ksi_id": "KSI-TPR-03",
     "validation_id": "KSI-TPR-03",
     "assertion": false,
     "assertion_reason": "\u274c No Inspector2 scan coverage or fallback member evidence found",
-    "cli_command": "aws inspector2 list-members --query 'members[*].accountId'",
+    "cli_command": "aws inspector2 list-members",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436724"
+    "timestamp": "2025-06-05T08:01:49.376932"
   },
   {
     "ksi_id": "KSI-SVC-02",
@@ -417,7 +417,7 @@
     "cli_command": "aws elbv2 describe-load-balancers",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436769"
+    "timestamp": "2025-06-05T08:01:49.376978"
   },
   {
     "ksi_id": "KSI-IAM-05",
@@ -427,7 +427,7 @@
     "cli_command": "aws iam get-account-summary",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436824"
+    "timestamp": "2025-06-05T08:01:49.377034"
   },
   {
     "ksi_id": "KSI-PIY-07",
@@ -437,7 +437,7 @@
     "cli_command": "REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436876"
+    "timestamp": "2025-06-05T08:01:49.377086"
   },
   {
     "ksi_id": "KSI-INR-01",
@@ -447,27 +447,27 @@
     "cli_command": "aws securityhub get-findings --max-results 1",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436943"
+    "timestamp": "2025-06-05T08:01:49.377149"
   },
   {
     "ksi_id": "KSI-CNA-03",
     "validation_id": "KSI-CNA-03",
     "assertion": false,
-    "assertion_reason": "\u274c Rule error: 'str' object has no attribute 'get'",
-    "cli_command": "aws ec2 describe-route-tables --query 'RouteTables[*].RouteTableId'",
+    "assertion_reason": "\u274c Found 1 public route(s) not scoped for utility/bastion use: rtb-0ed80c2df92e37cad",
+    "cli_command": "aws ec2 describe-route-tables",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.436995"
+    "timestamp": "2025-06-05T08:01:49.377209"
   },
   {
     "ksi_id": "KSI-IAM-02",
     "validation_id": "KSI-IAM-02",
     "assertion": true,
     "assertion_reason": "\u2705 Found 3 user(s) \u2014 confirms identity model is populated",
-    "cli_command": "aws iam list-users --query 'Users[*].UserId'",
+    "cli_command": "aws iam list-users",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.437040"
+    "timestamp": "2025-06-05T08:01:49.377282"
   },
   {
     "ksi_id": "KSI-CMT-05",
@@ -477,36 +477,36 @@
     "cli_command": "aws ssm describe-document",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.437088"
+    "timestamp": "2025-06-05T08:01:49.377337"
   },
   {
     "ksi_id": "KSI-RPL-03",
     "validation_id": "KSI-RPL-03",
     "assertion": true,
     "assertion_reason": "\u2705 Found 2 backup plans \u2014 indicates defined restore capability and alignment with recovery objectives",
-    "cli_command": "aws backup list-backup-plans --query 'BackupPlansList[*].BackupPlanName'",
+    "cli_command": "aws backup list-backup-plans",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.437132"
+    "timestamp": "2025-06-05T08:01:49.377387"
   },
   {
     "ksi_id": "KSI-IAM-03",
     "validation_id": "KSI-IAM-03",
     "assertion": true,
     "assertion_reason": "\u2705 Found 5 IAM roles \u2014 validates existence of role-based non-user auth controls",
-    "cli_command": "aws iam list-roles --max-items 5 --query 'Roles[*].RoleName'",
+    "cli_command": "aws iam list-roles --max-items 5",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.437175"
+    "timestamp": "2025-06-05T08:01:49.377455"
   },
   {
     "ksi_id": "KSI-MLA-01",
     "validation_id": "KSI-MLA-01",
     "assertion": true,
     "assertion_reason": "\u2705 Found 3 log groups \u2014 CloudWatch logs present for SIEM visibility",
-    "cli_command": "aws logs describe-log-groups --query 'logGroups[*].logGroupName'",
+    "cli_command": "aws logs describe-log-groups",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-05T07:51:26.437218"
+    "timestamp": "2025-06-05T08:01:49.377512"
   }
 ]
