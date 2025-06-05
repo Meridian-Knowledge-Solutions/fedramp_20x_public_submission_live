@@ -1,7 +1,7 @@
 # ❌ Failed KSI Validation Report
 
-**Generated:** 2025-06-05T23:10:50.903602Z
-**Total Failures:** 13
+**Generated:** 2025-06-05T23:25:40.783884Z
+**Total Failures:** 10
 
 ---
 
@@ -12,7 +12,7 @@
 - **Assertion Reason:** ❌ No check build presence (Items) found  
 - **CLI Command:** `aws codebuild list-projects`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.858294  
+- **Timestamp:** 2025-06-05T23:25:40.740090  
 
 ---
 
@@ -23,7 +23,7 @@
 - **Assertion Reason:** ❌ No IAM roles found — cannot evaluate privileged disablement readiness  
 - **CLI Command:** `aws iam list-account-authorization-details --query 'RoleDetailList[*].RoleName'`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.858358  
+- **Timestamp:** 2025-06-05T23:25:40.740152  
 
 ---
 
@@ -34,7 +34,7 @@
 - **Assertion Reason:** ❌ No AWS Config rules found (ConfigRules list empty)  
 - **CLI Command:** `aws configservice describe-config-rules --max-results 1`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.859409  
+- **Timestamp:** 2025-06-05T23:25:40.741190  
 
 ---
 
@@ -45,7 +45,7 @@
 - **Assertion Reason:** ❌ No WAFv2 WebACLs found (WebACLs list empty)  
 - **CLI Command:** `aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.859652  
+- **Timestamp:** 2025-06-05T23:25:40.741385  
 
 ---
 
@@ -56,7 +56,7 @@
 - **Assertion Reason:** ❌ No active Access Analyzers found — unable to evaluate third-party access risk  
 - **CLI Command:** `REDACTED_FOR_SECURITY`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.860057  
+- **Timestamp:** 2025-06-05T23:25:40.741782  
 
 ---
 
@@ -67,7 +67,7 @@
 - **Assertion Reason:** ❌ No AWS Config rules found — cannot confirm IaC evaluation  
 - **CLI Command:** `aws config describe-config-rules`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.860407  
+- **Timestamp:** 2025-06-05T23:25:40.742079  
 
 ---
 
@@ -78,7 +78,7 @@
 - **Assertion Reason:** ❌ No Inspector2 scan coverage or fallback member evidence found  
 - **CLI Command:** `aws inspector2 list-members`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.860620  
+- **Timestamp:** 2025-06-05T23:25:40.742290  
 
 ---
 
@@ -89,7 +89,7 @@
 - **Assertion Reason:** ❌ No load balancers found — unable to confirm network encryption enforcement  
 - **CLI Command:** `aws elbv2 describe-load-balancers`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.860666  
+- **Timestamp:** 2025-06-05T23:25:40.742334  
 
 ---
 
@@ -100,7 +100,7 @@
 - **Assertion Reason:** ❌ No IAM summary map found — unable to assess zero trust posture  
 - **CLI Command:** `aws iam get-account-summary`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.860723  
+- **Timestamp:** 2025-06-05T23:25:40.742391  
 
 ---
 
@@ -111,40 +111,7 @@
 - **Assertion Reason:** ❌ Found 1 public route(s) not scoped for utility/bastion use: rtb-0ed80c2df92e37cad  
 - **CLI Command:** `aws ec2 describe-route-tables`  
 - **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.860905  
-
----
-
-## ❌ KSI-IAM-02: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-02`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No users found — identity model appears empty  
-- **CLI Command:** `description`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.860955  
-
----
-
-## ❌ KSI-IAM-02: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-02`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No users found — identity model appears empty  
-- **CLI Command:** `justification`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.860958  
-
----
-
-## ❌ KSI-IAM-02: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-02`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No users found — identity model appears empty  
-- **CLI Command:** `cli_commands`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-05T23:10:50.860960  
+- **Timestamp:** 2025-06-05T23:25:40.742569  
 
 ---
 
