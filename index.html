@@ -429,6 +429,17 @@
             border-color: var(--primary-dark);
         }
 
+        .action-btn.github {
+            background: #24292e;
+            color: white;
+            border-color: #24292e;
+        }
+
+        .action-btn.github:hover {
+            background: #1a1e22;
+            border-color: #1a1e22;
+        }
+
         /* CLI Details Modal */
         .cli-modal {
             display: none;
@@ -606,6 +617,157 @@
             }
         }
 
+        /* Update Info */
+        .update-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .update-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+        }
+
+        .update-card:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .update-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-100);
+            border-radius: 8px;
+        }
+
+        .update-content {
+            flex: 1;
+        }
+
+        .update-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .update-time {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        /* Trust Center */
+        .trust-center-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .trust-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .trust-card-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+            color: white;
+            padding: 1.25rem;
+        }
+
+        .trust-card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .trust-card-content {
+            padding: 1.5rem;
+        }
+
+        .trust-item {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.875rem;
+        }
+
+        .trust-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .trust-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .trust-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .materials-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .materials-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .materials-header {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .materials-list {
+            margin: 0;
+            padding-left: 1.25rem;
+            color: var(--gray-700);
+        }
+
         /* Utilities */
         .sr-only {
             position: absolute;
@@ -659,6 +821,120 @@
                 <div class="stat-value" id="total-ksis">51</div>
                 <div class="stat-label">Total KSIs</div>
                 <div class="stat-change" style="background: var(--gray-100); color: var(--gray-600);">📊 FedRAMP 20x Low</div>
+            </div>
+        </div>
+
+        <!-- Last Updated Information -->
+        <div class="update-info">
+            <div class="update-card">
+                <div class="update-icon">⏰</div>
+                <div class="update-content">
+                    <div class="update-label">Last Updated</div>
+                    <div class="update-time" id="last-updated">Loading...</div>
+                </div>
+            </div>
+            <div class="update-card">
+                <div class="update-icon">🔄</div>
+                <div class="update-content">
+                    <div class="update-label">Next Update</div>
+                    <div class="update-time" id="next-update">Every 24 hours</div>
+                </div>
+            </div>
+            <div class="update-card">
+                <div class="update-icon">📊</div>
+                <div class="update-content">
+                    <div class="update-label">Data Source</div>
+                    <div class="update-time">Automated Validation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Center Section -->
+        <div class="trust-center-section">
+            <h2 class="section-title">🛡️ Trust Center</h2>
+            <div class="trust-grid">
+                <!-- FedRAMP Authorization Data -->
+                <div class="trust-card">
+                    <div class="trust-card-header">
+                        <h3 class="trust-card-title">🔷 FedRAMP Authorization Data (RFC-0011)</h3>
+                    </div>
+                    <div class="trust-card-content">
+                        <div class="trust-item">
+                            <strong>Service Description:</strong> Meridian Knowledge Solutions Learning Management System (LMS) - Cloud-native educational platform
+                        </div>
+                        <div class="trust-item">
+                            <strong>Authorization Scope:</strong> FedRAMP 20x Low Authorization
+                        </div>
+                        <div class="trust-item">
+                            <strong>FedRAMP Marketplace:</strong> <a href="https://marketplace.fedramp.gov" target="_blank" class="trust-link">View Listing</a>
+                        </div>
+                        <div class="trust-item">
+                            <strong>Assessment Method:</strong> Machine-readable validation with automated KSI assessment
+                        </div>
+                        <div class="trust-item">
+                            <strong>Hosting Environment:</strong> AWS GovCloud (US-East)
+                        </div>
+                        <div class="trust-item">
+                            <strong>Evidence Repository:</strong> <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank" class="trust-link">GitHub Public Repo</a>
+                        </div>
+                        <div class="trust-item">
+                            <strong>Validation Data:</strong> 
+                            <a href="./unified_ksi_validations.json" target="_blank" class="trust-link">📄 Download JSON</a> | 
+                            <a href="./failed_ksi_report_readable.md" target="_blank" class="trust-link">📋 Failed KSI Report</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Materials -->
+                <div class="trust-card">
+                    <div class="trust-card-header">
+                        <h3 class="trust-card-title">📋 Available Materials</h3>
+                    </div>
+                    <div class="trust-card-content">
+                        <div class="materials-section">
+                            <div class="materials-header">🔒 Public Materials:</div>
+                            <ul class="materials-list">
+                                <li>Real-time compliance dashboard</li>
+                                <li>KSI validation methodology</li>
+                                <li>Service architecture overview</li>
+                                <li>Continuous monitoring reports</li>
+                            </ul>
+                        </div>
+                        <div class="materials-section">
+                            <div class="materials-header">🔐 Federal Agency Access:</div>
+                            <ul class="materials-list">
+                                <li>Complete authorization package</li>
+                                <li>Detailed security plans</li>
+                                <li>3PAO assessment reports</li>
+                                <li>Continuous monitoring data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agency Contact Information -->
+                <div class="trust-card">
+                    <div class="trust-card-header">
+                        <h3 class="trust-card-title">📞 Agency Contact Information</h3>
+                    </div>
+                    <div class="trust-card-content">
+                        <div class="trust-item">
+                            <strong>Primary Contact:</strong> FedRAMP Program Office
+                        </div>
+                        <div class="trust-item">
+                            <strong>Email:</strong> <a href="mailto:security@meridianks.com" class="trust-link">security@meridianks.com</a>
+                        </div>
+                        <div class="trust-item">
+                            <strong>Phone:</strong> +1 (555) 123-4567
+                        </div>
+                        <div class="trust-item">
+                            <strong>Portal Access:</strong> Available through customer portal with appropriate federal credentials
+                        </div>
+                        <div class="trust-item">
+                            <strong>Support Hours:</strong> 24/7 for critical security issues, Business hours for general inquiries
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1044,6 +1320,11 @@
                         <button class="action-btn" onclick="showKsiDetails('${ksi.id}')">
                             📋 Details
                         </button>
+                        ${ksi.status === 'failed' ? `
+                        <button class="action-btn github" onclick="createGitHubIssue('${ksi.id}')">
+                            🐛 Report Issue
+                        </button>
+                        ` : ''}
                     </div>
                 `;
                 
@@ -1146,7 +1427,45 @@ ${ksi.requirement || 'No requirement specified'}`;
             document.body.style.overflow = '';
         }
 
-        // Update timestamps
+        // Create GitHub issue for failed KSI
+        function createGitHubIssue(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            const issueTitle = encodeURIComponent(`[KSI Failure] ${ksi.id}: ${ksi.description.substring(0, 60)}...`);
+            const issueBody = encodeURIComponent(`## KSI Failure Report
+
+**KSI ID:** ${ksi.id}
+**Category:** ${ksi.category}
+**Status:** ${ksi.status.toUpperCase()}
+
+### Description
+${ksi.description}
+
+### Technical Details
+- **Commands Executed:** ${ksi.commands_executed || 0}
+- **CLI Command:** \`${ksi.cli_command || 'N/A'}\`
+
+### Failure Reason
+${ksi.assertion_reason || 'No detailed reason provided'}
+
+### Requirement
+${ksi.requirement || 'No requirement specified'}
+
+### Expected Resolution
+Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 20x compliance.
+
+---
+*This issue was automatically generated from the FedRAMP 20x Trust Center Dashboard*
+*Generated on: ${new Date().toISOString()}*`);
+
+            const repoUrl = 'https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live';
+            const issueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}&labels=ksi-failure,compliance,fedramp-20x`;
+            
+            window.open(issueUrl, '_blank');
+        }
+
+        // Update timestamps with next update calculation
         function updateTimestamps() {
             const now = new Date();
             const timeString = now.toLocaleString('en-US', {
@@ -1158,7 +1477,29 @@ ${ksi.requirement || 'No requirement specified'}`;
                 timeZoneName: 'short'
             });
             
-            document.getElementById('footer-timestamp').textContent = timeString;
+            // Calculate next update (24 hours from now)
+            const nextUpdate = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+            const nextUpdateString = nextUpdate.toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZoneName: 'short'
+            });
+            
+            const lastUpdatedEl = document.getElementById('last-updated');
+            const nextUpdateEl = document.getElementById('next-update');
+            const footerTimestampEl = document.getElementById('footer-timestamp');
+            
+            if (lastUpdatedEl) {
+                lastUpdatedEl.textContent = timeString;
+            }
+            if (nextUpdateEl) {
+                nextUpdateEl.textContent = nextUpdateString;
+            }
+            if (footerTimestampEl) {
+                footerTimestampEl.textContent = timeString;
+            }
         }
 
         // Load real data (enhanced error handling)
@@ -1301,6 +1642,7 @@ ${ksi.requirement || 'No requirement specified'}`;
         window.showCliDetails = showCliDetails;
         window.showKsiDetails = showKsiDetails;
         window.closeCliModal = closeCliModal;
+        window.createGitHubIssue = createGitHubIssue;
 
         // Auto-refresh every 5 minutes
         setInterval(() => {
