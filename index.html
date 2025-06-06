@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FedRAMP 20x Trust Center - Meridian Knowledge Solutions</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <style>
         * {
@@ -682,6 +682,8 @@
                         <p><strong>FedRAMP Marketplace:</strong> <a href="https://marketplace.fedramp.gov" target="_blank">View Listing</a></p>
                         <p><strong>Assessment Method:</strong> Machine-readable validation with automated KSI assessment</p>
                         <p><strong>Hosting Environment:</strong> AWS GovCloud (US-East)</p>
+                        <p><strong>Evidence Repository:</strong> <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank">GitHub Public Repo</a></p>
+                        <p><strong>Validation Data:</strong> <a href="unified_ksi_validations.json" target="_blank">Download JSON</a> | <a href="failed_ksi_report_readable.md" target="_blank">Failed KSI Report</a></p>
                     </div>
                 </div>
 
@@ -818,152 +820,203 @@
             circle.style.strokeDashoffset = offset;
         }
 
-        // Create charts
+        // Create charts with error handling
         function createCharts() {
-            createCategoryChart();
-            createTrendChart();
-            createMethodChart();
+            // Check if Chart.js is loaded
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js not loaded. Skipping chart creation.');
+                // Hide chart containers and show message
+                document.querySelectorAll('.chart-container').forEach(container => {
+                    container.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--medium-gray);">Charts unavailable - Chart.js not loaded</div>';
+                });
+                return;
+            }
+
+            try {
+                createCategoryChart();
+                createTrendChart();  
+                createMethodChart();
+            } catch (error) {
+                console.error('Error creating charts:', error);
+            }
         }
 
         // Category performance chart
         function createCategoryChart() {
-            const ctx = document.getElementById('categoryChart').getContext('2d');
-            const categories = Object.keys(mockData.categories);
-            const percentages = categories.map(cat => mockData.categories[cat].percentage);
+            if (typeof Chart === 'undefined') return;
             
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: categories.map(cat => cat.replace(' & ', '\n& ')),
-                    datasets: [{
-                        label: 'Compliance %',
-                        data: percentages,
-                        backgroundColor: percentages.map(p => 
-                            p >= 80 ? 'rgba(40, 167, 69, 0.8)' :
-                            p >= 60 ? 'rgba(253, 126, 20, 0.8)' :
-                            'rgba(220, 53, 69, 0.8)'
-                        ),
-                        borderColor: percentages.map(p => 
-                            p >= 80 ? '#28a745' :
-                            p >= 60 ? '#fd7e14' :
-                            '#dc3545'
-                        ),
-                        borderWidth: 2,
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
+            const ctx = document.getElementById('categoryChart');
+            if (!ctx) return;
+            
+            try {
+                const chartCtx = ctx.getContext('2d');
+                const categories = Object.keys(mockData.categories);
+                const percentages = categories.map(cat => mockData.categories[cat].percentage);
+                
+                new Chart(chartCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: categories.map(cat => cat.replace(' & ', '\n& ')),
+                        datasets: [{
+                            label: 'Compliance %',
+                            data: percentages,
+                            backgroundColor: percentages.map(p => 
+                                p >= 80 ? 'rgba(40, 167, 69, 0.8)' :
+                                p >= 60 ? 'rgba(253, 126, 20, 0.8)' :
+                                'rgba(220, 53, 69, 0.8)'
+                            ),
+                            borderColor: percentages.map(p => 
+                                p >= 80 ? '#28a745' :
+                                p >= 60 ? '#fd7e14' :
+                                '#dc3545'
+                            ),
+                            borderWidth: 2,
+                            borderRadius: 6
+                        }]
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                callback: function(value) {
-                                    return value + '%';
-                                }
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
                             }
                         },
-                        x: {
-                            ticks: {
-                                maxRotation: 45,
-                                minRotation: 45
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    maxRotation: 45,
+                                    minRotation: 45
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
+            } catch (error) {
+                console.error('Error creating category chart:', error);
+                ctx.parentElement.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--medium-gray);">Category chart unavailable</div>';
+            }
         }
 
         // Trend chart
         function createTrendChart() {
-            const ctx = document.getElementById('trendChart').getContext('2d');
+            if (typeof Chart === 'undefined') return;
             
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: mockData.trendData.map(d => moment(d.date).format('MMM DD')),
-                    datasets: [{
-                        label: 'Compliance Score',
-                        data: mockData.trendData.map(d => d.score),
-                        borderColor: 'rgba(0, 102, 204, 1)',
-                        backgroundColor: 'rgba(0, 102, 204, 0.1)',
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: '#0066cc',
-                        pointBorderColor: '#ffffff',
-                        pointBorderWidth: 2,
-                        pointRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
+            const ctx = document.getElementById('trendChart');
+            if (!ctx) return;
+            
+            try {
+                const chartCtx = ctx.getContext('2d');
+                
+                new Chart(chartCtx, {
+                    type: 'line',
+                    data: {
+                        labels: mockData.trendData.map(d => {
+                            // Fallback if moment.js not available
+                            if (typeof moment !== 'undefined') {
+                                return moment(d.date).format('MMM DD');
+                            } else {
+                                return new Date(d.date).toLocaleDateString('en-US', { month: 'short', day: '2-digit' });
+                            }
+                        }),
+                        datasets: [{
+                            label: 'Compliance Score',
+                            data: mockData.trendData.map(d => d.score),
+                            borderColor: 'rgba(0, 102, 204, 1)',
+                            backgroundColor: 'rgba(0, 102, 204, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#0066cc',
+                            pointBorderColor: '#ffffff',
+                            pointBorderWidth: 2,
+                            pointRadius: 6
+                        }]
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            min: 60,
-                            max: 100,
-                            ticks: {
-                                callback: function(value) {
-                                    return value + '%';
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: 60,
+                                max: 100,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            });
+                });
+            } catch (error) {
+                console.error('Error creating trend chart:', error);
+                ctx.parentElement.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--medium-gray);">Trend chart unavailable</div>';
+            }
         }
 
         // Validation methods chart
         function createMethodChart() {
-            const ctx = document.getElementById('methodChart').getContext('2d');
+            if (typeof Chart === 'undefined') return;
             
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: Object.keys(mockData.validationMethods),
-                    datasets: [{
-                        data: Object.values(mockData.validationMethods),
-                        backgroundColor: [
-                            'rgba(0, 102, 204, 0.8)',
-                            'rgba(40, 167, 69, 0.8)',
-                            'rgba(253, 126, 20, 0.8)'
-                        ],
-                        borderColor: [
-                            '#0066cc',
-                            '#28a745',
-                            '#fd7e14'
-                        ],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 20,
-                                usePointStyle: true
+            const ctx = document.getElementById('methodChart');
+            if (!ctx) return;
+            
+            try {
+                const chartCtx = ctx.getContext('2d');
+                
+                new Chart(chartCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(mockData.validationMethods),
+                        datasets: [{
+                            data: Object.values(mockData.validationMethods),
+                            backgroundColor: [
+                                'rgba(0, 102, 204, 0.8)',
+                                'rgba(40, 167, 69, 0.8)',
+                                'rgba(253, 126, 20, 0.8)'
+                            ],
+                            borderColor: [
+                                '#0066cc',
+                                '#28a745',
+                                '#fd7e14'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20,
+                                    usePointStyle: true
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
+            } catch (error) {
+                console.error('Error creating method chart:', error);
+                ctx.parentElement.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--medium-gray);">Validation methods chart unavailable</div>';
+            }
         }
 
         // Render KSI grid
@@ -1035,29 +1088,43 @@
         // Load real data from your JSON files
         async function loadRealData() {
             try {
-                // Load all your data files
-                const [unifiedResponse, continuousResponse, metadataResponse] = await Promise.all([
-                    fetch('unified_ksi_validations.json'),
-                    fetch('continuous_ksi_results.json'),
-                    fetch('evidence_commit_metadata.json')
-                ]);
-
+                console.log('🔄 Loading data files...');
+                
+                // Try loading unified validations first (most important)
+                const unifiedResponse = await fetch('./unified_ksi_validations.json');
                 if (!unifiedResponse.ok) {
-                    throw new Error('Failed to load unified validations');
+                    throw new Error(`Failed to load unified validations: ${unifiedResponse.status}`);
                 }
-
                 const unifiedData = await unifiedResponse.json();
-                const continuousData = continuousResponse.ok ? await continuousResponse.json() : [];
-                const metadataData = metadataResponse.ok ? await metadataResponse.json() : {};
+                console.log('✅ Unified validations loaded:', unifiedData);
+
+                // Try loading additional files (optional)
+                let continuousData = [], metadataData = {};
+                
+                try {
+                    const continuousResponse = await fetch('./continuous_ksi_results.json');
+                    if (continuousResponse.ok) {
+                        continuousData = await continuousResponse.json();
+                        console.log('✅ Continuous results loaded');
+                    }
+                } catch (e) { console.log('ℹ️ Continuous data not available:', e.message); }
+                
+                try {
+                    const metadataResponse = await fetch('./evidence_commit_metadata.json');
+                    if (metadataResponse.ok) {
+                        metadataData = await metadataResponse.json();
+                        console.log('✅ Metadata loaded');
+                    }
+                } catch (e) { console.log('ℹ️ Metadata not available:', e.message); }
 
                 // Update dashboard with real data
                 updateDashboardWithRealData(unifiedData, metadataData);
                 
-                console.log('✅ Real data loaded successfully');
+                console.log('🎉 Dashboard updated with real data');
             } catch (error) {
                 console.error('❌ Error loading real data:', error);
-                // Fallback to mock data is already loaded
-                showError('main-content', 'Unable to load live data. Displaying sample data.');
+                // Show error and keep mock data
+                showError('ksi-grid', `Unable to load live data: ${error.message}. Please check that the JSON files are available.`);
             }
         }
 
@@ -1182,34 +1249,93 @@
             return methods;
         }
 
-        // Update KSI grid with real validation data
+        // Update KSI grid with real validation data (with tooltips and CLI toggle like old dashboard)
         function updateKsiGridWithRealData(validations) {
             const grid = document.getElementById('ksi-grid');
             grid.innerHTML = '';
 
-            validations.forEach(validation => {
+            validations.forEach((validation, index) => {
                 const card = document.createElement('div');
                 const status = validation.assertion ? 'passed' : 'failed';
                 const statusClass = status === 'passed' ? 'status-pass' : 'status-fail';
                 const statusText = status === 'passed' ? 'PASS' : 'FAIL';
                 const statusIcon = status === 'passed' ? '✅' : '❌';
+                
+                // Get CLI command details
+                const cliCommand = validation.cli_command || 'No command information';
+                const commandsExecuted = validation.commands_executed || 0;
+                const successfulCommands = validation.successful_commands || 0;
+                
+                // Detailed reason for tooltip
+                const fullReason = validation.assertion_reason || 'No details available';
+                const shortReason = fullReason.length > 100 ? fullReason.substring(0, 100) + '...' : fullReason;
 
                 card.className = `ksi-card ${status}`;
                 card.innerHTML = `
                     <div class="ksi-header">
-                        <div class="ksi-id">${validation.ksi_id}</div>
-                        <div class="ksi-status ${statusClass}">${statusIcon} ${statusText}</div>
+                        <div class="ksi-id" title="${validation.requirement || 'FedRAMP 20x KSI'}">${validation.ksi_id}</div>
+                        <div class="ksi-status ${statusClass}" title="${fullReason}">${statusIcon} ${statusText}</div>
                     </div>
-                    <div class="ksi-description">${validation.assertion_reason || 'No details available'}</div>
+                    <div class="ksi-description" title="${fullReason}">
+                        ${shortReason}
+                    </div>
                     <div class="ksi-details">
                         <small>Category: ${validation.long_name || validation.category_prefix || 'Unknown'}</small><br>
-                        <small>Commands: ${validation.commands_executed || 0} executed, ${validation.successful_commands || 0} successful</small>
+                        <small>Commands: ${commandsExecuted} executed, ${successfulCommands} successful</small><br>
+                        <div style="margin-top: 8px;">
+                            <button class="cli-toggle-btn" onclick="toggleCliDetails('cli-${index}')" style="
+                                background: var(--fedramp-blue); 
+                                color: white; 
+                                border: none; 
+                                padding: 4px 8px; 
+                                border-radius: 4px; 
+                                font-size: 0.8rem; 
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            " 
+                            onmouseover="this.style.background='var(--fedramp-dark)'" 
+                            onmouseout="this.style.background='var(--fedramp-blue)'">
+                                🔍 View CLI Command
+                            </button>
+                            <div id="cli-${index}" class="cli-details" style="
+                                display: none; 
+                                margin-top: 8px; 
+                                padding: 8px; 
+                                background: #f1f5f9; 
+                                border-radius: 4px; 
+                                font-family: monospace; 
+                                font-size: 0.8rem; 
+                                border-left: 3px solid var(--fedramp-blue);
+                                max-height: 150px;
+                                overflow-y: auto;
+                                word-break: break-all;
+                            ">
+                                <strong>Command:</strong><br>
+                                ${cliCommand}<br><br>
+                                <strong>Full Details:</strong><br>
+                                ${fullReason}
+                                ${validation.cli_output_interpretation ? `<br><br><strong>Output Analysis:</strong><br>${validation.cli_output_interpretation}` : ''}
+                            </div>
+                        </div>
                     </div>
                 `;
                 
                 grid.appendChild(card);
             });
         }
+
+        // Toggle CLI details display (like old dashboard)
+        function toggleCliDetails(elementId) {
+            const element = document.getElementById(elementId);
+            if (element.style.display === 'none' || element.style.display === '') {
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+
+        // Make toggleCliDetails globally available
+        window.toggleCliDetails = toggleCliDetails;
 
         // Update timeline with commit metadata
         function updateTimelineWithMetadata(metadataData) {
