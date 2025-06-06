@@ -1,13 +1,13 @@
 # KSI-PIY-07: Document risk management decisions for software supply chain security
 
-*Generated on 2025-06-06 10:05:53 UTC*
+*Generated on 2025-06-06 10:12:33 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-07`
 **Description:** Document risk management decisions for software supply chain security
 **Justification:** Manual evidence required - supply chain risk management documentation and decisions
-**Last Validation:** ❌ 2025-06-06T10:05:53.265875
+**Last Validation:** ❌ 2025-06-06T10:12:33.758221
 **Result:** ❌ No supply chain risk management documentation found in evidence_v2/KSI-PIY-07/
 
 ## 🛠️ Implementation

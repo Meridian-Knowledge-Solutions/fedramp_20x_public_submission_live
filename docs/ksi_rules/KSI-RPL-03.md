@@ -1,14 +1,14 @@
 # KSI-RPL-03: Perform system backups aligned with recovery objectives
 
-*Generated on 2025-06-06 10:05:53 UTC*
+*Generated on 2025-06-06 10:12:33 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-03`
 **Description:** Perform system backups aligned with recovery objectives
 **Justification:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives INCLUDING retention policies
-**Last Validation:** ❌ 2025-06-06T10:05:53.266733
-**Result:** ❌ Insufficient backup implementation: ❌ No AWS Backup plans configured; ℹ️ No EBS snapshots (using AWS Backup exclusively - acceptable)
+**Last Validation:** ❌ 2025-06-06T10:12:33.759056
+**Result:** ❌ Insufficient backup implementation: ❌ No AWS Backup plans configured; ℹ️ No EBS snapshots (using AWS Backup exclusively)
 
 ## 🛠️ Implementation
 
@@ -36,17 +36,17 @@
 
 **Function:** `evaluate_KSI_RPL_03`
 
-**Documentation:** WORKING: KSI-RPL-03: Perform system backups aligned with recovery objectives
+**Documentation:** FIXED: KSI-RPL-03: Perform system backups aligned with recovery objectives
 
-VALIDATES: Backup retention policies, lifecycle management, and FedRAMP compliance
+BUG FIX: Corrected command parsing logic to distinguish between list-backup-plans and get-backup-plan
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_RPL_03(cli_output):
     """
-    WORKING: KSI-RPL-03: Perform system backups aligned with recovery objectives
+    FIXED: KSI-RPL-03: Perform system backups aligned with recovery objectives
     
-    VALIDATES: Backup retention policies, lifecycle management, and FedRAMP compliance
+    BUG FIX: Corrected command parsing logic to distinguish between list-backup-plans and get-backup-plan
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
@@ -61,7 +61,7 @@ def evaluate_KSI_RPL_03(cli_output):
             continue
         if "list-backup-plans" in cli_command:
             backup_plans = raw_output.get("BackupPlansList", [])
-        elif "get-backup-plan" in cli_command:
+        elif "get-backup-plan" in cli_command:  # This was being missed!
     # ... (additional validation logic) ...
 ```
 
