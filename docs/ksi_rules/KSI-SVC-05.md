@@ -1,13 +1,13 @@
 # KSI-SVC-05: Enforce system integrity through cryptographic means
 
-*Generated on 2025-06-06 06:36:35 UTC*
+*Generated on 2025-06-06 06:57:45 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-05`
 **Description:** Enforce system integrity through cryptographic means
 **Justification:** Validates integrity protection through CloudTrail log file validation and file integrity monitoring
-**Last Validation:** ✅ 2025-06-06T06:36:35.352575
+**Last Validation:** ✅ 2025-06-06T06:57:45.555144
 **Result:** ✅ Cryptographic integrity mechanisms: ✅ 1 CloudTrail trails (1 with log file validation)
 
 ## 🛠️ Implementation

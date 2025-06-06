@@ -1,13 +1,13 @@
 # KSI-RPL-02: Develop and maintain a recovery plan that aligns with defined recovery objectives
 
-*Generated on 2025-06-06 06:36:35 UTC*
+*Generated on 2025-06-06 06:57:45 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-02`
 **Description:** Develop and maintain a recovery plan that aligns with defined recovery objectives
 **Justification:** Manual evidence required - disaster recovery plans, incident response procedures, and recovery playbooks
-**Last Validation:** ❌ 2025-06-06T06:36:35.352925
+**Last Validation:** ❌ 2025-06-06T06:57:45.555456
 **Result:** ❌ No comprehensive recovery plan found in evidence_v2/KSI-RPL-02/
 
 ## 🛠️ Implementation

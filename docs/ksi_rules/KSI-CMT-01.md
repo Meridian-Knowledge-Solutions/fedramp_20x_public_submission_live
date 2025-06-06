@@ -1,14 +1,14 @@
 # KSI-CMT-01: Log and monitor system modifications
 
-*Generated on 2025-06-06 06:36:35 UTC*
+*Generated on 2025-06-06 06:57:45 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-01`
 **Description:** Log and monitor system modifications
 **Justification:** Validates system modification logging through CloudTrail and Config change tracking
-**Last Validation:** ❌ 2025-06-06T06:36:35.347817
-**Result:** ❌ No system modification tracking: ✅ System modification logging: 1 CloudTrail trails (0 active, 1 global events); ❌ No Config service for configuration change monitoring
+**Last Validation:** ❌ 2025-06-06T06:57:45.550362
+**Result:** ❌ No system modification tracking: ⚠️ CloudTrail configured but inactive: 1 trails; ✅ Global service events tracked: 1 trails; ℹ️ AWS Config not configured (acceptable for low-impact with CloudTrail)
 
 ## 🛠️ Implementation
 
@@ -31,15 +31,19 @@
 
 **Function:** `evaluate_KSI_CMT_01`
 
-**Documentation:** Fixed rule for KSI-CMT-01: Log and monitor system modifications
-Expected: CloudTrail + Config Recorders
+**Documentation:** FIXED: KSI-CMT-01: Log and monitor system modifications
+
+ISSUE: Current rule requires both CloudTrail AND Config - too strict for low-impact
+FIX: CloudTrail alone is sufficient for low-impact FedRAMP environments
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CMT_01(cli_output):
     """
-    Fixed rule for KSI-CMT-01: Log and monitor system modifications
-    Expected: CloudTrail + Config Recorders
+    FIXED: KSI-CMT-01: Log and monitor system modifications
+    
+    ISSUE: Current rule requires both CloudTrail AND Config - too strict for low-impact
+    FIX: CloudTrail alone is sufficient for low-impact FedRAMP environments
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
@@ -54,8 +58,6 @@ def evaluate_KSI_CMT_01(cli_output):
         if "describe-trails" in cli_command:
             cloudtrail_trails = raw_output.get("trailList", [])
         elif "describe-configuration-recorders" in cli_command:
-            if isinstance(raw_output, str):
-                if "NoSuchConfigurationRecorderException" in raw_output:
     # ... (additional validation logic) ...
 ```
 

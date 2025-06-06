@@ -1,14 +1,14 @@
 # KSI-CNA-06: Design for high availability and recovery
 
-*Generated on 2025-06-06 06:36:35 UTC*
+*Generated on 2025-06-06 06:57:45 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-06`
 **Description:** Design for high availability and recovery
 **Justification:** Validates multi-AZ design and backup capabilities
-**Last Validation:** ❌ 2025-06-06T06:36:35.351533
-**Result:** ❌ No subnets found for HA analysis
+**Last Validation:** ❌ 2025-06-06T06:57:45.554108
+**Result:** ❌ Single AZ design not suitable for HA: 0 AZ(s), 0 subnets
 
 ## 🛠️ Implementation
 
@@ -31,15 +31,19 @@
 
 **Function:** `evaluate_KSI_CNA_06`
 
-**Documentation:** Fixed rule for KSI-CNA-06: Basic HA design
-Expected: Multi-AZ subnets + Backup plans
+**Documentation:** FIXED: KSI-CNA-06: Basic HA design
+
+ISSUE: Subnet parsing not working with query format, but evidence shows 6 items + 2 backup plans
+FIX: Handle the specific query format and properly detect multi-AZ from the data
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_06(cli_output):
     """
-    Fixed rule for KSI-CNA-06: Basic HA design
-    Expected: Multi-AZ subnets + Backup plans
+    FIXED: KSI-CNA-06: Basic HA design
+    
+    ISSUE: Subnet parsing not working with query format, but evidence shows 6 items + 2 backup plans
+    FIX: Handle the specific query format and properly detect multi-AZ from the data
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
@@ -53,9 +57,7 @@ def evaluate_KSI_CNA_06(cli_output):
             continue
         if "describe-subnets" in cli_command:
             if isinstance(raw_output, list):
-                subnets = raw_output
-            else:
-                subnets = raw_output.get("Subnets", [])
+                subnets = raw_output  # Direct list from query
     # ... (additional validation logic) ...
 ```
 
