@@ -1,14 +1,14 @@
 # KSI-RPL-03: Perform system backups aligned with recovery objectives
 
-*Generated on 2025-06-06 10:12:33 UTC*
+*Generated on 2025-06-06 10:20:01 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-03`
 **Description:** Perform system backups aligned with recovery objectives
 **Justification:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives INCLUDING retention policies
-**Last Validation:** ❌ 2025-06-06T10:12:33.759056
-**Result:** ❌ Insufficient backup implementation: ❌ No AWS Backup plans configured; ℹ️ No EBS snapshots (using AWS Backup exclusively)
+**Last Validation:** ✅ 2025-06-06T10:20:00.967955
+**Result:** ✅ System backups with compliant retention aligned with recovery objectives: ✅ Backup infrastructure: 2 AWS Backup plans (Dailybackup, Monthly); ✅ Adequate retention: 35 days meets FedRAMP minimum (rule: DailyBackups); ✅ Full retention compliance: 1/1 rules meet requirements; ℹ️ No EBS snapshots (acceptable if using AWS Backup exclusively)
 
 ## 🛠️ Implementation
 
@@ -36,32 +36,32 @@
 
 **Function:** `evaluate_KSI_RPL_03`
 
-**Documentation:** FIXED: KSI-RPL-03: Perform system backups aligned with recovery objectives
+**Documentation:** FRESH BUILD: KSI-RPL-03: Perform system backups aligned with recovery objectives
 
-BUG FIX: Corrected command parsing logic to distinguish between list-backup-plans and get-backup-plan
+Built from scratch based on actual data structure analysis
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_RPL_03(cli_output):
     """
-    FIXED: KSI-RPL-03: Perform system backups aligned with recovery objectives
+    FRESH BUILD: KSI-RPL-03: Perform system backups aligned with recovery objectives
     
-    BUG FIX: Corrected command parsing logic to distinguish between list-backup-plans and get-backup-plan
+    Built from scratch based on actual data structure analysis
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
-    backup_plans = None
+    backup_plans_found = []
     backup_plan_details = None
-    ebs_snapshots = None
+    snapshots_count = 0
     for cmd in commands:
+        if cmd.get("status") != "success":
+            continue
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
-        if not isinstance(raw_output, dict):
-            continue
-        if "list-backup-plans" in cli_command:
-            backup_plans = raw_output.get("BackupPlansList", [])
-        elif "get-backup-plan" in cli_command:  # This was being missed!
+        if cli_command.startswith("aws backup get-backup-plan"):
+            backup_plan = raw_output.get("BackupPlan", {})
+            if backup_plan:
     # ... (additional validation logic) ...
 ```
 
