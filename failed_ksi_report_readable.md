@@ -1,557 +1,395 @@
 # ❌ Failed KSI Validation Report
 
-**Generated:** 2025-06-06T03:12:25.425918Z
-**Total Failures:** 50
+*Automated report generated from FedRAMP 20x validation pipeline*
+
+## 📊 Executive Summary
+
+- **Overall Pass Rate:** 32.7% (17/52)
+- **Failed KSIs:** 35
+- **Validation Method:** multi-command-v2
+- **Last Updated:** 2025-06-06T03:48:06.017208Z
+
+### Category Breakdown
+- **KSI-CNA** (Cloud Native Architecture): 5/7 failed
+- **KSI-CMT** (Change Management): 3/5 failed
+- **KSI-IAM** (Identity and Access Management): 5/6 failed
+- **KSI-SVC** (Service Configuration): 5/7 failed
+- **KSI-CED** (Cybersecurity Education): 1/2 failed
+- **KSI-MLA** (Monitoring, Logging, and Auditing): 4/6 failed
+- **KSI-PIY** (Policy and Inventory): 2/7 failed
+- **KSI-RPL** (Recovery Planning): 4/4 failed
+- **terraform** (Unknown category): 1/1 failed
+- **KSI-TPR** (Third-Party Information Resources): 3/4 failed
+- **KSI-INR** (Incident Reporting): 2/3 failed
 
 ---
 
-## ❌ KSI-CMT-03: Change Management
+## ❌ Failed KSI Details
 
-- **Validation ID:** `KSI-CMT-03`  
-- **KSI Family:** Change Management  
-- **Assertion Reason:** ❌ No check build presence (Items) found  
-- **CLI Command:** `aws codebuild list-projects`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.375584  
+### KSI-CED: Cybersecurity Education
 
----
+#### ❌ KSI-CED-01
 
-## ❌ KSI-IAM-06: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-06`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM roles found — cannot evaluate privileged disablement readiness  
-- **CLI Command:** `aws iam list-users --query 'Users[?contains(UserName, `admin`) || contains(UserName, `root`)]' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.375694  
+**Control:** Cybersecurity Education
+**Reason:** ❌ No IAM users or static training evidence found
+**Commands:** `1 commands (0 successful): aws iam list-users`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | 👤 3 IAM users found
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-IAM-06: Identity and Access Management
+### KSI-CMT: Change Management
 
-- **Validation ID:** `KSI-IAM-06`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM roles found — cannot evaluate privileged disablement readiness  
-- **CLI Command:** `aws logs describe-log-groups --log-group-name-prefix '/aws/lambda' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.375698  
+#### ❌ KSI-CMT-01
 
----
+**Control:** Change Management
+**Reason:** ❌ No CloudTrail trails found — cannot verify config change monitoring
+**Commands:** `1 commands (0 successful): aws cloudtrail describe-trails`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | 📊 1 CloudTrail configurations
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-IAM-06: Identity and Access Management
+#### ❌ KSI-CMT-02
 
-- **Validation ID:** `KSI-IAM-06`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM roles found — cannot evaluate privileged disablement readiness  
-- **CLI Command:** `aws events list-rules --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.375700  
+**Control:** Change Management
+**Reason:** ❌ No active StackSets found — cannot confirm redeployment model for infrastructure changes
+**Commands:** `1 commands (0 successful): aws cloudformation list-stack-sets --status ACTIVE`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
----
+#### ❌ KSI-CMT-03
 
-## ❌ KSI-IAM-06: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-06`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM roles found — cannot evaluate privileged disablement readiness  
-- **CLI Command:** `aws cloudwatch describe-alarms --alarm-names 'HighPrivilegedActivity' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.375705  
+**Control:** Change Management
+**Reason:** ❌ No check build presence (Items) found
+**Commands:** `1 commands (0 successful): aws codebuild list-projects`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-IAM-06: Identity and Access Management
+### KSI-CNA: Cloud Native Architecture
 
-- **Validation ID:** `KSI-IAM-06`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM roles found — cannot evaluate privileged disablement readiness  
-- **CLI Command:** `aws iam generate-credential-report --output json && aws iam get-credential-report --output text`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.375707  
+#### ❌ KSI-CNA-01
 
----
+**Control:** Cloud Native Architecture
+**Reason:** ❌ No security groups returned
+**Commands:** `1 commands (0 successful): aws ec2 describe-security-groups`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | 🛡️ 1 security groups analyzed
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-IAM-01: Identity and Access Management
+#### ❌ KSI-CNA-02
 
-- **Validation ID:** `KSI-IAM-01`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ Rule error: 'str' object has no attribute 'get'  
-- **CLI Command:** `REDACTED_FOR_SECURITY`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.375949  
+**Control:** Cloud Native Architecture
+**Reason:** ❌ No subnets found — cannot evaluate segmentation
+**Commands:** `1 commands (0 successful): aws ec2 describe-subnets`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
----
+#### ❌ KSI-CNA-03
 
-## ❌ KSI-MLA-02: Monitoring, Logging, and Auditing
+**Control:** Cloud Native Architecture
+**Reason:** ❌ No route tables found to evaluate
+**Commands:** `1 commands (0 successful): aws ec2 describe-route-tables`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-- **Validation ID:** `KSI-MLA-02`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No CloudTrail trails found  
-- **CLI Command:** `aws cloudwatch describe-alarms --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.376155  
+#### ❌ KSI-CNA-05
 
----
+**Control:** Cloud Native Architecture
+**Reason:** ❌ No WAFv2 WebACLs found (WebACLs list empty)
+**Commands:** `1 commands (0 successful): aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-MLA-02: Monitoring, Logging, and Auditing
+#### ❌ KSI-CNA-06
 
-- **Validation ID:** `KSI-MLA-02`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No CloudTrail trails found  
-- **CLI Command:** `aws logs describe-metric-filters --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.376159  
-
----
-
-## ❌ KSI-MLA-02: Monitoring, Logging, and Auditing
-
-- **Validation ID:** `KSI-MLA-02`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No CloudTrail trails found  
-- **CLI Command:** `aws events list-rules --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.376161  
+**Control:** Cloud Native Architecture
+**Reason:** ❌ No route tables found for HA routing
+**Commands:** `1 commands (0 successful): aws ec2 describe-route-tables`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-MLA-02: Monitoring, Logging, and Auditing
+### KSI-IAM: Identity and Access Management
 
-- **Validation ID:** `KSI-MLA-02`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No CloudTrail trails found  
-- **CLI Command:** `aws lambda list-functions --query 'Functions[?contains(FunctionName, `log`) || contains(FunctionName, `audit`)]' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.376163  
+#### ❌ KSI-IAM-02
 
----
+**Control:** Identity and Access Management
+**Reason:** ❌ No users found — identity model appears empty
+**Commands:** `4 commands (3 successful): REDACTED_FOR_SECURITY; aws iam list-mfa-devices --output json (+2 more)`
+**Evidence Analysis:** ⚠️ 1/4 commands failed execution | 📋 3 items retrieved | 🔐 1 MFA devices detected | ⚠️ No usable output
+**Commands Executed:** 4
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-MLA-02: Monitoring, Logging, and Auditing
+#### ❌ KSI-IAM-03
 
-- **Validation ID:** `KSI-MLA-02`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No CloudTrail trails found  
-- **CLI Command:** `aws opensearch list-domain-names --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.376165  
+**Control:** Identity and Access Management
+**Reason:** ❌ No IAM roles found — cannot verify role granularity for service accounts
+**Commands:** `4 commands (3 successful): aws iam list-roles --output json; aws iam list-instance-profiles --output json (+2 more)`
+**Evidence Analysis:** ⚠️ 1/4 commands failed execution | ✅ Command output received | ✅ Command output received | ✅ Command output received
+**Commands Executed:** 4
+**Validated:** 2025-06-06 03:48:05 UTC
 
----
+#### ❌ KSI-IAM-04
 
-## ❌ KSI-MLA-06: Monitoring, Logging, and Auditing
+**Control:** Identity and Access Management
+**Reason:** ❌ No IAM principals or policies found — cannot confirm least-privileged access model
+**Commands:** `5 commands (4 successful): aws iam list-roles --output json; aws iam list-policies --scope Local --output json (+3 more)`
+**Evidence Analysis:** ⚠️ 1/5 commands failed execution | ✅ Command output received | ✅ Command output received | ⚠️ No usable output
+**Commands Executed:** 5
+**Validated:** 2025-06-06 03:48:05 UTC
 
-- **Validation ID:** `KSI-MLA-06`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Rule error: 'list' object has no attribute 'get'  
-- **CLI Command:** `aws securityhub get-findings --query 'Findings[?Compliance.Status==`FAILED`]' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.379642  
+#### ❌ KSI-IAM-05
 
----
+**Control:** Identity and Access Management
+**Reason:** ❌ No IAM summary map found — unable to assess zero trust posture
+**Commands:** `5 commands (4 successful): aws iam list-policies --scope AWS --query 'Policies[?contains(PolicyName, `Condition`)]' --output json; aws logs describe-log-groups --log-group-name-prefix '/aws/cloudtr...`
+**Evidence Analysis:** ⚠️ 1/5 commands failed execution | ⚠️ No usable output | ✅ Command output received | ⚠️ No usable output
+**Commands Executed:** 5
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-MLA-06: Monitoring, Logging, and Auditing
+#### ❌ KSI-IAM-06
 
-- **Validation ID:** `KSI-MLA-06`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No Security Hub findings found  
-- **CLI Command:** `aws ssm describe-patch-group-state --patch-group production --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.379648  
-
----
-
-## ❌ KSI-MLA-06: Monitoring, Logging, and Auditing
-
-- **Validation ID:** `KSI-MLA-06`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Rule error: 'str' object has no attribute 'get'  
-- **CLI Command:** `aws inspector2 list-findings --filter-criteria '{"severities":[{"comparison":"EQUALS","value":"CRITICAL"},{"comparison":"EQUALS","value":"HIGH"}]}' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.379652  
+**Control:** Identity and Access Management
+**Reason:** ❌ No IAM roles found — cannot evaluate privileged disablement readiness
+**Commands:** `5 commands (5 successful): aws iam list-users --query 'Users[?contains(UserName, `admin`) || contains(UserName, `root`)]' --output json; aws logs describe-log-groups --log-group-name-prefix '/aws/l...`
+**Evidence Analysis:** ✅ All 5 commands executed successfully | ⚠️ No usable output | ✅ Command output received | ✅ Command output received
+**Commands Executed:** 5
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-MLA-06: Monitoring, Logging, and Auditing
+### KSI-INR: Incident Reporting
 
-- **Validation ID:** `KSI-MLA-06`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Rule error: 'str' object has no attribute 'get'  
-- **CLI Command:** `aws support describe-cases --language en --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.379655  
+#### ❌ KSI-INR-01
 
----
+**Control:** Incident Reporting
+**Reason:** ❌ No SecurityHub findings found — incident reporting may not be active
+**Commands:** `1 commands (0 successful): aws securityhub get-findings --max-results 1`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | 🔍 1 security findings
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-MLA-06: Monitoring, Logging, and Auditing
+#### ❌ KSI-INR-02
 
-- **Validation ID:** `KSI-MLA-06`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No Security Hub findings found  
-- **CLI Command:** `aws organizations list-accounts --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.379657  
-
----
-
-## ❌ KSI-PIY-05: Policy and Inventory
-
-- **Validation ID:** `KSI-PIY-05`  
-- **KSI Family:** Policy and Inventory  
-- **Assertion Reason:** ❌ No AWS Config rules found (ConfigRules list empty)  
-- **CLI Command:** `aws configservice describe-config-rules --max-results 1`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.380053  
+**Control:** Incident Reporting
+**Reason:** ❌ No Security Hub findings related to past incidents found (empty Findings list)
+**Commands:** `1 commands (0 successful): aws securityhub get-findings --max-results 1`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | 🔍 1 security findings
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-CNA-05: Cloud Native Architecture
+### KSI-MLA: Monitoring, Logging, and Auditing
 
-- **Validation ID:** `KSI-CNA-05`  
-- **KSI Family:** Cloud Native Architecture  
-- **Assertion Reason:** ❌ No WAFv2 WebACLs found (WebACLs list empty)  
-- **CLI Command:** `aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.380261  
+#### ❌ KSI-MLA-01
 
----
+**Control:** Monitoring, Logging, and Auditing
+**Reason:** ❌ No CloudWatch log groups found — SIEM visibility not verifiable
+**Commands:** `5 commands (3 successful): aws cloudtrail describe-trails --output json; aws logs describe-log-groups --output json (+3 more)`
+**Evidence Analysis:** ⚠️ 2/5 commands failed execution | 📊 1 CloudTrail configurations | ✅ Command output received | ⚠️ No usable output
+**Commands Executed:** 5
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-TPR-01: Third-Party Information Resources
+#### ❌ KSI-MLA-02
 
-- **Validation ID:** `KSI-TPR-01`  
-- **KSI Family:** Third-Party Information Resources  
-- **Assertion Reason:** ❌ No active Access Analyzers found — unable to evaluate third-party access risk  
-- **CLI Command:** `REDACTED_FOR_SECURITY`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.380722  
+**Control:** Monitoring, Logging, and Auditing
+**Reason:** ❌ No CloudTrail trails found
+**Commands:** `5 commands (5 successful): aws cloudwatch describe-alarms --output json; aws logs describe-metric-filters --output json (+3 more)`
+**Evidence Analysis:** ✅ All 5 commands executed successfully | ✅ Command output received | ✅ Command output received | ✅ Command output received
+**Commands Executed:** 5
+**Validated:** 2025-06-06 03:48:05 UTC
 
----
+#### ❌ KSI-MLA-05
 
-## ❌ KSI-MLA-05: Monitoring, Logging, and Auditing
+**Control:** Monitoring, Logging, and Auditing
+**Reason:** ❌ No AWS Config rules found — cannot confirm IaC evaluation
+**Commands:** `5 commands (3 successful): aws config describe-config-rules --output json; aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json (+3 more)`
+**Evidence Analysis:** ⚠️ 2/5 commands failed execution | ⚠️ No usable output | 🏗️ 2 CloudFormation stacks | ⚠️ No usable output
+**Commands Executed:** 5
+**Validated:** 2025-06-06 03:48:05 UTC
 
-- **Validation ID:** `KSI-MLA-05`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Rule error: 'str' object has no attribute 'get'  
-- **CLI Command:** `aws config describe-config-rules --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.381031  
+#### ❌ KSI-MLA-06
 
----
-
-## ❌ KSI-MLA-05: Monitoring, Logging, and Auditing
-
-- **Validation ID:** `KSI-MLA-05`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No AWS Config rules found — cannot confirm IaC evaluation  
-- **CLI Command:** `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.381034  
+**Control:** Monitoring, Logging, and Auditing
+**Reason:** ❌ No Security Hub findings found
+**Commands:** `5 commands (3 successful): aws securityhub get-findings --query 'Findings[?Compliance.Status==`FAILED`]' --output json; aws ssm describe-patch-group-state --patch-group production --output json (+3...`
+**Evidence Analysis:** ⚠️ 2/5 commands failed execution | 📋 118 items retrieved | ✅ Command output received | ⚠️ No usable output
+**Commands Executed:** 5
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-MLA-05: Monitoring, Logging, and Auditing
+### KSI-PIY: Policy and Inventory
 
-- **Validation ID:** `KSI-MLA-05`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Rule error: 'str' object has no attribute 'get'  
-- **CLI Command:** `aws cloudformation detect-stack-drift --stack-name production-stack --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.381037  
+#### ❌ KSI-PIY-02
 
----
+**Control:** Policy and Inventory
+**Reason:** ❌ No IAM policies found (Policies list empty)
+**Commands:** `1 commands (0 successful): aws iam list-policies --max-items 5`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-MLA-05: Monitoring, Logging, and Auditing
+#### ❌ KSI-PIY-05
 
-- **Validation ID:** `KSI-MLA-05`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No AWS Config rules found — cannot confirm IaC evaluation  
-- **CLI Command:** `aws codeartifact list-repositories --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.381039  
-
----
-
-## ❌ KSI-MLA-05: Monitoring, Logging, and Auditing
-
-- **Validation ID:** `KSI-MLA-05`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No AWS Config rules found — cannot confirm IaC evaluation  
-- **CLI Command:** `aws codebuild list-projects --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.381041  
+**Control:** Policy and Inventory
+**Reason:** ❌ No AWS Config rules found (ConfigRules list empty)
+**Commands:** `1 commands (0 successful): aws configservice describe-config-rules --max-results 1`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ❌ 
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-MLA-04: Monitoring, Logging, and Auditing
+### KSI-RPL: Recovery Planning
 
-- **Validation ID:** `KSI-MLA-04`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Rule error: 'str' object has no attribute 'get'  
-- **CLI Command:** `aws inspector2 get-configuration --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382387  
+#### ❌ KSI-RPL-01
 
----
+**Control:** Recovery Planning
+**Reason:** ❌ No backup plans found (BackupPlansList empty)
+**Commands:** `1 commands (0 successful): aws backup list-backup-plans`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | 💾 2 backup plans configured
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-MLA-04: Monitoring, Logging, and Auditing
+#### ❌ KSI-RPL-02
 
-- **Validation ID:** `KSI-MLA-04`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Rule error: 'list' object has no attribute 'get'  
-- **CLI Command:** `aws securityhub get-findings --query 'Findings[?ProductName==`Inspector`]' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382396  
+**Control:** Recovery Planning
+**Reason:** ❌ No backup plans found — unable to confirm backup targets
+**Commands:** `1 commands (0 successful): aws backup list-backup-plans`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | 💾 2 backup plans configured
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
----
+#### ❌ KSI-RPL-03
 
-## ❌ KSI-MLA-04: Monitoring, Logging, and Auditing
+**Control:** Recovery Planning
+**Reason:** ❌ No backup plans found — unable to verify recovery posture definition
+**Commands:** `1 commands (0 successful): aws backup list-backup-plans`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | 💾 2 backup plans configured
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-- **Validation ID:** `KSI-MLA-04`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Rule error: 'list' object has no attribute 'get'  
-- **CLI Command:** `aws ec2 describe-instances --query 'Reservations[*].Instances[*].{InstanceId:InstanceId,State:State.Name,SecurityGroups:SecurityGroups}' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382401  
+#### ❌ KSI-RPL-04
 
----
-
-## ❌ KSI-IAM-04: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-04`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM principals or policies found — cannot confirm least-privileged access model  
-- **CLI Command:** `aws iam list-roles --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382671  
+**Control:** Recovery Planning
+**Reason:** ❌ No backup jobs found (BackupJobs list empty)
+**Commands:** `1 commands (0 successful): aws backup list-backup-jobs`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ❌ Output too large or not JSON serializable
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-IAM-04: Identity and Access Management
+### KSI-SVC: Service Configuration
 
-- **Validation ID:** `KSI-IAM-04`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ Unexpected output format  
-- **CLI Command:** `aws iam list-attached-role-policies --role-name AdminRole --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382684  
+#### ❌ KSI-SVC-01
 
----
+**Control:** Service Configuration
+**Reason:** ❌ Unexpected structure or missing InstanceInformationList in output.
+**Commands:** `1 commands (0 successful): aws ssm describe-instance-information --max-results 5`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-IAM-04: Identity and Access Management
+#### ❌ KSI-SVC-02
 
-- **Validation ID:** `KSI-IAM-04`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM principals or policies found — cannot confirm least-privileged access model  
-- **CLI Command:** `aws iam generate-credential-report --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382689  
+**Control:** Service Configuration
+**Reason:** ❌ No load balancers found — unable to confirm network encryption enforcement
+**Commands:** `1 commands (0 successful): aws elbv2 describe-load-balancers`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
----
+#### ❌ KSI-SVC-03
 
-## ❌ KSI-IAM-04: Identity and Access Management
+**Control:** Service Configuration
+**Reason:** ❌ No KMS keys found — unable to confirm encryption infrastructure readiness
+**Commands:** `1 commands (0 successful): REDACTED_FOR_SECURITY`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-- **Validation ID:** `KSI-IAM-04`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ Unexpected output format  
-- **CLI Command:** `aws iam get-credential-report --output text`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382692  
+#### ❌ KSI-SVC-05
 
----
+**Control:** Service Configuration
+**Reason:** ❌ No AMIs found — unable to confirm cryptographic enforcement of system image integrity
+**Commands:** `1 commands (0 successful): aws ec2 describe-images`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ❌ Output too large or not JSON serializable
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-TPR-03: Third-Party Information Resources
+#### ❌ KSI-SVC-06
 
-- **Validation ID:** `KSI-TPR-03`  
-- **KSI Family:** Third-Party Information Resources  
-- **Assertion Reason:** ❌ No Inspector2 scan coverage or fallback member evidence found  
-- **CLI Command:** `aws inspector2 list-members`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382828  
-
----
-
-## ❌ KSI-SVC-02: Service Configuration
-
-- **Validation ID:** `KSI-SVC-02`  
-- **KSI Family:** Service Configuration  
-- **Assertion Reason:** ❌ No load balancers found — unable to confirm network encryption enforcement  
-- **CLI Command:** `aws elbv2 describe-load-balancers`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382879  
+**Control:** Service Configuration
+**Reason:** ❌ No KMS keys found — cannot confirm key lifecycle management
+**Commands:** `1 commands (0 successful): REDACTED_FOR_SECURITY`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-IAM-05: Identity and Access Management
+### KSI-TPR: Third-Party Information Resources
 
-- **Validation ID:** `KSI-IAM-05`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ Rule error: 'list' object has no attribute 'get'  
-- **CLI Command:** `aws iam list-policies --scope AWS --query 'Policies[?contains(PolicyName, `Condition`)]' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382961  
+#### ❌ KSI-TPR-01
 
----
+**Control:** Third-Party Information Resources
+**Reason:** ❌ No active Access Analyzers found — unable to evaluate third-party access risk
+**Commands:** `1 commands (0 successful): REDACTED_FOR_SECURITY`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
-## ❌ KSI-IAM-05: Identity and Access Management
+#### ❌ KSI-TPR-03
 
-- **Validation ID:** `KSI-IAM-05`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM summary map found — unable to assess zero trust posture  
-- **CLI Command:** `aws logs describe-log-groups --log-group-name-prefix '/aws/cloudtrail' --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382964  
+**Control:** Third-Party Information Resources
+**Reason:** ❌ No Inspector2 scan coverage or fallback member evidence found
+**Commands:** `1 commands (0 successful): aws inspector2 list-members`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
----
+#### ❌ KSI-TPR-04
 
-## ❌ KSI-IAM-05: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-05`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ Rule error: 'str' object has no attribute 'get'  
-- **CLI Command:** `REDACTED_FOR_SECURITY`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382967  
+**Control:** Third-Party Information Resources
+**Reason:** ❌ No upstream alerting findings and no static attestation found.
+**Commands:** `1 commands (0 successful): aws securityhub get-findings --max-results 1`
+**Evidence Analysis:** ⚠️ 1/1 commands failed execution | 🔍 1 security findings
+**Commands Executed:** 1
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
 
-## ❌ KSI-IAM-05: Identity and Access Management
+### terraform: Unknown category
 
-- **Validation ID:** `KSI-IAM-05`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM summary map found — unable to assess zero trust posture  
-- **CLI Command:** `aws organizations list-accounts --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382969  
+#### ❌ terraform
 
----
-
-## ❌ KSI-IAM-05: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-05`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM summary map found — unable to assess zero trust posture  
-- **CLI Command:** `REDACTED_FOR_SECURITY`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.382971  
+**Control:** Unknown category
+**Reason:** ❌ No cli_output.json file found
+**Evidence Analysis:** ❌ No CLI output file found
+**Commands Executed:** 0
+**Validated:** 2025-06-06 03:48:05 UTC
 
 ---
+## 🔧 Remediation Guidance
 
-## ❌ KSI-CNA-03: Cloud Native Architecture
-
-- **Validation ID:** `KSI-CNA-03`  
-- **KSI Family:** Cloud Native Architecture  
-- **Assertion Reason:** ❌ Found 1 public route(s) not scoped for utility/bastion use: rtb-0ed80c2df92e37cad  
-- **CLI Command:** `aws ec2 describe-route-tables`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383162  
-
+### Configuration Issues (35 KSIs)
+- **Action:** Review and fix AWS service configurations
+- **Priority:** Medium - Configuration changes needed
+- **Affected KSIs:** KSI-CNA-02, KSI-CMT-03, KSI-IAM-06, KSI-CNA-01, KSI-CED-01, KSI-CMT-01, KSI-MLA-02, KSI-SVC-01, KSI-RPL-01, terraform, KSI-MLA-06, KSI-TPR-04, KSI-INR-02, KSI-PIY-05, KSI-RPL-04, KSI-PIY-02, KSI-CNA-05, KSI-CNA-06, KSI-TPR-01, KSI-CMT-02, KSI-SVC-03, KSI-SVC-05, KSI-RPL-02, KSI-MLA-05, KSI-IAM-04, KSI-SVC-06, KSI-TPR-03, KSI-SVC-02, KSI-IAM-05, KSI-INR-01, KSI-CNA-03, KSI-IAM-02, KSI-RPL-03, KSI-IAM-03, KSI-MLA-01
 ---
 
-## ❌ KSI-IAM-02: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-02`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No users found — identity model appears empty  
-- **CLI Command:** `aws iam list-mfa-devices --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383228  
-
----
-
-## ❌ KSI-IAM-02: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-02`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ Unexpected output format  
-- **CLI Command:** `REDACTED_FOR_SECURITY`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383230  
-
----
-
-## ❌ KSI-IAM-02: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-02`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No users found — identity model appears empty  
-- **CLI Command:** `REDACTED_FOR_SECURITY`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383231  
-
----
-
-## ❌ KSI-IAM-03: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-03`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM roles found — cannot verify role granularity for service accounts  
-- **CLI Command:** `aws iam list-instance-profiles --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383461  
-
----
-
-## ❌ KSI-IAM-03: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-03`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ No IAM roles found — cannot verify role granularity for service accounts  
-- **CLI Command:** `aws sts get-caller-identity --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383463  
-
----
-
-## ❌ KSI-IAM-03: Identity and Access Management
-
-- **Validation ID:** `KSI-IAM-03`  
-- **KSI Family:** Identity and Access Management  
-- **Assertion Reason:** ❌ Unexpected output format  
-- **CLI Command:** `aws iam list-service-linked-roles --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383465  
-
----
-
-## ❌ KSI-MLA-01: Monitoring, Logging, and Auditing
-
-- **Validation ID:** `KSI-MLA-01`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No CloudWatch log groups found — SIEM visibility not verifiable  
-- **CLI Command:** `aws cloudtrail describe-trails --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383543  
-
----
-
-## ❌ KSI-MLA-01: Monitoring, Logging, and Auditing
-
-- **Validation ID:** `KSI-MLA-01`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Unexpected output format  
-- **CLI Command:** `aws config describe-configuration-recorders --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383549  
-
----
-
-## ❌ KSI-MLA-01: Monitoring, Logging, and Auditing
-
-- **Validation ID:** `KSI-MLA-01`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ Unexpected output format  
-- **CLI Command:** `aws s3api get-bucket-logging --bucket cloudtrail-logs --output json`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383551  
-
----
-
-## ❌ KSI-MLA-01: Monitoring, Logging, and Auditing
-
-- **Validation ID:** `KSI-MLA-01`  
-- **KSI Family:** Monitoring, Logging, and Auditing  
-- **Assertion Reason:** ❌ No CloudWatch log groups found — SIEM visibility not verifiable  
-- **CLI Command:** `REDACTED_FOR_SECURITY`  
-- **Interpretation:** ⚠️ No evidence path specified.  
-- **Timestamp:** 2025-06-06T03:12:25.383553  
-
----
-
+*Report generated on 2025-06-06 03:48:06 UTC*
+*Source: unified_ksi_validations.json*
