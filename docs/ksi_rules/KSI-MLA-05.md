@@ -1,13 +1,13 @@
 # KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
 
-*Generated on 2025-06-06 11:23:25 UTC*
+*Generated on 2025-06-06 11:48:54 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-05`
 **Description:** Perform Infrastructure as Code and configuration evaluation and testing
 **Justification:** Validates IaC security evaluation through Config rules, CloudFormation, and configuration testing
-**Last Validation:** ✅ 2025-06-06T11:23:25.289349
+**Last Validation:** ✅ 2025-06-06T11:48:54.167191
 **Result:** ⚠️ Basic IaC evaluation (needs enhancement): ❌ No Config service for infrastructure evaluation; ✅ Infrastructure as Code: 2/2 successful CloudFormation stacks
 
 ## 🛠️ Implementation
