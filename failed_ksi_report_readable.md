@@ -7,7 +7,7 @@
 - **Overall Pass Rate:** 76.5% (39/51)
 - **Failed KSIs:** 12
 - **Validation Method:** multi-command-v2
-- **Last Updated:** 2025-06-06T09:55:00.645081Z
+- **Last Updated:** 2025-06-06T10:05:53.341320Z
 
 ### Category Breakdown
 - **KSI-CNA** (Cloud Native Architecture): 2/7 failed
@@ -32,7 +32,7 @@
 **Commands:** `2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 #### ❌ KSI-CMT-05
 
@@ -41,7 +41,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 ---
 
@@ -54,7 +54,7 @@
 **Commands:** `1 commands (0 successful): aws shield describe-subscription --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 #### ❌ KSI-CNA-07
 
@@ -63,7 +63,7 @@
 **Commands:** `1 commands (0 successful): aws config describe-config-rules --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 ---
 
@@ -76,7 +76,7 @@
 **Commands:** `2 commands (1 successful): REDACTED_FOR_SECURITY; REDACTED_FOR_SECURITY`
 **Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | ✅ Command output received
 **Commands Executed:** 2
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 ---
 
@@ -89,7 +89,7 @@
 **Commands:** `2 commands (2 successful): aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json; evidence_check`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | 📄 Manual evidence validation
 **Commands Executed:** 2
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 #### ❌ KSI-INR-03
 
@@ -98,7 +98,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 ---
 
@@ -111,7 +111,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 #### ❌ KSI-PIY-07
 
@@ -120,7 +120,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 ---
 
@@ -129,11 +129,11 @@
 #### ❌ KSI-RPL-03
 
 **Control:** Recovery Planning
-**Reason:** ❌ No system backup implementation: ⚠️ No AWS Backup plans found; ℹ️ No EBS snapshots found (acceptable for low-impact if no EBS volumes)
+**Reason:** ❌ Insufficient backup implementation: ❌ No AWS Backup plans configured; ℹ️ No EBS snapshots (using AWS Backup exclusively - acceptable)
 **Commands:** `3 commands (3 successful): aws backup list-backup-plans --output json; aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output ...`
 **Evidence Analysis:** ✅ All 3 commands executed successfully | 💾 2 backup plans configured | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 3
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 ---
 
@@ -146,7 +146,7 @@
 **Commands:** `2 commands (2 successful): REDACTED_FOR_SECURITY; aws acm list-certificates --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 ---
 
@@ -159,7 +159,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 09:55:00 UTC
+**Validated:** 2025-06-06 10:05:53 UTC
 
 ---
 ## 🔧 Remediation Guidance
@@ -180,5 +180,5 @@
 - **Affected KSIs:** KSI-PIY-05, KSI-INR-03, KSI-TPR-03, KSI-PIY-07, KSI-CMT-05
 ---
 
-*Report generated on 2025-06-06 09:55:00 UTC*
+*Report generated on 2025-06-06 10:05:53 UTC*
 *Source: unified_ksi_validations.json*

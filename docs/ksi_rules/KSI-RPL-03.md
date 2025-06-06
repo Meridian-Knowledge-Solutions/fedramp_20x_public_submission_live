@@ -1,14 +1,14 @@
 # KSI-RPL-03: Perform system backups aligned with recovery objectives
 
-*Generated on 2025-06-06 09:55:00 UTC*
+*Generated on 2025-06-06 10:05:53 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-03`
 **Description:** Perform system backups aligned with recovery objectives
 **Justification:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives INCLUDING retention policies
-**Last Validation:** ❌ 2025-06-06T09:55:00.587500
-**Result:** ❌ No system backup implementation: ⚠️ No AWS Backup plans found; ℹ️ No EBS snapshots found (acceptable for low-impact if no EBS volumes)
+**Last Validation:** ❌ 2025-06-06T10:05:53.266733
+**Result:** ❌ Insufficient backup implementation: ❌ No AWS Backup plans configured; ℹ️ No EBS snapshots (using AWS Backup exclusively - acceptable)
 
 ## 🛠️ Implementation
 
@@ -36,32 +36,32 @@
 
 **Function:** `evaluate_KSI_RPL_03`
 
-**Documentation:** KSI-RPL-03: Perform system backups aligned with recovery objectives
+**Documentation:** WORKING: KSI-RPL-03: Perform system backups aligned with recovery objectives
 
-Expected: AWS Backup Plans + EBS Snapshots
+VALIDATES: Backup retention policies, lifecycle management, and FedRAMP compliance
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_RPL_03(cli_output):
     """
-    KSI-RPL-03: Perform system backups aligned with recovery objectives
+    WORKING: KSI-RPL-03: Perform system backups aligned with recovery objectives
     
-    Expected: AWS Backup Plans + EBS Snapshots
+    VALIDATES: Backup retention policies, lifecycle management, and FedRAMP compliance
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     backup_plans = None
+    backup_plan_details = None
     ebs_snapshots = None
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
+        if not isinstance(raw_output, dict):
+            continue
         if "list-backup-plans" in cli_command:
             backup_plans = raw_output.get("BackupPlansList", [])
-        elif "describe-snapshots" in cli_command:
-            ebs_snapshots = raw_output.get("Snapshots", [])
-    findings = []
-    backup_mechanisms = 0
+        elif "get-backup-plan" in cli_command:
     # ... (additional validation logic) ...
 ```
 
