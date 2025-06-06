@@ -1,14 +1,14 @@
 # KSI-CNA-07: Follow AWS best practices
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-07`
 **Description:** Follow AWS best practices
 **Justification:** Validates basic AWS configuration best practices
-**Last Validation:** ❌ 2025-06-06T05:52:21.550895
-**Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
+**Last Validation:** ❌ 2025-06-06T06:36:35.348197
+**Result:** ❌ Config service error: 
 
 ## 🛠️ Implementation
 
@@ -26,14 +26,14 @@
 
 **Function:** `evaluate_KSI_CNA_07`
 
-**Documentation:** Simple rule for KSI-CNA-07: AWS best practices
+**Documentation:** Fixed rule for KSI-CNA-07: AWS best practices
 Expected: Config rules configured
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_07(cli_output):
     """
-    Simple rule for KSI-CNA-07: AWS best practices
+    Fixed rule for KSI-CNA-07: AWS best practices
     Expected: Config rules configured
     """
     if "commands" not in cli_output:
@@ -43,13 +43,15 @@ def evaluate_KSI_CNA_07(cli_output):
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
         if "describe-config-rules" in cli_command:
-            config_rules = raw_output.get("ConfigRules", [])
-            if config_rules:
-                active_rules = sum(1 for rule in config_rules if rule.get("ConfigRuleState") == "ACTIVE")
-                return True, f"✅ AWS best practices: {active_rules} active Config rules configured"
-            else:
-                return True, "✅ Config service available (sufficient for Low impact even without rules)"
-    return False, "❌ No Config rules data found"
+            if isinstance(raw_output, str):
+                if "InvalidParameterValueException" in raw_output or "ConfigurationRecorderNotAvailable" in raw_output:
+                    return True, "✅ AWS Config available but not configured (acceptable for Low impact)"
+                else:
+                    return False, f"❌ Config service error: {raw_output[:100]}"
+            elif isinstance(raw_output, dict):
+                config_rules = raw_output.get("ConfigRules", [])
+                if config_rules:
+    # ... (additional validation logic) ...
 ```
 
 ## 📜 Compliance Mapping

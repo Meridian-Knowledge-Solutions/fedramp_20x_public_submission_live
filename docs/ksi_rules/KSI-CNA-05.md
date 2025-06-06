@@ -1,14 +1,14 @@
 # KSI-CNA-05: Have denial of service protection
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-05`
 **Description:** Have denial of service protection
 **Justification:** Validates basic DDoS protection is enabled
-**Last Validation:** ❌ 2025-06-06T05:52:21.554236
-**Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
+**Last Validation:** ❌ 2025-06-06T06:36:35.351306
+**Result:** ❌ AWS Shield error: 
 
 ## 🛠️ Implementation
 
@@ -26,14 +26,14 @@
 
 **Function:** `evaluate_KSI_CNA_05`
 
-**Documentation:** Simple rule for KSI-CNA-05: Basic DDoS protection
+**Documentation:** Fixed rule for KSI-CNA-05: Basic DDoS protection
 Expected: AWS Shield status
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_05(cli_output):
     """
-    Simple rule for KSI-CNA-05: Basic DDoS protection
+    Fixed rule for KSI-CNA-05: Basic DDoS protection
     Expected: AWS Shield status
     """
     if "commands" not in cli_output:
@@ -43,13 +43,15 @@ def evaluate_KSI_CNA_05(cli_output):
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
         if "describe-subscription" in cli_command:
-            if "SubscriptionArn" in raw_output:
-                return True, "✅ AWS Shield Advanced subscription active"
-            elif not raw_output.get("Error"):
-                return True, "✅ AWS Shield Standard protection active (sufficient for Low impact)"
-            else:
-                return False, "❌ AWS Shield protection not available"
-    return False, "❌ No Shield protection data found"
+            if isinstance(raw_output, str):
+                if "InvalidParameterValueException" in raw_output or "SubscriptionNotFound" in raw_output:
+                    return True, "✅ AWS Shield Standard protection active (sufficient for Low impact)"
+                else:
+                    return False, f"❌ AWS Shield error: {raw_output[:100]}"
+            elif isinstance(raw_output, dict):
+                if "SubscriptionArn" in raw_output:
+                    return True, "✅ AWS Shield Advanced subscription active"
+    # ... (additional validation logic) ...
 ```
 
 ## 📜 Compliance Mapping

@@ -1,14 +1,14 @@
 # KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-05`
 **Description:** Perform Infrastructure as Code and configuration evaluation and testing
 **Justification:** Validates IaC security evaluation through Config rules, CloudFormation, and configuration testing
-**Last Validation:** ❌ 2025-06-06T05:52:21.555704
-**Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
+**Last Validation:** ✅ 2025-06-06T06:36:35.353039
+**Result:** ⚠️ Basic IaC evaluation (needs enhancement): ❌ No Config service for infrastructure evaluation; ✅ Infrastructure as Code: 2/2 successful CloudFormation stacks
 
 ## 🛠️ Implementation
 
@@ -31,16 +31,14 @@
 
 **Function:** `evaluate_KSI_MLA_05`
 
-**Documentation:** KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
-
+**Documentation:** Fixed rule for KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
 Expected: Config Rules + CloudFormation Stacks
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_MLA_05(cli_output):
     """
-    KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
-    
+    Fixed rule for KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
     Expected: Config Rules + CloudFormation Stacks
     """
     if "commands" not in cli_output:
@@ -51,12 +49,13 @@ def evaluate_KSI_MLA_05(cli_output):
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
+        if not isinstance(raw_output, dict):
+            continue
         if "describe-config-rules" in cli_command:
-            config_rules = raw_output.get("ConfigRules", [])
-        elif "list-stacks" in cli_command:
-            cloudformation_stacks = raw_output.get("StackSummaries", [])
-    findings = []
-    iac_evaluation = 0
+            if isinstance(raw_output, str):
+                if "ConfigurationRecorderNotAvailable" in raw_output:
+                    config_rules = []  # No Config service
+                else:
     # ... (additional validation logic) ...
 ```
 

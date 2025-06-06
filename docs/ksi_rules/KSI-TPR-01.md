@@ -1,14 +1,14 @@
 # KSI-TPR-01: Identify all third-party information resources
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-01`
 **Description:** Identify all third-party information resources
 **Justification:** Validates third-party resource identification through AWS services and documented third-party inventory
-**Last Validation:** ❌ 2025-06-06T05:52:21.555049
-**Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
+**Last Validation:** ❌ 2025-06-06T06:36:35.352176
+**Result:** ❌ Third-party information resources not comprehensively identified: ❌ No cross-account role data for third-party integration analysis; ❌ No manual third-party inventory documentation found
 
 ## 🛠️ Implementation
 
@@ -32,16 +32,14 @@
 
 **Function:** `evaluate_KSI_TPR_01`
 
-**Documentation:** KSI-TPR-01: Identify all third-party information resources
-
+**Documentation:** Fixed rule for KSI-TPR-01: Identify all third-party information resources
 Expected: Cross-account roles + Manual third-party inventory
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_TPR_01(cli_output):
     """
-    KSI-TPR-01: Identify all third-party information resources
-    
+    Fixed rule for KSI-TPR-01: Identify all third-party information resources
     Expected: Cross-account roles + Manual third-party inventory
     """
     evidence_dir = Path("evidence_v2/KSI-TPR-01")
@@ -50,6 +48,8 @@ def evaluate_KSI_TPR_01(cli_output):
         for cmd in cli_output["commands"]:
             cli_command = cmd.get("cli_command", "")
             raw_output = cmd.get("raw_output", {})
+            if not isinstance(raw_output, dict):
+                continue
             if "list-roles" in cli_command:
                 cross_account_roles = raw_output.get("Roles", [])
     manual_evidence = []
@@ -57,7 +57,6 @@ def evaluate_KSI_TPR_01(cli_output):
         inventory_files = [
             "third_party_inventory.xlsx",
             "saas_services_list.pdf",
-            "vendor_registry.pdf",
     # ... (additional validation logic) ...
 ```
 

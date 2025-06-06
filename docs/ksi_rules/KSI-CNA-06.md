@@ -1,14 +1,14 @@
 # KSI-CNA-06: Design for high availability and recovery
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-06`
 **Description:** Design for high availability and recovery
 **Justification:** Validates multi-AZ design and backup capabilities
-**Last Validation:** ❌ 2025-06-06T05:52:21.554447
-**Result:** ❌ Rule execution error: 'list' object has no attribute 'get'
+**Last Validation:** ❌ 2025-06-06T06:36:35.351533
+**Result:** ❌ No subnets found for HA analysis
 
 ## 🛠️ Implementation
 
@@ -31,14 +31,14 @@
 
 **Function:** `evaluate_KSI_CNA_06`
 
-**Documentation:** Simple rule for KSI-CNA-06: Basic HA design
+**Documentation:** Fixed rule for KSI-CNA-06: Basic HA design
 Expected: Multi-AZ subnets + Backup plans
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_06(cli_output):
     """
-    Simple rule for KSI-CNA-06: Basic HA design
+    Fixed rule for KSI-CNA-06: Basic HA design
     Expected: Multi-AZ subnets + Backup plans
     """
     if "commands" not in cli_output:
@@ -49,13 +49,13 @@ def evaluate_KSI_CNA_06(cli_output):
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
+        if not isinstance(raw_output, dict):
+            continue
         if "describe-subnets" in cli_command:
-            subnets = raw_output.get("Subnets", [])
-        elif "list-backup-plans" in cli_command:
-            backup_plans = raw_output.get("BackupPlansList", [])
-    if not subnets:
-        return False, "❌ No subnets found for HA analysis"
-    availability_zones = set(subnet.get("AvailabilityZone") for subnet in subnets)
+            if isinstance(raw_output, list):
+                subnets = raw_output
+            else:
+                subnets = raw_output.get("Subnets", [])
     # ... (additional validation logic) ...
 ```
 

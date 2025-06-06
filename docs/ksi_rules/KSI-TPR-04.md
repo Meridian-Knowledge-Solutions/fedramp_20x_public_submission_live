@@ -1,14 +1,14 @@
 # KSI-TPR-04: Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-04`
 **Description:** Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 **Justification:** Validates vulnerability monitoring through Inspector, Security Hub, and contractual requirements documentation
-**Last Validation:** ❌ 2025-06-06T05:52:21.553191
-**Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
+**Last Validation:** ❌ 2025-06-06T06:36:35.350329
+**Result:** ❌ No comprehensive third-party vulnerability monitoring: ❌ No Inspector vulnerability monitoring data; ❌ No contractual vulnerability notification agreements found
 
 ## 🛠️ Implementation
 
@@ -32,18 +32,14 @@
 
 **Function:** `evaluate_KSI_TPR_04`
 
-**Documentation:** KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities, 
-with contractual notification requirements or active monitoring services
-
+**Documentation:** Fixed rule for KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities
 Expected: Inspector findings + Vulnerability monitoring contracts
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_TPR_04(cli_output):
     """
-    KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities, 
-    with contractual notification requirements or active monitoring services
-    
+    Fixed rule for KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities
     Expected: Inspector findings + Vulnerability monitoring contracts
     """
     evidence_dir = Path("evidence_v2/KSI-TPR-04")
@@ -52,6 +48,8 @@ def evaluate_KSI_TPR_04(cli_output):
         for cmd in cli_output["commands"]:
             cli_command = cmd.get("cli_command", "")
             raw_output = cmd.get("raw_output", {})
+            if not isinstance(raw_output, dict):
+                continue
             if "list-findings" in cli_command and "inspector" in cli_command:
                 inspector_findings = raw_output.get("findings", [])
     manual_evidence = []

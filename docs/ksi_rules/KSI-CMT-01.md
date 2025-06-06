@@ -1,14 +1,14 @@
 # KSI-CMT-01: Log and monitor system modifications
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-01`
 **Description:** Log and monitor system modifications
 **Justification:** Validates system modification logging through CloudTrail and Config change tracking
-**Last Validation:** ❌ 2025-06-06T05:52:21.550515
-**Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
+**Last Validation:** ❌ 2025-06-06T06:36:35.347817
+**Result:** ❌ No system modification tracking: ✅ System modification logging: 1 CloudTrail trails (0 active, 1 global events); ❌ No Config service for configuration change monitoring
 
 ## 🛠️ Implementation
 
@@ -31,16 +31,14 @@
 
 **Function:** `evaluate_KSI_CMT_01`
 
-**Documentation:** KSI-CMT-01: Log and monitor system modifications
-
+**Documentation:** Fixed rule for KSI-CMT-01: Log and monitor system modifications
 Expected: CloudTrail + Config Recorders
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CMT_01(cli_output):
     """
-    KSI-CMT-01: Log and monitor system modifications
-    
+    Fixed rule for KSI-CMT-01: Log and monitor system modifications
     Expected: CloudTrail + Config Recorders
     """
     if "commands" not in cli_output:
@@ -51,12 +49,13 @@ def evaluate_KSI_CMT_01(cli_output):
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
+        if not isinstance(raw_output, dict):
+            continue
         if "describe-trails" in cli_command:
             cloudtrail_trails = raw_output.get("trailList", [])
         elif "describe-configuration-recorders" in cli_command:
-            config_recorders = raw_output.get("ConfigurationRecorders", [])
-    findings = []
-    modification_tracking = 0
+            if isinstance(raw_output, str):
+                if "NoSuchConfigurationRecorderException" in raw_output:
     # ... (additional validation logic) ...
 ```
 

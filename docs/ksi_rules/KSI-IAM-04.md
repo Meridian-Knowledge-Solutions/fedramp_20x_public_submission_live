@@ -1,13 +1,13 @@
 # KSI-IAM-04: Use least-privileged, role-based, and just-in-time authorization
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-04`
 **Description:** Use least-privileged, role-based, and just-in-time authorization
 **Justification:** Validates least privilege implementation through roles, policies, and time-based access controls
-**Last Validation:** ✅ 2025-06-06T05:52:21.556134
+**Last Validation:** ✅ 2025-06-06T06:36:35.353407
 **Result:** ⚠️ Partial authorization model: ✅ Role-based access: 25 roles (2 admin, 13 service); ⚠️ Direct user access detected (not session-based)
 
 ## 🛠️ Implementation

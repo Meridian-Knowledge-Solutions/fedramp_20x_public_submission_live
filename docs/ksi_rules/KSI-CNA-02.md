@@ -1,14 +1,14 @@
 # KSI-CNA-02: Design systems to minimize attack surface
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-02`
 **Description:** Design systems to minimize attack surface
 **Justification:** Validates network segmentation and isolation
-**Last Validation:** ❌ 2025-06-06T05:52:21.549714
-**Result:** ❌ Rule execution error: 'list' object has no attribute 'get'
+**Last Validation:** ❌ 2025-06-06T06:36:35.347022
+**Result:** ❌ Insufficient segmentation: 6 subnets in 6 AZs
 
 ## 🛠️ Implementation
 
@@ -31,14 +31,14 @@
 
 **Function:** `evaluate_KSI_CNA_02`
 
-**Documentation:** Simple rule for KSI-CNA-02: Network segmentation exists
+**Documentation:** Fixed rule for KSI-CNA-02: Network segmentation exists
 Expected: Subnets + Custom Security Groups
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_02(cli_output):
     """
-    Simple rule for KSI-CNA-02: Network segmentation exists
+    Fixed rule for KSI-CNA-02: Network segmentation exists
     Expected: Subnets + Custom Security Groups
     """
     if "commands" not in cli_output:
@@ -49,13 +49,13 @@ def evaluate_KSI_CNA_02(cli_output):
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
+        if not isinstance(raw_output, dict):
+            continue  # Skip non-dict responses (error strings)
         if "describe-subnets" in cli_command:
             subnets = raw_output.get("Subnets", [])
         elif "describe-security-groups" in cli_command:
-            security_groups = raw_output.get("SecurityGroups", [])
-    if not subnets:
-        return False, "❌ No subnets found"
-    availability_zones = set(subnet.get("AvailabilityZone") for subnet in subnets)
+            if isinstance(raw_output, list):
+                security_groups = raw_output  # Sometimes AWS returns direct list
     # ... (additional validation logic) ...
 ```
 

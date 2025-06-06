@@ -1,13 +1,13 @@
 # KSI-SVC-04: Manage configuration centrally
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-04`
 **Description:** Manage configuration centrally
 **Justification:** Validates centralized configuration management through Systems Manager and Config
-**Last Validation:** ❌ 2025-06-06T05:52:21.554380
+**Last Validation:** ❌ 2025-06-06T06:36:35.351448
 **Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
 
 ## 🛠️ Implementation

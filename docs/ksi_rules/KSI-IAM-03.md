@@ -1,14 +1,14 @@
 # KSI-IAM-03: Enforce secure authentication for non-user accounts and services
 
-*Generated on 2025-06-06 05:52:21 UTC*
+*Generated on 2025-06-06 06:36:35 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-03`
 **Description:** Enforce secure authentication for non-user accounts and services
 **Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys)
-**Last Validation:** ❌ 2025-06-06T05:52:21.558105
-**Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
+**Last Validation:** ✅ 2025-06-06T06:36:35.355404
+**Result:** ✅ Secure service authentication: ✅ 25 IAM roles (13 service-oriented)
 
 ## 🛠️ Implementation
 
@@ -31,16 +31,14 @@
 
 **Function:** `evaluate_KSI_IAM_03`
 
-**Documentation:** KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
-
+**Documentation:** Fixed rule for KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
 Expected: IAM Roles + Service-Linked Roles
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_IAM_03(cli_output):
     """
-    KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
-    
+    Fixed rule for KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
     Expected: IAM Roles + Service-Linked Roles
     """
     if "commands" not in cli_output:
@@ -51,12 +49,13 @@ def evaluate_KSI_IAM_03(cli_output):
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
+        if not isinstance(raw_output, dict):
+            continue
         if "list-roles" in cli_command and "service-linked" not in cli_command:
             roles = raw_output.get("Roles", [])
         elif "list-service-linked-roles" in cli_command:
             service_linked_roles = raw_output.get("Roles", [])
     if not roles and not service_linked_roles:
-        return False, "❌ No IAM roles found for service authentication"
     # ... (additional validation logic) ...
 ```
 
