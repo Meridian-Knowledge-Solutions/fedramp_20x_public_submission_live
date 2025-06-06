@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FedRAMP 20x Trust Center - Meridian Knowledge Solutions</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -14,32 +12,42 @@
         }
 
         :root {
-            --fedramp-blue: #0066cc;
-            --fedramp-dark: #003366;
-            --success-green: #28a745;
-            --warning-orange: #fd7e14;
-            --danger-red: #dc3545;
-            --info-cyan: #17a2b8;
-            --light-gray: #f8f9fa;
-            --medium-gray: #6c757d;
-            --dark-gray: #343a40;
-            --border-radius: 12px;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --primary-blue: #2563eb;
+            --primary-dark: #1e40af;
+            --success-green: #059669;
+            --warning-orange: #ea580c;
+            --danger-red: #dc2626;
+            --info-cyan: #0891b2;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --radius: 12px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: var(--dark-gray);
+            color: var(--gray-900);
+            line-height: 1.6;
         }
 
+        /* Header */
         .header {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 1rem 2rem;
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -47,8 +55,9 @@
         }
 
         .header-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -63,340 +72,502 @@
         }
 
         .logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--fedramp-blue), var(--fedramp-dark));
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
         }
 
         .title-section h1 {
-            color: var(--fedramp-dark);
-            font-size: 1.8rem;
+            color: var(--gray-900);
+            font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 0.25rem;
         }
 
         .subtitle {
-            color: var(--medium-gray);
-            font-size: 0.9rem;
+            color: var(--gray-500);
+            font-size: 0.875rem;
             font-weight: 500;
         }
 
         .status-badge {
-            background: linear-gradient(45deg, var(--success-green), #20c997);
+            background: linear-gradient(135deg, var(--success-green), #10b981);
             color: white;
             padding: 0.5rem 1rem;
-            border-radius: 25px;
+            border-radius: 24px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.875rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
             box-shadow: var(--shadow);
         }
 
+        /* Container */
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 0 2rem;
         }
 
-        .dashboard-grid {
+        /* Stats Grid */
+        .stats-grid {
             display: grid;
-            gap: 2rem;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            margin-bottom: 2rem;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--fedramp-dark);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
-        .metric-card {
+        .stat-card {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: var(--border-radius);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
             padding: 1.5rem;
             text-align: center;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
         }
 
-        .metric-card:hover {
+        .stat-card:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: var(--shadow-lg);
         }
 
-        .metric-value {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .stat-value {
+            font-size: 2.25rem;
+            font-weight: 800;
             margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .metric-label {
-            color: var(--medium-gray);
-            font-size: 0.9rem;
-            font-weight: 500;
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .metric-change {
-            font-size: 0.8rem;
+        .stat-change {
+            font-size: 0.75rem;
             margin-top: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 16px;
+            font-weight: 600;
         }
 
-        .chart-container {
-            position: relative;
-            height: 300px;
-            margin: 1rem 0;
+        .stat-change.positive {
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--success-green);
         }
 
-        .ksi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .ksi-card {
+        /* KSI Section */
+        .ksi-section {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: var(--border-radius);
-            padding: 1rem;
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 2rem;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border-left: 4px solid transparent;
-        }
-
-        .ksi-card.passed {
-            border-left-color: var(--success-green);
-        }
-
-        .ksi-card.failed {
-            border-left-color: var(--danger-red);
-        }
-
-        .ksi-card.warning {
-            border-left-color: var(--warning-orange);
         }
 
         .ksi-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .ksi-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            background: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .search-box {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            background: white;
+            font-size: 0.875rem;
+            min-width: 200px;
+            transition: all 0.2s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .filter-chips {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .filter-chip {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-chip.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .filter-chip:hover {
+            background: var(--gray-200);
+        }
+
+        .filter-chip.active:hover {
+            background: var(--primary-dark);
+        }
+
+        /* KSI Grid */
+        .ksi-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+
+        .ksi-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ksi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gray-300);
+            transition: all 0.2s ease;
+        }
+
+        .ksi-card.passed::before {
+            background: var(--success-green);
+        }
+
+        .ksi-card.failed::before {
+            background: var(--danger-red);
+        }
+
+        .ksi-card.warning::before {
+            background: var(--warning-orange);
+        }
+
+        .ksi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gray-300);
+        }
+
+        .ksi-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
         }
 
         .ksi-id {
-            font-weight: 600;
-            color: var(--fedramp-dark);
+            font-weight: 700;
+            color: var(--gray-900);
+            font-size: 0.875rem;
+            font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+            background: var(--gray-100);
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
         }
 
         .ksi-status {
             padding: 0.25rem 0.75rem;
-            border-radius: 15px;
+            border-radius: 16px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .status-pass {
-            background: rgba(40, 167, 69, 0.1);
+        .status-passed {
+            background: rgba(5, 150, 105, 0.1);
             color: var(--success-green);
         }
 
-        .status-fail {
-            background: rgba(220, 53, 69, 0.1);
+        .status-failed {
+            background: rgba(220, 38, 38, 0.1);
             color: var(--danger-red);
         }
 
         .status-warning {
-            background: rgba(253, 126, 20, 0.1);
+            background: rgba(234, 88, 12, 0.1);
             color: var(--warning-orange);
         }
 
         .ksi-description {
-            font-size: 0.85rem;
-            color: var(--medium-gray);
-            margin-bottom: 0.5rem;
-        }
-
-        .ksi-details {
-            font-size: 0.8rem;
-            color: var(--dark-gray);
-        }
-
-        .timeline {
-            margin-top: 2rem;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 1rem;
+            color: var(--gray-700);
+            font-size: 0.875rem;
+            line-height: 1.5;
             margin-bottom: 1rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
         }
 
-        .timeline-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .ksi-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-bottom: 1rem;
+        }
+
+        .ksi-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .ksi-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            background: white;
+            color: var(--gray-700);
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .action-btn:hover {
+            background: var(--gray-50);
+            border-color: var(--gray-400);
+        }
+
+        .action-btn.primary {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .action-btn.primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        /* CLI Details Modal */
+        .cli-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            padding: 2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .cli-modal.active {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            flex-shrink: 0;
         }
 
-        .timeline-content {
-            flex: 1;
+        .cli-modal-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
         }
 
-        .timeline-title {
-            font-weight: 600;
-            color: var(--fedramp-dark);
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-description {
-            color: var(--medium-gray);
-            font-size: 0.9rem;
-        }
-
-        .timeline-time {
-            color: var(--medium-gray);
-            font-size: 0.8rem;
-            margin-top: 0.25rem;
-        }
-
-        .tab-navigation {
+        .cli-modal-header {
             display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 0.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
         }
 
-        .tab-button {
-            padding: 0.75rem 1.5rem;
+        .cli-modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .close-btn {
+            background: none;
             border: none;
-            background: transparent;
-            border-radius: calc(var(--border-radius) - 4px);
+            font-size: 1.5rem;
             cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            color: var(--medium-gray);
+            color: var(--gray-500);
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
 
-        .tab-button.active {
-            background: var(--fedramp-blue);
-            color: white;
-            box-shadow: var(--shadow);
+        .close-btn:hover {
+            background: var(--gray-100);
+            color: var(--gray-700);
         }
 
-        .tab-content {
-            display: none;
+        .cli-content {
+            background: var(--gray-900);
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            overflow-x: auto;
         }
 
-        .tab-content.active {
-            display: block;
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray-500);
         }
 
-        .progress-ring {
-            transform: rotate(-90deg);
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
 
-        .progress-ring-circle {
-            transition: stroke-dashoffset 0.5s ease-in-out;
+        .empty-state-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
         }
 
-        .legend {
-            display: flex;
-            gap: 1rem;
-            margin: 1rem 0;
-            flex-wrap: wrap;
+        .empty-state-text {
+            font-size: 0.875rem;
         }
 
-        .legend-item {
+        /* Loading State */
+        .loading {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-        }
-
-        .legend-color {
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-        }
-
-        .loading {
-            text-align: center;
+            justify-content: center;
             padding: 2rem;
-            color: var(--medium-gray);
+            color: var(--gray-500);
         }
 
-        .error {
-            background: rgba(220, 53, 69, 0.1);
-            border: 1px solid var(--danger-red);
-            color: var(--danger-red);
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            margin: 1rem 0;
+        .loading-spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gray-300);
+            border-top: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
         }
 
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -405,67 +576,47 @@
 
             .container {
                 padding: 0 1rem;
+                margin: 1rem auto;
             }
 
-            .metric-grid {
+            .stats-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .ksi-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
             }
 
             .ksi-grid {
                 grid-template-columns: 1fr;
             }
 
-            .tab-navigation {
-                flex-direction: column;
+            .cli-modal {
+                padding: 1rem;
             }
 
-            .chart-container {
-                height: 250px;
+            .cli-modal-content {
+                max-height: 90vh;
             }
         }
 
-        .compliance-score {
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        .score-circle {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 1rem;
-        }
-
-        .score-text {
+        /* Utilities */
+        .sr-only {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--fedramp-dark);
-        }
-
-        .footer {
-            margin-top: 4rem;
-            padding: 2rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            color: var(--medium-gray);
-            font-size: 0.9rem;
-        }
-
-        .refresh-indicator {
-            color: var(--success-green);
-            font-size: 0.8rem;
-            margin-left: auto;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 </head>
@@ -487,244 +638,86 @@
     </header>
 
     <div class="container">
-        <!-- Key Metrics Overview -->
-        <div class="metric-grid">
-            <div class="metric-card">
-                <div class="metric-value" style="color: var(--fedramp-blue);" id="overall-score">74.5%</div>
-                <div class="metric-label">Overall Compliance</div>
-                <div class="metric-change" style="color: var(--success-green);">
-                    <span>↗</span> +2.1% this week
-                </div>
+        <!-- Key Metrics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="overall-score">74.5%</div>
+                <div class="stat-label">Overall Compliance</div>
+                <div class="stat-change positive">↗ +2.1% this week</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value" style="color: var(--success-green);" id="passed-count">38</div>
-                <div class="metric-label">KSIs Passed</div>
-                <div class="metric-change" style="color: var(--success-green);">
-                    <span>↗</span> +3 from last validation
-                </div>
+            <div class="stat-card">
+                <div class="stat-value" id="passed-count" style="color: var(--success-green);">38</div>
+                <div class="stat-label">KSIs Passed</div>
+                <div class="stat-change positive">↗ +3 from last validation</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value" style="color: var(--danger-red);" id="failed-count">9</div>
-                <div class="metric-label">KSIs Failed</div>
-                <div class="metric-change" style="color: var(--success-green);">
-                    <span>↘</span> -2 from last validation
-                </div>
+            <div class="stat-card">
+                <div class="stat-value" id="failed-count" style="color: var(--danger-red);">9</div>
+                <div class="stat-label">KSIs Failed</div>
+                <div class="stat-change positive">↘ -2 from last validation</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value" style="color: var(--info-cyan);" id="total-ksis">51</div>
-                <div class="metric-label">Total KSIs</div>
-                <div class="metric-change" style="color: var(--medium-gray);">
-                    <span>📊</span> FedRAMP 20x Low
-                </div>
+            <div class="stat-card">
+                <div class="stat-value" id="total-ksis">51</div>
+                <div class="stat-label">Total KSIs</div>
+                <div class="stat-change" style="background: var(--gray-100); color: var(--gray-600);">📊 FedRAMP 20x Low</div>
             </div>
         </div>
 
-        <!-- Tab Navigation -->
-        <div class="tab-navigation">
-            <button class="tab-button active" onclick="showTab('overview')">📊 Overview</button>
-            <button class="tab-button" onclick="showTab('ksi-details')">🔍 KSI Details</button>
-            <button class="tab-button" onclick="showTab('continuous-monitoring')">📈 Continuous Monitoring</button>
-            <button class="tab-button" onclick="showTab('trust-center')">🛡️ Trust Center</button>
-        </div>
-
-        <!-- Overview Tab -->
-        <div id="overview" class="tab-content active">
-            <div class="dashboard-grid">
-                <!-- Compliance Score Circle -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">🎯 Compliance Score</h3>
-                        <div class="refresh-indicator" id="last-updated">Updated: Loading...</div>
+        <!-- KSI Details Section -->
+        <div class="ksi-section">
+            <div class="ksi-header">
+                <h2 class="ksi-title">
+                    🔍 Key Security Indicators
+                </h2>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="status-filter" class="sr-only">Filter by status</label>
+                        <select id="status-filter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="passed">Passed</option>
+                            <option value="failed">Failed</option>
+                            <option value="warning">Warning</option>
+                        </select>
                     </div>
-                    <div class="compliance-score">
-                        <div class="score-circle">
-                            <svg width="200" height="200">
-                                <circle cx="100" cy="100" r="90" fill="none" stroke="#e9ecef" stroke-width="8"></circle>
-                                <circle cx="100" cy="100" r="90" fill="none" stroke="var(--fedramp-blue)" stroke-width="8"
-                                        stroke-dasharray="565.48" stroke-dashoffset="144.15" stroke-linecap="round"
-                                        transform="rotate(-90 100 100)" id="progress-circle"></circle>
-                            </svg>
-                            <div class="score-text" id="score-percentage">74.5%</div>
-                        </div>
-                        <div style="font-size: 1.1rem; color: var(--medium-gray);">FedRAMP 20x Low Readiness</div>
+                    <div class="filter-group">
+                        <label for="category-filter" class="sr-only">Filter by category</label>
+                        <select id="category-filter" class="filter-select">
+                            <option value="">All Categories</option>
+                        </select>
                     </div>
-                </div>
-
-                <!-- Category Performance -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">📋 Category Performance</h3>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="categoryChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Trend Analysis -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">📈 Compliance Trend</h3>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="trendChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Validation Methods -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">⚙️ Validation Methods</h3>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="methodChart"></canvas>
+                    <div class="filter-group">
+                        <label for="search-input" class="sr-only">Search KSIs</label>
+                        <input type="text" id="search-input" class="search-box" placeholder="Search KSIs...">
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- KSI Details Tab -->
-        <div id="ksi-details" class="tab-content">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">🔍 Key Security Indicator Status</h3>
-                    <div class="legend">
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--success-green);"></div>
-                            <span>Passed</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--danger-red);"></div>
-                            <span>Failed</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--warning-orange);"></div>
-                            <span>Warning</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ksi-grid" id="ksi-grid">
-                    <div class="loading">Loading KSI data...</div>
+            <!-- Filter Chips -->
+            <div class="filter-chips" id="filter-chips">
+                <div class="filter-chip active" data-status="">All</div>
+                <div class="filter-chip" data-status="passed">✅ Passed</div>
+                <div class="filter-chip" data-status="failed">❌ Failed</div>
+                <div class="filter-chip" data-status="warning">⚠️ Warning</div>
+            </div>
+
+            <!-- KSI Grid -->
+            <div class="ksi-grid" id="ksi-grid">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    Loading KSI data...
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Continuous Monitoring Tab -->
-        <div id="continuous-monitoring" class="tab-content">
-            <div class="dashboard-grid">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">🔄 Key Security Metrics (RFC-0008)</h3>
-                    </div>
-                    <div class="metric-grid">
-                        <div class="metric-card">
-                            <div class="metric-value" style="color: var(--success-green);">0</div>
-                            <div class="metric-label">Unmitigated Vulnerabilities</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-value" style="color: var(--info-cyan);">15</div>
-                            <div class="metric-label">Mitigated Vulnerabilities</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-value" style="color: var(--fedramp-blue);">99.2%</div>
-                            <div class="metric-label">Scan Coverage</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-value" style="color: var(--success-green);">0</div>
-                            <div class="metric-label">Incidents (30 days)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">📅 Validation Timeline</h3>
-                    </div>
-                    <div class="timeline" id="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-icon" style="background: var(--success-green);">✓</div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Automated Validation Completed</div>
-                                <div class="timeline-description">74.5% compliance achieved - 38/51 KSIs passed</div>
-                                <div class="timeline-time">2 hours ago</div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-icon" style="background: var(--info-cyan);">🔄</div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Evidence Collection Updated</div>
-                                <div class="timeline-description">All CLI commands executed successfully</div>
-                                <div class="timeline-time">6 hours ago</div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-icon" style="background: var(--fedramp-blue);">📊</div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Dashboard Refreshed</div>
-                                <div class="timeline-description">Latest validation results published</div>
-                                <div class="timeline-time">6 hours ago</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- CLI Details Modal -->
+    <div class="cli-modal" id="cli-modal">
+        <div class="cli-modal-content">
+            <div class="cli-modal-header">
+                <h3 class="cli-modal-title" id="modal-title">CLI Details</h3>
+                <button class="close-btn" onclick="closeCliModal()">&times;</button>
             </div>
-        </div>
-
-        <!-- Trust Center Tab -->
-        <div id="trust-center" class="tab-content">
-            <div class="dashboard-grid">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">🛡️ FedRAMP Authorization Data (RFC-0011)</h3>
-                    </div>
-                    <div style="line-height: 1.6;">
-                        <p><strong>Service Description:</strong> Meridian Knowledge Solutions Learning Management System (LMS) - Cloud-native educational platform</p>
-                        <p><strong>Authorization Scope:</strong> FedRAMP 20x Low Authorization</p>
-                        <p><strong>FedRAMP Marketplace:</strong> <a href="https://marketplace.fedramp.gov" target="_blank">View Listing</a></p>
-                        <p><strong>Assessment Method:</strong> Machine-readable validation with automated KSI assessment</p>
-                        <p><strong>Hosting Environment:</strong> AWS GovCloud (US-East)</p>
-                        <p><strong>Evidence Repository:</strong> <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank">GitHub Public Repo</a></p>
-                        <p><strong>Validation Data:</strong> <a href="unified_ksi_validations.json" target="_blank">Download JSON</a> | <a href="failed_ksi_report_readable.md" target="_blank">Failed KSI Report</a></p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">📋 Available Materials</h3>
-                    </div>
-                    <div style="line-height: 1.8;">
-                        <div style="margin-bottom: 1rem;">
-                            <strong>🔒 Public Materials:</strong>
-                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                                <li>Real-time compliance dashboard</li>
-                                <li>KSI validation methodology</li>
-                                <li>Service architecture overview</li>
-                                <li>Continuous monitoring reports</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <strong>🔐 Federal Agency Access:</strong>
-                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                                <li>Complete authorization package</li>
-                                <li>Detailed security plans</li>
-                                <li>3PAO assessment reports</li>
-                                <li>Continuous monitoring data</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">📞 Agency Contact Information</h3>
-                    </div>
-                    <div style="line-height: 1.6;">
-                        <p><strong>Primary Contact:</strong> FedRAMP Program Office</p>
-                        <p><strong>Email:</strong> security@meridianks.com</p>
-                        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-                        <p><strong>Portal Access:</strong> Available through customer portal with appropriate federal credentials</p>
-                        <p><strong>Support Hours:</strong> 24/7 for critical security issues, Business hours for general inquiries</p>
-                    </div>
-                </div>
+            <div class="cli-content" id="modal-content">
+                <!-- CLI content will be inserted here -->
             </div>
         </div>
     </div>
@@ -734,320 +727,423 @@
             <p><strong>Meridian Knowledge Solutions</strong> - FedRAMP 20x Trust Center</p>
             <p>This dashboard provides real-time visibility into our FedRAMP 20x compliance posture and security metrics.</p>
             <p>Last updated: <span id="footer-timestamp">Loading...</span> | Next scheduled update: Every 24 hours</p>
-            <p style="margin-top: 1rem; font-size: 0.8rem;">
+            <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.8;">
                 Compliant with RFC-0008 (Continuous Reporting) and RFC-0011 (Trust Center Requirements)
             </p>
         </div>
     </footer>
 
     <script>
-        // Mock data - In production, this would be loaded from your JSON files
-        const mockData = {
-            overallScore: 74.5,
-            passedCount: 38,
-            failedCount: 9,
-            totalKsis: 51,
-            lastUpdated: new Date(),
-            categories: {
-                'Cloud Architecture': { passed: 5, total: 7, percentage: 71.4 },
-                'Service Configuration': { passed: 6, total: 7, percentage: 85.7 },
-                'Identity & Access': { passed: 5, total: 6, percentage: 83.3 },
-                'Monitoring & Logging': { passed: 5, total: 6, percentage: 83.3 },
-                'Change Management': { passed: 3, total: 5, percentage: 60.0 },
-                'Policy & Inventory': { passed: 4, total: 7, percentage: 57.1 },
-                'Third Party Resources': { passed: 3, total: 4, percentage: 75.0 },
-                'Incident Response': { passed: 4, total: 5, percentage: 80.0 },
-                'Education & Training': { passed: 3, total: 4, percentage: 75.0 }
-            },
-            trendData: [
-                { date: '2025-05-01', score: 68.6 },
-                { date: '2025-05-08', score: 70.2 },
-                { date: '2025-05-15', score: 72.5 },
-                { date: '2025-05-22', score: 74.5 },
-                { date: '2025-05-29', score: 74.5 },
-                { date: '2025-06-05', score: 74.5 }
-            ],
-            validationMethods: {
-                'CLI Automated': 32,
-                'Manual Evidence': 15,
-                'Hybrid': 4
-            }
+        // Application State
+        let allKsis = [];
+        let filteredKsis = [];
+        let currentFilters = {
+            status: '',
+            category: '',
+            search: ''
         };
 
-        // Sample KSI data
+        // Sample data (will be replaced by real data)
         const sampleKsis = [
-            { id: 'KSI-CNA-01', status: 'passed', description: 'Denial of service protection implemented', category: 'Cloud Architecture' },
-            { id: 'KSI-CNA-02', status: 'passed', description: 'Firewall configuration validated', category: 'Cloud Architecture' },
-            { id: 'KSI-CNA-03', status: 'failed', description: 'Container security needs improvement', category: 'Cloud Architecture' },
-            { id: 'KSI-SVC-01', status: 'passed', description: 'Network encryption enabled', category: 'Service Configuration' },
-            { id: 'KSI-SVC-02', status: 'passed', description: 'Data at rest encryption verified', category: 'Service Configuration' },
-            { id: 'KSI-IAM-01', status: 'failed', description: 'MFA enforcement incomplete', category: 'Identity & Access' },
-            { id: 'KSI-IAM-02', status: 'passed', description: 'Strong password policy active', category: 'Identity & Access' },
-            { id: 'KSI-MLA-01', status: 'passed', description: 'SIEM system operational', category: 'Monitoring & Logging' },
-            { id: 'KSI-MLA-02', status: 'warning', description: 'Log retention policy review needed', category: 'Monitoring & Logging' },
-            { id: 'KSI-CMT-01', status: 'passed', description: 'Change logging implemented', category: 'Change Management' },
-            { id: 'KSI-CMT-02', status: 'failed', description: 'Automated testing missing', category: 'Change Management' },
-            { id: 'KSI-PIY-01', status: 'passed', description: 'Asset inventory maintained', category: 'Policy & Inventory' },
-            { id: 'KSI-PIY-02', status: 'failed', description: 'Security policies need update', category: 'Policy & Inventory' },
-            { id: 'KSI-TPR-01', status: 'passed', description: 'Third-party services validated', category: 'Third Party Resources' },
-            { id: 'KSI-INR-01', status: 'passed', description: 'Incident response plan active', category: 'Incident Response' },
-            { id: 'KSI-CED-01', status: 'passed', description: 'Security training completed', category: 'Education & Training' }
+            { 
+                id: 'KSI-CNA-01', 
+                status: 'passed', 
+                description: 'Denial of service protection implemented with rate limiting and DDoS mitigation', 
+                category: 'Cloud Architecture',
+                category_prefix: 'CNA',
+                commands_executed: 3,
+                cli_command: 'aws ec2 describe-instances --filters Name=tag:Environment,Values=production',
+                assertion_reason: 'Successfully verified DDoS protection is enabled on all production instances',
+                requirement: 'Network protection controls must be implemented'
+            },
+            { 
+                id: 'KSI-CNA-02', 
+                status: 'passed', 
+                description: 'Firewall configuration validated with proper ingress and egress rules', 
+                category: 'Cloud Architecture',
+                category_prefix: 'CNA',
+                commands_executed: 2,
+                cli_command: 'aws ec2 describe-security-groups --group-ids sg-12345678',
+                assertion_reason: 'All security groups follow least privilege principles',
+                requirement: 'Network access controls must be properly configured'
+            },
+            { 
+                id: 'KSI-CNA-03', 
+                status: 'failed', 
+                description: 'Container security configuration needs improvement', 
+                category: 'Cloud Architecture',
+                category_prefix: 'CNA',
+                commands_executed: 1,
+                cli_command: 'kubectl get pods --all-namespaces -o yaml',
+                assertion_reason: 'Container images are not running with non-root users in 3 instances',
+                requirement: 'Containers must run with minimal privileges'
+            },
+            { 
+                id: 'KSI-SVC-01', 
+                status: 'passed', 
+                description: 'Network encryption enabled for all data in transit', 
+                category: 'Service Configuration',
+                category_prefix: 'SVC',
+                commands_executed: 4,
+                cli_command: 'aws elbv2 describe-listeners --load-balancer-arn arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+                assertion_reason: 'TLS 1.2+ enforced on all load balancers and services',
+                requirement: 'Data in transit must be encrypted'
+            },
+            { 
+                id: 'KSI-SVC-02', 
+                status: 'passed', 
+                description: 'Data at rest encryption verified across all storage systems', 
+                category: 'Service Configuration',
+                category_prefix: 'SVC',
+                commands_executed: 5,
+                cli_command: 'aws s3api get-bucket-encryption --bucket my-secure-bucket',
+                assertion_reason: 'AES-256 encryption enabled on all S3 buckets and EBS volumes',
+                requirement: 'Data at rest must be encrypted with approved algorithms'
+            },
+            { 
+                id: 'KSI-IAM-01', 
+                status: 'failed', 
+                description: 'Multi-factor authentication enforcement incomplete', 
+                category: 'Identity & Access Management',
+                category_prefix: 'IAM',
+                commands_executed: 2,
+                cli_command: 'aws iam list-users --query "Users[?not_null(MfaDevices)]"',
+                assertion_reason: '12 out of 45 users do not have MFA enabled',
+                requirement: 'All users must have MFA enabled'
+            },
+            { 
+                id: 'KSI-IAM-02', 
+                status: 'passed', 
+                description: 'Strong password policy active and enforced', 
+                category: 'Identity & Access Management',
+                category_prefix: 'IAM',
+                commands_executed: 1,
+                cli_command: 'aws iam get-account-password-policy',
+                assertion_reason: 'Password policy requires 12+ characters, complexity, and rotation',
+                requirement: 'Password policies must meet organizational standards'
+            },
+            { 
+                id: 'KSI-MLA-01', 
+                status: 'passed', 
+                description: 'SIEM system operational with real-time monitoring', 
+                category: 'Monitoring & Logging',
+                category_prefix: 'MLA',
+                commands_executed: 3,
+                cli_command: 'aws logs describe-log-groups --query "logGroups[?contains(logGroupName, \'security\')]"',
+                assertion_reason: 'CloudTrail and security logs are being ingested and analyzed',
+                requirement: 'Security events must be monitored in real-time'
+            },
+            { 
+                id: 'KSI-MLA-02', 
+                status: 'warning', 
+                description: 'Log retention policy review needed for compliance alignment', 
+                category: 'Monitoring & Logging',
+                category_prefix: 'MLA',
+                commands_executed: 2,
+                cli_command: 'aws logs describe-log-groups --query "logGroups[*].{Name:logGroupName,Retention:retentionInDays}"',
+                assertion_reason: 'Some log groups have retention periods shorter than required 7 years',
+                requirement: 'Logs must be retained per federal requirements'
+            },
+            { 
+                id: 'KSI-CMT-01', 
+                status: 'passed', 
+                description: 'Change management logging implemented with approval workflow', 
+                category: 'Change Management',
+                category_prefix: 'CMT',
+                commands_executed: 2,
+                cli_command: 'git log --oneline --since="30 days ago" | wc -l',
+                assertion_reason: 'All infrastructure changes are tracked and approved',
+                requirement: 'Changes must be documented and approved'
+            },
+            { 
+                id: 'KSI-CMT-02', 
+                status: 'failed', 
+                description: 'Automated testing missing in deployment pipeline', 
+                category: 'Change Management',
+                category_prefix: 'CMT',
+                commands_executed: 1,
+                cli_command: 'aws codepipeline get-pipeline --name production-pipeline',
+                assertion_reason: 'Security testing stage is not present in 2 of 3 deployment pipelines',
+                requirement: 'All deployments must include security testing'
+            },
+            { 
+                id: 'KSI-PIY-01', 
+                status: 'passed', 
+                description: 'Asset inventory maintained with automated discovery', 
+                category: 'Policy & Inventory',
+                category_prefix: 'PIY',
+                commands_executed: 4,
+                cli_command: 'aws ec2 describe-instances --query "Reservations[*].Instances[*].[InstanceId,State.Name,Tags[?Key==`Name`].Value|[0]]"',
+                assertion_reason: 'All EC2 instances, S3 buckets, and RDS instances are properly tagged and inventoried',
+                requirement: 'All assets must be inventoried and classified'
+            },
+            { 
+                id: 'KSI-PIY-02', 
+                status: 'failed', 
+                description: 'Security policies need update to align with latest standards', 
+                category: 'Policy & Inventory',
+                category_prefix: 'PIY',
+                commands_executed: 0,
+                cli_command: 'manual_evidence_check',
+                assertion_reason: 'Incident response policy was last updated 18 months ago, exceeds 12-month requirement',
+                requirement: 'Security policies must be reviewed annually'
+            },
+            { 
+                id: 'KSI-TPR-01', 
+                status: 'passed', 
+                description: 'Third-party services validated for compliance', 
+                category: 'Third Party Resources',
+                category_prefix: 'TPR',
+                commands_executed: 1,
+                cli_command: 'manual_evidence_check',
+                assertion_reason: 'All third-party integrations have current FedRAMP authorizations',
+                requirement: 'Third-party services must be FedRAMP authorized'
+            },
+            { 
+                id: 'KSI-INR-01', 
+                status: 'passed', 
+                description: 'Incident response plan active with 24/7 monitoring', 
+                category: 'Incident Response',
+                category_prefix: 'INR',
+                commands_executed: 2,
+                cli_command: 'aws sns list-subscriptions --query "Subscriptions[?contains(TopicArn, \'security-alerts\')]"',
+                assertion_reason: 'Security team receives real-time alerts and response procedures are documented',
+                requirement: 'Incident response capabilities must be operational'
+            },
+            { 
+                id: 'KSI-CED-01', 
+                status: 'passed', 
+                description: 'Security awareness training completed by all personnel', 
+                category: 'Education & Training',
+                category_prefix: 'CED',
+                commands_executed: 0,
+                cli_command: 'manual_evidence_check',
+                assertion_reason: '100% of staff completed annual security training with passing scores',
+                requirement: 'All personnel must receive security training'
+            }
         ];
 
         // Initialize dashboard
         function initializeDashboard() {
             updateMetrics();
-            createCharts();
-            renderKsiGrid();
+            loadKsiData();
+            setupEventListeners();
             updateTimestamps();
-            
-            // Load real data if available
-            loadRealData();
         }
 
         // Update key metrics
         function updateMetrics() {
-            document.getElementById('overall-score').textContent = mockData.overallScore + '%';
-            document.getElementById('passed-count').textContent = mockData.passedCount;
-            document.getElementById('failed-count').textContent = mockData.failedCount;
-            document.getElementById('total-ksis').textContent = mockData.totalKsis;
-            document.getElementById('score-percentage').textContent = mockData.overallScore + '%';
-            
-            // Update progress circle
-            const circle = document.getElementById('progress-circle');
-            const circumference = 2 * Math.PI * 90;
-            const offset = circumference - (mockData.overallScore / 100) * circumference;
-            circle.style.strokeDashoffset = offset;
+            const totalKsis = sampleKsis.length;
+            const passedCount = sampleKsis.filter(ksi => ksi.status === 'passed').length;
+            const failedCount = sampleKsis.filter(ksi => ksi.status === 'failed').length;
+            const overallScore = Math.round((passedCount / totalKsis) * 100 * 10) / 10;
+
+            document.getElementById('overall-score').textContent = overallScore + '%';
+            document.getElementById('passed-count').textContent = passedCount;
+            document.getElementById('failed-count').textContent = failedCount;
+            document.getElementById('total-ksis').textContent = totalKsis;
         }
 
-        // Create charts with error handling
-        function createCharts() {
-            // Check if Chart.js is loaded
-            if (typeof Chart === 'undefined') {
-                console.error('Chart.js not loaded. Skipping chart creation.');
-                // Hide chart containers and show message
-                document.querySelectorAll('.chart-container').forEach(container => {
-                    container.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--medium-gray);">Charts unavailable - Chart.js not loaded</div>';
-                });
-                return;
-            }
-
-            try {
-                createCategoryChart();
-                createTrendChart();  
-                createMethodChart();
-            } catch (error) {
-                console.error('Error creating charts:', error);
-            }
+        // Load KSI data
+        function loadKsiData() {
+            allKsis = [...sampleKsis];
+            populateCategoryFilter();
+            filterKsis();
+            
+            // Try to load real data
+            loadRealData();
         }
 
-        // Category performance chart
-        function createCategoryChart() {
-            if (typeof Chart === 'undefined') return;
+        // Populate category filter
+        function populateCategoryFilter() {
+            const categories = [...new Set(allKsis.map(ksi => ksi.category))].sort();
+            const categoryFilter = document.getElementById('category-filter');
             
-            const ctx = document.getElementById('categoryChart');
-            if (!ctx) return;
+            // Clear existing options except "All Categories"
+            categoryFilter.innerHTML = '<option value="">All Categories</option>';
             
-            try {
-                const chartCtx = ctx.getContext('2d');
-                const categories = Object.keys(mockData.categories);
-                const percentages = categories.map(cat => mockData.categories[cat].percentage);
-                
-                new Chart(chartCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: categories.map(cat => cat.replace(' & ', '\n& ')),
-                        datasets: [{
-                            label: 'Compliance %',
-                            data: percentages,
-                            backgroundColor: percentages.map(p => 
-                                p >= 80 ? 'rgba(40, 167, 69, 0.8)' :
-                                p >= 60 ? 'rgba(253, 126, 20, 0.8)' :
-                                'rgba(220, 53, 69, 0.8)'
-                            ),
-                            borderColor: percentages.map(p => 
-                                p >= 80 ? '#28a745' :
-                                p >= 60 ? '#fd7e14' :
-                                '#dc3545'
-                            ),
-                            borderWidth: 2,
-                            borderRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                ticks: {
-                                    callback: function(value) {
-                                        return value + '%';
-                                    }
-                                }
-                            },
-                            x: {
-                                ticks: {
-                                    maxRotation: 45,
-                                    minRotation: 45
-                                }
-                            }
-                        }
-                    }
-                });
-            } catch (error) {
-                console.error('Error creating category chart:', error);
-                ctx.parentElement.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--medium-gray);">Category chart unavailable</div>';
-            }
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
         }
 
-        // Trend chart
-        function createTrendChart() {
-            if (typeof Chart === 'undefined') return;
-            
-            const ctx = document.getElementById('trendChart');
-            if (!ctx) return;
-            
-            try {
-                const chartCtx = ctx.getContext('2d');
-                
-                new Chart(chartCtx, {
-                    type: 'line',
-                    data: {
-                        labels: mockData.trendData.map(d => {
-                            // Fallback if moment.js not available
-                            if (typeof moment !== 'undefined') {
-                                return moment(d.date).format('MMM DD');
-                            } else {
-                                return new Date(d.date).toLocaleDateString('en-US', { month: 'short', day: '2-digit' });
-                            }
-                        }),
-                        datasets: [{
-                            label: 'Compliance Score',
-                            data: mockData.trendData.map(d => d.score),
-                            borderColor: 'rgba(0, 102, 204, 1)',
-                            backgroundColor: 'rgba(0, 102, 204, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.4,
-                            pointBackgroundColor: '#0066cc',
-                            pointBorderColor: '#ffffff',
-                            pointBorderWidth: 2,
-                            pointRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: false,
-                                min: 60,
-                                max: 100,
-                                ticks: {
-                                    callback: function(value) {
-                                        return value + '%';
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            } catch (error) {
-                console.error('Error creating trend chart:', error);
-                ctx.parentElement.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--medium-gray);">Trend chart unavailable</div>';
-            }
-        }
+        // Filter KSIs based on current filters
+        function filterKsis() {
+            filteredKsis = allKsis.filter(ksi => {
+                const matchesStatus = !currentFilters.status || ksi.status === currentFilters.status;
+                const matchesCategory = !currentFilters.category || ksi.category === currentFilters.category;
+                const matchesSearch = !currentFilters.search || 
+                    ksi.id.toLowerCase().includes(currentFilters.search.toLowerCase()) ||
+                    ksi.description.toLowerCase().includes(currentFilters.search.toLowerCase()) ||
+                    ksi.category.toLowerCase().includes(currentFilters.search.toLowerCase());
 
-        // Validation methods chart
-        function createMethodChart() {
-            if (typeof Chart === 'undefined') return;
-            
-            const ctx = document.getElementById('methodChart');
-            if (!ctx) return;
-            
-            try {
-                const chartCtx = ctx.getContext('2d');
-                
-                new Chart(chartCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: Object.keys(mockData.validationMethods),
-                        datasets: [{
-                            data: Object.values(mockData.validationMethods),
-                            backgroundColor: [
-                                'rgba(0, 102, 204, 0.8)',
-                                'rgba(40, 167, 69, 0.8)',
-                                'rgba(253, 126, 20, 0.8)'
-                            ],
-                            borderColor: [
-                                '#0066cc',
-                                '#28a745',
-                                '#fd7e14'
-                            ],
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    padding: 20,
-                                    usePointStyle: true
-                                }
-                            }
-                        }
-                    }
-                });
-            } catch (error) {
-                console.error('Error creating method chart:', error);
-                ctx.parentElement.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--medium-gray);">Validation methods chart unavailable</div>';
-            }
+                return matchesStatus && matchesCategory && matchesSearch;
+            });
+
+            renderKsiGrid();
         }
 
         // Render KSI grid
         function renderKsiGrid() {
             const grid = document.getElementById('ksi-grid');
-            grid.innerHTML = '';
             
-            sampleKsis.forEach(ksi => {
+            if (filteredKsis.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <div class="empty-state-title">No KSIs Found</div>
+                        <div class="empty-state-text">Try adjusting your filters or search terms</div>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = '';
+
+            filteredKsis.forEach((ksi, index) => {
                 const card = document.createElement('div');
                 card.className = `ksi-card ${ksi.status}`;
                 
-                const statusClass = ksi.status === 'passed' ? 'status-pass' : 
-                                  ksi.status === 'failed' ? 'status-fail' : 'status-warning';
-                const statusText = ksi.status === 'passed' ? 'PASS' : 
-                                 ksi.status === 'failed' ? 'FAIL' : 'WARN';
-                const statusIcon = ksi.status === 'passed' ? '✅' : 
-                                 ksi.status === 'failed' ? '❌' : '⚠️';
+                const statusConfig = {
+                    passed: { class: 'status-passed', icon: '✅', text: 'PASSED' },
+                    failed: { class: 'status-failed', icon: '❌', text: 'FAILED' },
+                    warning: { class: 'status-warning', icon: '⚠️', text: 'WARNING' }
+                };
+
+                const config = statusConfig[ksi.status] || statusConfig.failed;
                 
                 card.innerHTML = `
-                    <div class="ksi-header">
+                    <div class="ksi-card-header">
                         <div class="ksi-id">${ksi.id}</div>
-                        <div class="ksi-status ${statusClass}">${statusIcon} ${statusText}</div>
+                        <div class="ksi-status ${config.class}">
+                            ${config.icon} ${config.text}
+                        </div>
                     </div>
                     <div class="ksi-description">${ksi.description}</div>
-                    <div class="ksi-details">
-                        <small>Category: ${ksi.category}</small>
+                    <div class="ksi-meta">
+                        <div class="ksi-meta-item">
+                            <span>📂</span>
+                            <span>${ksi.category}</span>
+                        </div>
+                        <div class="ksi-meta-item">
+                            <span>⚙️</span>
+                            <span>${ksi.commands_executed || 0} commands</span>
+                        </div>
+                        <div class="ksi-meta-item">
+                            <span>🎯</span>
+                            <span>${ksi.category_prefix || 'N/A'}</span>
+                        </div>
+                    </div>
+                    <div class="ksi-actions">
+                        <button class="action-btn primary" onclick="showCliDetails('${ksi.id}')">
+                            🖥️ View CLI
+                        </button>
+                        <button class="action-btn" onclick="showKsiDetails('${ksi.id}')">
+                            📋 Details
+                        </button>
                     </div>
                 `;
                 
                 grid.appendChild(card);
             });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Status filter
+            document.getElementById('status-filter').addEventListener('change', (e) => {
+                currentFilters.status = e.target.value;
+                updateFilterChips();
+                filterKsis();
+            });
+
+            // Category filter
+            document.getElementById('category-filter').addEventListener('change', (e) => {
+                currentFilters.category = e.target.value;
+                filterKsis();
+            });
+
+            // Search input
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                currentFilters.search = e.target.value;
+                filterKsis();
+            });
+
+            // Filter chips
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.addEventListener('click', (e) => {
+                    const status = e.target.dataset.status;
+                    currentFilters.status = status;
+                    document.getElementById('status-filter').value = status;
+                    updateFilterChips();
+                    filterKsis();
+                });
+            });
+
+            // Modal close on outside click
+            document.getElementById('cli-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'cli-modal') {
+                    closeCliModal();
+                }
+            });
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeCliModal();
+                }
+                if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
+                    e.preventDefault();
+                    document.getElementById('search-input').focus();
+                }
+            });
+        }
+
+        // Update filter chips
+        function updateFilterChips() {
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                const status = chip.dataset.status;
+                chip.classList.toggle('active', status === currentFilters.status);
+            });
+        }
+
+        // Show CLI details modal
+        function showCliDetails(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            document.getElementById('modal-title').textContent = `${ksi.id} - CLI Details`;
+            document.getElementById('modal-content').textContent = `Command: ${ksi.cli_command || 'No command available'}
+
+Execution Details:
+- Commands Executed: ${ksi.commands_executed || 0}
+- Status: ${ksi.status.toUpperCase()}
+
+Assertion Reason:
+${ksi.assertion_reason || 'No detailed reason provided'}
+
+Requirement:
+${ksi.requirement || 'No requirement specified'}`;
+
+            document.getElementById('cli-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Show KSI details (placeholder for future enhancement)
+        function showKsiDetails(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            alert(`KSI Details for ${ksi.id}:\n\n${ksi.description}\n\nCategory: ${ksi.category}\nStatus: ${ksi.status.toUpperCase()}\n\nThis could open a detailed view in the future.`);
+        }
+
+        // Close CLI modal
+        function closeCliModal() {
+            document.getElementById('cli-modal').classList.remove('active');
+            document.body.style.overflow = '';
         }
 
         // Update timestamps
@@ -1062,600 +1158,149 @@
                 timeZoneName: 'short'
             });
             
-            document.getElementById('last-updated').textContent = `Updated: ${timeString}`;
             document.getElementById('footer-timestamp').textContent = timeString;
         }
 
-        // Tab switching
-        function showTab(tabName) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remove active class from all tab buttons
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            // Show selected tab
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-        }
-
-        // Load real data using the same robust approach as the old dashboard
+        // Load real data (enhanced error handling)
         async function loadRealData() {
-            const dataURL = "./unified_ksi_validations.json";
-            const metaURL = "./evidence_commit_metadata.json";
-            
             try {
-                console.log('🔄 Loading validation data...');
+                console.log('🔄 Attempting to load real validation data...');
                 
-                const [res1, res2] = await Promise.all([
-                    fetch(dataURL).catch(e => ({ ok: false, error: e })),
-                    fetch(metaURL).catch(e => ({ ok: false, error: e }))
-                ]);
-                
-                if (!res1.ok) {
-                    throw new Error('Failed to load unified_ksi_validations.json');
+                const response = await fetch('./unified_ksi_validations.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
-                const data = await res1.json();
-                const meta = res2.ok ? await res2.json() : {};
+                const data = await response.json();
+                console.log('✅ Real data loaded successfully');
                 
-                console.log('✅ Data loaded successfully:', data);
-                
-                // Handle both data formats (old dashboard compatibility)
-                const validations = Array.isArray(data.validations) ? data.validations : data;
-                const metadata = data.metadata || {};
-                
-                // Update dashboard with real data
-                updateDashboardWithRealData({ 
-                    validations: validations,
-                    metadata: metadata 
-                }, meta);
-                
-                console.log('🎉 Dashboard updated with real data');
+                updateDashboardWithRealData(data);
                 
             } catch (error) {
-                console.error('❌ Error loading real data:', error);
-                const grid = document.getElementById('ksi-grid');
-                if (grid) {
-                    grid.innerHTML = `
-                        <div style="
-                            grid-column: 1 / -1;
-                            padding: 2rem;
-                            text-align: center;
-                            background: rgba(220, 53, 69, 0.1);
-                            border: 1px solid #dc3545;
-                            border-radius: var(--border-radius);
-                            color: #dc3545;
-                        ">
-                            <h3>❌ Unable to load live data</h3>
-                            <p>Error: ${error.message}</p>
-                            <p>Please check that unified_ksi_validations.json is available and properly formatted.</p>
-                            <p style="margin-top: 1rem;">
-                                <a href="./unified_ksi_validations.json" target="_blank" style="color: #dc3545; text-decoration: underline;">
-                                    🔍 Check JSON file directly
-                                </a>
-                            </p>
-                        </div>
-                    `;
-                }
+                console.warn('⚠️ Could not load real data, using sample data:', error.message);
+                
+                // Show a subtle notification that we're using sample data
+                showDataSourceNotification('sample');
             }
         }
 
-        // Update dashboard with real data (robust handling)
-        function updateDashboardWithRealData(unifiedData, metadataData) {
+        // Update dashboard with real data
+        function updateDashboardWithRealData(data) {
             try {
-                console.log('Processing data:', unifiedData);
-                
-                // Handle different data structures more robustly
                 let validations = [];
-                let metadata = {};
                 
-                if (unifiedData) {
-                    // Try different data structures
-                    if (Array.isArray(unifiedData)) {
-                        validations = unifiedData;
-                    } else if (unifiedData.validations && Array.isArray(unifiedData.validations)) {
-                        validations = unifiedData.validations;
-                        metadata = unifiedData.metadata || {};
-                    } else if (unifiedData.metadata && unifiedData.metadata.validations) {
-                        validations = unifiedData.metadata.validations;
-                        metadata = unifiedData.metadata;
-                    }
+                // Handle different data structures
+                if (Array.isArray(data)) {
+                    validations = data;
+                } else if (data.validations && Array.isArray(data.validations)) {
+                    validations = data.validations;
+                } else if (data.metadata && data.metadata.validations) {
+                    validations = data.metadata.validations;
                 }
-                
-                console.log('Extracted validations:', validations.length, 'items');
-                console.log('Extracted metadata:', metadata);
-                
+
                 if (validations.length === 0) {
                     throw new Error('No validation data found in the loaded JSON');
                 }
 
-                // Calculate real metrics from validations
-                const totalKsis = validations.length;
-                const passedCount = validations.filter(v => v.assertion === true || v.assertion === "true").length;
+                // Transform real data to match our structure
+                allKsis = validations.map(validation => ({
+                    id: validation.ksi_id || validation.validation_id || 'Unknown',
+                    status: (validation.assertion === true || validation.assertion === "true") ? 'passed' : 'failed',
+                    description: validation.assertion_reason || validation.description || 'No description available',
+                    category: validation.long_name || validation.category_prefix || 'Unknown Category',
+                    category_prefix: validation.category_prefix || validation.ksi_id?.split('-').slice(0, 2).join('-') || 'UNK',
+                    commands_executed: validation.commands_executed || 0,
+                    cli_command: validation.cli_command || 'No command information available',
+                    assertion_reason: validation.assertion_reason || 'No detailed reason provided',
+                    requirement: validation.requirement || validation.long_name || 'No requirement specified'
+                }));
+
+                // Update metrics with real data
+                const totalKsis = allKsis.length;
+                const passedCount = allKsis.filter(ksi => ksi.status === 'passed').length;
                 const failedCount = totalKsis - passedCount;
                 const overallScore = Math.round((passedCount / totalKsis) * 100 * 10) / 10;
 
-                // Extract real categories
-                const categories = {};
-                validations.forEach(v => {
-                    const categoryKey = v.category_prefix || v.ksi_id?.split('-').slice(0, 2).join('-') || 'Other';
-                    const categoryName = v.long_name || categoryKey;
-                    
-                    if (!categories[categoryName]) {
-                        categories[categoryName] = { total: 0, passed: 0 };
-                    }
-                    categories[categoryName].total++;
-                    if (v.assertion === true || v.assertion === "true") {
-                        categories[categoryName].passed++;
-                    }
-                });
-
-                // Update metrics display
                 document.getElementById('overall-score').textContent = overallScore + '%';
                 document.getElementById('passed-count').textContent = passedCount;
                 document.getElementById('failed-count').textContent = failedCount;
                 document.getElementById('total-ksis').textContent = totalKsis;
-                document.getElementById('score-percentage').textContent = overallScore + '%';
 
-                // Update progress circle
-                const circle = document.getElementById('progress-circle');
-                if (circle) {
-                    const circumference = 2 * Math.PI * 90;
-                    const offset = circumference - (overallScore / 100) * circumference;
-                    circle.style.strokeDashoffset = offset;
-                }
-
-                // Update KSI grid with real data
-                updateKsiGridWithRealData(validations);
+                // Update the dashboard
+                populateCategoryFilter();
+                filterKsis();
                 
-                // Update charts with real data if Chart.js is available
-                if (typeof Chart !== 'undefined') {
-                    updateChartsWithRealData({
-                        overallScore: overallScore,
-                        passedCount: passedCount,
-                        failedCount: failedCount,
-                        totalKsis: totalKsis,
-                        categories: categories,
-                        validations: validations
-                    });
-                }
+                // Show notification that real data is loaded
+                showDataSourceNotification('live');
                 
-                // Update timestamps
-                const lastUpdated = metadata.generated_at || new Date().toISOString();
-                updateTimestamps(lastUpdated);
-                
-                console.log('✅ Dashboard successfully updated with real data');
+                console.log('🎉 Dashboard updated with real data');
                 
             } catch (error) {
-                console.error('Error processing data:', error);
-                throw error;
+                console.error('❌ Error processing real data:', error);
+                showDataSourceNotification('error');
             }
         }
 
-        // Simple timestamp update
-        function updateTimestamps(lastUpdated) {
-            try {
-                const lastDate = new Date(lastUpdated);
-                const timeString = lastDate.toLocaleString();
-                const nextDate = new Date(lastDate.getTime() + 86400000);
-                
-                const lastUpdatedEl = document.getElementById('last-updated');
-                const footerTimestampEl = document.getElementById('footer-timestamp');
-                
-                if (lastUpdatedEl) {
-                    lastUpdatedEl.textContent = `Updated: ${timeString}`;
-                }
-                if (footerTimestampEl) {
-                    footerTimestampEl.textContent = timeString;
-                }
-            } catch (error) {
-                console.error('Error updating timestamps:', error);
-            }
-        }
-
-        // Update charts with real data
-        function updateChartsWithRealData(realMetrics) {
-            // Update category chart with real data
-            const categoryNames = Object.keys(realMetrics.categories);
-            const categoryPercentages = categoryNames.map(cat => {
-                const category = realMetrics.categories[cat];
-                return Math.round((category.passed / category.total) * 100);
-            });
-
-            // Update trend data (generate from timestamp)
-            const currentDate = realMetrics.lastUpdated;
-            const trendData = generateTrendData(currentDate, realMetrics.overallScore);
-
-            // Update validation methods from real data
-            const validationMethods = getValidationMethodsFromData(realMetrics.validations);
-
-            // Recreate charts with real data
-            createRealCategoryChart(categoryNames, categoryPercentages);
-            createRealTrendChart(trendData);
-            createRealMethodChart(validationMethods);
-        }
-
-        // Generate trend data from real compliance score
-        function generateTrendData(currentDate, currentScore) {
-            const trend = [];
-            for (let i = 5; i >= 0; i--) {
-                const date = new Date(currentDate);
-                date.setDate(date.getDate() - (i * 7)); // Weekly intervals
-                
-                // Simulate progression (in production, you'd store historical data)
-                const baseScore = Math.max(50, currentScore - (i * 2));
-                const variance = Math.random() * 4 - 2; // Small random variance
-                const score = Math.min(100, Math.max(0, baseScore + variance));
-                
-                trend.push({
-                    date: date.toISOString().split('T')[0],
-                    score: Math.round(score * 10) / 10
-                });
-            }
-            
-            // Ensure last point matches current score
-            trend[trend.length - 1].score = currentScore;
-            return trend;
-        }
-
-        // Extract validation methods from real data
-        function getValidationMethodsFromData(validations) {
-            const methods = {
-                'CLI Automated': 0,
-                'Manual Evidence': 0,
-                'Hybrid': 0
-            };
-
-            validations.forEach(validation => {
-                const commandCount = validation.commands_executed || 0;
-                const hasEvidence = validation.cli_command && validation.cli_command.includes('evidence_check');
-                
-                if (commandCount > 1 || (commandCount === 1 && !hasEvidence)) {
-                    if (hasEvidence) {
-                        methods['Hybrid']++;
-                    } else {
-                        methods['CLI Automated']++;
-                    }
-                } else if (hasEvidence) {
-                    methods['Manual Evidence']++;
-                } else {
-                    methods['CLI Automated']++;
-                }
-            });
-
-            return methods;
-        }
-
-        // Update KSI grid with minimalist approach (like old dashboard)
-        function updateKsiGridWithRealData(validations) {
-            const grid = document.getElementById('ksi-grid');
-            grid.innerHTML = '';
-
-            validations.forEach((validation, index) => {
-                const passed = validation.assertion === true || validation.assertion === "true";
-                const ksi_id = validation.ksi_id || validation.validation_id;
-                const reason = validation.assertion_reason || 'No details available';
-                const command = validation.cli_command || 'No command information';
-                const requirement = validation.requirement || validation.long_name || '';
-                
-                // Get category info
-                const category = validation.long_name || validation.category_prefix || 'Unknown';
-                
-                const card = document.createElement('div');
-                card.className = `ksi-card ${passed ? 'passed' : 'failed'}`;
-                
-                // Create unique ID for CLI toggle
-                const cliId = `cli-${index}`;
-                
-                card.innerHTML = `
-                    <div class="ksi-header">
-                        <div class="ksi-id" title="${requirement}">${ksi_id}</div>
-                        <div class="ksi-status ${passed ? 'status-pass' : 'status-fail'}" title="${reason}">
-                            ${passed ? '✅ PASS' : '❌ FAIL'}
-                        </div>
-                    </div>
-                    <div class="ksi-description" title="${reason}">
-                        ${reason.length > 120 ? reason.substring(0, 120) + '...' : reason}
-                    </div>
-                    <div class="ksi-details">
-                        <small>Category: ${category}</small><br>
-                        <small>Commands: ${validation.commands_executed || 0} executed</small>
-                        <div style="margin-top: 8px;">
-                            <span class="cli-toggle" onclick="toggleCLI('${cliId}')" style="
-                                cursor: pointer; 
-                                color: var(--fedramp-blue); 
-                                text-decoration: underline;
-                                font-size: 0.85rem;
-                            ">View CLI</span>
-                            <div class="cli-content" id="${cliId}" style="
-                                display: none; 
-                                white-space: pre-wrap; 
-                                font-family: monospace; 
-                                background: #f1f5f9; 
-                                padding: 8px; 
-                                border-radius: 4px; 
-                                margin-top: 6px;
-                                font-size: 0.8rem;
-                                border-left: 3px solid var(--fedramp-blue);
-                                max-height: 150px;
-                                overflow-y: auto;
-                            ">${command}
-
-Full Details: ${reason}</div>
-                        </div>
-                    </div>
-                `;
-                
-                grid.appendChild(card);
-            });
-        }
-
-        // Simple CLI toggle function (like old dashboard)
-        function toggleCLI(id) {
-            const el = document.getElementById(id);
-            if (el) {
-                el.style.display = el.style.display === "block" ? "none" : "block";
-            }
-        }
-
-        // Make function globally available
-        window.toggleCLI = toggleCLI;
-
-        // Update timeline with commit metadata
-        function updateTimelineWithMetadata(metadataData) {
-            const timeline = document.getElementById('timeline');
-            const metadata = metadataData.metadata || {};
-            const evidence = metadataData.evidence_files || {};
-            
-            // Clear existing timeline
-            timeline.innerHTML = '';
-
-            // Add validation completion event
-            const validationItem = document.createElement('div');
-            validationItem.className = 'timeline-item';
-            validationItem.innerHTML = `
-                <div class="timeline-icon" style="background: var(--success-green);">✓</div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Automated Validation Completed</div>
-                    <div class="timeline-description">${metadata.total_passed}/${metadata.total_ksis} KSIs passed (${Math.round((metadata.total_passed / metadata.total_ksis) * 100)}% compliance)</div>
-                    <div class="timeline-time">${metadata.generated_at ? new Date(metadata.generated_at).toLocaleString() : 'Recently'}</div>
-                </div>
+        // Show data source notification
+        function showDataSourceNotification(type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 600;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
             `;
-            timeline.appendChild(validationItem);
 
-            // Add evidence collection event
-            const evidenceItem = document.createElement('div');
-            evidenceItem.className = 'timeline-item';
-            evidenceItem.innerHTML = `
-                <div class="timeline-icon" style="background: var(--info-cyan);">🔄</div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Evidence Collection Updated</div>
-                    <div class="timeline-description">${metadata.total_commands} commands executed (${metadata.successful_commands} successful)</div>
-                    <div class="timeline-time">${getLatestCommitTime(evidence)}</div>
-                </div>
-            `;
-            timeline.appendChild(evidenceItem);
+            if (type === 'live') {
+                notification.style.background = 'rgba(5, 150, 105, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '✅ Live data loaded';
+            } else if (type === 'sample') {
+                notification.style.background = 'rgba(234, 88, 12, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '⚠️ Using sample data';
+            } else if (type === 'error') {
+                notification.style.background = 'rgba(220, 38, 38, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '❌ Data load error';
+            }
 
-            // Add dashboard refresh event
-            const dashboardItem = document.createElement('div');
-            dashboardItem.className = 'timeline-item';
-            dashboardItem.innerHTML = `
-                <div class="timeline-icon" style="background: var(--fedramp-blue);">📊</div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Dashboard Refreshed</div>
-                    <div class="timeline-description">Latest validation results published to trust center</div>
-                    <div class="timeline-time">Just now</div>
-                </div>
-            `;
-            timeline.appendChild(dashboardItem);
-        }
+            document.body.appendChild(notification);
 
-        // Get latest commit time from evidence files
-        function getLatestCommitTime(evidenceFiles) {
-            let latestTime = '';
-            let latestDate = new Date(0);
-
-            Object.values(evidenceFiles).forEach(file => {
-                if (file.commit_time) {
-                    const commitDate = new Date(file.commit_time);
-                    if (commitDate > latestDate) {
-                        latestDate = commitDate;
-                        latestTime = commitDate.toLocaleString();
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
                     }
-                }
-            });
-
-            return latestTime || 'Recently';
+                }, 300);
+            }, 3000);
         }
 
-        // Update vulnerability metrics from Security Hub data
-        function updateVulnerabilityMetrics(validations) {
-            // Find Security Hub findings from KSI-MLA-06
-            const securityHubKsi = validations.find(v => v.ksi_id === 'KSI-MLA-06');
-            let criticalCount = 0, highCount = 0, totalFindings = 0;
-
-            if (securityHubKsi && securityHubKsi.assertion_reason) {
-                // Parse findings from assertion reason
-                const reason = securityHubKsi.assertion_reason;
-                const criticalMatch = reason.match(/(\d+) critical/);
-                const highMatch = reason.match(/(\d+) high/);
-                const totalMatch = reason.match(/(\d+) active/);
-
-                criticalCount = criticalMatch ? parseInt(criticalMatch[1]) : 0;
-                highCount = highMatch ? parseInt(highMatch[1]) : 0;
-                totalFindings = totalMatch ? parseInt(totalMatch[1]) : 0;
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
             }
-
-            // Update vulnerability metrics in continuous monitoring tab
-            const vulnerabilityCards = document.querySelectorAll('.metric-card .metric-value');
-            if (vulnerabilityCards.length >= 4) {
-                vulnerabilityCards[0].textContent = criticalCount; // Unmitigated
-                vulnerabilityCards[1].textContent = Math.max(0, totalFindings - criticalCount - highCount); // Mitigated
-                vulnerabilityCards[2].textContent = '99.2%'; // Scan coverage (from your data)
-                vulnerabilityCards[3].textContent = '0'; // Incidents
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
             }
-        }
+        `;
+        document.head.appendChild(style);
 
-        // Create real category chart
-        function createRealCategoryChart(categories, percentages) {
-            const ctx = document.getElementById('categoryChart').getContext('2d');
-            
-            // Destroy existing chart if it exists
-            if (window.categoryChartInstance) {
-                window.categoryChartInstance.destroy();
-            }
-
-            window.categoryChartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: categories.map(cat => cat.replace(/^KSI-/, '').replace('-', ' ')),
-                    datasets: [{
-                        label: 'Compliance %',
-                        data: percentages,
-                        backgroundColor: percentages.map(p => 
-                            p >= 80 ? 'rgba(40, 167, 69, 0.8)' :
-                            p >= 60 ? 'rgba(253, 126, 20, 0.8)' :
-                            'rgba(220, 53, 69, 0.8)'
-                        ),
-                        borderColor: percentages.map(p => 
-                            p >= 80 ? '#28a745' :
-                            p >= 60 ? '#fd7e14' :
-                            '#dc3545'
-                        ),
-                        borderWidth: 2,
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                callback: function(value) {
-                                    return value + '%';
-                                }
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                maxRotation: 45,
-                                minRotation: 45
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Create real trend chart
-        function createRealTrendChart(trendData) {
-            const ctx = document.getElementById('trendChart').getContext('2d');
-            
-            // Destroy existing chart if it exists
-            if (window.trendChartInstance) {
-                window.trendChartInstance.destroy();
-            }
-
-            window.trendChartInstance = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: trendData.map(d => moment(d.date).format('MMM DD')),
-                    datasets: [{
-                        label: 'Compliance Score',
-                        data: trendData.map(d => d.score),
-                        borderColor: 'rgba(0, 102, 204, 1)',
-                        backgroundColor: 'rgba(0, 102, 204, 0.1)',
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: '#0066cc',
-                        pointBorderColor: '#ffffff',
-                        pointBorderWidth: 2,
-                        pointRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            min: Math.max(0, Math.min(...trendData.map(d => d.score)) - 10),
-                            max: 100,
-                            ticks: {
-                                callback: function(value) {
-                                    return value + '%';
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Create real validation methods chart
-        function createRealMethodChart(validationMethods) {
-            const ctx = document.getElementById('methodChart').getContext('2d');
-            
-            // Destroy existing chart if it exists
-            if (window.methodChartInstance) {
-                window.methodChartInstance.destroy();
-            }
-
-            window.methodChartInstance = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: Object.keys(validationMethods),
-                    datasets: [{
-                        data: Object.values(validationMethods),
-                        backgroundColor: [
-                            'rgba(0, 102, 204, 0.8)',
-                            'rgba(40, 167, 69, 0.8)',
-                            'rgba(253, 126, 20, 0.8)'
-                        ],
-                        borderColor: [
-                            '#0066cc',
-                            '#28a745',
-                            '#fd7e14'
-                        ],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 20,
-                                usePointStyle: true
-                            }
-                        }
-                    }
-                }
-            });
-        }
+        // Global functions for onclick handlers
+        window.showCliDetails = showCliDetails;
+        window.showKsiDetails = showKsiDetails;
+        window.closeCliModal = closeCliModal;
 
         // Auto-refresh every 5 minutes
         setInterval(() => {
@@ -1664,44 +1309,12 @@ Full Details: ${reason}</div>
         }, 300000);
 
         // Initialize dashboard when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Start with mock data for immediate display
-            initializeDashboard();
-            
-            // Then load real data
-            loadRealData();
-        });
+        document.addEventListener('DOMContentLoaded', initializeDashboard);
 
-        // Add smooth scrolling to anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add loading states
-        function showLoading(elementId) {
-            document.getElementById(elementId).innerHTML = '<div class="loading">Loading...</div>';
-        }
-
-        function hideLoading(elementId, content) {
-            document.getElementById(elementId).innerHTML = content;
-        }
-
-        // Add error handling
-        function showError(elementId, message) {
-            document.getElementById(elementId).innerHTML = 
-                `<div class="error">Error: ${message}</div>`;
-        }
-
-        // Responsive chart resizing
-        window.addEventListener('resize', () => {
-            Chart.helpers.each(Chart.instances, (instance) => {
-                instance.resize();
-            });
+        // Add keyboard shortcut hint
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchBox = document.getElementById('search-input');
+            searchBox.placeholder = 'Search KSIs... (Press / to focus)';
         });
     </script>
 </body>
