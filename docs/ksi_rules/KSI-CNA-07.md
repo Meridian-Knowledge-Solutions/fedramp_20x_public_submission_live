@@ -1,29 +1,13 @@
 # KSI-CNA-07: Follow AWS best practices
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-06 08:21:01 UTC*
-=======
-*Generated on 2025-06-06 08:22:08 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-06 08:23:18 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-06 08:29:51 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-07`
 **Description:** Follow AWS best practices
 **Justification:** Validates basic AWS configuration best practices
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ❌ 2025-06-06T08:21:01.662981
-=======
-**Last Validation:** ❌ 2025-06-06T08:22:08.659002
->>>>>>> Stashed changes
-=======
-**Last Validation:** ❌ 2025-06-06T08:23:18.256607
->>>>>>> Stashed changes
+**Last Validation:** ❌ 2025-06-06T08:29:51.500259
 **Result:** ❌ Config service error: 
 
 ## 🛠️ Implementation

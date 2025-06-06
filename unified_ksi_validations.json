@@ -1,26 +1,10 @@
 {
   "metadata": {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    "generated_at": "2025-06-06T08:21:01.725666Z",
+    "generated_at": "2025-06-06T08:29:51.564907Z",
     "generator_version": "multi-command-v2",
     "total_ksis": 51,
-    "total_passed": 32,
-    "total_failed": 19,
-=======
-    "generated_at": "2025-06-06T08:22:08.723429Z",
-    "generator_version": "multi-command-v2",
-    "total_ksis": 51,
-    "total_passed": 33,
-    "total_failed": 18,
->>>>>>> Stashed changes
-=======
-    "generated_at": "2025-06-06T08:23:18.341318Z",
-    "generator_version": "multi-command-v2",
-    "total_ksis": 51,
-    "total_passed": 34,
-    "total_failed": 17,
->>>>>>> Stashed changes
+    "total_passed": 35,
+    "total_failed": 16,
     "category_summary": {
       "KSI-CNA": {
         "total": 7,
@@ -66,24 +50,14 @@
       },
       "KSI-RPL": {
         "total": 4,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        "passed": 2,
-        "failed": 2,
-=======
-        "passed": 3,
-        "failed": 1,
->>>>>>> Stashed changes
-=======
         "passed": 4,
         "failed": 0,
->>>>>>> Stashed changes
         "long_name": "Recovery Planning"
       },
       "KSI-TPR": {
         "total": 4,
-        "passed": 1,
-        "failed": 3,
+        "passed": 2,
+        "failed": 2,
         "long_name": "Third-Party Information Resources"
       },
       "KSI-INR": {
@@ -103,15 +77,7 @@
       "cli_command": "2 commands (2 successful): aws ec2 describe-subnets --output json; aws ec2 describe-security-groups --query 'SecurityGroups[?GroupName!=`default`]' --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u26a0\ufe0f No usable output",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.661794",
-=======
-      "timestamp": "2025-06-06T08:22:08.657784",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.254857",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.499040",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -130,15 +96,7 @@
       "cli_command": "2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.661888",
-=======
-      "timestamp": "2025-06-06T08:22:08.657879",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.254992",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.499136",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -157,15 +115,7 @@
       "cli_command": "2 commands (2 successful): aws cloudwatch describe-alarms --output json; aws lambda list-functions --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.661983",
-=======
-      "timestamp": "2025-06-06T08:22:08.658002",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.255123",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.499264",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -184,15 +134,7 @@
       "cli_command": "2 commands (2 successful): aws ssm describe-patch-baselines --output json; aws ssm describe-instance-information --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.662075",
-=======
-      "timestamp": "2025-06-06T08:22:08.658113",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.255259",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.499371",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -211,15 +153,7 @@
       "cli_command": "2 commands (2 successful): aws ec2 describe-security-groups --output json; aws ec2 describe-vpcs --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83d\udee1\ufe0f 1 security groups analyzed | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.662157",
-=======
-      "timestamp": "2025-06-06T08:22:08.658199",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.255415",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.499458",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -238,15 +172,7 @@
       "cli_command": "2 commands (2 successful): aws iam list-users --output json; aws iam list-mfa-devices --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83d\udc64 3 IAM users found | \ud83d\udd10 1 MFA devices detected",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.662235",
-=======
-      "timestamp": "2025-06-06T08:22:08.658279",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.255551",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.499539",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -265,15 +191,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.662495",
-=======
-      "timestamp": "2025-06-06T08:22:08.658507",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.255884",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.499763",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -292,15 +210,7 @@
       "cli_command": "2 commands (1 successful): aws cloudtrail describe-trails --output json; aws config describe-configuration-recorders --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/2 commands failed execution | \ud83d\udcca 1 CloudTrail configurations | \u26a0\ufe0f No usable output",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.662598",
-=======
-      "timestamp": "2025-06-06T08:22:08.658601",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.256016",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.499860",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 1,
@@ -319,15 +229,7 @@
       "cli_command": "2 commands (2 successful): aws cloudwatch describe-alarms --output json; aws logs describe-metric-filters --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.662678",
-=======
-      "timestamp": "2025-06-06T08:22:08.658678",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.256127",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.499936",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -346,15 +248,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.662841",
-=======
-      "timestamp": "2025-06-06T08:22:08.658839",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.256402",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.500099",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -373,15 +267,7 @@
       "cli_command": "2 commands (2 successful): aws ec2 describe-security-groups --output json; aws ec2 describe-instances --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83d\udee1\ufe0f 1 security groups analyzed | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.662915",
-=======
-      "timestamp": "2025-06-06T08:22:08.658912",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.256512",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.500173",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -400,15 +286,7 @@
       "cli_command": "1 commands (0 successful): aws config describe-config-rules --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/1 commands failed execution | \u26a0\ufe0f No usable output",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.662981",
-=======
-      "timestamp": "2025-06-06T08:22:08.659002",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.256607",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.500259",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 0,
@@ -427,15 +305,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.663139",
-=======
-      "timestamp": "2025-06-06T08:22:08.659165",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.256845",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.500426",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -454,15 +324,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.663312",
-=======
-      "timestamp": "2025-06-06T08:22:08.659342",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.257124",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.500603",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -481,15 +343,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.663492",
-=======
-      "timestamp": "2025-06-06T08:22:08.659496",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.257390",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.500759",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -508,15 +362,7 @@
       "cli_command": "2 commands (2 successful): aws securityhub get-findings --max-results 50 --output json; aws inspector2 list-findings --max-results 20 --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83d\udd0d 50 security findings | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.664935",
-=======
-      "timestamp": "2025-06-06T08:22:08.660908",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.259981",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.502185",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -535,15 +381,7 @@
       "cli_command": "2 commands (1 successful): aws inspector2 list-findings --filter-criteria '{\"component\":[{\"comparison\":\"EQUALS\",\"value\":\"*\"}]}' --max-results 20 --output json; evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/2 commands failed execution | \u26a0\ufe0f No usable output | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.665175",
-=======
-      "timestamp": "2025-06-06T08:22:08.661162",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.260402",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.502437",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 1,
@@ -562,15 +400,7 @@
       "cli_command": "2 commands (2 successful): aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json; evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.665376",
-=======
-      "timestamp": "2025-06-06T08:22:08.661352",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.260747",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.502628",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -589,15 +419,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.665566",
-=======
-      "timestamp": "2025-06-06T08:22:08.661503",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.261036",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.502780",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -616,15 +438,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.665761",
-=======
-      "timestamp": "2025-06-06T08:22:08.661696",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.261501",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.503028",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -643,15 +457,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.665961",
-=======
-      "timestamp": "2025-06-06T08:22:08.661899",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.261820",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.503269",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -670,15 +476,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.666120",
-=======
-      "timestamp": "2025-06-06T08:22:08.662103",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.262066",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.503438",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -697,15 +495,7 @@
       "cli_command": "1 commands (0 successful): aws shield describe-subscription --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/1 commands failed execution | \u26a0\ufe0f No usable output",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.666192",
-=======
-      "timestamp": "2025-06-06T08:22:08.662171",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.262160",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.503500",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 0,
@@ -724,15 +514,7 @@
       "cli_command": "2 commands (1 successful): aws securityhub get-enabled-standards --output json; aws inspector2 get-configuration --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/2 commands failed execution | \u2705 Command output received | \u26a0\ufe0f No usable output",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.666261",
-=======
-      "timestamp": "2025-06-06T08:22:08.662242",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.262270",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.503571",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 1,
@@ -751,15 +533,7 @@
       "cli_command": "2 commands (1 successful): aws ssm describe-parameters --output json; aws config describe-configuration-recorders --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/2 commands failed execution | \u2705 Command output received | \u26a0\ufe0f No usable output",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.666331",
-=======
-      "timestamp": "2025-06-06T08:22:08.662312",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.262410",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.503641",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 1,
@@ -778,15 +552,7 @@
       "cli_command": "2 commands (2 successful): aws ec2 describe-subnets --query 'Subnets[*].{SubnetId:SubnetId,AvailabilityZone:AvailabilityZone}' --output json; aws backup list-backup-plans --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83d\udccb 6 items retrieved | \ud83d\udcbe 2 backup plans configured",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.666414",
-=======
-      "timestamp": "2025-06-06T08:22:08.662394",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.262534",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.503719",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -805,15 +571,7 @@
       "cli_command": "2 commands (2 successful): aws resourcegroupstaggingapi get-resources --output json; evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.666609",
-=======
-      "timestamp": "2025-06-06T08:22:08.662554",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.262797",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.503878",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -832,15 +590,7 @@
       "cli_command": "2 commands (2 successful): aws codecommit list-repositories --output json; evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.666757",
-=======
-      "timestamp": "2025-06-06T08:22:08.662701",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.263061",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.504025",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -859,15 +609,7 @@
       "cli_command": "2 commands (2 successful): aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json; aws ec2 describe-launch-templates --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83c\udfd7\ufe0f 2 CloudFormation stacks | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.666824",
-=======
-      "timestamp": "2025-06-06T08:22:08.662769",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.263181",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.504093",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -886,15 +628,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.666965",
-=======
-      "timestamp": "2025-06-06T08:22:08.662911",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.263442",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.504263",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -908,20 +642,12 @@
     {
       "ksi_id": "KSI-TPR-01",
       "validation_id": "KSI-TPR-01",
-      "assertion": false,
-      "assertion_reason": "\u274c Third-party information resources not comprehensively identified: \u274c No cross-account role data for third-party integration analysis; \u274c No manual third-party inventory documentation found",
+      "assertion": true,
+      "assertion_reason": "\u26a0\ufe0f Partial third-party identification (expand documentation): \u274c No cross-account role data for third-party integration analysis; \u2705 Documented third-party inventory: fedramp_moderate_vendor_list.xlsx",
       "cli_command": "2 commands (1 successful): aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json; evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/2 commands failed execution | \u26a0\ufe0f No usable output | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.667098",
-=======
-      "timestamp": "2025-06-06T08:22:08.663065",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.263685",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.504415",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 1,
@@ -940,15 +666,7 @@
       "cli_command": "2 commands (2 successful): aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json; aws ec2 describe-launch-templates --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83c\udfd7\ufe0f 2 CloudFormation stacks | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.667167",
-=======
-      "timestamp": "2025-06-06T08:22:08.663136",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.263806",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.504485",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -967,15 +685,7 @@
       "cli_command": "2 commands (2 successful): aws s3api list-buckets --output json; aws ec2 describe-volumes --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.667230",
-=======
-      "timestamp": "2025-06-06T08:22:08.663201",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.263928",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.504571",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -994,15 +704,7 @@
       "cli_command": "2 commands (2 successful): aws organizations list-accounts --output json; evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.667401",
-=======
-      "timestamp": "2025-06-06T08:22:08.663373",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.264363",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.504856",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -1021,15 +723,7 @@
       "cli_command": "2 commands (2 successful): aws cloudtrail describe-trails --output json; REDACTED_FOR_SECURITY",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83d\udcca 1 CloudTrail configurations | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.667554",
-=======
-      "timestamp": "2025-06-06T08:22:08.663494",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.264500",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.504976",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -1048,15 +742,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.667878",
-=======
-      "timestamp": "2025-06-06T08:22:08.663858",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.264891",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.505354",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -1075,15 +761,7 @@
       "cli_command": "2 commands (1 successful): aws config describe-config-rules --output json; aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/2 commands failed execution | \u26a0\ufe0f No usable output | \ud83c\udfd7\ufe0f 2 CloudFormation stacks",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.667987",
-=======
-      "timestamp": "2025-06-06T08:22:08.663992",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.265015",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.505464",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 1,
@@ -1102,15 +780,7 @@
       "cli_command": "2 commands (2 successful): aws inspector2 list-coverage --output json; aws ec2 describe-instances --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.668129",
-=======
-      "timestamp": "2025-06-06T08:22:08.664104",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.265120",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.505577",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -1129,15 +799,7 @@
       "cli_command": "2 commands (2 successful): aws iam list-roles --output json; aws sts get-caller-identity --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.668422",
-=======
-      "timestamp": "2025-06-06T08:22:08.664388",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.265439",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.505870",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -1156,15 +818,7 @@
       "cli_command": "2 commands (2 successful): REDACTED_FOR_SECURITY; aws acm list-certificates --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.668566",
-=======
-      "timestamp": "2025-06-06T08:22:08.664501",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.265561",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.506004",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -1183,15 +837,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.668779",
-=======
-      "timestamp": "2025-06-06T08:22:08.664721",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.265835",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.506268",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -1210,15 +856,7 @@
       "cli_command": "2 commands (2 successful): aws elbv2 describe-load-balancers --output json; aws ec2 describe-vpc-endpoints --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.668876",
-=======
-      "timestamp": "2025-06-06T08:22:08.664811",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.265951",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.506371",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -1237,15 +875,7 @@
       "cli_command": "2 commands (2 successful): aws cloudtrail describe-trails --output json; aws iam list-policies --scope Local --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83d\udcca 1 CloudTrail configurations | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.669026",
-=======
-      "timestamp": "2025-06-06T08:22:08.664964",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.266130",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.506525",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -1264,15 +894,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.669248",
-=======
-      "timestamp": "2025-06-06T08:22:08.665227",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.266498",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.506751",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -1291,15 +913,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.670366",
-=======
-      "timestamp": "2025-06-06T08:22:08.665446",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.266723",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.506967",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -1318,15 +932,7 @@
       "cli_command": "2 commands (2 successful): aws ec2 describe-network-acls --output json; aws ec2 describe-route-tables --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \u2705 Command output received | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.670532",
-=======
-      "timestamp": "2025-06-06T08:22:08.665566",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.266846",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.507093",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -1345,15 +951,7 @@
       "cli_command": "2 commands (1 successful): REDACTED_FOR_SECURITY; REDACTED_FOR_SECURITY",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/2 commands failed execution | \u26a0\ufe0f No usable output | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.670637",
-=======
-      "timestamp": "2025-06-06T08:22:08.665666",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.266944",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.507188",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 1,
@@ -1372,15 +970,7 @@
       "cli_command": "1 commands (1 successful): evidence_check",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 1 commands executed successfully | \ud83d\udcc4 Manual evidence validation",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.670861",
-=======
-      "timestamp": "2025-06-06T08:22:08.665883",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.267204",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.507429",
       "validation_method": "multi-command",
       "commands_executed": 1,
       "successful_commands": 1,
@@ -1399,15 +989,7 @@
       "cli_command": "2 commands (2 successful): aws backup list-backup-plans --output json; aws ec2 describe-snapshots --owner-ids self --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83d\udcbe 2 backup plans configured | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.670965",
-=======
-      "timestamp": "2025-06-06T08:22:08.666005",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.267331",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.507527",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
@@ -1426,15 +1008,7 @@
       "cli_command": "2 commands (1 successful): aws iam list-roles --output json; aws iam list-service-linked-roles --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u26a0\ufe0f 1/2 commands failed execution | \u2705 Command output received | \u26a0\ufe0f No usable output",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.671228",
-=======
-      "timestamp": "2025-06-06T08:22:08.666268",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.267755",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.507788",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 1,
@@ -1453,15 +1027,7 @@
       "cli_command": "2 commands (2 successful): aws cloudtrail describe-trails --output json; aws logs describe-log-groups --output json",
       "cli_output_digest": "",
       "cli_output_interpretation": "\u2705 All 2 commands executed successfully | \ud83d\udcca 1 CloudTrail configurations | \u2705 Command output received",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "timestamp": "2025-06-06T08:21:01.671365",
-=======
-      "timestamp": "2025-06-06T08:22:08.666397",
->>>>>>> Stashed changes
-=======
-      "timestamp": "2025-06-06T08:23:18.268051",
->>>>>>> Stashed changes
+      "timestamp": "2025-06-06T08:29:51.507924",
       "validation_method": "multi-command",
       "commands_executed": 2,
       "successful_commands": 2,
