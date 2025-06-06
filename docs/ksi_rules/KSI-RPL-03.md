@@ -1,14 +1,14 @@
 # KSI-RPL-03: Perform system backups aligned with recovery objectives
 
-*Generated on 2025-06-06 09:29:28 UTC*
+*Generated on 2025-06-06 09:55:00 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-03`
 **Description:** Perform system backups aligned with recovery objectives
-**Justification:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives
-**Last Validation:** ✅ 2025-06-06T09:29:28.448791
-**Result:** ⚠️ Basic backup implementation (expand systematic coverage): ✅ Systematic backups: 2 AWS Backup plans configured; ℹ️ No EBS snapshots found (acceptable for low-impact if no EBS volumes)
+**Justification:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives INCLUDING retention policies
+**Last Validation:** ❌ 2025-06-06T09:55:00.587500
+**Result:** ❌ No system backup implementation: ⚠️ No AWS Backup plans found; ℹ️ No EBS snapshots found (acceptable for low-impact if no EBS volumes)
 
 ## 🛠️ Implementation
 
@@ -16,7 +16,10 @@
 1. **Command:** `aws backup list-backup-plans --output json`
    **Purpose:** Check AWS Backup plans for systematic backup implementation
 
-2. **Command:** `aws ec2 describe-snapshots --owner-ids self --output json`
+2. **Command:** `aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --output json`
+   **Purpose:** Get detailed backup plan configuration including retention policies
+
+3. **Command:** `aws ec2 describe-snapshots --owner-ids self --output json`
    **Purpose:** Validate EBS snapshots for system backup coverage
 
 ## 📋 Evidence Requirements
@@ -24,6 +27,8 @@
 ### 🖥️ CLI Validation
 - **Command:** `aws backup list-backup-plans --output json`
   - **Purpose:** Check AWS Backup plans for systematic backup implementation
+- **Command:** `aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --output json`
+  - **Purpose:** Get detailed backup plan configuration including retention policies
 - **Command:** `aws ec2 describe-snapshots --owner-ids self --output json`
   - **Purpose:** Validate EBS snapshots for system backup coverage
 
@@ -64,15 +69,15 @@ def evaluate_KSI_RPL_03(cli_output):
 
 **Control Description:** Perform system backups aligned with recovery objectives
 
-**Implementation Justification:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives
+**Implementation Justification:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives INCLUDING retention policies
 
 **FedRAMP 20x Category:** Recovery Planning
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ✅ All 2 commands executed successfully | 💾 2 backup plans configured | ✅ Command output received
+**Evidence Analysis:** ✅ All 3 commands executed successfully | 💾 2 backup plans configured | ✅ Command output received | ✅ Command output received
 
-**Commands Executed:** 2
+**Commands Executed:** 3
 **Validation Method:** multi-command
 
 ---
