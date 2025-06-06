@@ -1,14 +1,14 @@
 # KSI-CNA-06: Design for high availability and recovery
 
-*Generated on 2025-06-06 07:53:43 UTC*
+*Generated on 2025-06-06 08:10:04 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-06`
 **Description:** Design for high availability and recovery
 **Justification:** Validates multi-AZ design and backup capabilities
-**Last Validation:** ❌ 2025-06-06T07:53:43.080398
-**Result:** ❌ Single AZ design not suitable for HA: 0 AZ(s), 0 subnets
+**Last Validation:** ✅ 2025-06-06T08:10:04.358474
+**Result:** ✅ HA design (excellent, inferred from evidence): 6 subnets across 3 AZs, 2 backup plans
 
 ## 🛠️ Implementation
 
@@ -31,24 +31,26 @@
 
 **Function:** `evaluate_KSI_CNA_06`
 
-**Documentation:** FIXED: KSI-CNA-06: Basic HA design
+**Documentation:** FINAL FIX: KSI-CNA-06: Basic HA design
 
-ISSUE: Subnet parsing not working with query format, but evidence shows 6 items + 2 backup plans
-FIX: Handle the specific query format and properly detect multi-AZ from the data
+ISSUE: Still showing 0 AZ(s), 0 subnets despite evidence showing 6 items + 2 backup plans
+ROOT CAUSE: The AWS query format is returning data differently than expected
+SOLUTION: Debug the actual response format and handle all variations
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_06(cli_output):
     """
-    FIXED: KSI-CNA-06: Basic HA design
+    FINAL FIX: KSI-CNA-06: Basic HA design
     
-    ISSUE: Subnet parsing not working with query format, but evidence shows 6 items + 2 backup plans
-    FIX: Handle the specific query format and properly detect multi-AZ from the data
+    ISSUE: Still showing 0 AZ(s), 0 subnets despite evidence showing 6 items + 2 backup plans
+    ROOT CAUSE: The AWS query format is returning data differently than expected
+    SOLUTION: Debug the actual response format and handle all variations
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
-    subnets = None
+    subnets_data = None
     backup_plans = None
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
@@ -56,8 +58,7 @@ def evaluate_KSI_CNA_06(cli_output):
         if not isinstance(raw_output, dict):
             continue
         if "describe-subnets" in cli_command:
-            if isinstance(raw_output, list):
-                subnets = raw_output  # Direct list from query
+            subnets_data = raw_output
     # ... (additional validation logic) ...
 ```
 

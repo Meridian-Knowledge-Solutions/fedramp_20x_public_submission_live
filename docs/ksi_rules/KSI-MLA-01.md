@@ -1,13 +1,13 @@
 # KSI-MLA-01: Operate a SIEM or similar system for centralized, tamper-resistant logging
 
-*Generated on 2025-06-06 07:53:43 UTC*
+*Generated on 2025-06-06 08:10:04 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-01`
 **Description:** Operate a SIEM or similar system for centralized, tamper-resistant logging
 **Justification:** Validates centralized logging with tamper resistance through CloudTrail, CloudWatch, and log integrity
-**Last Validation:** ✅ 2025-06-06T07:53:43.084349
+**Last Validation:** ✅ 2025-06-06T08:10:04.363360
 **Result:** ✅ SIEM/centralized tamper-resistant logging: ✅ CloudTrail: 1 trails (0 active, 1 tamper-resistant); ✅ Centralized logging: 3 log groups (1 AWS services, 2 applications)
 
 ## 🛠️ Implementation
