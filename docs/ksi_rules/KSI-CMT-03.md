@@ -1,13 +1,13 @@
 # KSI-CMT-03: Implement automated testing and validation of changes prior to deployment
 
-*Generated on 2025-06-06 11:15:22 UTC*
+*Generated on 2025-06-06 11:23:25 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-03`
 **Description:** Implement automated testing and validation of changes prior to deployment
 **Justification:** Validates automated testing through CodeBuild, CodePipeline, and pre-deployment validation
-**Last Validation:** ❌ 2025-06-06T11:15:22.130494
+**Last Validation:** ❌ 2025-06-06T11:23:25.286654
 **Result:** ❌ No automated testing and validation: ❌ No CodeBuild projects for automated testing; ❌ No CodePipelines for automated change validation
 
 ## 🛠️ Implementation
@@ -73,7 +73,7 @@ def evaluate_KSI_CMT_03(cli_output):
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 
 **Commands Executed:** 2
-**Validation Method:** multi-command
+**Validation Method:** validation-engine-sync
 
 ---
 *Documentation auto-generated from KSI validation pipeline*

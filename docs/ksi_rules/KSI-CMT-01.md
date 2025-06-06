@@ -1,13 +1,13 @@
 # KSI-CMT-01: Log and monitor system modifications
 
-*Generated on 2025-06-06 11:15:22 UTC*
+*Generated on 2025-06-06 11:23:25 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-01`
 **Description:** Log and monitor system modifications
 **Justification:** Validates system modification logging through CloudTrail and Config change tracking
-**Last Validation:** ✅ 2025-06-06T11:15:22.131195
+**Last Validation:** ✅ 2025-06-06T11:23:25.286397
 **Result:** ✅ System modification logging and monitoring: ✅ System modification logging configured: 1 CloudTrail trails; ✅ Global service events tracked: 1 trails; ℹ️ AWS Config not configured (acceptable for low-impact)
 
 ## 🛠️ Implementation
@@ -74,7 +74,7 @@ def evaluate_KSI_CMT_01(cli_output):
 **Evidence Analysis:** ⚠️ 1/2 commands failed execution | 📊 1 CloudTrail configurations | ⚠️ No usable output
 
 **Commands Executed:** 2
-**Validation Method:** multi-command
+**Validation Method:** validation-engine-sync
 
 ---
 *Documentation auto-generated from KSI validation pipeline*

@@ -1,13 +1,13 @@
 # KSI-INR-02: Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 
-*Generated on 2025-06-06 11:15:22 UTC*
+*Generated on 2025-06-06 11:23:25 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-INR-02`
 **Description:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 **Justification:** Validates incident logging infrastructure and manual incident tracking with pattern analysis
-**Last Validation:** ❌ 2025-06-06T11:15:22.134039
+**Last Validation:** ❌ 2025-06-06T11:23:25.288831
 **Result:** ❌ No comprehensive incident logging and analysis: ⚠️ No dedicated security log groups found (may use general logging); ❌ No manual incident tracking documentation found; ⚠️ No recent incident pattern analysis (should be periodic)
 
 ## 🛠️ Implementation
@@ -74,7 +74,7 @@ def evaluate_KSI_INR_02(cli_output):
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | 📄 Manual evidence validation
 
 **Commands Executed:** 2
-**Validation Method:** multi-command
+**Validation Method:** validation-engine-sync
 
 ---
 *Documentation auto-generated from KSI validation pipeline*

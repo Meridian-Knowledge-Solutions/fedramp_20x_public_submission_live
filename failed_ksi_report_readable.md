@@ -4,19 +4,17 @@
 
 ## 📊 Executive Summary
 
-- **Overall Pass Rate:** 78.4% (40/51)
-- **Failed KSIs:** 11
+- **Overall Pass Rate:** 82.4% (42/51)
+- **Failed KSIs:** 9
 - **Validation Method:** multi-command-v2
-- **Last Updated:** 2025-06-06T11:15:22.197119Z
+- **Last Updated:** 2025-06-06T11:23:25.401040Z
 
 ### Category Breakdown
-- **KSI-CNA** (Cloud Native Architecture): 2/7 failed
 - **KSI-CMT** (Change Management): 2/5 failed
-- **KSI-IAM** (Identity and Access Management): 1/6 failed
-- **KSI-SVC** (Service Configuration): 1/7 failed
+- **KSI-CNA** (Cloud Native Architecture): 2/7 failed
+- **KSI-INR** (Incident Reporting): 2/3 failed
 - **KSI-PIY** (Policy and Inventory): 2/7 failed
 - **KSI-TPR** (Third-Party Information Resources): 1/4 failed
-- **KSI-INR** (Incident Reporting): 2/3 failed
 
 ---
 
@@ -31,7 +29,7 @@
 **Commands:** `2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
-**Validated:** 2025-06-06 11:15:22 UTC
+**Validated:** 2025-06-06 11:23:25 UTC
 
 #### ❌ KSI-CMT-05
 
@@ -40,7 +38,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:15:22 UTC
+**Validated:** 2025-06-06 11:23:25 UTC
 
 ---
 
@@ -53,7 +51,7 @@
 **Commands:** `1 commands (0 successful): aws shield describe-subscription --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:15:22 UTC
+**Validated:** 2025-06-06 11:23:25 UTC
 
 #### ❌ KSI-CNA-07
 
@@ -62,20 +60,7 @@
 **Commands:** `1 commands (0 successful): aws config describe-config-rules --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:15:22 UTC
-
----
-
-### KSI-IAM: Identity and Access Management
-
-#### ❌ KSI-IAM-02
-
-**Control:** Identity and Access Management
-**Reason:** ❌ Insufficient secure authentication: ⚠️ Access key information not accessible; ❌ Password policy information not accessible
-**Commands:** `2 commands (1 successful): REDACTED_FOR_SECURITY; REDACTED_FOR_SECURITY`
-**Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | ✅ Command output received
-**Commands Executed:** 2
-**Validated:** 2025-06-06 11:15:22 UTC
+**Validated:** 2025-06-06 11:23:25 UTC
 
 ---
 
@@ -88,7 +73,7 @@
 **Commands:** `2 commands (2 successful): aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json; evidence_check`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | 📄 Manual evidence validation
 **Commands Executed:** 2
-**Validated:** 2025-06-06 11:15:22 UTC
+**Validated:** 2025-06-06 11:23:25 UTC
 
 #### ❌ KSI-INR-03
 
@@ -97,7 +82,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:15:22 UTC
+**Validated:** 2025-06-06 11:23:25 UTC
 
 ---
 
@@ -110,7 +95,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:15:22 UTC
+**Validated:** 2025-06-06 11:23:25 UTC
 
 #### ❌ KSI-PIY-07
 
@@ -119,20 +104,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:15:22 UTC
-
----
-
-### KSI-SVC: Service Configuration
-
-#### ❌ KSI-SVC-06
-
-**Control:** Service Configuration
-**Reason:** ❌ No automated key management systems found: ℹ️ No ACM certificates found (acceptable for low-impact)
-**Commands:** `2 commands (2 successful): REDACTED_FOR_SECURITY; aws acm list-certificates --output json`
-**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
-**Commands Executed:** 2
-**Validated:** 2025-06-06 11:15:22 UTC
+**Validated:** 2025-06-06 11:23:25 UTC
 
 ---
 
@@ -145,26 +117,26 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:15:22 UTC
+**Validated:** 2025-06-06 11:23:25 UTC
 
 ---
 ## 🔧 Remediation Guidance
 
-### Configuration Issues (4 KSIs)
+### Configuration Issues (2 KSIs)
 - **Action:** Review and fix AWS service configurations
 - **Priority:** Medium - Configuration changes needed
-- **Affected KSIs:** KSI-CMT-03, KSI-INR-02, KSI-SVC-06, KSI-IAM-02
-
-### Technical Issues (2 KSIs)
-- **Action:** Check AWS CLI configuration, permissions, and service availability
-- **Priority:** High - Technical resolution needed
-- **Affected KSIs:** KSI-CNA-07, KSI-CNA-05
+- **Affected KSIs:** KSI-CMT-03, KSI-INR-02
 
 ### Missing Documentation (5 KSIs)
 - **Action:** Upload required evidence to appropriate `evidence_v2/KSI-*/` directories
 - **Priority:** Medium - Manual evidence required
-- **Affected KSIs:** KSI-PIY-05, KSI-INR-03, KSI-TPR-03, KSI-PIY-07, KSI-CMT-05
+- **Affected KSIs:** KSI-CMT-05, KSI-INR-03, KSI-PIY-05, KSI-PIY-07, KSI-TPR-03
+
+### Technical Issues (2 KSIs)
+- **Action:** Check AWS CLI configuration, permissions, and service availability
+- **Priority:** High - Technical resolution needed
+- **Affected KSIs:** KSI-CNA-05, KSI-CNA-07
 ---
 
-*Report generated on 2025-06-06 11:15:22 UTC*
+*Report generated on 2025-06-06 11:23:25 UTC*
 *Source: unified_ksi_validations.json*

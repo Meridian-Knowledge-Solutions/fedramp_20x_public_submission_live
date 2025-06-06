@@ -1,13 +1,13 @@
 # KSI-CNA-04: Use immutable infrastructure patterns
 
-*Generated on 2025-06-06 11:15:22 UTC*
+*Generated on 2025-06-06 11:23:25 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-04`
 **Description:** Use immutable infrastructure patterns
 **Justification:** Validates Infrastructure as Code and standardized deployments
-**Last Validation:** ✅ 2025-06-06T11:15:22.135475
+**Last Validation:** ✅ 2025-06-06T11:23:25.287393
 **Result:** ✅ IaC patterns found: 2 CloudFormation stacks, 0 launch templates
 
 ## 🛠️ Implementation
@@ -72,7 +72,7 @@ def evaluate_KSI_CNA_04(cli_output):
 **Evidence Analysis:** ✅ All 2 commands executed successfully | 🏗️ 2 CloudFormation stacks | ✅ Command output received
 
 **Commands Executed:** 2
-**Validation Method:** multi-command
+**Validation Method:** validation-engine-sync
 
 ---
 *Documentation auto-generated from KSI validation pipeline*

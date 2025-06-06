@@ -1,13 +1,13 @@
 # KSI-CMT-02: Execute changes through redeployment of version controlled immutable resources
 
-*Generated on 2025-06-06 11:15:22 UTC*
+*Generated on 2025-06-06 11:23:25 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-02`
 **Description:** Execute changes through redeployment of version controlled immutable resources
 **Justification:** Validates immutable infrastructure patterns through CloudFormation and version control practices
-**Last Validation:** ✅ 2025-06-06T11:15:22.135857
+**Last Validation:** ✅ 2025-06-06T11:23:25.286535
 **Result:** ⚠️ Basic immutable deployment (expand coverage): ✅ Immutable infrastructure: 2/2 successful CloudFormation deployments; ⚠️ No launch templates for immutable instance deployment
 
 ## 🛠️ Implementation
@@ -74,7 +74,7 @@ def evaluate_KSI_CMT_02(cli_output):
 **Evidence Analysis:** ✅ All 2 commands executed successfully | 🏗️ 2 CloudFormation stacks | ✅ Command output received
 
 **Commands Executed:** 2
-**Validation Method:** multi-command
+**Validation Method:** validation-engine-sync
 
 ---
 *Documentation auto-generated from KSI validation pipeline*
