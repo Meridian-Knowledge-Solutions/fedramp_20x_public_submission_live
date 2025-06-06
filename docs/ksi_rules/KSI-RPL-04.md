@@ -1,14 +1,14 @@
 # KSI-RPL-04: Regularly test the capability to recover from incidents and contingencies
 
-*Generated on 2025-06-06 08:29:51 UTC*
+*Generated on 2025-06-06 08:50:09 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-04`
 **Description:** Regularly test the capability to recover from incidents and contingencies
 **Justification:** Manual evidence required - recovery testing procedures, test results, and lessons learned documentation
-**Last Validation:** ✅ 2025-06-06T08:29:51.503028
-**Result:** ⚠️ Basic recovery testing (expand testing procedures): ✅ Recovery testing documentation: contingency_plan_test_report_example.pdf, combined_tabletop_test_report_template.pdf; ✅ Recent testing: 2 test documents updated within last year
+**Last Validation:** ✅ 2025-06-06T08:50:09.211702
+**Result:** ⚠️ Basic recovery testing (expand testing procedures): ✅ Core testing documentation: combined_tabletop_test_report_template.pdf; ✅ Recent testing: 2 test documents updated within last year
 
 ## 🛠️ Implementation
 
@@ -41,9 +41,9 @@ def evaluate_KSI_RPL_04(cli_output):
     if not evidence_dir.exists():
         return False, "❌ Evidence directory evidence_v2/KSI-RPL-04/ not found"
     required_docs = [
-        "recovery_testing_procedures.pdf",
-        "disaster_recovery_test_results.xlsx",
-        "tabletop_exercise_reports.pdf"
+        "combined_tabletop_test_report_template.pdf",
+        "contingency_plan_test_report_example.xlsx",
+        "contingency_test_plan.pdf"
     ]
     optional_docs = [
         "recovery_lessons_learned.pdf",

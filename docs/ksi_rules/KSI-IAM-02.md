@@ -1,14 +1,14 @@
 # KSI-IAM-02: Use secure passwordless methods or strong passwords with MFA
 
-*Generated on 2025-06-06 08:29:51 UTC*
+*Generated on 2025-06-06 08:50:09 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-02`
 **Description:** Use secure passwordless methods or strong passwords with MFA
 **Justification:** Validates passwordless authentication where feasible, otherwise strong password policy with MFA
-**Last Validation:** ❌ 2025-06-06T08:29:51.507188
-**Result:** ❌ Insufficient secure authentication: ❌ No password policy configured
+**Last Validation:** ❌ 2025-06-06T08:50:09.215732
+**Result:** ❌ Insufficient secure authentication: ⚠️ Access key information not accessible; ❌ Password policy information not accessible
 
 ## 🛠️ Implementation
 
@@ -31,19 +31,19 @@
 
 **Function:** `evaluate_KSI_IAM_02`
 
-**Documentation:** KSI-IAM-02: Use secure passwordless methods for user authentication and authorization 
+**Documentation:** FIXED: KSI-IAM-02: Use secure passwordless methods for user authentication and authorization 
 when feasible, otherwise enforce strong passwords with MFA
 
-Expected: Password Policy + Access Keys
+ERROR FIX: Handles 'str' object has no attribute 'get' by adding robust type checking
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_IAM_02(cli_output):
     """
-    KSI-IAM-02: Use secure passwordless methods for user authentication and authorization 
+    FIXED: KSI-IAM-02: Use secure passwordless methods for user authentication and authorization 
     when feasible, otherwise enforce strong passwords with MFA
     
-    Expected: Password Policy + Access Keys
+    ERROR FIX: Handles 'str' object has no attribute 'get' by adding robust type checking
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
@@ -52,12 +52,12 @@ def evaluate_KSI_IAM_02(cli_output):
     access_keys = None
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if "get-account-password-policy" in cli_command:
-            password_policy = raw_output.get("PasswordPolicy", {})
-        elif "list-access-keys" in cli_command:
-            access_keys = raw_output.get("AccessKeyMetadata", [])
-    findings = []
+        raw_output = cmd.get("raw_output")
+        try:
+            if isinstance(raw_output, str):
+                if "get-account-password-policy" in cli_command:
+                    if any(error in raw_output for error in [
+                        "NoSuchEntity",
     # ... (additional validation logic) ...
 ```
 

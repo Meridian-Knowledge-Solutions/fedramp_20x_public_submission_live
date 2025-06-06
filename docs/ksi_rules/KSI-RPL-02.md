@@ -1,14 +1,14 @@
 # KSI-RPL-02: Develop and maintain a recovery plan that aligns with defined recovery objectives
 
-*Generated on 2025-06-06 08:29:51 UTC*
+*Generated on 2025-06-06 08:50:09 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-02`
 **Description:** Develop and maintain a recovery plan that aligns with defined recovery objectives
 **Justification:** Manual evidence required - disaster recovery plans, incident response procedures, and recovery playbooks
-**Last Validation:** ✅ 2025-06-06T08:29:51.505354
-**Result:** ⚠️ Basic recovery plans (expand procedures and maintenance): ✅ Recovery planning documentation: incident_reponse_policy.pdf; ✅ Plan maintenance: 3 files updated within last year
+**Last Validation:** ✅ 2025-06-06T08:50:09.213933
+**Result:** ⚠️ Good recovery planning (enhance maintenance procedures): ✅ Core recovery plans: incident_reponse_policy.pdf, contingency_planning_policy.pdf; ✅ Plan maintenance: 3 files updated within last year
 
 ## 🛠️ Implementation
 
@@ -41,9 +41,8 @@ def evaluate_KSI_RPL_02(cli_output):
     if not evidence_dir.exists():
         return False, "❌ Evidence directory evidence_v2/KSI-RPL-02/ not found"
     required_docs = [
-        "disaster_recovery_plan.pdf",
-        "incident_response_plan.pdf",
-        "recovery_procedures_playbook.pdf"
+        "incident_reponse_policy.pdf",
+        "contingency_planning_policy.pdf",
     ]
     optional_docs = [
         "business_continuity_plan.pdf",
@@ -51,6 +50,7 @@ def evaluate_KSI_RPL_02(cli_output):
         "crisis_communication_plan.pdf",
         "recovery_team_contact_list.pdf",
         "escalation_procedures.pdf",
+        "vendor_recovery_contacts.pdf"
     # ... (additional validation logic) ...
 ```
 

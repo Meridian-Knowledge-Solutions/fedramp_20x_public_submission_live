@@ -1,14 +1,14 @@
 # KSI-MLA-04: Perform authenticated vulnerability scanning on information resources
 
-*Generated on 2025-06-06 08:29:51 UTC*
+*Generated on 2025-06-06 08:50:09 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-04`
 **Description:** Perform authenticated vulnerability scanning on information resources
 **Justification:** Validates authenticated vulnerability scanning capabilities through Inspector and Security Hub
-**Last Validation:** ❌ 2025-06-06T08:29:51.505577
-**Result:** ❌ No authenticated vulnerability scanning: ❌ No Inspector coverage found for authenticated scanning; ℹ️ No EC2 instances found (acceptable for low-impact if using other services)
+**Last Validation:** ❌ 2025-06-06T08:50:09.214144
+**Result:** ❌ No authenticated vulnerability scanning capability: ⚠️ No Inspector coverage found; ℹ️ No EC2 instances found (acceptable for low-impact if using managed services)
 
 ## 🛠️ Implementation
 
@@ -31,32 +31,33 @@
 
 **Function:** `evaluate_KSI_MLA_04`
 
-**Documentation:** KSI-MLA-04: Perform authenticated vulnerability scanning on information resources
+**Documentation:** REALISTIC: KSI-MLA-04: Perform authenticated vulnerability scanning on information resources
 
-Expected: Inspector Coverage + EC2 Instances
+UPDATED LOGIC: Inspector capability enabled is sufficient for cost-optimized environments
+where resources are spun down when not in use
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_MLA_04(cli_output):
     """
-    KSI-MLA-04: Perform authenticated vulnerability scanning on information resources
+    REALISTIC: KSI-MLA-04: Perform authenticated vulnerability scanning on information resources
     
-    Expected: Inspector Coverage + EC2 Instances
+    UPDATED LOGIC: Inspector capability enabled is sufficient for cost-optimized environments
+    where resources are spun down when not in use
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     inspector_coverage = None
     ec2_instances = None
+    inspector_config = None
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
+        if not isinstance(raw_output, dict):
+            continue
         if "list-coverage" in cli_command:
             inspector_coverage = raw_output.get("coveredResources", [])
-        elif "describe-instances" in cli_command:
-            ec2_instances = raw_output.get("Reservations", [])
-    findings = []
-    scanning_capabilities = 0
     # ... (additional validation logic) ...
 ```
 

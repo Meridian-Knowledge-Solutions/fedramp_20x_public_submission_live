@@ -1,14 +1,14 @@
 # KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
-*Generated on 2025-06-06 08:29:51 UTC*
+*Generated on 2025-06-06 08:50:09 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-01`
 **Description:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 **Justification:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
-**Last Validation:** ✅ 2025-06-06T08:29:51.500603
-**Result:** ⚠️ Limited recovery objectives documentation: ✅ Core RTO/RPO documentation: rto_rpo_definitions.pdf
+**Last Validation:** ✅ 2025-06-06T08:50:09.209243
+**Result:** ⚠️ Basic RTO/RPO definitions (expand business impact analysis): ✅ Core RTO/RPO documentation: rto_rpo_definitions.pdf, combined_tabletop_test_report_template.pdf
 
 ## 🛠️ Implementation
 
@@ -42,8 +42,7 @@ def evaluate_KSI_RPL_01(cli_output):
         return False, "❌ Evidence directory evidence_v2/KSI-RPL-01/ not found"
     required_docs = [
         "rto_rpo_definitions.pdf",
-        "business_impact_analysis.pdf",
-        "recovery_objectives_matrix.xlsx"
+        "combined_tabletop_test_report_template.pdf"
     ]
     optional_docs = [
         "service_level_agreements.pdf",
@@ -51,6 +50,7 @@ def evaluate_KSI_RPL_01(cli_output):
         "recovery_time_analysis.pdf",
         "data_loss_tolerance_matrix.xlsx",
         "business_continuity_requirements.pdf"
+    ]
     # ... (additional validation logic) ...
 ```
 

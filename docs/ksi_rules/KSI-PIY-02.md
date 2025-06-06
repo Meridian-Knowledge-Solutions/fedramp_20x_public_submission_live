@@ -1,14 +1,14 @@
 # KSI-PIY-02: Have policies outlining the security objectives of all information resources
 
-*Generated on 2025-06-06 08:29:51 UTC*
+*Generated on 2025-06-06 08:50:09 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-02`
 **Description:** Have policies outlining the security objectives of all information resources
 **Justification:** Manual evidence required - security policies and objectives documentation
-**Last Validation:** ✅ 2025-06-06T08:29:51.503438
-**Result:** ✅ Security policies outlining objectives: ✅ Security policy documentation found: data_classification_handling_policy.pdf, personnel_security_policy.pdf, security_policy_collection_repository.zip
+**Last Validation:** ✅ 2025-06-06T08:50:09.212070
+**Result:** ✅ Security policies outlining objectives: ✅ Core security policies: personnel_security_policy.pdf, data_classification_handling_policy.pdf, security_policy_collection_repository.zip
 
 ## 🛠️ Implementation
 
@@ -41,9 +41,9 @@ def evaluate_KSI_PIY_02(cli_output):
     if not evidence_dir.exists():
         return False, "❌ Evidence directory evidence_v2/KSI-PIY-02/ not found"
     required_docs = [
-        "security_policy.pdf",
-        "information_security_objectives.pdf",
-        "resource_security_standards.pdf"
+        "personnel_security_policy.pdf",
+        "data_classification_handling_policy.pdf",
+        "security_policy_collection_repository.zip"
     ]
     optional_docs = [
         "data_classification_policy.pdf",

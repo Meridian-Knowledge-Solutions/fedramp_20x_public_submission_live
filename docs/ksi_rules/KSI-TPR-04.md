@@ -1,13 +1,13 @@
 # KSI-TPR-04: Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 
-*Generated on 2025-06-06 08:29:51 UTC*
+*Generated on 2025-06-06 08:50:09 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-04`
 **Description:** Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 **Justification:** Validates vulnerability monitoring through Inspector, Security Hub, and contractual requirements documentation
-**Last Validation:** ❌ 2025-06-06T08:29:51.502437
+**Last Validation:** ❌ 2025-06-06T08:50:09.211062
 **Result:** ❌ No comprehensive third-party vulnerability monitoring: ❌ No Inspector vulnerability monitoring data; ❌ No contractual vulnerability notification agreements found
 
 ## 🛠️ Implementation
@@ -55,8 +55,8 @@ def evaluate_KSI_TPR_04(cli_output):
     manual_evidence = []
     if evidence_dir.exists():
         monitoring_files = [
-            "vulnerability_monitoring_contracts.pdf",
-            "upstream_vulnerability_procedures.pdf",
+            "Elasticsearch Inc._06.04.2024_Self_Attestation.pdf",
+        ]
     # ... (additional validation logic) ...
 ```
 

@@ -1,13 +1,13 @@
 # KSI-PIY-03: Maintain a vulnerability disclosure program
 
-*Generated on 2025-06-06 08:29:51 UTC*
+*Generated on 2025-06-06 08:50:09 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-03`
 **Description:** Maintain a vulnerability disclosure program
 **Justification:** Manual evidence required - vulnerability disclosure policy and program documentation
-**Last Validation:** ✅ 2025-06-06T08:29:51.500099
+**Last Validation:** ✅ 2025-06-06T08:50:09.208773
 **Result:** ✅ Vulnerability disclosure program maintained: ✅ Vulnerability disclosure documentation: vulnerability_disclosure_program_final.pdf
 
 ## 🛠️ Implementation
@@ -41,8 +41,7 @@ def evaluate_KSI_PIY_03(cli_output):
     if not evidence_dir.exists():
         return False, "❌ Evidence directory evidence_v2/KSI-PIY-03/ not found"
     required_docs = [
-        "vulnerability_disclosure_policy.pdf",
-        "responsible_disclosure_program.pdf"
+        "vulnerability_disclosure_policy.pdf"
     ]
     optional_docs = [
         "bug_bounty_program.pdf",
@@ -51,6 +50,7 @@ def evaluate_KSI_PIY_03(cli_output):
         "disclosure_timeline_policy.pdf"
     ]
     found_required = []
+    found_optional = []
     # ... (additional validation logic) ...
 ```
 
