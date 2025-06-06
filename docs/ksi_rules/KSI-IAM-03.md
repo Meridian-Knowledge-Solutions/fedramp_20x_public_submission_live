@@ -1,13 +1,13 @@
 # KSI-IAM-03: Enforce secure authentication for non-user accounts and services
 
-*Generated on 2025-06-06 04:21:09 UTC*
+*Generated on 2025-06-06 05:34:53 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-03`
 **Description:** Enforce secure authentication for non-user accounts and services
 **Justification:** Validates that service accounts, roles, and automated systems use appropriate authentication methods
-**Last Validation:** ❌ 2025-06-06T04:21:09.293770
+**Last Validation:** ❌ 2025-06-06T05:34:53.048873
 **Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
 
 ## 🛠️ Implementation

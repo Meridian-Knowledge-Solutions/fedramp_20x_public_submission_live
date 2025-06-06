@@ -4,10 +4,10 @@
 
 ## 📊 Executive Summary
 
-- **Overall Pass Rate:** 19.2% (10/52)
-- **Failed KSIs:** 42
+- **Overall Pass Rate:** 19.6% (10/51)
+- **Failed KSIs:** 41
 - **Validation Method:** multi-command-v2
-- **Last Updated:** 2025-06-06T04:21:09.354677Z
+- **Last Updated:** 2025-06-06T05:34:53.109478Z
 
 ### Category Breakdown
 - **KSI-CNA** (Cloud Native Architecture): 7/7 failed
@@ -18,7 +18,6 @@
 - **KSI-MLA** (Monitoring, Logging, and Auditing): 4/6 failed
 - **KSI-PIY** (Policy and Inventory): 4/7 failed
 - **KSI-RPL** (Recovery Planning): 3/4 failed
-- **terraform** (Unknown category): 1/1 failed
 - **KSI-TPR** (Third-Party Information Resources): 3/4 failed
 - **KSI-INR** (Incident Reporting): 3/3 failed
 
@@ -35,7 +34,7 @@
 **Commands:** `1 commands: aws iam list-users`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | 👤 3 IAM users found
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CED-02
 
@@ -44,7 +43,7 @@
 **Commands:** `1 commands: aws iam list-groups`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ Empty command output
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 
@@ -57,7 +56,7 @@
 **Commands:** `1 commands (0 successful): aws cloudtrail describe-trails`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | 📊 1 CloudTrail configurations
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CMT-02
 
@@ -66,7 +65,7 @@
 **Commands:** `1 commands (0 successful): aws cloudformation list-stack-sets --status ACTIVE`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CMT-03
 
@@ -75,7 +74,7 @@
 **Commands:** `1 commands (0 successful): aws codebuild list-projects`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CMT-05
 
@@ -84,7 +83,7 @@
 **Commands:** `1 commands (0 successful): aws ssm describe-document`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ❌ 
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 
@@ -97,7 +96,7 @@
 **Commands:** `1 commands (0 successful): aws ec2 describe-security-groups`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | 🛡️ 1 security groups analyzed
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CNA-02
 
@@ -106,7 +105,7 @@
 **Commands:** `1 commands (0 successful): aws ec2 describe-subnets`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CNA-03
 
@@ -115,7 +114,7 @@
 **Commands:** `1 commands (0 successful): aws ec2 describe-route-tables`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CNA-04
 
@@ -124,7 +123,7 @@
 **Commands:** `1 commands (0 successful): aws ec2 describe-instances`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CNA-05
 
@@ -133,7 +132,7 @@
 **Commands:** `1 commands (0 successful): aws wafv2 list-web-acls --scope CLOUDFRONT --region us-east-1`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CNA-06
 
@@ -142,7 +141,7 @@
 **Commands:** `1 commands (0 successful): aws ec2 describe-route-tables`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-CNA-07
 
@@ -151,7 +150,7 @@
 **Commands:** `1 commands (0 successful): aws ec2 describe-instances --query Reservations[*].Instances[*].ImageId`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 
@@ -164,7 +163,7 @@
 **Commands:** `4 commands (3 successful): aws iam list-users --output json; aws iam list-mfa-devices --output json (+2 more)`
 **Evidence Analysis:** ⚠️ 1/4 commands failed execution | 👤 3 IAM users found | 🔐 1 MFA devices detected | ✅ Command output received
 **Commands Executed:** 4
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-IAM-02
 
@@ -173,7 +172,7 @@
 **Commands:** `4 commands (3 successful): REDACTED_FOR_SECURITY; aws iam list-mfa-devices --output json (+2 more)`
 **Evidence Analysis:** ⚠️ 1/4 commands failed execution | 📋 3 items retrieved | 🔐 1 MFA devices detected | ⚠️ No usable output
 **Commands Executed:** 4
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-IAM-03
 
@@ -182,7 +181,7 @@
 **Commands:** `4 commands: aws iam list-roles --output json; aws iam list-instance-profiles --output json (+2 more)`
 **Evidence Analysis:** ⚠️ 1/4 commands failed execution | ✅ Command output received | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 4
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-IAM-05
 
@@ -191,7 +190,7 @@
 **Commands:** `5 commands (4 successful): aws iam list-policies --scope AWS --query 'Policies[?contains(PolicyName, `Condition`)]' --output json; aws logs describe-log-groups --log-group-name-prefix '/aws/cloudtr...`
 **Evidence Analysis:** ⚠️ 1/5 commands failed execution | ⚠️ No usable output | ✅ Command output received | ⚠️ No usable output
 **Commands Executed:** 5
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-IAM-06
 
@@ -200,7 +199,7 @@
 **Commands:** `5 commands (5 successful): aws iam list-users --query 'Users[?contains(UserName, `admin`) || contains(UserName, `root`)]' --output json; aws logs describe-log-groups --log-group-name-prefix '/aws/l...`
 **Evidence Analysis:** ✅ All 5 commands executed successfully | ⚠️ No usable output | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 5
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 
@@ -213,7 +212,7 @@
 **Commands:** `1 commands (0 successful): aws securityhub get-findings --max-results 1`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | 🔍 1 security findings
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-INR-02
 
@@ -222,7 +221,7 @@
 **Commands:** `1 commands (0 successful): aws securityhub get-findings --max-results 1`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | 🔍 1 security findings
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-INR-03
 
@@ -231,7 +230,7 @@
 **Commands:** `1 commands (0 successful): aws securityhub get-findings --filters SeverityLabel=CRITICAL --max-results 1`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ❌ 
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 
@@ -244,7 +243,7 @@
 **Commands:** `5 commands (5 successful): aws cloudwatch describe-alarms --output json; aws logs describe-metric-filters --output json (+3 more)`
 **Evidence Analysis:** ✅ All 5 commands executed successfully | ✅ Command output received | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 5
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-MLA-04
 
@@ -253,7 +252,7 @@
 **Commands:** `5 commands: aws inspector2 get-configuration --output json; aws inspector2 list-coverage --output json (+3 more)`
 **Evidence Analysis:** ⚠️ 1/5 commands failed execution | ⚠️ No usable output | ✅ Command output received | 📋 60 items retrieved
 **Commands Executed:** 5
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-MLA-05
 
@@ -262,7 +261,7 @@
 **Commands:** `5 commands: aws config describe-config-rules --output json; aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json (+3 more)`
 **Evidence Analysis:** ⚠️ 2/5 commands failed execution | ⚠️ No usable output | 🏗️ 2 CloudFormation stacks | ⚠️ No usable output
 **Commands Executed:** 5
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-MLA-06
 
@@ -271,7 +270,7 @@
 **Commands:** `5 commands: aws securityhub get-findings --query 'Findings[?Compliance.Status==`FAILED`]' --output json; aws ssm describe-patch-group-state --patch-group production --output json (+3 more)`
 **Evidence Analysis:** ⚠️ 2/5 commands failed execution | 📋 118 items retrieved | ✅ Command output received | ⚠️ No usable output
 **Commands Executed:** 5
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 
@@ -284,7 +283,7 @@
 **Commands:** `1 commands (0 successful): aws ec2 describe-instances`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-PIY-02
 
@@ -293,7 +292,7 @@
 **Commands:** `1 commands (0 successful): aws iam list-policies --max-items 5`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-PIY-05
 
@@ -302,7 +301,7 @@
 **Commands:** `1 commands (0 successful): aws configservice describe-config-rules --max-results 1`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ❌ 
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-PIY-07
 
@@ -311,7 +310,7 @@
 **Commands:** `1 commands (0 successful): REDACTED_FOR_SECURITY`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ❌ 
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 
@@ -324,7 +323,7 @@
 **Commands:** `1 commands (0 successful): aws backup list-backup-plans`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | 💾 2 backup plans configured
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-RPL-02
 
@@ -333,7 +332,7 @@
 **Commands:** `1 commands (0 successful): aws backup list-backup-plans`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | 💾 2 backup plans configured
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-RPL-04
 
@@ -342,7 +341,7 @@
 **Commands:** `1 commands (0 successful): aws backup list-backup-jobs`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ❌ Output too large or not JSON serializable
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 
@@ -355,7 +354,7 @@
 **Commands:** `1 commands (0 successful): aws ssm describe-instance-information --max-results 5`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-SVC-02
 
@@ -364,7 +363,7 @@
 **Commands:** `1 commands (0 successful): aws elbv2 describe-load-balancers`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-SVC-04
 
@@ -373,7 +372,7 @@
 **Commands:** `1 commands (0 successful): aws ssm list-associations`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-SVC-05
 
@@ -382,7 +381,7 @@
 **Commands:** `1 commands (0 successful): aws ec2 describe-images`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ❌ Output too large or not JSON serializable
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-SVC-06
 
@@ -391,7 +390,7 @@
 **Commands:** `1 commands (0 successful): REDACTED_FOR_SECURITY`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-SVC-07
 
@@ -400,7 +399,7 @@
 **Commands:** `1 commands (0 successful): aws ssm describe-patch-groups`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 
@@ -413,7 +412,7 @@
 **Commands:** `1 commands (0 successful): REDACTED_FOR_SECURITY`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-TPR-03
 
@@ -422,7 +421,7 @@
 **Commands:** `1 commands (0 successful): aws inspector2 list-members`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ✅ Command output received
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 #### ❌ KSI-TPR-04
 
@@ -431,27 +430,15 @@
 **Commands:** `1 commands (0 successful): aws securityhub get-findings --max-results 1`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | 🔍 1 security findings
 **Commands Executed:** 1
-**Validated:** 2025-06-06 04:21:09 UTC
-
----
-
-### terraform: Unknown category
-
-#### ❌ terraform
-
-**Control:** Unknown category
-**Reason:** ❌ No cli_output.json file found
-**Evidence Analysis:** ❌ No CLI output file found
-**Commands Executed:** 0
-**Validated:** 2025-06-06 04:21:09 UTC
+**Validated:** 2025-06-06 05:34:53 UTC
 
 ---
 ## 🔧 Remediation Guidance
 
-### Configuration Issues (26 KSIs)
+### Configuration Issues (25 KSIs)
 - **Action:** Review and fix AWS service configurations
 - **Priority:** Medium - Configuration changes needed
-- **Affected KSIs:** KSI-CNA-02, KSI-CMT-03, KSI-IAM-06, KSI-SVC-07, KSI-CNA-01, KSI-IAM-01, KSI-CMT-01, KSI-MLA-02, KSI-SVC-01, KSI-CNA-07, terraform, KSI-TPR-04, KSI-INR-02, KSI-CNA-05, KSI-SVC-04, KSI-CNA-06, KSI-PIY-01, KSI-CNA-04, KSI-TPR-01, KSI-CMT-02, KSI-SVC-05, KSI-SVC-06, KSI-SVC-02, KSI-IAM-05, KSI-CNA-03, KSI-IAM-02
+- **Affected KSIs:** KSI-CNA-02, KSI-CMT-03, KSI-IAM-06, KSI-SVC-07, KSI-CNA-01, KSI-IAM-01, KSI-CMT-01, KSI-MLA-02, KSI-SVC-01, KSI-CNA-07, KSI-TPR-04, KSI-INR-02, KSI-CNA-05, KSI-SVC-04, KSI-CNA-06, KSI-PIY-01, KSI-CNA-04, KSI-TPR-01, KSI-CMT-02, KSI-SVC-05, KSI-SVC-06, KSI-SVC-02, KSI-IAM-05, KSI-CNA-03, KSI-IAM-02
 
 ### Missing Rules (2 KSIs)
 - **Action:** Implement validation rules in `cli_assertion_rules_full.py`
@@ -469,5 +456,5 @@
 - **Affected KSIs:** KSI-MLA-06, KSI-MLA-05, KSI-MLA-04, KSI-IAM-03
 ---
 
-*Report generated on 2025-06-06 04:21:09 UTC*
+*Report generated on 2025-06-06 05:34:53 UTC*
 *Source: unified_ksi_validations.json*

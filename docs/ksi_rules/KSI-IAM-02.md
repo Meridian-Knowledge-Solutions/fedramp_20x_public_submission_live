@@ -1,13 +1,13 @@
 # KSI-IAM-02: Use secure passwordless methods or strong passwords with MFA
 
-*Generated on 2025-06-06 04:21:09 UTC*
+*Generated on 2025-06-06 05:34:53 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-02`
 **Description:** Use secure passwordless methods or strong passwords with MFA
 **Justification:** Validates IAM user presence and confirms MFA enforcement with strong password policies
-**Last Validation:** ❌ 2025-06-06T04:21:09.293111
+**Last Validation:** ❌ 2025-06-06T05:34:53.048340
 **Result:** ❌ Insufficient secure authentication: ❌ No password policy configured
 
 ## 🛠️ Implementation

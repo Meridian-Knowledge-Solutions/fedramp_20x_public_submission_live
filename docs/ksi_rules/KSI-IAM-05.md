@@ -1,13 +1,13 @@
 # KSI-IAM-05: Apply zero trust design principles
 
-*Generated on 2025-06-06 04:21:09 UTC*
+*Generated on 2025-06-06 05:34:53 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-05`
 **Description:** Apply zero trust design principles
 **Justification:** Validates zero trust implementation through conditional access, logging, and continuous verification
-**Last Validation:** ❌ 2025-06-06T04:21:09.292288
+**Last Validation:** ❌ 2025-06-06T05:34:53.047565
 **Result:** ❌ Zero trust principles not implemented: ❌ No CloudTrail found for continuous verification
 
 ## 🛠️ Implementation
