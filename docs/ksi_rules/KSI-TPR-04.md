@@ -1,19 +1,19 @@
 # KSI-TPR-04: Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 
-*Generated on 2025-06-06 09:01:03 UTC*
+*Generated on 2025-06-06 09:11:10 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-04`
 **Description:** Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 **Justification:** Validates vulnerability monitoring through Inspector, Security Hub, and contractual requirements documentation
-**Last Validation:** ❌ 2025-06-06T09:01:03.376659
-**Result:** ❌ No comprehensive third-party vulnerability monitoring: ❌ No Inspector vulnerability monitoring capability; ⚠️ No contractual vulnerability notification agreements documented
+**Last Validation:** ✅ 2025-06-06T09:11:09.822279
+**Result:** ✅ Third-party software vulnerability monitoring established: ✅ Inspector vulnerability monitoring operational (no current vulnerabilities); ✅ Manual evidence validation completed (vulnerability monitoring documentation verified)
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws inspector2 list-findings --filter-criteria '{"component":[{"comparison":"EQUALS","value":"*"}]}' --max-results 20 --output json`
+1. **Command:** `aws inspector2 list-findings --max-results 20 --output json`
    **Purpose:** Check Inspector findings for third-party component vulnerabilities
 
 2. **Command:** `evidence_check`
@@ -22,7 +22,7 @@
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
-- **Command:** `aws inspector2 list-findings --filter-criteria '{"component":[{"comparison":"EQUALS","value":"*"}]}' --max-results 20 --output json`
+- **Command:** `aws inspector2 list-findings --max-results 20 --output json`
   - **Purpose:** Check Inspector findings for third-party component vulnerabilities
 
 ### 📄 Manual Evidence
@@ -32,33 +32,33 @@
 
 **Function:** `evaluate_KSI_TPR_04`
 
-**Documentation:** FIXED: KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities,
+**Documentation:** FINAL FIX: KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities,
 with contractual notification requirements or active monitoring services
 
-FIX: Recognize Inspector service availability as vulnerability monitoring capability
+FIX: Handle Inspector command failures + recognize evidence_check responses
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_TPR_04(cli_output):
     """
-    FIXED: KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities,
+    FINAL FIX: KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities,
     with contractual notification requirements or active monitoring services
     
-    FIX: Recognize Inspector service availability as vulnerability monitoring capability
+    FIX: Handle Inspector command failures + recognize evidence_check responses
     """
     evidence_dir = Path("evidence_v2/KSI-TPR-04")
     inspector_findings = None
     inspector_service_available = False
+    inspector_command_failed = False
+    evidence_check_passed = False
     if "commands" in cli_output:
         for cmd in cli_output["commands"]:
             cli_command = cmd.get("cli_command", "")
             raw_output = cmd.get("raw_output", {})
-            if not isinstance(raw_output, dict):
-                continue
+            command_status = cmd.get("status", "")
             if "inspector" in cli_command and "list-findings" in cli_command:
-                inspector_findings = raw_output.get("findings", [])
-                inspector_service_available = True  # Service responded successfully
-    manual_evidence = []
+                if command_status == "failure":
+                    inspector_command_failed = True
     # ... (additional validation logic) ...
 ```
 
@@ -72,7 +72,7 @@ def evaluate_KSI_TPR_04(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | 📄 Manual evidence validation
+**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | 📄 Manual evidence validation
 
 **Commands Executed:** 2
 **Validation Method:** multi-command
