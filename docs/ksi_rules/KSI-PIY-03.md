@@ -1,9 +1,13 @@
 # KSI-PIY-03: Maintain a vulnerability disclosure program
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-06 08:21:01 UTC*
 =======
 *Generated on 2025-06-06 08:22:08 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-06 08:23:18 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Maintain a vulnerability disclosure program
 **Justification:** Manual evidence required - vulnerability disclosure policy and program documentation
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-06T08:21:01.662841
 =======
 **Last Validation:** ✅ 2025-06-06T08:22:08.658839
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-06T08:23:18.256402
 >>>>>>> Stashed changes
 **Result:** ✅ Vulnerability disclosure program maintained: ✅ Vulnerability disclosure documentation: vulnerability_disclosure_program_final.pdf
 

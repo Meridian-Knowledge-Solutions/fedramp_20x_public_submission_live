@@ -5,6 +5,7 @@
 ## 📊 Executive Summary
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 - **Overall Pass Rate:** 62.7% (32/51)
 - **Failed KSIs:** 19
 - **Validation Method:** multi-command-v2
@@ -15,6 +16,12 @@
 - **Validation Method:** multi-command-v2
 - **Last Updated:** 2025-06-06T08:22:08.723429Z
 >>>>>>> Stashed changes
+=======
+- **Overall Pass Rate:** 66.7% (34/51)
+- **Failed KSIs:** 17
+- **Validation Method:** multi-command-v2
+- **Last Updated:** 2025-06-06T08:23:18.341318Z
+>>>>>>> Stashed changes
 
 ### Category Breakdown
 - **KSI-CNA** (Cloud Native Architecture): 2/7 failed
@@ -24,9 +31,12 @@
 - **KSI-MLA** (Monitoring, Logging, and Auditing): 2/6 failed
 - **KSI-PIY** (Policy and Inventory): 2/7 failed
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 - **KSI-RPL** (Recovery Planning): 2/4 failed
 =======
 - **KSI-RPL** (Recovery Planning): 1/4 failed
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 - **KSI-TPR** (Third-Party Information Resources): 3/4 failed
 - **KSI-INR** (Incident Reporting): 2/3 failed
@@ -45,9 +55,13 @@
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 #### ❌ KSI-CMT-05
@@ -58,9 +72,13 @@
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 ---
@@ -75,9 +93,13 @@
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 #### ❌ KSI-CNA-07
@@ -88,9 +110,13 @@
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 ---
@@ -105,9 +131,13 @@
 **Evidence Analysis:** ✅ All 2 commands executed successfully | 👤 3 IAM users found | 🔐 1 MFA devices detected
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 #### ❌ KSI-IAM-02
@@ -118,9 +148,13 @@
 **Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | ✅ Command output received
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 #### ❌ KSI-IAM-06
@@ -131,9 +165,13 @@
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 ---
@@ -148,9 +186,13 @@
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | 📄 Manual evidence validation
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 #### ❌ KSI-INR-03
@@ -161,9 +203,13 @@
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 ---
@@ -178,9 +224,13 @@
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 #### ❌ KSI-MLA-04
@@ -191,9 +241,13 @@
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 ---
@@ -208,9 +262,13 @@
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 #### ❌ KSI-PIY-07
@@ -220,6 +278,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
@@ -254,6 +313,9 @@
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
 >>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
+>>>>>>> Stashed changes
 
 ---
 
@@ -267,9 +329,13 @@
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 ---
@@ -284,9 +350,13 @@
 **Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | 📄 Manual evidence validation
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 #### ❌ KSI-TPR-03
@@ -297,9 +367,13 @@
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 #### ❌ KSI-TPR-04
@@ -310,9 +384,13 @@
 **Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | 📄 Manual evidence validation
 **Commands Executed:** 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
 =======
 **Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
+=======
+**Validated:** 2025-06-06 08:23:18 UTC
 >>>>>>> Stashed changes
 
 ---
@@ -329,12 +407,17 @@
 - **Affected KSIs:** KSI-CNA-07, KSI-CNA-05
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ### Missing Documentation (7 KSIs)
+=======
+### Missing Documentation (5 KSIs)
+>>>>>>> Stashed changes
 - **Action:** Upload required evidence to appropriate `evidence_v2/KSI-*/` directories
 - **Priority:** Medium - Manual evidence required
-- **Affected KSIs:** KSI-PIY-05, KSI-RPL-04, KSI-INR-03, KSI-RPL-02, KSI-TPR-03, KSI-PIY-07, KSI-CMT-05
+- **Affected KSIs:** KSI-PIY-05, KSI-INR-03, KSI-TPR-03, KSI-PIY-07, KSI-CMT-05
 ---
 
+<<<<<<< Updated upstream
 *Report generated on 2025-06-06 08:21:01 UTC*
 =======
 ### Missing Documentation (6 KSIs)
@@ -344,5 +427,8 @@
 ---
 
 *Report generated on 2025-06-06 08:22:08 UTC*
+>>>>>>> Stashed changes
+=======
+*Report generated on 2025-06-06 08:23:18 UTC*
 >>>>>>> Stashed changes
 *Source: unified_ksi_validations.json*

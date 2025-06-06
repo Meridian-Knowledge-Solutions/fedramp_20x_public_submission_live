@@ -1,9 +1,13 @@
 # KSI-MLA-04: Perform authenticated vulnerability scanning on information resources
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-06 08:21:01 UTC*
 =======
 *Generated on 2025-06-06 08:22:08 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-06 08:23:18 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Perform authenticated vulnerability scanning on information resources
 **Justification:** Validates authenticated vulnerability scanning capabilities through Inspector and Security Hub
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ❌ 2025-06-06T08:21:01.668129
 =======
 **Last Validation:** ❌ 2025-06-06T08:22:08.664104
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ❌ 2025-06-06T08:23:18.265120
 >>>>>>> Stashed changes
 **Result:** ❌ No authenticated vulnerability scanning: ❌ No Inspector coverage found for authenticated scanning; ℹ️ No EC2 instances found (acceptable for low-impact if using other services)
 

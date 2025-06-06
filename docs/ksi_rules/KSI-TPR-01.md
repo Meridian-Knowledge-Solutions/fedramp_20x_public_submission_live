@@ -1,9 +1,13 @@
 # KSI-TPR-01: Identify all third-party information resources
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-06 08:21:01 UTC*
 =======
 *Generated on 2025-06-06 08:22:08 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-06 08:23:18 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Identify all third-party information resources
 **Justification:** Validates third-party resource identification through AWS services and documented third-party inventory
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ❌ 2025-06-06T08:21:01.667098
 =======
 **Last Validation:** ❌ 2025-06-06T08:22:08.663065
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ❌ 2025-06-06T08:23:18.263685
 >>>>>>> Stashed changes
 **Result:** ❌ Third-party information resources not comprehensively identified: ❌ No cross-account role data for third-party integration analysis; ❌ No manual third-party inventory documentation found
 
