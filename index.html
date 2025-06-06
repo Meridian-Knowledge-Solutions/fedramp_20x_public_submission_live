@@ -1085,46 +1085,65 @@
             event.target.classList.add('active');
         }
 
-        // Load real data from your JSON files
+        // Load real data using the same robust approach as the old dashboard
         async function loadRealData() {
+            const dataURL = "./unified_ksi_validations.json";
+            const metaURL = "./evidence_commit_metadata.json";
+            
             try {
-                console.log('🔄 Loading data files...');
+                console.log('🔄 Loading validation data...');
                 
-                // Try loading unified validations first (most important)
-                const unifiedResponse = await fetch('./unified_ksi_validations.json');
-                if (!unifiedResponse.ok) {
-                    throw new Error(`Failed to load unified validations: ${unifiedResponse.status}`);
+                const [res1, res2] = await Promise.all([
+                    fetch(dataURL).catch(e => ({ ok: false, error: e })),
+                    fetch(metaURL).catch(e => ({ ok: false, error: e }))
+                ]);
+                
+                if (!res1.ok) {
+                    throw new Error('Failed to load unified_ksi_validations.json');
                 }
-                const unifiedData = await unifiedResponse.json();
-                console.log('✅ Unified validations loaded:', unifiedData);
-
-                // Try loading additional files (optional)
-                let continuousData = [], metadataData = {};
                 
-                try {
-                    const continuousResponse = await fetch('./continuous_ksi_results.json');
-                    if (continuousResponse.ok) {
-                        continuousData = await continuousResponse.json();
-                        console.log('✅ Continuous results loaded');
-                    }
-                } catch (e) { console.log('ℹ️ Continuous data not available:', e.message); }
+                const data = await res1.json();
+                const meta = res2.ok ? await res2.json() : {};
                 
-                try {
-                    const metadataResponse = await fetch('./evidence_commit_metadata.json');
-                    if (metadataResponse.ok) {
-                        metadataData = await metadataResponse.json();
-                        console.log('✅ Metadata loaded');
-                    }
-                } catch (e) { console.log('ℹ️ Metadata not available:', e.message); }
-
+                console.log('✅ Data loaded successfully:', data);
+                
+                // Handle both data formats (old dashboard compatibility)
+                const validations = Array.isArray(data.validations) ? data.validations : data;
+                const metadata = data.metadata || {};
+                
                 // Update dashboard with real data
-                updateDashboardWithRealData(unifiedData, metadataData);
+                updateDashboardWithRealData({ 
+                    validations: validations,
+                    metadata: metadata 
+                }, meta);
                 
                 console.log('🎉 Dashboard updated with real data');
+                
             } catch (error) {
                 console.error('❌ Error loading real data:', error);
-                // Show error and keep mock data
-                showError('ksi-grid', `Unable to load live data: ${error.message}. Please check that the JSON files are available.`);
+                const grid = document.getElementById('ksi-grid');
+                if (grid) {
+                    grid.innerHTML = `
+                        <div style="
+                            grid-column: 1 / -1;
+                            padding: 2rem;
+                            text-align: center;
+                            background: rgba(220, 53, 69, 0.1);
+                            border: 1px solid #dc3545;
+                            border-radius: var(--border-radius);
+                            color: #dc3545;
+                        ">
+                            <h3>❌ Unable to load live data</h3>
+                            <p>Error: ${error.message}</p>
+                            <p>Please check that unified_ksi_validations.json is available and properly formatted.</p>
+                            <p style="margin-top: 1rem;">
+                                <a href="./unified_ksi_validations.json" target="_blank" style="color: #dc3545; text-decoration: underline;">
+                                    🔍 Check JSON file directly
+                                </a>
+                            </p>
+                        </div>
+                    `;
+                }
             }
         }
 
@@ -1249,73 +1268,62 @@
             return methods;
         }
 
-        // Update KSI grid with real validation data (with tooltips and CLI toggle like old dashboard)
+        // Update KSI grid with minimalist approach (like old dashboard)
         function updateKsiGridWithRealData(validations) {
             const grid = document.getElementById('ksi-grid');
             grid.innerHTML = '';
 
             validations.forEach((validation, index) => {
+                const passed = validation.assertion === true || validation.assertion === "true";
+                const ksi_id = validation.ksi_id || validation.validation_id;
+                const reason = validation.assertion_reason || 'No details available';
+                const command = validation.cli_command || 'No command information';
+                const requirement = validation.requirement || validation.long_name || '';
+                
+                // Get category info
+                const category = validation.long_name || validation.category_prefix || 'Unknown';
+                
                 const card = document.createElement('div');
-                const status = validation.assertion ? 'passed' : 'failed';
-                const statusClass = status === 'passed' ? 'status-pass' : 'status-fail';
-                const statusText = status === 'passed' ? 'PASS' : 'FAIL';
-                const statusIcon = status === 'passed' ? '✅' : '❌';
+                card.className = `ksi-card ${passed ? 'passed' : 'failed'}`;
                 
-                // Get CLI command details
-                const cliCommand = validation.cli_command || 'No command information';
-                const commandsExecuted = validation.commands_executed || 0;
-                const successfulCommands = validation.successful_commands || 0;
+                // Create unique ID for CLI toggle
+                const cliId = `cli-${index}`;
                 
-                // Detailed reason for tooltip
-                const fullReason = validation.assertion_reason || 'No details available';
-                const shortReason = fullReason.length > 100 ? fullReason.substring(0, 100) + '...' : fullReason;
-
-                card.className = `ksi-card ${status}`;
                 card.innerHTML = `
                     <div class="ksi-header">
-                        <div class="ksi-id" title="${validation.requirement || 'FedRAMP 20x KSI'}">${validation.ksi_id}</div>
-                        <div class="ksi-status ${statusClass}" title="${fullReason}">${statusIcon} ${statusText}</div>
+                        <div class="ksi-id" title="${requirement}">${ksi_id}</div>
+                        <div class="ksi-status ${passed ? 'status-pass' : 'status-fail'}" title="${reason}">
+                            ${passed ? '✅ PASS' : '❌ FAIL'}
+                        </div>
                     </div>
-                    <div class="ksi-description" title="${fullReason}">
-                        ${shortReason}
+                    <div class="ksi-description" title="${reason}">
+                        ${reason.length > 120 ? reason.substring(0, 120) + '...' : reason}
                     </div>
                     <div class="ksi-details">
-                        <small>Category: ${validation.long_name || validation.category_prefix || 'Unknown'}</small><br>
-                        <small>Commands: ${commandsExecuted} executed, ${successfulCommands} successful</small><br>
+                        <small>Category: ${category}</small><br>
+                        <small>Commands: ${validation.commands_executed || 0} executed</small>
                         <div style="margin-top: 8px;">
-                            <button class="cli-toggle-btn" onclick="toggleCliDetails('cli-${index}')" style="
-                                background: var(--fedramp-blue); 
-                                color: white; 
-                                border: none; 
-                                padding: 4px 8px; 
-                                border-radius: 4px; 
-                                font-size: 0.8rem; 
-                                cursor: pointer;
-                                transition: all 0.3s ease;
-                            " 
-                            onmouseover="this.style.background='var(--fedramp-dark)'" 
-                            onmouseout="this.style.background='var(--fedramp-blue)'">
-                                🔍 View CLI Command
-                            </button>
-                            <div id="cli-${index}" class="cli-details" style="
+                            <span class="cli-toggle" onclick="toggleCLI('${cliId}')" style="
+                                cursor: pointer; 
+                                color: var(--fedramp-blue); 
+                                text-decoration: underline;
+                                font-size: 0.85rem;
+                            ">View CLI</span>
+                            <div class="cli-content" id="${cliId}" style="
                                 display: none; 
-                                margin-top: 8px; 
-                                padding: 8px; 
-                                background: #f1f5f9; 
-                                border-radius: 4px; 
+                                white-space: pre-wrap; 
                                 font-family: monospace; 
-                                font-size: 0.8rem; 
+                                background: #f1f5f9; 
+                                padding: 8px; 
+                                border-radius: 4px; 
+                                margin-top: 6px;
+                                font-size: 0.8rem;
                                 border-left: 3px solid var(--fedramp-blue);
                                 max-height: 150px;
                                 overflow-y: auto;
-                                word-break: break-all;
-                            ">
-                                <strong>Command:</strong><br>
-                                ${cliCommand}<br><br>
-                                <strong>Full Details:</strong><br>
-                                ${fullReason}
-                                ${validation.cli_output_interpretation ? `<br><br><strong>Output Analysis:</strong><br>${validation.cli_output_interpretation}` : ''}
-                            </div>
+                            ">${command}
+
+Full Details: ${reason}</div>
                         </div>
                     </div>
                 `;
@@ -1324,18 +1332,16 @@
             });
         }
 
-        // Toggle CLI details display (like old dashboard)
-        function toggleCliDetails(elementId) {
-            const element = document.getElementById(elementId);
-            if (element.style.display === 'none' || element.style.display === '') {
-                element.style.display = 'block';
-            } else {
-                element.style.display = 'none';
+        // Simple CLI toggle function (like old dashboard)
+        function toggleCLI(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.display = el.style.display === "block" ? "none" : "block";
             }
         }
 
-        // Make toggleCliDetails globally available
-        window.toggleCliDetails = toggleCliDetails;
+        // Make function globally available
+        window.toggleCLI = toggleCLI;
 
         // Update timeline with commit metadata
         function updateTimelineWithMetadata(metadataData) {
