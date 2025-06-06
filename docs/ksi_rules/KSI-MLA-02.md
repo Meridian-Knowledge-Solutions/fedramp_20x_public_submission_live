@@ -1,13 +1,13 @@
 # KSI-MLA-02: Regularly review and audit logs
 
-*Generated on 2025-06-06 09:11:10 UTC*
+*Generated on 2025-06-06 09:27:27 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-02`
 **Description:** Regularly review and audit logs
 **Justification:** Validates log review processes through automated analysis, alerting, and audit capabilities
-**Last Validation:** ❌ 2025-06-06T09:11:09.817898
+**Last Validation:** ❌ 2025-06-06T09:27:27.584021
 **Result:** ❌ No regular log review mechanisms: ❌ No CloudWatch alarms for automated log review; ⚠️ No metric filters found for log analysis
 
 ## 🛠️ Implementation
@@ -19,6 +19,9 @@
 2. **Command:** `aws logs describe-metric-filters --output json`
    **Purpose:** Validate metric filters for log analysis and auditing
 
+3. **Command:** `aws sns list-topics --output json`
+   **Purpose:** Check SNS topics for log review notifications
+
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
@@ -26,6 +29,8 @@
   - **Purpose:** Check CloudWatch alarms for automated log review
 - **Command:** `aws logs describe-metric-filters --output json`
   - **Purpose:** Validate metric filters for log analysis and auditing
+- **Command:** `aws sns list-topics --output json`
+  - **Purpose:** Check SNS topics for log review notifications
 
 ## 🧠 Validation Logic
 
@@ -70,9 +75,9 @@ def evaluate_KSI_MLA_02(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
+**Evidence Analysis:** ✅ All 3 commands executed successfully | ✅ Command output received | ✅ Command output received | ✅ Command output received
 
-**Commands Executed:** 2
+**Commands Executed:** 3
 **Validation Method:** multi-command
 
 ---

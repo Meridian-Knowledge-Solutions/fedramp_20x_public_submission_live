@@ -1,13 +1,13 @@
 # KSI-IAM-06: Automatically disable accounts with privileged access on suspicious activity
 
-*Generated on 2025-06-06 09:11:10 UTC*
+*Generated on 2025-06-06 09:27:27 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-06`
 **Description:** Automatically disable accounts with privileged access on suspicious activity
 **Justification:** Validates automated response capabilities for privileged account security incidents
-**Last Validation:** ❌ 2025-06-06T09:11:09.816762
+**Last Validation:** ❌ 2025-06-06T09:27:27.583347
 **Result:** ❌ No automated response to suspicious activity: ❌ No CloudWatch alarms found for automated monitoring; ⚠️ 1 Lambda functions found but none security-focused
 
 ## 🛠️ Implementation
@@ -19,6 +19,12 @@
 2. **Command:** `aws lambda list-functions --output json`
    **Purpose:** Check for automated response functions for account security
 
+3. **Command:** `aws sns list-topics --output json`
+   **Purpose:** Check SNS topics for security alert notifications
+
+4. **Command:** `aws sns list-subscriptions --output json`
+   **Purpose:** Verify active subscriptions for security notifications
+
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
@@ -26,6 +32,10 @@
   - **Purpose:** Check for automated alarms on suspicious privileged activities
 - **Command:** `aws lambda list-functions --output json`
   - **Purpose:** Check for automated response functions for account security
+- **Command:** `aws sns list-topics --output json`
+  - **Purpose:** Check SNS topics for security alert notifications
+- **Command:** `aws sns list-subscriptions --output json`
+  - **Purpose:** Verify active subscriptions for security notifications
 
 ## 🧠 Validation Logic
 
@@ -71,9 +81,9 @@ def evaluate_KSI_IAM_06(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
+**Evidence Analysis:** ✅ All 4 commands executed successfully | ✅ Command output received | ✅ Command output received | ✅ Command output received
 
-**Commands Executed:** 2
+**Commands Executed:** 4
 **Validation Method:** multi-command
 
 ---
