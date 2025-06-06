@@ -1,826 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FedRAMP 20x Trust Center - Meridian Knowledge Solutions</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-blue: #2563eb;
-            --primary-dark: #1e40af;
-            --success-green: #059669;
-            --warning-orange: #ea580c;
-            --danger-red: #dc2626;
-            --info-cyan: #0891b2;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
-            --radius: 12px;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: var(--gray-900);
-            line-height: 1.6;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--gray-200);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .title-section h1 {
-            color: var(--gray-900);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .subtitle {
-            color: var(--gray-500);
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .status-badge {
-            background: linear-gradient(135deg, var(--success-green), #10b981);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 24px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.2s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-value {
-            font-size: 2.25rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            color: var(--gray-600);
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .stat-change {
-            font-size: 0.75rem;
-            margin-top: 0.5rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 16px;
-            font-weight: 600;
-        }
-
-        .stat-change.positive {
-            background: rgba(5, 150, 105, 0.1);
-            color: var(--success-green);
-        }
-
-        /* KSI Section */
-        .ksi-section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .ksi-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .ksi-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* Filters */
-        .filters {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .filter-select {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--gray-300);
-            border-radius: 8px;
-            background: white;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--gray-700);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .filter-select:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .search-box {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--gray-300);
-            border-radius: 8px;
-            background: white;
-            font-size: 0.875rem;
-            min-width: 200px;
-            transition: all 0.2s ease;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .filter-chips {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .filter-chip {
-            background: var(--gray-100);
-            color: var(--gray-700);
-            padding: 0.25rem 0.75rem;
-            border-radius: 16px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .filter-chip.active {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .filter-chip:hover {
-            background: var(--gray-200);
-        }
-
-        .filter-chip.active:hover {
-            background: var(--primary-dark);
-        }
-
-        /* KSI Grid */
-        .ksi-grid {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        }
-
-        .ksi-card {
-            background: white;
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ksi-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gray-300);
-            transition: all 0.2s ease;
-        }
-
-        .ksi-card.passed::before {
-            background: var(--success-green);
-        }
-
-        .ksi-card.failed::before {
-            background: var(--danger-red);
-        }
-
-        .ksi-card.warning::before {
-            background: var(--warning-orange);
-        }
-
-        .ksi-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--gray-300);
-        }
-
-        .ksi-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .ksi-id {
-            font-weight: 700;
-            color: var(--gray-900);
-            font-size: 0.875rem;
-            font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-            background: var(--gray-100);
-            padding: 0.25rem 0.5rem;
-            border-radius: 6px;
-        }
-
-        .ksi-status {
-            padding: 0.25rem 0.75rem;
-            border-radius: 16px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .status-passed {
-            background: rgba(5, 150, 105, 0.1);
-            color: var(--success-green);
-        }
-
-        .status-failed {
-            background: rgba(220, 38, 38, 0.1);
-            color: var(--danger-red);
-        }
-
-        .status-warning {
-            background: rgba(234, 88, 12, 0.1);
-            color: var(--warning-orange);
-        }
-
-        .ksi-description {
-            color: var(--gray-700);
-            font-size: 0.875rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .ksi-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.75rem;
-            color: var(--gray-500);
-            margin-bottom: 1rem;
-        }
-
-        .ksi-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .ksi-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .action-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--gray-300);
-            border-radius: 6px;
-            background: white;
-            color: var(--gray-700);
-            font-size: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .action-btn:hover {
-            background: var(--gray-50);
-            border-color: var(--gray-400);
-        }
-
-        .action-btn.primary {
-            background: var(--primary-blue);
-            color: white;
-            border-color: var(--primary-blue);
-        }
-
-        .action-btn.primary:hover {
-            background: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-
-        .action-btn.github {
-            background: #24292e;
-            color: white;
-            border-color: #24292e;
-        }
-
-        .action-btn.github:hover {
-            background: #1a1e22;
-            border-color: #1a1e22;
-        }
-
-        /* CLI Details Modal */
-        .cli-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            padding: 2rem;
-            backdrop-filter: blur(4px);
-        }
-
-        .cli-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cli-modal-content {
-            background: white;
-            border-radius: var(--radius);
-            padding: 2rem;
-            max-width: 800px;
-            width: 100%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .cli-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--gray-200);
-        }
-
-        .cli-modal-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--gray-900);
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--gray-500);
-            padding: 0.5rem;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .close-btn:hover {
-            background: var(--gray-100);
-            color: var(--gray-700);
-        }
-
-        .cli-content {
-            background: var(--gray-900);
-            color: #00ff00;
-            padding: 1rem;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-            font-size: 0.875rem;
-            line-height: 1.5;
-            white-space: pre-wrap;
-            overflow-x: auto;
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--gray-500);
-        }
-
-        .empty-state-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .empty-state-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--gray-700);
-        }
-
-        .empty-state-text {
-            font-size: 0.875rem;
-        }
-
-        /* Loading State */
-        .loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            color: var(--gray-500);
-        }
-
-        .loading-spinner {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--gray-300);
-            border-top: 2px solid var(--primary-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-right: 0.5rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 4rem;
-            padding: 2rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            border-top: 1px solid var(--gray-200);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            color: var(--gray-600);
-            font-size: 0.875rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .container {
-                padding: 0 1rem;
-                margin: 1rem auto;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-
-            .ksi-header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .filters {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .ksi-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cli-modal {
-                padding: 1rem;
-            }
-
-            .cli-modal-content {
-                max-height: 90vh;
-            }
-        }
-
-        /* Update Info */
-        .update-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .update-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            box-shadow: var(--shadow);
-            transition: all 0.2s ease;
-        }
-
-        .update-card:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .update-icon {
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gray-100);
-            border-radius: 8px;
-        }
-
-        .update-content {
-            flex: 1;
-        }
-
-        .update-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--gray-500);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.25rem;
-        }
-
-        .update-time {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--gray-900);
-        }
-
-        /* Trust Center */
-        .trust-center-section {
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .trust-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: all 0.2s ease;
-        }
-
-        .trust-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .trust-card-header {
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-            color: white;
-            padding: 1.25rem;
-        }
-
-        .trust-card-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .trust-card-content {
-            padding: 1.5rem;
-        }
-
-        .trust-item {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            font-size: 0.875rem;
-        }
-
-        .trust-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .trust-link {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        .trust-link:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
-        }
-
-        .materials-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .materials-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .materials-header {
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-        }
-
-        .materials-list {
-            margin: 0;
-            padding-left: 1.25rem;
-            color: var(--gray-700);
-        }
-
-        /* Utilities */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    </style>
-</head>
-<body>
-    <header class="header">
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo">MKS</div>
-                <div class="title-section">
-                    <h1>FedRAMP 20x Trust Center</h1>
-                    <div class="subtitle">Meridian Knowledge Solutions - Real-time Compliance Dashboard</div>
-                </div>
-            </div>
-            <div class="status-badge">
-                <span>🛡️</span>
-                <span>FedRAMP 20x Low - In Process</span>
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <!-- Key Metrics -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value" id="overall-score">74.5%</div>
-                <div class="stat-label">Overall Compliance</div>
-                <div class="stat-change positive">↗ +2.1% this week</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="passed-count" style="color: var(--success-green);">38</div>
-                <div class="stat-label">KSIs Passed</div>
-                <div class="stat-change positive">↗ +3 from last validation</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="failed-count" style="color: var(--danger-red);">9</div>
-                <div class="stat-label">KSIs Failed</div>
-                <div class="stat-change positive">↘ -2 from last validation</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="total-ksis">51</div>
-                <div class="stat-label">Total KSIs</div>
-                <div class="stat-change" style="background: var(--gray-100); color: var(--gray-600);">📊 FedRAMP 20x Low</div>
+                <div class="stat-change" style="background: var(--bg-accent); color: var(--text-secondary); border: 1px solid var(--border-color);">📊 FedRAMP 20x Low</div>
             </div>
         </div>
 
@@ -879,8 +57,8 @@
                         </div>
                         <div class="trust-item">
                             <strong>Validation Data:</strong> 
-                            <a href="./unified_ksi_validations.json" target="_blank" class="trust-link">📄 Download JSON</a> | 
-                            <a href="./failed_ksi_report_readable.md" target="_blank" class="trust-link">📋 Failed KSI Report</a>
+                            <a href="#" onclick="downloadJSON()" class="trust-link">📄 Download JSON</a> | 
+                            <a href="#" onclick="viewFailedReport()" class="trust-link">📋 Failed KSI Report</a>
                         </div>
                     </div>
                 </div>
@@ -1019,7 +197,7 @@
             search: ''
         };
 
-        // Sample data (will be replaced by real data)
+        // Sample data
         const sampleKsis = [
             { 
                 id: 'KSI-CNA-01', 
@@ -1199,7 +377,203 @@
             }
         ];
 
-        // Initialize dashboard
+        // Theme functionality
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            document.getElementById('theme-icon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Download JSON functionality
+        async function downloadJSON() {
+            try {
+                const response = await fetch('./unified_ksi_validations.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    forceDownloadJSON(data, 'unified_ksi_validations.json');
+                } else {
+                    const sampleData = {
+                        metadata: {
+                            generated_at: new Date().toISOString(),
+                            total_ksis: allKsis.length,
+                            total_passed: allKsis.filter(k => k.status === 'passed').length,
+                            total_failed: allKsis.filter(k => k.status === 'failed').length,
+                            compliance_percentage: Math.round((allKsis.filter(k => k.status === 'passed').length / allKsis.length) * 100 * 10) / 10
+                        },
+                        validations: allKsis.map(ksi => ({
+                            ksi_id: ksi.id,
+                            assertion: ksi.status === 'passed',
+                            assertion_reason: ksi.assertion_reason,
+                            cli_command: ksi.cli_command,
+                            commands_executed: ksi.commands_executed,
+                            long_name: ksi.category,
+                            category_prefix: ksi.category_prefix,
+                            requirement: ksi.requirement
+                        }))
+                    };
+                    forceDownloadJSON(sampleData, 'fedramp_ksi_validations_sample.json');
+                }
+            } catch (error) {
+                console.error('Error downloading JSON:', error);
+                alert('Error downloading JSON file. Please try again or contact support.');
+            }
+        }
+
+        function forceDownloadJSON(data, filename) {
+            const jsonString = JSON.stringify(data, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setTimeout(() => URL.revokeObjectURL(url), 100);
+        }
+
+        // View failed report functionality
+        async function viewFailedReport() {
+            try {
+                const response = await fetch('./failed_ksi_report_readable.md');
+                if (response.ok) {
+                    const markdownText = await response.text();
+                    showMarkdownModal('Failed KSI Report', markdownText);
+                } else {
+                    const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
+                    const sampleReport = generateFailedKsiReport(failedKsis);
+                    showMarkdownModal('Failed KSI Report (Sample)', sampleReport);
+                }
+            } catch (error) {
+                console.error('Error loading failed report:', error);
+                alert('Error loading failed KSI report. Please try again or contact support.');
+            }
+        }
+
+        function generateFailedKsiReport(failedKsis) {
+            const timestamp = new Date().toISOString();
+            let report = `# FedRAMP 20x Failed KSI Report
+
+Generated: ${timestamp}
+Total Failed KSIs: ${failedKsis.length}
+
+---
+
+`;
+
+            failedKsis.forEach((ksi, index) => {
+                report += `## ${index + 1}. ${ksi.id}
+
+**Category:** ${ksi.category}
+**Status:** FAILED ❌
+
+### Description
+${ksi.description}
+
+### Failure Reason
+${ksi.assertion_reason || 'No detailed reason provided'}
+
+### Technical Details
+- **Commands Executed:** ${ksi.commands_executed || 0}
+- **CLI Command:** \`${ksi.cli_command || 'N/A'}\`
+
+### Requirement
+${ksi.requirement || 'No requirement specified'}
+
+### Recommended Actions
+- Review the failure reason above
+- Execute the CLI command manually to investigate
+- Update configuration or processes as needed
+- Re-run validation after remediation
+
+---
+
+`;
+            });
+
+            report += `## Summary
+
+This report contains ${failedKsis.length} failed KSI(s) that require attention to achieve FedRAMP 20x compliance.
+
+For technical support or questions about remediation, please contact security@meridianks.com or create an issue in the [GitHub repository](https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live).
+`;
+
+            return report;
+        }
+
+        function showMarkdownModal(title, markdownText) {
+            let html = markdownText
+                .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+                .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+                .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+                .replace(/^\*\*(.+)\*\*$/gm, '<strong>$1</strong>')
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`(.+?)`/g, '<code>$1</code>')
+                .replace(/^- (.+)$/gm, '<li>$1</li>')
+                .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+                .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>')
+                .replace(/^---$/gm, '<hr>')
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/^(.+)$/gm, '<p>$1</p>')
+                .replace(/<p><h([1-6])>/g, '<h$1>')
+                .replace(/<\/h([1-6])><\/p>/g, '</h$1>')
+                .replace(/<p><ul>/g, '<ul>')
+                .replace(/<\/ul><\/p>/g, '</ul>')
+                .replace(/<p><hr><\/p>/g, '<hr>');
+
+            const modal = document.createElement('div');
+            modal.className = 'cli-modal active';
+            modal.innerHTML = `
+                <div class="cli-modal-content" style="max-width: 900px;">
+                    <div class="cli-modal-header">
+                        <h3 class="cli-modal-title">${title}</h3>
+                        <button class="close-btn" onclick="closeMarkdownModal()">&times;</button>
+                    </div>
+                    <div style="
+                        background: var(--bg-secondary);
+                        color: var(--text-primary);
+                        padding: 2rem;
+                        border-radius: var(--radius);
+                        font-family: inherit;
+                        line-height: 1.6;
+                        max-height: 60vh;
+                        overflow-y: auto;
+                    ">
+                        ${html}
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeMarkdownModal();
+                }
+            });
+        }
+
+        function closeMarkdownModal() {
+            const modal = document.querySelector('.cli-modal.active');
+            if (modal && modal.innerHTML.includes('cli-modal-title')) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Dashboard functionality
         function initializeDashboard() {
             updateMetrics();
             loadKsiData();
@@ -1207,7 +581,6 @@
             updateTimestamps();
         }
 
-        // Update key metrics
         function updateMetrics() {
             const totalKsis = sampleKsis.length;
             const passedCount = sampleKsis.filter(ksi => ksi.status === 'passed').length;
@@ -1220,22 +593,16 @@
             document.getElementById('total-ksis').textContent = totalKsis;
         }
 
-        // Load KSI data
         function loadKsiData() {
             allKsis = [...sampleKsis];
             populateCategoryFilter();
             filterKsis();
-            
-            // Try to load real data
             loadRealData();
         }
 
-        // Populate category filter
         function populateCategoryFilter() {
             const categories = [...new Set(allKsis.map(ksi => ksi.category))].sort();
             const categoryFilter = document.getElementById('category-filter');
-            
-            // Clear existing options except "All Categories"
             categoryFilter.innerHTML = '<option value="">All Categories</option>';
             
             categories.forEach(category => {
@@ -1246,7 +613,6 @@
             });
         }
 
-        // Filter KSIs based on current filters
         function filterKsis() {
             filteredKsis = allKsis.filter(ksi => {
                 const matchesStatus = !currentFilters.status || ksi.status === currentFilters.status;
@@ -1262,7 +628,6 @@
             renderKsiGrid();
         }
 
-        // Render KSI grid
         function renderKsiGrid() {
             const grid = document.getElementById('ksi-grid');
             
@@ -1332,28 +697,23 @@
             });
         }
 
-        // Setup event listeners
         function setupEventListeners() {
-            // Status filter
             document.getElementById('status-filter').addEventListener('change', (e) => {
                 currentFilters.status = e.target.value;
                 updateFilterChips();
                 filterKsis();
             });
 
-            // Category filter
             document.getElementById('category-filter').addEventListener('change', (e) => {
                 currentFilters.category = e.target.value;
                 filterKsis();
             });
 
-            // Search input
             document.getElementById('search-input').addEventListener('input', (e) => {
                 currentFilters.search = e.target.value;
                 filterKsis();
             });
 
-            // Filter chips
             document.querySelectorAll('.filter-chip').forEach(chip => {
                 chip.addEventListener('click', (e) => {
                     const status = e.target.dataset.status;
@@ -1364,17 +724,16 @@
                 });
             });
 
-            // Modal close on outside click
             document.getElementById('cli-modal').addEventListener('click', (e) => {
                 if (e.target.id === 'cli-modal') {
                     closeCliModal();
                 }
             });
 
-            // Keyboard shortcuts
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeCliModal();
+                    closeMarkdownModal();
                 }
                 if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
                     e.preventDefault();
@@ -1383,7 +742,6 @@
             });
         }
 
-        // Update filter chips
         function updateFilterChips() {
             document.querySelectorAll('.filter-chip').forEach(chip => {
                 const status = chip.dataset.status;
@@ -1391,7 +749,6 @@
             });
         }
 
-        // Show CLI details modal
         function showCliDetails(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
@@ -1413,7 +770,6 @@ ${ksi.requirement || 'No requirement specified'}`;
             document.body.style.overflow = 'hidden';
         }
 
-        // Show KSI details (placeholder for future enhancement)
         function showKsiDetails(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
@@ -1421,13 +777,11 @@ ${ksi.requirement || 'No requirement specified'}`;
             alert(`KSI Details for ${ksi.id}:\n\n${ksi.description}\n\nCategory: ${ksi.category}\nStatus: ${ksi.status.toUpperCase()}\n\nThis could open a detailed view in the future.`);
         }
 
-        // Close CLI modal
         function closeCliModal() {
             document.getElementById('cli-modal').classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // Create GitHub issue for failed KSI
         function createGitHubIssue(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
@@ -1465,7 +819,6 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
             window.open(issueUrl, '_blank');
         }
 
-        // Update timestamps with next update calculation
         function updateTimestamps() {
             const now = new Date();
             const timeString = now.toLocaleString('en-US', {
@@ -1477,7 +830,6 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
                 timeZoneName: 'short'
             });
             
-            // Calculate next update (24 hours from now)
             const nextUpdate = new Date(now.getTime() + 24 * 60 * 60 * 1000);
             const nextUpdateString = nextUpdate.toLocaleString('en-US', {
                 month: 'short',
@@ -1502,7 +854,6 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
             }
         }
 
-        // Load real data (enhanced error handling)
         async function loadRealData() {
             try {
                 console.log('🔄 Attempting to load real validation data...');
@@ -1519,18 +870,14 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
                 
             } catch (error) {
                 console.warn('⚠️ Could not load real data, using sample data:', error.message);
-                
-                // Show a subtle notification that we're using sample data
                 showDataSourceNotification('sample');
             }
         }
 
-        // Update dashboard with real data
         function updateDashboardWithRealData(data) {
             try {
                 let validations = [];
                 
-                // Handle different data structures
                 if (Array.isArray(data)) {
                     validations = data;
                 } else if (data.validations && Array.isArray(data.validations)) {
@@ -1543,7 +890,6 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
                     throw new Error('No validation data found in the loaded JSON');
                 }
 
-                // Transform real data to match our structure
                 allKsis = validations.map(validation => ({
                     id: validation.ksi_id || validation.validation_id || 'Unknown',
                     status: (validation.assertion === true || validation.assertion === "true") ? 'passed' : 'failed',
@@ -1556,7 +902,6 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
                     requirement: validation.requirement || validation.long_name || 'No requirement specified'
                 }));
 
-                // Update metrics with real data
                 const totalKsis = allKsis.length;
                 const passedCount = allKsis.filter(ksi => ksi.status === 'passed').length;
                 const failedCount = totalKsis - passedCount;
@@ -1567,11 +912,9 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
                 document.getElementById('failed-count').textContent = failedCount;
                 document.getElementById('total-ksis').textContent = totalKsis;
 
-                // Update the dashboard
                 populateCategoryFilter();
                 filterKsis();
                 
-                // Show notification that real data is loaded
                 showDataSourceNotification('live');
                 
                 console.log('🎉 Dashboard updated with real data');
@@ -1582,7 +925,6 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
             }
         }
 
-        // Show data source notification
         function showDataSourceNotification(type) {
             const notification = document.createElement('div');
             notification.style.cssText = `
@@ -1598,22 +940,21 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
             `;
 
             if (type === 'live') {
-                notification.style.background = 'rgba(5, 150, 105, 0.9)';
+                notification.style.background = 'rgba(16, 185, 129, 0.9)';
                 notification.style.color = 'white';
                 notification.textContent = '✅ Live data loaded';
             } else if (type === 'sample') {
-                notification.style.background = 'rgba(234, 88, 12, 0.9)';
+                notification.style.background = 'rgba(245, 158, 11, 0.9)';
                 notification.style.color = 'white';
                 notification.textContent = '⚠️ Using sample data';
             } else if (type === 'error') {
-                notification.style.background = 'rgba(220, 38, 38, 0.9)';
+                notification.style.background = 'rgba(239, 68, 68, 0.9)';
                 notification.style.color = 'white';
                 notification.textContent = '❌ Data load error';
             }
 
             document.body.appendChild(notification);
 
-            // Remove after 3 seconds
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease';
                 setTimeout(() => {
@@ -1638,11 +979,15 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
         `;
         document.head.appendChild(style);
 
-        // Global functions for onclick handlers
+        // Global functions
         window.showCliDetails = showCliDetails;
         window.showKsiDetails = showKsiDetails;
         window.closeCliModal = closeCliModal;
         window.createGitHubIssue = createGitHubIssue;
+        window.toggleTheme = toggleTheme;
+        window.downloadJSON = downloadJSON;
+        window.viewFailedReport = viewFailedReport;
+        window.closeMarkdownModal = closeMarkdownModal;
 
         // Auto-refresh every 5 minutes
         setInterval(() => {
@@ -1650,14 +995,948 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
             loadRealData();
         }, 300000);
 
-        // Initialize dashboard when page loads
-        document.addEventListener('DOMContentLoaded', initializeDashboard);
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTheme();
+            initializeDashboard();
+        });
 
-        // Add keyboard shortcut hint
         document.addEventListener('DOMContentLoaded', () => {
             const searchBox = document.getElementById('search-input');
             searchBox.placeholder = 'Search KSIs... (Press / to focus)';
         });
     </script>
 </body>
-</html>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FedRAMP 20x Trust Center - Meridian Knowledge Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light Mode Colors */
+            --primary-500: #6366f1;
+            --primary-600: #4f46e5;
+            --accent-500: #06b6d4;
+            --accent-600: #0891b2;
+            --success-500: #10b981;
+            --success-600: #059669;
+            --warning-500: #f59e0b;
+            --warning-600: #d97706;
+            --danger-500: #ef4444;
+            --danger-600: #dc2626;
+            --info-500: #3b82f6;
+            --info-600: #2563eb;
+            
+            /* Neutrals */
+            --gray-25: #fcfcfd;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Theme Variables */
+            --bg-primary: var(--gray-25);
+            --bg-secondary: white;
+            --bg-accent: var(--gray-50);
+            --text-primary: var(--gray-900);
+            --text-secondary: var(--gray-600);
+            --text-tertiary: var(--gray-500);
+            --border-color: var(--gray-200);
+            --backdrop-blur: rgba(255, 255, 255, 0.95);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
+            --gradient-success: linear-gradient(135deg, var(--success-500) 0%, #34d399 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+            
+            --radius: 16px;
+            --radius-sm: 8px;
+            --radius-lg: 24px;
+            --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Dark Mode */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-accent: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --border-color: #334155;
+            --backdrop-blur: rgba(30, 41, 59, 0.95);
+            --gradient-card: linear-gradient(145deg, rgba(30,41,59,0.9) 0%, rgba(30,41,59,0.7) 100%);
+            --success-500: #34d399;
+            --danger-500: #f87171;
+            --warning-500: #fbbf24;
+            --info-500: #60a5fa;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--gradient-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        /* Header */
+        .header {
+            background: var(--backdrop-blur);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-accent);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .title-section h1 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            font-size: 1.25rem;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-500);
+            transform: scale(1.05);
+        }
+
+        .status-badge {
+            background: var(--gradient-success);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-500);
+        }
+
+        .stat-value {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .stat-value.primary {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-value.success { color: var(--success-500); }
+        .stat-value.danger { color: var(--danger-500); }
+        .stat-value.info { color: var(--info-500); }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-change {
+            font-size: 0.75rem;
+            margin-top: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .stat-change.positive {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-500);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* Update Info */
+        .update-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .update-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .update-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-500);
+        }
+
+        .update-icon {
+            font-size: 1.5rem;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-sm);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .update-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .update-time {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Trust Center */
+        .trust-center-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .trust-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-500);
+        }
+
+        .trust-card-header {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .trust-card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .trust-card-content {
+            padding: 2rem;
+        }
+
+        .trust-item {
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .trust-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .trust-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .trust-link {
+            color: var(--primary-500);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .trust-link:hover {
+            color: var(--primary-600);
+            text-decoration: underline;
+        }
+
+        .materials-section {
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background: var(--bg-accent);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .materials-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .materials-header {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .materials-list {
+            margin: 0;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .materials-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        /* KSI Section */
+        .ksi-section {
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ksi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .ksi-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-select, .search-box {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            background: var(--bg-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-select {
+            cursor: pointer;
+        }
+
+        .search-box {
+            min-width: 200px;
+        }
+
+        .filter-select:focus, .search-box:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .search-box::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .filter-chips {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-chip {
+            background: var(--bg-accent);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-chip.active {
+            background: var(--gradient-accent);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .filter-chip:hover:not(.active) {
+            background: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        /* KSI Grid */
+        .ksi-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        }
+
+        .ksi-card {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .ksi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .ksi-card.passed::before { background: var(--gradient-success); }
+        .ksi-card.failed::before { background: linear-gradient(135deg, var(--danger-500), #f87171); }
+        .ksi-card.warning::before { background: linear-gradient(135deg, var(--warning-500), #fbbf24); }
+
+        .ksi-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-500);
+        }
+
+        .ksi-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .ksi-id {
+            font-weight: 800;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-accent);
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .ksi-status {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .status-passed {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-600);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .status-failed {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-600);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .ksi-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .ksi-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-bottom: 1.25rem;
+        }
+
+        .ksi-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            background: var(--bg-accent);
+            padding: 0.375rem 0.75rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .ksi-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .action-btn:hover {
+            background: var(--bg-accent);
+            border-color: var(--primary-500);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .action-btn.primary {
+            background: var(--gradient-accent);
+            color: white;
+            border-color: var(--primary-500);
+        }
+
+        .action-btn.primary:hover {
+            background: linear-gradient(135deg, var(--primary-600), var(--accent-600));
+        }
+
+        .action-btn.github {
+            background: linear-gradient(135deg, #24292e, #1a1e22);
+            color: white;
+            border-color: #24292e;
+        }
+
+        .action-btn.github:hover {
+            background: linear-gradient(135deg, #1a1e22, #0d1117);
+        }
+
+        /* Modal */
+        .cli-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            padding: 2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .cli-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cli-modal-content {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .cli-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cli-modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: var(--bg-accent);
+            color: var(--text-primary);
+        }
+
+        .cli-content {
+            background: var(--gray-900);
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        /* Empty/Loading States */
+        .empty-state, .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-tertiary);
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .loading-spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border-color);
+            border-top: 2px solid var(--primary-500);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            text-align: center;
+            background: var(--backdrop-blur);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 1rem;
+                margin: 1rem auto;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .ksi-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .ksi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cli-modal {
+                padding: 1rem;
+            }
+        }
+
+        /* Utilities */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">MKS</div>
+                <div class="title-section">
+                    <h1>FedRAMP 20x Trust Center</h1>
+                    <div class="subtitle">Meridian Knowledge Solutions - Real-time Compliance Dashboard</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <span id="theme-icon">🌙</span>
+                </button>
+                <div class="status-badge">
+                    <span>🛡️</span>
+                    <span>FedRAMP 20x Low - In Process</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Key Metrics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value primary" id="overall-score">74.5%</div>
+                <div class="stat-label">Overall Compliance</div>
+                <div class="stat-change positive">↗ +2.1% this week</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value success" id="passed-count">38</div>
+                <div class="stat-label">KSIs Passed</div>
+                <div class="stat-change positive">↗ +3 from last validation</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value danger" id="failed-count">9</div>
+                <div class="stat-label">KSIs Failed</div>
+                <div class="stat-change positive">↘ -2 from last validation</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value info" id="total-ksis">51</div>
+                <div class="stat-label">Total KSIs</div>
+                <div class="stat-change" style="background: var(--bg-accent); color: var(--text-secondary); border: 1px solid var(--border-color)
