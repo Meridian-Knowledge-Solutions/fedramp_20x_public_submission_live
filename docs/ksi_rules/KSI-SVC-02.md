@@ -1,20 +1,79 @@
-# KSI-SVC-02: Inspect traffic encryption
+# KSI-SVC-02: Encrypt or secure network traffic
 
-## 🛠 CLI Command
-```bash
-aws elbv2 describe-load-balancers
+*Generated on 2025-06-06 05:52:21 UTC*
+
+## 📖 Overview
+
+**KSI ID:** `KSI-SVC-02`
+**Description:** Encrypt or secure network traffic
+**Justification:** Validates network traffic encryption through load balancers, VPC endpoints, and HTTPS configurations
+**Last Validation:** ✅ 2025-06-06T05:52:21.556583
+**Result:** ✅ Network traffic security configured: ℹ️ No load balancers found (acceptable for low-impact); ⚠️ No VPC endpoints found - traffic goes over internet
+
+## 🛠️ Implementation
+
+### Commands Executed
+1. **Command:** `aws elbv2 describe-load-balancers --output json`
+   **Purpose:** Check load balancer SSL/TLS configurations
+
+2. **Command:** `aws ec2 describe-vpc-endpoints --output json`
+   **Purpose:** Validate VPC endpoints for private service communication
+
+## 📋 Evidence Requirements
+
+### 🖥️ CLI Validation
+- **Command:** `aws elbv2 describe-load-balancers --output json`
+  - **Purpose:** Check load balancer SSL/TLS configurations
+- **Command:** `aws ec2 describe-vpc-endpoints --output json`
+  - **Purpose:** Validate VPC endpoints for private service communication
+
+## 🧠 Validation Logic
+
+**Function:** `evaluate_KSI_SVC_02`
+
+**Documentation:** Simple rule for KSI-SVC-02: Network traffic encryption
+Expected: Load Balancers + VPC Endpoints
+
+### Rule Implementation
+```python
+def evaluate_KSI_SVC_02(cli_output):
+    """
+    Simple rule for KSI-SVC-02: Network traffic encryption
+    Expected: Load Balancers + VPC Endpoints
+    """
+    if "commands" not in cli_output:
+        return False, "❌ Multi-command format required"
+    commands = cli_output["commands"]
+    load_balancers = None
+    vpc_endpoints = None
+    for cmd in commands:
+        cli_command = cmd.get("cli_command", "")
+        raw_output = cmd.get("raw_output", {})
+        if "describe-load-balancers" in cli_command:
+            load_balancers = raw_output.get("LoadBalancers", [])
+        elif "describe-vpc-endpoints" in cli_command:
+            vpc_endpoints = raw_output.get("VpcEndpoints", [])
+    findings = []
+    encryption_mechanisms = 0
+    if load_balancers is not None:
+    # ... (additional validation logic) ...
 ```
 
-## ✅ Validation Goal
-Inspect traffic encryption
+## 📜 Compliance Mapping
 
-## 📋 Justification
-Initial command retained; sufficient for initial validation unless Low Mode-specific refactor is needed.
+**Control Description:** Encrypt or secure network traffic
 
-## 📆 Last Evaluated
-N/A
+**Implementation Justification:** Validates network traffic encryption through load balancers, VPC endpoints, and HTTPS configurations
 
-## 📄 CLI Output Snippet
-```json
+**FedRAMP 20x Category:** Service Configuration
 
-```
+## 📊 Recent Validation Results
+
+**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
+
+**Commands Executed:** 2
+**Validation Method:** multi-command
+
+---
+*Documentation auto-generated from KSI validation pipeline*
+*Source: cli_command_register.json, unified_ksi_validations.json*

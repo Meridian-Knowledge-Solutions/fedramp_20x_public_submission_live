@@ -1,41 +1,31 @@
 # KSI-IAM-01: Enforce phishing-resistant MFA for all user authentication
 
-*Generated on 2025-06-06 05:34:53 UTC*
+*Generated on 2025-06-06 05:52:21 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-01`
 **Description:** Enforce phishing-resistant MFA for all user authentication
-**Justification:** Validates that all IAM users have MFA enabled with phishing-resistant methods (hardware tokens, WebAuthn)
-**Last Validation:** ❌ 2025-06-06T05:34:53.038313
+**Justification:** Validates phishing-resistant MFA methods (hardware tokens, WebAuthn) are configured for all users
+**Last Validation:** ❌ 2025-06-06T05:52:21.550197
 **Result:** ❌ Only virtual MFA found (1 devices) - phishing-resistant MFA required
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `aws iam list-users --output json`
-   **Purpose:** Get all IAM users
+   **Purpose:** Get all IAM users for MFA analysis
 
 2. **Command:** `aws iam list-mfa-devices --output json`
-   **Purpose:** Get all MFA devices to check types and assignments
-
-3. **Command:** `aws iam list-virtual-mfa-devices --output json`
-   **Purpose:** Get virtual MFA devices (less secure than hardware)
-
-4. **Command:** `aws iam get-account-password-policy --output json`
-   **Purpose:** Check password policy requirements
+   **Purpose:** Check MFA devices to validate phishing-resistant methods
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
 - **Command:** `aws iam list-users --output json`
-  - **Purpose:** Get all IAM users
+  - **Purpose:** Get all IAM users for MFA analysis
 - **Command:** `aws iam list-mfa-devices --output json`
-  - **Purpose:** Get all MFA devices to check types and assignments
-- **Command:** `aws iam list-virtual-mfa-devices --output json`
-  - **Purpose:** Get virtual MFA devices (less secure than hardware)
-- **Command:** `aws iam get-account-password-policy --output json`
-  - **Purpose:** Check password policy requirements
+  - **Purpose:** Check MFA devices to validate phishing-resistant methods
 
 ## 🧠 Validation Logic
 
@@ -75,15 +65,15 @@ def evaluate_KSI_IAM_01(cli_output):
 
 **Control Description:** Enforce phishing-resistant MFA for all user authentication
 
-**Implementation Justification:** Validates that all IAM users have MFA enabled with phishing-resistant methods (hardware tokens, WebAuthn)
+**Implementation Justification:** Validates phishing-resistant MFA methods (hardware tokens, WebAuthn) are configured for all users
 
 **FedRAMP 20x Category:** Identity and Access Management
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ⚠️ 1/4 commands failed execution | 👤 3 IAM users found | 🔐 1 MFA devices detected | ✅ Command output received
+**Evidence Analysis:** ✅ All 2 commands executed successfully | 👤 3 IAM users found | 🔐 1 MFA devices detected
 
-**Commands Executed:** 4
+**Commands Executed:** 2
 **Validation Method:** multi-command
 
 ---

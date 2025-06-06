@@ -1,20 +1,74 @@
-# KSI-RPL-01: Confirm backup RTO
+# KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
-## 🛠 CLI Command
-```bash
-aws backup list-backup-plans
+*Generated on 2025-06-06 05:52:21 UTC*
+
+## 📖 Overview
+
+**KSI ID:** `KSI-RPL-01`
+**Description:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+**Justification:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
+**Last Validation:** ❌ 2025-06-06T05:52:21.551240
+**Result:** ❌ No RTO/RPO definitions found in evidence_v2/KSI-RPL-01/
+
+## 🛠️ Implementation
+
+### Commands Executed
+1. **Command:** `evidence_check`
+   **Purpose:** Check evidence_v2/KSI-RPL-01/ for rto_rpo_definitions.pdf, business_impact_analysis.pdf, and recovery_objectives_matrix.xlsx
+
+## 📋 Evidence Requirements
+
+### 📄 Manual Evidence
+- Check evidence_v2/KSI-RPL-01/ for rto_rpo_definitions.pdf, business_impact_analysis.pdf, and recovery_objectives_matrix.xlsx
+
+## 🧠 Validation Logic
+
+**Function:** `evaluate_KSI_RPL_01`
+
+**Documentation:** KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+
+Expected: Manual evidence - RTO/RPO definitions and business impact analysis
+
+### Rule Implementation
+```python
+def evaluate_KSI_RPL_01(cli_output):
+    """
+    KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+    
+    Expected: Manual evidence - RTO/RPO definitions and business impact analysis
+    """
+    evidence_dir = Path("evidence_v2/KSI-RPL-01")
+    if not evidence_dir.exists():
+        return False, "❌ Evidence directory evidence_v2/KSI-RPL-01/ not found"
+    required_docs = [
+        "rto_rpo_definitions.pdf",
+        "business_impact_analysis.pdf",
+        "recovery_objectives_matrix.xlsx"
+    ]
+    optional_docs = [
+        "service_level_agreements.pdf",
+        "criticality_assessment.pdf",
+        "recovery_time_analysis.pdf",
+        "data_loss_tolerance_matrix.xlsx",
+        "business_continuity_requirements.pdf"
+    # ... (additional validation logic) ...
 ```
 
-## ✅ Validation Goal
-Confirm backup RTO
+## 📜 Compliance Mapping
 
-## 📋 Justification
-Initial command retained; sufficient for initial validation unless Low Mode-specific refactor is needed.
+**Control Description:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
-## 📆 Last Evaluated
-N/A
+**Implementation Justification:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
 
-## 📄 CLI Output Snippet
-```json
+**FedRAMP 20x Category:** Recovery Planning
 
-```
+## 📊 Recent Validation Results
+
+**Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
+
+**Commands Executed:** 1
+**Validation Method:** multi-command
+
+---
+*Documentation auto-generated from KSI validation pipeline*
+*Source: cli_command_register.json, unified_ksi_validations.json*

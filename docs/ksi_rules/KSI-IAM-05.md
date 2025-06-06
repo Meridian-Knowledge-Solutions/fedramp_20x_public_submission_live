@@ -1,46 +1,31 @@
 # KSI-IAM-05: Apply zero trust design principles
 
-*Generated on 2025-06-06 05:34:53 UTC*
+*Generated on 2025-06-06 05:52:21 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-05`
 **Description:** Apply zero trust design principles
-**Justification:** Validates zero trust implementation through conditional access, logging, and continuous verification
-**Last Validation:** ❌ 2025-06-06T05:34:53.047565
-**Result:** ❌ Zero trust principles not implemented: ❌ No CloudTrail found for continuous verification
+**Justification:** Validates zero trust through continuous verification, conditional access, and comprehensive logging
+**Last Validation:** ✅ 2025-06-06T05:52:21.556734
+**Result:** ⚠️ Partial zero trust implementation: ✅ Continuous verification: 1 trails (0 active, 1 multi-region); ⚠️ No conditional access policies found
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws iam list-policies --scope AWS --query 'Policies[?contains(PolicyName, `Condition`)]' --output json`
-   **Purpose:** Find policies with conditional access controls
+1. **Command:** `aws cloudtrail describe-trails --output json`
+   **Purpose:** Check continuous monitoring and verification logging
 
-2. **Command:** `aws logs describe-log-groups --log-group-name-prefix '/aws/cloudtrail' --output json`
-   **Purpose:** Verify CloudTrail logging for continuous monitoring
-
-3. **Command:** `aws iam list-role-policies --role-name OrganizationAccountAccessRole --output json`
-   **Purpose:** Check cross-account access controls
-
-4. **Command:** `aws organizations list-accounts --output json`
-   **Purpose:** Validate organizational boundary controls
-
-5. **Command:** `aws iam list-policy-versions --policy-arn arn:aws:iam::aws:policy/PowerUserAccess --output json`
-   **Purpose:** Check for overly broad AWS managed policies in use
+2. **Command:** `aws iam list-policies --scope Local --output json`
+   **Purpose:** Check for conditional access policies implementing zero trust
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
-- **Command:** `aws iam list-policies --scope AWS --query 'Policies[?contains(PolicyName, `Condition`)]' --output json`
-  - **Purpose:** Find policies with conditional access controls
-- **Command:** `aws logs describe-log-groups --log-group-name-prefix '/aws/cloudtrail' --output json`
-  - **Purpose:** Verify CloudTrail logging for continuous monitoring
-- **Command:** `aws iam list-role-policies --role-name OrganizationAccountAccessRole --output json`
-  - **Purpose:** Check cross-account access controls
-- **Command:** `aws organizations list-accounts --output json`
-  - **Purpose:** Validate organizational boundary controls
-- **Command:** `aws iam list-policy-versions --policy-arn arn:aws:iam::aws:policy/PowerUserAccess --output json`
-  - **Purpose:** Check for overly broad AWS managed policies in use
+- **Command:** `aws cloudtrail describe-trails --output json`
+  - **Purpose:** Check continuous monitoring and verification logging
+- **Command:** `aws iam list-policies --scope Local --output json`
+  - **Purpose:** Check for conditional access policies implementing zero trust
 
 ## 🧠 Validation Logic
 
@@ -79,15 +64,15 @@ def evaluate_KSI_IAM_05(cli_output):
 
 **Control Description:** Apply zero trust design principles
 
-**Implementation Justification:** Validates zero trust implementation through conditional access, logging, and continuous verification
+**Implementation Justification:** Validates zero trust through continuous verification, conditional access, and comprehensive logging
 
 **FedRAMP 20x Category:** Identity and Access Management
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ⚠️ 1/5 commands failed execution | ⚠️ No usable output | ✅ Command output received | ⚠️ No usable output
+**Evidence Analysis:** ✅ All 2 commands executed successfully | 📊 1 CloudTrail configurations | ✅ Command output received
 
-**Commands Executed:** 5
+**Commands Executed:** 2
 **Validation Method:** multi-command
 
 ---

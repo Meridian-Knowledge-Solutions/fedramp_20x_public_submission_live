@@ -1,41 +1,31 @@
 # KSI-IAM-02: Use secure passwordless methods or strong passwords with MFA
 
-*Generated on 2025-06-06 05:34:53 UTC*
+*Generated on 2025-06-06 05:52:21 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-02`
 **Description:** Use secure passwordless methods or strong passwords with MFA
-**Justification:** Validates IAM user presence and confirms MFA enforcement with strong password policies
-**Last Validation:** ❌ 2025-06-06T05:34:53.048340
+**Justification:** Validates passwordless authentication where feasible, otherwise strong password policy with MFA
+**Last Validation:** ❌ 2025-06-06T05:52:21.557544
 **Result:** ❌ Insufficient secure authentication: ❌ No password policy configured
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws iam list-users --query 'Users[*].{UserName:UserName,PasswordLastUsed:PasswordLastUsed,CreateDate:CreateDate}' --output json`
-   **Purpose:** Get user details including password usage
+1. **Command:** `aws iam get-account-password-policy --output json`
+   **Purpose:** Check strong password policy enforcement
 
-2. **Command:** `aws iam list-mfa-devices --output json`
-   **Purpose:** Verify MFA device assignment for all users
-
-3. **Command:** `aws iam get-account-password-policy --output json`
-   **Purpose:** Validate strong password policy enforcement
-
-4. **Command:** `aws iam list-access-keys --output json`
-   **Purpose:** Check for programmatic access keys that bypass passwords
+2. **Command:** `aws iam list-access-keys --output json`
+   **Purpose:** Check for passwordless methods (access keys vs console passwords)
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
-- **Command:** `aws iam list-users --query 'Users[*].{UserName:UserName,PasswordLastUsed:PasswordLastUsed,CreateDate:CreateDate}' --output json`
-  - **Purpose:** Get user details including password usage
-- **Command:** `aws iam list-mfa-devices --output json`
-  - **Purpose:** Verify MFA device assignment for all users
 - **Command:** `aws iam get-account-password-policy --output json`
-  - **Purpose:** Validate strong password policy enforcement
+  - **Purpose:** Check strong password policy enforcement
 - **Command:** `aws iam list-access-keys --output json`
-  - **Purpose:** Check for programmatic access keys that bypass passwords
+  - **Purpose:** Check for passwordless methods (access keys vs console passwords)
 
 ## 🧠 Validation Logic
 
@@ -75,15 +65,15 @@ def evaluate_KSI_IAM_02(cli_output):
 
 **Control Description:** Use secure passwordless methods or strong passwords with MFA
 
-**Implementation Justification:** Validates IAM user presence and confirms MFA enforcement with strong password policies
+**Implementation Justification:** Validates passwordless authentication where feasible, otherwise strong password policy with MFA
 
 **FedRAMP 20x Category:** Identity and Access Management
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ⚠️ 1/4 commands failed execution | 📋 3 items retrieved | 🔐 1 MFA devices detected | ⚠️ No usable output
+**Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | ✅ Command output received
 
-**Commands Executed:** 4
+**Commands Executed:** 2
 **Validation Method:** multi-command
 
 ---

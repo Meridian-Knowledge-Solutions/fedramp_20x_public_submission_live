@@ -1,20 +1,82 @@
-# KSI-TPR-04: Check upstream alerting
+# KSI-TPR-04: Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 
-## 🛠 CLI Command
-```bash
-aws securityhub get-findings --max-results 1
+*Generated on 2025-06-06 05:52:21 UTC*
+
+## 📖 Overview
+
+**KSI ID:** `KSI-TPR-04`
+**Description:** Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
+**Justification:** Validates vulnerability monitoring through Inspector, Security Hub, and contractual requirements documentation
+**Last Validation:** ❌ 2025-06-06T05:52:21.553191
+**Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
+
+## 🛠️ Implementation
+
+### Commands Executed
+1. **Command:** `aws inspector2 list-findings --filter-criteria '{"component":[{"comparison":"EQUALS","value":"*"}]}' --max-results 20 --output json`
+   **Purpose:** Check Inspector findings for third-party component vulnerabilities
+
+2. **Command:** `evidence_check`
+   **Purpose:** Check evidence_v2/KSI-TPR-04/ for vulnerability_monitoring_contracts.pdf, upstream_vulnerability_procedures.pdf, and third_party_notification_agreements.pdf
+
+## 📋 Evidence Requirements
+
+### 🖥️ CLI Validation
+- **Command:** `aws inspector2 list-findings --filter-criteria '{"component":[{"comparison":"EQUALS","value":"*"}]}' --max-results 20 --output json`
+  - **Purpose:** Check Inspector findings for third-party component vulnerabilities
+
+### 📄 Manual Evidence
+- Check evidence_v2/KSI-TPR-04/ for vulnerability_monitoring_contracts.pdf, upstream_vulnerability_procedures.pdf, and third_party_notification_agreements.pdf
+
+## 🧠 Validation Logic
+
+**Function:** `evaluate_KSI_TPR_04`
+
+**Documentation:** KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities, 
+with contractual notification requirements or active monitoring services
+
+Expected: Inspector findings + Vulnerability monitoring contracts
+
+### Rule Implementation
+```python
+def evaluate_KSI_TPR_04(cli_output):
+    """
+    KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities, 
+    with contractual notification requirements or active monitoring services
+    
+    Expected: Inspector findings + Vulnerability monitoring contracts
+    """
+    evidence_dir = Path("evidence_v2/KSI-TPR-04")
+    inspector_findings = None
+    if "commands" in cli_output:
+        for cmd in cli_output["commands"]:
+            cli_command = cmd.get("cli_command", "")
+            raw_output = cmd.get("raw_output", {})
+            if "list-findings" in cli_command and "inspector" in cli_command:
+                inspector_findings = raw_output.get("findings", [])
+    manual_evidence = []
+    if evidence_dir.exists():
+        monitoring_files = [
+            "vulnerability_monitoring_contracts.pdf",
+            "upstream_vulnerability_procedures.pdf",
+    # ... (additional validation logic) ...
 ```
 
-## ✅ Validation Goal
-Check upstream alerting
+## 📜 Compliance Mapping
 
-## 📋 Justification
-Initial command retained; sufficient for initial validation unless Low Mode-specific refactor is needed.
+**Control Description:** Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 
-## 📆 Last Evaluated
-N/A
+**Implementation Justification:** Validates vulnerability monitoring through Inspector, Security Hub, and contractual requirements documentation
 
-## 📄 CLI Output Snippet
-```json
+**FedRAMP 20x Category:** Third-Party Information Resources
 
-```
+## 📊 Recent Validation Results
+
+**Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | 📄 Manual evidence validation
+
+**Commands Executed:** 2
+**Validation Method:** multi-command
+
+---
+*Documentation auto-generated from KSI validation pipeline*
+*Source: cli_command_register.json, unified_ksi_validations.json*

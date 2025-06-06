@@ -1,20 +1,79 @@
-# KSI-SVC-01: List managed instances
+# KSI-SVC-01: Harden and review network and system configurations
 
-## 🛠 CLI Command
-```bash
-aws ssm describe-instance-information --max-results 5
+*Generated on 2025-06-06 05:52:21 UTC*
+
+## 📖 Overview
+
+**KSI ID:** `KSI-SVC-01`
+**Description:** Harden and review network and system configurations
+**Justification:** Validates system hardening through security groups, NACLs, and instance configurations
+**Last Validation:** ✅ 2025-06-06T05:52:21.550824
+**Result:** ✅ System hardening: 1 hardened security groups, 0 instances configured
+
+## 🛠️ Implementation
+
+### Commands Executed
+1. **Command:** `aws ec2 describe-security-groups --output json`
+   **Purpose:** Check security group configurations for hardening
+
+2. **Command:** `aws ec2 describe-instances --output json`
+   **Purpose:** Review instance configurations and security settings
+
+## 📋 Evidence Requirements
+
+### 🖥️ CLI Validation
+- **Command:** `aws ec2 describe-security-groups --output json`
+  - **Purpose:** Check security group configurations for hardening
+- **Command:** `aws ec2 describe-instances --output json`
+  - **Purpose:** Review instance configurations and security settings
+
+## 🧠 Validation Logic
+
+**Function:** `evaluate_KSI_SVC_01`
+
+**Documentation:** Simple rule for KSI-SVC-01: Network and system configuration hardening
+Expected: Security Groups + EC2 Instances
+
+### Rule Implementation
+```python
+def evaluate_KSI_SVC_01(cli_output):
+    """
+    Simple rule for KSI-SVC-01: Network and system configuration hardening
+    Expected: Security Groups + EC2 Instances
+    """
+    if "commands" not in cli_output:
+        return False, "❌ Multi-command format required"
+    commands = cli_output["commands"]
+    security_groups = None
+    instances = None
+    for cmd in commands:
+        cli_command = cmd.get("cli_command", "")
+        raw_output = cmd.get("raw_output", {})
+        if "describe-security-groups" in cli_command:
+            security_groups = raw_output.get("SecurityGroups", [])
+        elif "describe-instances" in cli_command:
+            instances = raw_output.get("Reservations", [])
+    if not security_groups:
+        return False, "❌ No security groups found"
+    hardened_sgs = 0
+    # ... (additional validation logic) ...
 ```
 
-## ✅ Validation Goal
-List managed instances
+## 📜 Compliance Mapping
 
-## 📋 Justification
-Initial command retained; sufficient for initial validation unless Low Mode-specific refactor is needed.
+**Control Description:** Harden and review network and system configurations
 
-## 📆 Last Evaluated
-N/A
+**Implementation Justification:** Validates system hardening through security groups, NACLs, and instance configurations
 
-## 📄 CLI Output Snippet
-```json
+**FedRAMP 20x Category:** Service Configuration
 
-```
+## 📊 Recent Validation Results
+
+**Evidence Analysis:** ✅ All 2 commands executed successfully | 🛡️ 1 security groups analyzed | ✅ Command output received
+
+**Commands Executed:** 2
+**Validation Method:** multi-command
+
+---
+*Documentation auto-generated from KSI validation pipeline*
+*Source: cli_command_register.json, unified_ksi_validations.json*

@@ -1,20 +1,79 @@
-# KSI-CNA-03: Validate routing paths
+# KSI-CNA-03: Use logical networking for traffic flow controls
 
-## 🛠 CLI Command
-```bash
-aws ec2 describe-route-tables
+*Generated on 2025-06-06 05:52:21 UTC*
+
+## 📖 Overview
+
+**KSI ID:** `KSI-CNA-03`
+**Description:** Use logical networking for traffic flow controls
+**Justification:** Validates network routing and access controls
+**Last Validation:** ✅ 2025-06-06T05:52:21.557438
+**Result:** ✅ Network controls configured: 1 NACLs (0 custom), 1 route tables
+
+## 🛠️ Implementation
+
+### Commands Executed
+1. **Command:** `aws ec2 describe-network-acls --output json`
+   **Purpose:** Check Network ACL configurations
+
+2. **Command:** `aws ec2 describe-route-tables --output json`
+   **Purpose:** Validate routing configurations
+
+## 📋 Evidence Requirements
+
+### 🖥️ CLI Validation
+- **Command:** `aws ec2 describe-network-acls --output json`
+  - **Purpose:** Check Network ACL configurations
+- **Command:** `aws ec2 describe-route-tables --output json`
+  - **Purpose:** Validate routing configurations
+
+## 🧠 Validation Logic
+
+**Function:** `evaluate_KSI_CNA_03`
+
+**Documentation:** Simple rule for KSI-CNA-03: Basic network controls exist
+Expected: Network ACLs + Route Tables
+
+### Rule Implementation
+```python
+def evaluate_KSI_CNA_03(cli_output):
+    """
+    Simple rule for KSI-CNA-03: Basic network controls exist
+    Expected: Network ACLs + Route Tables
+    """
+    if "commands" not in cli_output:
+        return False, "❌ Multi-command format required"
+    commands = cli_output["commands"]
+    network_acls = None
+    route_tables = None
+    for cmd in commands:
+        cli_command = cmd.get("cli_command", "")
+        raw_output = cmd.get("raw_output", {})
+        if "describe-network-acls" in cli_command:
+            network_acls = raw_output.get("NetworkAcls", [])
+        elif "describe-route-tables" in cli_command:
+            route_tables = raw_output.get("RouteTables", [])
+    if not network_acls:
+        return False, "❌ No Network ACLs found"
+    if not route_tables:
+    # ... (additional validation logic) ...
 ```
 
-## ✅ Validation Goal
-Validate routing paths
+## 📜 Compliance Mapping
 
-## 📋 Justification
-Ensures routing paths restrict outbound internet access; confirms lack of NAT or IGW for private subnets.
+**Control Description:** Use logical networking for traffic flow controls
 
-## 📆 Last Evaluated
-N/A
+**Implementation Justification:** Validates network routing and access controls
 
-## 📄 CLI Output Snippet
-```json
+**FedRAMP 20x Category:** Cloud Native Architecture
 
-```
+## 📊 Recent Validation Results
+
+**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
+
+**Commands Executed:** 2
+**Validation Method:** multi-command
+
+---
+*Documentation auto-generated from KSI validation pipeline*
+*Source: cli_command_register.json, unified_ksi_validations.json*

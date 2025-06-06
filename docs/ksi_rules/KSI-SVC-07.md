@@ -1,20 +1,79 @@
-# KSI-SVC-07: Check patch policies
+# KSI-SVC-07: Use consistent, risk-informed security patching
 
-## 🛠 CLI Command
-```bash
-aws ssm describe-patch-groups
+*Generated on 2025-06-06 05:52:21 UTC*
+
+## 📖 Overview
+
+**KSI ID:** `KSI-SVC-07`
+**Description:** Use consistent, risk-informed security patching
+**Justification:** Validates patch management through Systems Manager and automated patching
+**Last Validation:** ✅ 2025-06-06T05:52:21.550024
+**Result:** ✅ Consistent patch management: ✅ 17 patch baselines configured for consistent patching; ℹ️ No SSM-managed instances found (acceptable if no EC2 instances)
+
+## 🛠️ Implementation
+
+### Commands Executed
+1. **Command:** `aws ssm describe-patch-baselines --output json`
+   **Purpose:** Check patch baselines for consistent patching approach
+
+2. **Command:** `aws ssm describe-instance-information --output json`
+   **Purpose:** Validate SSM agent coverage for automated patching
+
+## 📋 Evidence Requirements
+
+### 🖥️ CLI Validation
+- **Command:** `aws ssm describe-patch-baselines --output json`
+  - **Purpose:** Check patch baselines for consistent patching approach
+- **Command:** `aws ssm describe-instance-information --output json`
+  - **Purpose:** Validate SSM agent coverage for automated patching
+
+## 🧠 Validation Logic
+
+**Function:** `evaluate_KSI_SVC_07`
+
+**Documentation:** Simple rule for KSI-SVC-07: Consistent, risk-informed security patching
+Expected: SSM Patch Baselines + SSM Agent Coverage
+
+### Rule Implementation
+```python
+def evaluate_KSI_SVC_07(cli_output):
+    """
+    Simple rule for KSI-SVC-07: Consistent, risk-informed security patching
+    Expected: SSM Patch Baselines + SSM Agent Coverage
+    """
+    if "commands" not in cli_output:
+        return False, "❌ Multi-command format required"
+    commands = cli_output["commands"]
+    patch_baselines = None
+    ssm_instances = None
+    for cmd in commands:
+        cli_command = cmd.get("cli_command", "")
+        raw_output = cmd.get("raw_output", {})
+        if "describe-patch-baselines" in cli_command:
+            patch_baselines = raw_output.get("BaselineIdentities", [])
+        elif "describe-instance-information" in cli_command:
+            ssm_instances = raw_output.get("InstanceInformationList", [])
+    findings = []
+    patching_mechanisms = 0
+    if patch_baselines is not None:
+    # ... (additional validation logic) ...
 ```
 
-## ✅ Validation Goal
-Check patch policies
+## 📜 Compliance Mapping
 
-## 📋 Justification
-Initial command retained; sufficient for initial validation unless Low Mode-specific refactor is needed.
+**Control Description:** Use consistent, risk-informed security patching
 
-## 📆 Last Evaluated
-N/A
+**Implementation Justification:** Validates patch management through Systems Manager and automated patching
 
-## 📄 CLI Output Snippet
-```json
+**FedRAMP 20x Category:** Service Configuration
 
-```
+## 📊 Recent Validation Results
+
+**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
+
+**Commands Executed:** 2
+**Validation Method:** multi-command
+
+---
+*Documentation auto-generated from KSI validation pipeline*
+*Source: cli_command_register.json, unified_ksi_validations.json*

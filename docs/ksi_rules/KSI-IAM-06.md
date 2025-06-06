@@ -1,46 +1,31 @@
 # KSI-IAM-06: Automatically disable accounts with privileged access on suspicious activity
 
-*Generated on 2025-06-06 05:34:53 UTC*
+*Generated on 2025-06-06 05:52:21 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-06`
 **Description:** Automatically disable accounts with privileged access on suspicious activity
 **Justification:** Validates automated response capabilities for privileged account security incidents
-**Last Validation:** ❌ 2025-06-06T05:34:53.038079
-**Result:** ❌ No automated response to suspicious activity: ❌ No CloudWatch alarms found for automated monitoring; ❌ No Lambda functions found for automated response
+**Last Validation:** ❌ 2025-06-06T05:52:21.549907
+**Result:** ❌ No automated response to suspicious activity: ❌ No CloudWatch alarms found for automated monitoring; ⚠️ 1 Lambda functions found but none security-focused
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws iam list-users --query 'Users[?contains(UserName, `admin`) || contains(UserName, `root`)]' --output json`
-   **Purpose:** Identify privileged user accounts
+1. **Command:** `aws cloudwatch describe-alarms --output json`
+   **Purpose:** Check for automated alarms on suspicious privileged activities
 
-2. **Command:** `aws logs describe-log-groups --log-group-name-prefix '/aws/lambda' --output json`
-   **Purpose:** Check for automated response Lambda functions
-
-3. **Command:** `aws events list-rules --output json`
-   **Purpose:** Verify EventBridge rules for automated responses
-
-4. **Command:** `aws cloudwatch describe-alarms --alarm-names 'HighPrivilegedActivity' --output json`
-   **Purpose:** Check for CloudWatch alarms on privileged activities
-
-5. **Command:** `aws iam generate-credential-report --output json && aws iam get-credential-report --output text`
-   **Purpose:** Get credential report to check for disabled/inactive accounts
+2. **Command:** `aws lambda list-functions --output json`
+   **Purpose:** Check for automated response functions for account security
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
-- **Command:** `aws iam list-users --query 'Users[?contains(UserName, `admin`) || contains(UserName, `root`)]' --output json`
-  - **Purpose:** Identify privileged user accounts
-- **Command:** `aws logs describe-log-groups --log-group-name-prefix '/aws/lambda' --output json`
-  - **Purpose:** Check for automated response Lambda functions
-- **Command:** `aws events list-rules --output json`
-  - **Purpose:** Verify EventBridge rules for automated responses
-- **Command:** `aws cloudwatch describe-alarms --alarm-names 'HighPrivilegedActivity' --output json`
-  - **Purpose:** Check for CloudWatch alarms on privileged activities
-- **Command:** `aws iam generate-credential-report --output json && aws iam get-credential-report --output text`
-  - **Purpose:** Get credential report to check for disabled/inactive accounts
+- **Command:** `aws cloudwatch describe-alarms --output json`
+  - **Purpose:** Check for automated alarms on suspicious privileged activities
+- **Command:** `aws lambda list-functions --output json`
+  - **Purpose:** Check for automated response functions for account security
 
 ## 🧠 Validation Logic
 
@@ -86,9 +71,9 @@ def evaluate_KSI_IAM_06(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ✅ All 5 commands executed successfully | ⚠️ No usable output | ✅ Command output received | ✅ Command output received
+**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 
-**Commands Executed:** 5
+**Commands Executed:** 2
 **Validation Method:** multi-command
 
 ---

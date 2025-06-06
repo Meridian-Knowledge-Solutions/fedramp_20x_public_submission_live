@@ -1,41 +1,31 @@
 # KSI-IAM-03: Enforce secure authentication for non-user accounts and services
 
-*Generated on 2025-06-06 05:34:53 UTC*
+*Generated on 2025-06-06 05:52:21 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-03`
 **Description:** Enforce secure authentication for non-user accounts and services
-**Justification:** Validates that service accounts, roles, and automated systems use appropriate authentication methods
-**Last Validation:** ❌ 2025-06-06T05:34:53.048873
+**Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys)
+**Last Validation:** ❌ 2025-06-06T05:52:21.558105
 **Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `aws iam list-roles --output json`
-   **Purpose:** Get all IAM roles (service accounts)
+   **Purpose:** Check IAM roles for service authentication
 
-2. **Command:** `aws iam list-instance-profiles --output json`
-   **Purpose:** Get EC2 instance profiles for service authentication
-
-3. **Command:** `aws sts get-caller-identity --output json`
-   **Purpose:** Verify current authentication context
-
-4. **Command:** `aws iam list-service-linked-roles --output json`
-   **Purpose:** Check AWS service-linked roles
+2. **Command:** `aws iam list-service-linked-roles --output json`
+   **Purpose:** Validate AWS service-linked roles for secure service authentication
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
 - **Command:** `aws iam list-roles --output json`
-  - **Purpose:** Get all IAM roles (service accounts)
-- **Command:** `aws iam list-instance-profiles --output json`
-  - **Purpose:** Get EC2 instance profiles for service authentication
-- **Command:** `aws sts get-caller-identity --output json`
-  - **Purpose:** Verify current authentication context
+  - **Purpose:** Check IAM roles for service authentication
 - **Command:** `aws iam list-service-linked-roles --output json`
-  - **Purpose:** Check AWS service-linked roles
+  - **Purpose:** Validate AWS service-linked roles for secure service authentication
 
 ## 🧠 Validation Logic
 
@@ -74,15 +64,15 @@ def evaluate_KSI_IAM_03(cli_output):
 
 **Control Description:** Enforce secure authentication for non-user accounts and services
 
-**Implementation Justification:** Validates that service accounts, roles, and automated systems use appropriate authentication methods
+**Implementation Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys)
 
 **FedRAMP 20x Category:** Identity and Access Management
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ⚠️ 1/4 commands failed execution | ✅ Command output received | ✅ Command output received | ✅ Command output received
+**Evidence Analysis:** ⚠️ 1/2 commands failed execution | ✅ Command output received | ⚠️ No usable output
 
-**Commands Executed:** 4
+**Commands Executed:** 2
 **Validation Method:** multi-command
 
 ---

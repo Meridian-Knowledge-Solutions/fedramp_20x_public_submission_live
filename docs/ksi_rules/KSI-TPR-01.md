@@ -1,20 +1,81 @@
-# KSI-TPR-01: Detect 3rd party
+# KSI-TPR-01: Identify all third-party information resources
 
-## 🛠 CLI Command
-```bash
-aws accessanalyzer list-analyzers
+*Generated on 2025-06-06 05:52:21 UTC*
+
+## 📖 Overview
+
+**KSI ID:** `KSI-TPR-01`
+**Description:** Identify all third-party information resources
+**Justification:** Validates third-party resource identification through AWS services and documented third-party inventory
+**Last Validation:** ❌ 2025-06-06T05:52:21.555049
+**Result:** ❌ Rule execution error: 'str' object has no attribute 'get'
+
+## 🛠️ Implementation
+
+### Commands Executed
+1. **Command:** `aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json`
+   **Purpose:** Check for cross-account roles indicating third-party integrations
+
+2. **Command:** `evidence_check`
+   **Purpose:** Check evidence_v2/KSI-TPR-01/ for third_party_inventory.xlsx, saas_services_list.pdf, and vendor_registry.pdf
+
+## 📋 Evidence Requirements
+
+### 🖥️ CLI Validation
+- **Command:** `aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json`
+  - **Purpose:** Check for cross-account roles indicating third-party integrations
+
+### 📄 Manual Evidence
+- Check evidence_v2/KSI-TPR-01/ for third_party_inventory.xlsx, saas_services_list.pdf, and vendor_registry.pdf
+
+## 🧠 Validation Logic
+
+**Function:** `evaluate_KSI_TPR_01`
+
+**Documentation:** KSI-TPR-01: Identify all third-party information resources
+
+Expected: Cross-account roles + Manual third-party inventory
+
+### Rule Implementation
+```python
+def evaluate_KSI_TPR_01(cli_output):
+    """
+    KSI-TPR-01: Identify all third-party information resources
+    
+    Expected: Cross-account roles + Manual third-party inventory
+    """
+    evidence_dir = Path("evidence_v2/KSI-TPR-01")
+    cross_account_roles = None
+    if "commands" in cli_output:
+        for cmd in cli_output["commands"]:
+            cli_command = cmd.get("cli_command", "")
+            raw_output = cmd.get("raw_output", {})
+            if "list-roles" in cli_command:
+                cross_account_roles = raw_output.get("Roles", [])
+    manual_evidence = []
+    if evidence_dir.exists():
+        inventory_files = [
+            "third_party_inventory.xlsx",
+            "saas_services_list.pdf",
+            "vendor_registry.pdf",
+    # ... (additional validation logic) ...
 ```
 
-## ✅ Validation Goal
-Detect 3rd party
+## 📜 Compliance Mapping
 
-## 📋 Justification
-Initial command retained; sufficient for initial validation unless Low Mode-specific refactor is needed.
+**Control Description:** Identify all third-party information resources
 
-## 📆 Last Evaluated
-N/A
+**Implementation Justification:** Validates third-party resource identification through AWS services and documented third-party inventory
 
-## 📄 CLI Output Snippet
-```json
+**FedRAMP 20x Category:** Third-Party Information Resources
 
-```
+## 📊 Recent Validation Results
+
+**Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | 📄 Manual evidence validation
+
+**Commands Executed:** 2
+**Validation Method:** multi-command
+
+---
+*Documentation auto-generated from KSI validation pipeline*
+*Source: cli_command_register.json, unified_ksi_validations.json*

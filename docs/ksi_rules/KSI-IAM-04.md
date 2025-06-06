@@ -1,46 +1,31 @@
 # KSI-IAM-04: Use least-privileged, role-based, and just-in-time authorization
 
-*Generated on 2025-06-06 05:34:53 UTC*
+*Generated on 2025-06-06 05:52:21 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-04`
 **Description:** Use least-privileged, role-based, and just-in-time authorization
-**Justification:** Validates implementation of least privilege through roles, policies, and time-based access controls
-**Last Validation:** ✅ 2025-06-06T05:34:53.047052
-**Result:** ⚠️ Partial authorization model: ✅ Role-based access: 25 roles (2 admin, 13 service)
+**Justification:** Validates least privilege implementation through roles, policies, and time-based access controls
+**Last Validation:** ✅ 2025-06-06T05:52:21.556134
+**Result:** ⚠️ Partial authorization model: ✅ Role-based access: 25 roles (2 admin, 13 service); ⚠️ Direct user access detected (not session-based)
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `aws iam list-roles --output json`
-   **Purpose:** Get all roles for privilege analysis
+   **Purpose:** Analyze roles for least privilege implementation
 
-2. **Command:** `aws iam list-policies --scope Local --output json`
-   **Purpose:** Get custom policies to review permissions
-
-3. **Command:** `aws iam list-attached-role-policies --role-name AdminRole --output json`
-   **Purpose:** Check for overly permissive admin roles
-
-4. **Command:** `aws iam generate-credential-report --output json`
-   **Purpose:** Generate credential report for access analysis
-
-5. **Command:** `aws iam get-credential-report --output text`
-   **Purpose:** Get credential report data
+2. **Command:** `aws sts get-caller-identity --output json`
+   **Purpose:** Validate current session-based access (just-in-time principle)
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
 - **Command:** `aws iam list-roles --output json`
-  - **Purpose:** Get all roles for privilege analysis
-- **Command:** `aws iam list-policies --scope Local --output json`
-  - **Purpose:** Get custom policies to review permissions
-- **Command:** `aws iam list-attached-role-policies --role-name AdminRole --output json`
-  - **Purpose:** Check for overly permissive admin roles
-- **Command:** `aws iam generate-credential-report --output json`
-  - **Purpose:** Generate credential report for access analysis
-- **Command:** `aws iam get-credential-report --output text`
-  - **Purpose:** Get credential report data
+  - **Purpose:** Analyze roles for least privilege implementation
+- **Command:** `aws sts get-caller-identity --output json`
+  - **Purpose:** Validate current session-based access (just-in-time principle)
 
 ## 🧠 Validation Logic
 
@@ -80,15 +65,15 @@ def evaluate_KSI_IAM_04(cli_output):
 
 **Control Description:** Use least-privileged, role-based, and just-in-time authorization
 
-**Implementation Justification:** Validates implementation of least privilege through roles, policies, and time-based access controls
+**Implementation Justification:** Validates least privilege implementation through roles, policies, and time-based access controls
 
 **FedRAMP 20x Category:** Identity and Access Management
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ⚠️ 1/5 commands failed execution | ✅ Command output received | ✅ Command output received | ⚠️ No usable output
+**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 
-**Commands Executed:** 5
+**Commands Executed:** 2
 **Validation Method:** multi-command
 
 ---
