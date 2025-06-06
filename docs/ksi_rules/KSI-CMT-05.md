@@ -1,13 +1,13 @@
 # KSI-CMT-05: Evaluate the risk and potential impact of any change
 
-*Generated on 2025-06-06 09:27:27 UTC*
+*Generated on 2025-06-06 09:29:28 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-05`
 **Description:** Evaluate the risk and potential impact of any change
 **Justification:** Manual evidence required - risk assessment procedures and impact analysis documentation
-**Last Validation:** ❌ 2025-06-06T09:27:27.591445
+**Last Validation:** ❌ 2025-06-06T09:29:28.448689
 **Result:** ❌ No risk and impact evaluation documentation found in evidence_v2/KSI-CMT-05/
 
 ## 🛠️ Implementation

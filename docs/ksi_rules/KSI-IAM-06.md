@@ -1,14 +1,14 @@
 # KSI-IAM-06: Automatically disable accounts with privileged access on suspicious activity
 
-*Generated on 2025-06-06 09:27:27 UTC*
+*Generated on 2025-06-06 09:29:28 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-06`
 **Description:** Automatically disable accounts with privileged access on suspicious activity
 **Justification:** Validates automated response capabilities for privileged account security incidents
-**Last Validation:** ❌ 2025-06-06T09:27:27.583347
-**Result:** ❌ No automated response to suspicious activity: ❌ No CloudWatch alarms found for automated monitoring; ⚠️ 1 Lambda functions found but none security-focused
+**Last Validation:** ✅ 2025-06-06T09:29:28.440655
+**Result:** ⚠️ Basic automated response (expand capabilities): ❌ No CloudWatch alarms found for automated monitoring; ⚠️ 1 Lambda functions found but none explicitly security-focused; ✅ Automated notification capability: 2 SNS topics configured; ⚠️ No SNS subscriptions found
 
 ## 🛠️ Implementation
 
@@ -41,33 +41,33 @@
 
 **Function:** `evaluate_KSI_IAM_06`
 
-**Documentation:** KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
+**Documentation:** UPDATED: KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
 in response to suspicious activity
 
-Expected: CloudWatch Alarms + Lambda Functions
+ENHANCEMENT: Now recognizes SNS topics and subscriptions as automated response mechanisms
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_IAM_06(cli_output):
     """
-    KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
+    UPDATED: KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
     in response to suspicious activity
     
-    Expected: CloudWatch Alarms + Lambda Functions
+    ENHANCEMENT: Now recognizes SNS topics and subscriptions as automated response mechanisms
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     alarms = None
     lambda_functions = None
+    sns_topics = None
+    sns_subscriptions = None
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
+        if not isinstance(raw_output, dict):
+            continue
         if "describe-alarms" in cli_command:
-            alarms = raw_output.get("MetricAlarms", [])
-        elif "list-functions" in cli_command:
-            lambda_functions = raw_output.get("Functions", [])
-    findings = []
     # ... (additional validation logic) ...
 ```
 

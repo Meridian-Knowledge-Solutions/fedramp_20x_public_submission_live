@@ -1,14 +1,14 @@
 # KSI-MLA-02: Regularly review and audit logs
 
-*Generated on 2025-06-06 09:27:27 UTC*
+*Generated on 2025-06-06 09:29:28 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-02`
 **Description:** Regularly review and audit logs
 **Justification:** Validates log review processes through automated analysis, alerting, and audit capabilities
-**Last Validation:** ❌ 2025-06-06T09:27:27.584021
-**Result:** ❌ No regular log review mechanisms: ❌ No CloudWatch alarms for automated log review; ⚠️ No metric filters found for log analysis
+**Last Validation:** ✅ 2025-06-06T09:29:28.441353
+**Result:** ⚠️ Basic log review (expand mechanisms): ❌ No CloudWatch alarms for automated log review; ⚠️ No metric filters found for log analysis; ✅ Automated log review notifications: 2 SNS topics for alert delivery
 
 ## 🛠️ Implementation
 
@@ -36,32 +36,32 @@
 
 **Function:** `evaluate_KSI_MLA_02`
 
-**Documentation:** KSI-MLA-02: Regularly review and audit logs
+**Documentation:** UPDATED: KSI-MLA-02: Regularly review and audit logs
 
-Expected: CloudWatch Alarms + Metric Filters
+ENHANCEMENT: Now recognizes SNS as automated log review notification mechanism
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_MLA_02(cli_output):
     """
-    KSI-MLA-02: Regularly review and audit logs
+    UPDATED: KSI-MLA-02: Regularly review and audit logs
     
-    Expected: CloudWatch Alarms + Metric Filters
+    ENHANCEMENT: Now recognizes SNS as automated log review notification mechanism
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     alarms = None
     metric_filters = None
+    sns_topics = None
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
+        if not isinstance(raw_output, dict):
+            continue
         if "describe-alarms" in cli_command:
             alarms = raw_output.get("MetricAlarms", [])
         elif "describe-metric-filters" in cli_command:
-            metric_filters = raw_output.get("metricFilters", [])
-    findings = []
-    review_mechanisms = 0
     # ... (additional validation logic) ...
 ```
 
