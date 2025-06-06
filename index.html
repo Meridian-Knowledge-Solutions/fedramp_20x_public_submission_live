@@ -1147,52 +1147,117 @@
             }
         }
 
-        // Update dashboard with real data
+        // Update dashboard with real data (robust handling)
         function updateDashboardWithRealData(unifiedData, metadataData) {
-            // Extract real metrics from unified data
-            const metadata = unifiedData.metadata || {};
-            const validations = unifiedData.validations || [];
-            
-            // Update key metrics with real data
-            const realMetrics = {
-                overallScore: Math.round((metadata.total_passed / metadata.total_ksis) * 100 * 10) / 10,
-                passedCount: metadata.total_passed,
-                failedCount: metadata.total_failed,
-                totalKsis: metadata.total_ksis,
-                lastUpdated: new Date(metadata.generated_at),
-                categories: metadata.category_summary || {},
-                validations: validations
-            };
+            try {
+                console.log('Processing data:', unifiedData);
+                
+                // Handle different data structures more robustly
+                let validations = [];
+                let metadata = {};
+                
+                if (unifiedData) {
+                    // Try different data structures
+                    if (Array.isArray(unifiedData)) {
+                        validations = unifiedData;
+                    } else if (unifiedData.validations && Array.isArray(unifiedData.validations)) {
+                        validations = unifiedData.validations;
+                        metadata = unifiedData.metadata || {};
+                    } else if (unifiedData.metadata && unifiedData.metadata.validations) {
+                        validations = unifiedData.metadata.validations;
+                        metadata = unifiedData.metadata;
+                    }
+                }
+                
+                console.log('Extracted validations:', validations.length, 'items');
+                console.log('Extracted metadata:', metadata);
+                
+                if (validations.length === 0) {
+                    throw new Error('No validation data found in the loaded JSON');
+                }
 
-            // Update metrics display
-            updateMetricsDisplay(realMetrics);
-            
-            // Update charts with real data
-            updateChartsWithRealData(realMetrics);
-            
-            // Update KSI grid with real data
-            updateKsiGridWithRealData(realMetrics.validations);
-            
-            // Update timeline with metadata
-            updateTimelineWithMetadata(metadataData);
-            
-            // Update vulnerability metrics (from your Security Hub data)
-            updateVulnerabilityMetrics(validations);
+                // Calculate real metrics from validations
+                const totalKsis = validations.length;
+                const passedCount = validations.filter(v => v.assertion === true || v.assertion === "true").length;
+                const failedCount = totalKsis - passedCount;
+                const overallScore = Math.round((passedCount / totalKsis) * 100 * 10) / 10;
+
+                // Extract real categories
+                const categories = {};
+                validations.forEach(v => {
+                    const categoryKey = v.category_prefix || v.ksi_id?.split('-').slice(0, 2).join('-') || 'Other';
+                    const categoryName = v.long_name || categoryKey;
+                    
+                    if (!categories[categoryName]) {
+                        categories[categoryName] = { total: 0, passed: 0 };
+                    }
+                    categories[categoryName].total++;
+                    if (v.assertion === true || v.assertion === "true") {
+                        categories[categoryName].passed++;
+                    }
+                });
+
+                // Update metrics display
+                document.getElementById('overall-score').textContent = overallScore + '%';
+                document.getElementById('passed-count').textContent = passedCount;
+                document.getElementById('failed-count').textContent = failedCount;
+                document.getElementById('total-ksis').textContent = totalKsis;
+                document.getElementById('score-percentage').textContent = overallScore + '%';
+
+                // Update progress circle
+                const circle = document.getElementById('progress-circle');
+                if (circle) {
+                    const circumference = 2 * Math.PI * 90;
+                    const offset = circumference - (overallScore / 100) * circumference;
+                    circle.style.strokeDashoffset = offset;
+                }
+
+                // Update KSI grid with real data
+                updateKsiGridWithRealData(validations);
+                
+                // Update charts with real data if Chart.js is available
+                if (typeof Chart !== 'undefined') {
+                    updateChartsWithRealData({
+                        overallScore: overallScore,
+                        passedCount: passedCount,
+                        failedCount: failedCount,
+                        totalKsis: totalKsis,
+                        categories: categories,
+                        validations: validations
+                    });
+                }
+                
+                // Update timestamps
+                const lastUpdated = metadata.generated_at || new Date().toISOString();
+                updateTimestamps(lastUpdated);
+                
+                console.log('✅ Dashboard successfully updated with real data');
+                
+            } catch (error) {
+                console.error('Error processing data:', error);
+                throw error;
+            }
         }
 
-        // Update metrics display with real data
-        function updateMetricsDisplay(realMetrics) {
-            document.getElementById('overall-score').textContent = realMetrics.overallScore + '%';
-            document.getElementById('passed-count').textContent = realMetrics.passedCount;
-            document.getElementById('failed-count').textContent = realMetrics.failedCount;
-            document.getElementById('total-ksis').textContent = realMetrics.totalKsis;
-            document.getElementById('score-percentage').textContent = realMetrics.overallScore + '%';
-
-            // Update progress circle
-            const circle = document.getElementById('progress-circle');
-            const circumference = 2 * Math.PI * 90;
-            const offset = circumference - (realMetrics.overallScore / 100) * circumference;
-            circle.style.strokeDashoffset = offset;
+        // Simple timestamp update
+        function updateTimestamps(lastUpdated) {
+            try {
+                const lastDate = new Date(lastUpdated);
+                const timeString = lastDate.toLocaleString();
+                const nextDate = new Date(lastDate.getTime() + 86400000);
+                
+                const lastUpdatedEl = document.getElementById('last-updated');
+                const footerTimestampEl = document.getElementById('footer-timestamp');
+                
+                if (lastUpdatedEl) {
+                    lastUpdatedEl.textContent = `Updated: ${timeString}`;
+                }
+                if (footerTimestampEl) {
+                    footerTimestampEl.textContent = timeString;
+                }
+            } catch (error) {
+                console.error('Error updating timestamps:', error);
+            }
         }
 
         // Update charts with real data
