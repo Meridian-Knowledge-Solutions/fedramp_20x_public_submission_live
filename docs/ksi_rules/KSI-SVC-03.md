@@ -1,13 +1,21 @@
 # KSI-SVC-03: Encrypt all federal and sensitive information at rest
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-06 08:21:01 UTC*
+=======
+*Generated on 2025-06-06 08:22:08 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-03`
 **Description:** Encrypt all federal and sensitive information at rest
 **Justification:** Validates at-rest encryption for S3, EBS, RDS, and other storage services
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-06T08:21:01.667230
+=======
+**Last Validation:** ✅ 2025-06-06T08:22:08.663201
+>>>>>>> Stashed changes
 **Result:** ✅ At-rest encryption configured: ✅ 2 S3 buckets found (encryption validation requires bucket-level check); ℹ️ No EBS volumes found
 
 ## 🛠️ Implementation

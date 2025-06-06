@@ -1,13 +1,21 @@
 # KSI-SVC-06: Use automated key management systems
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-06 08:21:01 UTC*
+=======
+*Generated on 2025-06-06 08:22:08 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-06`
 **Description:** Use automated key management systems
 **Justification:** Validates automated key management through AWS KMS and certificate management
+<<<<<<< Updated upstream
 **Last Validation:** ❌ 2025-06-06T08:21:01.668566
+=======
+**Last Validation:** ❌ 2025-06-06T08:22:08.664501
+>>>>>>> Stashed changes
 **Result:** ❌ No automated key management systems found: ℹ️ No ACM certificates found (acceptable for low-impact)
 
 ## 🛠️ Implementation

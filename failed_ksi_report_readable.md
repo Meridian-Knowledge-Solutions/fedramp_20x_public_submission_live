@@ -4,10 +4,17 @@
 
 ## 📊 Executive Summary
 
+<<<<<<< Updated upstream
 - **Overall Pass Rate:** 62.7% (32/51)
 - **Failed KSIs:** 19
 - **Validation Method:** multi-command-v2
 - **Last Updated:** 2025-06-06T08:21:01.725666Z
+=======
+- **Overall Pass Rate:** 64.7% (33/51)
+- **Failed KSIs:** 18
+- **Validation Method:** multi-command-v2
+- **Last Updated:** 2025-06-06T08:22:08.723429Z
+>>>>>>> Stashed changes
 
 ### Category Breakdown
 - **KSI-CNA** (Cloud Native Architecture): 2/7 failed
@@ -16,7 +23,11 @@
 - **KSI-SVC** (Service Configuration): 1/7 failed
 - **KSI-MLA** (Monitoring, Logging, and Auditing): 2/6 failed
 - **KSI-PIY** (Policy and Inventory): 2/7 failed
+<<<<<<< Updated upstream
 - **KSI-RPL** (Recovery Planning): 2/4 failed
+=======
+- **KSI-RPL** (Recovery Planning): 1/4 failed
+>>>>>>> Stashed changes
 - **KSI-TPR** (Third-Party Information Resources): 3/4 failed
 - **KSI-INR** (Incident Reporting): 2/3 failed
 
@@ -33,7 +44,11 @@
 **Commands:** `2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 #### ❌ KSI-CMT-05
 
@@ -42,7 +57,11 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 ---
 
@@ -55,7 +74,11 @@
 **Commands:** `1 commands (0 successful): aws shield describe-subscription --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 #### ❌ KSI-CNA-07
 
@@ -64,7 +87,11 @@
 **Commands:** `1 commands (0 successful): aws config describe-config-rules --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 ---
 
@@ -77,7 +104,11 @@
 **Commands:** `2 commands (2 successful): aws iam list-users --output json; aws iam list-mfa-devices --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | 👤 3 IAM users found | 🔐 1 MFA devices detected
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 #### ❌ KSI-IAM-02
 
@@ -86,7 +117,11 @@
 **Commands:** `2 commands (1 successful): REDACTED_FOR_SECURITY; REDACTED_FOR_SECURITY`
 **Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | ✅ Command output received
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 #### ❌ KSI-IAM-06
 
@@ -95,7 +130,11 @@
 **Commands:** `2 commands (2 successful): aws cloudwatch describe-alarms --output json; aws lambda list-functions --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 ---
 
@@ -108,7 +147,11 @@
 **Commands:** `2 commands (2 successful): aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json; evidence_check`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | 📄 Manual evidence validation
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 #### ❌ KSI-INR-03
 
@@ -117,7 +160,11 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 ---
 
@@ -130,7 +177,11 @@
 **Commands:** `2 commands (2 successful): aws cloudwatch describe-alarms --output json; aws logs describe-metric-filters --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 #### ❌ KSI-MLA-04
 
@@ -139,7 +190,11 @@
 **Commands:** `2 commands (2 successful): aws inspector2 list-coverage --output json; aws ec2 describe-instances --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 ---
 
@@ -152,7 +207,11 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 #### ❌ KSI-PIY-07
 
@@ -161,12 +220,17 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 ---
 
 ### KSI-RPL: Recovery Planning
 
+<<<<<<< Updated upstream
 #### ❌ KSI-RPL-02
 
 **Control:** Recovery Planning
@@ -176,6 +240,8 @@
 **Commands Executed:** 1
 **Validated:** 2025-06-06 08:21:01 UTC
 
+=======
+>>>>>>> Stashed changes
 #### ❌ KSI-RPL-04
 
 **Control:** Recovery Planning
@@ -183,7 +249,11 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 ---
 
@@ -196,7 +266,11 @@
 **Commands:** `2 commands (2 successful): REDACTED_FOR_SECURITY; aws acm list-certificates --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 ---
 
@@ -209,7 +283,11 @@
 **Commands:** `2 commands (1 successful): aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json; evidence_check`
 **Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | 📄 Manual evidence validation
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 #### ❌ KSI-TPR-03
 
@@ -218,7 +296,11 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 #### ❌ KSI-TPR-04
 
@@ -227,7 +309,11 @@
 **Commands:** `2 commands (1 successful): aws inspector2 list-findings --filter-criteria '{"component":[{"comparison":"EQUALS","value":"*"}]}' --max-results 20 --output json; evidence_check`
 **Evidence Analysis:** ⚠️ 1/2 commands failed execution | ⚠️ No usable output | 📄 Manual evidence validation
 **Commands Executed:** 2
+<<<<<<< Updated upstream
 **Validated:** 2025-06-06 08:21:01 UTC
+=======
+**Validated:** 2025-06-06 08:22:08 UTC
+>>>>>>> Stashed changes
 
 ---
 ## 🔧 Remediation Guidance
@@ -242,6 +328,7 @@
 - **Priority:** High - Technical resolution needed
 - **Affected KSIs:** KSI-CNA-07, KSI-CNA-05
 
+<<<<<<< Updated upstream
 ### Missing Documentation (7 KSIs)
 - **Action:** Upload required evidence to appropriate `evidence_v2/KSI-*/` directories
 - **Priority:** Medium - Manual evidence required
@@ -249,4 +336,13 @@
 ---
 
 *Report generated on 2025-06-06 08:21:01 UTC*
+=======
+### Missing Documentation (6 KSIs)
+- **Action:** Upload required evidence to appropriate `evidence_v2/KSI-*/` directories
+- **Priority:** Medium - Manual evidence required
+- **Affected KSIs:** KSI-PIY-05, KSI-RPL-04, KSI-INR-03, KSI-TPR-03, KSI-PIY-07, KSI-CMT-05
+---
+
+*Report generated on 2025-06-06 08:22:08 UTC*
+>>>>>>> Stashed changes
 *Source: unified_ksi_validations.json*

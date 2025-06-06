@@ -1,13 +1,21 @@
 # KSI-SVC-04: Manage configuration centrally
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-06 08:21:01 UTC*
+=======
+*Generated on 2025-06-06 08:22:08 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-04`
 **Description:** Manage configuration centrally
 **Justification:** Validates centralized configuration management through Systems Manager and Config
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-06T08:21:01.666331
+=======
+**Last Validation:** ✅ 2025-06-06T08:22:08.662312
+>>>>>>> Stashed changes
 **Result:** ⚠️ Basic configuration management available: ⚠️ SSM Parameter Store available but no parameters found; ⚠️ AWS Config service not accessible
 
 ## 🛠️ Implementation
