@@ -7,12 +7,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.372457",
+    "timestamp": "2025-06-07T06:55:37.663671",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002154",
+    "original_timestamp": "2025-06-07T06:55:37.274255",
     "synced_from_validation_engine": true
   },
   {
@@ -23,12 +23,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.372535",
+    "timestamp": "2025-06-07T06:55:37.663753",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002163",
+    "original_timestamp": "2025-06-07T06:55:37.274264",
     "synced_from_validation_engine": true
   },
   {
@@ -39,12 +39,12 @@
     "cli_command": "2 commands (1 successful): aws cloudtrail describe-trails --output json; aws config describe-configuration-recorders --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.372614",
+    "timestamp": "2025-06-07T06:55:37.663838",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002166",
+    "original_timestamp": "2025-06-07T06:55:37.274267",
     "synced_from_validation_engine": true
   },
   {
@@ -55,12 +55,12 @@
     "cli_command": "2 commands (2 successful): aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json; aws ec2 describe-launch-templates --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.372704",
+    "timestamp": "2025-06-07T06:55:37.663913",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002168",
+    "original_timestamp": "2025-06-07T06:55:37.274270",
     "synced_from_validation_engine": true
   },
   {
@@ -71,12 +71,12 @@
     "cli_command": "2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.372776",
+    "timestamp": "2025-06-07T06:55:37.663980",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002171",
+    "original_timestamp": "2025-06-07T06:55:37.274272",
     "synced_from_validation_engine": true
   },
   {
@@ -87,12 +87,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.372833",
+    "timestamp": "2025-06-07T06:55:37.664037",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002174",
+    "original_timestamp": "2025-06-07T06:55:37.274275",
     "synced_from_validation_engine": true
   },
   {
@@ -103,12 +103,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.372891",
+    "timestamp": "2025-06-07T06:55:37.664095",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002176",
+    "original_timestamp": "2025-06-07T06:55:37.274277",
     "synced_from_validation_engine": true
   },
   {
@@ -119,12 +119,12 @@
     "cli_command": "2 commands (2 successful): aws ec2 describe-security-groups --output json; aws ec2 describe-vpcs --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.372970",
+    "timestamp": "2025-06-07T06:55:37.664175",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002178",
+    "original_timestamp": "2025-06-07T06:55:37.274279",
     "synced_from_validation_engine": true
   },
   {
@@ -135,12 +135,12 @@
     "cli_command": "2 commands (2 successful): aws ec2 describe-subnets --output json; aws ec2 describe-security-groups --query 'SecurityGroups[?GroupName!=`default`]' --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373064",
+    "timestamp": "2025-06-07T06:55:37.664270",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002181",
+    "original_timestamp": "2025-06-07T06:55:37.274282",
     "synced_from_validation_engine": true
   },
   {
@@ -151,12 +151,12 @@
     "cli_command": "2 commands (2 successful): aws ec2 describe-network-acls --output json; aws ec2 describe-route-tables --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373142",
+    "timestamp": "2025-06-07T06:55:37.664349",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002183",
+    "original_timestamp": "2025-06-07T06:55:37.274284",
     "synced_from_validation_engine": true
   },
   {
@@ -167,12 +167,12 @@
     "cli_command": "2 commands (2 successful): aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json; aws ec2 describe-launch-templates --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373204",
+    "timestamp": "2025-06-07T06:55:37.664412",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002185",
+    "original_timestamp": "2025-06-07T06:55:37.274287",
     "synced_from_validation_engine": true
   },
   {
@@ -183,12 +183,12 @@
     "cli_command": "1 commands (0 successful): aws shield describe-subscription --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373257",
+    "timestamp": "2025-06-07T06:55:37.664466",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 0,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002188",
+    "original_timestamp": "2025-06-07T06:55:37.274289",
     "synced_from_validation_engine": true
   },
   {
@@ -199,12 +199,12 @@
     "cli_command": "2 commands (2 successful): aws ec2 describe-subnets --query 'Subnets[*].{SubnetId:SubnetId,AvailabilityZone:AvailabilityZone}' --output json; aws backup list-backup-plans --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373317",
+    "timestamp": "2025-06-07T06:55:37.664537",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002190",
+    "original_timestamp": "2025-06-07T06:55:37.274291",
     "synced_from_validation_engine": true
   },
   {
@@ -215,12 +215,12 @@
     "cli_command": "1 commands (0 successful): aws config describe-config-rules --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373373",
+    "timestamp": "2025-06-07T06:55:37.664660",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 0,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002192",
+    "original_timestamp": "2025-06-07T06:55:37.274293",
     "synced_from_validation_engine": true
   },
   {
@@ -231,12 +231,12 @@
     "cli_command": "2 commands (2 successful): aws iam list-users --output json; aws iam list-mfa-devices --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373433",
+    "timestamp": "2025-06-07T06:55:37.664748",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002195",
+    "original_timestamp": "2025-06-07T06:55:37.274296",
     "synced_from_validation_engine": true
   },
   {
@@ -247,12 +247,12 @@
     "cli_command": "2 commands (1 successful): REDACTED_FOR_SECURITY; REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373491",
+    "timestamp": "2025-06-07T06:55:37.664813",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002197",
+    "original_timestamp": "2025-06-07T06:55:37.274298",
     "synced_from_validation_engine": true
   },
   {
@@ -263,12 +263,12 @@
     "cli_command": "2 commands (1 successful): aws iam list-roles --output json; aws iam list-service-linked-roles --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373629",
+    "timestamp": "2025-06-07T06:55:37.664955",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002199",
+    "original_timestamp": "2025-06-07T06:55:37.274301",
     "synced_from_validation_engine": true
   },
   {
@@ -279,12 +279,12 @@
     "cli_command": "2 commands (2 successful): aws iam list-roles --output json; aws sts get-caller-identity --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373802",
+    "timestamp": "2025-06-07T06:55:37.665112",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002202",
+    "original_timestamp": "2025-06-07T06:55:37.274303",
     "synced_from_validation_engine": true
   },
   {
@@ -295,12 +295,12 @@
     "cli_command": "2 commands (2 successful): aws cloudtrail describe-trails --output json; aws iam list-policies --scope Local --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373894",
+    "timestamp": "2025-06-07T06:55:37.665199",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002204",
+    "original_timestamp": "2025-06-07T06:55:37.274306",
     "synced_from_validation_engine": true
   },
   {
@@ -311,12 +311,12 @@
     "cli_command": "4 commands (4 successful): aws cloudwatch describe-alarms --output json; aws lambda list-functions --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.373972",
+    "timestamp": "2025-06-07T06:55:37.665277",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 4,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002206",
+    "original_timestamp": "2025-06-07T06:55:37.274308",
     "synced_from_validation_engine": true
   },
   {
@@ -327,12 +327,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.374027",
+    "timestamp": "2025-06-07T06:55:37.665331",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002209",
+    "original_timestamp": "2025-06-07T06:55:37.274311",
     "synced_from_validation_engine": true
   },
   {
@@ -343,28 +343,28 @@
     "cli_command": "2 commands (2 successful): aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.374079",
+    "timestamp": "2025-06-07T06:55:37.665384",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002211",
+    "original_timestamp": "2025-06-07T06:55:37.274313",
     "synced_from_validation_engine": true
   },
   {
     "ksi_id": "KSI-INR-03",
     "validation_id": "KSI-INR-03",
     "assertion": true,
-    "assertion_reason": "\u26a0\ufe0f Basic after action reporting (increase lessons learned implementation): \u2705 After action and lessons learned documentation: After Action Report and Lessons Learned Framework (KSI-INR-03).pdf; \u2705 Recent after action reports: 1 AARs within last year; \u26a0\ufe0f Limited evidence of lessons learned implementation into operations",
+    "assertion_reason": "\u26a0\ufe0f Basic after action reporting (increase lessons learned implementation): \u2705 After action and lessons learned documentation: After Action Report and Lessons Learned Framework (KSI-INR-03).pdf, Sample After Action Reports and Implementation Examples.pdf; \u2705 Recent after action reports: 2 AARs within last year; \u26a0\ufe0f Limited evidence of lessons learned implementation into operations",
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.374130",
+    "timestamp": "2025-06-07T06:55:37.665433",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002213",
+    "original_timestamp": "2025-06-07T06:55:37.274315",
     "synced_from_validation_engine": true
   },
   {
@@ -375,12 +375,12 @@
     "cli_command": "2 commands (2 successful): aws cloudtrail describe-trails --output json; aws logs describe-log-groups --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.374195",
+    "timestamp": "2025-06-07T06:55:37.665496",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002216",
+    "original_timestamp": "2025-06-07T06:55:37.274318",
     "synced_from_validation_engine": true
   },
   {
@@ -391,12 +391,12 @@
     "cli_command": "3 commands (3 successful): aws cloudwatch describe-alarms --output json; aws logs describe-metric-filters --output json; aws sns list-topics --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.374253",
+    "timestamp": "2025-06-07T06:55:37.665552",
     "validation_method": "validation-engine-sync",
     "commands_executed": 3,
     "successful_commands": 3,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002218",
+    "original_timestamp": "2025-06-07T06:55:37.274320",
     "synced_from_validation_engine": true
   },
   {
@@ -407,12 +407,12 @@
     "cli_command": "2 commands (1 successful): aws securityhub get-enabled-standards --output json; aws inspector2 get-configuration --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.374309",
+    "timestamp": "2025-06-07T06:55:37.665633",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002221",
+    "original_timestamp": "2025-06-07T06:55:37.274323",
     "synced_from_validation_engine": true
   },
   {
@@ -423,12 +423,12 @@
     "cli_command": "3 commands (2 successful): aws inspector2 list-coverage --output json; aws inspector2 get-configuration --output json; aws ec2 describe-instances --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.374363",
+    "timestamp": "2025-06-07T06:55:37.665695",
     "validation_method": "validation-engine-sync",
     "commands_executed": 3,
     "successful_commands": 2,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002223",
+    "original_timestamp": "2025-06-07T06:55:37.274325",
     "synced_from_validation_engine": true
   },
   {
@@ -439,12 +439,12 @@
     "cli_command": "2 commands (1 successful): aws config describe-config-rules --output json; aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.374421",
+    "timestamp": "2025-06-07T06:55:37.665756",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002226",
+    "original_timestamp": "2025-06-07T06:55:37.274328",
     "synced_from_validation_engine": true
   },
   {
@@ -455,12 +455,12 @@
     "cli_command": "2 commands (2 successful): aws securityhub get-findings --max-results 50 --output json; aws inspector2 list-findings --max-results 20 --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.375889",
+    "timestamp": "2025-06-07T06:55:37.667192",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002228",
+    "original_timestamp": "2025-06-07T06:55:37.274330",
     "synced_from_validation_engine": true
   },
   {
@@ -471,12 +471,12 @@
     "cli_command": "2 commands (2 successful): aws resourcegroupstaggingapi get-resources --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376055",
+    "timestamp": "2025-06-07T06:55:37.667357",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002230",
+    "original_timestamp": "2025-06-07T06:55:37.274332",
     "synced_from_validation_engine": true
   },
   {
@@ -487,12 +487,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376120",
+    "timestamp": "2025-06-07T06:55:37.667421",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002232",
+    "original_timestamp": "2025-06-07T06:55:37.274335",
     "synced_from_validation_engine": true
   },
   {
@@ -503,12 +503,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376173",
+    "timestamp": "2025-06-07T06:55:37.667475",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002235",
+    "original_timestamp": "2025-06-07T06:55:37.274337",
     "synced_from_validation_engine": true
   },
   {
@@ -519,12 +519,12 @@
     "cli_command": "2 commands (2 successful): aws codecommit list-repositories --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376227",
+    "timestamp": "2025-06-07T06:55:37.667528",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002237",
+    "original_timestamp": "2025-06-07T06:55:37.274339",
     "synced_from_validation_engine": true
   },
   {
@@ -535,12 +535,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376278",
+    "timestamp": "2025-06-07T06:55:37.667576",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002239",
+    "original_timestamp": "2025-06-07T06:55:37.274342",
     "synced_from_validation_engine": true
   },
   {
@@ -551,12 +551,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376326",
+    "timestamp": "2025-06-07T06:55:37.667647",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002242",
+    "original_timestamp": "2025-06-07T06:55:37.274344",
     "synced_from_validation_engine": true
   },
   {
@@ -567,12 +567,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376374",
+    "timestamp": "2025-06-07T06:55:37.667695",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002244",
+    "original_timestamp": "2025-06-07T06:55:37.274346",
     "synced_from_validation_engine": true
   },
   {
@@ -583,12 +583,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376422",
+    "timestamp": "2025-06-07T06:55:37.667743",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002246",
+    "original_timestamp": "2025-06-07T06:55:37.274349",
     "synced_from_validation_engine": true
   },
   {
@@ -599,12 +599,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376469",
+    "timestamp": "2025-06-07T06:55:37.667789",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002249",
+    "original_timestamp": "2025-06-07T06:55:37.274351",
     "synced_from_validation_engine": true
   },
   {
@@ -615,12 +615,12 @@
     "cli_command": "3 commands (3 successful): aws backup list-backup-plans --output json; aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --output json; aws ec2 describe-snapshots --owner-ids self --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376534",
+    "timestamp": "2025-06-07T06:55:37.667851",
     "validation_method": "validation-engine-sync",
     "commands_executed": 3,
     "successful_commands": 3,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002251",
+    "original_timestamp": "2025-06-07T06:55:37.274353",
     "synced_from_validation_engine": true
   },
   {
@@ -631,12 +631,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376585",
+    "timestamp": "2025-06-07T06:55:37.667902",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002254",
+    "original_timestamp": "2025-06-07T06:55:37.274356",
     "synced_from_validation_engine": true
   },
   {
@@ -647,12 +647,12 @@
     "cli_command": "2 commands (2 successful): aws ec2 describe-security-groups --output json; aws ec2 describe-instances --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376641",
+    "timestamp": "2025-06-07T06:55:37.667978",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002256",
+    "original_timestamp": "2025-06-07T06:55:37.274358",
     "synced_from_validation_engine": true
   },
   {
@@ -663,12 +663,12 @@
     "cli_command": "2 commands (2 successful): aws elbv2 describe-load-balancers --output json; aws ec2 describe-vpc-endpoints --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376736",
+    "timestamp": "2025-06-07T06:55:37.668075",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002259",
+    "original_timestamp": "2025-06-07T06:55:37.274360",
     "synced_from_validation_engine": true
   },
   {
@@ -679,12 +679,12 @@
     "cli_command": "2 commands (2 successful): aws s3api list-buckets --output json; aws ec2 describe-volumes --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376835",
+    "timestamp": "2025-06-07T06:55:37.668170",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002261",
+    "original_timestamp": "2025-06-07T06:55:37.274363",
     "synced_from_validation_engine": true
   },
   {
@@ -695,12 +695,12 @@
     "cli_command": "2 commands (1 successful): aws ssm describe-parameters --output json; aws config describe-configuration-recorders --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.376923",
+    "timestamp": "2025-06-07T06:55:37.669391",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002263",
+    "original_timestamp": "2025-06-07T06:55:37.274365",
     "synced_from_validation_engine": true
   },
   {
@@ -711,12 +711,12 @@
     "cli_command": "2 commands (2 successful): aws cloudtrail describe-trails --output json; REDACTED_FOR_SECURITY",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.377029",
+    "timestamp": "2025-06-07T06:55:37.669511",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002266",
+    "original_timestamp": "2025-06-07T06:55:37.274367",
     "synced_from_validation_engine": true
   },
   {
@@ -727,12 +727,12 @@
     "cli_command": "2 commands (2 successful): REDACTED_FOR_SECURITY; aws acm list-certificates --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.377128",
+    "timestamp": "2025-06-07T06:55:37.669632",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002268",
+    "original_timestamp": "2025-06-07T06:55:37.274370",
     "synced_from_validation_engine": true
   },
   {
@@ -743,12 +743,12 @@
     "cli_command": "2 commands (2 successful): aws ssm describe-patch-baselines --output json; aws ssm describe-instance-information --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.377241",
+    "timestamp": "2025-06-07T06:55:37.669752",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002270",
+    "original_timestamp": "2025-06-07T06:55:37.274372",
     "synced_from_validation_engine": true
   },
   {
@@ -759,12 +759,12 @@
     "cli_command": "2 commands (1 successful): aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.377322",
+    "timestamp": "2025-06-07T06:55:37.669838",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-    "original_timestamp": "2025-06-07T06:46:54.002272",
+    "original_timestamp": "2025-06-07T06:55:37.274374",
     "synced_from_validation_engine": true
   },
   {
@@ -775,12 +775,12 @@
     "cli_command": "2 commands (2 successful): aws organizations list-accounts --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.377434",
+    "timestamp": "2025-06-07T06:55:37.669950",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002275",
+    "original_timestamp": "2025-06-07T06:55:37.274376",
     "synced_from_validation_engine": true
   },
   {
@@ -791,12 +791,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.377506",
+    "timestamp": "2025-06-07T06:55:37.670026",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002277",
+    "original_timestamp": "2025-06-07T06:55:37.274379",
     "synced_from_validation_engine": true
   },
   {
@@ -807,12 +807,12 @@
     "cli_command": "2 commands (2 successful): aws inspector2 list-findings --max-results 20 --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-06-07T06:46:54.377581",
+    "timestamp": "2025-06-07T06:55:37.670102",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-06-07T06:46:54.002279",
+    "original_timestamp": "2025-06-07T06:55:37.274381",
     "synced_from_validation_engine": true
   }
 ]

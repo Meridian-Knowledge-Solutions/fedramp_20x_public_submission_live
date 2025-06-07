@@ -1,13 +1,13 @@
 # KSI-CNA-03: Use logical networking for traffic flow controls
 
-*Generated on 2025-06-07 06:46:54 UTC*
+*Generated on 2025-06-07 06:55:38 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-03`
 **Description:** Use logical networking for traffic flow controls
 **Justification:** Validates network routing and access controls
-**Last Validation:** ✅ 2025-06-07T06:46:54.373142
+**Last Validation:** ✅ 2025-06-07T06:55:37.664349
 **Result:** ✅ Network controls configured: 1 NACLs (0 custom), 1 route tables
 
 ## 🛠️ Implementation
