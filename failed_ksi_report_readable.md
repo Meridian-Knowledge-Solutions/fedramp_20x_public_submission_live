@@ -7,7 +7,7 @@
 - **Overall Pass Rate:** 84.3% (43/51)
 - **Failed KSIs:** 8
 - **Validation Method:** multi-command-v2
-- **Last Updated:** 2025-06-07T01:42:27.433633Z
+- **Last Updated:** 2025-06-07T03:10:58.682919Z
 
 ### Category Breakdown
 - **KSI-CMT** (Change Management): 1/5 failed
@@ -29,7 +29,7 @@
 **Commands:** `2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
-**Validated:** 2025-06-07 01:42:27 UTC
+**Validated:** 2025-06-07 03:10:58 UTC
 
 ---
 
@@ -42,7 +42,7 @@
 **Commands:** `1 commands (0 successful): aws shield describe-subscription --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-07 01:42:27 UTC
+**Validated:** 2025-06-07 03:10:58 UTC
 
 #### ❌ KSI-CNA-07
 
@@ -51,7 +51,7 @@
 **Commands:** `1 commands (0 successful): aws config describe-config-rules --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-07 01:42:27 UTC
+**Validated:** 2025-06-07 03:10:58 UTC
 
 ---
 
@@ -64,7 +64,7 @@
 **Commands:** `2 commands (2 successful): aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json; evidence_check`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | 📄 Manual evidence validation
 **Commands Executed:** 2
-**Validated:** 2025-06-07 01:42:27 UTC
+**Validated:** 2025-06-07 03:10:58 UTC
 
 #### ❌ KSI-INR-03
 
@@ -73,7 +73,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-07 01:42:27 UTC
+**Validated:** 2025-06-07 03:10:58 UTC
 
 ---
 
@@ -86,7 +86,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-07 01:42:27 UTC
+**Validated:** 2025-06-07 03:10:58 UTC
 
 #### ❌ KSI-PIY-07
 
@@ -95,7 +95,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-07 01:42:27 UTC
+**Validated:** 2025-06-07 03:10:58 UTC
 
 ---
 
@@ -108,7 +108,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-07 01:42:27 UTC
+**Validated:** 2025-06-07 03:10:58 UTC
 
 ---
 ## 🔧 Remediation Guidance
@@ -129,5 +129,5 @@
 - **Affected KSIs:** KSI-INR-03, KSI-PIY-05, KSI-PIY-07, KSI-TPR-03
 ---
 
-*Report generated on 2025-06-07 01:42:27 UTC*
+*Report generated on 2025-06-07 03:10:58 UTC*
 *Source: unified_ksi_validations.json*
