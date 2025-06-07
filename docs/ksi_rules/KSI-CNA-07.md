@@ -1,13 +1,13 @@
 # KSI-CNA-07: Follow AWS best practices
 
-*Generated on 2025-06-07 06:41:55 UTC*
+*Generated on 2025-06-07 06:46:54 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-07`
 **Description:** Follow AWS best practices
 **Justification:** Validates basic AWS configuration best practices
-**Last Validation:** ❌ 2025-06-07T06:41:55.429692
+**Last Validation:** ❌ 2025-06-07T06:46:54.373373
 **Result:** ❌ Config service error: 
 
 ## 🛠️ Implementation
