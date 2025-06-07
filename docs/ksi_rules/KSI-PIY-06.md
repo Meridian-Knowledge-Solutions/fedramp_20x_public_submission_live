@@ -1,13 +1,13 @@
 # KSI-PIY-06: Have dedicated staff and budget for security with executive support
 
-*Generated on 2025-06-07 07:36:14 UTC*
+*Generated on 2025-06-07 07:39:33 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-06`
 **Description:** Have dedicated staff and budget for security with executive support
 **Justification:** Manual evidence required - organizational structure, budget allocation, and executive endorsement
-**Last Validation:** ✅ 2025-06-07T07:36:14.167420
+**Last Validation:** ✅ 2025-06-07T07:39:33.426606
 **Result:** ⚠️ Basic security organization (expand documentation): ✅ Security organization documentation: security_budget_allocation_and_roles.pdf
 
 ## 🛠️ Implementation

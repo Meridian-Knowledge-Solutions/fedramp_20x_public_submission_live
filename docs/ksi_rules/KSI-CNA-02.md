@@ -1,13 +1,13 @@
 # KSI-CNA-02: Design systems to minimize attack surface
 
-*Generated on 2025-06-07 07:36:14 UTC*
+*Generated on 2025-06-07 07:39:33 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-02`
 **Description:** Design systems to minimize attack surface
 **Justification:** Validates network segmentation and isolation
-**Last Validation:** ✅ 2025-06-07T07:36:14.164000
+**Last Validation:** ✅ 2025-06-07T07:39:33.423318
 **Result:** ✅ Network segmentation (exceptional): 6 subnets across 6 AZs (0 private), 0 security groups
 
 ## 🛠️ Implementation
