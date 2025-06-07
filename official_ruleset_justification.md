@@ -628,8 +628,8 @@ The framework provides a systematic, innovative, and effective approach to autom
 | **Document Version** | 2.0 |
 | **Effective Date** | June 7, 2025 |
 | **Review Schedule** | Annually |
-| **Owner** | Security Architecture Team |
-| **Approver** | Chief Information Security Officer |
+| **Owner** | Cloud Operations Team |
+| **Approver** | Director of Federal Cybersecuirty Operations |
 | **Classification** | Public |
 | **Distribution** | GSA 20x Program Office, 3PAO Community, Industry Partners |
 
