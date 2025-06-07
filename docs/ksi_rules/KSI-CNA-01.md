@@ -1,13 +1,13 @@
 # KSI-CNA-01: Configure information resources to limit traffic
 
-*Generated on 2025-06-07 06:04:28 UTC*
+*Generated on 2025-06-07 06:41:55 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-01`
 **Description:** Configure information resources to limit traffic
 **Justification:** Validates basic network access controls are configured
-**Last Validation:** ✅ 2025-06-07T06:04:28.332867
+**Last Validation:** ✅ 2025-06-07T06:41:55.429248
 **Result:** ✅ Traffic controls configured: 1 restrictive security groups, 1 VPCs
 
 ## 🛠️ Implementation

@@ -1,13 +1,13 @@
 # KSI-TPR-04: Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 
-*Generated on 2025-06-07 06:04:28 UTC*
+*Generated on 2025-06-07 06:41:55 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-04`
 **Description:** Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
 **Justification:** Validates vulnerability monitoring through Inspector, Security Hub, and contractual requirements documentation
-**Last Validation:** ✅ 2025-06-07T06:04:28.337405
+**Last Validation:** ✅ 2025-06-07T06:41:55.433896
 **Result:** ✅ Third-party software vulnerability monitoring established: ✅ Inspector vulnerability monitoring operational (no current vulnerabilities); ✅ Manual evidence validation completed (vulnerability monitoring documentation verified)
 
 ## 🛠️ Implementation

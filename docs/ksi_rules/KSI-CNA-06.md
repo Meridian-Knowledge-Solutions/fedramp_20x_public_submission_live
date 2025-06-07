@@ -1,13 +1,13 @@
 # KSI-CNA-06: Design for high availability and recovery
 
-*Generated on 2025-06-07 06:04:28 UTC*
+*Generated on 2025-06-07 06:41:55 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-06`
 **Description:** Design for high availability and recovery
 **Justification:** Validates multi-AZ design and backup capabilities
-**Last Validation:** ✅ 2025-06-07T06:04:28.333232
+**Last Validation:** ✅ 2025-06-07T06:41:55.429616
 **Result:** ✅ HA design (excellent, inferred from evidence): 6 subnets across 3 AZs, 2 backup plans
 
 ## 🛠️ Implementation
