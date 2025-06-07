@@ -7,7 +7,7 @@
 - **Overall Pass Rate:** 96.1% (49/51)
 - **Failed KSIs:** 2
 - **Validation Method:** multi-command-v2
-- **Last Updated:** 2025-06-07T20:27:06.675052Z
+- **Last Updated:** 2025-06-07T20:55:04.195579Z
 
 ### Category Breakdown
 - **KSI-CMT** (Change Management): 1/5 failed
@@ -26,7 +26,7 @@
 **Commands:** `2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
-**Validated:** 2025-06-07 20:27:06 UTC
+**Validated:** 2025-06-07 20:55:04 UTC
 
 ---
 
@@ -39,7 +39,7 @@
 **Commands:** `1 commands (0 successful): aws shield describe-subscription --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-07 20:27:06 UTC
+**Validated:** 2025-06-07 20:55:04 UTC
 
 ---
 ## 🔧 Remediation Guidance
@@ -55,5 +55,5 @@
 - **Affected KSIs:** KSI-CNA-05
 ---
 
-*Report generated on 2025-06-07 20:27:06 UTC*
+*Report generated on 2025-06-07 20:55:04 UTC*
 *Source: unified_ksi_validations.json*
