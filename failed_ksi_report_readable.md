@@ -4,15 +4,14 @@
 
 ## 📊 Executive Summary
 
-- **Overall Pass Rate:** 90.2% (46/51)
-- **Failed KSIs:** 5
+- **Overall Pass Rate:** 92.2% (47/51)
+- **Failed KSIs:** 4
 - **Validation Method:** multi-command-v2
-- **Last Updated:** 2025-06-07T07:25:21.865777Z
+- **Last Updated:** 2025-06-07T07:36:14.226040Z
 
 ### Category Breakdown
 - **KSI-CMT** (Change Management): 1/5 failed
 - **KSI-CNA** (Cloud Native Architecture): 2/7 failed
-- **KSI-PIY** (Policy and Inventory): 1/7 failed
 - **KSI-TPR** (Third-Party Information Resources): 1/4 failed
 
 ---
@@ -28,7 +27,7 @@
 **Commands:** `2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
-**Validated:** 2025-06-07 07:25:21 UTC
+**Validated:** 2025-06-07 07:36:14 UTC
 
 ---
 
@@ -41,7 +40,7 @@
 **Commands:** `1 commands (0 successful): aws shield describe-subscription --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-07 07:25:21 UTC
+**Validated:** 2025-06-07 07:36:14 UTC
 
 #### ❌ KSI-CNA-07
 
@@ -50,20 +49,7 @@
 **Commands:** `1 commands (0 successful): aws config describe-config-rules --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-07 07:25:21 UTC
-
----
-
-### KSI-PIY: Policy and Inventory
-
-#### ❌ KSI-PIY-05
-
-**Control:** Policy and Inventory
-**Reason:** ❌ No evaluation methodology documentation found in evidence_v2/KSI-PIY-05/
-**Commands:** `1 commands (1 successful): evidence_check`
-**Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
-**Commands Executed:** 1
-**Validated:** 2025-06-07 07:25:21 UTC
+**Validated:** 2025-06-07 07:36:14 UTC
 
 ---
 
@@ -76,7 +62,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-07 07:25:21 UTC
+**Validated:** 2025-06-07 07:36:14 UTC
 
 ---
 ## 🔧 Remediation Guidance
@@ -91,11 +77,11 @@
 - **Priority:** High - Technical resolution needed
 - **Affected KSIs:** KSI-CNA-05, KSI-CNA-07
 
-### Missing Documentation (2 KSIs)
+### Missing Documentation (1 KSIs)
 - **Action:** Upload required evidence to appropriate `evidence_v2/KSI-*/` directories
 - **Priority:** Medium - Manual evidence required
-- **Affected KSIs:** KSI-PIY-05, KSI-TPR-03
+- **Affected KSIs:** KSI-TPR-03
 ---
 
-*Report generated on 2025-06-07 07:25:21 UTC*
+*Report generated on 2025-06-07 07:36:14 UTC*
 *Source: unified_ksi_validations.json*
