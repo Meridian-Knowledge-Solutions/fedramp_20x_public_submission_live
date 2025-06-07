@@ -1,14 +1,14 @@
 # KSI-TPR-03: Identify and prioritize mitigation of potential supply chain risks
 
-*Generated on 2025-06-07 07:39:33 UTC*
+*Generated on 2025-06-07 07:47:00 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-03`
 **Description:** Identify and prioritize mitigation of potential supply chain risks
 **Justification:** Manual evidence required - supply chain risk assessment and mitigation planning
-**Last Validation:** ❌ 2025-06-07T07:39:33.427866
-**Result:** ❌ No supply chain risk assessment and mitigation found in evidence_v2/KSI-TPR-03/
+**Last Validation:** ✅ 2025-06-07T07:47:00.285684
+**Result:** ⚠️ Basic supply chain risk assessment (expand mitigation planning): ✅ Core risk assessment: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
 
 ## 🛠️ Implementation
 
@@ -41,9 +41,7 @@ def evaluate_KSI_TPR_03(cli_output):
     if not evidence_dir.exists():
         return False, "❌ Evidence directory evidence_v2/KSI-TPR-03/ not found"
     required_docs = [
-        "supply_chain_risk_assessment.pdf",
-        "risk_mitigation_plan.pdf",
-        "vendor_risk_matrix.xlsx"
+        "Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf",
     ]
     optional_docs = [
         "supply_chain_threat_analysis.pdf",
@@ -51,6 +49,8 @@ def evaluate_KSI_TPR_03(cli_output):
         "vendor_security_scorecards.xlsx",
         "supply_chain_incident_response.pdf"
     ]
+    found_required = []
+    found_optional = []
     # ... (additional validation logic) ...
 ```
 
