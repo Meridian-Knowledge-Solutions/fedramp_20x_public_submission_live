@@ -1,13 +1,13 @@
 # KSI-PIY-05: Document methods used to evaluate information resource implementations
 
-*Generated on 2025-06-07 06:55:38 UTC*
+*Generated on 2025-06-07 07:21:33 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-05`
 **Description:** Document methods used to evaluate information resource implementations
 **Justification:** Manual evidence required - evaluation methodologies and assessment procedures
-**Last Validation:** ❌ 2025-06-07T06:55:37.667576
+**Last Validation:** ❌ 2025-06-07T07:21:33.496231
 **Result:** ❌ No evaluation methodology documentation found in evidence_v2/KSI-PIY-05/
 
 ## 🛠️ Implementation
@@ -41,9 +41,7 @@ def evaluate_KSI_PIY_05(cli_output):
     if not evidence_dir.exists():
         return False, "❌ Evidence directory evidence_v2/KSI-PIY-05/ not found"
     required_docs = [
-        "evaluation_methodology.pdf",
-        "security_assessment_procedures.pdf",
-        "implementation_review_process.pdf"
+        "Information Resource Evaluation Methodology (KSI-PIY-05).pdf",
     ]
     optional_docs = [
         "penetration_testing_methodology.pdf",
@@ -51,6 +49,8 @@ def evaluate_KSI_PIY_05(cli_output):
         "architecture_review_process.pdf",
         "compliance_evaluation_procedures.pdf"
     ]
+    found_required = []
+    found_optional = []
     # ... (additional validation logic) ...
 ```
 

@@ -1,14 +1,14 @@
 # KSI-INR-03: Generate after action reports and regularly incorporate lessons learned into operations
 
-*Generated on 2025-06-07 06:55:38 UTC*
+*Generated on 2025-06-07 07:21:33 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-INR-03`
 **Description:** Generate after action reports and regularly incorporate lessons learned into operations
 **Justification:** Manual evidence required - after action reports, lessons learned documentation, and operational improvement tracking
-**Last Validation:** ✅ 2025-06-07T06:55:37.665433
-**Result:** ⚠️ Basic after action reporting (increase lessons learned implementation): ✅ After action and lessons learned documentation: After Action Report and Lessons Learned Framework (KSI-INR-03).pdf, Sample After Action Reports and Implementation Examples.pdf; ✅ Recent after action reports: 2 AARs within last year; ⚠️ Limited evidence of lessons learned implementation into operations
+**Last Validation:** ✅ 2025-06-07T07:21:33.494111
+**Result:** ⚠️ Basic after action reporting (increase lessons learned implementation): ✅ Core after action documentation: Sample After Action Reports and Implementation Examples.pdf; ✅ Recent after action reports: 2 AARs within last year; ⚠️ Limited evidence of lessons learned implementation into operations
 
 ## 🛠️ Implementation
 
@@ -42,6 +42,7 @@ def evaluate_KSI_INR_03(cli_output):
         return False, "❌ Evidence directory evidence_v2/KSI-INR-03/ not found"
     required_docs = [
         "After Action Report and Lessons Learned Framework (KSI-INR-03)",
+        "Sample After Action Reports and Implementation Examples.pdf"
     ]
     optional_docs = [
         "incident_response_improvements.pdf",
@@ -50,7 +51,6 @@ def evaluate_KSI_INR_03(cli_output):
         "process_improvement_recommendations.pdf",
         "training_updates_from_incidents.pdf",
         "policy_updates_from_lessons_learned.pdf"
-    ]
     # ... (additional validation logic) ...
 ```
 
