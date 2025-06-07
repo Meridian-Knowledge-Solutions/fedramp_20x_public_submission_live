@@ -4,15 +4,15 @@
 
 ## 📊 Executive Summary
 
-- **Overall Pass Rate:** 84.3% (43/51)
-- **Failed KSIs:** 8
+- **Overall Pass Rate:** 86.3% (44/51)
+- **Failed KSIs:** 7
 - **Validation Method:** multi-command-v2
-- **Last Updated:** 2025-06-07T03:10:58.682919Z
+- **Last Updated:** 2025-06-07T05:56:56.375386Z
 
 ### Category Breakdown
 - **KSI-CMT** (Change Management): 1/5 failed
 - **KSI-CNA** (Cloud Native Architecture): 2/7 failed
-- **KSI-INR** (Incident Reporting): 2/3 failed
+- **KSI-INR** (Incident Reporting): 1/3 failed
 - **KSI-PIY** (Policy and Inventory): 2/7 failed
 - **KSI-TPR** (Third-Party Information Resources): 1/4 failed
 
@@ -29,7 +29,7 @@
 **Commands:** `2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
-**Validated:** 2025-06-07 03:10:58 UTC
+**Validated:** 2025-06-07 05:56:56 UTC
 
 ---
 
@@ -42,7 +42,7 @@
 **Commands:** `1 commands (0 successful): aws shield describe-subscription --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-07 03:10:58 UTC
+**Validated:** 2025-06-07 05:56:56 UTC
 
 #### ❌ KSI-CNA-07
 
@@ -51,20 +51,11 @@
 **Commands:** `1 commands (0 successful): aws config describe-config-rules --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-07 03:10:58 UTC
+**Validated:** 2025-06-07 05:56:56 UTC
 
 ---
 
 ### KSI-INR: Incident Reporting
-
-#### ❌ KSI-INR-02
-
-**Control:** Incident Reporting
-**Reason:** ❌ No comprehensive incident logging and analysis: ⚠️ No dedicated security log groups found (may use general logging); ❌ No manual incident tracking documentation found; ⚠️ No recent incident pattern analysis (should be periodic)
-**Commands:** `2 commands (2 successful): aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json; evidence_check`
-**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | 📄 Manual evidence validation
-**Commands Executed:** 2
-**Validated:** 2025-06-07 03:10:58 UTC
 
 #### ❌ KSI-INR-03
 
@@ -73,7 +64,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-07 03:10:58 UTC
+**Validated:** 2025-06-07 05:56:56 UTC
 
 ---
 
@@ -86,7 +77,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-07 03:10:58 UTC
+**Validated:** 2025-06-07 05:56:56 UTC
 
 #### ❌ KSI-PIY-07
 
@@ -95,7 +86,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-07 03:10:58 UTC
+**Validated:** 2025-06-07 05:56:56 UTC
 
 ---
 
@@ -108,15 +99,15 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-07 03:10:58 UTC
+**Validated:** 2025-06-07 05:56:56 UTC
 
 ---
 ## 🔧 Remediation Guidance
 
-### Configuration Issues (2 KSIs)
+### Configuration Issues (1 KSIs)
 - **Action:** Review and fix AWS service configurations
 - **Priority:** Medium - Configuration changes needed
-- **Affected KSIs:** KSI-CMT-03, KSI-INR-02
+- **Affected KSIs:** KSI-CMT-03
 
 ### Technical Issues (2 KSIs)
 - **Action:** Check AWS CLI configuration, permissions, and service availability
@@ -129,5 +120,5 @@
 - **Affected KSIs:** KSI-INR-03, KSI-PIY-05, KSI-PIY-07, KSI-TPR-03
 ---
 
-*Report generated on 2025-06-07 03:10:58 UTC*
+*Report generated on 2025-06-07 05:56:56 UTC*
 *Source: unified_ksi_validations.json*
