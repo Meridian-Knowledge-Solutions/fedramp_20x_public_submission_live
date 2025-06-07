@@ -1817,9 +1817,18 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
             window.open(issueUrl, '_blank');
         }
 
-        function updateTimestamps() {
-            const now = new Date();
-            const timeString = now.toLocaleString('en-US', {
+        function updateTimestamps(dataTimestamp = null) {
+            let lastUpdateTime;
+            
+            if (dataTimestamp) {
+                // Use the timestamp from the JSON data (when validation was actually run)
+                lastUpdateTime = new Date(dataTimestamp);
+            } else {
+                // Fallback to current time if no data timestamp available
+                lastUpdateTime = new Date();
+            }
+            
+            const timeString = lastUpdateTime.toLocaleString('en-US', {
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric',
@@ -1828,7 +1837,8 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
                 timeZoneName: 'short'
             });
             
-            const nextUpdate = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+            // Next update is 24 hours from the last validation time
+            const nextUpdate = new Date(lastUpdateTime.getTime() + 24 * 60 * 60 * 1000);
             const nextUpdateString = nextUpdate.toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
@@ -1875,13 +1885,17 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
         function updateDashboardWithRealData(data) {
             try {
                 let validations = [];
+                let dataTimestamp = null;
                 
                 if (Array.isArray(data)) {
                     validations = data;
                 } else if (data.validations && Array.isArray(data.validations)) {
                     validations = data.validations;
+                    // Extract timestamp from metadata
+                    dataTimestamp = data.metadata?.generated_at || data.metadata?.last_updated;
                 } else if (data.metadata && data.metadata.validations) {
                     validations = data.metadata.validations;
+                    dataTimestamp = data.metadata?.generated_at || data.metadata?.last_updated;
                 }
 
                 if (validations.length === 0) {
@@ -1912,6 +1926,9 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
 
                 populateCategoryFilter();
                 filterKsis();
+                
+                // Update timestamps based on actual data timestamp
+                updateTimestamps(dataTimestamp);
                 
                 showDataSourceNotification('live');
                 
@@ -1987,16 +2004,17 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
         window.viewFailedReport = viewFailedReport;
         window.closeMarkdownModal = closeMarkdownModal;
 
-        // Auto-refresh every 5 minutes
+        // Auto-refresh every 5 minutes - check for new data and update timestamps
         setInterval(() => {
-            updateTimestamps();
-            loadRealData();
+            loadRealData(); // This will update timestamps when new data is loaded
         }, 300000);
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             initializeTheme();
             initializeDashboard();
+            // Initial timestamp setup with fallback - will be updated when real data loads
+            updateTimestamps();
         });
 
         document.addEventListener('DOMContentLoaded', () => {
