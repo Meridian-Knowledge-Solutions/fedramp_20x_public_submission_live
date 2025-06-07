@@ -1,13 +1,13 @@
 # KSI-SVC-06: Use automated key management systems
 
-*Generated on 2025-06-06 11:48:54 UTC*
+*Generated on 2025-06-07 01:42:27 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-06`
 **Description:** Use automated key management systems
 **Justification:** Validates automated key management through AWS KMS and certificate management
-**Last Validation:** ✅ 2025-06-06T11:48:54.169404
+**Last Validation:** ✅ 2025-06-07T01:42:27.376912
 **Result:** ✅ Automated key management systems: ✅ 7 KMS keys for automated key management; ℹ️ No ACM certificates found (acceptable for low-impact)
 
 ## 🛠️ Implementation

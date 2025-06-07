@@ -4,13 +4,13 @@
 
 ## 📊 Executive Summary
 
-- **Overall Pass Rate:** 82.4% (42/51)
-- **Failed KSIs:** 9
+- **Overall Pass Rate:** 84.3% (43/51)
+- **Failed KSIs:** 8
 - **Validation Method:** multi-command-v2
-- **Last Updated:** 2025-06-06T11:48:54.223769Z
+- **Last Updated:** 2025-06-07T01:42:27.433633Z
 
 ### Category Breakdown
-- **KSI-CMT** (Change Management): 2/5 failed
+- **KSI-CMT** (Change Management): 1/5 failed
 - **KSI-CNA** (Cloud Native Architecture): 2/7 failed
 - **KSI-INR** (Incident Reporting): 2/3 failed
 - **KSI-PIY** (Policy and Inventory): 2/7 failed
@@ -29,16 +29,7 @@
 **Commands:** `2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
 **Commands Executed:** 2
-**Validated:** 2025-06-06 11:48:54 UTC
-
-#### ❌ KSI-CMT-05
-
-**Control:** Change Management
-**Reason:** ❌ No risk and impact evaluation documentation found in evidence_v2/KSI-CMT-05/
-**Commands:** `1 commands (1 successful): evidence_check`
-**Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
-**Commands Executed:** 1
-**Validated:** 2025-06-06 11:48:54 UTC
+**Validated:** 2025-06-07 01:42:27 UTC
 
 ---
 
@@ -51,7 +42,7 @@
 **Commands:** `1 commands (0 successful): aws shield describe-subscription --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:48:54 UTC
+**Validated:** 2025-06-07 01:42:27 UTC
 
 #### ❌ KSI-CNA-07
 
@@ -60,7 +51,7 @@
 **Commands:** `1 commands (0 successful): aws config describe-config-rules --output json`
 **Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:48:54 UTC
+**Validated:** 2025-06-07 01:42:27 UTC
 
 ---
 
@@ -73,7 +64,7 @@
 **Commands:** `2 commands (2 successful): aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json; evidence_check`
 **Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | 📄 Manual evidence validation
 **Commands Executed:** 2
-**Validated:** 2025-06-06 11:48:54 UTC
+**Validated:** 2025-06-07 01:42:27 UTC
 
 #### ❌ KSI-INR-03
 
@@ -82,7 +73,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:48:54 UTC
+**Validated:** 2025-06-07 01:42:27 UTC
 
 ---
 
@@ -95,7 +86,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:48:54 UTC
+**Validated:** 2025-06-07 01:42:27 UTC
 
 #### ❌ KSI-PIY-07
 
@@ -104,7 +95,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:48:54 UTC
+**Validated:** 2025-06-07 01:42:27 UTC
 
 ---
 
@@ -117,7 +108,7 @@
 **Commands:** `1 commands (1 successful): evidence_check`
 **Evidence Analysis:** ✅ All 1 commands executed successfully | 📄 Manual evidence validation
 **Commands Executed:** 1
-**Validated:** 2025-06-06 11:48:54 UTC
+**Validated:** 2025-06-07 01:42:27 UTC
 
 ---
 ## 🔧 Remediation Guidance
@@ -127,16 +118,16 @@
 - **Priority:** Medium - Configuration changes needed
 - **Affected KSIs:** KSI-CMT-03, KSI-INR-02
 
-### Missing Documentation (5 KSIs)
-- **Action:** Upload required evidence to appropriate `evidence_v2/KSI-*/` directories
-- **Priority:** Medium - Manual evidence required
-- **Affected KSIs:** KSI-CMT-05, KSI-INR-03, KSI-PIY-05, KSI-PIY-07, KSI-TPR-03
-
 ### Technical Issues (2 KSIs)
 - **Action:** Check AWS CLI configuration, permissions, and service availability
 - **Priority:** High - Technical resolution needed
 - **Affected KSIs:** KSI-CNA-05, KSI-CNA-07
+
+### Missing Documentation (4 KSIs)
+- **Action:** Upload required evidence to appropriate `evidence_v2/KSI-*/` directories
+- **Priority:** Medium - Manual evidence required
+- **Affected KSIs:** KSI-INR-03, KSI-PIY-05, KSI-PIY-07, KSI-TPR-03
 ---
 
-*Report generated on 2025-06-06 11:48:54 UTC*
+*Report generated on 2025-06-07 01:42:27 UTC*
 *Source: unified_ksi_validations.json*

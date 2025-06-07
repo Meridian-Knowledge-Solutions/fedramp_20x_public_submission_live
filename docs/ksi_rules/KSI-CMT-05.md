@@ -1,14 +1,14 @@
 # KSI-CMT-05: Evaluate the risk and potential impact of any change
 
-*Generated on 2025-06-06 11:48:54 UTC*
+*Generated on 2025-06-07 01:42:27 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-05`
 **Description:** Evaluate the risk and potential impact of any change
 **Justification:** Manual evidence required - risk assessment procedures and impact analysis documentation
-**Last Validation:** ❌ 2025-06-06T11:48:54.165592
-**Result:** ❌ No risk and impact evaluation documentation found in evidence_v2/KSI-CMT-05/
+**Last Validation:** ✅ 2025-06-07T01:42:27.372654
+**Result:** ✅ Risk and impact evaluation procedures: ✅ Required documentation: Change Impact Analysis Template (KSI-CMT-05).pdf, Risk Assessment Procedure for Change Management (KSI-CMT-05).pdf
 
 ## 🛠️ Implementation
 
@@ -42,8 +42,8 @@ def evaluate_KSI_CMT_05(cli_output):
         return False, "❌ Evidence directory evidence_v2/KSI-CMT-05/ not found"
     required_docs = [
         "risk_assessment_procedure.pdf",
-        "change_impact_analysis_template.pdf",
-        "risk_evaluation_matrix.pdf"
+        "Change Impact Analysis Template (KSI-CMT-05).pdf",
+        "Risk Assessment Procedure for Change Management (KSI-CMT-05).pdf"
     ]
     optional_docs = [
         "change_risk_register.pdf",

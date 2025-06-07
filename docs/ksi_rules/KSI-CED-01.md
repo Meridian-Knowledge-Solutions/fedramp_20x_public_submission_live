@@ -1,13 +1,13 @@
 # KSI-CED-01: Ensure all employees receive security awareness training
 
-*Generated on 2025-06-06 11:48:54 UTC*
+*Generated on 2025-06-07 01:42:27 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CED-01`
 **Description:** Ensure all employees receive security awareness training
 **Justification:** Manual evidence required - security awareness training programs, completion records, and training materials
-**Last Validation:** ✅ 2025-06-06T11:48:54.165169
+**Last Validation:** ✅ 2025-06-07T01:42:27.372239
 **Result:** ✅ Security awareness training evidence: cyber_security_training.png, security_training_roster.png, fedramp_role_based.png
 
 ## 🛠️ Implementation

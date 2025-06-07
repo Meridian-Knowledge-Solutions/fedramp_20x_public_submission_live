@@ -1,13 +1,13 @@
 # KSI-INR-03: Generate after action reports and regularly incorporate lessons learned into operations
 
-*Generated on 2025-06-06 11:48:54 UTC*
+*Generated on 2025-06-07 01:42:27 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-INR-03`
 **Description:** Generate after action reports and regularly incorporate lessons learned into operations
 **Justification:** Manual evidence required - after action reports, lessons learned documentation, and operational improvement tracking
-**Last Validation:** ❌ 2025-06-06T11:48:54.166903
+**Last Validation:** ❌ 2025-06-07T01:42:27.373951
 **Result:** ❌ No comprehensive after action reporting and lessons learned integration found in evidence_v2/KSI-INR-03/
 
 ## 🛠️ Implementation
