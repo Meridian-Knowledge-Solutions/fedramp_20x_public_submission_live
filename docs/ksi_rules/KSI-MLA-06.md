@@ -1,13 +1,13 @@
 # KSI-MLA-06: Centrally track and prioritize mitigation/remediation of identified vulnerabilities
 
-*Generated on 2025-06-07 07:47:00 UTC*
+*Generated on 2025-06-07 07:48:58 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-06`
 **Description:** Centrally track and prioritize mitigation/remediation of identified vulnerabilities
 **Justification:** Validates centralized vulnerability tracking and prioritization through Security Hub and findings management
-**Last Validation:** ✅ 2025-06-07T07:47:00.283986
+**Last Validation:** ✅ 2025-06-07T07:48:58.753530
 **Result:** ⚠️ Basic vulnerability tracking (needs centralization): ✅ Centralized tracking: 50 Security Hub findings (0 critical, 0 high, 50 active); ⚠️ No Inspector findings for vulnerability prioritization
 
 ## 🛠️ Implementation
