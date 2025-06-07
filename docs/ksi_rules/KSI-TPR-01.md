@@ -1,13 +1,13 @@
 # KSI-TPR-01: Identify all third-party information resources
 
-*Generated on 2025-06-07 07:48:58 UTC*
+*Generated on 2025-06-07 20:23:24 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-01`
 **Description:** Identify all third-party information resources
 **Justification:** Validates third-party resource identification through AWS services and documented third-party inventory
-**Last Validation:** ✅ 2025-06-07T07:48:58.755118
+**Last Validation:** ✅ 2025-06-07T20:23:23.851885
 **Result:** ⚠️ Partial third-party identification (expand documentation): ❌ No cross-account role data for third-party integration analysis; ✅ Documented third-party inventory: sbom_including_elastic.json, fedramp_moderate_vendor_list.xlsx, Elasticsearch Inc._06.04.2024_Self_Attestation.pdf
 
 ## 🛠️ Implementation
