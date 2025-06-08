@@ -72,16 +72,16 @@
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
             --bg-accent: #334155;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-tertiary: #94a3b8;
-            --border-color: #334155;
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-tertiary: #cbd5e1;
+            --border-color: #475569;
             --backdrop-blur: rgba(30, 41, 59, 0.95);
             --gradient-card: linear-gradient(145deg, rgba(30,41,59,0.9) 0%, rgba(30,41,59,0.7) 100%);
-            --success-500: #34d399;
-            --danger-500: #f87171;
-            --warning-500: #fbbf24;
-            --info-500: #60a5fa;
+            --success-500: #22c55e;
+            --danger-500: #ef4444;
+            --warning-500: #f59e0b;
+            --info-500: #3b82f6;
         }
 
         body {
@@ -1506,7 +1506,7 @@
 
             <!-- API Section -->
             <div id="api-section" class="trust-section">
-                <h2>🔧 API Access (RFC-0011 §3.4)</h2>
+                <h2>🔧 API Access (RFC-0011)</h2>
                 <p>Programmatic access to real-time authorization data for federal agencies</p>
                 
                 <h4>Available Endpoints:</h4>
@@ -2350,6 +2350,14 @@ ${ksi.timestamp ? formatTimestamp(ksi.timestamp) : 'Not available'}`;
             document.body.style.overflow = 'hidden';
         }
 
+        function formatTimestamp(timestamp) {
+            try {
+                return new Date(timestamp).toLocaleString();
+            } catch (e) {
+                return timestamp;
+            }
+        }
+
         function closeCliModal() {
             document.getElementById('cli-modal').classList.remove('active');
             document.body.style.overflow = '';
@@ -2691,6 +2699,19 @@ Please provide guidance on how to remediate this KSI failure.`);
             }
             
             console.log('✅ Dashboard initialization complete');
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                document.getElementById('search-input').focus();
+            }
+            if (e.key === 'Escape') {
+                closeCliModal();
+                closeWhyModal();
+                closeMarkdownModal();
+            }
         });
     </script>
 </body>
