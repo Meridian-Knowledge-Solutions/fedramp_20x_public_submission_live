@@ -2315,49 +2315,37 @@ async function getAuthorizationSummary() {
             });
         }
 
-        async function showCliDetails(ksiId) {
+        function showCliDetails(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
+
+            document.getElementById('modal-title').textContent = `${ksi.id} - CLI Details`;
             
-            document.getElementById('modal-title').textContent = `CLI Details - ${ksi.id}`;
-            
-            let cliContent = `
-                <div class="cli-info">
-                    <h4>📋 Command Summary</h4>
-                    <p><strong>Commands Executed:</strong> ${ksi.commands_executed || 0}</p>
-                    <p><strong>Successful:</strong> ${ksi.successful_commands || 0}</p>
-                    <p><strong>Failed:</strong> ${ksi.failed_commands || 0}</p>
-                    <p><strong>Command:</strong> <code>${ksi.cli_command || 'No command available'}</code></p>
-                </div>
-                
-                <div class="cli-details">
-                    <h4>🔍 Assessment Details</h4>
-                    <p><strong>Result:</strong> ${ksi.assertion_reason || 'No detailed reason provided'}</p>
-                    <p><strong>Method:</strong> ${ksi.validation_method || 'Unknown'}</p>
-                    <p><strong>Evidence Path:</strong> ${ksi.evidence_path || 'No specific path'}</p>
-                    ${ksi.timestamp ? `<p><strong>Timestamp:</strong> ${formatTimestamp(ksi.timestamp)}</p>` : ''}
-                </div>
-            `;
-            
-            // Try to load actual CLI output if available
-            if (ksi.evidence_path) {
-                try {
-                    const evidenceResponse = await fetch(`./${ksi.evidence_path}`);
-                    if (evidenceResponse.ok) {
-                        const evidenceData = await evidenceResponse.text();
-                        cliContent += `
-                            <div class="cli-output-section">
-                                <h4>💻 Raw CLI Output</h4>
-                                <div class="cli-output">${evidenceData}</div>
-                            </div>
-                        `;
-                    }
-                } catch (error) {
-                    console.log('Could not load evidence file:', error);
-                }
-            }
-            
-            document.getElementById('modal-content').innerHTML = cliContent;
+            // Set content as plain text like the original working version
+            const cliContent = `Command: ${ksi.cli_command || 'No command available'}
+
+Execution Details:
+- Commands Executed: ${ksi.commands_executed || 0}
+- Successful: ${ksi.successful_commands || 0}
+- Failed: ${ksi.failed_commands || 0}
+- Status: ${ksi.status.toUpperCase()}
+
+Assessment Result:
+${ksi.assertion_reason || 'No detailed reason provided'}
+
+Validation Method:
+${ksi.validation_method || 'Unknown'}
+
+Evidence Path:
+${ksi.evidence_path || 'No specific path'}
+
+Requirement:
+${ksi.requirement || 'No requirement specified'}
+
+Timestamp:
+${ksi.timestamp ? formatTimestamp(ksi.timestamp) : 'Not available'}`;
+
+            document.getElementById('modal-content').textContent = cliContent;
             document.getElementById('cli-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
