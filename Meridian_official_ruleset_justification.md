@@ -322,8 +322,8 @@ This methodology creates a reliable, auditable, and practical framework for auto
 | **Document Version** | 1.0 |
 | **Effective Date** | June 7, 2025 |
 | **Review Schedule** | Quarterly |
-| **Owner** | Security Engineering Team |
-| **Approver** | Chief Information Security Officer |
+| **Owner** | Federal Cloud Operations Team |
+| **Approver** | Director of Federal Cybersecurity Operations |
 | **Classification** | Internal Use |
 | **Distribution** | Technical Teams, Security Assessors |
 
