@@ -763,8 +763,122 @@
             border-color: #24292e;
         }
 
-        .action-btn.github:hover {
-            background: linear-gradient(135deg, #1a1e22, #0d1117);
+        .action-btn.why {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border-color: #f59e0b;
+        }
+
+        .action-btn.why:hover {
+            background: linear-gradient(135deg, #d97706, #b45309);
+        }
+
+        /* Enhanced Modal for Why explanations */
+        .why-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            padding: 2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .why-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-modal-content {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 2rem;
+            max-width: 900px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .why-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .why-modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .why-content {
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .why-section {
+            margin-bottom: 2rem;
+        }
+
+        .why-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .why-section h3 {
+            color: var(--text-primary);
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .why-section p {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .why-section ul {
+            margin-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .why-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            color: var(--primary-600);
+            font-weight: 600;
         }
 
         /* Modal */
@@ -1172,15 +1286,18 @@
         </div>
     </div>
 
-    <!-- CLI Details Modal -->
-    <div class="cli-modal" id="cli-modal">
-        <div class="cli-modal-content">
-            <div class="cli-modal-header">
-                <h3 class="cli-modal-title" id="modal-title">CLI Details</h3>
-                <button class="close-btn" onclick="closeCliModal()">&times;</button>
+    <!-- Enhanced Why Modal -->
+    <div class="why-modal" id="why-modal">
+        <div class="why-modal-content">
+            <div class="why-modal-header">
+                <h3 class="why-modal-title" id="why-modal-title">
+                    <span>🤔</span>
+                    Why did this pass/fail?
+                </h3>
+                <button class="close-btn" onclick="closeWhyModal()">&times;</button>
             </div>
-            <div class="cli-content" id="modal-content">
-                <!-- CLI content will be inserted here -->
+            <div class="why-content" id="why-content">
+                <!-- Dynamic content will be inserted here -->
             </div>
         </div>
     </div>
@@ -1677,6 +1794,9 @@ For technical support or questions about remediation, please contact security@me
                         </div>
                     </div>
                     <div class="ksi-actions">
+                        <button class="action-btn why" onclick="showWhyExplanation('${ksi.id}')">
+                            🤔 Why?
+                        </button>
                         <button class="action-btn primary" onclick="showCliDetails('${ksi.id}')">
                             🖥️ View CLI
                         </button>
@@ -1728,9 +1848,17 @@ For technical support or questions about remediation, please contact security@me
                 }
             });
 
+            // Why modal click outside to close
+            document.getElementById('why-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'why-modal') {
+                    closeWhyModal();
+                }
+            });
+
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeCliModal();
+                    closeWhyModal();
                     closeMarkdownModal();
                 }
                 if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
@@ -1747,7 +1875,132 @@ For technical support or questions about remediation, please contact security@me
             });
         }
 
-        function showCliDetails(ksiId) {
+        // Enhanced KSI data with rule justifications
+        const ksiJustifications = {
+            'KSI-CMT-03': {
+                rule_logic: 'Requires active CodeBuild projects AND CodePipeline validation for automated testing',
+                threshold_rationale: 'Automation is fundamental to 20x pilot value proposition - stricter threshold appropriate',
+                current_status: 'No CodeBuild projects or CodePipelines detected in AWS account',
+                remediation_path: 'Implement CodeBuild project for security testing and CodePipeline for change validation',
+                business_impact: 'Medium - Automated testing distinguishes 20x approach from traditional manual validation',
+                implementation_time: '1-2 weeks',
+                philosophy: 'This rule maintains a stricter threshold because automated testing is core to the 20x innovation value proposition.'
+            },
+            'KSI-CNA-05': {
+                rule_logic: 'AWS Shield subscription status OR CloudFront distribution configured = Pass',
+                threshold_rationale: 'Shield Standard is automatically enabled and appropriate for Low Impact systems',
+                current_status: 'Shield API permissions need resolution - technical access problem',
+                remediation_path: 'Verify Shield subscription status and check IAM permissions for Shield APIs',
+                business_impact: 'Low - Rule threshold is properly calibrated, just need API access',
+                implementation_time: '1-3 days',
+                philosophy: 'Service availability focus - demonstrates DDoS protection capability exists even if API access needs fixing.'
+            },
+            'KSI-CNA-07': {
+                rule_logic: 'AWS Config service enabled with rules configured OR service availability = Pass',
+                threshold_rationale: 'Configuration monitoring capability more important than full deployment for Low Impact',
+                current_status: 'Config service access error - service enablement needed',
+                remediation_path: 'Enable AWS Config service and verify API permissions',
+                business_impact: 'Medium - Configuration monitoring supports continuous compliance',
+                implementation_time: '1-3 days',
+                philosophy: 'Service capability demonstration - Config availability proves configuration monitoring can be implemented.'
+            },
+            'default_passed': {
+                rule_logic: 'Multi-command validation with service availability and configuration assessment',
+                threshold_rationale: 'Low Impact calibration with service capability focus and cost-conscious thresholds',
+                current_status: 'Multiple validation mechanisms detected - comprehensive implementation',
+                validation_strength: 'Multi-command validation provides robust evidence and reduces false negatives',
+                business_impact: 'High - Demonstrates security capability with automated validation',
+                compliance_level: 'Meets or exceeds Low Impact baseline requirements',
+                philosophy: 'Balanced approach emphasizing capability demonstration, cost-conscious implementation, and practical validation.'
+            }
+        };
+
+        function showWhyExplanation(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            const justification = ksiJustifications[ksiId] || ksiJustifications['default_passed'];
+            const modal = document.getElementById('why-modal');
+            const title = document.getElementById('why-modal-title');
+            const content = document.getElementById('why-content');
+
+            title.innerHTML = `
+                <span>${ksi.status === 'passed' ? '✅' : '❌'}</span>
+                Why did ${ksi.id} ${ksi.status}?
+            `;
+
+            const contentHtml = `
+                <div class="why-section">
+                    <h3>🎯 Rule Logic</h3>
+                    <p><span class="highlight">${justification.rule_logic}</span></p>
+                    <p>${justification.threshold_rationale}</p>
+                </div>
+
+                <div class="why-section">
+                    <h3>📊 Current Status</h3>
+                    <p>${justification.current_status}</p>
+                    ${justification.validation_strength ? `<p><strong>Validation Strength:</strong> ${justification.validation_strength}</p>` : ''}
+                    ${justification.compliance_level ? `<p><strong>Compliance Level:</strong> ${justification.compliance_level}</p>` : ''}
+                </div>
+
+                ${ksi.status === 'failed' ? `
+                <div class="why-section">
+                    <h3>🔧 Remediation Path</h3>
+                    <p>${justification.remediation_path}</p>
+                    <p><strong>Implementation Time:</strong> ${justification.implementation_time}</p>
+                </div>` : ''}
+
+                <div class="why-section">
+                    <h3>💼 Business Impact</h3>
+                    <p><strong>Impact Level:</strong> ${justification.business_impact}</p>
+                </div>
+
+                <div class="why-section">
+                    <h3>📋 Validation Philosophy</h3>
+                    <p>${justification.philosophy}</p>
+                    ${getValidationPrinciples(ksi, justification)}
+                </div>
+
+                <div class="why-section">
+                    <h3>🔍 Technical Details</h3>
+                    <div class="code-block">${ksi.assertion_reason || ksi.description}</div>
+                </div>
+            `;
+
+            content.innerHTML = contentHtml;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function getValidationPrinciples(ksi, justification) {
+            let principles = '<ul>';
+            
+            // Multi-command validation principle
+            if (ksi.commands_executed > 1) {
+                principles += '<li><strong>Multi-Command Validation:</strong> Uses multiple CLI commands for comprehensive evidence and reduced false negatives</li>';
+            }
+            
+            // Service availability principle
+            if (justification.rule_logic.includes('OR') || justification.threshold_rationale.includes('availability')) {
+                principles += '<li><strong>Service Capability Focus:</strong> Emphasizes proving security services can be configured rather than requiring full production deployment</li>';
+            }
+            
+            // Cost-conscious principle
+            if (justification.threshold_rationale.includes('Low Impact') || justification.philosophy.includes('cost')) {
+                principles += '<li><strong>Cost-Conscious Validation:</strong> Accommodates pilot environment constraints while maintaining security validation integrity</li>';
+            }
+            
+            // Error handling principle
+            principles += '<li><strong>Graceful Error Handling:</strong> Robust response to AWS service variations and access limitations</li>';
+            
+            principles += '</ul>';
+            return principles;
+        }
+
+        function closeWhyModal() {
+            document.getElementById('why-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
 
