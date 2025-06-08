@@ -1625,76 +1625,76 @@
             }
         ];
 
-        // Enhanced justification database - Human-friendly explanations based on official ruleset
+        // Enhanced justification database - CSP compliance demonstration tone
         const ksiJustifications = {
             'KSI-CNA-01': {
-                simple_explanation: 'We check if your system can handle cyber attacks that try to overwhelm it with traffic (like a DDoS attack). Think of it as making sure your digital doors have good bouncers.',
-                how_we_check: 'We run multiple AWS commands to see if protection services are turned on and working. We look for both basic protection (which AWS gives you automatically) and any enhanced protection you might have added.',
-                current_status: 'Good news! AWS Shield Standard is protecting all your resources. This gives you basic DDoS protection without you having to do anything.',
-                why_this_matters: 'If attackers try to flood your system with traffic to knock it offline, these protections help keep your service running. It\'s like having a security system for your digital front door.',
+                simple_explanation: 'This KSI demonstrates that our Learning Management System can withstand cyber attacks that attempt to overwhelm it with traffic (DDoS attacks). Our infrastructure has automated protection mechanisms that act like digital security guards.',
+                how_we_check: 'We validate our DDoS protection by running multiple AWS CLI commands that verify both basic AWS Shield Standard coverage and any enhanced protections we\'ve implemented. This automated testing proves our network resilience to 3PAOs and agencies.',
+                current_status: 'Our infrastructure demonstrates strong DDoS protection. AWS Shield Standard protects all our resources automatically, providing baseline protection for our Learning Management System.',
+                why_this_matters: 'Federal agencies need assurance that our service will remain available even under attack. This protection ensures our LMS can continue serving government users during security incidents, meeting availability requirements for federal data.',
                 remediation_path: [
-                    { title: 'Double-check protection', description: 'Verify that AWS Shield Standard is active (it should be by default)', time: '15 minutes' },
-                    { title: 'Document your setup', description: 'Create a simple record showing your DDoS protection is working', time: '30 minutes' },
-                    { title: 'Consider upgrading', description: 'Look into AWS Shield Advanced if you need extra protection', time: '1 hour' }
+                    { title: 'Verify protection coverage', description: 'Confirm AWS Shield Standard is active across all our infrastructure', time: '15 minutes' },
+                    { title: 'Document our security posture', description: 'Create evidence package showing our DDoS protection capabilities', time: '30 minutes' },
+                    { title: 'Evaluate enhanced protection', description: 'Assess whether AWS Shield Advanced would strengthen our federal compliance posture', time: '1 hour' }
                 ],
                 implementation_priority: 'Medium'
             },
             'KSI-CNA-03': {
-                simple_explanation: 'We make sure your containers (the packages that hold your software) follow security best practices. It\'s like checking that all the locks on your digital storage units work properly.',
-                how_we_check: 'We examine your container settings to see if they\'re running with unnecessary admin privileges. Containers should run with limited permissions - like giving someone keys to one room instead of the whole building.',
-                current_status: 'We found some containers that have too many privileges. They\'re running as "root" users, which is like giving everyone the master key.',
-                why_this_matters: 'When containers have too much access, a security breach in one container could affect your whole system. It\'s better to limit what each container can do.',
+                simple_explanation: 'This KSI shows that our containerized applications follow security best practices by running with minimal privileges. Our containers are configured like secure storage units where each application only has access to what it absolutely needs.',
+                how_we_check: 'We examine our container configurations using automated kubectl commands to verify they don\'t run with unnecessary administrative privileges. This demonstrates to assessors that our application architecture follows the principle of least privilege.',
+                current_status: 'Our assessment identified containers in our infrastructure that currently run with elevated privileges. These need to be reconfigured to demonstrate proper security controls to 3PAOs.',
+                why_this_matters: 'Federal agencies require that cloud services minimize security risks. When containers run with excessive privileges, a compromise in one container could affect our entire system, potentially impacting government data. Proper container security is essential for federal trust.',
                 remediation_path: [
-                    { title: 'Fix container permissions', description: 'Update containers to run as regular users instead of admin users', time: '2-3 hours' },
-                    { title: 'Set resource limits', description: 'Tell each container how much CPU and memory it can use', time: '1 hour' },
-                    { title: 'Review container images', description: 'Make sure the base images you use follow security practices', time: '2-4 hours' },
-                    { title: 'Test the changes', description: 'Run the validation again to make sure everything works', time: '30 minutes' }
+                    { title: 'Reconfigure container security', description: 'Update our containers to run as non-privileged users instead of root', time: '2-3 hours' },
+                    { title: 'Implement resource constraints', description: 'Set CPU and memory limits for all our application containers', time: '1 hour' },
+                    { title: 'Audit our container images', description: 'Review all base images to ensure they follow security hardening practices', time: '2-4 hours' },
+                    { title: 'Validate our improvements', description: 'Re-run automated validation to demonstrate compliance to assessors', time: '30 minutes' }
                 ],
                 implementation_priority: 'High'
             },
             'KSI-IAM-01': {
-                simple_explanation: 'We check that everyone who accesses your system has to prove their identity in two ways (like using a password AND a phone code). It\'s like requiring both an ID and a key card to enter a secure building.',
-                how_we_check: 'We look at all your user accounts and count how many have multi-factor authentication (MFA) set up. Then we check your system policies to see if MFA is required.',
-                current_status: 'Most of your users have MFA enabled, but 12 people still only use passwords. This includes some admin users who have extra privileges.',
-                why_this_matters: 'Passwords can be stolen or guessed. MFA adds an extra layer that makes it much harder for attackers to break into accounts, especially important for admin users.',
+                simple_explanation: 'This KSI demonstrates that our Learning Management System requires multi-factor authentication (MFA) for all user access. Like requiring both an ID and keycard for a secure building, our system requires two forms of verification.',
+                how_we_check: 'We validate our MFA implementation by checking all user accounts and system policies through automated IAM commands. This provides evidence to 3PAOs that our access controls meet federal authentication standards.',
+                current_status: 'Our analysis shows that while most users have MFA enabled, some accounts (including administrative users) still rely solely on passwords. This gap needs to be addressed to demonstrate full compliance.',
+                why_this_matters: 'Federal agencies require strong authentication for systems handling government data. MFA significantly reduces the risk of unauthorized access, which is critical for maintaining the trust needed to serve federal customers.',
                 remediation_path: [
-                    { title: 'Update security policies', description: 'Change your system rules to require MFA for everyone', time: '2 hours' },
-                    { title: 'Help users set up MFA', description: 'Guide the 12 remaining users through enabling MFA on their accounts', time: '3-4 hours' },
-                    { title: 'Create documentation', description: 'Write simple instructions for new users on how to set up MFA', time: '1 hour' },
-                    { title: 'Test the policy', description: 'Make sure the new MFA requirement works correctly', time: '2 hours' }
+                    { title: 'Enforce MFA organization-wide', description: 'Update our IAM policies to require MFA for all user accounts without exceptions', time: '2 hours' },
+                    { title: 'Complete user MFA setup', description: 'Work with remaining users to enable MFA on their accounts', time: '3-4 hours' },
+                    { title: 'Update our documentation', description: 'Create clear MFA procedures for new users and support staff', time: '1 hour' },
+                    { title: 'Test our MFA enforcement', description: 'Verify that our new policies work correctly across all access scenarios', time: '2 hours' }
                 ],
                 implementation_priority: 'Critical'
             },
             'KSI-SVC-02': {
-                simple_explanation: 'We make sure all data moving between your systems is encrypted - like putting information in a locked briefcase when it travels between locations.',
-                how_we_check: 'We examine your load balancers and network connections to verify they use strong encryption (TLS 1.2 or better). We also check for secure private connections between your services.',
-                current_status: 'Excellent! All your external connections use strong encryption, and your internal network traffic is properly secured.',
-                why_this_matters: 'When data travels over networks, it can be intercepted. Encryption scrambles it so even if someone catches it, they can\'t read it.',
+                simple_explanation: 'This KSI demonstrates that our Learning Management System encrypts all data as it moves between system components and to user devices. Like sending sensitive documents in locked briefcases, our data travels in encrypted form.',
+                how_we_check: 'We validate our encryption implementation by examining load balancers and network connections through automated AWS commands. This provides 3PAOs with evidence that our data transmission meets federal encryption standards.',
+                current_status: 'Our infrastructure successfully demonstrates comprehensive encryption in transit. All external connections use strong TLS encryption, and internal communications are properly secured.',
+                why_this_matters: 'Federal agencies require that their data be protected during transmission. Strong encryption ensures that even if network traffic is intercepted, government data remains secure and unreadable to unauthorized parties.',
                 implementation_priority: 'Maintained'
             },
             'KSI-CMT-02': {
-                simple_explanation: 'We check that your software deployment process includes security testing - like having a quality inspector check each product before it goes to customers.',
-                how_we_check: 'We look at your deployment pipelines (the automated systems that move code to production) to see if they include security scans and tests.',
-                current_status: 'Your deployment process needs security testing added. Right now, code can go live without being checked for security problems.',
-                why_this_matters: 'Security bugs in code can create vulnerabilities. Testing catches these issues before they reach your live system where attackers could exploit them.',
+                simple_explanation: 'This KSI shows that our software deployment process includes automated security testing before any code reaches our production Learning Management System. Like having quality inspectors check products before they reach customers.',
+                how_we_check: 'We demonstrate our secure development practices by examining our deployment pipelines through automated commands. This shows 3PAOs that we have integrated security testing into our development lifecycle.',
+                current_status: 'Our current deployment process needs security testing integration. Code can currently reach production without comprehensive security validation, creating a gap in our compliance demonstration.',
+                why_this_matters: 'Federal agencies need assurance that our software updates won\'t introduce vulnerabilities. Automated security testing in our deployment pipeline demonstrates that we proactively prevent security issues from affecting government users.',
                 remediation_path: [
-                    { title: 'Add security scanning', description: 'Install tools that automatically check code for security issues', time: '6-8 hours' },
-                    { title: 'Set up failure rules', description: 'Configure the pipeline to stop if serious security issues are found', time: '2 hours' },
-                    { title: 'Document the process', description: 'Create records showing your security testing is working', time: '1 hour' },
-                    { title: 'Test the pipeline', description: 'Make sure the security checks work and catch problems', time: '2-3 hours' }
+                    { title: 'Integrate security scanning tools', description: 'Add automated SAST/DAST tools to our CI/CD pipelines', time: '6-8 hours' },
+                    { title: 'Configure security gates', description: 'Set up pipeline rules that prevent deployment if security issues are found', time: '2 hours' },
+                    { title: 'Document our secure development process', description: 'Create evidence showing our security-integrated development lifecycle', time: '1 hour' },
+                    { title: 'Test our security pipeline', description: 'Validate that our security testing catches issues and prevents vulnerable deployments', time: '2-3 hours' }
                 ],
                 implementation_priority: 'High'
             },
             'KSI-PIY-02': {
-                simple_explanation: 'We check that your security policies are up-to-date. It\'s like making sure your employee handbook reflects current best practices and regulations.',
-                how_we_check: 'We look at when your security policies were last updated and compare that to requirements for annual reviews.',
-                current_status: 'Your incident response policy is 18 months old, which exceeds the 12-month update requirement. A few other policies are also approaching their review dates.',
-                why_this_matters: 'Security practices and regulations change over time. Outdated policies might not address current threats or requirements, leaving gaps in your protection.',
+                simple_explanation: 'This KSI demonstrates that our security policies and procedures are current and regularly updated. Like keeping an employee handbook up-to-date with current regulations and best practices.',
+                how_we_check: 'We validate our policy management by reviewing policy dates and approval workflows. This provides 3PAOs with evidence that our governance practices meet federal requirements for regular policy review.',
+                current_status: 'Our policy review process needs attention. Our incident response policy hasn\'t been updated in 18 months, exceeding the required annual review cycle, creating a documentation gap for compliance.',
+                why_this_matters: 'Federal agencies require that cloud service providers maintain current security policies. Outdated policies may not address current threats or regulations, potentially affecting our ability to serve government customers effectively.',
                 remediation_path: [
-                    { title: 'Review all policies', description: 'Go through each security policy to see what needs updating', time: '4-6 hours' },
-                    { title: 'Update content', description: 'Revise policies to reflect current practices and requirements', time: '8-12 hours' },
-                    { title: 'Get approvals', description: 'Have stakeholders review and approve the updated policies', time: '1 week' },
-                    { title: 'Set reminders', description: 'Create a schedule to automatically remind you when reviews are due', time: '2 hours' }
+                    { title: 'Conduct comprehensive policy review', description: 'Review all security policies for currency and completeness', time: '4-6 hours' },
+                    { title: 'Update policy content', description: 'Revise policies to reflect current practices and federal requirements', time: '8-12 hours' },
+                    { title: 'Obtain stakeholder approvals', description: 'Get management and legal review and approval for updated policies', time: '1 week' },
+                    { title: 'Implement automated reminders', description: 'Set up systems to ensure timely policy reviews going forward', time: '2 hours' }
                 ],
                 implementation_priority: 'Medium'
             }
@@ -1958,10 +1958,10 @@ ${ksi.requirement || 'No requirement specified'}`;
             if (ksi.status === 'failed' && justification.remediation_path) {
                 remediationSection = `
                     <div class="why-section">
-                        <h4 class="why-section-title">🛠️ How to Fix This</h4>
+                        <h4 class="why-section-title">🛠️ Our Remediation Plan</h4>
                         <div class="why-section-content">
-                            <p><strong>Priority:</strong> <span class="why-highlight">${justification.implementation_priority}</span></p>
-                            <p>Here's what you need to do to get this KSI passing:</p>
+                            <p><strong>Priority Level:</strong> <span class="why-highlight">${justification.implementation_priority}</span></p>
+                            <p>Here's how we plan to address this compliance gap and demonstrate full adherence to FedRAMP 20x requirements:</p>
                         </div>
                         <div class="remediation-steps">
                             ${justification.remediation_path.map((step, index) => `
@@ -1970,7 +1970,7 @@ ${ksi.requirement || 'No requirement specified'}`;
                                     <div class="step-content">
                                         <div class="step-title">${step.title}</div>
                                         <div class="step-description">${step.description}</div>
-                                        <div class="step-time">⏱️ Time needed: ${step.time}</div>
+                                        <div class="step-time">⏱️ Estimated completion: ${step.time}</div>
                                     </div>
                                 </div>
                             `).join('')}
@@ -1981,52 +1981,52 @@ ${ksi.requirement || 'No requirement specified'}`;
 
             return `
                 <div class="why-section">
-                    <h4 class="why-section-title">📊 What This KSI Checks</h4>
+                    <h4 class="why-section-title">📊 Compliance Demonstration</h4>
                     <div class="why-section-content">
                         ${statusBadge}
                         <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span> - ${ksi.category}</p>
-                        <p><strong>In simple terms:</strong> ${justification.simple_explanation}</p>
+                        <p><strong>What this demonstrates:</strong> ${justification.simple_explanation}</p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">🔍 How We Check This</h4>
+                    <h4 class="why-section-title">🔍 Our Validation Method</h4>
                     <div class="why-section-content">
                         <p>${justification.how_we_check}</p>
-                        <p><strong>Technical details:</strong> We ran <span class="why-highlight">${ksi.commands_executed || 0} automated commands</span> to gather evidence.</p>
-                        <p><strong>Command used:</strong> <span class="why-code">${ksi.cli_command}</span></p>
+                        <p><strong>Evidence collected:</strong> Our automated systems executed <span class="why-highlight">${ksi.commands_executed || 0} CLI commands</span> to gather compliance evidence.</p>
+                        <p><strong>Primary command:</strong> <span class="why-code">${ksi.cli_command}</span></p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">📈 What We Found</h4>
+                    <h4 class="why-section-title">📈 Current Compliance Status</h4>
                     <div class="why-section-content">
                         <p>${justification.current_status}</p>
-                        <p><strong>Detailed result:</strong> ${ksi.assertion_reason}</p>
+                        <p><strong>Assessment details:</strong> ${ksi.assertion_reason}</p>
                     </div>
                 </div>
 
                 ${remediationSection}
 
                 <div class="why-section">
-                    <h4 class="why-section-title">💡 Why This Matters</h4>
+                    <h4 class="why-section-title">💡 Why This Matters for Federal Customers</h4>
                     <div class="why-section-content">
-                        <p>${justification.why_this_matters || 'This security control helps protect your system and meet compliance requirements.'}</p>
-                        <p><strong>Compliance requirement:</strong> ${ksi.requirement}</p>
+                        <p>${justification.why_this_matters || 'This security control helps ensure our Learning Management System meets federal requirements and maintains the trust needed to serve government customers.'}</p>
+                        <p><strong>FedRAMP 20x requirement:</strong> ${ksi.requirement}</p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">🔬 Our Testing Approach</h4>
+                    <h4 class="why-section-title">🔬 Our Assessment Methodology</h4>
                     <div class="why-section-content">
-                        <p>This assessment uses <strong>automated CLI-based validation</strong> instead of manual document reviews. Here's what makes our approach reliable:</p>
+                        <p>Meridian Knowledge Solutions uses <strong>automated CLI-based validation</strong> to demonstrate compliance transparency to 3PAOs and federal agencies:</p>
                         <ul class="why-list">
-                            <li><strong>Multiple checks:</strong> We run several commands to get a complete picture</li>
-                            <li><strong>Real-time results:</strong> We check your actual system configuration, not just paperwork</li>
-                            <li><strong>Practical thresholds:</strong> We focus on whether security capabilities work, not just if they're perfect</li>
-                            <li><strong>Cost-aware:</strong> We understand pilot projects and don't penalize cost-saving measures that don't affect security</li>
+                            <li><strong>Real-time validation:</strong> We continuously monitor our actual infrastructure, not just documentation</li>
+                            <li><strong>Multi-command evidence:</strong> We use multiple data points to provide comprehensive proof of compliance</li>
+                            <li><strong>Practical thresholds:</strong> Our validation recognizes effective security implementations appropriate for our service level</li>
+                            <li><strong>Transparent results:</strong> All assessment logic is documented and auditable by independent assessors</li>
                         </ul>
-                        <p><em>Based on the Meridian Official Ruleset Justification methodology (June 2025)</em></p>
+                        <p><em>This approach demonstrates our commitment to continuous compliance for our federal customers.</em></p>
                     </div>
                 </div>
             `;
@@ -2039,14 +2039,14 @@ ${ksi.requirement || 'No requirement specified'}`;
             if (ksi.status === 'passed') {
                 statusExplanation = `
                     <div class="why-section">
-                        <h4 class="why-section-title">✅ Why This Passed</h4>
+                        <h4 class="why-section-title">✅ Compliance Demonstrated</h4>
                         <div class="why-section-content">
-                            <p>Great! This security control is working correctly. Here's what that means:</p>
+                            <p>Our Learning Management System successfully demonstrates this security control. Here's what this means for our federal customers:</p>
                             <ul class="why-list">
-                                <li><strong>Your system has the required security capability</strong> - the protection is in place and functional</li>
-                                <li><strong>Our automated tests confirmed it works</strong> - we ran ${ksi.commands_executed || 1} command(s) and got good results</li>
-                                <li><strong>You meet the compliance requirement</strong> - this KSI satisfies FedRAMP 20x Low Impact standards</li>
-                                <li><strong>No action needed right now</strong> - but we'll keep checking this automatically</li>
+                                <li><strong>Security capability validated</strong> - Our infrastructure has the required protection in place and functioning</li>
+                                <li><strong>Automated verification completed</strong> - We executed ${ksi.commands_executed || 1} command(s) and confirmed compliance</li>
+                                <li><strong>FedRAMP 20x requirement satisfied</strong> - This KSI meets Low Impact federal authorization standards</li>
+                                <li><strong>Continuous monitoring active</strong> - We'll continue validating this control automatically to maintain compliance</li>
                             </ul>
                         </div>
                     </div>
@@ -2054,14 +2054,14 @@ ${ksi.requirement || 'No requirement specified'}`;
             } else if (ksi.status === 'failed') {
                 statusExplanation = `
                     <div class="why-section">
-                        <h4 class="why-section-title">❌ Why This Failed</h4>
+                        <h4 class="why-section-title">❌ Compliance Gap Identified</h4>
                         <div class="why-section-content">
-                            <p>This security control needs attention. Here's what's happening:</p>
+                            <p>Our assessment identified a gap in this security control that affects our federal compliance demonstration:</p>
                             <ul class="why-list">
-                                <li><strong>The required security capability isn't fully in place</strong> - something needs to be configured or fixed</li>
-                                <li><strong>Our automated tests found gaps</strong> - the system didn't meet our minimum thresholds</li>
-                                <li><strong>This creates a compliance gap</strong> - you need this working to meet FedRAMP 20x requirements</li>
-                                <li><strong>Action needed</strong> - see the guidance below on how to fix this</li>
+                                <li><strong>Required security capability needs attention</strong> - Configuration or implementation requires remediation</li>
+                                <li><strong>Automated validation detected issues</strong> - Our systems didn't meet the required compliance thresholds</li>
+                                <li><strong>Federal authorization impact</strong> - This gap must be addressed to maintain FedRAMP 20x compliance</li>
+                                <li><strong>Remediation plan available</strong> - We have a clear path to address this and restore compliance demonstration</li>
                             </ul>
                         </div>
                     </div>
@@ -2069,14 +2069,14 @@ ${ksi.requirement || 'No requirement specified'}`;
             } else {
                 statusExplanation = `
                     <div class="why-section">
-                        <h4 class="why-section-title">⚠️ Why This Is a Warning</h4>
+                        <h4 class="why-section-title">⚠️ Compliance Warning</h4>
                         <div class="why-section-content">
-                            <p>This security control is mostly working but could be improved:</p>
+                            <p>Our system demonstrates basic compliance but has opportunities for improvement:</p>
                             <ul class="why-list">
-                                <li><strong>Basic protection is in place</strong> - the core security capability exists</li>
-                                <li><strong>There's room for improvement</strong> - some aspects could be strengthened</li>
-                                <li><strong>You're meeting minimum requirements</strong> - but consider enhancements for better security</li>
-                                <li><strong>Optional action</strong> - review the suggestions to decide if improvements are worth making</li>
+                                <li><strong>Core protection is functioning</strong> - The essential security capability is in place</li>
+                                <li><strong>Enhancement opportunities exist</strong> - Some aspects could be strengthened for better security posture</li>
+                                <li><strong>Minimum requirements satisfied</strong> - We meet federal baseline standards but could exceed them</li>
+                                <li><strong>Improvement recommended</strong> - Consider enhancements to demonstrate security leadership</li>
                             </ul>
                         </div>
                     </div>
@@ -2085,57 +2085,57 @@ ${ksi.requirement || 'No requirement specified'}`;
 
             return `
                 <div class="why-section">
-                    <h4 class="why-section-title">📊 What This KSI Checks</h4>
+                    <h4 class="why-section-title">📊 What This KSI Demonstrates</h4>
                     <div class="why-section-content">
                         ${statusBadge}
                         <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span> - ${ksi.category}</p>
-                        <p><strong>What it does:</strong> ${ksi.description}</p>
+                        <p><strong>Our compliance demonstration:</strong> ${ksi.description}</p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">🔍 How We Tested This</h4>
+                    <h4 class="why-section-title">🔍 Our Validation Process</h4>
                     <div class="why-section-content">
-                        <p>We used automated commands to check your system configuration instead of reviewing documents.</p>
-                        <p><strong>Commands run:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
-                        <p><strong>What we checked:</strong> <span class="why-code">${ksi.cli_command}</span></p>
-                        <p><strong>What we found:</strong> ${ksi.assertion_reason}</p>
+                        <p>Meridian Knowledge Solutions validates this control through automated infrastructure assessment rather than document review.</p>
+                        <p><strong>Commands executed:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
+                        <p><strong>Validation method:</strong> <span class="why-code">${ksi.cli_command}</span></p>
+                        <p><strong>Assessment result:</strong> ${ksi.assertion_reason}</p>
                     </div>
                 </div>
 
                 ${statusExplanation}
 
                 <div class="why-section">
-                    <h4 class="why-section-title">📋 Compliance Context</h4>
+                    <h4 class="why-section-title">📋 Federal Compliance Context</h4>
                     <div class="why-section-content">
-                        <p><strong>Requirement:</strong> ${ksi.requirement}</p>
-                        <p><strong>Our approach:</strong> Instead of checking paperwork, we verify that your security capabilities actually work in your live system.</p>
-                        <p><strong>What this means:</strong> We focus on whether you can demonstrate the security capability, not whether you have perfect enterprise-grade implementations.</p>
+                        <p><strong>FedRAMP 20x requirement:</strong> ${ksi.requirement}</p>
+                        <p><strong>Our approach:</strong> Instead of relying solely on documentation, we demonstrate compliance through live infrastructure validation, providing 3PAOs and agencies with real-time evidence of our security posture.</p>
+                        <p><strong>Value to federal customers:</strong> This continuous validation approach ensures our Learning Management System maintains the security standards federal agencies require.</p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">🔬 About Our Testing Method</h4>
+                    <h4 class="why-section-title">🔬 Meridian's Assessment Innovation</h4>
                     <div class="why-section-content">
-                        <p>This assessment uses the <strong>Meridian CLI-based validation approach</strong> designed for FedRAMP 20x:</p>
+                        <p>Our <strong>CLI-based validation methodology</strong> represents a modern approach to FedRAMP 20x compliance demonstration:</p>
                         <ul class="why-list">
-                            <li><strong>Real-time validation:</strong> We check your actual system, not documents</li>
-                            <li><strong>Practical thresholds:</strong> We understand pilot constraints and cost considerations</li>
-                            <li><strong>Multiple evidence sources:</strong> We use several commands to get a complete picture</li>
-                            <li><strong>Transparent logic:</strong> Every decision is based on clear, documented criteria</li>
+                            <li><strong>Live infrastructure validation:</strong> We prove compliance through actual system state, not just policies</li>
+                            <li><strong>Automated evidence collection:</strong> Continuous monitoring provides real-time compliance status</li>
+                            <li><strong>Transparent methodology:</strong> All validation logic is documented and auditable by assessors</li>
+                            <li><strong>Practical implementation:</strong> We balance security rigor with operational efficiency for our federal customers</li>
                         </ul>
-                        <p><em>This approach balances security rigor with implementation practicality.</em></p>
+                        <p><em>This approach supports faster authorization while maintaining high security standards.</em></p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">❓ Questions or Issues?</h4>
+                    <h4 class="why-section-title">📞 Assessment Questions?</h4>
                     <div class="why-section-content">
-                        <p>If you need help with this KSI or want to understand the requirements better:</p>
+                        <p>3PAOs and federal agencies can contact us for additional compliance information:</p>
                         <ul class="why-list">
-                            <li>📧 <strong>Email our security team:</strong> <a href="mailto:security@meridianks.com" class="trust-link">security@meridianks.com</a></li>
-                            <li>📁 <strong>Check our documentation:</strong> <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank" class="trust-link">GitHub Repository</a></li>
-                            <li>🐛 <strong>Report a problem:</strong> Use the "Report Issue" button to create a support ticket</li>
+                            <li>📧 <strong>Compliance team:</strong> <a href="mailto:security@meridianks.com" class="trust-link">security@meridianks.com</a></li>
+                            <li>📁 <strong>Public evidence repository:</strong> <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank" class="trust-link">GitHub Repository</a></li>
+                            <li>🐛 <strong>Assessment support:</strong> Use the "Report Issue" button for technical questions about our validation methodology</li>
                         </ul>
                     </div>
                 </div>
