@@ -1699,7 +1699,7 @@
             allKsis = [...sampleKsis];
             populateCategoryFilter();
             filterKsis();
-            console.log('✅ KSI data loaded successfully');
+            loadRealData(); // Load live data from JSON
         }
 
         function populateCategoryFilter() {
@@ -2205,26 +2205,37 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
 
         // Download and report functionality
         async function downloadJSON() {
-            const sampleData = {
-                metadata: {
-                    generated_at: new Date().toISOString(),
-                    total_ksis: allKsis.length,
-                    total_passed: allKsis.filter(k => k.status === 'passed').length,
-                    total_failed: allKsis.filter(k => k.status === 'failed').length,
-                    compliance_percentage: Math.round((allKsis.filter(k => k.status === 'passed').length / allKsis.length) * 100 * 10) / 10
-                },
-                validations: allKsis.map(ksi => ({
-                    ksi_id: ksi.id,
-                    assertion: ksi.status === 'passed',
-                    assertion_reason: ksi.assertion_reason,
-                    cli_command: ksi.cli_command,
-                    commands_executed: ksi.commands_executed,
-                    long_name: ksi.category,
-                    category_prefix: ksi.category_prefix,
-                    requirement: ksi.requirement
-                }))
-            };
-            forceDownloadJSON(sampleData, 'fedramp_ksi_validations.json');
+            try {
+                const response = await fetch('./unified_ksi_validations.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    forceDownloadJSON(data, 'unified_ksi_validations.json');
+                } else {
+                    const sampleData = {
+                        metadata: {
+                            generated_at: new Date().toISOString(),
+                            total_ksis: allKsis.length,
+                            total_passed: allKsis.filter(k => k.status === 'passed').length,
+                            total_failed: allKsis.filter(k => k.status === 'failed').length,
+                            compliance_percentage: Math.round((allKsis.filter(k => k.status === 'passed').length / allKsis.length) * 100 * 10) / 10
+                        },
+                        validations: allKsis.map(ksi => ({
+                            ksi_id: ksi.id,
+                            assertion: ksi.status === 'passed',
+                            assertion_reason: ksi.assertion_reason,
+                            cli_command: ksi.cli_command,
+                            commands_executed: ksi.commands_executed,
+                            long_name: ksi.category,
+                            category_prefix: ksi.category_prefix,
+                            requirement: ksi.requirement
+                        }))
+                    };
+                    forceDownloadJSON(sampleData, 'fedramp_ksi_validations_sample.json');
+                }
+            } catch (error) {
+                console.error('Error downloading JSON:', error);
+                alert('Error downloading JSON file. Please try again or contact support.');
+            }
         }
 
         function forceDownloadJSON(data, filename) {
@@ -2242,9 +2253,20 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
         }
 
         async function viewFailedReport() {
-            const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
-            const sampleReport = generateFailedKsiReport(failedKsis);
-            showMarkdownModal('Failed KSI Report', sampleReport);
+            try {
+                const response = await fetch('./failed_ksi_report_readable.md');
+                if (response.ok) {
+                    const markdownText = await response.text();
+                    showMarkdownModal('Failed KSI Report', markdownText);
+                } else {
+                    const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
+                    const sampleReport = generateFailedKsiReport(failedKsis);
+                    showMarkdownModal('Failed KSI Report (Sample)', sampleReport);
+                }
+            } catch (error) {
+                console.error('Error loading failed report:', error);
+                alert('Error loading failed KSI report. Please try again or contact support.');
+            }
         }
 
         function generateFailedKsiReport(failedKsis) {
@@ -2374,10 +2396,18 @@ For technical support or questions about remediation, please contact security@me
                 animation: slideIn 0.3s ease;
             `;
 
-            if (type === 'sample') {
+            if (type === 'live') {
+                notification.style.background = 'rgba(16, 185, 129, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '✅ Live data loaded';
+            } else if (type === 'sample') {
                 notification.style.background = 'rgba(245, 158, 11, 0.9)';
                 notification.style.color = 'white';
                 notification.textContent = '⚠️ Using sample data';
+            } else if (type === 'error') {
+                notification.style.background = 'rgba(239, 68, 68, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '❌ Data load error';
             }
 
             document.body.appendChild(notification);
@@ -2392,6 +2422,77 @@ For technical support or questions about remediation, please contact security@me
             }, 3000);
         }
 
+        async function loadRealData() {
+            try {
+                console.log('🔄 Attempting to load real validation data...');
+                
+                const response = await fetch('./unified_ksi_validations.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                console.log('✅ Real data loaded successfully');
+                
+                updateDashboardWithRealData(data);
+                
+            } catch (error) {
+                console.warn('⚠️ Could not load real data, using sample data:', error.message);
+                showDataSourceNotification('sample');
+            }
+        }
+
+        function updateDashboardWithRealData(data) {
+            try {
+                let validations = [];
+                
+                if (Array.isArray(data)) {
+                    validations = data;
+                } else if (data.validations && Array.isArray(data.validations)) {
+                    validations = data.validations;
+                } else if (data.metadata && data.metadata.validations) {
+                    validations = data.metadata.validations;
+                }
+
+                if (validations.length === 0) {
+                    throw new Error('No validation data found in the loaded JSON');
+                }
+
+                allKsis = validations.map(validation => ({
+                    id: validation.ksi_id || validation.validation_id || 'Unknown',
+                    status: (validation.assertion === true || validation.assertion === "true") ? 'passed' : 'failed',
+                    description: validation.assertion_reason || validation.description || 'No description available',
+                    category: validation.long_name || validation.category_prefix || 'Unknown Category',
+                    category_prefix: validation.category_prefix || validation.ksi_id?.split('-').slice(0, 2).join('-') || 'UNK',
+                    commands_executed: validation.commands_executed || 0,
+                    cli_command: validation.cli_command || 'No command information available',
+                    assertion_reason: validation.assertion_reason || 'No detailed reason provided',
+                    requirement: validation.requirement || validation.long_name || 'No requirement specified'
+                }));
+
+                const totalKsis = allKsis.length;
+                const passedCount = allKsis.filter(ksi => ksi.status === 'passed').length;
+                const failedCount = totalKsis - passedCount;
+                const overallScore = Math.round((passedCount / totalKsis) * 100 * 10) / 10;
+
+                document.getElementById('overall-score').textContent = overallScore + '%';
+                document.getElementById('passed-count').textContent = passedCount;
+                document.getElementById('failed-count').textContent = failedCount;
+                document.getElementById('total-ksis').textContent = totalKsis;
+
+                populateCategoryFilter();
+                filterKsis();
+                
+                showDataSourceNotification('live');
+                
+                console.log('🎉 Dashboard updated with real data');
+                
+            } catch (error) {
+                console.error('❌ Error processing real data:', error);
+                showDataSourceNotification('error');
+            }
+        }
+
         // Global functions
         window.showCliDetails = showCliDetails;
         window.showKsiDetails = showKsiDetails;
@@ -2404,12 +2505,17 @@ For technical support or questions about remediation, please contact security@me
         window.viewFailedReport = viewFailedReport;
         window.closeMarkdownModal = closeMarkdownModal;
 
+        // Auto-refresh every 5 minutes
+        setInterval(() => {
+            updateTimestamps();
+            loadRealData();
+        }, 300000);
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 FedRAMP 20x Trust Center - Starting fresh...');
+            console.log('🚀 FedRAMP 20x Trust Center - Loading live data...');
             initializeTheme();
             initializeDashboard();
-            showDataSourceNotification('sample');
             
             const searchBox = document.getElementById('search-input');
             searchBox.placeholder = 'Search KSIs... (Press / to focus)';
