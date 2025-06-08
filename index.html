@@ -1797,42 +1797,60 @@ async function getAuthorizationSummary() {
         // NEW: Load POA&M data from existing KSI validations
         async function loadPOAMData() {
             try {
-                const response = await fetch('./unified_ksi_validations.json');
-                if (response.ok) {
-                    const ksis = await response.json();
-                    const failedKsis = ksis.filter(ksi => !ksi.assertion);
-                    
-                    // Update stats
-                    document.getElementById('poam-total').textContent = failedKsis.length;
-                    document.getElementById('poam-high').textContent = failedKsis.filter(k => 
-                        k.assertion_reason && k.assertion_reason.toLowerCase().includes('critical')).length;
-                    document.getElementById('poam-overdue').textContent = Math.min(2, failedKsis.length);
-                    
-                    // Populate table
-                    const tbody = document.getElementById('poam-data');
-                    tbody.innerHTML = failedKsis.slice(0, 10).map((ksi, index) => `
-                        <tr>
-                            <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">POA&M-${String(index + 1).padStart(3, '0')}</td>
-                            <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">${ksi.ksi_id}</td>
-                            <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">
-                                <span style="background: #28a745; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em;">Low</span>
-                            </td>
-                            <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">${getTargetDate()}</td>
-                            <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">
-                                <span style="background: #dc3545; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em;">Open</span>
-                            </td>
-                        </tr>
-                    `).join('');
+                // Try to use live data first
+                if (allKsis && allKsis.length > 0) {
+                    const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
+                    updatePOAMDisplay(failedKsis);
                 } else {
-                    // Use sample data
-                    const failedCount = sampleKsis.filter(ksi => ksi.status === 'failed').length;
-                    document.getElementById('poam-total').textContent = failedCount;
+                    // Try to fetch directly
+                    const response = await fetch('./unified_ksi_validations.json');
+                    if (response.ok) {
+                        const data = await response.json();
+                        let validations = [];
+                        
+                        if (Array.isArray(data)) {
+                            validations = data;
+                        } else if (data.validations && Array.isArray(data.validations)) {
+                            validations = data.validations;
+                        }
+                        
+                        const failedKsis = validations.filter(ksi => ksi.assertion === false);
+                        updatePOAMDisplay(failedKsis);
+                    } else {
+                        // Use sample data
+                        const failedCount = sampleKsis.filter(ksi => ksi.status === 'failed').length;
+                        document.getElementById('poam-total').textContent = failedCount;
+                    }
                 }
             } catch (error) {
-                console.log('Using sample POA&M data');
+                console.log('Using sample POA&M data:', error);
                 const failedCount = sampleKsis.filter(ksi => ksi.status === 'failed').length;
                 document.getElementById('poam-total').textContent = failedCount;
             }
+        }
+
+        function updatePOAMDisplay(failedKsis) {
+            // Update stats
+            document.getElementById('poam-total').textContent = failedKsis.length;
+            document.getElementById('poam-high').textContent = failedKsis.filter(k => 
+                k.assertion_reason && k.assertion_reason.toLowerCase().includes('critical')).length;
+            document.getElementById('poam-overdue').textContent = Math.min(2, failedKsis.length);
+            
+            // Populate table
+            const tbody = document.getElementById('poam-data');
+            tbody.innerHTML = failedKsis.slice(0, 10).map((ksi, index) => `
+                <tr>
+                    <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">POA&M-${String(index + 1).padStart(3, '0')}</td>
+                    <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">${ksi.ksi_id || ksi.id}</td>
+                    <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">
+                        <span style="background: #28a745; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em;">Low</span>
+                    </td>
+                    <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">${getTargetDate()}</td>
+                    <td style="padding: 15px; border-bottom: 1px solid #dee2e6;">
+                        <span style="background: #dc3545; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em;">Open</span>
+                    </td>
+                </tr>
+            `).join('');
         }
 
         function getTargetDate() {
@@ -1901,37 +1919,135 @@ async function getAuthorizationSummary() {
             URL.revokeObjectURL(url);
         }
 
-        // Existing functions (preserved exactly)
+        // Show data source notification
+        function showDataSourceNotification(type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 600;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+
+            if (type === 'live') {
+                notification.style.background = 'rgba(16, 185, 129, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '✅ Live data loaded';
+            } else if (type === 'sample') {
+                notification.style.background = 'rgba(245, 158, 11, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '⚠️ Using sample data';
+            } else if (type === 'error') {
+                notification.style.background = 'rgba(239, 68, 68, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '❌ Data load error';
+            }
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
         async function loadRealData() {
             try {
-                console.log('📡 Fetching live KSI validation data...');
-                const response = await fetch('./unified_ksi_validations.json');
+                console.log('🔄 Attempting to load real validation data...');
                 
+                const response = await fetch('./unified_ksi_validations.json');
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
-                const rawData = await response.json();
-                console.log(`✅ Loaded ${rawData.length} KSI validation records`);
+                const data = await response.json();
+                console.log('✅ Real data loaded successfully');
+                showDataSourceNotification('live');
                 
-                allKsis = rawData.map(ksi => ({
-                    id: ksi.ksi_id || ksi.validation_id,
-                    category: ksi.long_name || 'Unknown',
-                    status: ksi.assertion === true ? 'passed' : (ksi.assertion === false ? 'failed' : 'unknown'),
-                    description: ksi.requirement || 'No description available',
-                    commands_executed: ksi.commands_executed || 0,
-                    requirement: ksi.requirement || 'No requirement specified',
-                    cli_command: ksi.cli_command || 'No command available',
-                    assertion_reason: ksi.assertion_reason || 'No reason provided'
+                updateDashboardWithRealData(data);
+                
+            } catch (error) {
+                console.warn('⚠️ Could not load real data, using sample data:', error.message);
+                showDataSourceNotification('sample');
+            }
+        }
+
+        function updateDashboardWithRealData(data) {
+            try {
+                let validations = [];
+                let dataTimestamp = null;
+                
+                // Extract timestamp from data if available
+                if (data.metadata && data.metadata.generated_at) {
+                    dataTimestamp = new Date(data.metadata.generated_at);
+                } else if (data.generated_at) {
+                    dataTimestamp = new Date(data.generated_at);
+                } else if (data.timestamp) {
+                    dataTimestamp = new Date(data.timestamp);
+                }
+                
+                if (Array.isArray(data)) {
+                    validations = data;
+                } else if (data.validations && Array.isArray(data.validations)) {
+                    validations = data.validations;
+                } else if (data.metadata && data.metadata.validations) {
+                    validations = data.metadata.validations;
+                }
+
+                if (validations.length === 0) {
+                    throw new Error('No validation data found in the loaded JSON');
+                }
+
+                allKsis = validations.map(validation => ({
+                    id: validation.ksi_id || validation.validation_id || 'Unknown',
+                    status: (validation.assertion === true || validation.assertion === "true") ? 
+                        'passed' : 
+                        (validation.assertion === false || validation.assertion === "false") ? 
+                            'failed' : 'unknown',
+                    category: validation.long_name || validation.category || 'Unknown Category',
+                    description: validation.requirement || validation.description || 'No description available',
+                    commands_executed: validation.commands_executed || 0,
+                    successful_commands: validation.successful_commands || 0,
+                    failed_commands: validation.failed_commands || 0,
+                    cli_command: validation.cli_command || 'No command information',
+                    assertion_reason: validation.assertion_reason || 'No assessment details provided',
+                    timestamp: validation.timestamp || validation.validation_timestamp || null,
+                    validation_method: validation.validation_method || 'automated',
+                    evidence_path: validation.evidence_path || '',
+                    requirement: validation.requirement || 'No requirement specified',
+                    rawData: validation
                 }));
+
+                console.log(`📊 Processed ${allKsis.length} KSI validation records`);
                 
+                // Update dashboard components
                 updateMetrics();
                 populateCategoryFilter();
                 filterKsis();
-                updateTimestamps();
+                
+                // Update POA&M data with new live data
+                const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
+                updatePOAMDisplay(failedKsis);
+                
+                if (dataTimestamp) {
+                    updateTimestampsWithData(dataTimestamp);
+                } else {
+                    updateTimestamps();
+                }
                 
             } catch (error) {
-                console.error('❌ Error loading KSI data:', error);
+                console.error('❌ Error processing real data:', error);
+                showDataSourceNotification('error');
+                
                 // Fall back to sample data
                 allKsis = [...sampleKsis];
                 updateMetrics();
@@ -1940,16 +2056,34 @@ async function getAuthorizationSummary() {
             }
         }
 
+        function updateTimestampsWithData(dataTimestamp) {
+            const timeString = dataTimestamp.toLocaleDateString() + ' ' + 
+                             dataTimestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            const lastUpdatedEl = document.getElementById('last-updated');
+            const headerTimestampEl = document.getElementById('header-timestamp');
+            
+            if (lastUpdatedEl) {
+                lastUpdatedEl.textContent = timeString;
+            }
+            if (headerTimestampEl) {
+                headerTimestampEl.textContent = timeString;
+            }
+        }
+
         function updateMetrics() {
             const totalKsis = allKsis.length;
             const passedCount = allKsis.filter(ksi => ksi.status === 'passed').length;
             const failedCount = allKsis.filter(ksi => ksi.status === 'failed').length;
-            const overallScore = totalKsis > 0 ? Math.round((passedCount / totalKsis) * 100 * 10) / 10 : 0;
+            const warningCount = allKsis.filter(ksi => ksi.status === 'warning').length;
+            const overallScore = totalKsis > 0 ? Math.round(((passedCount + warningCount * 0.5) / totalKsis) * 100 * 10) / 10 : 0;
 
             document.getElementById('overall-score').textContent = overallScore + '%';
             document.getElementById('passed-count').textContent = passedCount;
             document.getElementById('failed-count').textContent = failedCount;
             document.getElementById('total-ksis').textContent = totalKsis;
+            
+            console.log(`📊 Metrics updated: ${passedCount}/${totalKsis} passed (${overallScore}%)`);
         }
 
         function populateCategoryFilter() {
@@ -2091,18 +2225,24 @@ async function getAuthorizationSummary() {
             if (!ksi) return;
 
             document.getElementById('modal-title').textContent = `${ksi.id} - CLI Details`;
-            document.getElementById('modal-content').textContent = `Command: ${ksi.cli_command || 'No command available'}
+            
+            let cliContent = `Command Summary:
+• Commands Executed: ${ksi.commands_executed || 0}
+• Successful: ${ksi.successful_commands || 0}
+• Failed: ${ksi.failed_commands || 0}
+• CLI Command: ${ksi.cli_command || 'No command available'}
 
-Execution Details:
-- Commands Executed: ${ksi.commands_executed || 0}
-- Status: ${ksi.status.toUpperCase()}
-
-Assertion Reason:
-${ksi.assertion_reason || 'No detailed reason provided'}
+Assessment Details:
+• Result: ${ksi.assertion_reason || 'No detailed reason provided'}
+• Method: ${ksi.validation_method || 'Unknown'}
+• Evidence Path: ${ksi.evidence_path || 'No specific path'}
 
 Requirement:
-${ksi.requirement || 'No requirement specified'}`;
+${ksi.requirement || 'No requirement specified'}
 
+Timestamp: ${ksi.timestamp ? formatTimestamp(ksi.timestamp) : 'Not available'}`;
+
+            document.getElementById('modal-content').textContent = cliContent;
             document.getElementById('cli-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
