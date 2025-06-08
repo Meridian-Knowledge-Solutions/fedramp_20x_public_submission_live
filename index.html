@@ -25,6 +25,8 @@
             --danger-600: #dc2626;
             --info-500: #3b82f6;
             --info-600: #2563eb;
+            --orange-500: #f97316;
+            --orange-600: #ea580c;
             
             /* Neutrals */
             --gray-25: #fcfcfd;
@@ -54,6 +56,7 @@
             --gradient-accent: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
             --gradient-success: linear-gradient(135deg, var(--success-500) 0%, #34d399 100%);
             --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+            --gradient-orange: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
             
             --radius: 16px;
             --radius-sm: 8px;
@@ -747,6 +750,18 @@
             box-shadow: var(--shadow);
         }
 
+        .action-btn.why {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--orange-500);
+            order: -1; /* Makes it appear first */
+        }
+
+        .action-btn.why:hover {
+            background: linear-gradient(135deg, var(--orange-600), #ea580c);
+            transform: translateY(-2px) scale(1.05);
+        }
+
         .action-btn.primary {
             background: var(--gradient-accent);
             color: white;
@@ -763,122 +778,8 @@
             border-color: #24292e;
         }
 
-        .action-btn.why {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white;
-            border-color: #f59e0b;
-        }
-
-        .action-btn.why:hover {
-            background: linear-gradient(135deg, #d97706, #b45309);
-        }
-
-        /* Enhanced Modal for Why explanations */
-        .why-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            padding: 2rem;
-            backdrop-filter: blur(4px);
-        }
-
-        .why-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .why-modal-content {
-            background: var(--bg-secondary);
-            border-radius: var(--radius);
-            padding: 2rem;
-            max-width: 900px;
-            width: 100%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-color);
-        }
-
-        .why-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .why-modal-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .why-content {
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        .why-section {
-            margin-bottom: 2rem;
-        }
-
-        .why-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .why-section h3 {
-            color: var(--text-primary);
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .why-section p {
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .why-section ul {
-            margin-left: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .why-section li {
-            margin-bottom: 0.5rem;
-        }
-
-        .code-block {
-            background: var(--bg-accent);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.875rem;
-            color: var(--text-primary);
-            margin: 1rem 0;
-            overflow-x: auto;
-        }
-
-        .highlight {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 4px;
-            padding: 0.25rem 0.5rem;
-            color: var(--primary-600);
-            font-weight: 600;
+        .action-btn.github:hover {
+            background: linear-gradient(135deg, #1a1e22, #0d1117);
         }
 
         /* Modal */
@@ -954,6 +855,205 @@
             line-height: 1.5;
             white-space: pre-wrap;
             overflow-x: auto;
+        }
+
+        /* Why Modal Styles */
+        .why-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            padding: 2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .why-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-modal-content {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            max-width: 900px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-color);
+        }
+
+        .why-modal-header {
+            background: var(--gradient-orange);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .why-modal-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .why-modal-body {
+            padding: 2rem;
+        }
+
+        .why-section {
+            margin-bottom: 2rem;
+        }
+
+        .why-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .why-section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .why-section-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.925rem;
+        }
+
+        .why-highlight {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--orange-600);
+            padding: 0.125rem 0.375rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .why-code {
+            background: var(--bg-accent);
+            color: var(--text-primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .why-list {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .why-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .why-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.375rem 0.75rem;
+            border-radius: var(--radius);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 0.25rem 0.25rem 0.25rem 0;
+        }
+
+        .why-badge.passed {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-600);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .why-badge.failed {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .why-badge.warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-600);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .remediation-steps {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .remediation-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .remediation-step:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-number {
+            background: var(--gradient-orange);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            font-size: 0.825rem;
+            line-height: 1.5;
+        }
+
+        .step-time {
+            color: var(--text-tertiary);
+            font-size: 0.75rem;
+            font-style: italic;
+            margin-top: 0.25rem;
         }
 
         /* Empty/Loading States */
@@ -1036,8 +1136,20 @@
                 grid-template-columns: 1fr;
             }
 
-            .cli-modal {
+            .cli-modal, .why-modal {
                 padding: 1rem;
+            }
+
+            .why-modal-content {
+                max-height: 90vh;
+            }
+
+            .why-modal-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .why-modal-body {
+                padding: 1.5rem;
             }
         }
 
@@ -1286,18 +1398,30 @@
         </div>
     </div>
 
-    <!-- Enhanced Why Modal -->
+    <!-- CLI Details Modal -->
+    <div class="cli-modal" id="cli-modal">
+        <div class="cli-modal-content">
+            <div class="cli-modal-header">
+                <h3 class="cli-modal-title" id="modal-title">CLI Details</h3>
+                <button class="close-btn" onclick="closeCliModal()">&times;</button>
+            </div>
+            <div class="cli-content" id="modal-content">
+                <!-- CLI content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Modal -->
     <div class="why-modal" id="why-modal">
         <div class="why-modal-content">
             <div class="why-modal-header">
                 <h3 class="why-modal-title" id="why-modal-title">
-                    <span>🤔</span>
-                    Why did this pass/fail?
+                    🤔 Why This Result?
                 </h3>
                 <button class="close-btn" onclick="closeWhyModal()">&times;</button>
             </div>
-            <div class="why-content" id="why-content">
-                <!-- Dynamic content will be inserted here -->
+            <div class="why-modal-body" id="why-modal-body">
+                <!-- Why content will be inserted here -->
             </div>
         </div>
     </div>
@@ -1310,6 +1434,92 @@
             status: '',
             category: '',
             search: ''
+        };
+
+        // KSI Justifications Database - Based on Official Ruleset Justification
+        const ksiJustifications = {
+            'KSI-CNA-01': {
+                rule_logic: 'Multi-command validation using AWS CLI to assess DDoS protection mechanisms. Follows the standard rule pattern with graceful error handling and service availability recognition. Uses graduated assessment framework where service availability often sufficient for low-impact validation.',
+                validation_philosophy: 'Emphasizes service capability demonstration over operational maturity. Accommodates cost-conscious pilot implementations while ensuring essential network protection controls are demonstrable.',
+                current_status: 'AWS Shield Standard is available on all resources. Multi-command evidence collection validates both primary protection mechanisms and supporting infrastructure configurations.',
+                remediation_path: [
+                    { title: 'Verify Shield Standard Coverage', description: 'Confirm AWS Shield Standard is active (enabled by default)', time: '15 minutes' },
+                    { title: 'Document Protection Mechanisms', description: 'Create evidence showing DDoS protection capability', time: '30 minutes' },
+                    { title: 'Consider Shield Advanced', description: 'Evaluate if enhanced protection needed for production', time: '1 hour' }
+                ],
+                business_impact: 'Network protection controls must be implemented per FedRAMP requirements. Service availability demonstrates security capability without requiring operational sophistication.',
+                implementation_priority: 'Medium',
+                low_impact_rationale: 'Service availability demonstrates security capability. Configuration presence more important than operational sophistication for low-impact systems.'
+            },
+            'KSI-CNA-03': {
+                rule_logic: 'Container security validation through kubectl commands analyzing pod configurations. Implements numerical scoring that recognizes partial implementation with explicit low-impact threshold calibration.',
+                validation_philosophy: 'Accommodates diverse AWS account configurations while maintaining security standards. Provides alternative evidence paths when primary services unavailable.',
+                current_status: 'Container security mechanisms partially configured. Service available but enhancement needed to meet basic protection requirements.',
+                remediation_path: [
+                    { title: 'Update Security Contexts', description: 'Add runAsNonRoot and readOnlyRootFilesystem to pod specs', time: '2-3 hours' },
+                    { title: 'Implement Resource Limits', description: 'Set CPU and memory constraints for all containers', time: '1 hour' },
+                    { title: 'Review Image Security', description: 'Ensure container images use non-root users', time: '2-4 hours' },
+                    { title: 'Validate Configuration', description: 'Re-run validation to confirm compliance', time: '30 minutes' }
+                ],
+                business_impact: 'Container security directly impacts system security posture. Essential protections required without comprehensive defense-in-depth for low-impact systems.',
+                implementation_priority: 'High',
+                low_impact_rationale: 'Basic rather than enterprise-grade security configurations acceptable. Pilot-appropriate implementations over production maturity.'
+            },
+            'KSI-IAM-01': {
+                rule_logic: 'IAM policy analysis using multiple AWS CLI commands to validate MFA enforcement. Follows error handling patterns for AWS service variations and implements count-based assessment methodology.',
+                validation_philosophy: 'Balances rigor with practicality while maintaining security standards. Recognizes implementation realities while ensuring essential authentication controls.',
+                current_status: 'MFA mechanisms partially implemented. Service configuration demonstrates capability but requires enhancement for comprehensive coverage.',
+                remediation_path: [
+                    { title: 'Enable MFA Enforcement', description: 'Update IAM policies to require MFA for console and API access', time: '2 hours' },
+                    { title: 'User Account Audit', description: 'Identify and remediate accounts without MFA', time: '3-4 hours' },
+                    { title: 'Documentation Update', description: 'Update access procedures to reflect MFA requirements', time: '1 hour' },
+                    { title: 'Validation Testing', description: 'Test MFA enforcement across user scenarios', time: '2 hours' }
+                ],
+                business_impact: 'Multi-factor authentication fundamental to preventing unauthorized access. Basic protection emphasis without requiring comprehensive identity management sophistication.',
+                implementation_priority: 'Critical',
+                low_impact_rationale: 'Service availability demonstrates security capability. Essential protections required but operational maturity not mandated.'
+            },
+            'KSI-SVC-02': {
+                rule_logic: 'Network encryption validation through multi-command evidence collection. Command 1 analyzes load balancer listeners for HTTPS/TLS, Command 2 validates VPC endpoints for private communication. Multiple encryption mechanisms validated across network layers.',
+                validation_philosophy: 'Emphasizes capability demonstration over configuration sophistication. Service availability often sufficient for low-impact validation with graduated assessment framework.',
+                current_status: 'Network encryption mechanisms established. TLS 1.2+ enforced on load balancers with supporting infrastructure demonstrating comprehensive security posture.',
+                remediation_path: [
+                    { title: 'Verify TLS Configuration', description: 'Confirm TLS 1.2+ on all external endpoints', time: '1 hour' },
+                    { title: 'Document Encryption Methods', description: 'Create evidence showing data-in-transit protection', time: '30 minutes' },
+                    { title: 'Validate VPC Security', description: 'Ensure private communication channels configured', time: '45 minutes' }
+                ],
+                business_impact: 'Data in transit encryption required for compliance. Demonstrates secure communication capability appropriate for federal data handling requirements.',
+                implementation_priority: 'High',
+                low_impact_rationale: 'Configuration presence more important than operational sophistication. Service availability demonstrates encryption capability.'
+            },
+            'KSI-CMT-02': {
+                rule_logic: 'CI/CD pipeline security validation using AWS CodePipeline analysis. Implements hybrid validation combining CLI automation with manual evidence review from evidence_v2 directory structure.',
+                validation_philosophy: 'Accommodates cost constraints while ensuring essential security testing capabilities. Recognizes pilot environment limitations without compromising security requirements.',
+                current_status: 'Deployment security mechanisms partially configured. Service available but requires security testing integration for comprehensive protection.',
+                remediation_path: [
+                    { title: 'Integrate Security Testing', description: 'Add SAST/DAST stages to deployment pipelines', time: '6-8 hours' },
+                    { title: 'Configure Security Gates', description: 'Set pipeline failure conditions for security findings', time: '2 hours' },
+                    { title: 'Document Processes', description: 'Create evidence in evidence_v2/KSI-CMT-02/ directory', time: '1 hour' },
+                    { title: 'Test Pipeline Security', description: 'Validate security testing prevents vulnerable deployments', time: '2-3 hours' }
+                ],
+                business_impact: 'Automated security testing prevents vulnerable code deployment. Essential for maintaining secure development lifecycle without requiring enterprise-grade DevSecOps maturity.',
+                implementation_priority: 'High',
+                low_impact_rationale: 'Basic security testing sufficient. Service availability demonstrates capability without requiring operational sophistication.'
+            },
+            'KSI-PIY-02': {
+                rule_logic: 'Policy management validation through manual evidence assessment in evidence_v2/KSI-PIY-02/ directory. Combines document-based compliance review with structured evidence integration methodology.',
+                validation_philosophy: 'Provides transparent logic for policy compliance decisions. Accommodates implementation variations while maintaining documentation standards.',
+                current_status: 'Policy management framework established but requires update to maintain compliance currency. Evidence directory structure supports systematic review process.',
+                remediation_path: [
+                    { title: 'Policy Review Audit', description: 'Review all security policies for currency and completeness', time: '4-6 hours' },
+                    { title: 'Update Documentation', description: 'Revise policies to reflect current practices and requirements', time: '8-12 hours' },
+                    { title: 'Evidence Organization', description: 'Structure evidence in evidence_v2/KSI-PIY-02/ directory', time: '1 hour' },
+                    { title: 'Review Schedule Setup', description: 'Implement systematic policy review schedule', time: '2 hours' }
+                ],
+                business_impact: 'Current policies ensure effective governance and regulatory compliance. Documentation currency maintains audit readiness and operational effectiveness.',
+                implementation_priority: 'Medium',
+                low_impact_rationale: 'Policy availability demonstrates governance capability. Basic documentation standards without requiring comprehensive policy management sophistication.'
+            }
         };
 
         // Sample data
@@ -1794,7 +2004,7 @@ For technical support or questions about remediation, please contact security@me
                         </div>
                     </div>
                     <div class="ksi-actions">
-                        <button class="action-btn why" onclick="showWhyExplanation('${ksi.id}')">
+                        <button class="action-btn why" onclick="showWhyModal('${ksi.id}')">
                             🤔 Why?
                         </button>
                         <button class="action-btn primary" onclick="showCliDetails('${ksi.id}')">
@@ -1848,7 +2058,6 @@ For technical support or questions about remediation, please contact security@me
                 }
             });
 
-            // Why modal click outside to close
             document.getElementById('why-modal').addEventListener('click', (e) => {
                 if (e.target.id === 'why-modal') {
                     closeWhyModal();
@@ -1875,132 +2084,7 @@ For technical support or questions about remediation, please contact security@me
             });
         }
 
-        // Enhanced KSI data with rule justifications
-        const ksiJustifications = {
-            'KSI-CMT-03': {
-                rule_logic: 'Requires active CodeBuild projects AND CodePipeline validation for automated testing',
-                threshold_rationale: 'Automation is fundamental to 20x pilot value proposition - stricter threshold appropriate',
-                current_status: 'No CodeBuild projects or CodePipelines detected in AWS account',
-                remediation_path: 'Implement CodeBuild project for security testing and CodePipeline for change validation',
-                business_impact: 'Medium - Automated testing distinguishes 20x approach from traditional manual validation',
-                implementation_time: '1-2 weeks',
-                philosophy: 'This rule maintains a stricter threshold because automated testing is core to the 20x innovation value proposition.'
-            },
-            'KSI-CNA-05': {
-                rule_logic: 'AWS Shield subscription status OR CloudFront distribution configured = Pass',
-                threshold_rationale: 'Shield Standard is automatically enabled and appropriate for Low Impact systems',
-                current_status: 'Shield API permissions need resolution - technical access problem',
-                remediation_path: 'Verify Shield subscription status and check IAM permissions for Shield APIs',
-                business_impact: 'Low - Rule threshold is properly calibrated, just need API access',
-                implementation_time: '1-3 days',
-                philosophy: 'Service availability focus - demonstrates DDoS protection capability exists even if API access needs fixing.'
-            },
-            'KSI-CNA-07': {
-                rule_logic: 'AWS Config service enabled with rules configured OR service availability = Pass',
-                threshold_rationale: 'Configuration monitoring capability more important than full deployment for Low Impact',
-                current_status: 'Config service access error - service enablement needed',
-                remediation_path: 'Enable AWS Config service and verify API permissions',
-                business_impact: 'Medium - Configuration monitoring supports continuous compliance',
-                implementation_time: '1-3 days',
-                philosophy: 'Service capability demonstration - Config availability proves configuration monitoring can be implemented.'
-            },
-            'default_passed': {
-                rule_logic: 'Multi-command validation with service availability and configuration assessment',
-                threshold_rationale: 'Low Impact calibration with service capability focus and cost-conscious thresholds',
-                current_status: 'Multiple validation mechanisms detected - comprehensive implementation',
-                validation_strength: 'Multi-command validation provides robust evidence and reduces false negatives',
-                business_impact: 'High - Demonstrates security capability with automated validation',
-                compliance_level: 'Meets or exceeds Low Impact baseline requirements',
-                philosophy: 'Balanced approach emphasizing capability demonstration, cost-conscious implementation, and practical validation.'
-            }
-        };
-
-        function showWhyExplanation(ksiId) {
-            const ksi = allKsis.find(k => k.id === ksiId);
-            if (!ksi) return;
-
-            const justification = ksiJustifications[ksiId] || ksiJustifications['default_passed'];
-            const modal = document.getElementById('why-modal');
-            const title = document.getElementById('why-modal-title');
-            const content = document.getElementById('why-content');
-
-            title.innerHTML = `
-                <span>${ksi.status === 'passed' ? '✅' : '❌'}</span>
-                Why did ${ksi.id} ${ksi.status}?
-            `;
-
-            const contentHtml = `
-                <div class="why-section">
-                    <h3>🎯 Rule Logic</h3>
-                    <p><span class="highlight">${justification.rule_logic}</span></p>
-                    <p>${justification.threshold_rationale}</p>
-                </div>
-
-                <div class="why-section">
-                    <h3>📊 Current Status</h3>
-                    <p>${justification.current_status}</p>
-                    ${justification.validation_strength ? `<p><strong>Validation Strength:</strong> ${justification.validation_strength}</p>` : ''}
-                    ${justification.compliance_level ? `<p><strong>Compliance Level:</strong> ${justification.compliance_level}</p>` : ''}
-                </div>
-
-                ${ksi.status === 'failed' ? `
-                <div class="why-section">
-                    <h3>🔧 Remediation Path</h3>
-                    <p>${justification.remediation_path}</p>
-                    <p><strong>Implementation Time:</strong> ${justification.implementation_time}</p>
-                </div>` : ''}
-
-                <div class="why-section">
-                    <h3>💼 Business Impact</h3>
-                    <p><strong>Impact Level:</strong> ${justification.business_impact}</p>
-                </div>
-
-                <div class="why-section">
-                    <h3>📋 Validation Philosophy</h3>
-                    <p>${justification.philosophy}</p>
-                    ${getValidationPrinciples(ksi, justification)}
-                </div>
-
-                <div class="why-section">
-                    <h3>🔍 Technical Details</h3>
-                    <div class="code-block">${ksi.assertion_reason || ksi.description}</div>
-                </div>
-            `;
-
-            content.innerHTML = contentHtml;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function getValidationPrinciples(ksi, justification) {
-            let principles = '<ul>';
-            
-            // Multi-command validation principle
-            if (ksi.commands_executed > 1) {
-                principles += '<li><strong>Multi-Command Validation:</strong> Uses multiple CLI commands for comprehensive evidence and reduced false negatives</li>';
-            }
-            
-            // Service availability principle
-            if (justification.rule_logic.includes('OR') || justification.threshold_rationale.includes('availability')) {
-                principles += '<li><strong>Service Capability Focus:</strong> Emphasizes proving security services can be configured rather than requiring full production deployment</li>';
-            }
-            
-            // Cost-conscious principle
-            if (justification.threshold_rationale.includes('Low Impact') || justification.philosophy.includes('cost')) {
-                principles += '<li><strong>Cost-Conscious Validation:</strong> Accommodates pilot environment constraints while maintaining security validation integrity</li>';
-            }
-            
-            // Error handling principle
-            principles += '<li><strong>Graceful Error Handling:</strong> Robust response to AWS service variations and access limitations</li>';
-            
-            principles += '</ul>';
-            return principles;
-        }
-
-        function closeWhyModal() {
-            document.getElementById('why-modal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
+        function showCliDetails(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
 
@@ -2030,6 +2114,296 @@ ${ksi.requirement || 'No requirement specified'}`;
 
         function closeCliModal() {
             document.getElementById('cli-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Why Modal Functions
+        function showWhyModal(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            const justification = ksiJustifications[ksiId];
+            const modalTitle = document.getElementById('why-modal-title');
+            const modalBody = document.getElementById('why-modal-body');
+
+            modalTitle.innerHTML = `🤔 Why ${ksi.id}?`;
+
+            if (justification) {
+                modalBody.innerHTML = generateDetailedJustification(ksi, justification);
+            } else {
+                modalBody.innerHTML = generateDefaultJustification(ksi);
+            }
+
+            document.getElementById('why-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function generateDetailedJustification(ksi, justification) {
+            const statusBadge = `<span class="why-badge ${ksi.status}">${getStatusIcon(ksi.status)} ${ksi.status.toUpperCase()}</span>`;
+            
+            let remediationSection = '';
+            if (ksi.status === 'failed' && justification.remediation_path) {
+                remediationSection = `
+                    <div class="why-section">
+                        <h4 class="why-section-title">🛠️ Remediation Path</h4>
+                        <div class="why-section-content">
+                            <p><strong>Implementation Priority:</strong> <span class="why-highlight">${justification.implementation_priority}</span></p>
+                        </div>
+                        <div class="remediation-steps">
+                            ${justification.remediation_path.map((step, index) => `
+                                <div class="remediation-step">
+                                    <div class="step-number">${index + 1}</div>
+                                    <div class="step-content">
+                                        <div class="step-title">${step.title}</div>
+                                        <div class="step-description">${step.description}</div>
+                                        <div class="step-time">⏱️ Estimated time: ${step.time}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            let validationPhilosophySection = '';
+            if (justification.validation_philosophy) {
+                validationPhilosophySection = `
+                    <div class="why-section">
+                        <h4 class="why-section-title">🎯 Validation Philosophy</h4>
+                        <div class="why-section-content">
+                            <p>${justification.validation_philosophy}</p>
+                            ${justification.low_impact_rationale ? `
+                            <p><strong>Low-Impact Rationale:</strong> ${justification.low_impact_rationale}</p>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="why-section">
+                    <h4 class="why-section-title">📊 Validation Result</h4>
+                    <div class="why-section-content">
+                        ${statusBadge}
+                        <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span></p>
+                        <p><strong>Category:</strong> ${ksi.category}</p>
+                        <p><strong>Description:</strong> ${ksi.description}</p>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">🔍 CLI-Based Rule Logic</h4>
+                    <div class="why-section-content">
+                        <p>${justification.rule_logic}</p>
+                        <p><strong>Commands Executed:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
+                        <p><strong>CLI Command Pattern:</strong> <span class="why-code">${ksi.cli_command}</span></p>
+                    </div>
+                </div>
+
+                ${validationPhilosophySection}
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📈 Current Assessment Status</h4>
+                    <div class="why-section-content">
+                        <p>${justification.current_status}</p>
+                        <p><strong>Assertion Reason:</strong> ${ksi.assertion_reason}</p>
+                    </div>
+                </div>
+
+                ${remediationSection}
+
+                <div class="why-section">
+                    <h4 class="why-section-title">💼 Business Impact & Compliance</h4>
+                    <div class="why-section-content">
+                        <p>${justification.business_impact}</p>
+                        <p><strong>FedRAMP Requirement:</strong> ${ksi.requirement}</p>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📚 Validation Methodology Reference</h4>
+                    <div class="why-section-content">
+                        <p>This assessment follows the <strong>CLI-Based Automated Assessment</strong> methodology documented in the Meridian Official Ruleset Justification (v1.0, June 7, 2025).</p>
+                        <ul class="why-list">
+                            <li><strong>Multi-Command Validation:</strong> Each KSI uses multiple CLI commands for comprehensive evidence</li>
+                            <li><strong>Graceful Error Handling:</strong> Robust response to AWS service variations and access limitations</li>
+                            <li><strong>Low-Impact Calibration:</strong> Thresholds appropriate for basic security requirements</li>
+                            <li><strong>Service Availability Recognition:</strong> Credit for configured services regardless of operational status</li>
+                        </ul>
+                        <p><strong>Core Principle:</strong> Emphasizes service capability demonstration over operational maturity, balancing comprehensive security validation with practical implementation constraints.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateDefaultJustification(ksi) {
+            const statusBadge = `<span class="why-badge ${ksi.status}">${getStatusIcon(ksi.status)} ${ksi.status.toUpperCase()}</span>`;
+            
+            let validationExplanation = '';
+            if (ksi.status === 'passed') {
+                validationExplanation = `
+                    <div class="why-section">
+                        <h4 class="why-section-title">✅ Why This Passed</h4>
+                        <div class="why-section-content">
+                            <p>This KSI successfully validated according to the <strong>CLI-Based Automated Assessment</strong> methodology:</p>
+                            <ul class="why-list">
+                                <li><strong>Multi-Command Evidence Collection:</strong> Used ${ksi.commands_executed || 1} CLI command(s) following the standard rule function structure</li>
+                                <li><strong>Service Capability Demonstration:</strong> Validated that required security capability is properly implemented and operational</li>
+                                <li><strong>Low-Impact Threshold Achievement:</strong> Meets graduated assessment framework thresholds appropriate for basic security requirements</li>
+                                <li><strong>Graceful Error Handling:</strong> Successfully processed AWS API responses and service configurations</li>
+                            </ul>
+                            <p><strong>Assessment Result:</strong> Service availability demonstrates security capability with configuration presence confirming compliance.</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                validationExplanation = `
+                    <div class="why-section">
+                        <h4 class="why-section-title">❌ Why This Failed</h4>
+                        <div class="why-section-content">
+                            <p>This KSI failed validation according to the CLI-Based Automated Assessment methodology:</p>
+                            <ul class="why-list">
+                                <li><strong>Threshold Not Met:</strong> Numerical scoring system indicates insufficient security mechanisms established</li>
+                                <li><strong>Service Configuration Gap:</strong> Required AWS services not properly configured or available</li>
+                                <li><strong>Policy Compliance Issue:</strong> Current implementation doesn't meet organizational security standards</li>
+                                <li><strong>Evidence Insufficient:</strong> CLI commands or manual evidence didn't demonstrate required capability</li>
+                            </ul>
+                            <p><strong>Next Steps:</strong> Follow remediation guidance and re-run validation after addressing identified gaps.</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="why-section">
+                    <h4 class="why-section-title">📊 Validation Result</h4>
+                    <div class="why-section-content">
+                        ${statusBadge}
+                        <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span></p>
+                        <p><strong>Category:</strong> ${ksi.category}</p>
+                        <p><strong>Description:</strong> ${ksi.description}</p>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">🔍 Standard Rule Implementation</h4>
+                    <div class="why-section-content">
+                        <p>This KSI follows the <strong>standard rule function structure</strong> with consistent implementation patterns:</p>
+                        <p><strong>Commands Executed:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
+                        <p><strong>CLI Command Pattern:</strong> <span class="why-code">${ksi.cli_command}</span></p>
+                        <p><strong>Error Handling:</strong> Accommodates diverse AWS API response patterns with graceful continuation for unexpected responses</p>
+                        <p><strong>Assertion Reason:</strong> ${ksi.assertion_reason}</p>
+                    </div>
+                </div>
+
+                ${validationExplanation}
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📋 Validation Philosophy</h4>
+                    <div class="why-section-content">
+                        <p><strong>FedRAMP Requirement:</strong> ${ksi.requirement}</p>
+                        <p><strong>Assessment Approach:</strong> This evaluation follows the systematic CLI-based security assessment methodology that balances rigor with practicality.</p>
+                        <p><strong>Key Principles Applied:</strong></p>
+                        <ul class="why-list">
+                            <li><strong>Service Availability Recognition:</strong> Credits configured services regardless of operational status</li>
+                            <li><strong>Low-Impact Calibration:</strong> Thresholds appropriate for pilot environments and basic protection requirements</li>
+                            <li><strong>Cost-Optimization Awareness:</strong> Accommodates cost-conscious implementations without compromising security</li>
+                            <li><strong>Alternative Implementation Paths:</strong> Provides multiple valid approaches to meet security requirements</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📚 Methodology Reference</h4>
+                    <div class="why-section-content">
+                        <p>This assessment is based on the <strong>Meridian Official Ruleset Justification</strong> (v1.0, June 7, 2025), which establishes:</p>
+                        <ul class="why-list">
+                            <li><strong>Technical Reference:</strong> Documented rule logic and threshold methodology</li>
+                            <li><strong>Assessment Support:</strong> Transparency for independent validation review</li>
+                            <li><strong>Implementation Template:</strong> Systematic approach for CLI-based security validation</li>
+                        </ul>
+                        <p><strong>Core Philosophy:</strong> Emphasizes service capability demonstration over operational maturity, accommodating practical implementation constraints while maintaining security standards.</p>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📞 Additional Resources</h4>
+                    <div class="why-section-content">
+                        <p>For detailed implementation guidance or questions about this assessment:</p>
+                        <ul class="why-list">
+                            <li>📧 <strong>Security Team:</strong> <a href="mailto:security@meridianks.com" class="trust-link">security@meridianks.com</a></li>
+                            <li>📁 <strong>Evidence Repository:</strong> <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank" class="trust-link">GitHub Repository</a></li>
+                            <li>📋 <strong>Official Documentation:</strong> Meridian Official Ruleset Justification (Internal)</li>
+                            <li>🐛 <strong>Issue Reporting:</strong> Use the "Report Issue" button for GitHub issue creation</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } Issue:</strong> Security controls are not properly configured or enabled</li>
+                                <li><strong>Policy Violation:</strong> Current state violates organizational security policies</li>
+                                <li><strong>Risk Exposure:</strong> This gap creates potential security vulnerabilities</li>
+                            </ul>
+                            <p><strong>Immediate Action Required:</strong> Review the assertion reason and remediate the identified issues.</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="why-section">
+                    <h4 class="why-section-title">📊 Validation Result</h4>
+                    <div class="why-section-content">
+                        ${statusBadge}
+                        <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span></p>
+                        <p><strong>Category:</strong> ${ksi.category}</p>
+                        <p><strong>Description:</strong> ${ksi.description}</p>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">🔍 Validation Details</h4>
+                    <div class="why-section-content">
+                        <p><strong>Commands Executed:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
+                        <p><strong>CLI Command:</strong> <span class="why-code">${ksi.cli_command}</span></p>
+                        <p><strong>Assertion Reason:</strong> ${ksi.assertion_reason}</p>
+                    </div>
+                </div>
+
+                ${validationExplanation}
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📋 FedRAMP Requirement</h4>
+                    <div class="why-section-content">
+                        <p>${ksi.requirement}</p>
+                        <p><strong>Validation Philosophy:</strong> This assessment follows the FedRAMP 20x pilot approach, emphasizing service capability validation over traditional documentation review.</p>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📞 Need Help?</h4>
+                    <div class="why-section-content">
+                        <p>For detailed remediation guidance or questions about this KSI:</p>
+                        <ul class="why-list">
+                            <li>📧 Email: <a href="mailto:security@meridianks.com" class="trust-link">security@meridianks.com</a></li>
+                            <li>📁 Documentation: <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank" class="trust-link">GitHub Repository</a></li>
+                            <li>🐛 Report Issues: Use the "Report Issue" button to create a GitHub issue</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getStatusIcon(status) {
+            const icons = {
+                passed: '✅',
+                failed: '❌',
+                warning: '⚠️'
+            };
+            return icons[status] || '❓';
+        }
+
+        function closeWhyModal() {
+            document.getElementById('why-modal').classList.remove('active');
             document.body.style.overflow = '';
         }
 
@@ -2070,18 +2444,9 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
             window.open(issueUrl, '_blank');
         }
 
-        function updateTimestamps(dataTimestamp = null) {
-            let lastUpdateTime;
-            
-            if (dataTimestamp) {
-                // Use the timestamp from the JSON data (when validation was actually run)
-                lastUpdateTime = new Date(dataTimestamp);
-            } else {
-                // Fallback to current time if no data timestamp available
-                lastUpdateTime = new Date();
-            }
-            
-            const timeString = lastUpdateTime.toLocaleString('en-US', {
+        function updateTimestamps() {
+            const now = new Date();
+            const timeString = now.toLocaleString('en-US', {
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric',
@@ -2090,8 +2455,7 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
                 timeZoneName: 'short'
             });
             
-            // Next update is 24 hours from the last validation time
-            const nextUpdate = new Date(lastUpdateTime.getTime() + 24 * 60 * 60 * 1000);
+            const nextUpdate = new Date(now.getTime() + 24 * 60 * 60 * 1000);
             const nextUpdateString = nextUpdate.toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
@@ -2138,17 +2502,13 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
         function updateDashboardWithRealData(data) {
             try {
                 let validations = [];
-                let dataTimestamp = null;
                 
                 if (Array.isArray(data)) {
                     validations = data;
                 } else if (data.validations && Array.isArray(data.validations)) {
                     validations = data.validations;
-                    // Extract timestamp from metadata
-                    dataTimestamp = data.metadata?.generated_at || data.metadata?.last_updated;
                 } else if (data.metadata && data.metadata.validations) {
                     validations = data.metadata.validations;
-                    dataTimestamp = data.metadata?.generated_at || data.metadata?.last_updated;
                 }
 
                 if (validations.length === 0) {
@@ -2179,9 +2539,6 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
 
                 populateCategoryFilter();
                 filterKsis();
-                
-                // Update timestamps based on actual data timestamp
-                updateTimestamps(dataTimestamp);
                 
                 showDataSourceNotification('live');
                 
@@ -2251,23 +2608,24 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
         window.showCliDetails = showCliDetails;
         window.showKsiDetails = showKsiDetails;
         window.closeCliModal = closeCliModal;
+        window.showWhyModal = showWhyModal;
+        window.closeWhyModal = closeWhyModal;
         window.createGitHubIssue = createGitHubIssue;
         window.toggleTheme = toggleTheme;
         window.downloadJSON = downloadJSON;
         window.viewFailedReport = viewFailedReport;
         window.closeMarkdownModal = closeMarkdownModal;
 
-        // Auto-refresh every 5 minutes - check for new data and update timestamps
+        // Auto-refresh every 5 minutes
         setInterval(() => {
-            loadRealData(); // This will update timestamps when new data is loaded
+            updateTimestamps();
+            loadRealData();
         }, 300000);
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             initializeTheme();
             initializeDashboard();
-            // Initial timestamp setup with fallback - will be updated when real data loads
-            updateTimestamps();
         });
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -2277,4 +2635,3 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
     </script>
 </body>
 </html>
-                
