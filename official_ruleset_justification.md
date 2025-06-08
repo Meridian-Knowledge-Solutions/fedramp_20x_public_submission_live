@@ -709,8 +709,8 @@ The framework provides a systematic, transparent, and cost-effective approach to
 | **Document Version** | 2.0 |
 | **Effective Date** | June 7, 2025 |
 | **Review Schedule** | Annually |
-| **Owner** | Security Architecture Team |
-| **Approver** | Chief Information Security Officer |
+| **Owner** | Federal Cloud Operations Team |
+| **Approver** | Director of Federal Cybersecurity Operations |
 | **Classification** | Public |
 | **Distribution** | GSA 20x Program Office, 3PAO Community, Industry Partners |
 
