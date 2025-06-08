@@ -938,6 +938,38 @@
             word-break: break-all;
         }
 
+        /* CLI Details specific styles */
+        .cli-info, .cli-details {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .cli-info h4, .cli-details h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cli-output-section {
+            margin-top: 1.5rem;
+        }
+
+        .cli-output {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 300px;
+            overflow-y: auto;
+            color: var(--text-primary);
+        }
+
         /* Why modal specific styles */
         .why-section {
             margin-bottom: 2rem;
@@ -1728,14 +1760,77 @@ async function getAuthorizationSummary() {
             }
         ];
 
-        // KSI Justifications (existing - preserved exactly)
+        // KSI Justifications (existing - preserved exactly) - COMPLETE SET
         const ksiJustifications = {
+            'KSI-CNA-01': {
+                rule_logic: 'Uses multi-command validation through AWS CLI to check DDoS protection mechanisms. Follows our standard rule pattern with graceful error handling when AWS services respond differently than expected.',
+                technical_approach: 'Implements graduated assessment framework where service availability is often sufficient for low-impact validation. Uses numerical scoring that recognizes partial implementation.',
+                validation_method: 'Checks both AWS Shield Standard (enabled by default) and any enhanced protection configurations. Accommodates cost-conscious pilot implementations while ensuring essential network protection.',
+                threshold_rationale: 'Service availability demonstrates security capability. Configuration presence more important than operational sophistication for low-impact systems.',
+                error_handling: 'Graceful response to AWS service variations and access limitations. Alternative evidence paths when primary services unavailable.'
+            },
+            'KSI-CNA-03': {
+                rule_logic: 'Container security validation through kubectl commands analyzing pod configurations. Implements numerical scoring that recognizes partial implementation with explicit low-impact threshold calibration.',
+                technical_approach: 'Accommodates diverse AWS account configurations while maintaining security standards. Uses count-based assessment methodology for container privilege analysis.',
+                validation_method: 'Examines container security contexts, resource limits, and privilege escalation settings. Provides alternative evidence paths when primary validation unavailable.',
+                threshold_rationale: 'Basic rather than enterprise-grade security configurations acceptable. Pilot-appropriate implementations over production maturity.',
+                error_handling: 'Graceful continuation for unexpected container configuration types. Service availability recognition over perfect operational status.'
+            },
+            'KSI-IAM-01': {
+                rule_logic: 'IAM policy analysis using multiple AWS CLI commands to validate MFA enforcement. Follows error handling patterns for AWS service variations and implements count-based assessment.',
+                technical_approach: 'Uses graduated assessment framework with numerical scoring. Balances rigor with practicality while maintaining security standards for authentication controls.',
+                validation_method: 'Checks user account MFA status and IAM policy enforcement through multi-command evidence collection. Recognizes implementation realities while ensuring essential controls.',
+                threshold_rationale: 'Service availability demonstrates security capability. Essential protections required but operational maturity not mandated for low-impact systems.',
+                error_handling: 'Accommodates AWS service response variations. Graceful handling of permission limitations while maintaining validation integrity.'
+            },
+            'KSI-IAM-02': {
+                rule_logic: 'Role and policy analysis across multiple AWS CLI commands to assess least privilege implementation. Multi-command evidence collection with numerical threshold assessment.',
+                technical_approach: 'Recognizes implementation realities in pilot environments while maintaining security standards. Uses graduated scoring that accommodates practical constraints.',
+                validation_method: 'Analyzes IAM roles, policies, and user permissions through comprehensive CLI command suite. Validates both technical configuration and operational practices.',
+                threshold_rationale: 'Basic access controls sufficient for low-impact systems. Functionality demonstration over enterprise-grade policy sophistication.',
+                error_handling: 'Robust error handling for AWS permission variations. Alternative evidence paths when primary validation services unavailable.'
+            },
             'KSI-SVC-01': {
                 rule_logic: 'TLS validation through ELB listener analysis using AWS CLI commands. Implements graduated assessment framework with numerical scoring that recognizes partial implementation.',
                 technical_approach: 'Uses multiple CLI commands to validate TLS configuration across load balancers. Provides clear pass/fail logic while accommodating various AWS account configurations.',
                 validation_method: 'Checks TLS policy enforcement on Application Load Balancers through aws elbv2 describe-listeners. Alternative evidence paths when primary services unavailable.',
                 threshold_rationale: 'TLS 1.2+ demonstrates adequate encryption for low-impact systems. Service availability more important than perfect configuration.',
                 error_handling: 'Graceful handling of AWS service response variations. Alternative evidence paths when primary pipeline services unavailable.'
+            },
+            'KSI-SVC-02': {
+                rule_logic: 'Network encryption validation through multiple AWS CLI sources including VPC endpoints and load balancer configurations. Multi-command approach provides comprehensive coverage.',
+                technical_approach: 'Accommodates various AWS networking architectures while ensuring encryption capabilities exist. Uses service availability as primary indicator.',
+                validation_method: 'Combines load balancer TLS analysis with VPC endpoint encryption checks. Provides redundant validation paths for comprehensive assessment.',
+                threshold_rationale: 'Multiple encryption mechanisms acceptable. Service capability demonstration over perfect configuration for low-impact validation.',
+                error_handling: 'Robust handling of diverse AWS network configurations. Graceful degradation when individual services unavailable.'
+            },
+            'KSI-MLA-01': {
+                rule_logic: 'CloudTrail validation through AWS CLI analysis of trail configuration and status. Implements service availability assessment with configuration depth analysis.',
+                technical_approach: 'Recognizes cost-optimization needs in pilot environments while ensuring logging capability exists. Service configuration over operational status.',
+                validation_method: 'Checks CloudTrail trail existence and configuration through describe-trails commands. Validates logging infrastructure rather than current operational state.',
+                threshold_rationale: 'Trail configuration demonstrates logging capability. Operational status less critical than infrastructure availability for low-impact validation.',
+                error_handling: 'Accommodates CloudTrail service variations and regional differences. Alternative validation paths when primary trail data unavailable.'
+            },
+            'KSI-MLA-02': {
+                rule_logic: 'Security monitoring validation through Security Hub and CloudWatch analysis. Multi-service assessment recognizing various monitoring approaches.',
+                technical_approach: 'Flexible assessment accommodating different monitoring service configurations. Service availability indicates monitoring capability.',
+                validation_method: 'Checks Security Hub enablement and CloudWatch integration through multiple CLI commands. Validates monitoring infrastructure comprehensively.',
+                threshold_rationale: 'Monitoring service availability demonstrates capability. Configuration sophistication less important than service accessibility for pilots.',
+                error_handling: 'Graceful handling of monitoring service variations. Alternative evidence paths when primary monitoring services unavailable.'
+            },
+            'KSI-PIY-01': {
+                rule_logic: 'Asset inventory validation through manual evidence assessment in evidence_v2/KSI-PIY-01/ directory. Combines document-based compliance review with structured evidence integration.',
+                technical_approach: 'Provides transparent logic for inventory compliance decisions. Accommodates implementation variations while maintaining documentation standards.',
+                validation_method: 'Uses evidence directory structure for systematic review process. Hybrid validation combining automated checks with manual evidence integration.',
+                threshold_rationale: 'Inventory documentation demonstrates capability. Basic documentation standards without requiring comprehensive inventory management sophistication.',
+                error_handling: 'Flexible evidence processing for various document formats. Graceful handling of incomplete evidence while maintaining assessment standards.'
+            },
+            'KSI-PIY-02': {
+                rule_logic: 'Policy management validation through manual evidence assessment in evidence_v2/KSI-PIY-02/ directory. Combines document-based compliance review with structured evidence integration.',
+                technical_approach: 'Provides transparent logic for policy compliance decisions. Accommodates implementation variations while maintaining documentation standards.',
+                validation_method: 'Uses evidence directory structure for systematic review process. Hybrid validation combining automated checks with manual evidence integration.',
+                threshold_rationale: 'Policy availability demonstrates governance capability. Basic documentation standards without requiring comprehensive policy management sophistication.',
+                error_handling: 'Flexible evidence processing for various document formats. Graceful handling of incomplete evidence while maintaining assessment standards.'
             }
         };
 
@@ -2220,29 +2315,49 @@ async function getAuthorizationSummary() {
             });
         }
 
-        function showCliDetails(ksiId) {
+        async function showCliDetails(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
-
-            document.getElementById('modal-title').textContent = `${ksi.id} - CLI Details`;
             
-            let cliContent = `Command Summary:
-• Commands Executed: ${ksi.commands_executed || 0}
-• Successful: ${ksi.successful_commands || 0}
-• Failed: ${ksi.failed_commands || 0}
-• CLI Command: ${ksi.cli_command || 'No command available'}
-
-Assessment Details:
-• Result: ${ksi.assertion_reason || 'No detailed reason provided'}
-• Method: ${ksi.validation_method || 'Unknown'}
-• Evidence Path: ${ksi.evidence_path || 'No specific path'}
-
-Requirement:
-${ksi.requirement || 'No requirement specified'}
-
-Timestamp: ${ksi.timestamp ? formatTimestamp(ksi.timestamp) : 'Not available'}`;
-
-            document.getElementById('modal-content').textContent = cliContent;
+            document.getElementById('modal-title').textContent = `CLI Details - ${ksi.id}`;
+            
+            let cliContent = `
+                <div class="cli-info">
+                    <h4>📋 Command Summary</h4>
+                    <p><strong>Commands Executed:</strong> ${ksi.commands_executed || 0}</p>
+                    <p><strong>Successful:</strong> ${ksi.successful_commands || 0}</p>
+                    <p><strong>Failed:</strong> ${ksi.failed_commands || 0}</p>
+                    <p><strong>Command:</strong> <code>${ksi.cli_command || 'No command available'}</code></p>
+                </div>
+                
+                <div class="cli-details">
+                    <h4>🔍 Assessment Details</h4>
+                    <p><strong>Result:</strong> ${ksi.assertion_reason || 'No detailed reason provided'}</p>
+                    <p><strong>Method:</strong> ${ksi.validation_method || 'Unknown'}</p>
+                    <p><strong>Evidence Path:</strong> ${ksi.evidence_path || 'No specific path'}</p>
+                    ${ksi.timestamp ? `<p><strong>Timestamp:</strong> ${formatTimestamp(ksi.timestamp)}</p>` : ''}
+                </div>
+            `;
+            
+            // Try to load actual CLI output if available
+            if (ksi.evidence_path) {
+                try {
+                    const evidenceResponse = await fetch(`./${ksi.evidence_path}`);
+                    if (evidenceResponse.ok) {
+                        const evidenceData = await evidenceResponse.text();
+                        cliContent += `
+                            <div class="cli-output-section">
+                                <h4>💻 Raw CLI Output</h4>
+                                <div class="cli-output">${evidenceData}</div>
+                            </div>
+                        `;
+                    }
+                } catch (error) {
+                    console.log('Could not load evidence file:', error);
+                }
+            }
+            
+            document.getElementById('modal-content').innerHTML = cliContent;
             document.getElementById('cli-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -2316,30 +2431,130 @@ Timestamp: ${ksi.timestamp ? formatTimestamp(ksi.timestamp) : 'Not available'}`;
                         <p>${justification.error_handling}</p>
                     </div>
                 </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📋 Compliance Context</h4>
+                    <div class="why-section-content">
+                        <p><strong>FedRAMP requirement:</strong> ${ksi.requirement}</p>
+                        <p><strong>Low-impact calibration:</strong> This validation uses thresholds appropriate for basic security requirements, emphasizing service capability demonstration over operational maturity.</p>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📚 Methodology Reference</h4>
+                    <div class="why-section-content">
+                        <p>This assessment follows the <strong>Meridian Official Ruleset Justification</strong> (v1.0, June 7, 2025) methodology:</p>
+                        <ul class="why-list">
+                            <li><strong>Multi-command validation:</strong> Each KSI uses multiple CLI commands for comprehensive evidence</li>
+                            <li><strong>Graduated assessment framework:</strong> Numerical scoring recognizes partial implementation</li>
+                            <li><strong>Low-impact calibration:</strong> Thresholds appropriate for pilot and low-risk environments</li>
+                            <li><strong>Cost-optimization awareness:</strong> Accommodates resource constraints while maintaining security</li>
+                            <li><strong>Service availability recognition:</strong> Values capability demonstration over perfect configuration</li>
+                        </ul>
+                        <p><strong>Core principle:</strong> Demonstrates security capabilities through automated validation while accommodating practical implementation constraints in low-impact FedRAMP environments.</p>
+                    </div>
+                </div>
             `;
         }
 
         function generateDefaultJustification(ksi) {
+            const statusExplanation = generateStatusSpecificExplanation(ksi);
+            
             return `
                 <div class="why-section">
-                    <h4 class="why-section-title">📊 KSI Assessment</h4>
+                    <h4 class="why-section-title">📊 KSI Assessment Overview</h4>
                     <div class="why-section-content">
-                        <p><strong>ID:</strong> ${ksi.id}</p>
-                        <p><strong>Category:</strong> ${ksi.category}</p>
-                        <p><strong>Status:</strong> ${ksi.status.toUpperCase()}</p>
-                        <p><strong>Commands:</strong> ${ksi.commands_executed}</p>
+                        <p>This KSI follows our <strong>standard rule function structure</strong> with consistent implementation patterns:</p>
+                        <p><strong>Commands executed:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
+                        <p><strong>CLI validation:</strong> <span class="why-code">${ksi.cli_command}</span></p>
+                        <p><strong>Assessment result:</strong> ${ksi.assertion_reason}</p>
+                    </div>
+                </div>
+
+                ${statusExplanation}
+
+                <div class="why-section">
+                    <h4 class="why-section-title">⚖️ Assessment Philosophy</h4>
+                    <div class="why-section-content">
+                        <p><strong>Compliance requirement:</strong> ${ksi.requirement}</p>
+                        <p><strong>Validation approach:</strong> Uses CLI-based automated assessment rather than document review to demonstrate actual system capabilities.</p>
+                        <p><strong>Threshold calibration:</strong> Emphasizes service capability demonstration over operational maturity, with thresholds appropriate for low-impact systems.</p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">📋 Assessment Details</h4>
+                    <h4 class="why-section-title">🔬 Technical Methodology</h4>
                     <div class="why-section-content">
-                        <p><strong>Requirement:</strong> ${ksi.requirement}</p>
-                        <p><strong>Result:</strong> ${ksi.assertion_reason}</p>
-                        <p><strong>CLI Command:</strong> <span class="why-code">${ksi.cli_command}</span></p>
+                        <p>Based on the <strong>Meridian Official Ruleset Justification</strong> (v1.0, June 7, 2025):</p>
+                        <ul class="why-list">
+                            <li><strong>Multi-command validation:</strong> Each KSI uses multiple CLI commands for comprehensive evidence</li>
+                            <li><strong>Graceful error handling:</strong> Robust response to AWS service variations and access limitations</li>
+                            <li><strong>Graduated assessment framework:</strong> Numerical scoring that recognizes partial implementation</li>
+                            <li><strong>Cost-optimization awareness:</strong> Accommodates pilot environments and practical constraints</li>
+                        </ul>
+                        <p><strong>Core principle:</strong> Service availability recognition with alternative evidence paths when primary services unavailable.</p>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">📋 Low-Impact FedRAMP Calibration</h4>
+                    <div class="why-section-content">
+                        <p><strong>Risk-appropriate thresholds:</strong> NIST SP 800-53 provides different baseline requirements for Low Impact systems. Our rules implement these baseline requirements rather than gold-standard configurations.</p>
+                        <p><strong>Pilot environment considerations:</strong> As a 20x pilot submission, this environment serves demonstration purposes with specific constraints around cost optimization and innovation focus.</p>
+                        <p><strong>Security effectiveness:</strong> Validates that essential security controls exist and function appropriately for the risk level, without requiring enterprise-grade operational sophistication.</p>
                     </div>
                 </div>
             `;
+        }
+
+        function generateStatusSpecificExplanation(ksi) {
+            const status = ksi.status;
+            
+            if (status === 'passed') {
+                return `
+                    <div class="why-section">
+                        <h4 class="why-section-title">✅ Why This Passed</h4>
+                        <div class="why-section-content">
+                            <p><strong>Success criteria met:</strong> The automated validation found that this security control is properly implemented according to our low-impact FedRAMP thresholds.</p>
+                            <p><strong>Validation details:</strong> ${ksi.assertion_reason}</p>
+                            <p><strong>Compliance status:</strong> This KSI meets the baseline security requirements for FedRAMP Low Impact authorization.</p>
+                        </div>
+                    </div>
+                `;
+            } else if (status === 'failed') {
+                return `
+                    <div class="why-section">
+                        <h4 class="why-section-title">❌ Why This Failed</h4>
+                        <div class="why-section-content">
+                            <p><strong>Issue identified:</strong> The automated validation detected that this security control does not meet our minimum threshold requirements.</p>
+                            <p><strong>Failure details:</strong> ${ksi.assertion_reason}</p>
+                            <p><strong>Remediation needed:</strong> This KSI requires attention to achieve FedRAMP 20x compliance. Review the technical details and implement the necessary security measures.</p>
+                            <p><strong>Priority:</strong> Address this control to improve overall compliance posture.</p>
+                        </div>
+                    </div>
+                `;
+            } else if (status === 'warning') {
+                return `
+                    <div class="why-section">
+                        <h4 class="why-section-title">⚠️ Why This Shows Warning</h4>
+                        <div class="why-section-content">
+                            <p><strong>Partial compliance:</strong> This security control is partially implemented but may need enhancement for full compliance.</p>
+                            <p><strong>Warning details:</strong> ${ksi.assertion_reason}</p>
+                            <p><strong>Recommendation:</strong> While basic requirements are met, consider strengthening this control for improved security posture.</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="why-section">
+                        <h4 class="why-section-title">❓ Status Unknown</h4>
+                        <div class="why-section-content">
+                            <p><strong>Assessment pending:</strong> This KSI has not been fully validated or the validation encountered an error.</p>
+                            <p><strong>Next steps:</strong> Review the technical implementation and ensure proper validation can be performed.</p>
+                        </div>
+                    </div>
+                `;
+            }
         }
 
         function closeWhyModal() {
