@@ -1625,34 +1625,78 @@
             }
         ];
 
-        // Enhanced justification database based on the official ruleset
+        // Enhanced justification database - Human-friendly explanations based on official ruleset
         const ksiJustifications = {
             'KSI-CNA-01': {
-                rule_logic: 'Multi-command validation using AWS CLI to assess DDoS protection mechanisms. Follows the standard rule pattern with graceful error handling and service availability recognition. Uses graduated assessment framework where service availability often sufficient for low-impact validation.',
-                validation_philosophy: 'Emphasizes service capability demonstration over operational maturity. Accommodates cost-conscious pilot implementations while ensuring essential network protection controls are demonstrable.',
-                current_status: 'AWS Shield Standard is available on all resources. Multi-command evidence collection validates both primary protection mechanisms and supporting infrastructure configurations.',
+                simple_explanation: 'We check if your system can handle cyber attacks that try to overwhelm it with traffic (like a DDoS attack). Think of it as making sure your digital doors have good bouncers.',
+                how_we_check: 'We run multiple AWS commands to see if protection services are turned on and working. We look for both basic protection (which AWS gives you automatically) and any enhanced protection you might have added.',
+                current_status: 'Good news! AWS Shield Standard is protecting all your resources. This gives you basic DDoS protection without you having to do anything.',
+                why_this_matters: 'If attackers try to flood your system with traffic to knock it offline, these protections help keep your service running. It\'s like having a security system for your digital front door.',
                 remediation_path: [
-                    { title: 'Verify Shield Standard Coverage', description: 'Confirm AWS Shield Standard is active (enabled by default)', time: '15 minutes' },
-                    { title: 'Document Protection Mechanisms', description: 'Create evidence showing DDoS protection capability', time: '30 minutes' },
-                    { title: 'Consider Shield Advanced', description: 'Evaluate if enhanced protection needed for production', time: '1 hour' }
+                    { title: 'Double-check protection', description: 'Verify that AWS Shield Standard is active (it should be by default)', time: '15 minutes' },
+                    { title: 'Document your setup', description: 'Create a simple record showing your DDoS protection is working', time: '30 minutes' },
+                    { title: 'Consider upgrading', description: 'Look into AWS Shield Advanced if you need extra protection', time: '1 hour' }
                 ],
-                business_impact: 'Network protection controls must be implemented per FedRAMP requirements. Service availability demonstrates security capability without requiring operational sophistication.',
-                implementation_priority: 'Medium',
-                low_impact_rationale: 'Service availability demonstrates security capability. Configuration presence more important than operational sophistication for low-impact systems.'
+                implementation_priority: 'Medium'
             },
             'KSI-CNA-03': {
-                rule_logic: 'Container security validation through kubectl commands analyzing pod configurations. Implements numerical scoring that recognizes partial implementation with explicit low-impact threshold calibration.',
-                validation_philosophy: 'Accommodates diverse AWS account configurations while maintaining security standards. Provides alternative evidence paths when primary services unavailable.',
-                current_status: 'Container security mechanisms partially configured. Service available but enhancement needed to meet basic protection requirements.',
+                simple_explanation: 'We make sure your containers (the packages that hold your software) follow security best practices. It\'s like checking that all the locks on your digital storage units work properly.',
+                how_we_check: 'We examine your container settings to see if they\'re running with unnecessary admin privileges. Containers should run with limited permissions - like giving someone keys to one room instead of the whole building.',
+                current_status: 'We found some containers that have too many privileges. They\'re running as "root" users, which is like giving everyone the master key.',
+                why_this_matters: 'When containers have too much access, a security breach in one container could affect your whole system. It\'s better to limit what each container can do.',
                 remediation_path: [
-                    { title: 'Update Security Contexts', description: 'Add runAsNonRoot and readOnlyRootFilesystem to pod specs', time: '2-3 hours' },
-                    { title: 'Implement Resource Limits', description: 'Set CPU and memory constraints for all containers', time: '1 hour' },
-                    { title: 'Review Image Security', description: 'Ensure container images use non-root users', time: '2-4 hours' },
-                    { title: 'Validate Configuration', description: 'Re-run validation to confirm compliance', time: '30 minutes' }
+                    { title: 'Fix container permissions', description: 'Update containers to run as regular users instead of admin users', time: '2-3 hours' },
+                    { title: 'Set resource limits', description: 'Tell each container how much CPU and memory it can use', time: '1 hour' },
+                    { title: 'Review container images', description: 'Make sure the base images you use follow security practices', time: '2-4 hours' },
+                    { title: 'Test the changes', description: 'Run the validation again to make sure everything works', time: '30 minutes' }
                 ],
-                business_impact: 'Container security directly impacts system security posture. Essential protections required without comprehensive defense-in-depth for low-impact systems.',
-                implementation_priority: 'High',
-                low_impact_rationale: 'Basic rather than enterprise-grade security configurations acceptable. Pilot-appropriate implementations over production maturity.'
+                implementation_priority: 'High'
+            },
+            'KSI-IAM-01': {
+                simple_explanation: 'We check that everyone who accesses your system has to prove their identity in two ways (like using a password AND a phone code). It\'s like requiring both an ID and a key card to enter a secure building.',
+                how_we_check: 'We look at all your user accounts and count how many have multi-factor authentication (MFA) set up. Then we check your system policies to see if MFA is required.',
+                current_status: 'Most of your users have MFA enabled, but 12 people still only use passwords. This includes some admin users who have extra privileges.',
+                why_this_matters: 'Passwords can be stolen or guessed. MFA adds an extra layer that makes it much harder for attackers to break into accounts, especially important for admin users.',
+                remediation_path: [
+                    { title: 'Update security policies', description: 'Change your system rules to require MFA for everyone', time: '2 hours' },
+                    { title: 'Help users set up MFA', description: 'Guide the 12 remaining users through enabling MFA on their accounts', time: '3-4 hours' },
+                    { title: 'Create documentation', description: 'Write simple instructions for new users on how to set up MFA', time: '1 hour' },
+                    { title: 'Test the policy', description: 'Make sure the new MFA requirement works correctly', time: '2 hours' }
+                ],
+                implementation_priority: 'Critical'
+            },
+            'KSI-SVC-02': {
+                simple_explanation: 'We make sure all data moving between your systems is encrypted - like putting information in a locked briefcase when it travels between locations.',
+                how_we_check: 'We examine your load balancers and network connections to verify they use strong encryption (TLS 1.2 or better). We also check for secure private connections between your services.',
+                current_status: 'Excellent! All your external connections use strong encryption, and your internal network traffic is properly secured.',
+                why_this_matters: 'When data travels over networks, it can be intercepted. Encryption scrambles it so even if someone catches it, they can\'t read it.',
+                implementation_priority: 'Maintained'
+            },
+            'KSI-CMT-02': {
+                simple_explanation: 'We check that your software deployment process includes security testing - like having a quality inspector check each product before it goes to customers.',
+                how_we_check: 'We look at your deployment pipelines (the automated systems that move code to production) to see if they include security scans and tests.',
+                current_status: 'Your deployment process needs security testing added. Right now, code can go live without being checked for security problems.',
+                why_this_matters: 'Security bugs in code can create vulnerabilities. Testing catches these issues before they reach your live system where attackers could exploit them.',
+                remediation_path: [
+                    { title: 'Add security scanning', description: 'Install tools that automatically check code for security issues', time: '6-8 hours' },
+                    { title: 'Set up failure rules', description: 'Configure the pipeline to stop if serious security issues are found', time: '2 hours' },
+                    { title: 'Document the process', description: 'Create records showing your security testing is working', time: '1 hour' },
+                    { title: 'Test the pipeline', description: 'Make sure the security checks work and catch problems', time: '2-3 hours' }
+                ],
+                implementation_priority: 'High'
+            },
+            'KSI-PIY-02': {
+                simple_explanation: 'We check that your security policies are up-to-date. It\'s like making sure your employee handbook reflects current best practices and regulations.',
+                how_we_check: 'We look at when your security policies were last updated and compare that to requirements for annual reviews.',
+                current_status: 'Your incident response policy is 18 months old, which exceeds the 12-month update requirement. A few other policies are also approaching their review dates.',
+                why_this_matters: 'Security practices and regulations change over time. Outdated policies might not address current threats or requirements, leaving gaps in your protection.',
+                remediation_path: [
+                    { title: 'Review all policies', description: 'Go through each security policy to see what needs updating', time: '4-6 hours' },
+                    { title: 'Update content', description: 'Revise policies to reflect current practices and requirements', time: '8-12 hours' },
+                    { title: 'Get approvals', description: 'Have stakeholders review and approve the updated policies', time: '1 week' },
+                    { title: 'Set reminders', description: 'Create a schedule to automatically remind you when reviews are due', time: '2 hours' }
+                ],
+                implementation_priority: 'Medium'
             }
         };
 
@@ -1914,9 +1958,10 @@ ${ksi.requirement || 'No requirement specified'}`;
             if (ksi.status === 'failed' && justification.remediation_path) {
                 remediationSection = `
                     <div class="why-section">
-                        <h4 class="why-section-title">🛠️ Remediation Path</h4>
+                        <h4 class="why-section-title">🛠️ How to Fix This</h4>
                         <div class="why-section-content">
-                            <p><strong>Implementation Priority:</strong> <span class="why-highlight">${justification.implementation_priority}</span></p>
+                            <p><strong>Priority:</strong> <span class="why-highlight">${justification.implementation_priority}</span></p>
+                            <p>Here's what you need to do to get this KSI passing:</p>
                         </div>
                         <div class="remediation-steps">
                             ${justification.remediation_path.map((step, index) => `
@@ -1925,7 +1970,7 @@ ${ksi.requirement || 'No requirement specified'}`;
                                     <div class="step-content">
                                         <div class="step-title">${step.title}</div>
                                         <div class="step-description">${step.description}</div>
-                                        <div class="step-time">⏱️ Estimated time: ${step.time}</div>
+                                        <div class="step-time">⏱️ Time needed: ${step.time}</div>
                                     </div>
                                 </div>
                             `).join('')}
@@ -1934,72 +1979,54 @@ ${ksi.requirement || 'No requirement specified'}`;
                 `;
             }
 
-            let validationPhilosophySection = '';
-            if (justification.validation_philosophy) {
-                validationPhilosophySection = `
-                    <div class="why-section">
-                        <h4 class="why-section-title">🎯 Validation Philosophy</h4>
-                        <div class="why-section-content">
-                            <p>${justification.validation_philosophy}</p>
-                            ${justification.low_impact_rationale ? `
-                            <p><strong>Low-Impact Rationale:</strong> ${justification.low_impact_rationale}</p>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-            }
-
             return `
                 <div class="why-section">
-                    <h4 class="why-section-title">📊 Validation Result</h4>
+                    <h4 class="why-section-title">📊 What This KSI Checks</h4>
                     <div class="why-section-content">
                         ${statusBadge}
-                        <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span></p>
-                        <p><strong>Category:</strong> ${ksi.category}</p>
-                        <p><strong>Description:</strong> ${ksi.description}</p>
+                        <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span> - ${ksi.category}</p>
+                        <p><strong>In simple terms:</strong> ${justification.simple_explanation}</p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">🔍 CLI-Based Rule Logic</h4>
+                    <h4 class="why-section-title">🔍 How We Check This</h4>
                     <div class="why-section-content">
-                        <p>${justification.rule_logic}</p>
-                        <p><strong>Commands Executed:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
-                        <p><strong>CLI Command Pattern:</strong> <span class="why-code">${ksi.cli_command}</span></p>
+                        <p>${justification.how_we_check}</p>
+                        <p><strong>Technical details:</strong> We ran <span class="why-highlight">${ksi.commands_executed || 0} automated commands</span> to gather evidence.</p>
+                        <p><strong>Command used:</strong> <span class="why-code">${ksi.cli_command}</span></p>
                     </div>
                 </div>
 
-                ${validationPhilosophySection}
-
                 <div class="why-section">
-                    <h4 class="why-section-title">📈 Current Assessment Status</h4>
+                    <h4 class="why-section-title">📈 What We Found</h4>
                     <div class="why-section-content">
                         <p>${justification.current_status}</p>
-                        <p><strong>Assertion Reason:</strong> ${ksi.assertion_reason}</p>
+                        <p><strong>Detailed result:</strong> ${ksi.assertion_reason}</p>
                     </div>
                 </div>
 
                 ${remediationSection}
 
                 <div class="why-section">
-                    <h4 class="why-section-title">💼 Business Impact & Compliance</h4>
+                    <h4 class="why-section-title">💡 Why This Matters</h4>
                     <div class="why-section-content">
-                        <p>${justification.business_impact}</p>
-                        <p><strong>FedRAMP Requirement:</strong> ${ksi.requirement}</p>
+                        <p>${justification.why_this_matters || 'This security control helps protect your system and meet compliance requirements.'}</p>
+                        <p><strong>Compliance requirement:</strong> ${ksi.requirement}</p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">📚 Validation Methodology Reference</h4>
+                    <h4 class="why-section-title">🔬 Our Testing Approach</h4>
                     <div class="why-section-content">
-                        <p>This assessment follows the <strong>CLI-Based Automated Assessment</strong> methodology documented in the Meridian Official Ruleset Justification (v1.0, June 7, 2025).</p>
+                        <p>This assessment uses <strong>automated CLI-based validation</strong> instead of manual document reviews. Here's what makes our approach reliable:</p>
                         <ul class="why-list">
-                            <li><strong>Multi-Command Validation:</strong> Each KSI uses multiple CLI commands for comprehensive evidence</li>
-                            <li><strong>Graceful Error Handling:</strong> Robust response to AWS service variations and access limitations</li>
-                            <li><strong>Low-Impact Calibration:</strong> Thresholds appropriate for basic security requirements</li>
-                            <li><strong>Service Availability Recognition:</strong> Credit for configured services regardless of operational status</li>
+                            <li><strong>Multiple checks:</strong> We run several commands to get a complete picture</li>
+                            <li><strong>Real-time results:</strong> We check your actual system configuration, not just paperwork</li>
+                            <li><strong>Practical thresholds:</strong> We focus on whether security capabilities work, not just if they're perfect</li>
+                            <li><strong>Cost-aware:</strong> We understand pilot projects and don't penalize cost-saving measures that don't affect security</li>
                         </ul>
-                        <p><strong>Core Principle:</strong> Emphasizes service capability demonstration over operational maturity, balancing comprehensive security validation with practical implementation constraints.</p>
+                        <p><em>Based on the Meridian Official Ruleset Justification methodology (June 2025)</em></p>
                     </div>
                 </div>
             `;
@@ -2008,36 +2035,49 @@ ${ksi.requirement || 'No requirement specified'}`;
         function generateDefaultJustification(ksi) {
             const statusBadge = `<span class="why-badge ${ksi.status}">${getStatusIcon(ksi.status)} ${ksi.status.toUpperCase()}</span>`;
             
-            let validationExplanation = '';
+            let statusExplanation = '';
             if (ksi.status === 'passed') {
-                validationExplanation = `
+                statusExplanation = `
                     <div class="why-section">
                         <h4 class="why-section-title">✅ Why This Passed</h4>
                         <div class="why-section-content">
-                            <p>This KSI successfully validated according to the <strong>CLI-Based Automated Assessment</strong> methodology:</p>
+                            <p>Great! This security control is working correctly. Here's what that means:</p>
                             <ul class="why-list">
-                                <li><strong>Multi-Command Evidence Collection:</strong> Used ${ksi.commands_executed || 1} CLI command(s) following the standard rule function structure</li>
-                                <li><strong>Service Capability Demonstration:</strong> Validated that required security capability is properly implemented and operational</li>
-                                <li><strong>Low-Impact Threshold Achievement:</strong> Meets graduated assessment framework thresholds appropriate for basic security requirements</li>
-                                <li><strong>Graceful Error Handling:</strong> Successfully processed AWS API responses and service configurations</li>
+                                <li><strong>Your system has the required security capability</strong> - the protection is in place and functional</li>
+                                <li><strong>Our automated tests confirmed it works</strong> - we ran ${ksi.commands_executed || 1} command(s) and got good results</li>
+                                <li><strong>You meet the compliance requirement</strong> - this KSI satisfies FedRAMP 20x Low Impact standards</li>
+                                <li><strong>No action needed right now</strong> - but we'll keep checking this automatically</li>
                             </ul>
-                            <p><strong>Assessment Result:</strong> Service availability demonstrates security capability with configuration presence confirming compliance.</p>
+                        </div>
+                    </div>
+                `;
+            } else if (ksi.status === 'failed') {
+                statusExplanation = `
+                    <div class="why-section">
+                        <h4 class="why-section-title">❌ Why This Failed</h4>
+                        <div class="why-section-content">
+                            <p>This security control needs attention. Here's what's happening:</p>
+                            <ul class="why-list">
+                                <li><strong>The required security capability isn't fully in place</strong> - something needs to be configured or fixed</li>
+                                <li><strong>Our automated tests found gaps</strong> - the system didn't meet our minimum thresholds</li>
+                                <li><strong>This creates a compliance gap</strong> - you need this working to meet FedRAMP 20x requirements</li>
+                                <li><strong>Action needed</strong> - see the guidance below on how to fix this</li>
+                            </ul>
                         </div>
                     </div>
                 `;
             } else {
-                validationExplanation = `
+                statusExplanation = `
                     <div class="why-section">
-                        <h4 class="why-section-title">❌ Why This Failed</h4>
+                        <h4 class="why-section-title">⚠️ Why This Is a Warning</h4>
                         <div class="why-section-content">
-                            <p>This KSI failed validation according to the CLI-Based Automated Assessment methodology:</p>
+                            <p>This security control is mostly working but could be improved:</p>
                             <ul class="why-list">
-                                <li><strong>Threshold Not Met:</strong> Numerical scoring system indicates insufficient security mechanisms established</li>
-                                <li><strong>Service Configuration Gap:</strong> Required AWS services not properly configured or available</li>
-                                <li><strong>Policy Compliance Issue:</strong> Current implementation doesn't meet organizational security standards</li>
-                                <li><strong>Evidence Insufficient:</strong> CLI commands or manual evidence didn't demonstrate required capability</li>
+                                <li><strong>Basic protection is in place</strong> - the core security capability exists</li>
+                                <li><strong>There's room for improvement</strong> - some aspects could be strengthened</li>
+                                <li><strong>You're meeting minimum requirements</strong> - but consider enhancements for better security</li>
+                                <li><strong>Optional action</strong> - review the suggestions to decide if improvements are worth making</li>
                             </ul>
-                            <p><strong>Next Steps:</strong> Follow remediation guidance and re-run validation after addressing identified gaps.</p>
                         </div>
                     </div>
                 `;
@@ -2045,65 +2085,57 @@ ${ksi.requirement || 'No requirement specified'}`;
 
             return `
                 <div class="why-section">
-                    <h4 class="why-section-title">📊 Validation Result</h4>
+                    <h4 class="why-section-title">📊 What This KSI Checks</h4>
                     <div class="why-section-content">
                         ${statusBadge}
-                        <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span></p>
-                        <p><strong>Category:</strong> ${ksi.category}</p>
-                        <p><strong>Description:</strong> ${ksi.description}</p>
+                        <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span> - ${ksi.category}</p>
+                        <p><strong>What it does:</strong> ${ksi.description}</p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">🔍 Standard Rule Implementation</h4>
+                    <h4 class="why-section-title">🔍 How We Tested This</h4>
                     <div class="why-section-content">
-                        <p>This KSI follows the <strong>standard rule function structure</strong> with consistent implementation patterns:</p>
-                        <p><strong>Commands Executed:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
-                        <p><strong>CLI Command Pattern:</strong> <span class="why-code">${ksi.cli_command}</span></p>
-                        <p><strong>Error Handling:</strong> Accommodates diverse AWS API response patterns with graceful continuation for unexpected responses</p>
-                        <p><strong>Assertion Reason:</strong> ${ksi.assertion_reason}</p>
+                        <p>We used automated commands to check your system configuration instead of reviewing documents.</p>
+                        <p><strong>Commands run:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
+                        <p><strong>What we checked:</strong> <span class="why-code">${ksi.cli_command}</span></p>
+                        <p><strong>What we found:</strong> ${ksi.assertion_reason}</p>
                     </div>
                 </div>
 
-                ${validationExplanation}
+                ${statusExplanation}
 
                 <div class="why-section">
-                    <h4 class="why-section-title">📋 Validation Philosophy</h4>
+                    <h4 class="why-section-title">📋 Compliance Context</h4>
                     <div class="why-section-content">
-                        <p><strong>FedRAMP Requirement:</strong> ${ksi.requirement}</p>
-                        <p><strong>Assessment Approach:</strong> This evaluation follows the systematic CLI-based security assessment methodology that balances rigor with practicality.</p>
-                        <p><strong>Key Principles Applied:</strong></p>
+                        <p><strong>Requirement:</strong> ${ksi.requirement}</p>
+                        <p><strong>Our approach:</strong> Instead of checking paperwork, we verify that your security capabilities actually work in your live system.</p>
+                        <p><strong>What this means:</strong> We focus on whether you can demonstrate the security capability, not whether you have perfect enterprise-grade implementations.</p>
+                    </div>
+                </div>
+
+                <div class="why-section">
+                    <h4 class="why-section-title">🔬 About Our Testing Method</h4>
+                    <div class="why-section-content">
+                        <p>This assessment uses the <strong>Meridian CLI-based validation approach</strong> designed for FedRAMP 20x:</p>
                         <ul class="why-list">
-                            <li><strong>Service Availability Recognition:</strong> Credits configured services regardless of operational status</li>
-                            <li><strong>Low-Impact Calibration:</strong> Thresholds appropriate for pilot environments and basic protection requirements</li>
-                            <li><strong>Cost-Optimization Awareness:</strong> Accommodates cost-conscious implementations without compromising security</li>
-                            <li><strong>Alternative Implementation Paths:</strong> Provides multiple valid approaches to meet security requirements</li>
+                            <li><strong>Real-time validation:</strong> We check your actual system, not documents</li>
+                            <li><strong>Practical thresholds:</strong> We understand pilot constraints and cost considerations</li>
+                            <li><strong>Multiple evidence sources:</strong> We use several commands to get a complete picture</li>
+                            <li><strong>Transparent logic:</strong> Every decision is based on clear, documented criteria</li>
                         </ul>
+                        <p><em>This approach balances security rigor with implementation practicality.</em></p>
                     </div>
                 </div>
 
                 <div class="why-section">
-                    <h4 class="why-section-title">📚 Methodology Reference</h4>
+                    <h4 class="why-section-title">❓ Questions or Issues?</h4>
                     <div class="why-section-content">
-                        <p>This assessment is based on the <strong>Meridian Official Ruleset Justification</strong> (v1.0, June 7, 2025), which establishes:</p>
+                        <p>If you need help with this KSI or want to understand the requirements better:</p>
                         <ul class="why-list">
-                            <li><strong>Technical Reference:</strong> Documented rule logic and threshold methodology</li>
-                            <li><strong>Assessment Support:</strong> Transparency for independent validation review</li>
-                            <li><strong>Implementation Template:</strong> Systematic approach for CLI-based security validation</li>
-                        </ul>
-                        <p><strong>Core Philosophy:</strong> Emphasizes service capability demonstration over operational maturity, accommodating practical implementation constraints while maintaining security standards.</p>
-                    </div>
-                </div>
-
-                <div class="why-section">
-                    <h4 class="why-section-title">📞 Additional Resources</h4>
-                    <div class="why-section-content">
-                        <p>For detailed implementation guidance or questions about this assessment:</p>
-                        <ul class="why-list">
-                            <li>📧 <strong>Security Team:</strong> <a href="mailto:security@meridianks.com" class="trust-link">security@meridianks.com</a></li>
-                            <li>📁 <strong>Evidence Repository:</strong> <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank" class="trust-link">GitHub Repository</a></li>
-                            <li>📋 <strong>Official Documentation:</strong> Meridian Official Ruleset Justification (Internal)</li>
-                            <li>🐛 <strong>Issue Reporting:</strong> Use the "Report Issue" button for GitHub issue creation</li>
+                            <li>📧 <strong>Email our security team:</strong> <a href="mailto:security@meridianks.com" class="trust-link">security@meridianks.com</a></li>
+                            <li>📁 <strong>Check our documentation:</strong> <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank" class="trust-link">GitHub Repository</a></li>
+                            <li>🐛 <strong>Report a problem:</strong> Use the "Report Issue" button to create a support ticket</li>
                         </ul>
                     </div>
                 </div>
