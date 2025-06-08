@@ -192,7 +192,7 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* Header Info Section - Moved from Footer */
+        /* Header Info Section */
         .header-info {
             background: var(--bg-accent);
             border: 1px solid var(--border-color);
@@ -754,7 +754,7 @@
             background: var(--gradient-orange);
             color: white;
             border-color: var(--orange-500);
-            order: -1; /* Makes it appear first */
+            order: -1;
         }
 
         .action-btn.why:hover {
@@ -1097,6 +1097,16 @@
             100% { transform: rotate(360deg); }
         }
 
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
@@ -1189,7 +1199,6 @@
                 </div>
             </div>
 
-            <!-- Header Info Section - Moved from Footer -->
             <div class="header-info">
                 <div class="header-info-content">
                     <div class="header-info-title">Meridian Knowledge Solutions - FedRAMP 20x Trust Center</div>
@@ -1427,7 +1436,7 @@
     </div>
 
     <script>
-        // Application State
+        // Application State - Fresh start
         let allKsis = [];
         let filteredKsis = [];
         let currentFilters = {
@@ -1436,93 +1445,7 @@
             search: ''
         };
 
-        // KSI Justifications Database - Based on Official Ruleset Justification
-        const ksiJustifications = {
-            'KSI-CNA-01': {
-                rule_logic: 'Multi-command validation using AWS CLI to assess DDoS protection mechanisms. Follows the standard rule pattern with graceful error handling and service availability recognition. Uses graduated assessment framework where service availability often sufficient for low-impact validation.',
-                validation_philosophy: 'Emphasizes service capability demonstration over operational maturity. Accommodates cost-conscious pilot implementations while ensuring essential network protection controls are demonstrable.',
-                current_status: 'AWS Shield Standard is available on all resources. Multi-command evidence collection validates both primary protection mechanisms and supporting infrastructure configurations.',
-                remediation_path: [
-                    { title: 'Verify Shield Standard Coverage', description: 'Confirm AWS Shield Standard is active (enabled by default)', time: '15 minutes' },
-                    { title: 'Document Protection Mechanisms', description: 'Create evidence showing DDoS protection capability', time: '30 minutes' },
-                    { title: 'Consider Shield Advanced', description: 'Evaluate if enhanced protection needed for production', time: '1 hour' }
-                ],
-                business_impact: 'Network protection controls must be implemented per FedRAMP requirements. Service availability demonstrates security capability without requiring operational sophistication.',
-                implementation_priority: 'Medium',
-                low_impact_rationale: 'Service availability demonstrates security capability. Configuration presence more important than operational sophistication for low-impact systems.'
-            },
-            'KSI-CNA-03': {
-                rule_logic: 'Container security validation through kubectl commands analyzing pod configurations. Implements numerical scoring that recognizes partial implementation with explicit low-impact threshold calibration.',
-                validation_philosophy: 'Accommodates diverse AWS account configurations while maintaining security standards. Provides alternative evidence paths when primary services unavailable.',
-                current_status: 'Container security mechanisms partially configured. Service available but enhancement needed to meet basic protection requirements.',
-                remediation_path: [
-                    { title: 'Update Security Contexts', description: 'Add runAsNonRoot and readOnlyRootFilesystem to pod specs', time: '2-3 hours' },
-                    { title: 'Implement Resource Limits', description: 'Set CPU and memory constraints for all containers', time: '1 hour' },
-                    { title: 'Review Image Security', description: 'Ensure container images use non-root users', time: '2-4 hours' },
-                    { title: 'Validate Configuration', description: 'Re-run validation to confirm compliance', time: '30 minutes' }
-                ],
-                business_impact: 'Container security directly impacts system security posture. Essential protections required without comprehensive defense-in-depth for low-impact systems.',
-                implementation_priority: 'High',
-                low_impact_rationale: 'Basic rather than enterprise-grade security configurations acceptable. Pilot-appropriate implementations over production maturity.'
-            },
-            'KSI-IAM-01': {
-                rule_logic: 'IAM policy analysis using multiple AWS CLI commands to validate MFA enforcement. Follows error handling patterns for AWS service variations and implements count-based assessment methodology.',
-                validation_philosophy: 'Balances rigor with practicality while maintaining security standards. Recognizes implementation realities while ensuring essential authentication controls.',
-                current_status: 'MFA mechanisms partially implemented. Service configuration demonstrates capability but requires enhancement for comprehensive coverage.',
-                remediation_path: [
-                    { title: 'Enable MFA Enforcement', description: 'Update IAM policies to require MFA for console and API access', time: '2 hours' },
-                    { title: 'User Account Audit', description: 'Identify and remediate accounts without MFA', time: '3-4 hours' },
-                    { title: 'Documentation Update', description: 'Update access procedures to reflect MFA requirements', time: '1 hour' },
-                    { title: 'Validation Testing', description: 'Test MFA enforcement across user scenarios', time: '2 hours' }
-                ],
-                business_impact: 'Multi-factor authentication fundamental to preventing unauthorized access. Basic protection emphasis without requiring comprehensive identity management sophistication.',
-                implementation_priority: 'Critical',
-                low_impact_rationale: 'Service availability demonstrates security capability. Essential protections required but operational maturity not mandated.'
-            },
-            'KSI-SVC-02': {
-                rule_logic: 'Network encryption validation through multi-command evidence collection. Command 1 analyzes load balancer listeners for HTTPS/TLS, Command 2 validates VPC endpoints for private communication. Multiple encryption mechanisms validated across network layers.',
-                validation_philosophy: 'Emphasizes capability demonstration over configuration sophistication. Service availability often sufficient for low-impact validation with graduated assessment framework.',
-                current_status: 'Network encryption mechanisms established. TLS 1.2+ enforced on load balancers with supporting infrastructure demonstrating comprehensive security posture.',
-                remediation_path: [
-                    { title: 'Verify TLS Configuration', description: 'Confirm TLS 1.2+ on all external endpoints', time: '1 hour' },
-                    { title: 'Document Encryption Methods', description: 'Create evidence showing data-in-transit protection', time: '30 minutes' },
-                    { title: 'Validate VPC Security', description: 'Ensure private communication channels configured', time: '45 minutes' }
-                ],
-                business_impact: 'Data in transit encryption required for compliance. Demonstrates secure communication capability appropriate for federal data handling requirements.',
-                implementation_priority: 'High',
-                low_impact_rationale: 'Configuration presence more important than operational sophistication. Service availability demonstrates encryption capability.'
-            },
-            'KSI-CMT-02': {
-                rule_logic: 'CI/CD pipeline security validation using AWS CodePipeline analysis. Implements hybrid validation combining CLI automation with manual evidence review from evidence_v2 directory structure.',
-                validation_philosophy: 'Accommodates cost constraints while ensuring essential security testing capabilities. Recognizes pilot environment limitations without compromising security requirements.',
-                current_status: 'Deployment security mechanisms partially configured. Service available but requires security testing integration for comprehensive protection.',
-                remediation_path: [
-                    { title: 'Integrate Security Testing', description: 'Add SAST/DAST stages to deployment pipelines', time: '6-8 hours' },
-                    { title: 'Configure Security Gates', description: 'Set pipeline failure conditions for security findings', time: '2 hours' },
-                    { title: 'Document Processes', description: 'Create evidence in evidence_v2/KSI-CMT-02/ directory', time: '1 hour' },
-                    { title: 'Test Pipeline Security', description: 'Validate security testing prevents vulnerable deployments', time: '2-3 hours' }
-                ],
-                business_impact: 'Automated security testing prevents vulnerable code deployment. Essential for maintaining secure development lifecycle without requiring enterprise-grade DevSecOps maturity.',
-                implementation_priority: 'High',
-                low_impact_rationale: 'Basic security testing sufficient. Service availability demonstrates capability without requiring operational sophistication.'
-            },
-            'KSI-PIY-02': {
-                rule_logic: 'Policy management validation through manual evidence assessment in evidence_v2/KSI-PIY-02/ directory. Combines document-based compliance review with structured evidence integration methodology.',
-                validation_philosophy: 'Provides transparent logic for policy compliance decisions. Accommodates implementation variations while maintaining documentation standards.',
-                current_status: 'Policy management framework established but requires update to maintain compliance currency. Evidence directory structure supports systematic review process.',
-                remediation_path: [
-                    { title: 'Policy Review Audit', description: 'Review all security policies for currency and completeness', time: '4-6 hours' },
-                    { title: 'Update Documentation', description: 'Revise policies to reflect current practices and requirements', time: '8-12 hours' },
-                    { title: 'Evidence Organization', description: 'Structure evidence in evidence_v2/KSI-PIY-02/ directory', time: '1 hour' },
-                    { title: 'Review Schedule Setup', description: 'Implement systematic policy review schedule', time: '2 hours' }
-                ],
-                business_impact: 'Current policies ensure effective governance and regulatory compliance. Documentation currency maintains audit readiness and operational effectiveness.',
-                implementation_priority: 'Medium',
-                low_impact_rationale: 'Policy availability demonstrates governance capability. Basic documentation standards without requiring comprehensive policy management sophistication.'
-            }
-        };
-
-        // Sample data
+        // Sample KSI data from the original file
         const sampleKsis = [
             { 
                 id: 'KSI-CNA-01', 
@@ -1702,6 +1625,37 @@
             }
         ];
 
+        // Enhanced justification database based on the official ruleset
+        const ksiJustifications = {
+            'KSI-CNA-01': {
+                rule_logic: 'Multi-command validation using AWS CLI to assess DDoS protection mechanisms. Follows the standard rule pattern with graceful error handling and service availability recognition. Uses graduated assessment framework where service availability often sufficient for low-impact validation.',
+                validation_philosophy: 'Emphasizes service capability demonstration over operational maturity. Accommodates cost-conscious pilot implementations while ensuring essential network protection controls are demonstrable.',
+                current_status: 'AWS Shield Standard is available on all resources. Multi-command evidence collection validates both primary protection mechanisms and supporting infrastructure configurations.',
+                remediation_path: [
+                    { title: 'Verify Shield Standard Coverage', description: 'Confirm AWS Shield Standard is active (enabled by default)', time: '15 minutes' },
+                    { title: 'Document Protection Mechanisms', description: 'Create evidence showing DDoS protection capability', time: '30 minutes' },
+                    { title: 'Consider Shield Advanced', description: 'Evaluate if enhanced protection needed for production', time: '1 hour' }
+                ],
+                business_impact: 'Network protection controls must be implemented per FedRAMP requirements. Service availability demonstrates security capability without requiring operational sophistication.',
+                implementation_priority: 'Medium',
+                low_impact_rationale: 'Service availability demonstrates security capability. Configuration presence more important than operational sophistication for low-impact systems.'
+            },
+            'KSI-CNA-03': {
+                rule_logic: 'Container security validation through kubectl commands analyzing pod configurations. Implements numerical scoring that recognizes partial implementation with explicit low-impact threshold calibration.',
+                validation_philosophy: 'Accommodates diverse AWS account configurations while maintaining security standards. Provides alternative evidence paths when primary services unavailable.',
+                current_status: 'Container security mechanisms partially configured. Service available but enhancement needed to meet basic protection requirements.',
+                remediation_path: [
+                    { title: 'Update Security Contexts', description: 'Add runAsNonRoot and readOnlyRootFilesystem to pod specs', time: '2-3 hours' },
+                    { title: 'Implement Resource Limits', description: 'Set CPU and memory constraints for all containers', time: '1 hour' },
+                    { title: 'Review Image Security', description: 'Ensure container images use non-root users', time: '2-4 hours' },
+                    { title: 'Validate Configuration', description: 'Re-run validation to confirm compliance', time: '30 minutes' }
+                ],
+                business_impact: 'Container security directly impacts system security posture. Essential protections required without comprehensive defense-in-depth for low-impact systems.',
+                implementation_priority: 'High',
+                low_impact_rationale: 'Basic rather than enterprise-grade security configurations acceptable. Pilot-appropriate implementations over production maturity.'
+            }
+        };
+
         // Theme functionality
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -1719,187 +1673,9 @@
             document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
         }
 
-        // Download JSON functionality
-        async function downloadJSON() {
-            try {
-                const response = await fetch('./unified_ksi_validations.json');
-                if (response.ok) {
-                    const data = await response.json();
-                    forceDownloadJSON(data, 'unified_ksi_validations.json');
-                } else {
-                    const sampleData = {
-                        metadata: {
-                            generated_at: new Date().toISOString(),
-                            total_ksis: allKsis.length,
-                            total_passed: allKsis.filter(k => k.status === 'passed').length,
-                            total_failed: allKsis.filter(k => k.status === 'failed').length,
-                            compliance_percentage: Math.round((allKsis.filter(k => k.status === 'passed').length / allKsis.length) * 100 * 10) / 10
-                        },
-                        validations: allKsis.map(ksi => ({
-                            ksi_id: ksi.id,
-                            assertion: ksi.status === 'passed',
-                            assertion_reason: ksi.assertion_reason,
-                            cli_command: ksi.cli_command,
-                            commands_executed: ksi.commands_executed,
-                            long_name: ksi.category,
-                            category_prefix: ksi.category_prefix,
-                            requirement: ksi.requirement
-                        }))
-                    };
-                    forceDownloadJSON(sampleData, 'fedramp_ksi_validations_sample.json');
-                }
-            } catch (error) {
-                console.error('Error downloading JSON:', error);
-                alert('Error downloading JSON file. Please try again or contact support.');
-            }
-        }
-
-        function forceDownloadJSON(data, filename) {
-            const jsonString = JSON.stringify(data, null, 2);
-            const blob = new Blob([jsonString], { type: 'application/octet-stream' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            setTimeout(() => URL.revokeObjectURL(url), 100);
-        }
-
-        // View failed report functionality
-        async function viewFailedReport() {
-            try {
-                const response = await fetch('./failed_ksi_report_readable.md');
-                if (response.ok) {
-                    const markdownText = await response.text();
-                    showMarkdownModal('Failed KSI Report', markdownText);
-                } else {
-                    const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
-                    const sampleReport = generateFailedKsiReport(failedKsis);
-                    showMarkdownModal('Failed KSI Report (Sample)', sampleReport);
-                }
-            } catch (error) {
-                console.error('Error loading failed report:', error);
-                alert('Error loading failed KSI report. Please try again or contact support.');
-            }
-        }
-
-        function generateFailedKsiReport(failedKsis) {
-            const timestamp = new Date().toISOString();
-            let report = `# FedRAMP 20x Failed KSI Report
-
-Generated: ${timestamp}
-Total Failed KSIs: ${failedKsis.length}
-
----
-
-`;
-
-            failedKsis.forEach((ksi, index) => {
-                report += `## ${index + 1}. ${ksi.id}
-
-**Category:** ${ksi.category}
-**Status:** FAILED ❌
-
-### Description
-${ksi.description}
-
-### Failure Reason
-${ksi.assertion_reason || 'No detailed reason provided'}
-
-### Technical Details
-- **Commands Executed:** ${ksi.commands_executed || 0}
-- **CLI Command:** \`${ksi.cli_command || 'N/A'}\`
-
-### Requirement
-${ksi.requirement || 'No requirement specified'}
-
-### Recommended Actions
-- Review the failure reason above
-- Execute the CLI command manually to investigate
-- Update configuration or processes as needed
-- Re-run validation after remediation
-
----
-
-`;
-            });
-
-            report += `## Summary
-
-This report contains ${failedKsis.length} failed KSI(s) that require attention to achieve FedRAMP 20x compliance.
-
-For technical support or questions about remediation, please contact security@meridianks.com or create an issue in the [GitHub repository](https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live).
-`;
-
-            return report;
-        }
-
-        function showMarkdownModal(title, markdownText) {
-            let html = markdownText
-                .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-                .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-                .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-                .replace(/^\*\*(.+)\*\*$/gm, '<strong>$1</strong>')
-                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                .replace(/`(.+?)`/g, '<code>$1</code>')
-                .replace(/^- (.+)$/gm, '<li>$1</li>')
-                .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
-                .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>')
-                .replace(/^---$/gm, '<hr>')
-                .replace(/\n\n/g, '</p><p>')
-                .replace(/^(.+)$/gm, '<p>$1</p>')
-                .replace(/<p><h([1-6])>/g, '<h$1>')
-                .replace(/<\/h([1-6])><\/p>/g, '</h$1>')
-                .replace(/<p><ul>/g, '<ul>')
-                .replace(/<\/ul><\/p>/g, '</ul>')
-                .replace(/<p><hr><\/p>/g, '<hr>');
-
-            const modal = document.createElement('div');
-            modal.className = 'cli-modal active';
-            modal.innerHTML = `
-                <div class="cli-modal-content" style="max-width: 900px;">
-                    <div class="cli-modal-header">
-                        <h3 class="cli-modal-title">${title}</h3>
-                        <button class="close-btn" onclick="closeMarkdownModal()">&times;</button>
-                    </div>
-                    <div style="
-                        background: var(--bg-secondary);
-                        color: var(--text-primary);
-                        padding: 2rem;
-                        border-radius: var(--radius);
-                        font-family: inherit;
-                        line-height: 1.6;
-                        max-height: 60vh;
-                        overflow-y: auto;
-                    ">
-                        ${html}
-                    </div>
-                </div>
-            `;
-
-            document.body.appendChild(modal);
-            document.body.style.overflow = 'hidden';
-
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeMarkdownModal();
-                }
-            });
-        }
-
-        function closeMarkdownModal() {
-            const modal = document.querySelector('.cli-modal.active');
-            if (modal && modal.innerHTML.includes('cli-modal-title')) {
-                document.body.removeChild(modal);
-                document.body.style.overflow = '';
-            }
-        }
-
         // Dashboard functionality
         function initializeDashboard() {
+            console.log('🔄 Initializing dashboard...');
             updateMetrics();
             loadKsiData();
             setupEventListeners();
@@ -1919,10 +1695,11 @@ For technical support or questions about remediation, please contact security@me
         }
 
         function loadKsiData() {
+            console.log('📊 Loading KSI data...');
             allKsis = [...sampleKsis];
             populateCategoryFilter();
             filterKsis();
-            loadRealData();
+            console.log('✅ KSI data loaded successfully');
         }
 
         function populateCategoryFilter() {
@@ -2068,7 +1845,6 @@ For technical support or questions about remediation, please contact security@me
                 if (e.key === 'Escape') {
                     closeCliModal();
                     closeWhyModal();
-                    closeMarkdownModal();
                 }
                 if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
                     e.preventDefault();
@@ -2103,13 +1879,6 @@ ${ksi.requirement || 'No requirement specified'}`;
 
             document.getElementById('cli-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
-        }
-
-        function showKsiDetails(ksiId) {
-            const ksi = allKsis.find(k => k.id === ksiId);
-            if (!ksi) return;
-
-            alert(`KSI Details for ${ksi.id}:\n\n${ksi.description}\n\nCategory: ${ksi.category}\nStatus: ${ksi.status.toUpperCase()}\n\nThis could open a detailed view in the future.`);
         }
 
         function closeCliModal() {
@@ -2339,58 +2108,6 @@ ${ksi.requirement || 'No requirement specified'}`;
                     </div>
                 </div>
             `;
-        } Issue:</strong> Security controls are not properly configured or enabled</li>
-                                <li><strong>Policy Violation:</strong> Current state violates organizational security policies</li>
-                                <li><strong>Risk Exposure:</strong> This gap creates potential security vulnerabilities</li>
-                            </ul>
-                            <p><strong>Immediate Action Required:</strong> Review the assertion reason and remediate the identified issues.</p>
-                        </div>
-                    </div>
-                `;
-            }
-
-            return `
-                <div class="why-section">
-                    <h4 class="why-section-title">📊 Validation Result</h4>
-                    <div class="why-section-content">
-                        ${statusBadge}
-                        <p><strong>KSI:</strong> <span class="why-code">${ksi.id}</span></p>
-                        <p><strong>Category:</strong> ${ksi.category}</p>
-                        <p><strong>Description:</strong> ${ksi.description}</p>
-                    </div>
-                </div>
-
-                <div class="why-section">
-                    <h4 class="why-section-title">🔍 Validation Details</h4>
-                    <div class="why-section-content">
-                        <p><strong>Commands Executed:</strong> <span class="why-highlight">${ksi.commands_executed || 0}</span></p>
-                        <p><strong>CLI Command:</strong> <span class="why-code">${ksi.cli_command}</span></p>
-                        <p><strong>Assertion Reason:</strong> ${ksi.assertion_reason}</p>
-                    </div>
-                </div>
-
-                ${validationExplanation}
-
-                <div class="why-section">
-                    <h4 class="why-section-title">📋 FedRAMP Requirement</h4>
-                    <div class="why-section-content">
-                        <p>${ksi.requirement}</p>
-                        <p><strong>Validation Philosophy:</strong> This assessment follows the FedRAMP 20x pilot approach, emphasizing service capability validation over traditional documentation review.</p>
-                    </div>
-                </div>
-
-                <div class="why-section">
-                    <h4 class="why-section-title">📞 Need Help?</h4>
-                    <div class="why-section-content">
-                        <p>For detailed remediation guidance or questions about this KSI:</p>
-                        <ul class="why-list">
-                            <li>📧 Email: <a href="mailto:security@meridianks.com" class="trust-link">security@meridianks.com</a></li>
-                            <li>📁 Documentation: <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live" target="_blank" class="trust-link">GitHub Repository</a></li>
-                            <li>🐛 Report Issues: Use the "Report Issue" button to create a GitHub issue</li>
-                        </ul>
-                    </div>
-                </div>
-            `;
         }
 
         function getStatusIcon(status) {
@@ -2405,6 +2122,13 @@ ${ksi.requirement || 'No requirement specified'}`;
         function closeWhyModal() {
             document.getElementById('why-modal').classList.remove('active');
             document.body.style.overflow = '';
+        }
+
+        function showKsiDetails(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            alert(`KSI Details for ${ksi.id}:\n\n${ksi.description}\n\nCategory: ${ksi.category}\nStatus: ${ksi.status.toUpperCase()}\n\nThis could open a detailed view in the future.`);
         }
 
         function createGitHubIssue(ksiId) {
@@ -2479,77 +2203,163 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
             }
         }
 
-        async function loadRealData() {
-            try {
-                console.log('🔄 Attempting to load real validation data...');
-                
-                const response = await fetch('./unified_ksi_validations.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        // Download and report functionality
+        async function downloadJSON() {
+            const sampleData = {
+                metadata: {
+                    generated_at: new Date().toISOString(),
+                    total_ksis: allKsis.length,
+                    total_passed: allKsis.filter(k => k.status === 'passed').length,
+                    total_failed: allKsis.filter(k => k.status === 'failed').length,
+                    compliance_percentage: Math.round((allKsis.filter(k => k.status === 'passed').length / allKsis.length) * 100 * 10) / 10
+                },
+                validations: allKsis.map(ksi => ({
+                    ksi_id: ksi.id,
+                    assertion: ksi.status === 'passed',
+                    assertion_reason: ksi.assertion_reason,
+                    cli_command: ksi.cli_command,
+                    commands_executed: ksi.commands_executed,
+                    long_name: ksi.category,
+                    category_prefix: ksi.category_prefix,
+                    requirement: ksi.requirement
+                }))
+            };
+            forceDownloadJSON(sampleData, 'fedramp_ksi_validations.json');
+        }
+
+        function forceDownloadJSON(data, filename) {
+            const jsonString = JSON.stringify(data, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setTimeout(() => URL.revokeObjectURL(url), 100);
+        }
+
+        async function viewFailedReport() {
+            const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
+            const sampleReport = generateFailedKsiReport(failedKsis);
+            showMarkdownModal('Failed KSI Report', sampleReport);
+        }
+
+        function generateFailedKsiReport(failedKsis) {
+            const timestamp = new Date().toISOString();
+            let report = `# FedRAMP 20x Failed KSI Report
+
+Generated: ${timestamp}
+Total Failed KSIs: ${failedKsis.length}
+
+---
+
+`;
+
+            failedKsis.forEach((ksi, index) => {
+                report += `## ${index + 1}. ${ksi.id}
+
+**Category:** ${ksi.category}
+**Status:** FAILED ❌
+
+### Description
+${ksi.description}
+
+### Failure Reason
+${ksi.assertion_reason || 'No detailed reason provided'}
+
+### Technical Details
+- **Commands Executed:** ${ksi.commands_executed || 0}
+- **CLI Command:** \`${ksi.cli_command || 'N/A'}\`
+
+### Requirement
+${ksi.requirement || 'No requirement specified'}
+
+### Recommended Actions
+- Review the failure reason above
+- Execute the CLI command manually to investigate
+- Update configuration or processes as needed
+- Re-run validation after remediation
+
+---
+
+`;
+            });
+
+            report += `## Summary
+
+This report contains ${failedKsis.length} failed KSI(s) that require attention to achieve FedRAMP 20x compliance.
+
+For technical support or questions about remediation, please contact security@meridianks.com or create an issue in the [GitHub repository](https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live).
+`;
+
+            return report;
+        }
+
+        function showMarkdownModal(title, markdownText) {
+            let html = markdownText
+                .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+                .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+                .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+                .replace(/^\*\*(.+)\*\*$/gm, '<strong>$1</strong>')
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`(.+?)`/g, '<code>$1</code>')
+                .replace(/^- (.+)$/gm, '<li>$1</li>')
+                .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+                .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>')
+                .replace(/^---$/gm, '<hr>')
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/^(.+)$/gm, '<p>$1</p>')
+                .replace(/<p><h([1-6])>/g, '<h$1>')
+                .replace(/<\/h([1-6])><\/p>/g, '</h$1>')
+                .replace(/<p><ul>/g, '<ul>')
+                .replace(/<\/ul><\/p>/g, '</ul>')
+                .replace(/<p><hr><\/p>/g, '<hr>');
+
+            const modal = document.createElement('div');
+            modal.className = 'cli-modal active';
+            modal.innerHTML = `
+                <div class="cli-modal-content" style="max-width: 900px;">
+                    <div class="cli-modal-header">
+                        <h3 class="cli-modal-title">${title}</h3>
+                        <button class="close-btn" onclick="closeMarkdownModal()">&times;</button>
+                    </div>
+                    <div style="
+                        background: var(--bg-secondary);
+                        color: var(--text-primary);
+                        padding: 2rem;
+                        border-radius: var(--radius);
+                        font-family: inherit;
+                        line-height: 1.6;
+                        max-height: 60vh;
+                        overflow-y: auto;
+                    ">
+                        ${html}
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeMarkdownModal();
                 }
-                
-                const data = await response.json();
-                console.log('✅ Real data loaded successfully');
-                
-                updateDashboardWithRealData(data);
-                
-            } catch (error) {
-                console.warn('⚠️ Could not load real data, using sample data:', error.message);
-                showDataSourceNotification('sample');
+            });
+        }
+
+        function closeMarkdownModal() {
+            const modal = document.querySelector('.cli-modal.active');
+            if (modal && modal.innerHTML.includes('cli-modal-title')) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
             }
         }
 
-        function updateDashboardWithRealData(data) {
-            try {
-                let validations = [];
-                
-                if (Array.isArray(data)) {
-                    validations = data;
-                } else if (data.validations && Array.isArray(data.validations)) {
-                    validations = data.validations;
-                } else if (data.metadata && data.metadata.validations) {
-                    validations = data.metadata.validations;
-                }
-
-                if (validations.length === 0) {
-                    throw new Error('No validation data found in the loaded JSON');
-                }
-
-                allKsis = validations.map(validation => ({
-                    id: validation.ksi_id || validation.validation_id || 'Unknown',
-                    status: (validation.assertion === true || validation.assertion === "true") ? 'passed' : 'failed',
-                    description: validation.assertion_reason || validation.description || 'No description available',
-                    category: validation.long_name || validation.category_prefix || 'Unknown Category',
-                    category_prefix: validation.category_prefix || validation.ksi_id?.split('-').slice(0, 2).join('-') || 'UNK',
-                    commands_executed: validation.commands_executed || 0,
-                    cli_command: validation.cli_command || 'No command information available',
-                    assertion_reason: validation.assertion_reason || 'No detailed reason provided',
-                    requirement: validation.requirement || validation.long_name || 'No requirement specified'
-                }));
-
-                const totalKsis = allKsis.length;
-                const passedCount = allKsis.filter(ksi => ksi.status === 'passed').length;
-                const failedCount = totalKsis - passedCount;
-                const overallScore = Math.round((passedCount / totalKsis) * 100 * 10) / 10;
-
-                document.getElementById('overall-score').textContent = overallScore + '%';
-                document.getElementById('passed-count').textContent = passedCount;
-                document.getElementById('failed-count').textContent = failedCount;
-                document.getElementById('total-ksis').textContent = totalKsis;
-
-                populateCategoryFilter();
-                filterKsis();
-                
-                showDataSourceNotification('live');
-                
-                console.log('🎉 Dashboard updated with real data');
-                
-            } catch (error) {
-                console.error('❌ Error processing real data:', error);
-                showDataSourceNotification('error');
-            }
-        }
-
+        // Show data source notification
         function showDataSourceNotification(type) {
             const notification = document.createElement('div');
             notification.style.cssText = `
@@ -2564,18 +2374,10 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
                 animation: slideIn 0.3s ease;
             `;
 
-            if (type === 'live') {
-                notification.style.background = 'rgba(16, 185, 129, 0.9)';
-                notification.style.color = 'white';
-                notification.textContent = '✅ Live data loaded';
-            } else if (type === 'sample') {
+            if (type === 'sample') {
                 notification.style.background = 'rgba(245, 158, 11, 0.9)';
                 notification.style.color = 'white';
                 notification.textContent = '⚠️ Using sample data';
-            } else if (type === 'error') {
-                notification.style.background = 'rgba(239, 68, 68, 0.9)';
-                notification.style.color = 'white';
-                notification.textContent = '❌ Data load error';
             }
 
             document.body.appendChild(notification);
@@ -2590,20 +2392,6 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
             }, 3000);
         }
 
-        // Add CSS animations
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-
         // Global functions
         window.showCliDetails = showCliDetails;
         window.showKsiDetails = showKsiDetails;
@@ -2616,21 +2404,17 @@ Please provide guidance on how to remediate this KSI failure to achieve FedRAMP 
         window.viewFailedReport = viewFailedReport;
         window.closeMarkdownModal = closeMarkdownModal;
 
-        // Auto-refresh every 5 minutes
-        setInterval(() => {
-            updateTimestamps();
-            loadRealData();
-        }, 300000);
-
-        // Initialize
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 FedRAMP 20x Trust Center - Starting fresh...');
             initializeTheme();
             initializeDashboard();
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
+            showDataSourceNotification('sample');
+            
             const searchBox = document.getElementById('search-input');
             searchBox.placeholder = 'Search KSIs... (Press / to focus)';
+            
+            console.log('✅ Dashboard initialization complete');
         });
     </script>
 </body>
