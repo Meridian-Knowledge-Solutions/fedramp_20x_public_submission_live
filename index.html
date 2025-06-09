@@ -1439,13 +1439,13 @@
                         </div>
                         <div class="trust-card-content">
                             <div class="trust-item">
-                                <strong>Primary Contact:</strong> FedRAMP Program Office
+                                <strong>Primary Contact:</strong> Meridian Federal Cloud Operations
                             </div>
                             <div class="trust-item">
                                 <strong>Email:</strong> <a href="mailto:security@meridianks.com" class="trust-link">security@meridianks.com</a>
                             </div>
                             <div class="trust-item">
-                                <strong>Phone:</strong> +1 (555) 123-4567
+                                <strong>Phone:</strong> +1 (703) 322-9565 
                             </div>
                             <div class="trust-item">
                                 <strong>Portal Access:</strong> Available through customer portal with appropriate federal credentials
@@ -1676,9 +1676,9 @@ async function getAuthorizationSummary() {
                 
                 <div style="background: rgba(245, 158, 11, 0.1); border: 2px solid var(--warning-500); border-radius: 10px; padding: 25px; margin-bottom: 30px; color: var(--text-primary);">
                     <h4 style="color: var(--warning-600); margin-bottom: 15px;">🚨 Emergency Security Hotline</h4>
-                    <div><strong>Phone:</strong> +1 (555) 123-4567</div>
-                    <div><strong>Email:</strong> security-incidents@meridianks.com</div>
-                    <div><strong>Response SLA:</strong> 1 hour for Category 1-2 incidents</div>
+                    <div><strong>Phone:</strong> +1 (703) 322-9565</div> 
+                    <div><strong>Email:</strong> security@meridianks.com</div>
+                    <div><strong>Response SLA:</strong> 1 hour fo411r Category 1-2 incidents</div>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
@@ -1906,33 +1906,126 @@ async function getAuthorizationSummary() {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // NEW: Federal access form handler
+        // NEW: Federal access form handler with GitHub Issues
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('federal-access-form');
             if (form) {
-                form.addEventListener('submit', function(e) {
+                form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
                     const formData = new FormData(e.target);
                     const requestId = `REQ-${Date.now()}`;
                     
+                    // Show loading state
                     document.getElementById('form-response').innerHTML = `
-                        <div style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 20px; border-radius: 10px;">
-                            <h4>✅ Request Submitted Successfully</h4>
-                            <p><strong>Request ID:</strong> ${requestId}</p>
-                            <p>Your federal access request has been received and will be processed.</p>
-                            <p><strong>Next Steps:</strong> Email confirmation sent to ${formData.get('email')}</p>
-                            <p><strong>Questions?</strong> Contact security@meridianks.com</p>
+                        <div style="background: #fff3cd; border: 1px solid #ffc107; color: #856404; padding: 20px; border-radius: 10px;">
+                            <h4>🔄 Submitting Request...</h4>
+                            <p>Creating your federal access request. Please wait...</p>
                         </div>
                     `;
                     
-                    form.reset();
+                    try {
+                        const issueUrl = await createGitHubIssue(formData, requestId);
+                        
+                        document.getElementById('form-response').innerHTML = `
+                            <div style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 20px; border-radius: 10px;">
+                                <h4>✅ Request Submitted Successfully</h4>
+                                <p><strong>Request ID:</strong> ${requestId}</p>
+                                <p><strong>Tracking URL:</strong> <a href="${issueUrl}" target="_blank" style="color: #155724; font-weight: bold;">View Your Request</a></p>
+                                <p>Your federal access request has been created as a public GitHub issue for transparency.</p>
+                                <p><strong>Next Steps:</strong> Our team will respond within 24 hours via the GitHub issue.</p>
+                                <p><strong>Questions?</strong> Comment on your issue or contact security@meridianks.com</p>
+                            </div>
+                        `;
+                        
+                        form.reset();
+                    } catch (error) {
+                        console.error('Failed to create GitHub issue:', error);
+                        document.getElementById('form-response').innerHTML = `
+                            <div style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 20px; border-radius: 10px;">
+                                <h4>❌ Submission Failed</h4>
+                                <p>We encountered an error creating your request. Please try again or contact us directly.</p>
+                                <p><strong>Email:</strong> security@meridianks.com</p>
+                                <p><strong>Error:</strong> ${error.message}</p>
+                            </div>
+                        `;
+                    }
                 });
             }
             
             // Load POA&M data
             loadPOAMData();
         });
+
+        // Create GitHub Issue for Federal Access Request
+        async function createGitHubIssue(formData, requestId) {
+            const owner = 'Meridian-Knowledge-Solutions';
+            const repo = 'fedramp_20x_public_submission_live';
+            
+            const issueTitle = `Federal Agency Access Request - ${formData.get('agency')} (${requestId})`;
+            
+            const issueBody = `# Federal Agency Access Request
+
+## Request Information
+- **Request ID:** ${requestId}
+- **Date:** ${new Date().toISOString().split('T')[0]}
+- **Time:** ${new Date().toISOString()}
+
+## Agency Details
+- **Federal Agency:** ${formData.get('agency')}
+- **Authorizing Official:** ${formData.get('ao_name')}
+- **Official Email:** ${formData.get('email')}
+- **Access Type:** ${formData.get('access_type')}
+
+## Business Justification
+${formData.get('justification')}
+
+## Certification
+✅ **Verified:** Requester certifies they are an authorized federal government representative.
+
+---
+
+## Next Steps
+- [ ] **Verify Agency Identity** - Validate .gov/.mil email and agency authority
+- [ ] **Review Access Type** - Determine appropriate access level
+- [ ] **Provide Access** - Grant requested materials access
+- [ ] **Follow Up** - Ensure requester has needed materials
+
+## Internal Notes
+*This section is for Meridian Knowledge Solutions team use*
+
+---
+
+**Auto-generated from FedRAMP 20x Trust Center** | [🛡️ Trust Center](https://meridian-knowledge-solutions.github.io/fedramp_20x_public_submission_live/)`;
+
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Note: In production, you'd want to use a GitHub App or secure token management
+                    // For now, this will create an issue via the browser (requires user to be logged into GitHub)
+                },
+                body: JSON.stringify({
+                    title: issueTitle,
+                    body: issueBody,
+                    labels: ['federal-agency-request', 'trust-center', 'pending-review']
+                })
+            });
+
+            if (!response.ok) {
+                // Fallback: Create issue URL manually for user to submit
+                const encodedTitle = encodeURIComponent(issueTitle);
+                const encodedBody = encodeURIComponent(issueBody);
+                const issueUrl = `https://github.com/${owner}/${repo}/issues/new?title=${encodedTitle}&body=${encodedBody}&labels=federal-agency-request,trust-center,pending-review`;
+                
+                // Open in new tab for user to submit
+                window.open(issueUrl, '_blank');
+                return issueUrl;
+            }
+
+            const issue = await response.json();
+            return issue.html_url;
+        }
 
         // NEW: Load POA&M data from existing KSI validations
         async function loadPOAMData() {
