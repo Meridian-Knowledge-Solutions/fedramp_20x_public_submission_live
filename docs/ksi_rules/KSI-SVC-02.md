@@ -1,29 +1,13 @@
 # KSI-SVC-02: Encrypt or secure network traffic
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-09 07:55:36 UTC*
-=======
-*Generated on 2025-06-09 07:55:55 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-09 07:55:59 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-09 08:02:50 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-02`
 **Description:** Encrypt or secure network traffic
 **Justification:** Validates network traffic encryption through load balancers, VPC endpoints, and HTTPS configurations
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-09T07:55:36.271614
-=======
-**Last Validation:** ✅ 2025-06-09T07:55:55.138960
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-09T07:55:59.601040
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-09T08:02:50.233503
 **Result:** ✅ Network traffic security configured: ℹ️ No load balancers found (acceptable for low-impact); ⚠️ No VPC endpoints found - traffic goes over internet
 
 ## 🛠️ Implementation
