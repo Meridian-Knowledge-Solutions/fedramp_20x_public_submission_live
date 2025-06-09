@@ -1,13 +1,13 @@
 # KSI-SVC-01: Harden and review network and system configurations
 
-*Generated on 2025-06-09 08:02:50 UTC*
+*Generated on 2025-06-09 08:28:57 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-01`
 **Description:** Harden and review network and system configurations
 **Justification:** Validates system hardening through security groups, NACLs, and instance configurations
-**Last Validation:** ✅ 2025-06-09T08:02:50.233420
+**Last Validation:** ✅ 2025-06-09T08:28:57.298972
 **Result:** ✅ System hardening: 1 hardened security groups, 0 instances configured
 
 ## 🛠️ Implementation

@@ -1,13 +1,13 @@
 # KSI-MLA-04: Perform authenticated vulnerability scanning on information resources
 
-*Generated on 2025-06-09 08:02:50 UTC*
+*Generated on 2025-06-09 08:28:57 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-04`
 **Description:** Perform authenticated vulnerability scanning on information resources
 **Justification:** Validates authenticated vulnerability scanning capabilities through Inspector and Security Hub
-**Last Validation:** ✅ 2025-06-09T08:02:50.231741
+**Last Validation:** ✅ 2025-06-09T08:28:57.297231
 **Result:** ✅ Authenticated vulnerability scanning capability established: ✅ Inspector service operational (responds to coverage queries); ℹ️ No coverage needed - no EC2 instances deployed; ℹ️ Serverless/managed services architecture (no EC2 instances)
 
 ## 🛠️ Implementation
