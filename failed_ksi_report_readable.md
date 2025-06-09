@@ -1,49 +1,66 @@
 # 🛡️ Security Compliance Report
 
-> ⚠️ **Current Status:** 🟡 MINOR GAPS
+> 🟡 **Status:** Minor Issues
 
-## 📊 Compliance Overview
+## 📊 Quick Overview
 
-| Item | Value |
-|------|-------|
-| **🏢 Service** | Meridian Knowledge Solutions LMS |
-| **📈 Compliance Rate** | 96% |
-| **🎯 Status** | 🟡 MINOR GAPS |
-| **⚡ Risk Level** | 🟢 LOW |
-| **📅 Assessment Date** | Unknown |
+| Metric | Value |
+|--------|--------|
+| **Compliance Rate** | 96.1% |
+| **Items Passing** | 49 |
+| **Items Needing Work** | 2 |
+| **Last Checked** | Unknown |
 
-📋 **Summary:** 2 security items need attention out of 51 total requirements.
-## 🔍 Risk Assessment
-
-> 🟢 **LOW RISK:** 2 administrative items need completion
+💡 **Bottom Line:** 2 security items need attention to reach full compliance.
 ## 🔍 Items Needing Attention
 
-### 🔧 Standard Items
+Here's what needs to be fixed, with the technical details for your team:
 
-🟡 **KSI-CMT-03:** A secure cloud service provider will ensure that all system changes are properly documented and c...
+### 🔧 KSI-CMT
 
-🟡 **KSI-CNA-05:** A secure cloud service offering will use cloud native architecture and design principles to enfor...
-## 🎯 Remediation Plan
+#### KSI-CMT-03
 
-> 🟢 **Target Completion:** 1-2 weeks
-> ⚡ **Effort Required:** Minimal
+**What it does:** A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.
 
-### 📋 Next Steps
+**Issue:** No automated testing and validation:  No CodeBuild projects for automated testing;  No CodePipelines for automated change validation
 
-1. 🚨 Address urgent security items first
-2. ⚙️ Complete standard configuration items
-3. 📄 Upload required documentation
-4. ✅ Re-run compliance validation
-## 📊 POAM Information
+**Validation Method:** 2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json
 
-**Plan of Action and Milestones (POAM) Items:**
+**Last Checked:** 2025-06-09 05:17 UTC
 
-**POAM-001:** KSI-CMT-03 · Priority: 🟡 Medium · Target: 60 days
-**POAM-002:** KSI-CNA-05 · Priority: 🟡 Medium · Target: 60 days
 ---
 
-## 📞 Contact Information
+### 🔧 KSI-CNA
 
-📧 **Email:** security@meridianks.com
-📅 **Report Date:** 2025-06-09 05:10 UTC
-🔍 **Questions?** Contact our security team for assistance
+#### KSI-CNA-05
+
+**What it does:** A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.
+
+**Issue:** AWS Shield error:
+
+**Validation Method:** 1 commands (0 successful): aws shield describe-subscription --output json
+
+**Last Checked:** 2025-06-09 05:17 UTC
+
+---
+## 🎯 Next Steps
+
+🕐 **Estimated Time to Complete:** 1-2 weeks
+
+### ⚙️ Configuration Items (1 items)
+**Technical setup** - Configure AWS services:
+- KSI-CNA-05: Set up required AWS service
+
+### 🔧 Technical Items (1 items)
+**Advanced setup** - Complex configurations:
+- KSI-CMT-03: Technical implementation needed
+
+### 📞 Need Help?
+Contact our security team at security@meridianks.com for assistance with any of these items.
+---
+
+## 📞 Questions?
+
+📧 **Email:** security@meridianks.com  
+📅 **Report Generated:** 2025-06-09 05:17 UTC  
+🔍 **Source:** Automated FedRAMP 20x validation pipeline
