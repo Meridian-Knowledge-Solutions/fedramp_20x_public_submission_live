@@ -1,62 +1,93 @@
 # KSI-IAM-05: Apply zero trust design principles
 
-*Generated on 2025-06-09 20:05:24 UTC*
+*Generated on 2025-06-09 20:52:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-05`
 **Description:** Apply zero trust design principles
-**Justification:** Validates zero trust through continuous verification, conditional access, and comprehensive logging
-**Last Validation:** ✅ 2025-06-09T20:05:24.228009
-**Result:** ⚠️ Partial zero trust implementation: ✅ Continuous verification: 1 trails (0 active, 1 multi-region); ⚠️ No conditional access policies found
+**Justification:** Validates comprehensive zero trust implementation through Identity Center (modern approach), network security, continuous monitoring, conditional access, and secure communications patterns
+**Last Validation:** ✅ 2025-06-09T20:52:05.048696
+**Result:** ⚠️ Basic zero trust elements (42%): ✅ Modern identity platform: IAM Identity Center configured (1 instance(s)); ✅ Multi-factor authentication: 6 MFA devices configured; ✅ Network micro-segmentation: 1 restrictive vs 0 permissive security groups; ❌ Permanent credentials: Using IAM user (not zero trust); ⚠️ VPC endpoint information not available; ❌ No continuous monitoring found (zero trust requires comprehensive logging)
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws cloudtrail describe-trails --output json`
-   **Purpose:** Check continuous monitoring and verification logging
+1. **Command:** `aws sso-admin list-instances --output json`
+   **Purpose:** Check IAM Identity Center for modern zero trust user access patterns
 
-2. **Command:** `aws iam list-policies --scope Local --output json`
-   **Purpose:** Check for conditional access policies implementing zero trust
+2. **Command:** `aws cloudtrail describe-trails --output json`
+   **Purpose:** Validate continuous monitoring and verification logging (must be active)
+
+3. **Command:** `aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text) --output json 2>/dev/null || echo '{"IsLogging":false}'`
+   **Purpose:** Verify CloudTrail is actively logging (zero trust requires continuous monitoring)
+
+4. **Command:** `aws ec2 describe-security-groups --output json`
+   **Purpose:** Analyze network micro-segmentation and least privilege network access
+
+5. **Command:** `aws ec2 describe-vpc-endpoints --output json`
+   **Purpose:** Validate secure private communications (VPC endpoints for AWS services)
+
+6. **Command:** `aws iam list-virtual-mfa-devices --output json`
+   **Purpose:** Check multi-factor authentication enforcement (verify explicitly principle)
+
+7. **Command:** `aws sts get-caller-identity --output json`
+   **Purpose:** Validate current session type (temporary credentials indicate zero trust access)
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
+- **Command:** `aws sso-admin list-instances --output json`
+  - **Purpose:** Check IAM Identity Center for modern zero trust user access patterns
 - **Command:** `aws cloudtrail describe-trails --output json`
-  - **Purpose:** Check continuous monitoring and verification logging
-- **Command:** `aws iam list-policies --scope Local --output json`
-  - **Purpose:** Check for conditional access policies implementing zero trust
+  - **Purpose:** Validate continuous monitoring and verification logging (must be active)
+- **Command:** `aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text) --output json 2>/dev/null || echo '{"IsLogging":false}'`
+  - **Purpose:** Verify CloudTrail is actively logging (zero trust requires continuous monitoring)
+- **Command:** `aws ec2 describe-security-groups --output json`
+  - **Purpose:** Analyze network micro-segmentation and least privilege network access
+- **Command:** `aws ec2 describe-vpc-endpoints --output json`
+  - **Purpose:** Validate secure private communications (VPC endpoints for AWS services)
+- **Command:** `aws iam list-virtual-mfa-devices --output json`
+  - **Purpose:** Check multi-factor authentication enforcement (verify explicitly principle)
+- **Command:** `aws sts get-caller-identity --output json`
+  - **Purpose:** Validate current session type (temporary credentials indicate zero trust access)
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_IAM_05`
 
-**Documentation:** KSI-IAM-05: Apply zero trust design principles
+**Documentation:** Enhanced KSI-IAM-05: Apply zero trust design principles
 
-Expected: CloudTrail + Conditional Access Policies
+Validates comprehensive zero trust implementation:
+- Never trust, always verify (MFA, continuous authentication)
+- Assume breach (network segmentation, monitoring)
+- Verify explicitly (multi-factor, device compliance)
+- Least privilege access (just-in-time, time-limited sessions)
+- Secure communications (private networks, encryption)
+- Monitor everything (active logging, real-time visibility)
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_IAM_05(cli_output):
     """
-    KSI-IAM-05: Apply zero trust design principles
+    Enhanced KSI-IAM-05: Apply zero trust design principles
     
-    Expected: CloudTrail + Conditional Access Policies
+    Validates comprehensive zero trust implementation:
+    - Never trust, always verify (MFA, continuous authentication)
+    - Assume breach (network segmentation, monitoring)
+    - Verify explicitly (multi-factor, device compliance)
+    - Least privilege access (just-in-time, time-limited sessions)
+    - Secure communications (private networks, encryption)
+    - Monitor everything (active logging, real-time visibility)
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
+    sso_instances = None
     cloudtrail_trails = None
-    local_policies = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if "describe-trails" in cli_command:
-            cloudtrail_trails = raw_output.get("trailList", [])
-        elif "list-policies" in cli_command and "Local" in cli_command:
-            local_policies = raw_output.get("Policies", [])
-    findings = []
-    zero_trust_mechanisms = 0
+    trail_status = None
+    security_groups = None
+    vpc_endpoints = None
     # ... (additional validation logic) ...
 ```
 
@@ -64,15 +95,15 @@ def evaluate_KSI_IAM_05(cli_output):
 
 **Control Description:** Apply zero trust design principles
 
-**Implementation Justification:** Validates zero trust through continuous verification, conditional access, and comprehensive logging
+**Implementation Justification:** Validates comprehensive zero trust implementation through Identity Center (modern approach), network security, continuous monitoring, conditional access, and secure communications patterns
 
 **FedRAMP 20x Category:** Identity and Access Management
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 7 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 2
+**Commands Executed:** 7
 **Validation Method:** validation-engine-sync
 
 ---

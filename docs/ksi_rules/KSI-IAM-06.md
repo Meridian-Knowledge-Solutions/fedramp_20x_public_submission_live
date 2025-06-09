@@ -1,89 +1,109 @@
-# KSI-IAM-06: Automatically disable accounts with privileged access on suspicious activity
+# KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
-*Generated on 2025-06-09 20:05:24 UTC*
+*Generated on 2025-06-09 20:52:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-06`
-**Description:** Automatically disable accounts with privileged access on suspicious activity
-**Justification:** Validates automated response capabilities for privileged account security incidents
-**Last Validation:** ✅ 2025-06-09T20:05:24.228083
-**Result:** ⚠️ Basic automated response (expand capabilities): ❌ No CloudWatch alarms found for automated monitoring; ⚠️ 1 Lambda functions found but none explicitly security-focused; ✅ Automated notification capability: 2 SNS topics configured; ⚠️ No SNS subscriptions found
+**Description:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
+**Justification:** Validates end-to-end automated response workflows including threat detection, event triggers, and account security actions through modern AWS security services and Identity Center integration
+**Last Validation:** ✅ 2025-06-09T20:52:05.048783
+**Result:** ✅ Strong automated response capabilities (68%): ✅ Advanced threat detection: GuardDuty enabled (1 detector(s)); ✅ Centralized security management: Security Hub enabled; ⚠️ 1 EventBridge rules found but none security-focused; ✅ Modern identity automation: Identity Center configured (1 instance(s)); ✅ Built-in automated identity controls: Session management, conditional access, risk-based authentication; ⚠️ No Config rules found for automated remediation; ⚠️ 1 Lambda functions found but none explicitly security-focused; ❌ No CloudWatch alarms found for security monitoring
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws cloudwatch describe-alarms --output json`
-   **Purpose:** Check for automated alarms on suspicious privileged activities
+1. **Command:** `aws events list-rules --output json`
+   **Purpose:** Check EventBridge rules for automated security response triggers (critical for automation)
 
-2. **Command:** `aws lambda list-functions --output json`
-   **Purpose:** Check for automated response functions for account security
+2. **Command:** `aws guardduty list-detectors --output json`
+   **Purpose:** Validate GuardDuty threat detection service for suspicious activity identification
 
-3. **Command:** `aws sns list-topics --output json`
-   **Purpose:** Check SNS topics for security alert notifications
+3. **Command:** `aws securityhub describe-hub --output json`
+   **Purpose:** Check Security Hub for centralized security findings and automated response coordination
 
-4. **Command:** `aws sns list-subscriptions --output json`
-   **Purpose:** Verify active subscriptions for security notifications
+4. **Command:** `aws sso-admin list-instances --output json`
+   **Purpose:** Validate Identity Center for built-in automated session and access controls
+
+5. **Command:** `aws config describe-config-rules --output json`
+   **Purpose:** Check Config rules for automated compliance remediation and account security
+
+6. **Command:** `aws lambda list-functions --output json`
+   **Purpose:** Identify automated response functions for account disabling and security actions
+
+7. **Command:** `aws cloudwatch describe-alarms --output json`
+   **Purpose:** Check CloudWatch alarms for suspicious privileged account activity monitoring
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
-- **Command:** `aws cloudwatch describe-alarms --output json`
-  - **Purpose:** Check for automated alarms on suspicious privileged activities
+- **Command:** `aws events list-rules --output json`
+  - **Purpose:** Check EventBridge rules for automated security response triggers (critical for automation)
+- **Command:** `aws guardduty list-detectors --output json`
+  - **Purpose:** Validate GuardDuty threat detection service for suspicious activity identification
+- **Command:** `aws securityhub describe-hub --output json`
+  - **Purpose:** Check Security Hub for centralized security findings and automated response coordination
+- **Command:** `aws sso-admin list-instances --output json`
+  - **Purpose:** Validate Identity Center for built-in automated session and access controls
+- **Command:** `aws config describe-config-rules --output json`
+  - **Purpose:** Check Config rules for automated compliance remediation and account security
 - **Command:** `aws lambda list-functions --output json`
-  - **Purpose:** Check for automated response functions for account security
-- **Command:** `aws sns list-topics --output json`
-  - **Purpose:** Check SNS topics for security alert notifications
-- **Command:** `aws sns list-subscriptions --output json`
-  - **Purpose:** Verify active subscriptions for security notifications
+  - **Purpose:** Identify automated response functions for account disabling and security actions
+- **Command:** `aws cloudwatch describe-alarms --output json`
+  - **Purpose:** Check CloudWatch alarms for suspicious privileged account activity monitoring
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_IAM_06`
 
-**Documentation:** UPDATED: KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
+**Documentation:** Enhanced KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
 in response to suspicious activity
 
-ENHANCEMENT: Now recognizes SNS topics and subscriptions as automated response mechanisms
+Validates comprehensive automated response workflows:
+- Threat detection (GuardDuty, Security Hub, CloudWatch)
+- Event triggers (EventBridge rules for automation)
+- Response actions (Lambda functions, Config remediation)
+- Identity management (Identity Center automated controls)
+- End-to-end workflows (not just isolated components)
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_IAM_06(cli_output):
     """
-    UPDATED: KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
+    Enhanced KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
     in response to suspicious activity
     
-    ENHANCEMENT: Now recognizes SNS topics and subscriptions as automated response mechanisms
+    Validates comprehensive automated response workflows:
+    - Threat detection (GuardDuty, Security Hub, CloudWatch)
+    - Event triggers (EventBridge rules for automation)
+    - Response actions (Lambda functions, Config remediation)
+    - Identity management (Identity Center automated controls)
+    - End-to-end workflows (not just isolated components)
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
-    alarms = None
-    lambda_functions = None
-    sns_topics = None
-    sns_subscriptions = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if not isinstance(raw_output, dict):
-            continue
-        if "describe-alarms" in cli_command:
+    event_rules = None
+    guardduty_detectors = None
+    security_hub = None
+    sso_instances = None
+    config_rules = None
     # ... (additional validation logic) ...
 ```
 
 ## 📜 Compliance Mapping
 
-**Control Description:** Automatically disable accounts with privileged access on suspicious activity
+**Control Description:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
-**Implementation Justification:** Validates automated response capabilities for privileged account security incidents
+**Implementation Justification:** Validates end-to-end automated response workflows including threat detection, event triggers, and account security actions through modern AWS security services and Identity Center integration
 
 **FedRAMP 20x Category:** Identity and Access Management
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 4 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 7 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 4
+**Commands Executed:** 7
 **Validation Method:** validation-engine-sync
 
 ---
