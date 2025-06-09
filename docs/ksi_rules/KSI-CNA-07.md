@@ -1,13 +1,13 @@
 # KSI-CNA-07: Follow AWS best practices
 
-*Generated on 2025-06-09 09:22:49 UTC*
+*Generated on 2025-06-09 09:37:39 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-07`
 **Description:** Follow AWS best practices
 **Justification:** Validates basic AWS configuration best practices
-**Last Validation:** ✅ 2025-06-09T09:22:49.306129
+**Last Validation:** ✅ 2025-06-09T09:37:39.539032
 **Result:** ✅ AWS best practices: 394 active Config rules configured
 
 ## 🛠️ Implementation
@@ -64,7 +64,7 @@ def evaluate_KSI_CNA_07(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ✅ All 1 commands executed successfully | 📋 394 Config rules active
+**Evidence Analysis:** ❌ All 1 commands failed execution | ⚠️ No usable output
 
 **Commands Executed:** 1
 **Validation Method:** validation-engine-sync

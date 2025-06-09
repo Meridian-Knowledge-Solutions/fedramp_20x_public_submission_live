@@ -1,13 +1,13 @@
 # KSI-IAM-01: Enforce phishing-resistant MFA for all user authentication
 
-*Generated on 2025-06-09 09:22:49 UTC*
+*Generated on 2025-06-09 09:37:39 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-01`
 **Description:** Enforce phishing-resistant MFA for all user authentication
 **Justification:** Validates MFA enforcement through Identity Center configuration evidence showing always-on MFA requirements, combined with traditional IAM user analysis
-**Last Validation:** ✅ 2025-06-09T09:22:49.306351
+**Last Validation:** ✅ 2025-06-09T09:37:39.539232
 **Result:** ⚠️ Good MFA coverage (75% coverage): ✅ Identity Center: 1 active instance(s); ✅ Identity Center users: 5; ✅ MFA enforcement evidence: Identity Center MFA always-on configuration; Traditional IAM users: 3; ✅ Traditional IAM MFA devices: 1
 
 ## 🛠️ Implementation
@@ -86,7 +86,7 @@ def evaluate_KSI_IAM_01(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ✅ All 5 commands executed successfully | 👤 3 IAM users found | 🔐 1 MFA devices detected | ✅ Command output received
+**Evidence Analysis:** ❌ All 5 commands failed execution | ⚠️ No usable output
 
 **Commands Executed:** 5
 **Validation Method:** validation-engine-sync

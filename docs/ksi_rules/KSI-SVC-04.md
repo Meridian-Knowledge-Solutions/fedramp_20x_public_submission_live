@@ -1,13 +1,13 @@
 # KSI-SVC-04: Manage configuration centrally
 
-*Generated on 2025-06-09 09:22:49 UTC*
+*Generated on 2025-06-09 09:37:39 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-04`
 **Description:** Manage configuration centrally
 **Justification:** Validates centralized configuration management through Systems Manager and Config
-**Last Validation:** ✅ 2025-06-09T09:22:49.309356
+**Last Validation:** ✅ 2025-06-09T09:37:39.542187
 **Result:** ⚠️ Basic configuration management available: ⚠️ SSM Parameter Store available but no parameters found; ⚠️ AWS Config service not accessible
 
 ## 🛠️ Implementation
@@ -71,7 +71,7 @@ def evaluate_KSI_SVC_04(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ⚠️ 1/2 commands failed execution | ✅ Command output received | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
 
 **Commands Executed:** 2
 **Validation Method:** validation-engine-sync

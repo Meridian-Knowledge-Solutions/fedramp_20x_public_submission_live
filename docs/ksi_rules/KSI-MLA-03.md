@@ -1,13 +1,13 @@
 # KSI-MLA-03: Rapidly detect and remediate or mitigate vulnerabilities
 
-*Generated on 2025-06-09 09:22:49 UTC*
+*Generated on 2025-06-09 09:37:39 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-03`
 **Description:** Rapidly detect and remediate or mitigate vulnerabilities
 **Justification:** Validates rapid vulnerability detection and response through Security Hub, Inspector, and automated remediation
-**Last Validation:** ✅ 2025-06-09T09:22:49.307216
+**Last Validation:** ✅ 2025-06-09T09:37:39.540129
 **Result:** ⚠️ Basic vulnerability detection (needs enhancement): ✅ Security Hub: 3/3 standards enabled for rapid detection; ❌ Inspector not configured for vulnerability scanning
 
 ## 🛠️ Implementation
@@ -70,7 +70,7 @@ def evaluate_KSI_MLA_03(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ⚠️ 1/2 commands failed execution | ✅ Command output received | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
 
 **Commands Executed:** 2
 **Validation Method:** validation-engine-sync

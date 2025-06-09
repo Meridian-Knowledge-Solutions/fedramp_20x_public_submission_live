@@ -1,13 +1,13 @@
 # KSI-MLA-02: Regularly review and audit logs
 
-*Generated on 2025-06-09 09:22:49 UTC*
+*Generated on 2025-06-09 09:37:39 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-02`
 **Description:** Regularly review and audit logs
 **Justification:** Validates log review processes through automated analysis, alerting, and audit capabilities
-**Last Validation:** ✅ 2025-06-09T09:22:49.307161
+**Last Validation:** ✅ 2025-06-09T09:37:39.540073
 **Result:** ⚠️ Basic log review (expand mechanisms): ❌ No CloudWatch alarms for automated log review; ⚠️ No metric filters found for log analysis; ✅ Automated log review notifications: 2 SNS topics for alert delivery
 
 ## 🛠️ Implementation
@@ -75,7 +75,7 @@ def evaluate_KSI_MLA_02(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ✅ All 3 commands executed successfully | ✅ Command output received | ✅ Command output received | ✅ Command output received
+**Evidence Analysis:** ❌ All 3 commands failed execution | ⚠️ No usable output
 
 **Commands Executed:** 3
 **Validation Method:** validation-engine-sync

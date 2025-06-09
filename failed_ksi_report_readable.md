@@ -20,13 +20,13 @@ Here's what needs to be fixed, with the technical details for your team:
 
 #### KSI-CNA-05
 
-**What it does:** A secure cloud service offering will use cloud native architecture and design principles to enforce and enhance the Confidentiality, Integrity and Availability of the system.
+**What it does:** Have denial of service protection
 
 **Issue:** AWS Shield error:
 
 **Validation Method:** 1 commands (0 successful): aws shield describe-subscription --output json
 
-**Last Checked:** 2025-06-09 09:22 UTC
+**Last Checked:** 2025-06-09 09:37 UTC
 
 ---
 ## 🎯 Next Steps
@@ -44,5 +44,5 @@ Contact our security team at security@meridianks.com for assistance with any of 
 ## 📞 Questions?
 
 📧 **Email:** security@meridianks.com  
-📅 **Report Generated:** 2025-06-09 09:22 UTC  
+📅 **Report Generated:** 2025-06-09 09:37 UTC  
 🔍 **Source:** Automated FedRAMP 20x validation pipeline
