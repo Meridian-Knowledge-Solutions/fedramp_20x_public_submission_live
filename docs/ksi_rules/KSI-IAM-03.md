@@ -1,13 +1,21 @@
 # KSI-IAM-03: Enforce secure authentication for non-user accounts and services
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-09 07:55:36 UTC*
+=======
+*Generated on 2025-06-09 07:55:55 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-03`
 **Description:** Enforce secure authentication for non-user accounts and services
 **Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys)
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-09T07:55:36.268600
+=======
+**Last Validation:** ✅ 2025-06-09T07:55:55.136389
+>>>>>>> Stashed changes
 **Result:** ✅ Secure service authentication: ✅ 25 IAM roles (13 service-oriented)
 
 ## 🛠️ Implementation

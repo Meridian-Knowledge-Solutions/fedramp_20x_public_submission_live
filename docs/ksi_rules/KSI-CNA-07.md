@@ -1,13 +1,21 @@
 # KSI-CNA-07: Follow AWS best practices
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-09 07:55:36 UTC*
+=======
+*Generated on 2025-06-09 07:55:55 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-07`
 **Description:** Follow AWS best practices
 **Justification:** Validates basic AWS configuration best practices
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-09T07:55:36.268210
+=======
+**Last Validation:** ✅ 2025-06-09T07:55:55.135991
+>>>>>>> Stashed changes
 **Result:** ✅ AWS best practices: 394 active Config rules configured
 
 ## 🛠️ Implementation

@@ -1,13 +1,21 @@
 # KSI-CMT-01: Log and monitor system modifications
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-09 07:55:36 UTC*
+=======
+*Generated on 2025-06-09 07:55:55 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-01`
 **Description:** Log and monitor system modifications
 **Justification:** Validates system modification logging through CloudTrail and Config change tracking
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-09T07:55:36.265622
+=======
+**Last Validation:** ✅ 2025-06-09T07:55:55.133357
+>>>>>>> Stashed changes
 **Result:** ✅ System modification logging and monitoring: ✅ System modification logging configured: 1 CloudTrail trails; ✅ Global service events tracked: 1 trails; ℹ️ AWS Config not configured (acceptable for low-impact)
 
 ## 🛠️ Implementation

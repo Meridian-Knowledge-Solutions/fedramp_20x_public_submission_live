@@ -1,13 +1,21 @@
 # KSI-PIY-04: Build security considerations into SDLC and align with CISA Secure By Design principles
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-09 07:55:36 UTC*
+=======
+*Generated on 2025-06-09 07:55:55 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-04`
 **Description:** Build security considerations into SDLC and align with CISA Secure By Design principles
 **Justification:** Validates secure development through CodeCommit, CodeBuild security scanning, and SDLC documentation
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-09T07:55:36.270736
+=======
+**Last Validation:** ✅ 2025-06-09T07:55:55.138409
+>>>>>>> Stashed changes
 **Result:** ⚠️ Basic secure development practices (expand documentation): ℹ️ No CodeCommit repositories (may use external source control); ✅ Secure SDLC documentation: Secure Software Development Lifecycle (SDLC) Policy.pdf
 
 ## 🛠️ Implementation
