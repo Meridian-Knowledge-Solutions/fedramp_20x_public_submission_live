@@ -1,9 +1,13 @@
 # KSI-CNA-01: Configure information resources to limit traffic
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-09 07:55:36 UTC*
 =======
 *Generated on 2025-06-09 07:55:55 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-09 07:55:59 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Configure information resources to limit traffic
 **Justification:** Validates basic network access controls are configured
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-09T07:55:36.265956
 =======
 **Last Validation:** ✅ 2025-06-09T07:55:55.133726
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-09T07:55:59.595741
 >>>>>>> Stashed changes
 **Result:** ✅ Traffic controls configured: 1 restrictive security groups, 1 VPCs
 

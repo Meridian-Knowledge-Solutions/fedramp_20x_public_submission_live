@@ -1,9 +1,13 @@
 # KSI-CNA-07: Follow AWS best practices
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-09 07:55:36 UTC*
 =======
 *Generated on 2025-06-09 07:55:55 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-09 07:55:59 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Follow AWS best practices
 **Justification:** Validates basic AWS configuration best practices
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-09T07:55:36.268210
 =======
 **Last Validation:** ✅ 2025-06-09T07:55:55.135991
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-09T07:55:59.597994
 >>>>>>> Stashed changes
 **Result:** ✅ AWS best practices: 394 active Config rules configured
 

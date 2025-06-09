@@ -1,9 +1,13 @@
 # KSI-CNA-02: Design systems to minimize attack surface
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-09 07:55:36 UTC*
 =======
 *Generated on 2025-06-09 07:55:55 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-09 07:55:59 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Design systems to minimize attack surface
 **Justification:** Validates network segmentation and isolation
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-09T07:55:36.266049
 =======
 **Last Validation:** ✅ 2025-06-09T07:55:55.133821
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-09T07:55:59.595844
 >>>>>>> Stashed changes
 **Result:** ✅ Network segmentation (exceptional): 6 subnets across 6 AZs (0 private), 0 security groups
 

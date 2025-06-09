@@ -1,9 +1,13 @@
 # KSI-CNA-05: Have denial of service protection
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-09 07:55:36 UTC*
 =======
 *Generated on 2025-06-09 07:55:55 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-09 07:55:59 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Have denial of service protection
 **Justification:** Validates basic DDoS protection is enabled
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ❌ 2025-06-09T07:55:36.266242
 =======
 **Last Validation:** ❌ 2025-06-09T07:55:55.134011
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ❌ 2025-06-09T07:55:59.596040
 >>>>>>> Stashed changes
 **Result:** ❌ AWS Shield error: 
 
