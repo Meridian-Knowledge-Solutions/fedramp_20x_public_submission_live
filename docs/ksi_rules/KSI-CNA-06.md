@@ -1,14 +1,14 @@
 # KSI-CNA-06: Design for high availability and recovery
 
-*Generated on 2025-06-09 21:56:37 UTC*
+*Generated on 2025-06-09 22:20:52 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-06`
 **Description:** Design for high availability and recovery
 **Justification:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
-**Last Validation:** ✅ 2025-06-09T21:56:37.301538
-**Result:** ✅ HA design (excellent): 6 subnets across 6 AZs, 2 backup plans
+**Last Validation:** ✅ 2025-06-09T22:20:52.543616
+**Result:** ⚠️ Basic HA elements (44%) - needs significant enhancement: ✅ Excellent network HA: 6 subnets across 6 AZs; ✅ Balanced AZ distribution: Even subnet spread across zones; ℹ️ No RDS instances found; ⚠️ No load balancers found - missing application HA layer; ⚠️ No Auto Scaling Groups found - missing compute HA; ✅ Centralized backup strategy: 2 AWS Backup plans; ⚠️ No EBS snapshots found; ✅ Storage redundancy: 2 S3 buckets (built-in HA); ℹ️ No Route 53 hosted zones found
 
 ## 🛠️ Implementation
 
@@ -66,34 +66,39 @@
 
 **Function:** `evaluate_KSI_CNA_06`
 
-**Documentation:** FINAL FIX: KSI-CNA-06: Basic HA design
+**Documentation:** Enhanced KSI-CNA-06: Design for high availability and recovery
 
-ISSUE: Still showing 0 AZ(s), 0 subnets despite evidence showing 6 items + 2 backup plans
-ROOT CAUSE: The AWS query format is returning data differently than expected
-SOLUTION: Debug the actual response format and handle all variations
+Validates comprehensive high availability and recovery across all infrastructure layers:
+- Network HA (multi-AZ subnet distribution, availability zone coverage)
+- Database HA (RDS Multi-AZ, read replicas, backup retention)
+- Application HA (load balancers, health checks, traffic distribution)
+- Compute HA (Auto Scaling Groups, multi-AZ instance distribution)
+- Storage HA (EBS snapshots, S3 redundancy, cross-region replication)
+- DNS HA (Route 53 health checks, failover routing)
+- Backup and Recovery (automated backups, point-in-time recovery)
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_06(cli_output):
     """
-    FINAL FIX: KSI-CNA-06: Basic HA design
+    Enhanced KSI-CNA-06: Design for high availability and recovery
     
-    ISSUE: Still showing 0 AZ(s), 0 subnets despite evidence showing 6 items + 2 backup plans
-    ROOT CAUSE: The AWS query format is returning data differently than expected
-    SOLUTION: Debug the actual response format and handle all variations
+    Validates comprehensive high availability and recovery across all infrastructure layers:
+    - Network HA (multi-AZ subnet distribution, availability zone coverage)
+    - Database HA (RDS Multi-AZ, read replicas, backup retention)
+    - Application HA (load balancers, health checks, traffic distribution)
+    - Compute HA (Auto Scaling Groups, multi-AZ instance distribution)
+    - Storage HA (EBS snapshots, S3 redundancy, cross-region replication)
+    - DNS HA (Route 53 health checks, failover routing)
+    - Backup and Recovery (automated backups, point-in-time recovery)
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
-    subnets_data = None
-    backup_plans = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if not isinstance(raw_output, dict):
-            continue
-        if "describe-subnets" in cli_command:
-            subnets_data = raw_output
+    subnets = None
+    availability_zones = None
+    rds_instances = None
+    load_balancers = None
     # ... (additional validation logic) ...
 ```
 

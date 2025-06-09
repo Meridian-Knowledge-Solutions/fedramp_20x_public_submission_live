@@ -1,14 +1,14 @@
 # KSI-CNA-04: Use immutable infrastructure patterns
 
-*Generated on 2025-06-09 21:56:37 UTC*
+*Generated on 2025-06-09 22:20:52 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-04`
 **Description:** Use immutable infrastructure patterns
 **Justification:** Validates immutable infrastructure through Terraform-managed resources, versioned AMI pipelines, standardized deployment patterns, and replace-not-modify principles for traditional VM-based workloads
-**Last Validation:** ❌ 2025-06-09T21:56:37.301195
-**Result:** ❌ No Infrastructure as Code patterns found
+**Last Validation:** ✅ 2025-06-09T22:20:52.543287
+**Result:** ⚠️ Minimal infrastructure automation (12%) - predominantly manual: ⚠️ No Terraform lock tables found - potential state management issues; ⚠️ No launch templates found - instances may be deployed inconsistently; ⚠️ No Auto Scaling Groups found - manual instance management; ⚠️ No custom AMIs found - using base images without customization; ✅ Serverless compute: 1 Lambda functions (inherently immutable); ⚠️ No SSM parameters found - configuration may be hardcoded; ⚠️ No CodeBuild projects found - potentially manual deployments
 
 ## 🛠️ Implementation
 
@@ -66,31 +66,39 @@
 
 **Function:** `evaluate_KSI_CNA_04`
 
-**Documentation:** Simple rule for KSI-CNA-04: Infrastructure as Code patterns
-Expected: CloudFormation + Launch Templates
+**Documentation:** Terraform-Focused KSI-CNA-04: Use immutable infrastructure patterns
+
+Validates immutable infrastructure in Terraform-managed, VM-based environments:
+- Terraform state management and backend patterns
+- Versioned infrastructure (AMIs, launch templates, configuration)
+- Replace-not-modify patterns (Auto Scaling Groups, instance replacement)
+- Standardized deployments (launch templates, consistent configurations)
+- CI/CD automation (build pipelines, automated deployments)
+- Configuration management (parameter stores, versioned configs)
+- Immutable compute patterns (serverless functions, fresh instances)
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_04(cli_output):
     """
-    Simple rule for KSI-CNA-04: Infrastructure as Code patterns
-    Expected: CloudFormation + Launch Templates
+    Terraform-Focused KSI-CNA-04: Use immutable infrastructure patterns
+    
+    Validates immutable infrastructure in Terraform-managed, VM-based environments:
+    - Terraform state management and backend patterns
+    - Versioned infrastructure (AMIs, launch templates, configuration)
+    - Replace-not-modify patterns (Auto Scaling Groups, instance replacement)
+    - Standardized deployments (launch templates, consistent configurations)
+    - CI/CD automation (build pipelines, automated deployments)
+    - Configuration management (parameter stores, versioned configs)
+    - Immutable compute patterns (serverless functions, fresh instances)
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
-    cloudformation_stacks = None
+    instances = None
     launch_templates = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if "list-stacks" in cli_command:
-            cloudformation_stacks = raw_output.get("StackSummaries", [])
-        elif "describe-launch-templates" in cli_command:
-            launch_templates = raw_output.get("LaunchTemplates", [])
-    active_stacks = len(cloudformation_stacks) if cloudformation_stacks else 0
-    templates = len(launch_templates) if launch_templates else 0
-    if active_stacks > 0 or templates > 0:
+    auto_scaling_groups = None
+    custom_amis = None
     # ... (additional validation logic) ...
 ```
 

@@ -1,14 +1,14 @@
 # KSI-CNA-03: Use logical networking for traffic flow controls
 
-*Generated on 2025-06-09 21:56:37 UTC*
+*Generated on 2025-06-09 22:20:52 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-03`
 **Description:** Use logical networking for traffic flow controls
 **Justification:** Validates comprehensive logical networking through software-defined routing, traffic steering, network policies, and modern cloud networking patterns for intentional traffic flow control
-**Last Validation:** ✅ 2025-06-09T21:56:37.301062
-**Result:** ✅ Network controls configured: 1 NACLs (0 custom), 1 route tables
+**Last Validation:** ❌ 2025-06-09T22:20:52.543127
+**Result:** ❌ Insufficient logical networking (3%) - no meaningful traffic flow controls: ❌ No logical routing: Using default route tables only (1 total); ⚠️ No custom traffic filtering: Using default NACLs only (1 total); ⚠️ No VPC endpoints - missing private service routing; ℹ️ No Transit Gateways found (acceptable for simple architectures); ℹ️ No VPC peering found (acceptable for single-VPC architectures); ⚠️ No load balancers found - missing application traffic control; ⚠️ No NAT Gateways found - potential uncontrolled egress routing; ℹ️ No Route 53 hosted zones found; ⚠️ No VPC Flow Logs found - limited traffic flow visibility
 
 ## 🛠️ Implementation
 
@@ -66,31 +66,38 @@
 
 **Function:** `evaluate_KSI_CNA_03`
 
-**Documentation:** Simple rule for KSI-CNA-03: Basic network controls exist
-Expected: Network ACLs + Route Tables
+**Documentation:** Enhanced KSI-CNA-03: Use logical networking for traffic flow controls
+
+Validates comprehensive logical networking through:
+- Software-defined routing (custom route tables, intentional traffic paths)
+- Traffic steering mechanisms (load balancers, NAT gateways, VPC endpoints)
+- Network policies and filtering (NACLs with actual rules)
+- Modern cloud networking (Transit Gateway, VPC peering, service networking)
+- DNS-based traffic control (Route 53 resolver rules, private zones)
+- Traffic flow monitoring and validation (VPC Flow Logs)
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_03(cli_output):
     """
-    Simple rule for KSI-CNA-03: Basic network controls exist
-    Expected: Network ACLs + Route Tables
+    Enhanced KSI-CNA-03: Use logical networking for traffic flow controls
+    
+    Validates comprehensive logical networking through:
+    - Software-defined routing (custom route tables, intentional traffic paths)
+    - Traffic steering mechanisms (load balancers, NAT gateways, VPC endpoints)
+    - Network policies and filtering (NACLs with actual rules)
+    - Modern cloud networking (Transit Gateway, VPC peering, service networking)
+    - DNS-based traffic control (Route 53 resolver rules, private zones)
+    - Traffic flow monitoring and validation (VPC Flow Logs)
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
-    network_acls = None
     route_tables = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if "describe-network-acls" in cli_command:
-            network_acls = raw_output.get("NetworkAcls", [])
-        elif "describe-route-tables" in cli_command:
-            route_tables = raw_output.get("RouteTables", [])
-    if not network_acls:
-        return False, "❌ No Network ACLs found"
-    if not route_tables:
+    network_acls = None
+    vpc_endpoints = None
+    transit_gateways = None
+    vpc_peering = None
     # ... (additional validation logic) ...
 ```
 

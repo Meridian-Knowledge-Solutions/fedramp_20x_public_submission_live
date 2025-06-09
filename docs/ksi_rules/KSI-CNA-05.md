@@ -1,14 +1,14 @@
 # KSI-CNA-05: Have denial of service protection
 
-*Generated on 2025-06-09 21:56:37 UTC*
+*Generated on 2025-06-09 22:20:52 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-05`
 **Description:** Have denial of service protection
 **Justification:** Validates comprehensive multi-layer DDoS protection through network-layer shields, application-layer filtering, edge protection, capacity-based mitigation, and automated response capabilities
-**Last Validation:** ❌ 2025-06-09T21:56:37.301327
-**Result:** ❌ AWS Shield error: 
+**Last Validation:** ✅ 2025-06-09T22:20:52.543414
+**Result:** ⚠️ Minimal DDoS protection (7%) - significant gaps: ⚠️ Shield status unclear: ; ⚠️ No regional WAF found - missing application-layer DDoS protection; ⚠️ No CloudFront WAF found - missing edge application protection; ⚠️ No load balancers found - missing traffic distribution for DDoS mitigation; ⚠️ No Auto Scaling Groups - missing capacity-based DDoS mitigation; ⚠️ No Route 53 hosted zones - DNS may be vulnerable to attacks; ⚠️ No CloudWatch alarms - missing DDoS detection and response
 
 ## 🛠️ Implementation
 
@@ -61,31 +61,39 @@
 
 **Function:** `evaluate_KSI_CNA_05`
 
-**Documentation:** Fixed rule for KSI-CNA-05: Basic DDoS protection
-Expected: AWS Shield status
+**Documentation:** Enhanced KSI-CNA-05: Have denial of service protection
+
+Validates comprehensive multi-layer DDoS protection:
+- Network-layer protection (AWS Shield Standard/Advanced)
+- Application-layer protection (WAF rules, rate limiting)
+- Edge protection (CloudFront distributions, edge caching)
+- Capacity-based mitigation (Auto Scaling, load balancers)
+- DNS protection (Route 53 resilience)
+- Monitoring and response (CloudWatch alarms, automated scaling)
+- Geographic and IP-based filtering capabilities
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_05(cli_output):
     """
-    Fixed rule for KSI-CNA-05: Basic DDoS protection
-    Expected: AWS Shield status
+    Enhanced KSI-CNA-05: Have denial of service protection
+    
+    Validates comprehensive multi-layer DDoS protection:
+    - Network-layer protection (AWS Shield Standard/Advanced)
+    - Application-layer protection (WAF rules, rate limiting)
+    - Edge protection (CloudFront distributions, edge caching)
+    - Capacity-based mitigation (Auto Scaling, load balancers)
+    - DNS protection (Route 53 resilience)
+    - Monitoring and response (CloudWatch alarms, automated scaling)
+    - Geographic and IP-based filtering capabilities
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if "describe-subscription" in cli_command:
-            if isinstance(raw_output, str):
-                if "InvalidParameterValueException" in raw_output or "SubscriptionNotFound" in raw_output:
-                    return True, "✅ AWS Shield Standard protection active (sufficient for Low impact)"
-                else:
-                    return False, f"❌ AWS Shield error: {raw_output[:100]}"
-            elif isinstance(raw_output, dict):
-                if "SubscriptionArn" in raw_output:
-                    return True, "✅ AWS Shield Advanced subscription active"
+    shield_subscription = None
+    regional_waf = None
+    cloudfront_waf = None
+    cloudfront_distributions = None
     # ... (additional validation logic) ...
 ```
 

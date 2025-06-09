@@ -1,14 +1,14 @@
 # KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-*Generated on 2025-06-09 21:56:37 UTC*
+*Generated on 2025-06-09 22:20:52 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-02`
 **Description:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 **Justification:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
-**Last Validation:** ✅ 2025-06-09T21:56:37.300912
-**Result:** ✅ Network segmentation (exceptional): 6 subnets across 6 AZs (0 private), 1 security groups
+**Last Validation:** ❌ 2025-06-09T22:20:52.542936
+**Result:** ❌ Insufficient attack surface controls (0%) - critical security gaps: ❌ CRITICAL: All 6 subnets are public (maximum attack surface); ✅ Excellent AZ segmentation: 6 subnets across 6 availability zones; ❌ No micro-segmentation: Using default security groups only; ✅ Lateral movement barriers: 1/1 security groups with specific rules; ℹ️ No RDS instances found; ⚠️ Lambda exposure: 1 functions not in VPC (limited network isolation); ⚠️ Using default Network ACLs only (no additional subnet isolation)
 
 ## 🛠️ Implementation
 
@@ -66,33 +66,37 @@
 
 **Function:** `evaluate_KSI_CNA_02`
 
-**Documentation:** FIXED: KSI-CNA-02: Network segmentation exists
+**Documentation:** Enhanced KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-ISSUE: Current logic says "6 subnets in 6 AZs" is insufficient - this is WRONG
-FIX: 6 AZs is exceptional segmentation (most regions only have 3-4 AZs)
+Validates comprehensive attack surface reduction and lateral movement prevention:
+- Attack surface minimization (private placement, service exposure, workload isolation)
+- Network segmentation (subnets, security groups, NACLs)
+- Lateral movement barriers (micro-segmentation, isolation boundaries)
+- Modern cloud-native security (containers, serverless, service mesh)
+- Defense-in-depth architecture
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_02(cli_output):
     """
-    FIXED: KSI-CNA-02: Network segmentation exists
+    Enhanced KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
     
-    ISSUE: Current logic says "6 subnets in 6 AZs" is insufficient - this is WRONG
-    FIX: 6 AZs is exceptional segmentation (most regions only have 3-4 AZs)
+    Validates comprehensive attack surface reduction and lateral movement prevention:
+    - Attack surface minimization (private placement, service exposure, workload isolation)
+    - Network segmentation (subnets, security groups, NACLs)
+    - Lateral movement barriers (micro-segmentation, isolation boundaries)
+    - Modern cloud-native security (containers, serverless, service mesh)
+    - Defense-in-depth architecture
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     subnets = None
     security_groups = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if not isinstance(raw_output, dict):
-            continue
-        if "describe-subnets" in cli_command:
-            subnets = raw_output.get("Subnets", [])
-        elif "describe-security-groups" in cli_command:
+    instances = None
+    network_acls = None
+    load_balancers = None
+    eks_cluster = None
     # ... (additional validation logic) ...
 ```
 

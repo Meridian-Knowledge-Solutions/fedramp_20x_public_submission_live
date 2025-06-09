@@ -1,14 +1,14 @@
 # KSI-CNA-01: Configure ALL information resources to limit inbound and outbound traffic
 
-*Generated on 2025-06-09 21:56:37 UTC*
+*Generated on 2025-06-09 22:20:52 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-01`
 **Description:** Configure ALL information resources to limit inbound and outbound traffic
 **Justification:** Validates comprehensive traffic controls across all AWS resources through multi-layered network security including ingress/egress controls, application-layer protection, and traffic monitoring
-**Last Validation:** ❌ 2025-06-09T21:56:37.300680
-**Result:** ❌ No VPCs found
+**Last Validation:** ❌ 2025-06-09T22:20:52.542682
+**Result:** Exception during evaluation: cannot access local variable 'detected_vpcs' where it is not associated with a value
 
 ## 🛠️ Implementation
 
@@ -61,31 +61,37 @@
 
 **Function:** `evaluate_KSI_CNA_01`
 
-**Documentation:** Simple rule for KSI-CNA-01: Basic traffic controls configured
-Expected: Security Groups + VPC
+**Documentation:** Enhanced KSI-CNA-01: Configure ALL information resources to limit inbound and outbound traffic
+
+Validates comprehensive traffic controls through defense-in-depth layers:
+- Network-layer controls (Security Groups, NACLs, Route Tables)
+- Application-layer controls (WAF, Load Balancers)
+- Access controls (VPC Endpoints, NAT Gateways)
+- Monitoring and visibility (VPC Flow Logs)
+- Both ingress AND egress traffic restrictions
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_01(cli_output):
     """
-    Simple rule for KSI-CNA-01: Basic traffic controls configured
-    Expected: Security Groups + VPC
+    Enhanced KSI-CNA-01: Configure ALL information resources to limit inbound and outbound traffic
+    
+    Validates comprehensive traffic controls through defense-in-depth layers:
+    - Network-layer controls (Security Groups, NACLs, Route Tables)
+    - Application-layer controls (WAF, Load Balancers)
+    - Access controls (VPC Endpoints, NAT Gateways)
+    - Monitoring and visibility (VPC Flow Logs)
+    - Both ingress AND egress traffic restrictions
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     security_groups = None
-    vpcs = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if "describe-security-groups" in cli_command:
-            security_groups = raw_output.get("SecurityGroups", [])
-        elif "describe-vpcs" in cli_command:
-            vpcs = raw_output.get("Vpcs", [])
-    if not security_groups:
-        return False, "❌ No security groups found"
-    if not vpcs:
+    network_acls = None
+    route_tables = None
+    nat_gateways = None
+    vpc_endpoints = None
+    web_acls = None
     # ... (additional validation logic) ...
 ```
 

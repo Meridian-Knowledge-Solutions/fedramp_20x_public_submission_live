@@ -1,14 +1,14 @@
 # KSI-CNA-07: Follow AWS best practices
 
-*Generated on 2025-06-09 21:56:37 UTC*
+*Generated on 2025-06-09 22:20:52 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-07`
 **Description:** Follow AWS best practices
 **Justification:** Validates comprehensive adherence to AWS Well-Architected Framework principles across security, reliability, performance, cost optimization, and operational excellence best practices
-**Last Validation:** ✅ 2025-06-09T21:56:37.305039
-**Result:** ✅ AWS best practices: 394 active Config rules configured
+**Last Validation:** ✅ 2025-06-09T22:20:52.547077
+**Result:** ⚠️ Basic AWS best practices (32%) - significant gaps remain: ❌ No active CloudTrail logging (critical security best practice); ✅ Encryption key management: 7 KMS keys; ✅ IAM best practices: 25 roles vs 3 users (service-oriented); ⚠️ No load balancers found - missing traffic distribution best practice; ⚠️ No Auto Scaling Groups - missing automated scaling best practice; ✅ Data protection: 2 backup plans configured; ✅ Storage optimization: 2 S3 buckets (cost-effective storage); ⚠️ No CloudWatch alarms - missing proactive monitoring; ✅ Compliance automation: 394 active Config rules
 
 ## 🛠️ Implementation
 
@@ -71,31 +71,37 @@
 
 **Function:** `evaluate_KSI_CNA_07`
 
-**Documentation:** Fixed rule for KSI-CNA-07: AWS best practices
-Expected: Config rules configured
+**Documentation:** Enhanced KSI-CNA-07: Follow AWS best practices
+
+Validates comprehensive adherence to AWS Well-Architected Framework across all 5 pillars:
+- Security (encryption, IAM, access control, CloudTrail logging)
+- Reliability (multi-AZ, load balancing, auto scaling, backup strategies)
+- Performance Efficiency (instance optimization, caching, load distribution)
+- Cost Optimization (resource rightsizing, utilization monitoring)
+- Operational Excellence (monitoring, automation, compliance, logging)
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CNA_07(cli_output):
     """
-    Fixed rule for KSI-CNA-07: AWS best practices
-    Expected: Config rules configured
+    Enhanced KSI-CNA-07: Follow AWS best practices
+    
+    Validates comprehensive adherence to AWS Well-Architected Framework across all 5 pillars:
+    - Security (encryption, IAM, access control, CloudTrail logging)
+    - Reliability (multi-AZ, load balancing, auto scaling, backup strategies)
+    - Performance Efficiency (instance optimization, caching, load distribution)
+    - Cost Optimization (resource rightsizing, utilization monitoring)
+    - Operational Excellence (monitoring, automation, compliance, logging)
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if "describe-config-rules" in cli_command:
-            if isinstance(raw_output, str):
-                if "InvalidParameterValueException" in raw_output or "ConfigurationRecorderNotAvailable" in raw_output:
-                    return True, "✅ AWS Config available but not configured (acceptable for Low impact)"
-                else:
-                    return False, f"❌ Config service error: {raw_output[:100]}"
-            elif isinstance(raw_output, dict):
-                config_rules = raw_output.get("ConfigRules", [])
-                if config_rules:
+    config_rules = None
+    cloudtrail_trails = None
+    kms_keys = None
+    iam_summary = None
+    instances = None
+    load_balancers = None
     # ... (additional validation logic) ...
 ```
 

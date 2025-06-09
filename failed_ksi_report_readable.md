@@ -22,35 +22,35 @@ Here's what needs to be fixed, with the technical details for your team:
 
 **What it does:** Configure ALL information resources to limit inbound and outbound traffic
 
-**Issue:** No VPCs found
+**Issue:** Exception during evaluation: cannot access local variable 'detected_vpcs' where it is not associated with a value
 
 **Validation Method:** 8 commands (8 successful): aws ec2 describe-security-groups --output json; aws ec2 describe-network-acls --output json (+6 more)
 
-**Last Checked:** 2025-06-09 21:56 UTC
+**Last Checked:** 2025-06-09 22:20 UTC
 
 ---
 
-#### KSI-CNA-04
+#### KSI-CNA-02
 
-**What it does:** Use immutable infrastructure patterns
+**What it does:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-**Issue:** No Infrastructure as Code patterns found
+**Issue:** Insufficient attack surface controls (0%) - critical security gaps:  CRITICAL: All 6 subnets are public (maximum attack surface);  Excellent AZ seg...
 
-**Validation Method:** 9 commands (9 successful): aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags,LaunchTime,ImageId]' --output json; aws ec2 describe-launch-templates --output json (+7 more)
+**Validation Method:** 9 commands (9 successful): aws ec2 describe-subnets --output json; aws ec2 describe-security-groups --output json (+7 more)
 
-**Last Checked:** 2025-06-09 21:56 UTC
+**Last Checked:** 2025-06-09 22:20 UTC
 
 ---
 
-#### KSI-CNA-05
+#### KSI-CNA-03
 
-**What it does:** Have denial of service protection
+**What it does:** Use logical networking for traffic flow controls
 
-**Issue:** AWS Shield error:
+**Issue:** Insufficient logical networking (3%) - no meaningful traffic flow controls:  No logical routing: Using default route tables only (1 total);  No cus...
 
-**Validation Method:** 8 commands (7 successful): aws shield describe-subscription --output json; aws wafv2 list-web-acls --scope REGIONAL --output json (+6 more)
+**Validation Method:** 9 commands (9 successful): aws ec2 describe-route-tables --output json; aws ec2 describe-network-acls --output json (+7 more)
 
-**Last Checked:** 2025-06-09 21:56 UTC
+**Last Checked:** 2025-06-09 22:20 UTC
 
 ---
 ## 🎯 Next Steps
@@ -59,12 +59,12 @@ Here's what needs to be fixed, with the technical details for your team:
 
 ### ⚙️ Configuration Items (1 items)
 **Technical setup** - Configure AWS services:
-- KSI-CNA-05: Set up required AWS service
+- KSI-CNA-03: Set up required AWS service
 
 ### 🔧 Technical Items (2 items)
 **Advanced setup** - Complex configurations:
 - KSI-CNA-01: Technical implementation needed
-- KSI-CNA-04: Technical implementation needed
+- KSI-CNA-02: Technical implementation needed
 
 ### 📞 Need Help?
 Contact our security team at security@meridianks.com for assistance with any of these items.
@@ -73,5 +73,5 @@ Contact our security team at security@meridianks.com for assistance with any of 
 ## 📞 Questions?
 
 📧 **Email:** security@meridianks.com  
-📅 **Report Generated:** 2025-06-09 21:56 UTC  
+📅 **Report Generated:** 2025-06-09 22:20 UTC  
 🔍 **Source:** Automated FedRAMP 20x validation pipeline
