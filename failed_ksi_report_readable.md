@@ -26,7 +26,7 @@ Here's what needs to be fixed, with the technical details for your team:
 
 **Validation Method:** 2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json
 
-**Last Checked:** 2025-06-09 05:17 UTC
+**Last Checked:** 2025-06-09 07:55 UTC
 
 ---
 
@@ -40,7 +40,7 @@ Here's what needs to be fixed, with the technical details for your team:
 
 **Validation Method:** 1 commands (0 successful): aws shield describe-subscription --output json
 
-**Last Checked:** 2025-06-09 05:17 UTC
+**Last Checked:** 2025-06-09 07:55 UTC
 
 ---
 ## 🎯 Next Steps
@@ -62,5 +62,5 @@ Contact our security team at security@meridianks.com for assistance with any of 
 ## 📞 Questions?
 
 📧 **Email:** security@meridianks.com  
-📅 **Report Generated:** 2025-06-09 05:17 UTC  
+📅 **Report Generated:** 2025-06-09 07:55 UTC  
 🔍 **Source:** Automated FedRAMP 20x validation pipeline
