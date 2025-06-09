@@ -1,79 +1,98 @@
-# KSI-IAM-02: Use secure passwordless methods or strong passwords with MFA
+# KSI-IAM-02: Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 
-*Generated on 2025-06-09 09:58:08 UTC*
+*Generated on 2025-06-09 20:05:24 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-02`
-**Description:** Use secure passwordless methods or strong passwords with MFA
-**Justification:** Validates passwordless authentication where feasible, otherwise strong password policy with MFA
-**Last Validation:** ✅ 2025-06-09T09:58:08.570728
-**Result:** ⚠️ Basic secure authentication (needs improvement): ✅ 1 active access keys for passwordless programmatic access; ❌ Password policy information not accessible
+**Description:** Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
+**Justification:** Validates passwordless authentication (SSO/SAML/temporary credentials) where feasible, otherwise strong password policy with mandatory MFA enforcement
+**Last Validation:** ✅ 2025-06-09T20:05:24.227628
+**Result:** ✅ Excellent authentication security (passwordless methods): ✅ 1 SAML providers configured (passwordless authentication); ⚠️ Using permanent user credentials (not passwordless); ✅ Strong MFA enforcement: 6 devices for 3 users (200% coverage); ❌ Password policy information not accessible
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws iam get-account-password-policy --output json`
-   **Purpose:** Check strong password policy enforcement
+1. **Command:** `aws iam list-saml-providers --output json`
+   **Purpose:** Check for federated authentication (passwordless method)
 
-2. **Command:** `aws iam list-access-keys --output json`
-   **Purpose:** Check for passwordless methods (access keys vs console passwords)
+2. **Command:** `aws iam list-virtual-mfa-devices --output json`
+   **Purpose:** Validate MFA device configuration and enforcement
+
+3. **Command:** `aws iam get-account-password-policy --output json`
+   **Purpose:** Check strong password policy enforcement when passwords are used
+
+4. **Command:** `aws iam list-users --output json`
+   **Purpose:** Analyze user authentication patterns and requirements
+
+5. **Command:** `aws sts get-caller-identity --output json`
+   **Purpose:** Validate current authentication method (temporary vs permanent credentials)
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
+- **Command:** `aws iam list-saml-providers --output json`
+  - **Purpose:** Check for federated authentication (passwordless method)
+- **Command:** `aws iam list-virtual-mfa-devices --output json`
+  - **Purpose:** Validate MFA device configuration and enforcement
 - **Command:** `aws iam get-account-password-policy --output json`
-  - **Purpose:** Check strong password policy enforcement
-- **Command:** `aws iam list-access-keys --output json`
-  - **Purpose:** Check for passwordless methods (access keys vs console passwords)
+  - **Purpose:** Check strong password policy enforcement when passwords are used
+- **Command:** `aws iam list-users --output json`
+  - **Purpose:** Analyze user authentication patterns and requirements
+- **Command:** `aws sts get-caller-identity --output json`
+  - **Purpose:** Validate current authentication method (temporary vs permanent credentials)
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_IAM_02`
 
-**Documentation:** FIXED: KSI-IAM-02: Use secure passwordless methods for user authentication and authorization 
+**Documentation:** Enhanced KSI-IAM-02: Use secure passwordless methods for user authentication and authorization 
 when feasible, otherwise enforce strong passwords with MFA
 
-ERROR FIX: Handles 'str' object has no attribute 'get' by adding robust type checking
+Validates:
+- True passwordless methods (SSO/SAML, temporary credentials)
+- MFA enforcement when passwords are used
+- Strong password policies when passwords are used
+- Overall authentication security posture
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_IAM_02(cli_output):
     """
-    FIXED: KSI-IAM-02: Use secure passwordless methods for user authentication and authorization 
+    Enhanced KSI-IAM-02: Use secure passwordless methods for user authentication and authorization 
     when feasible, otherwise enforce strong passwords with MFA
     
-    ERROR FIX: Handles 'str' object has no attribute 'get' by adding robust type checking
+    Validates:
+    - True passwordless methods (SSO/SAML, temporary credentials)
+    - MFA enforcement when passwords are used
+    - Strong password policies when passwords are used
+    - Overall authentication security posture
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
+    saml_providers = None
+    mfa_devices = None
     password_policy = None
-    access_keys = None
+    users = None
+    caller_identity = None
     for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output")
-        try:
-            if isinstance(raw_output, str):
-                if "get-account-password-policy" in cli_command:
-                    if any(error in raw_output for error in [
-                        "NoSuchEntity",
     # ... (additional validation logic) ...
 ```
 
 ## 📜 Compliance Mapping
 
-**Control Description:** Use secure passwordless methods or strong passwords with MFA
+**Control Description:** Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 
-**Implementation Justification:** Validates passwordless authentication where feasible, otherwise strong password policy with MFA
+**Implementation Justification:** Validates passwordless authentication (SSO/SAML/temporary credentials) where feasible, otherwise strong password policy with mandatory MFA enforcement
 
 **FedRAMP 20x Category:** Identity and Access Management
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 5 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 2
+**Commands Executed:** 5
 **Validation Method:** validation-engine-sync
 
 ---
