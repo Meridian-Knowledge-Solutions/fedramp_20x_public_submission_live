@@ -1,59 +1,80 @@
-# ❌ Failed KSI Validation Report
+# 🔧 FedRAMP 20x Remediation Guide
 
-*Automated report generated from FedRAMP 20x validation pipeline*
-
-## 📊 Executive Summary
-
-- **Overall Pass Rate:** 96.1% (49/51)
-- **Failed KSIs:** 2
-- **Validation Method:** multi-command-v2
-- **Last Updated:** 2025-06-09T03:19:45.839249Z
-
-### Category Breakdown
-- **KSI-CMT** (Change Management): 1/5 failed
-- **KSI-CNA** (Cloud Native Architecture): 1/7 failed
+*Updated: June 09, 2025 | 2 items need attention*
 
 ---
 
-## ❌ Failed KSI Details
+## 📊 **Quick Summary**
 
-### KSI-CMT: Change Management
+| Status | Count | Priority |
+|--------|--------|----------|
+| 🚨 **Failed KSIs** | 2 | **Fix to reach 90%** |
+| ✅ **Passing KSIs** | 49 | Maintain current state |
+| 🎯 **Target for Authorization** | 45+ passing | Need 0 more |
 
-#### ❌ KSI-CMT-03
+**Current Pass Rate:** 96.1% → **Target:** 90.0%
+---
 
-**Control:** Change Management
-**Reason:** ❌ No automated testing and validation: ❌ No CodeBuild projects for automated testing; ❌ No CodePipelines for automated change validation
-**Commands:** `2 commands (2 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json`
-**Evidence Analysis:** ✅ All 2 commands executed successfully | ✅ Command output received | ✅ Command output received
-**Commands Executed:** 2
-**Validated:** 2025-06-09 03:19:45 UTC
+## 🎯 **Priority Actions**
+
+### **🚨 High Priority (Block Authorization)**
+*Fix these first to reach 90% compliance*
+
+#### **KSI-CNA-05: Cloud Native Architecture**
+- **Issue:** DDoS protection service not accessible
+- **Fix:** Enable AWS Shield Advanced or document Shield Standard protection
+- **Effort:** 📅 1 day (Easy)
+- **Action:** Configure AWS Shield service in your account
 
 ---
 
-### KSI-CNA: Cloud Native Architecture
+### **⚙️ Low Priority (Technical Enhancement)**
+*Fix after reaching 90% compliance*
 
-#### ❌ KSI-CNA-05
-
-**Control:** Cloud Native Architecture
-**Reason:** ❌ AWS Shield error: 
-**Commands:** `1 commands (0 successful): aws shield describe-subscription --output json`
-**Evidence Analysis:** ⚠️ 1/1 commands failed execution | ⚠️ No usable output
-**Commands Executed:** 1
-**Validated:** 2025-06-09 03:19:45 UTC
+#### **KSI-CMT-03: Change Management**
+- **Issue:** No automated testing processes found
+- **Fix:** Set up automated testing pipeline or document manual testing procedures
+- **Effort:** 📅 2-3 days (Medium)
+- **Action:** Upload testing documentation to evidence folder
 
 ---
-## 🔧 Remediation Guidance
+## 📈 **Progress Tracking**
 
-### Configuration Issues (1 KSIs)
-- **Action:** Review and fix AWS service configurations
-- **Priority:** Medium - Configuration changes needed
-- **Affected KSIs:** KSI-CMT-03
+```
+Current:     ████████████████████████████████████████████████ 96.1%
+Target:      █████████████████████████████████████████████ 90.0%
+Remaining:   0 KSIs to fix
+```
 
-### Technical Issues (1 KSIs)
-- **Action:** Check AWS CLI configuration, permissions, and service availability
-- **Priority:** High - Technical resolution needed
-- **Affected KSIs:** KSI-CNA-05
----
+🎯 **You're very close!** Fix 2-3 more items to reach authorization readiness.
+## 🛠️ **How to Fix Each Type**
 
-*Report generated on 2025-06-09 03:19:45 UTC*
-*Source: unified_ksi_validations.json*
+### **📁 Missing Documentation**
+1. Create or find the required document
+2. Save as PDF with clear filename
+3. Upload to `evidence_v2/[KSI-ID]/[filename].pdf`
+4. Wait 24 hours for next validation run
+
+### **⚙️ Service Configuration**
+1. Log into AWS Console
+2. Navigate to the specific service
+3. Enable/configure as described
+4. Validation will detect changes automatically
+
+### **🔧 Technical Implementation**
+1. May require development work
+2. Consider if worth the effort vs. other KSIs
+3. Focus on easier wins first
+## ✅ **Next Steps**
+
+1. **This Week:** Fix 2-3 High Priority items
+2. **Next Week:** Add 3-4 documentation items
+3. **Following Week:** Test and verify 90%+ compliance
+4. **Then:** Ready for 3PAO assessment and submission!
+## 📞 **Need Help?**
+
+- 🐛 **Report issues:** [GitHub Issues](https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/issues)
+- 📧 **Email support:** security@meridianks.com
+- 📊 **Live dashboard:** [Trust Center](https://meridian-knowledge-solutions.github.io/fedramp_20x_public_submission_live/)
+
+*This report updates automatically every 24 hours*
