@@ -1,13 +1,13 @@
 # KSI-IAM-06: Automatically disable accounts with privileged access on suspicious activity
 
-*Generated on 2025-06-09 08:59:31 UTC*
+*Generated on 2025-06-09 09:09:47 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-06`
 **Description:** Automatically disable accounts with privileged access on suspicious activity
 **Justification:** Validates automated response capabilities for privileged account security incidents
-**Last Validation:** ✅ 2025-06-09T08:59:31.451536
+**Last Validation:** ✅ 2025-06-09T09:09:47.698712
 **Result:** ⚠️ Basic automated response (expand capabilities): ❌ No CloudWatch alarms found for automated monitoring; ⚠️ 1 Lambda functions found but none explicitly security-focused; ✅ Automated notification capability: 2 SNS topics configured; ⚠️ No SNS subscriptions found
 
 ## 🛠️ Implementation
