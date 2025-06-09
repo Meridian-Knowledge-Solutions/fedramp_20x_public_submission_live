@@ -1,13 +1,13 @@
 # KSI-INR-03: Generate after action reports and regularly incorporate lessons learned into operations with automated incident tracking
 
-*Generated on 2025-06-09 09:44:44 UTC*
+*Generated on 2025-06-09 09:58:08 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-INR-03`
 **Description:** Generate after action reports and regularly incorporate lessons learned into operations with automated incident tracking
 **Justification:** Hybrid validation combining automated SecurityHub incident analysis with manual after action report documentation
-**Last Validation:** ✅ 2025-06-09T09:44:44.697469
+**Last Validation:** ✅ 2025-06-09T09:58:08.571355
 **Result:** ⚠️ Basic after action reporting (increase lessons learned implementation): ✅ Core after action documentation: Sample After Action Reports and Implementation Examples.pdf; ✅ Recent after action reports: 2 AARs within last year; ⚠️ Limited evidence of lessons learned implementation into operations
 
 ## 🛠️ Implementation

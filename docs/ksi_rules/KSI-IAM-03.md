@@ -1,77 +1,92 @@
-# KSI-IAM-03: Enforce secure authentication for non-user accounts and services
+# KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
 
-*Generated on 2025-06-09 09:44:44 UTC*
+*Generated on 2025-06-09 09:58:08 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-03`
-**Description:** Enforce secure authentication for non-user accounts and services
-**Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys)
-**Last Validation:** ✅ 2025-06-09T09:44:44.696941
-**Result:** ✅ Secure service authentication: ✅ 25 IAM roles (13 service-oriented)
+**Description:** Enforce appropriately secure authentication methods for non-user accounts and services
+**Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys) and detects insecure patterns
+**Last Validation:** ✅ 2025-06-09T09:58:08.570861
+**Result:** ✅ Secure service authentication methods: ✅ 25 IAM roles available (13 service-oriented); ✅ 3 users found, none appear to be service accounts; ✅ 1 active access keys (reasonable for admin use); ℹ️ No EC2 instance profile information available
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `aws iam list-roles --output json`
-   **Purpose:** Check IAM roles for service authentication
+   **Purpose:** Check IAM roles for service authentication (primary secure method)
 
-2. **Command:** `aws iam list-service-linked-roles --output json`
-   **Purpose:** Validate AWS service-linked roles for secure service authentication
+2. **Command:** `aws iam list-users --output json`
+   **Purpose:** Identify potential service users who should be using roles instead
+
+3. **Command:** `aws iam list-access-keys --output json`
+   **Purpose:** Detect long-term access keys that may indicate insecure service authentication
+
+4. **Command:** `aws ec2 describe-instances --query 'Reservations[*].Instances[*].IamInstanceProfile' --output json`
+   **Purpose:** Validate EC2 instances use instance profiles for secure service authentication
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
 - **Command:** `aws iam list-roles --output json`
-  - **Purpose:** Check IAM roles for service authentication
-- **Command:** `aws iam list-service-linked-roles --output json`
-  - **Purpose:** Validate AWS service-linked roles for secure service authentication
+  - **Purpose:** Check IAM roles for service authentication (primary secure method)
+- **Command:** `aws iam list-users --output json`
+  - **Purpose:** Identify potential service users who should be using roles instead
+- **Command:** `aws iam list-access-keys --output json`
+  - **Purpose:** Detect long-term access keys that may indicate insecure service authentication
+- **Command:** `aws ec2 describe-instances --query 'Reservations[*].Instances[*].IamInstanceProfile' --output json`
+  - **Purpose:** Validate EC2 instances use instance profiles for secure service authentication
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_IAM_03`
 
-**Documentation:** Fixed rule for KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
-Expected: IAM Roles + Service-Linked Roles
+**Documentation:** Enhanced KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
+
+Validates:
+- IAM roles for service authentication (secure)
+- Absence of long-term access keys for services (insecure)
+- Instance profiles for EC2 services
+- Service user patterns
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_IAM_03(cli_output):
     """
-    Fixed rule for KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
-    Expected: IAM Roles + Service-Linked Roles
+    Enhanced KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
+    
+    Validates:
+    - IAM roles for service authentication (secure)
+    - Absence of long-term access keys for services (insecure)
+    - Instance profiles for EC2 services
+    - Service user patterns
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     roles = None
-    service_linked_roles = None
+    users = None
+    access_keys = None
+    instance_profiles = None
     for cmd in commands:
         cli_command = cmd.get("cli_command", "")
         raw_output = cmd.get("raw_output", {})
-        if not isinstance(raw_output, dict):
-            continue
-        if "list-roles" in cli_command and "service-linked" not in cli_command:
-            roles = raw_output.get("Roles", [])
-        elif "list-service-linked-roles" in cli_command:
-            service_linked_roles = raw_output.get("Roles", [])
-    if not roles and not service_linked_roles:
     # ... (additional validation logic) ...
 ```
 
 ## 📜 Compliance Mapping
 
-**Control Description:** Enforce secure authentication for non-user accounts and services
+**Control Description:** Enforce appropriately secure authentication methods for non-user accounts and services
 
-**Implementation Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys)
+**Implementation Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys) and detects insecure patterns
 
 **FedRAMP 20x Category:** Identity and Access Management
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 4 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 2
+**Commands Executed:** 4
 **Validation Method:** validation-engine-sync
 
 ---
