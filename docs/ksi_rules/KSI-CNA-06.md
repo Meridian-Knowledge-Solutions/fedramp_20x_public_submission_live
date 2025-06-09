@@ -1,31 +1,66 @@
 # KSI-CNA-06: Design for high availability and recovery
 
-*Generated on 2025-06-09 20:52:05 UTC*
+*Generated on 2025-06-09 21:56:37 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-06`
 **Description:** Design for high availability and recovery
-**Justification:** Validates multi-AZ design and backup capabilities
-**Last Validation:** ✅ 2025-06-09T20:52:05.046064
-**Result:** ✅ HA design (excellent, inferred from evidence): 6 subnets across 3 AZs, 2 backup plans
+**Justification:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
+**Last Validation:** ✅ 2025-06-09T21:56:37.301538
+**Result:** ✅ HA design (excellent): 6 subnets across 6 AZs, 2 backup plans
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws ec2 describe-subnets --query 'Subnets[*].{SubnetId:SubnetId,AvailabilityZone:AvailabilityZone}' --output json`
-   **Purpose:** Check multi-AZ subnet distribution
+1. **Command:** `aws ec2 describe-subnets --output json`
+   **Purpose:** Analyze subnet distribution across availability zones for network-level HA
 
-2. **Command:** `aws backup list-backup-plans --output json`
-   **Purpose:** Validate backup plans exist
+2. **Command:** `aws ec2 describe-availability-zones --output json`
+   **Purpose:** Check available AZs in region for HA planning and validation
+
+3. **Command:** `aws rds describe-db-instances --output json`
+   **Purpose:** Validate RDS Multi-AZ deployments and database high availability
+
+4. **Command:** `aws elbv2 describe-load-balancers --output json`
+   **Purpose:** Check load balancers for application-layer HA and traffic distribution
+
+5. **Command:** `aws autoscaling describe-auto-scaling-groups --output json`
+   **Purpose:** Validate Auto Scaling Groups for compute resilience and multi-AZ distribution
+
+6. **Command:** `aws backup list-backup-plans --output json`
+   **Purpose:** Check backup plans for data protection and recovery capabilities
+
+7. **Command:** `aws ec2 describe-snapshots --owner-ids self --output json`
+   **Purpose:** Validate EBS snapshot strategy for storage recovery
+
+8. **Command:** `aws s3api list-buckets --output json`
+   **Purpose:** Check S3 buckets for storage redundancy and cross-region replication
+
+9. **Command:** `aws route53 list-hosted-zones --output json`
+   **Purpose:** Validate DNS redundancy and health check capabilities
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
-- **Command:** `aws ec2 describe-subnets --query 'Subnets[*].{SubnetId:SubnetId,AvailabilityZone:AvailabilityZone}' --output json`
-  - **Purpose:** Check multi-AZ subnet distribution
+- **Command:** `aws ec2 describe-subnets --output json`
+  - **Purpose:** Analyze subnet distribution across availability zones for network-level HA
+- **Command:** `aws ec2 describe-availability-zones --output json`
+  - **Purpose:** Check available AZs in region for HA planning and validation
+- **Command:** `aws rds describe-db-instances --output json`
+  - **Purpose:** Validate RDS Multi-AZ deployments and database high availability
+- **Command:** `aws elbv2 describe-load-balancers --output json`
+  - **Purpose:** Check load balancers for application-layer HA and traffic distribution
+- **Command:** `aws autoscaling describe-auto-scaling-groups --output json`
+  - **Purpose:** Validate Auto Scaling Groups for compute resilience and multi-AZ distribution
 - **Command:** `aws backup list-backup-plans --output json`
-  - **Purpose:** Validate backup plans exist
+  - **Purpose:** Check backup plans for data protection and recovery capabilities
+- **Command:** `aws ec2 describe-snapshots --owner-ids self --output json`
+  - **Purpose:** Validate EBS snapshot strategy for storage recovery
+- **Command:** `aws s3api list-buckets --output json`
+  - **Purpose:** Check S3 buckets for storage redundancy and cross-region replication
+- **Command:** `aws route53 list-hosted-zones --output json`
+  - **Purpose:** Validate DNS redundancy and health check capabilities
 
 ## 🧠 Validation Logic
 
@@ -66,15 +101,15 @@ def evaluate_KSI_CNA_06(cli_output):
 
 **Control Description:** Design for high availability and recovery
 
-**Implementation Justification:** Validates multi-AZ design and backup capabilities
+**Implementation Justification:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
 
 **FedRAMP 20x Category:** Cloud Native Architecture
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 9 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 2
+**Commands Executed:** 9
 **Validation Method:** validation-engine-sync
 
 ---

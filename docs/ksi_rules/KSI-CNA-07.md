@@ -1,26 +1,71 @@
 # KSI-CNA-07: Follow AWS best practices
 
-*Generated on 2025-06-09 20:52:05 UTC*
+*Generated on 2025-06-09 21:56:37 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-07`
 **Description:** Follow AWS best practices
-**Justification:** Validates basic AWS configuration best practices
-**Last Validation:** ✅ 2025-06-09T20:52:05.047945
+**Justification:** Validates comprehensive adherence to AWS Well-Architected Framework principles across security, reliability, performance, cost optimization, and operational excellence best practices
+**Last Validation:** ✅ 2025-06-09T21:56:37.305039
 **Result:** ✅ AWS best practices: 394 active Config rules configured
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws configservice describe-config-rules --output json --region us-east-1`
-   **Purpose:** Check if Config rules are configured
+1. **Command:** `aws configservice describe-config-rules --output json`
+   **Purpose:** Check AWS Config rules for compliance monitoring and best practice enforcement
+
+2. **Command:** `aws cloudtrail describe-trails --output json`
+   **Purpose:** Validate CloudTrail logging (security and operational excellence best practice)
+
+3. **Command:** `aws kms list-keys --output json`
+   **Purpose:** Check KMS key management (security best practice for encryption)
+
+4. **Command:** `aws iam get-account-summary --output json`
+   **Purpose:** Analyze IAM configuration patterns (security best practices)
+
+5. **Command:** `aws ec2 describe-instances --output json`
+   **Purpose:** Evaluate instance configuration for best practices (performance, reliability)
+
+6. **Command:** `aws elbv2 describe-load-balancers --output json`
+   **Purpose:** Check load balancer implementation (reliability best practices)
+
+7. **Command:** `aws autoscaling describe-auto-scaling-groups --output json`
+   **Purpose:** Validate Auto Scaling implementation (reliability and cost optimization)
+
+8. **Command:** `aws s3api list-buckets --output json`
+   **Purpose:** Check S3 usage patterns (cost optimization and security best practices)
+
+9. **Command:** `aws cloudwatch describe-alarms --output json`
+   **Purpose:** Validate monitoring implementation (operational excellence best practices)
+
+10. **Command:** `aws backup list-backup-plans --output json`
+   **Purpose:** Check backup strategies (reliability best practices)
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
-- **Command:** `aws configservice describe-config-rules --output json --region us-east-1`
-  - **Purpose:** Check if Config rules are configured
+- **Command:** `aws configservice describe-config-rules --output json`
+  - **Purpose:** Check AWS Config rules for compliance monitoring and best practice enforcement
+- **Command:** `aws cloudtrail describe-trails --output json`
+  - **Purpose:** Validate CloudTrail logging (security and operational excellence best practice)
+- **Command:** `aws kms list-keys --output json`
+  - **Purpose:** Check KMS key management (security best practice for encryption)
+- **Command:** `aws iam get-account-summary --output json`
+  - **Purpose:** Analyze IAM configuration patterns (security best practices)
+- **Command:** `aws ec2 describe-instances --output json`
+  - **Purpose:** Evaluate instance configuration for best practices (performance, reliability)
+- **Command:** `aws elbv2 describe-load-balancers --output json`
+  - **Purpose:** Check load balancer implementation (reliability best practices)
+- **Command:** `aws autoscaling describe-auto-scaling-groups --output json`
+  - **Purpose:** Validate Auto Scaling implementation (reliability and cost optimization)
+- **Command:** `aws s3api list-buckets --output json`
+  - **Purpose:** Check S3 usage patterns (cost optimization and security best practices)
+- **Command:** `aws cloudwatch describe-alarms --output json`
+  - **Purpose:** Validate monitoring implementation (operational excellence best practices)
+- **Command:** `aws backup list-backup-plans --output json`
+  - **Purpose:** Check backup strategies (reliability best practices)
 
 ## 🧠 Validation Logic
 
@@ -58,15 +103,15 @@ def evaluate_KSI_CNA_07(cli_output):
 
 **Control Description:** Follow AWS best practices
 
-**Implementation Justification:** Validates basic AWS configuration best practices
+**Implementation Justification:** Validates comprehensive adherence to AWS Well-Architected Framework principles across security, reliability, performance, cost optimization, and operational excellence best practices
 
 **FedRAMP 20x Category:** Cloud Native Architecture
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 1 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 10 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 1
+**Commands Executed:** 10
 **Validation Method:** validation-engine-sync
 
 ---

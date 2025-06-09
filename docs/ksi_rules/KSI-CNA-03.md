@@ -1,31 +1,66 @@
 # KSI-CNA-03: Use logical networking for traffic flow controls
 
-*Generated on 2025-06-09 20:52:05 UTC*
+*Generated on 2025-06-09 21:56:37 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-03`
 **Description:** Use logical networking for traffic flow controls
-**Justification:** Validates network routing and access controls
-**Last Validation:** ✅ 2025-06-09T20:52:05.045892
+**Justification:** Validates comprehensive logical networking through software-defined routing, traffic steering, network policies, and modern cloud networking patterns for intentional traffic flow control
+**Last Validation:** ✅ 2025-06-09T21:56:37.301062
 **Result:** ✅ Network controls configured: 1 NACLs (0 custom), 1 route tables
 
 ## 🛠️ Implementation
 
 ### Commands Executed
-1. **Command:** `aws ec2 describe-network-acls --output json`
-   **Purpose:** Check Network ACL configurations
+1. **Command:** `aws ec2 describe-route-tables --output json`
+   **Purpose:** Analyze route tables for custom traffic flow controls and logical routing patterns
 
-2. **Command:** `aws ec2 describe-route-tables --output json`
-   **Purpose:** Validate routing configurations
+2. **Command:** `aws ec2 describe-network-acls --output json`
+   **Purpose:** Evaluate Network ACLs for subnet-level traffic filtering and flow control policies
+
+3. **Command:** `aws ec2 describe-vpc-endpoints --output json`
+   **Purpose:** Check VPC endpoints for private service routing and traffic flow optimization
+
+4. **Command:** `aws ec2 describe-transit-gateways --output json`
+   **Purpose:** Validate Transit Gateway for centralized network routing and cross-VPC traffic control
+
+5. **Command:** `aws ec2 describe-vpc-peering-connections --output json`
+   **Purpose:** Check VPC peering for controlled cross-network communication patterns
+
+6. **Command:** `aws elbv2 describe-load-balancers --output json`
+   **Purpose:** Analyze load balancers for application-layer traffic distribution and flow control
+
+7. **Command:** `aws route53 list-hosted-zones --output json`
+   **Purpose:** Check DNS-based traffic routing and resolver controls for logical networking
+
+8. **Command:** `aws ec2 describe-nat-gateways --output json`
+   **Purpose:** Validate NAT Gateways for controlled egress traffic flow from private networks
+
+9. **Command:** `aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json`
+   **Purpose:** Verify VPC Flow Logs for traffic flow monitoring and control validation
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
-- **Command:** `aws ec2 describe-network-acls --output json`
-  - **Purpose:** Check Network ACL configurations
 - **Command:** `aws ec2 describe-route-tables --output json`
-  - **Purpose:** Validate routing configurations
+  - **Purpose:** Analyze route tables for custom traffic flow controls and logical routing patterns
+- **Command:** `aws ec2 describe-network-acls --output json`
+  - **Purpose:** Evaluate Network ACLs for subnet-level traffic filtering and flow control policies
+- **Command:** `aws ec2 describe-vpc-endpoints --output json`
+  - **Purpose:** Check VPC endpoints for private service routing and traffic flow optimization
+- **Command:** `aws ec2 describe-transit-gateways --output json`
+  - **Purpose:** Validate Transit Gateway for centralized network routing and cross-VPC traffic control
+- **Command:** `aws ec2 describe-vpc-peering-connections --output json`
+  - **Purpose:** Check VPC peering for controlled cross-network communication patterns
+- **Command:** `aws elbv2 describe-load-balancers --output json`
+  - **Purpose:** Analyze load balancers for application-layer traffic distribution and flow control
+- **Command:** `aws route53 list-hosted-zones --output json`
+  - **Purpose:** Check DNS-based traffic routing and resolver controls for logical networking
+- **Command:** `aws ec2 describe-nat-gateways --output json`
+  - **Purpose:** Validate NAT Gateways for controlled egress traffic flow from private networks
+- **Command:** `aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json`
+  - **Purpose:** Verify VPC Flow Logs for traffic flow monitoring and control validation
 
 ## 🧠 Validation Logic
 
@@ -63,15 +98,15 @@ def evaluate_KSI_CNA_03(cli_output):
 
 **Control Description:** Use logical networking for traffic flow controls
 
-**Implementation Justification:** Validates network routing and access controls
+**Implementation Justification:** Validates comprehensive logical networking through software-defined routing, traffic steering, network policies, and modern cloud networking patterns for intentional traffic flow control
 
 **FedRAMP 20x Category:** Cloud Native Architecture
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 9 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 2
+**Commands Executed:** 9
 **Validation Method:** validation-engine-sync
 
 ---

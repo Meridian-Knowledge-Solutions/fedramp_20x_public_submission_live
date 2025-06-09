@@ -1,31 +1,66 @@
-# KSI-CNA-02: Design systems to minimize attack surface
+# KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-*Generated on 2025-06-09 20:52:05 UTC*
+*Generated on 2025-06-09 21:56:37 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-02`
-**Description:** Design systems to minimize attack surface
-**Justification:** Validates network segmentation and isolation
-**Last Validation:** ✅ 2025-06-09T20:52:05.045816
-**Result:** ✅ Network segmentation (exceptional): 6 subnets across 6 AZs (0 private), 0 security groups
+**Description:** Design systems to minimize the attack surface and minimize lateral movement if compromised
+**Justification:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
+**Last Validation:** ✅ 2025-06-09T21:56:37.300912
+**Result:** ✅ Network segmentation (exceptional): 6 subnets across 6 AZs (0 private), 1 security groups
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `aws ec2 describe-subnets --output json`
-   **Purpose:** Check subnet segmentation
+   **Purpose:** Analyze subnet segmentation for attack surface isolation (public vs private)
 
-2. **Command:** `aws ec2 describe-security-groups --query 'SecurityGroups[?GroupName!=`default`]' --output json`
-   **Purpose:** Verify custom security groups exist
+2. **Command:** `aws ec2 describe-security-groups --output json`
+   **Purpose:** Evaluate micro-segmentation and lateral movement prevention through security group rules
+
+3. **Command:** `aws ec2 describe-instances --output json`
+   **Purpose:** Assess compute workload exposure and placement for attack surface minimization
+
+4. **Command:** `aws ec2 describe-network-acls --output json`
+   **Purpose:** Check Network ACLs for subnet-level isolation and lateral movement barriers
+
+5. **Command:** `aws elbv2 describe-load-balancers --output json`
+   **Purpose:** Analyze load balancer exposure patterns (internal vs internet-facing)
+
+6. **Command:** `aws eks describe-cluster --name $(aws eks list-clusters --query 'clusters[0]' --output text) --output json 2>/dev/null || echo '{"cluster":null}'`
+   **Purpose:** Check EKS cluster configuration for container workload isolation
+
+7. **Command:** `aws ecs list-clusters --output json`
+   **Purpose:** Evaluate ECS container workload segmentation and isolation
+
+8. **Command:** `aws lambda list-functions --output json`
+   **Purpose:** Assess Lambda function isolation and VPC configuration for attack surface reduction
+
+9. **Command:** `aws rds describe-db-instances --output json`
+   **Purpose:** Check database placement and exposure (should be in private subnets)
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
 - **Command:** `aws ec2 describe-subnets --output json`
-  - **Purpose:** Check subnet segmentation
-- **Command:** `aws ec2 describe-security-groups --query 'SecurityGroups[?GroupName!=`default`]' --output json`
-  - **Purpose:** Verify custom security groups exist
+  - **Purpose:** Analyze subnet segmentation for attack surface isolation (public vs private)
+- **Command:** `aws ec2 describe-security-groups --output json`
+  - **Purpose:** Evaluate micro-segmentation and lateral movement prevention through security group rules
+- **Command:** `aws ec2 describe-instances --output json`
+  - **Purpose:** Assess compute workload exposure and placement for attack surface minimization
+- **Command:** `aws ec2 describe-network-acls --output json`
+  - **Purpose:** Check Network ACLs for subnet-level isolation and lateral movement barriers
+- **Command:** `aws elbv2 describe-load-balancers --output json`
+  - **Purpose:** Analyze load balancer exposure patterns (internal vs internet-facing)
+- **Command:** `aws eks describe-cluster --name $(aws eks list-clusters --query 'clusters[0]' --output text) --output json 2>/dev/null || echo '{"cluster":null}'`
+  - **Purpose:** Check EKS cluster configuration for container workload isolation
+- **Command:** `aws ecs list-clusters --output json`
+  - **Purpose:** Evaluate ECS container workload segmentation and isolation
+- **Command:** `aws lambda list-functions --output json`
+  - **Purpose:** Assess Lambda function isolation and VPC configuration for attack surface reduction
+- **Command:** `aws rds describe-db-instances --output json`
+  - **Purpose:** Check database placement and exposure (should be in private subnets)
 
 ## 🧠 Validation Logic
 
@@ -63,17 +98,17 @@ def evaluate_KSI_CNA_02(cli_output):
 
 ## 📜 Compliance Mapping
 
-**Control Description:** Design systems to minimize attack surface
+**Control Description:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-**Implementation Justification:** Validates network segmentation and isolation
+**Implementation Justification:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
 
 **FedRAMP 20x Category:** Cloud Native Architecture
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 9 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 2
+**Commands Executed:** 9
 **Validation Method:** validation-engine-sync
 
 ---
