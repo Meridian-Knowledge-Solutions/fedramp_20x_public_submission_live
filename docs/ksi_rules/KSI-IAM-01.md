@@ -1,13 +1,13 @@
 # KSI-IAM-01: Enforce phishing-resistant MFA for all user authentication
 
-*Generated on 2025-06-09 04:29:09 UTC*
+*Generated on 2025-06-09 04:38:29 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-01`
 **Description:** Enforce phishing-resistant MFA for all user authentication
 **Justification:** Validates phishing-resistant MFA methods (hardware tokens, WebAuthn) are configured for all users
-**Last Validation:** ✅ 2025-06-09T04:29:09.611368
+**Last Validation:** ✅ 2025-06-09T04:38:29.318181
 **Result:** ✅ Phishing-resistant MFA enforced: 1 hardware + 0 virtual devices for 3 users
 
 ## 🛠️ Implementation
