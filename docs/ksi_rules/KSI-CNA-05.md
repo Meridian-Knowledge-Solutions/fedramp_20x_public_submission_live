@@ -1,13 +1,13 @@
 # KSI-CNA-05: Have denial of service protection
 
-*Generated on 2025-06-09 03:59:46 UTC*
+*Generated on 2025-06-09 04:13:59 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-05`
 **Description:** Have denial of service protection
 **Justification:** Validates basic DDoS protection is enabled
-**Last Validation:** ❌ 2025-06-09T03:59:46.480176
+**Last Validation:** ❌ 2025-06-09T04:13:58.806523
 **Result:** ❌ AWS Shield error: 
 
 ## 🛠️ Implementation
