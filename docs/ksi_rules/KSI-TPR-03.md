@@ -2,12 +2,16 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
 >>>>>>> Stashed changes
 =======
 *Generated on 2025-06-10 13:18:23 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:18:26 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -17,12 +21,16 @@
 **Justification:** Manual evidence required - supply chain risk assessment and mitigation planning
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T13:17:42.459784
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:11.052194
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:23.549286
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:18:26.139535
 >>>>>>> Stashed changes
 **Result:** ⚠️ Basic supply chain risk assessment (expand mitigation planning): ✅ Core risk assessment: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
 

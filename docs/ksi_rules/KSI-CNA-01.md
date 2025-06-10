@@ -2,12 +2,16 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
 >>>>>>> Stashed changes
 =======
 *Generated on 2025-06-10 13:18:23 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:18:26 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -17,12 +21,16 @@
 **Justification:** Validates comprehensive traffic controls across all AWS resources through multi-layered network security including ingress/egress controls, application-layer protection, and traffic monitoring
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T13:17:42.445831
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:11.037436
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:23.535893
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:18:26.125918
 >>>>>>> Stashed changes
 **Result:** ⚠️ Minimal traffic controls (19%) - major gaps exist: ✅ VPC infrastructure: 1 VPC(s) detected; ✅ Strong ingress controls: 1/1 security groups restrictive; ❌ No egress controls: 0/1 security groups control outbound traffic; ⚠️ Using default Network ACLs only (1 total) - no custom subnet-level controls; ⚠️ No NAT gateways found - potential uncontrolled egress from private subnets; ⚠️ No VPC endpoints - all AWS service traffic routes through internet; ⚠️ No WAF protection found - missing application-layer traffic controls; ⚠️ No VPC Flow Logs found - limited traffic visibility
 

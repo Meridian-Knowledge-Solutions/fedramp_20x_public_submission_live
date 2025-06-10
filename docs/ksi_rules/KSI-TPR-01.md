@@ -2,12 +2,16 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
 >>>>>>> Stashed changes
 =======
 *Generated on 2025-06-10 13:18:23 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:18:26 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -17,12 +21,16 @@
 **Justification:** Validates third-party resource identification through AWS services and documented third-party inventory
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T13:17:42.459573
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:11.052009
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:23.549100
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:18:26.139320
 >>>>>>> Stashed changes
 **Result:** ⚠️ Partial third-party identification (expand documentation): ❌ No cross-account role data for third-party integration analysis; ✅ Documented third-party inventory: sbom_including_elastic.json, fedramp_moderate_vendor_list.xlsx, Elasticsearch Inc._06.04.2024_Self_Attestation.pdf
 
