@@ -2132,7 +2132,7 @@ async function getAuthorizationSummary() {
                     validation_method: validation.validation_method || 'automated',
                     evidence_path: validation.evidence_path || '',
                     requirement: validation.requirement || 'No requirement specified',
-                    rawData: validation,
+                    rawData: validation, // Keep full raw data for detailed parsing
                     // Try to extract command details from the raw data
                     detailed_commands: extractCommandDetails(validation)
                 }));
@@ -2164,10 +2164,9 @@ async function getAuthorizationSummary() {
 
         // NEW: Extract command details from validation data
         function extractCommandDetails(validation) {
-            // Try different ways to find command information
             let commands = [];
             
-            // Check if there's a commands array
+            // Check if there's a commands array (for future compatibility)
             if (validation.commands && Array.isArray(validation.commands)) {
                 commands = validation.commands.map((cmd, index) => ({
                     command: cmd.command || cmd.cli_command || cmd,
@@ -2176,26 +2175,112 @@ async function getAuthorizationSummary() {
                     execution_time: cmd.execution_time || cmd.duration || 'Unknown'
                 }));
             }
-            // Check if there's a cli_commands array
-            else if (validation.cli_commands && Array.isArray(validation.cli_commands)) {
-                commands = validation.cli_commands.map((cmd, index) => ({
-                    command: cmd,
-                    description: `Command ${index + 1}`,
-                    status: 'unknown',
-                    execution_time: 'Unknown'
-                }));
-            }
-            // Check if there's a single cli_command
+            // Parse the actual cli_command format from your JSON
             else if (validation.cli_command) {
-                commands = [{
-                    command: validation.cli_command,
+                commands = parseCliCommandString(validation);
+            }
+            
+            return commands;
+        }
+
+        // NEW: Parse the actual CLI command format from your JSON
+        function parseCliCommandString(validation) {
+            const cliCommand = validation.cli_command;
+            const totalCommands = validation.commands_executed || 0;
+            const successfulCommands = validation.successful_commands || 0;
+            const failedCommands = validation.failed_commands || 0;
+            
+            // Parse format: "X commands (Y successful): command1; command2; command3 (+Z more)"
+            const commandMatch = cliCommand.match(/^(\d+)\s+commands?\s+\((\d+)\s+successful\):\s*(.+)$/);
+            
+            if (!commandMatch) {
+                // Fallback for single command or non-standard format
+                return [{
+                    command: cliCommand,
                     description: 'Primary validation command',
                     status: validation.assertion === true ? 'success' : validation.assertion === false ? 'failed' : 'unknown',
                     execution_time: 'Unknown'
                 }];
             }
             
+            const [, totalStr, successfulStr, commandsStr] = commandMatch;
+            const total = parseInt(totalStr);
+            const successful = parseInt(successfulStr);
+            
+            // Split commands by semicolon and clean them up
+            let commandsList = commandsStr.split(';').map(cmd => cmd.trim());
+            
+            // Handle "(+X more)" truncation
+            const lastCommand = commandsList[commandsList.length - 1];
+            const moreMatch = lastCommand.match(/^(.+?)\s+\(\+(\d+)\s+more\)$/);
+            let truncatedCount = 0;
+            
+            if (moreMatch) {
+                // Replace the last command with the actual command (without the "+X more")
+                commandsList[commandsList.length - 1] = moreMatch[1].trim();
+                truncatedCount = parseInt(moreMatch[2]);
+            }
+            
+            // Create command objects
+            const commands = commandsList.map((cmd, index) => {
+                // Determine status based on success rate and position
+                let status = 'unknown';
+                if (failedCommands === 0) {
+                    status = 'success'; // All commands successful
+                } else if (successfulCommands === 0) {
+                    status = 'failed'; // All commands failed
+                } else {
+                    // Mixed results - assume earlier commands more likely to succeed
+                    status = index < successfulCommands ? 'success' : 'failed';
+                }
+                
+                return {
+                    command: cmd,
+                    description: generateCommandDescription(cmd, index + 1),
+                    status: status,
+                    execution_time: 'Unknown'
+                };
+            });
+            
+            // Add truncated commands if any
+            if (truncatedCount > 0) {
+                for (let i = 0; i < truncatedCount; i++) {
+                    commands.push({
+                        command: '... additional command not shown ...',
+                        description: `Command ${commands.length + 1} (truncated)`,
+                        status: 'unknown',
+                        execution_time: 'Unknown'
+                    });
+                }
+            }
+            
             return commands;
+        }
+
+        // NEW: Generate smart descriptions for commands
+        function generateCommandDescription(command, index) {
+            const cmd = command.toLowerCase();
+            
+            // Smart descriptions based on AWS command patterns
+            if (cmd.includes('describe-config-rules')) return 'Check AWS Config compliance rules';
+            if (cmd.includes('describe-trails')) return 'Analyze CloudTrail logging configuration';
+            if (cmd.includes('describe-security-groups')) return 'Examine security group configurations';
+            if (cmd.includes('list-users')) return 'List IAM users';
+            if (cmd.includes('get-account-summary')) return 'Get account-wide IAM statistics';
+            if (cmd.includes('list-roles')) return 'List IAM roles';
+            if (cmd.includes('describe-instances')) return 'Analyze EC2 instances';
+            if (cmd.includes('describe-vpcs')) return 'Check VPC configurations';
+            if (cmd.includes('describe-subnets')) return 'Examine subnet configurations';
+            if (cmd.includes('list-certificates')) return 'Check SSL/TLS certificates';
+            if (cmd.includes('describe-load-balancers')) return 'Analyze load balancer settings';
+            if (cmd.includes('describe-listeners')) return 'Check load balancer listeners';
+            if (cmd.includes('describe-backup-plans')) return 'Review backup configurations';
+            if (cmd.includes('list-stacks')) return 'Check CloudFormation stacks';
+            if (cmd.includes('describe-launch-templates')) return 'Examine launch templates';
+            if (cmd.includes('evidence_check')) return 'Manual evidence validation';
+            
+            // Generic fallback
+            return `Command ${index}: ${command.split(' ')[1] || 'AWS operation'}`;
         }
 
         function updateTimestampsWithData(dataTimestamp) {
@@ -2351,18 +2436,28 @@ async function getAuthorizationSummary() {
 
             // Get commands data
             const commands = ksi.detailed_commands || [];
-            const totalCommands = commands.length || ksi.commands_executed || 0;
-            const successfulCommands = commands.filter(cmd => cmd.status === 'success').length;
-            const failedCommands = commands.filter(cmd => cmd.status === 'failed').length;
+            const totalCommands = ksi.commands_executed || 0;
+            const successfulCommands = ksi.successful_commands || 0;
+            const failedCommands = ksi.failed_commands || 0;
+            
+            // Extract interpretation details
+            const interpretation = ksi.rawData?.cli_output_interpretation || '';
+            const interpretationParts = interpretation.split(' | ').filter(part => part.trim());
 
             if (commands.length === 0) {
                 modalBody.innerHTML = `
                     <div class="no-commands-message">
                         <div class="no-commands-icon">📋</div>
                         <h3>No Detailed Command Information Available</h3>
-                        <p>This KSI validation executed <strong>${ksi.commands_executed || 0}</strong> commands, but detailed command information is not available in the current dataset.</p>
+                        <p>This KSI validation executed <strong>${totalCommands || 0}</strong> commands, but detailed command information is not available in the current dataset.</p>
                         <p><strong>Primary CLI Pattern:</strong></p>
                         <div class="command-code">${ksi.cli_command || 'No command information available'}</div>
+                        ${interpretation ? `
+                            <p><strong>Execution Results:</strong></p>
+                            <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                ${interpretationParts.map(part => `<div style="margin-bottom: 0.5rem;">${part}</div>`).join('')}
+                            </div>
+                        ` : ''}
                         <p><em>For full command details, check the KSI validation logs or CLI Details modal.</em></p>
                     </div>
                 `;
@@ -2389,6 +2484,12 @@ async function getAuthorizationSummary() {
                             </div>
                         </div>
                         <p><strong>KSI Result:</strong> ${ksi.assertion_reason}</p>
+                        ${interpretation ? `
+                            <p><strong>Execution Analysis:</strong></p>
+                            <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 0.5rem;">
+                                ${interpretationParts.map(part => `<div style="margin-bottom: 0.5rem; font-size: 0.875rem;">${part}</div>`).join('')}
+                            </div>
+                        ` : ''}
                     </div>
 
                     <div class="commands-list">
@@ -2398,7 +2499,7 @@ async function getAuthorizationSummary() {
                                 <div class="command-header" onclick="toggleCommandDetails(${index})">
                                     <div class="command-title">
                                         <span class="command-status ${cmd.status}">${getCommandStatusIcon(cmd.status)} ${cmd.status.toUpperCase()}</span>
-                                        Command ${index + 1}: ${cmd.description}
+                                        ${cmd.description}
                                     </div>
                                     <button class="command-expand-btn" id="expand-btn-${index}">▼</button>
                                 </div>
@@ -2415,15 +2516,44 @@ async function getAuthorizationSummary() {
                                             <div class="command-meta-label">Duration</div>
                                         </div>
                                     </div>
+                                    ${getCommandAnalysis(cmd, index, interpretationParts)}
                                 </div>
                             </div>
                         `).join('')}
+                        
+                        ${totalCommands > commands.length ? `
+                            <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; margin-top: 1rem; border: 1px solid var(--border-color);">
+                                <p style="color: var(--text-secondary); margin: 0;">
+                                    <strong>Note:</strong> ${totalCommands - commands.length} additional commands were executed but details are not shown in the summary format.
+                                </p>
+                            </div>
+                        ` : ''}
                     </div>
                 `;
             }
 
             document.getElementById('commands-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
+        }
+
+        // NEW: Get command-specific analysis from interpretation
+        function getCommandAnalysis(cmd, index, interpretationParts) {
+            if (!interpretationParts || interpretationParts.length === 0) return '';
+            
+            // Try to match interpretation parts to commands
+            const relevantPart = interpretationParts[index + 1] || interpretationParts[interpretationParts.length - 1];
+            
+            if (!relevantPart || relevantPart.includes('All') || relevantPart.includes('commands executed')) {
+                return '';
+            }
+            
+            return `
+                <div style="background: var(--bg-accent); padding: 0.75rem; border-radius: 6px; margin-top: 0.75rem; border: 1px solid var(--border-color);">
+                    <p style="margin: 0; font-size: 0.875rem; color: var(--text-secondary);">
+                        <strong>Analysis:</strong> ${relevantPart}
+                    </p>
+                </div>
+            `;
         }
 
         function getCommandStatusIcon(status) {
