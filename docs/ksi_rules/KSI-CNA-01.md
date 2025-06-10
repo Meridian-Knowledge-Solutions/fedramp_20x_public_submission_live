@@ -3,6 +3,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
@@ -13,12 +14,16 @@
 =======
 *Generated on 2025-06-10 12:33:51 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:34:10 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-01`
 **Description:** Configure ALL information resources to limit inbound and outbound traffic
 **Justification:** Validates comprehensive traffic controls across all AWS resources through multi-layered network security including ingress/egress controls, application-layer protection, and traffic monitoring
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -31,6 +36,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:51.371217
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:34:09.964050
 >>>>>>> Stashed changes
 **Result:** ⚠️ Minimal traffic controls (19%) - major gaps exist: ✅ VPC infrastructure: 1 VPC(s) detected; ✅ Strong ingress controls: 1/1 security groups restrictive; ❌ No egress controls: 0/1 security groups control outbound traffic; ⚠️ Using default Network ACLs only (1 total) - no custom subnet-level controls; ⚠️ No NAT gateways found - potential uncontrolled egress from private subnets; ⚠️ No VPC endpoints - all AWS service traffic routes through internet; ⚠️ No WAF protection found - missing application-layer traffic controls; ⚠️ No VPC Flow Logs found - limited traffic visibility
 

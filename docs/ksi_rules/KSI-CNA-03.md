@@ -3,6 +3,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
@@ -13,12 +14,16 @@
 =======
 *Generated on 2025-06-10 12:33:51 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:34:10 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-03`
 **Description:** Use logical networking for traffic flow controls
 **Justification:** Validates comprehensive logical networking through software-defined routing, traffic steering, network policies, and modern cloud networking patterns for intentional traffic flow control
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -31,6 +36,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:51.371546
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:34:09.964268
 >>>>>>> Stashed changes
 **Result:** ⚠️ Minimal logical networking (19%) - basic controls present: ✅ Logical routing infrastructure: 1/1 route tables with intentional traffic flows; ❌ No network access control: 1 NACLs found but no rules; ℹ️ No VPC endpoints found (acceptable for basic networking); ℹ️ No Transit Gateways found (appropriate for single-VPC environments); ℹ️ No load balancers found (acceptable when no applications deployed); ℹ️ No NAT Gateways found (acceptable for public subnet architectures); ℹ️ No VPC Flow Logs found (monitoring not required for basic networking)
 

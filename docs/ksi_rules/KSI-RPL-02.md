@@ -3,6 +3,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
@@ -13,12 +14,16 @@
 =======
 *Generated on 2025-06-10 12:33:51 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:34:10 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-02`
 **Description:** Develop and maintain a recovery plan that aligns with defined recovery objectives
 **Justification:** Manual evidence required - disaster recovery plans, incident response procedures, and recovery playbooks
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -31,6 +36,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:51.384078
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:34:09.975311
 >>>>>>> Stashed changes
 **Result:** ⚠️ Good recovery planning (enhance maintenance procedures): ✅ Core recovery plans: incident_reponse_policy.pdf, contingency_planning_policy.pdf; ✅ Plan maintenance: 3 files updated within last year
 
