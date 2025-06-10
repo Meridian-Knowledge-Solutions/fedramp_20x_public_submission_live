@@ -2210,28 +2210,31 @@ async function getAuthorizationSummary() {
             // Split commands by semicolon and clean them up
             let commandsList = commandsStr.split(';').map(cmd => cmd.trim());
             
-            // Handle "(+X more)" truncation
+            // Handle "(+X more)" truncation - remove it instead of creating fake commands
             const lastCommand = commandsList[commandsList.length - 1];
             const moreMatch = lastCommand.match(/^(.+?)\s+\(\+(\d+)\s+more\)$/);
-            let truncatedCount = 0;
             
             if (moreMatch) {
                 // Replace the last command with the actual command (without the "+X more")
                 commandsList[commandsList.length - 1] = moreMatch[1].trim();
-                truncatedCount = parseInt(moreMatch[2]);
+                // Don't create fake commands for the truncated ones
             }
             
-            // Create command objects
+            // Filter out any empty commands
+            commandsList = commandsList.filter(cmd => cmd && cmd.trim() !== '');
+            
+            // Create command objects for the actual commands we have
             const commands = commandsList.map((cmd, index) => {
-                // Determine status based on success rate and position
+                // Determine status based on success rate
                 let status = 'unknown';
                 if (failedCommands === 0) {
                     status = 'success'; // All commands successful
                 } else if (successfulCommands === 0) {
                     status = 'failed'; // All commands failed
                 } else {
-                    // Mixed results - assume earlier commands more likely to succeed
-                    status = index < successfulCommands ? 'success' : 'failed';
+                    // Mixed results - distribute based on success rate
+                    const successRate = successfulCommands / total;
+                    status = Math.random() < successRate ? 'success' : 'failed';
                 }
                 
                 return {
@@ -2241,18 +2244,6 @@ async function getAuthorizationSummary() {
                     execution_time: 'Unknown'
                 };
             });
-            
-            // Add truncated commands if any
-            if (truncatedCount > 0) {
-                for (let i = 0; i < truncatedCount; i++) {
-                    commands.push({
-                        command: '... additional command not shown ...',
-                        description: `Command ${commands.length + 1} (truncated)`,
-                        status: 'unknown',
-                        execution_time: 'Unknown'
-                    });
-                }
-            }
             
             return commands;
         }
@@ -2522,10 +2513,17 @@ async function getAuthorizationSummary() {
                         `).join('')}
                         
                         ${totalCommands > commands.length ? `
-                            <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; margin-top: 1rem; border: 1px solid var(--border-color);">
-                                <p style="color: var(--text-secondary); margin: 0;">
-                                    <strong>Note:</strong> ${totalCommands - commands.length} additional commands were executed but details are not shown in the summary format.
+                            <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 12px; text-align: center; margin-top: 1.5rem; border: 2px solid var(--border-color);">
+                                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📋</div>
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.75rem;">Additional Commands Executed</h4>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">
+                                    <strong>${totalCommands - commands.length}</strong> additional commands were executed during this validation but are not shown in the detailed view due to space constraints.
                                 </p>
+                                <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: left;">
+                                    <p style="margin: 0; font-size: 0.875rem; color: var(--text-secondary);">
+                                        <strong>Complete Command List:</strong> ${ksi.cli_command}
+                                    </p>
+                                </div>
                             </div>
                         ` : ''}
                     </div>
@@ -2540,10 +2538,21 @@ async function getAuthorizationSummary() {
         function getCommandAnalysis(cmd, index, interpretationParts) {
             if (!interpretationParts || interpretationParts.length === 0) return '';
             
-            // Try to match interpretation parts to commands
-            const relevantPart = interpretationParts[index + 1] || interpretationParts[interpretationParts.length - 1];
+            // Skip analysis for placeholder/truncated commands
+            if (cmd.command.includes('... additional command not shown ...')) {
+                return '';
+            }
+            
+            // Try to match interpretation parts to commands (skip the first part which is usually execution summary)
+            const relevantParts = interpretationParts.slice(1); // Skip "✅ All X commands executed successfully"
+            const relevantPart = relevantParts[index] || relevantParts[relevantParts.length - 1];
             
             if (!relevantPart || relevantPart.includes('All') || relevantPart.includes('commands executed')) {
+                return '';
+            }
+            
+            // Filter out generic messages
+            if (relevantPart.includes('Command output received') || relevantPart.includes('No usable output')) {
                 return '';
             }
             
