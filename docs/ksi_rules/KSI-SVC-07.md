@@ -1,13 +1,13 @@
 # KSI-SVC-07: Use consistent, risk-informed approach for applying security patches
 
-*Generated on 2025-06-10 07:07:24 UTC*
+*Generated on 2025-06-10 12:33:14 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-07`
 **Description:** Use consistent, risk-informed approach for applying security patches
 **Justification:** Validates comprehensive risk-informed patch management from basic patch baseline configuration to enterprise-grade vulnerability-driven patching, covering automated deployment, compliance monitoring, container patching, lambda layer management, and organizational patch governance with risk assessment and testing workflows
-**Last Validation:** ✅ 2025-06-10T07:07:24.039731
+**Last Validation:** ✅ 2025-06-10T12:33:14.281285
 **Result:** ✅ Advanced risk-informed patching with controlled deployment and compliance (40%): ✅ Consistent patch management: 17 patch baselines configured for standardized patching; ℹ️ No SSM-managed instances found (acceptable for serverless architectures); ℹ️ No patch groups configured for risk-based segmentation; ℹ️ No maintenance windows for controlled patch deployment; ✅ Patch automation framework: 14/123 documents for automated patching (11%); ℹ️ No ECR repositories for container image patching; ℹ️ No Lambda layers for serverless runtime patching; ✅ Enterprise-wide patch governance: AWS Organizations enables centralized risk-informed patch policies; ✅ Advanced organization features: SCPs for patch management policy enforcement enabled
 
 ## 🛠️ Implementation
