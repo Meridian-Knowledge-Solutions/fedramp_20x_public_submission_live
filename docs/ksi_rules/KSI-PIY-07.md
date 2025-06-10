@@ -2,12 +2,16 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
 >>>>>>> Stashed changes
 =======
 *Generated on 2025-06-10 12:33:42 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:33:51 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -17,12 +21,16 @@
 **Justification:** Manual evidence required - supply chain risk management documentation and decisions
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T12:33:14.278970
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:32.890743
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:41.780544
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:33:51.382630
 >>>>>>> Stashed changes
 **Result:** ⚠️ Basic supply chain risk management (expand coverage): ✅ Enhanced supply chain controls: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf, weekly_change_management_meeting_final.png; ✅ Supply chain risk documentation: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
 

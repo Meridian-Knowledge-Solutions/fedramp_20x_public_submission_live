@@ -2,12 +2,16 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
 >>>>>>> Stashed changes
 =======
 *Generated on 2025-06-10 12:33:42 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:33:51 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -17,12 +21,16 @@
 **Justification:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T12:33:14.279095
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:32.890894
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:41.780677
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:33:51.383976
 >>>>>>> Stashed changes
 **Result:** ⚠️ Basic RTO/RPO definitions (expand business impact analysis): ✅ Core RTO/RPO documentation: rto_rpo_definitions.pdf, combined_tabletop_test_report_template.pdf
 

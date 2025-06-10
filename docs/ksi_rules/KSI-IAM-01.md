@@ -2,12 +2,16 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
 >>>>>>> Stashed changes
 =======
 *Generated on 2025-06-10 12:33:42 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:33:51 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -17,12 +21,16 @@
 **Justification:** Validates MFA enforcement through Identity Center configuration evidence showing always-on MFA requirements, combined with traditional IAM user analysis
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T12:33:14.270643
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:32.881846
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:41.772164
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:33:51.373882
 >>>>>>> Stashed changes
 **Result:** ✅ Strong MFA coverage (82% coverage): ✅ Identity Center: 1 active instance(s); ✅ Identity Center users: 8; ✅ MFA enforcement evidence: Identity Center MFA always-on configuration; Traditional IAM users: 3; ✅ Traditional IAM MFA devices: 1
 
