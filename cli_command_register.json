@@ -1,439 +1,1839 @@
 {
   "KSI-CNA-01": {
-    "description": "Configure information resources to limit traffic",
-    "justification": "Validates basic network access controls are configured",
+    "description": "Configure ALL information resources to limit inbound and outbound traffic",
+    "justification": "Validates comprehensive traffic controls across all AWS resources through multi-layered network security including ingress/egress controls, application-layer protection, and traffic monitoring",
     "cli_commands": [
       {
         "command": "aws ec2 describe-security-groups --output json",
-        "note": "Check security groups have restrictive rules"
+        "note": "Analyze security groups for comprehensive ingress AND egress traffic controls"
       },
       {
-        "command": "aws ec2 describe-vpcs --output json",
-        "note": "Validate VPC configuration exists"
+        "command": "aws ec2 describe-network-acls --output json",
+        "note": "Check Network ACLs for subnet-level traffic filtering (defense in depth)"
+      },
+      {
+        "command": "aws ec2 describe-route-tables --output json",
+        "note": "Validate route tables for controlled traffic routing and egress paths"
+      },
+      {
+        "command": "aws ec2 describe-nat-gateways --output json",
+        "note": "Check NAT Gateways for controlled egress traffic from private subnets"
+      },
+      {
+        "command": "aws ec2 describe-vpc-endpoints --output json",
+        "note": "Validate VPC endpoints for private service access (avoiding internet routing)"
+      },
+      {
+        "command": "aws wafv2 list-web-acls --scope REGIONAL --output json",
+        "note": "Check WAF for application-layer traffic filtering and protection"
+      },
+      {
+        "command": "aws elbv2 describe-load-balancers --output json",
+        "note": "Analyze load balancers for traffic distribution and access controls"
+      },
+      {
+        "command": "aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json",
+        "note": "Verify VPC Flow Logs for traffic monitoring and visibility"
       }
     ]
   },
   "KSI-CNA-02": {
-    "description": "Design systems to minimize attack surface", 
-    "justification": "Validates network segmentation and isolation",
+    "description": "Design systems to minimize the attack surface and minimize lateral movement if compromised",
+    "justification": "Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures",
     "cli_commands": [
       {
         "command": "aws ec2 describe-subnets --output json",
-        "note": "Check subnet segmentation"
+        "note": "Analyze subnet segmentation for attack surface isolation (public vs private)"
       },
       {
-        "command": "aws ec2 describe-security-groups --query 'SecurityGroups[?GroupName!=`default`]' --output json",
-        "note": "Verify custom security groups exist"
+        "command": "aws ec2 describe-security-groups --output json",
+        "note": "Evaluate micro-segmentation and lateral movement prevention through security group rules"
+      },
+      {
+        "command": "aws ec2 describe-instances --output json",
+        "note": "Assess compute workload exposure and placement for attack surface minimization"
+      },
+      {
+        "command": "aws ec2 describe-network-acls --output json",
+        "note": "Check Network ACLs for subnet-level isolation and lateral movement barriers"
+      },
+      {
+        "command": "aws elbv2 describe-load-balancers --output json",
+        "note": "Analyze load balancer exposure patterns (internal vs internet-facing)"
+      },
+      {
+        "command": "aws eks describe-cluster --name $(aws eks list-clusters --query 'clusters[0]' --output text) --output json 2>/dev/null || echo '{\"cluster\":null}'",
+        "note": "Check EKS cluster configuration for container workload isolation"
+      },
+      {
+        "command": "aws ecs list-clusters --output json",
+        "note": "Evaluate ECS container workload segmentation and isolation"
+      },
+      {
+        "command": "aws lambda list-functions --output json",
+        "note": "Assess Lambda function isolation and VPC configuration for attack surface reduction"
+      },
+      {
+        "command": "aws rds describe-db-instances --output json",
+        "note": "Check database placement and exposure (should be in private subnets)"
       }
     ]
   },
   "KSI-CNA-03": {
     "description": "Use logical networking for traffic flow controls",
-    "justification": "Validates network routing and access controls",
+    "justification": "Validates comprehensive logical networking through software-defined routing, traffic steering, network policies, and modern cloud networking patterns for intentional traffic flow control",
     "cli_commands": [
       {
-        "command": "aws ec2 describe-network-acls --output json",
-        "note": "Check Network ACL configurations"
+        "command": "aws ec2 describe-route-tables --output json",
+        "note": "Analyze route tables for custom traffic flow controls and logical routing patterns"
       },
       {
-        "command": "aws ec2 describe-route-tables --output json",
-        "note": "Validate routing configurations"
+        "command": "aws ec2 describe-network-acls --output json",
+        "note": "Evaluate Network ACLs for subnet-level traffic filtering and flow control policies"
+      },
+      {
+        "command": "aws ec2 describe-vpc-endpoints --output json",
+        "note": "Check VPC endpoints for private service routing and traffic flow optimization"
+      },
+      {
+        "command": "aws ec2 describe-transit-gateways --output json",
+        "note": "Validate Transit Gateway for centralized network routing and cross-VPC traffic control"
+      },
+      {
+        "command": "aws ec2 describe-vpc-peering-connections --output json",
+        "note": "Check VPC peering for controlled cross-network communication patterns"
+      },
+      {
+        "command": "aws elbv2 describe-load-balancers --output json",
+        "note": "Analyze load balancers for application-layer traffic distribution and flow control"
+      },
+      {
+        "command": "aws route53 list-hosted-zones --output json",
+        "note": "Check DNS-based traffic routing and resolver controls for logical networking"
+      },
+      {
+        "command": "aws ec2 describe-nat-gateways --output json",
+        "note": "Validate NAT Gateways for controlled egress traffic flow from private networks"
+      },
+      {
+        "command": "aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json",
+        "note": "Verify VPC Flow Logs for traffic flow monitoring and control validation"
       }
     ]
   },
   "KSI-CNA-04": {
     "description": "Use immutable infrastructure patterns",
-    "justification": "Validates Infrastructure as Code and standardized deployments",
+    "justification": "Validates immutable infrastructure through Terraform-managed resources, versioned AMI pipelines, standardized deployment patterns, and replace-not-modify principles for traditional VM-based workloads",
     "cli_commands": [
       {
-        "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
-        "note": "Check CloudFormation stacks for IaC patterns"
+        "command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags,LaunchTime,ImageId]' --output json",
+        "note": "Analyze instance patterns for Terraform-managed immutable deployments (consistent tagging, recent launches)"
       },
       {
         "command": "aws ec2 describe-launch-templates --output json",
-        "note": "Validate standardized launch templates"
+        "note": "Check launch templates for standardized, versioned instance deployment patterns"
+      },
+      {
+        "command": "aws autoscaling describe-auto-scaling-groups --output json",
+        "note": "Validate Auto Scaling Groups for instance replacement patterns (immutable scaling)"
+      },
+      {
+        "command": "aws ec2 describe-images --owners self --output json",
+        "note": "Check custom AMIs for versioned machine image pipeline (immutable base images)"
+      },
+      {
+        "command": "aws lambda list-functions --output json",
+        "note": "Validate serverless functions (immutable compute even in VM-focused architectures)"
+      },
+      {
+        "command": "aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)]' --output json",
+        "note": "Detect Terraform state management patterns (S3 backend indicates mature IaC)"
+      },
+      {
+        "command": "aws dynamodb list-tables --output json",
+        "note": "Check for Terraform state locking tables (DynamoDB indicates advanced IaC patterns)"
+      },
+      {
+        "command": "aws codebuild list-projects --output json",
+        "note": "Check for CI/CD build projects (AMI pipelines, Terraform automation)"
+      },
+      {
+        "command": "aws ssm describe-parameters --output json",
+        "note": "Validate Systems Manager parameters for configuration management and versioning"
       }
     ]
   },
   "KSI-CNA-05": {
     "description": "Have denial of service protection",
-    "justification": "Validates basic DDoS protection is enabled",
+    "justification": "Validates comprehensive multi-layer DDoS protection through network-layer shields, application-layer filtering, edge protection, capacity-based mitigation, and automated response capabilities",
     "cli_commands": [
       {
         "command": "aws shield describe-subscription --output json",
-        "note": "Check AWS Shield protection status"
+        "note": "Check AWS Shield Advanced subscription for premium DDoS protection and response team"
+      },
+      {
+        "command": "aws wafv2 list-web-acls --scope REGIONAL --output json",
+        "note": "Validate WAF for application-layer DDoS protection and rate limiting"
+      },
+      {
+        "command": "aws wafv2 list-web-acls --scope CLOUDFRONT --output json",
+        "note": "Check CloudFront WAF for edge-based application protection"
+      },
+      {
+        "command": "aws cloudfront list-distributions --output json",
+        "note": "Verify CloudFront distributions for edge-based DDoS protection and traffic distribution"
+      },
+      {
+        "command": "aws elbv2 describe-load-balancers --output json",
+        "note": "Check load balancers for traffic distribution and DDoS mitigation capabilities"
+      },
+      {
+        "command": "aws autoscaling describe-auto-scaling-groups --output json",
+        "note": "Validate Auto Scaling Groups for capacity-based DDoS mitigation"
+      },
+      {
+        "command": "aws route53 list-hosted-zones --output json",
+        "note": "Check Route 53 for DNS-layer protection and traffic routing capabilities"
+      },
+      {
+        "command": "aws cloudwatch describe-alarms --output json",
+        "note": "Verify CloudWatch alarms for DDoS detection and automated response"
       }
     ]
   },
   "KSI-CNA-06": {
     "description": "Design for high availability and recovery",
-    "justification": "Validates multi-AZ design and backup capabilities",
+    "justification": "Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers",
     "cli_commands": [
       {
-        "command": "aws ec2 describe-subnets --query 'Subnets[*].{SubnetId:SubnetId,AvailabilityZone:AvailabilityZone}' --output json",
-        "note": "Check multi-AZ subnet distribution"
+        "command": "aws ec2 describe-subnets --output json",
+        "note": "Analyze subnet distribution across availability zones for network-level HA"
+      },
+      {
+        "command": "aws ec2 describe-availability-zones --output json",
+        "note": "Check available AZs in region for HA planning and validation"
+      },
+      {
+        "command": "aws rds describe-db-instances --output json",
+        "note": "Validate RDS Multi-AZ deployments and database high availability"
+      },
+      {
+        "command": "aws elbv2 describe-load-balancers --output json",
+        "note": "Check load balancers for application-layer HA and traffic distribution"
+      },
+      {
+        "command": "aws autoscaling describe-auto-scaling-groups --output json",
+        "note": "Validate Auto Scaling Groups for compute resilience and multi-AZ distribution"
       },
       {
         "command": "aws backup list-backup-plans --output json",
-        "note": "Validate backup plans exist"
+        "note": "Check backup plans for data protection and recovery capabilities"
+      },
+      {
+        "command": "aws ec2 describe-snapshots --owner-ids self --output json",
+        "note": "Validate EBS snapshot strategy for storage recovery"
+      },
+      {
+        "command": "aws s3api list-buckets --output json",
+        "note": "Check S3 buckets for storage redundancy and cross-region replication"
+      },
+      {
+        "command": "aws route53 list-hosted-zones --output json",
+        "note": "Validate DNS redundancy and health check capabilities"
       }
     ]
   },
   "KSI-CNA-07": {
     "description": "Follow AWS best practices",
-    "justification": "Validates basic AWS configuration best practices",
+    "justification": "Validates comprehensive adherence to AWS Well-Architected Framework principles across security, reliability, performance, cost optimization, and operational excellence best practices",
     "cli_commands": [
       {
-        "command": "aws config describe-config-rules --output json",
-        "note": "Check if Config rules are configured"
+        "command": "aws configservice describe-config-rules --output json",
+        "note": "Check AWS Config rules for compliance monitoring and best practice enforcement"
+      },
+      {
+        "command": "aws cloudtrail describe-trails --output json",
+        "note": "Validate CloudTrail logging (security and operational excellence best practice)"
+      },
+      {
+        "command": "aws kms list-keys --output json",
+        "note": "Check KMS key management (security best practice for encryption)"
+      },
+      {
+        "command": "aws iam get-account-summary --output json",
+        "note": "Analyze IAM configuration patterns (security best practices)"
+      },
+      {
+        "command": "aws ec2 describe-instances --output json",
+        "note": "Evaluate instance configuration for best practices (performance, reliability)"
+      },
+      {
+        "command": "aws elbv2 describe-load-balancers --output json",
+        "note": "Check load balancer implementation (reliability best practices)"
+      },
+      {
+        "command": "aws autoscaling describe-auto-scaling-groups --output json",
+        "note": "Validate Auto Scaling implementation (reliability and cost optimization)"
+      },
+      {
+        "command": "aws s3api list-buckets --output json",
+        "note": "Check S3 usage patterns (cost optimization and security best practices)"
+      },
+      {
+        "command": "aws cloudwatch describe-alarms --output json",
+        "note": "Validate monitoring implementation (operational excellence best practices)"
+      },
+      {
+        "command": "aws backup list-backup-plans --output json",
+        "note": "Check backup strategies (reliability best practices)"
       }
     ]
   },
   "KSI-SVC-01": {
     "description": "Harden and review network and system configurations",
-    "justification": "Validates system hardening through security groups, NACLs, and instance configurations",
+    "justification": "Validates comprehensive network and system hardening from basic security group configuration to enterprise-grade multi-layer defense, compliance monitoring, and advanced threat detection across cloud-native and traditional infrastructure",
     "cli_commands": [
       {
         "command": "aws ec2 describe-security-groups --output json",
-        "note": "Check security group configurations for hardening"
+        "note": "Check security group configurations for network hardening and access control validation"
       },
       {
         "command": "aws ec2 describe-instances --output json",
-        "note": "Review instance configurations and security settings"
+        "note": "Review instance configurations and security settings for system hardening assessment"
+      },
+      {
+        "command": "aws ec2 describe-network-acls --output json",
+        "note": "Analyze Network ACLs for subnet-level traffic filtering and defense-in-depth validation"
+      },
+      {
+        "command": "aws config describe-config-rules --output json",
+        "note": "Check AWS Config rules for automated configuration compliance and hardening validation"
+      },
+      {
+        "command": "aws guardduty list-detectors --output json",
+        "note": "Validate GuardDuty threat detection service enablement for network and system security monitoring"
+      },
+      {
+        "command": "aws wafv2 list-web-acls --scope REGIONAL --output json",
+        "note": "Check Web Application Firewall configuration for application-layer hardening and protection"
+      },
+      {
+        "command": "aws ssm describe-patch-baselines --output json",
+        "note": "Analyze patch management baselines for systematic security updates and vulnerability remediation"
+      },
+      {
+        "command": "aws ssm describe-instance-information --output json",
+        "note": "Check Systems Manager coverage for centralized system configuration management and compliance"
+      },
+      {
+        "command": "aws inspector2 get-configuration --output json",
+        "note": "Validate Amazon Inspector for automated security assessments and vulnerability scanning"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Check enterprise-wide security policies and organizational hardening standards across accounts"
       }
     ]
   },
   "KSI-SVC-02": {
-    "description": "Encrypt or secure network traffic",
-    "justification": "Validates network traffic encryption through load balancers, VPC endpoints, and HTTPS configurations",
+    "description": "Encrypt or otherwise secure network traffic",
+    "justification": "Validates comprehensive network traffic encryption from basic service availability to enterprise-grade multi-layer encryption, covering load balancers, CDN, API gateways, databases, caching services, and hybrid connectivity with automated certificate management",
     "cli_commands": [
       {
         "command": "aws elbv2 describe-load-balancers --output json",
-        "note": "Check load balancer SSL/TLS configurations"
+        "note": "Check Application and Network Load Balancer configurations for SSL/TLS traffic encryption"
       },
       {
         "command": "aws ec2 describe-vpc-endpoints --output json",
-        "note": "Validate VPC endpoints for private service communication"
+        "note": "Validate VPC endpoints for private AWS service communication and traffic isolation"
+      },
+      {
+        "command": "aws elbv2 describe-listeners --output json",
+        "note": "Analyze load balancer listeners for HTTPS/TLS protocol enforcement and cipher configuration"
+      },
+      {
+        "command": "aws cloudfront list-distributions --output json",
+        "note": "Check CloudFront CDN distributions for HTTPS enforcement and global traffic encryption"
+      },
+      {
+        "command": "aws apigateway get-rest-apis --output json",
+        "note": "Validate API Gateway configurations for API traffic encryption and secure endpoint access"
+      },
+      {
+        "command": "aws rds describe-db-instances --output json",
+        "note": "Check RDS database instances for SSL/TLS connection encryption and secure data transit"
+      },
+      {
+        "command": "aws elasticache describe-cache-clusters --output json",
+        "note": "Analyze ElastiCache clusters for in-transit encryption and secure cache communication"
+      },
+      {
+        "command": "aws acm list-certificates --output json",
+        "note": "Check AWS Certificate Manager for automated TLS certificate provisioning and management"
+      },
+      {
+        "command": "aws ec2 describe-vpn-connections --output json",
+        "note": "Validate VPN connections for encrypted hybrid cloud connectivity and secure site-to-site communication"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Check enterprise-wide encryption policies and organizational traffic security standards across accounts"
       }
     ]
   },
   "KSI-SVC-03": {
     "description": "Encrypt all federal and sensitive information at rest",
-    "justification": "Validates at-rest encryption for S3, EBS, RDS, and other storage services",
+    "justification": "Validates comprehensive at-rest encryption from basic storage service availability to enterprise-grade multi-service encryption, covering object storage, block storage, databases, data lakes, backup systems, and managed services with automated key management and compliance monitoring",
     "cli_commands": [
       {
         "command": "aws s3api list-buckets --output json",
-        "note": "Get S3 buckets for encryption validation"
+        "note": "Get S3 buckets for object storage encryption validation and federal data protection"
       },
       {
         "command": "aws ec2 describe-volumes --output json",
-        "note": "Check EBS volume encryption status"
+        "note": "Check EBS volume encryption status for block storage and instance data protection"
+      },
+      {
+        "command": "aws rds describe-db-instances --output json",
+        "note": "Validate RDS database encryption for structured data at rest and backup encryption"
+      },
+      {
+        "command": "aws rds describe-db-snapshots --owner-type self --output json",
+        "note": "Check RDS snapshot encryption for database backup and recovery data protection"
+      },
+      {
+        "command": "aws dynamodb list-tables --output json",
+        "note": "Analyze DynamoDB tables for NoSQL database encryption and managed service protection"
+      },
+      {
+        "command": "aws elasticache describe-cache-clusters --output json",
+        "note": "Check ElastiCache clusters for in-memory data encryption and cache protection"
+      },
+      {
+        "command": "aws redshift describe-clusters --output json",
+        "note": "Validate Redshift data warehouse encryption for analytics and big data protection"
+      },
+      {
+        "command": "aws efs describe-file-systems --output json",
+        "note": "Check Elastic File System encryption for shared storage and distributed application data"
+      },
+      {
+        "command": "aws backup list-backup-vaults --output json",
+        "note": "Validate AWS Backup vault encryption for centralized backup data protection and compliance"
+      },
+      {
+        "command": "aws kms list-keys --output json",
+        "note": "Check KMS key management for enterprise encryption key governance and automated key rotation"
       }
     ]
   },
   "KSI-SVC-04": {
     "description": "Manage configuration centrally",
-    "justification": "Validates centralized configuration management through Systems Manager and Config",
+    "justification": "Validates comprehensive centralized configuration management from basic service availability to enterprise-grade configuration governance, covering parameter management, configuration compliance, automation, templates, secrets management, and organizational policy enforcement with version control and audit capabilities",
     "cli_commands": [
       {
         "command": "aws ssm describe-parameters --output json",
-        "note": "Check Systems Manager Parameter Store for centralized config"
+        "note": "Check Systems Manager Parameter Store for centralized configuration management and application settings"
       },
       {
         "command": "aws config describe-configuration-recorders --output json",
-        "note": "Validate AWS Config for configuration management"
+        "note": "Validate AWS Config for configuration compliance monitoring and change tracking"
+      },
+      {
+        "command": "aws ssm list-documents --document-filter-list key=DocumentType,value=Command --output json",
+        "note": "Check Systems Manager documents for configuration management workflows and deployment automation"
+      },
+      {
+        "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
+        "note": "Validate CloudFormation for Infrastructure as Code configuration management and template-based deployment"
+      },
+      {
+        "command": "aws secretsmanager list-secrets --output json",
+        "note": "Check Secrets Manager for centralized secrets and sensitive configuration management"
+      },
+      {
+        "command": "aws ssm describe-patch-baselines --output json",
+        "note": "Analyze patch baselines for centralized system configuration management and compliance standards"
+      },
+      {
+        "command": "aws config describe-config-rules --output json",
+        "note": "Check Config rules for automated configuration compliance validation and policy enforcement"
+      },
+      {
+        "command": "aws ssm describe-instance-information --output json",
+        "note": "Validate Systems Manager agent coverage for centralized instance configuration management"
+      },
+      {
+        "command": "aws servicecatalog search-products --output json",
+        "note": "Check Service Catalog for standardized configuration templates and governed deployment patterns"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Validate enterprise-wide configuration policies and organizational governance standards across accounts"
       }
     ]
   },
   "KSI-SVC-05": {
-    "description": "Enforce system integrity through cryptographic means",
-    "justification": "Validates integrity protection through CloudTrail log file validation and file integrity monitoring",
+    "description": "Enforce system and information resource integrity through cryptographic means",
+    "justification": "Validates comprehensive cryptographic integrity enforcement from basic audit trail validation to enterprise-grade multi-layer integrity protection, covering log validation, key management, code signing, database integrity, backup verification, and organizational integrity governance with automated monitoring and compliance",
     "cli_commands": [
       {
         "command": "aws cloudtrail describe-trails --output json",
-        "note": "Check CloudTrail log file validation for integrity"
+        "note": "Check CloudTrail log file validation for audit trail integrity and tamper-evident logging"
       },
       {
         "command": "aws kms list-keys --output json",
-        "note": "Validate KMS keys available for cryptographic integrity"
+        "note": "Validate KMS keys available for cryptographic integrity protection and key-based verification"
+      },
+      {
+        "command": "aws kms list-aliases --output json",
+        "note": "Check KMS key aliases and management for cryptographic key governance and integrity protection"
+      },
+      {
+        "command": "aws s3api list-buckets --output json",
+        "note": "Analyze S3 bucket configurations for object integrity verification and versioning protection"
+      },
+      {
+        "command": "aws rds describe-db-instances --output json",
+        "note": "Check RDS database instances for backup encryption and transaction log integrity protection"
+      },
+      {
+        "command": "aws config describe-configuration-recorders --output json",
+        "note": "Validate AWS Config for configuration change integrity tracking and compliance monitoring"
+      },
+      {
+        "command": "aws cloudwatch describe-alarms --output json",
+        "note": "Check CloudWatch alarms for integrity violation detection and automated response triggers"
+      },
+      {
+        "command": "aws sns list-topics --output json",
+        "note": "Validate SNS topics for integrity event notification and stakeholder alerting workflows"
+      },
+      {
+        "command": "aws backup list-backup-vaults --output json",
+        "note": "Check AWS Backup vaults for backup integrity verification and cryptographic protection"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Validate enterprise-wide integrity policies and organizational cryptographic governance standards across accounts"
       }
     ]
   },
   "KSI-SVC-06": {
-    "description": "Use automated key management systems",
-    "justification": "Validates automated key management through AWS KMS and certificate management",
+    "description": "Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates",
+    "justification": "Validates comprehensive automated key management from basic KMS availability to enterprise-grade key lifecycle management, covering encryption keys, certificates, rotation policies, access controls, hardware security modules, and organizational key governance with automated provisioning and compliance monitoring",
     "cli_commands": [
       {
         "command": "aws kms list-keys --output json",
-        "note": "Check KMS keys for automated key management"
+        "note": "Check KMS keys for automated key management and cryptographic service availability"
       },
       {
         "command": "aws acm list-certificates --output json",
-        "note": "Validate certificate management through ACM"
+        "note": "Validate ACM certificates for automated certificate lifecycle management and SSL/TLS provisioning"
+      },
+      {
+        "command": "aws kms list-aliases --output json",
+        "note": "Analyze KMS key aliases for key management governance and organizational naming standards"
+      },
+      {
+        "command": "aws ssm describe-parameters --parameter-filters Key=Type,Values=SecureString --output json",
+        "note": "Check Systems Manager SecureString parameters for KMS-encrypted configuration management"
+      },
+      {
+        "command": "aws secretsmanager list-secrets --output json",
+        "note": "Validate Secrets Manager for automated secrets rotation and centralized credential management"
+      },
+      {
+        "command": "aws iam list-server-certificates --output json",
+        "note": "Check IAM server certificates for legacy certificate management and migration tracking"
+      },
+      {
+        "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
+        "note": "Analyze CloudFormation stacks for Infrastructure as Code key management and automated provisioning"
+      },
+      {
+        "command": "aws config describe-config-rules --output json",
+        "note": "Check Config rules for key management compliance monitoring and policy enforcement"
+      },
+      {
+        "command": "aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateKey --start-time 2025-05-01 --output json",
+        "note": "Validate key management audit trail for creation, rotation, and access tracking"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Check enterprise-wide key management policies and organizational governance standards across accounts"
       }
     ]
   },
   "KSI-SVC-07": {
-    "description": "Use consistent, risk-informed security patching",
-    "justification": "Validates patch management through Systems Manager and automated patching",
+    "description": "Use consistent, risk-informed approach for applying security patches",
+    "justification": "Validates comprehensive risk-informed patch management from basic patch baseline configuration to enterprise-grade vulnerability-driven patching, covering automated deployment, compliance monitoring, container patching, lambda layer management, and organizational patch governance with risk assessment and testing workflows",
     "cli_commands": [
       {
         "command": "aws ssm describe-patch-baselines --output json",
-        "note": "Check patch baselines for consistent patching approach"
+        "note": "Check patch baselines for consistent patching approach and vulnerability management standards"
       },
       {
         "command": "aws ssm describe-instance-information --output json",
-        "note": "Validate SSM agent coverage for automated patching"
+        "note": "Validate SSM agent coverage for automated patching and centralized system management"
+      },
+      {
+        "command": "aws ssm describe-patch-groups --output json",
+        "note": "Analyze patch groups for risk-informed patching segmentation and deployment scheduling"
+      },
+      {
+        "command": "aws ssm list-documents --document-filter-list key=DocumentType,value=Command --output json",
+        "note": "Check SSM documents for patch automation workflows and risk-informed deployment procedures"
+      },
+      {
+        "command": "aws ssm describe-maintenance-windows --output json",
+        "note": "Validate maintenance windows for controlled patch deployment and risk mitigation scheduling"
+      },
+      {
+        "command": "aws inspector2 get-configuration --output json",
+        "note": "Check Inspector for vulnerability-driven patch prioritization and risk assessment automation"
+      },
+      {
+        "command": "aws ecr describe-repositories --output json",
+        "note": "Analyze container registries for container image patching and vulnerability scanning integration"
+      },
+      {
+        "command": "aws lambda list-layers --output json",
+        "note": "Check Lambda layers for serverless runtime patching and dependency management"
+      },
+      {
+        "command": "aws config describe-config-rules --output json",
+        "note": "Validate Config rules for patch compliance monitoring and governance automation"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Check enterprise-wide patch management policies and organizational risk-informed patching standards across accounts"
       }
     ]
   },
   "KSI-IAM-01": {
-    "description": "Enforce phishing-resistant MFA for all user authentication",
-    "justification": "Validates phishing-resistant MFA methods (hardware tokens, WebAuthn) are configured for all users",
-    "cli_commands": [
-      {
-        "command": "aws iam list-users --output json",
-        "note": "Get all IAM users for MFA analysis"
-      },
-      {
-        "command": "aws iam list-mfa-devices --output json",
-        "note": "Check MFA devices to validate phishing-resistant methods"
-      }
-    ]
+  "description": "Enforce phishing-resistant MFA for all user authentication", 
+  "justification": "Validates MFA enforcement through Identity Center configuration evidence showing always-on MFA requirements, combined with traditional IAM user analysis",
+  "cli_commands": [
+    {
+      "command": "aws iam list-users --output json",
+      "note": "Get traditional IAM users for MFA analysis"
+    },
+    {
+      "command": "aws iam list-mfa-devices --output json", 
+      "note": "Check traditional IAM MFA devices"
+    },
+    {
+      "command": "aws sso-admin list-instances --output json",
+      "note": "Get Identity Center instances"
+    },
+    {
+      "command": "aws identitystore list-users --identity-store-id d-9067ccc0ff --output json",
+      "note": "Get Identity Center users for accurate user count"
+    },
+    {
+      "command": "evidence_check",
+      "note": "Check evidence_v2/KSI-IAM-01/ for sso_mfa_enforcement_screenshot.png showing Identity Center MFA always-on configuration"
+    }
+  ]
   },
   "KSI-IAM-02": {
-    "description": "Use secure passwordless methods or strong passwords with MFA",
-    "justification": "Validates passwordless authentication where feasible, otherwise strong password policy with MFA",
+    "description": "Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA",
+    "justification": "Validates passwordless authentication (SSO/SAML/temporary credentials) where feasible, otherwise strong password policy with mandatory MFA enforcement",
     "cli_commands": [
       {
-        "command": "aws iam get-account-password-policy --output json",
-        "note": "Check strong password policy enforcement"
+        "command": "aws iam list-saml-providers --output json",
+        "note": "Check for federated authentication (passwordless method)"
       },
       {
-        "command": "aws iam list-access-keys --output json",
-        "note": "Check for passwordless methods (access keys vs console passwords)"
+        "command": "aws iam list-virtual-mfa-devices --output json",
+        "note": "Validate MFA device configuration and enforcement"
+      },
+      {
+        "command": "aws iam get-account-password-policy --output json",
+        "note": "Check strong password policy enforcement when passwords are used"
+      },
+      {
+        "command": "aws iam list-users --output json",
+        "note": "Analyze user authentication patterns and requirements"
+      },
+      {
+        "command": "aws sts get-caller-identity --output json",
+        "note": "Validate current authentication method (temporary vs permanent credentials)"
       }
     ]
   },
   "KSI-IAM-03": {
-    "description": "Enforce secure authentication for non-user accounts and services",
-    "justification": "Validates service accounts use appropriate authentication methods (roles, not long-term keys)",
+    "description": "Enforce appropriately secure authentication methods for non-user accounts and services",
+    "justification": "Validates service accounts use appropriate authentication methods (roles, not long-term keys) and detects insecure patterns",
     "cli_commands": [
       {
         "command": "aws iam list-roles --output json",
-        "note": "Check IAM roles for service authentication"
+        "note": "Check IAM roles for service authentication (primary secure method)"
       },
       {
-        "command": "aws iam list-service-linked-roles --output json",
-        "note": "Validate AWS service-linked roles for secure service authentication"
+        "command": "aws iam list-users --output json",
+        "note": "Identify potential service users who should be using roles instead"
+      },
+      {
+        "command": "aws iam list-access-keys --output json",
+        "note": "Detect long-term access keys that may indicate insecure service authentication"
+      },
+      {
+        "command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].IamInstanceProfile' --output json",
+        "note": "Validate EC2 instances use instance profiles for secure service authentication"
       }
     ]
   },
   "KSI-IAM-04": {
-    "description": "Use least-privileged, role-based, and just-in-time authorization",
-    "justification": "Validates least privilege implementation through roles, policies, and time-based access controls",
+    "description": "Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services",
+    "justification": "Validates comprehensive authorization through IAM Identity Center permission sets (modern approach) and traditional IAM patterns for complete coverage of least privilege, role-based, attribute-based, and just-in-time access",
     "cli_commands": [
       {
+        "command": "aws sso-admin list-instances --output json",
+        "note": "Check for AWS IAM Identity Center (modern permission set approach)"
+      },
+      {
+        "command": "aws sso-admin list-permission-sets --instance-arn $(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text) --output json 2>/dev/null || echo '{\"PermissionSets\":[]}'",
+        "note": "List permission sets for role-based and attribute-based access validation"
+      },
+      {
         "command": "aws iam list-roles --output json",
-        "note": "Analyze roles for least privilege implementation"
+        "note": "Analyze traditional IAM roles for service accounts and legacy access patterns"
+      },
+      {
+        "command": "aws iam list-users --output json", 
+        "note": "Check if users have direct policy attachments (anti-pattern for least privilege)"
       },
       {
         "command": "aws sts get-caller-identity --output json",
-        "note": "Validate current session-based access (just-in-time principle)"
+        "note": "Validate current session type (permission set session vs traditional credentials)"
+      },
+      {
+        "command": "aws iam get-account-summary --output json",
+        "note": "Get account-wide IAM usage patterns for authorization model assessment"
       }
     ]
   },
   "KSI-IAM-05": {
     "description": "Apply zero trust design principles",
-    "justification": "Validates zero trust through continuous verification, conditional access, and comprehensive logging",
+    "justification": "Validates comprehensive zero trust implementation through Identity Center (modern approach), network security, continuous monitoring, conditional access, and secure communications patterns",
     "cli_commands": [
       {
-        "command": "aws cloudtrail describe-trails --output json",
-        "note": "Check continuous monitoring and verification logging"
+        "command": "aws sso-admin list-instances --output json",
+        "note": "Check IAM Identity Center for modern zero trust user access patterns"
       },
       {
-        "command": "aws iam list-policies --scope Local --output json",
-        "note": "Check for conditional access policies implementing zero trust"
+        "command": "aws cloudtrail describe-trails --output json",
+        "note": "Validate continuous monitoring and verification logging (must be active)"
+      },
+      {
+        "command": "aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text) --output json 2>/dev/null || echo '{\"IsLogging\":false}'",
+        "note": "Verify CloudTrail is actively logging (zero trust requires continuous monitoring)"
+      },
+      {
+        "command": "aws ec2 describe-security-groups --output json",
+        "note": "Analyze network micro-segmentation and least privilege network access"
+      },
+      {
+        "command": "aws ec2 describe-vpc-endpoints --output json",
+        "note": "Validate secure private communications (VPC endpoints for AWS services)"
+      },
+      {
+        "command": "aws iam list-virtual-mfa-devices --output json",
+        "note": "Check multi-factor authentication enforcement (verify explicitly principle)"
+      },
+      {
+        "command": "aws sts get-caller-identity --output json",
+        "note": "Validate current session type (temporary credentials indicate zero trust access)"
       }
     ]
   },
  "KSI-IAM-06": {
-    "description": "Automatically disable accounts with privileged access on suspicious activity",
-    "justification": "Validates automated response capabilities for privileged account security incidents",
+    "description": "Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity",
+    "justification": "Validates end-to-end automated response workflows including threat detection, event triggers, and account security actions through modern AWS security services and Identity Center integration",
     "cli_commands": [
       {
-        "command": "aws cloudwatch describe-alarms --output json",
-        "note": "Check for automated alarms on suspicious privileged activities"
+        "command": "aws events list-rules --output json",
+        "note": "Check EventBridge rules for automated security response triggers (critical for automation)"
+      },
+      {
+        "command": "aws guardduty list-detectors --output json",
+        "note": "Validate GuardDuty threat detection service for suspicious activity identification"
+      },
+      {
+        "command": "aws securityhub describe-hub --output json",
+        "note": "Check Security Hub for centralized security findings and automated response coordination"
+      },
+      {
+        "command": "aws sso-admin list-instances --output json",
+        "note": "Validate Identity Center for built-in automated session and access controls"
+      },
+      {
+        "command": "aws config describe-config-rules --output json",
+        "note": "Check Config rules for automated compliance remediation and account security"
       },
       {
         "command": "aws lambda list-functions --output json",
-        "note": "Check for automated response functions for account security"
+        "note": "Identify automated response functions for account disabling and security actions"
       },
       {
-        "command": "aws sns list-topics --output json",
-        "note": "Check SNS topics for security alert notifications"
-      },
-      {
-        "command": "aws sns list-subscriptions --output json",
-        "note": "Verify active subscriptions for security notifications"
+        "command": "aws cloudwatch describe-alarms --output json",
+        "note": "Check CloudWatch alarms for suspicious privileged account activity monitoring"
       }
     ]
   },
   "KSI-MLA-01": {
     "description": "Operate a SIEM or similar system for centralized, tamper-resistant logging",
-    "justification": "Validates centralized logging with tamper resistance through CloudTrail, CloudWatch, and log integrity",
+    "justification": "Validates comprehensive SIEM capabilities from basic centralized logging to enterprise-grade log management, analysis, and compliance",
     "cli_commands": [
       {
         "command": "aws cloudtrail describe-trails --output json",
-        "note": "Check CloudTrail for centralized, tamper-resistant logging"
+        "note": "Check CloudTrail for centralized, tamper-resistant logging foundation"
       },
       {
         "command": "aws logs describe-log-groups --output json",
-        "note": "Validate centralized log collection in CloudWatch"
+        "note": "Validate centralized log collection and retention policies in CloudWatch"
+      },
+      {
+        "command": "aws cloudwatch describe-alarms --output json",
+        "note": "Check automated log analysis and real-time alerting capabilities"
+      },
+      {
+        "command": "aws kms list-keys --output json",
+        "note": "Validate cryptographic protection and encryption for sensitive logs"
+      },
+      {
+        "command": "aws config describe-delivery-channels --output json",
+        "note": "Check compliance-grade log delivery and audit trail mechanisms"
+      },
+      {
+        "command": "aws s3api list-buckets --output json",
+        "note": "Validate log archival, long-term storage, and forensic capabilities"
+      },
+      {
+        "command": "aws securityhub get-findings --max-results 20 --output json",
+        "note": "Check advanced threat detection and security event correlation"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Validate enterprise-wide centralized logging and cross-account capabilities"
       }
     ]
   },
   "KSI-MLA-02": {
     "description": "Regularly review and audit logs",
-    "justification": "Validates log review processes through automated analysis, alerting, and audit capabilities",
+    "justification": "Validates comprehensive log review capabilities from basic notification-driven processes to enterprise-grade automated analysis, compliance governance, and cross-account log review",
     "cli_commands": [
       {
         "command": "aws cloudwatch describe-alarms --output json",
-        "note": "Check CloudWatch alarms for automated log review"
+        "note": "Check CloudWatch alarms for automated log review and real-time monitoring"
       },
       {
         "command": "aws logs describe-metric-filters --output json",
-        "note": "Validate metric filters for log analysis and auditing"
+        "note": "Validate metric filters for log pattern analysis and security event detection"
       },
       {
         "command": "aws sns list-topics --output json",
-        "note": "Check SNS topics for log review notifications"
+        "note": "Check SNS topics for log review notifications and alert delivery mechanisms"
+      },
+      {
+        "command": "aws logs describe-log-groups --output json",
+        "note": "Analyze log retention policies, encryption, and compliance-grade log management"
+      },
+      {
+        "command": "aws cloudtrail lookup-events --max-items 10 --output json",
+        "note": "Check recent audit events for manual and automated review process validation"
+      },
+      {
+        "command": "aws securityhub get-insights --output json",
+        "note": "Validate advanced log correlation, security analytics, and threat intelligence"
+      },
+      {
+        "command": "aws config describe-config-rules --output json",
+        "note": "Check automated compliance rules for log governance and audit trail validation"
+      },
+      {
+        "command": "aws lambda list-functions --output json",
+        "note": "Validate custom log processing, automated review functions, and intelligent analysis"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Check enterprise-wide centralized log review and cross-account analysis capabilities"
       }
     ]
   },
   "KSI-MLA-03": {
     "description": "Rapidly detect and remediate or mitigate vulnerabilities",
-    "justification": "Validates rapid vulnerability detection and response through Security Hub, Inspector, and automated remediation",
+    "justification": "Validates comprehensive vulnerability detection and response from basic security monitoring to enterprise-grade automated remediation, threat intelligence, and cross-account vulnerability management",
     "cli_commands": [
       {
         "command": "aws securityhub get-enabled-standards --output json",
-        "note": "Check Security Hub for rapid vulnerability detection"
+        "note": "Check Security Hub standards for foundational vulnerability detection and compliance monitoring"
       },
       {
         "command": "aws inspector2 get-configuration --output json",
-        "note": "Validate Inspector for automated vulnerability scanning"
+        "note": "Validate Inspector automated scanning for EC2, container, and application vulnerabilities"
+      },
+      {
+        "command": "aws securityhub get-findings --filters '{\"RecordState\":[{\"Value\":\"ACTIVE\",\"Comparison\":\"EQUALS\"}]}' --max-results 50 --output json",
+        "note": "Analyze active security findings for rapid vulnerability detection and response assessment"
+      },
+      {
+        "command": "aws ssm describe-patch-baselines --output json",
+        "note": "Check automated patch management for rapid vulnerability remediation"
+      },
+      {
+        "command": "aws lambda list-functions --output json",
+        "note": "Validate automated response functions for vulnerability remediation and incident handling"
+      },
+      {
+        "command": "aws cloudwatch describe-alarms --output json",
+        "note": "Check real-time alerting for rapid vulnerability detection and notification"
+      },
+      {
+        "command": "aws config describe-config-rules --output json",
+        "note": "Validate continuous compliance monitoring for configuration vulnerability detection"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Check enterprise-wide vulnerability management and cross-account detection capabilities"
       }
     ]
   },
   "KSI-MLA-04": {
     "description": "Perform authenticated vulnerability scanning on information resources",
-    "justification": "Validates authenticated vulnerability scanning capabilities through Inspector and Security Hub",
+    "justification": "Validates comprehensive authenticated vulnerability scanning from basic service availability to enterprise-grade multi-service scanning, container security, and cloud-native vulnerability management",
     "cli_commands": [
       {
         "command": "aws inspector2 list-coverage --output json",
-        "note": "Check Inspector coverage for authenticated vulnerability scanning"
+        "note": "Check Inspector coverage for authenticated vulnerability scanning of EC2 and container resources"
       },
       {
         "command": "aws inspector2 get-configuration --output json",
-        "description": "Check Inspector service enablement status"
+        "note": "Validate Inspector service enablement and scanning configuration status"
       },
       {
         "command": "aws ec2 describe-instances --output json",
-        "note": "Validate information resources available for vulnerability scanning"
+        "note": "Analyze EC2 instances available for authenticated vulnerability scanning assessment"
+      },
+      {
+        "command": "aws ecr describe-repositories --output json",
+        "note": "Check container registries for authenticated container image vulnerability scanning"
+      },
+      {
+        "command": "aws lambda list-functions --output json",
+        "note": "Validate serverless functions for code vulnerability analysis and dependency scanning"
+      },
+      {
+        "command": "aws ssm describe-instance-information --output json",
+        "note": "Check Systems Manager agent coverage for authenticated system-level scanning"
+      },
+      {
+        "command": "aws securityhub get-findings --filters '{\"ProductName\":[{\"Value\":\"Inspector\",\"Comparison\":\"EQUALS\"}]}' --max-results 20 --output json",
+        "note": "Analyze authenticated scanning results and vulnerability findings integration"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Check enterprise-wide authenticated vulnerability scanning and cross-account coverage"
       }
     ]
   },
   "KSI-MLA-05": {
     "description": "Perform Infrastructure as Code and configuration evaluation and testing",
-    "justification": "Validates IaC security evaluation through Config rules, CloudFormation, and configuration testing",
+    "justification": "Validates comprehensive Infrastructure as Code security evaluation from basic CloudFormation deployment to enterprise-grade multi-account governance, automated testing, and configuration compliance management",
     "cli_commands": [
       {
         "command": "aws config describe-config-rules --output json",
-        "note": "Check Config rules for Infrastructure as Code evaluation"
+        "note": "Check Config rules for Infrastructure as Code evaluation and configuration compliance monitoring"
       },
       {
         "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
-        "note": "Validate CloudFormation stacks for IaC configuration testing"
+        "note": "Validate CloudFormation stacks for Infrastructure as Code configuration testing and deployment"
+      },
+      {
+        "command": "aws cloudformation describe-stacks --output json",
+        "note": "Analyze detailed stack configuration for drift detection and infrastructure validation"
+      },
+      {
+        "command": "aws ssm describe-parameters --max-results 50 --output json",
+        "note": "Check Systems Manager Parameter Store for centralized configuration management"
+      },
+      {
+        "command": "aws codebuild list-projects --output json",
+        "note": "Validate automated Infrastructure as Code testing through build projects and validation pipelines"
+      },
+      {
+        "command": "aws codepipeline list-pipelines --output json",
+        "note": "Check for automated Infrastructure as Code deployment pipelines and change validation"
+      },
+      {
+        "command": "aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateStack --start-time 2025-05-01 --output json",
+        "note": "Analyze deployment audit trail for Infrastructure as Code change tracking and compliance"
+      },
+      {
+        "command": "aws resourcegroupstaggingapi get-resources --resource-type-filters cloudformation --output json",
+        "note": "Check resource inventory and tag-based governance for Infrastructure as Code assets"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Validate enterprise-level multi-account governance for Infrastructure as Code standardization"
+      },
+      {
+        "command": "aws servicecatalog search-products --output json",
+        "note": "Check standardized Infrastructure as Code templates and governance through Service Catalog"
       }
     ]
   },
   "KSI-MLA-06": {
     "description": "Centrally track and prioritize mitigation/remediation of identified vulnerabilities",
-    "justification": "Validates centralized vulnerability tracking and prioritization through Security Hub and findings management",
+    "justification": "Validates comprehensive centralized vulnerability tracking from basic findings collection to enterprise-grade vulnerability lifecycle management, covering automated prioritization, remediation workflows, compliance tracking, and cross-service vulnerability correlation with organizational governance",
     "cli_commands": [
       {
-        "command": "aws securityhub get-findings --max-results 50 --output json",
-        "note": "Get Security Hub findings for centralized vulnerability tracking"
+        "command": "aws securityhub get-findings --max-results 100 --output json",
+        "note": "Get Security Hub findings for centralized vulnerability tracking and severity analysis"
       },
       {
-        "command": "aws inspector2 list-findings --max-results 20 --output json",
-        "note": "Check Inspector findings for vulnerability prioritization"
+        "command": "aws inspector2 list-findings --max-results 100 --output json",
+        "note": "Check Inspector findings for vulnerability prioritization and automated assessment results"
+      },
+      {
+        "command": "aws securityhub get-insights --max-results 50 --output json",
+        "note": "Analyze Security Hub insights for vulnerability trend analysis and prioritization patterns"
+      },
+      {
+        "command": "aws ssm describe-patch-groups --output json",
+        "note": "Check Systems Manager patch groups for vulnerability remediation tracking and automation"
+      },
+      {
+        "command": "aws ssm describe-patch-baselines --output json",
+        "note": "Validate patch baseline configurations for systematic vulnerability remediation workflows"
+      },
+      {
+        "command": "aws config get-compliance-summary-by-config-rule --output json",
+        "note": "Check Config rule compliance for configuration vulnerability tracking and remediation status"
+      },
+      {
+        "command": "aws cloudwatch describe-alarms --alarm-name-prefix SecurityHub --output json",
+        "note": "Validate CloudWatch alarms for automated vulnerability notification and escalation workflows"
+      },
+      {
+        "command": "aws sns list-topics --output json",
+        "note": "Check SNS topics for vulnerability notification and stakeholder communication automation"
+      },
+      {
+        "command": "aws events list-rules --name-prefix SecurityHub --output json",
+        "note": "Analyze EventBridge rules for automated vulnerability response and remediation orchestration"
+      },
+      {
+        "command": "aws organizations describe-organization --output json",
+        "note": "Check enterprise-wide vulnerability tracking policies and organizational remediation governance across accounts"
       }
     ]
   },
   
     "KSI-CMT-01": {
-      "description": "Log and monitor system modifications",
-      "justification": "Validates system modification logging through CloudTrail and Config change tracking",
-      "cli_commands": [
-        {
-          "command": "aws cloudtrail describe-trails --output json",
-          "note": "Check CloudTrail for system modification logging"
-        },
-        {
-          "command": "aws config describe-configuration-recorders --output json",
-          "note": "Validate Config for configuration change monitoring"
-        }
-      ]
+    "description": "Establish and maintain configuration baselines",
+    "justification": "Validates comprehensive configuration baseline management from pilot to enterprise maturity levels through CloudTrail, Config, CloudFormation, monitoring, and governance",
+    "cli_commands": [
+      {
+        "command": "aws cloudtrail describe-trails --output json",
+        "note": "Check CloudTrail for system modification logging and baseline change tracking"
+      },
+      {
+        "command": "aws configservice describe-configuration-recorders --output json",
+        "note": "Validate Config for configuration baseline recording and change monitoring"
+      },
+      {
+        "command": "aws configservice describe-config-rules --output json",
+        "note": "Assess Config rules for baseline compliance monitoring and automated enforcement"
+      },
+      {
+        "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json",
+        "note": "Check CloudFormation stacks for Infrastructure as Code baseline templates"
+      },
+      {
+        "command": "aws ssm describe-parameters --max-items 50 --output json",
+        "note": "Evaluate SSM Parameter Store for configuration baseline management"
+      },
+      {
+        "command": "aws cloudwatch describe-alarms --max-records 50 --output json",
+        "note": "Check CloudWatch alarms for baseline violation monitoring and alerting"
+      },
+      {
+        "command": "aws sns list-topics --output json",
+        "note": "Assess SNS topics for baseline notification infrastructure"
+      },
+      {
+        "command": "aws configservice describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0:5].ConfigRuleName' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{\"RemediationConfigurations\": []}'",
+        "note": "Check Config remediation for automated baseline enforcement (graceful fallback)"
+      },
+      {
+        "command": "aws s3api list-buckets --output json",
+        "note": "Identify S3 buckets for baseline storage and configuration management"
+      },
+      {
+        "command": "aws organizations describe-organization --output json 2>/dev/null || echo '{\"Organization\": null}'",
+        "note": "Check for enterprise-wide baseline governance through AWS Organizations"
+      }
+    ]
     },
     "KSI-CMT-02": {
-      "description": "Execute changes through redeployment of version controlled immutable resources",
-      "justification": "Validates immutable infrastructure patterns through CloudFormation and version control practices",
-      "cli_commands": [
-        {
-          "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
-          "note": "Check CloudFormation for immutable infrastructure deployments"
-        },
-        {
-          "command": "aws ec2 describe-launch-templates --output json",
-          "note": "Validate launch templates for immutable instance deployments"
-        }
-      ]
+    "description": "Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible",
+    "justification": "Validates comprehensive immutable deployment capabilities from pilot to enterprise maturity levels through CloudFormation, Launch Templates, containers, serverless, and governance",
+    "cli_commands": [
+      {
+        "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json",
+        "note": "Check CloudFormation stacks for immutable infrastructure deployment foundation"
+      },
+      {
+        "command": "aws ec2 describe-launch-templates --max-items 50 --output json",
+        "note": "Validate launch templates for immutable instance deployments with versioning"
+      },
+      {
+        "command": "aws ecr describe-repositories --max-items 50 --output json",
+        "note": "Assess ECR repositories for immutable container image deployments"
+      },
+      {
+        "command": "aws lambda list-functions --max-items 50 --output json",
+        "note": "Check Lambda functions for immutable serverless deployment patterns"
+      },
+      {
+        "command": "aws autoscaling describe-auto-scaling-groups --max-items 50 --output json",
+        "note": "Evaluate Auto Scaling Groups for immutable scaling patterns using launch templates"
+      },
+      {
+        "command": "aws ecs list-services --max-items 50 --output json 2>/dev/null || echo '{\"serviceArns\": []}'",
+        "note": "Check ECS services for immutable container orchestration (graceful fallback)"
+      },
+      {
+        "command": "aws deploy list-applications --output json",
+        "note": "Assess CodeDeploy applications for automated immutable deployment patterns"
+      },
+      {
+        "command": "aws elbv2 describe-target-groups --max-items 50 --output json",
+        "note": "Check load balancer target groups for blue/green immutable deployment infrastructure"
+      },
+      {
+        "command": "aws configservice describe-config-rules --output json",
+        "note": "Evaluate Config rules for immutable deployment compliance and governance"
+      },
+      {
+        "command": "aws organizations describe-organization --output json 2>/dev/null || echo '{\"Organization\": null}'",
+        "note": "Check for enterprise-wide immutable deployment governance through AWS Organizations"
+      }
+    ]
     },
     "KSI-CMT-03": {
-      "description": "Implement automated testing and validation of changes prior to deployment",
-      "justification": "Validates automated testing through CodeBuild, CodePipeline, and pre-deployment validation",
-      "cli_commands": [
-        {
-          "command": "aws codebuild list-projects --output json",
-          "note": "Check CodeBuild projects for automated testing"
-        },
-        {
-          "command": "aws codepipeline list-pipelines --output json",
-          "note": "Validate CodePipeline for automated change validation"
+    "description": "Implement automated testing and validation of changes prior to deployment",
+    "justification": "Validates comprehensive Infrastructure as Code testing capabilities from pilot to enterprise maturity levels through Terraform, Checkov, SARIF reports, CI/CD integration, and governance evidence",
+    "cli_commands": [
+      {
+        "command": "evidence_check",
+        "note": "Check evidence_v2/KSI-CMT-03/ for comprehensive Infrastructure as Code testing evidence files",
+        "evidence_files": {
+          "foundation_tier": [
+            {
+              "file": "automated_testing_proof.json",
+              "description": "Core automated testing proof with scan_tool, files_scanned metadata",
+              "required": true
+            },
+            {
+              "file": "checkov_scan_summary.json", 
+              "description": "Checkov Terraform security scanning with scan_integration, checks_run details",
+              "required": true
+            }
+          ],
+          "advanced_tier": [
+            {
+              "file": "sarif_metadata.json",
+              "description": "SARIF security report metadata with tools_used, findings_count",
+              "required": false
+            },
+            {
+              "file": "terraform_plan_validation.json",
+              "description": "Terraform plan security analysis with resources_planned, security_checks_passed",
+              "required": false
+            },
+            {
+              "file": "policy_as_code.json",
+              "description": "Policy as Code validation with policies_enforced, framework details",
+              "required": false
+            }
+          ],
+          "continuous_tier": [
+            {
+              "file": "pipeline_integration.json",
+              "description": "CI/CD pipeline integration with testing_stages, automation_level",
+              "required": false
+            },
+            {
+              "file": "pre_commit_hooks.json",
+              "description": "Pre-commit validation hooks with hooks_configured list",
+              "required": false
+            },
+            {
+              "file": "testing_metrics.json",
+              "description": "Testing analytics with test_coverage_percentage and performance metrics",
+              "required": false
+            }
+          ],
+          "governance_tier": [
+            {
+              "file": "testing_policies.json",
+              "description": "Testing governance with policies_defined, compliance_frameworks",
+              "required": false
+            },
+            {
+              "file": "quality_gates.json",
+              "description": "Quality gate enforcement with gates_configured count",
+              "required": false
+            }
+          ],
+          "enterprise_tier": [
+            {
+              "file": "enterprise_testing_standards.json",
+              "description": "Organization-wide standards with teams_onboarded, enforcement_level",
+              "required": false
+            },
+            {
+              "file": "centralized_testing_infrastructure.json",
+              "description": "Shared testing platforms and centralized infrastructure evidence",
+              "required": false
+            }
+          ]
         }
-      ]
-    },
-    "KSI-CMT-04": {
-      "description": "Have a documented change management procedure",
-      "justification": "Manual evidence required - documented procedures and policies",
-      "cli_commands": [
-        {
-          "command": "evidence_check",
-          "note": "Check evidence_v2/KSI-CMT-04/ for change_management_procedure.pdf and related documentation"
+      }
+    ],
+    "evidence_generation_examples": {
+      "automated_testing_proof.json": {
+        "scan_tool": "checkov",
+        "files_scanned": 15,
+        "scan_date": "2024-01-15T10:30:00Z",
+        "automation_platform": "GitHub Actions"
+      },
+      "checkov_scan_summary.json": {
+        "scan_integration": "GitHub Actions",
+        "checks_run": 847,
+        "passed_checks": 832,
+        "failed_checks": 15,
+        "scan_framework": "terraform"
+      },
+      "sarif_metadata.json": {
+        "tools_used": ["checkov", "tfsec", "terrascan"],
+        "findings_count": 23,
+        "sarif_version": "2.1.0",
+        "report_generated": "2024-01-15T10:35:00Z"
+      },
+      "pipeline_integration.json": {
+        "testing_stages": ["validate", "plan", "security-scan", "compliance-check"],
+        "automation_level": "fully automated",
+        "pipeline_platform": "GitHub Actions",
+        "gate_failures_block_deployment": true
+      }
+    }
+  },
+
+  "KSI-CMT-04": {
+    "description": "Have a documented change management procedure",
+    "justification": "Validates comprehensive change management documentation capabilities from pilot to enterprise maturity levels through procedures, policies, governance, automation, and compliance evidence",
+    "cli_commands": [
+      {
+        "command": "evidence_check",
+        "note": "Check evidence_v2/KSI-CMT-04/ for comprehensive change management documentation",
+        "evidence_files": {
+          "foundation_tier": [
+            {
+              "file": "change_management_procedure.pdf",
+              "description": "Core change management procedure documentation",
+              "required": true,
+              "scoring": 2
+            },
+            {
+              "file": "change_management_policy.pdf",
+              "description": "Organizational change management policy",
+              "required": true,
+              "scoring": 2
+            },
+            {
+              "file": "change_request_template.pdf",
+              "description": "Standardized change request template",
+              "required": true,
+              "scoring": 2
+            },
+            {
+              "file": "change_approval_process.pdf",
+              "description": "Change approval workflow and process",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "emergency_change_procedure.pdf",
+              "description": "Emergency change handling procedures",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "change_calendar.pdf",
+              "description": "Change scheduling and calendar management",
+              "required": false,
+              "scoring": 1
+            }
+          ],
+          "process_management_tier": [
+            {
+              "file": "change_request_workflow.pdf",
+              "description": "Detailed change request workflow documentation",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "change_approval_matrix.pdf",
+              "description": "Change approval authority matrix",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "change_categories.pdf",
+              "description": "Change categorization and classification",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "standard_change_catalog.pdf",
+              "description": "Pre-approved standard changes catalog",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "change_impact_assessment_template.pdf",
+              "description": "Change impact assessment methodology",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_assessment_procedure.pdf",
+              "description": "Change risk assessment procedures",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "rollback_procedures.pdf",
+              "description": "Change rollback and recovery procedures",
+              "required": false,
+              "scoring": 1
+            }
+          ],
+          "governance_tier": [
+            {
+              "file": "change_advisory_board_charter.pdf",
+              "description": "Change Advisory Board charter and responsibilities",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "cab_meeting_procedures.pdf",
+              "description": "CAB meeting procedures and governance",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "change_authority_matrix.pdf",
+              "description": "Change authority and decision matrix",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "escalation_procedures.pdf",
+              "description": "Change escalation procedures",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "change_communication_plan.pdf",
+              "description": "Change communication and stakeholder management",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "stakeholder_notification_procedures.pdf",
+              "description": "Stakeholder notification procedures",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "change_status_reporting.pdf",
+              "description": "Change status reporting procedures",
+              "required": false,
+              "scoring": 1
+            }
+          ],
+          "automation_tier": [
+            {
+              "file": "change_management_tool_configuration.pdf",
+              "description": "Change management tool setup and configuration",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "automated_change_workflow.pdf",
+              "description": "Automated change workflow documentation",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "change_tracking_system.pdf",
+              "description": "Change tracking and monitoring system",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "integration_procedures.pdf",
+              "description": "Tool integration and data flow procedures",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "change_management_metrics.pdf",
+              "description": "Change management KPIs and metrics",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "change_success_criteria.pdf",
+              "description": "Change success measurement criteria",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "performance_reporting.pdf",
+              "description": "Change management performance reporting",
+              "required": false,
+              "scoring": 1
+            }
+          ],
+          "enterprise_tier": [
+            {
+              "file": "enterprise_change_management_standards.pdf",
+              "description": "Organization-wide change management standards",
+              "required": false,
+              "scoring": 2
+            },
+            {
+              "file": "multi_team_coordination_procedures.pdf",
+              "description": "Multi-team change coordination procedures",
+              "required": false,
+              "scoring": 2
+            },
+            {
+              "file": "change_management_training_program.pdf",
+              "description": "Change management training and certification program",
+              "required": false,
+              "scoring": 2
+            },
+            {
+              "file": "continuous_improvement_process.pdf",
+              "description": "Change management continuous improvement process",
+              "required": false,
+              "scoring": 2
+            },
+            {
+              "file": "change_management_compliance_framework.pdf",
+              "description": "Change management compliance framework",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "audit_procedures.pdf",
+              "description": "Change management audit procedures",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "regulatory_change_requirements.pdf",
+              "description": "Regulatory and compliance change requirements",
+              "required": false,
+              "scoring": 1
+            }
+          ]
         }
-      ]
-    },
+      }
+    ],
+    "documentation_guidelines": {
+      "foundation_requirements": {
+        "minimum_passing": "At least 1 required document OR any change-related document",
+        "recommended": "All 3 required documents for solid foundation"
+      },
+      "maturity_progression": {
+        "basic": "3-5 points: Foundation documents only",
+        "advanced": "8-11 points: Foundation + process management",
+        "production": "12-15 points: Foundation + governance + automation",
+        "enterprise": "16-20 points: Comprehensive governance and compliance"
+      },
+      "document_formats": {
+        "accepted": [".pdf", ".docx", ".md"],
+        "preferred": ".pdf for formal documentation"
+      },
+      "content_guidelines": {
+        "procedures": "Step-by-step processes with roles and responsibilities",
+        "policies": "High-level governance and decision criteria",
+        "templates": "Standardized forms and checklists",
+        "workflows": "Process flows with decision points and approval gates"
+      },
+      "change_categories": {
+        "standard_changes": "Pre-approved, low-risk changes with documented procedures",
+        "normal_changes": "Changes requiring CAB approval and impact assessment",
+        "emergency_changes": "Urgent changes with accelerated approval processes",
+        "major_changes": "High-impact changes requiring extensive planning and approval"
+      }
+    }
+  },
+  
     "KSI-CMT-05": {
-      "description": "Evaluate the risk and potential impact of any change",
-      "justification": "Manual evidence required - risk assessment procedures and impact analysis documentation",
-      "cli_commands": [
-        {
-          "command": "evidence_check",
-          "note": "Check evidence_v2/KSI-CMT-05/ for risk_assessment_procedure.pdf and change_impact_analysis_template.pdf"
+    "description": "Evaluate the risk and potential impact of any change",
+    "justification": "Validates comprehensive risk and impact evaluation capabilities from pilot to enterprise maturity levels through assessment procedures, quantitative analysis, governance, automation, and compliance evidence",
+    "cli_commands": [
+      {
+        "command": "evidence_check",
+        "note": "Check evidence_v2/KSI-CMT-05/ for comprehensive risk and impact evaluation documentation",
+        "evidence_files": {
+          "foundation_tier": [
+            {
+              "file": "risk_assessment_procedure.pdf",
+              "description": "Core risk assessment procedure for change evaluation",
+              "required": true,
+              "scoring": 2
+            },
+            {
+              "file": "change_impact_analysis_template.pdf",
+              "description": "Template for systematic impact analysis of changes",
+              "required": true,
+              "scoring": 2
+            },
+            {
+              "file": "risk_evaluation_matrix.pdf",
+              "description": "Risk evaluation matrix with probability and impact criteria",
+              "required": true,
+              "scoring": 2
+            },
+            {
+              "file": "change_risk_register.pdf",
+              "description": "Register for tracking and managing change-related risks",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "impact_assessment_examples.pdf",
+              "description": "Examples and case studies of impact assessments",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "rollback_procedures.pdf",
+              "description": "Procedures for rolling back changes in case of issues",
+              "required": false,
+              "scoring": 1
+            }
+          ],
+          "advanced_risk_management_tier": [
+            {
+              "file": "quantitative_risk_analysis.pdf",
+              "description": "Quantitative methods for risk assessment and analysis",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_probability_assessment.pdf",
+              "description": "Methods for assessing probability of risk events",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "impact_severity_matrix.pdf",
+              "description": "Matrix for categorizing impact severity levels",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_scoring_methodology.pdf",
+              "description": "Methodology for scoring and prioritizing risks",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_mitigation_strategies.pdf",
+              "description": "Comprehensive risk mitigation strategies and approaches",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "contingency_planning_template.pdf",
+              "description": "Template for developing contingency plans",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "business_continuity_procedures.pdf",
+              "description": "Business continuity procedures for high-impact changes",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "disaster_recovery_plan.pdf",
+              "description": "Disaster recovery planning for catastrophic change failures",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "stakeholder_impact_analysis.pdf",
+              "description": "Analysis framework for stakeholder impact assessment",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "customer_impact_assessment.pdf",
+              "description": "Procedures for assessing customer impact of changes",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "business_impact_analysis.pdf",
+              "description": "Business impact analysis methodology and templates",
+              "required": false,
+              "scoring": 1
+            }
+          ],
+          "governance_tier": [
+            {
+              "file": "risk_committee_charter.pdf",
+              "description": "Charter and responsibilities of risk management committee",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_governance_framework.pdf",
+              "description": "Overall governance framework for risk management",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_escalation_procedures.pdf",
+              "description": "Procedures for escalating high-risk changes",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_decision_authority_matrix.pdf",
+              "description": "Authority matrix for risk-related decisions",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_communication_plan.pdf",
+              "description": "Plan for communicating risks to stakeholders",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_reporting_procedures.pdf",
+              "description": "Procedures for risk reporting and status updates",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_dashboard_template.pdf",
+              "description": "Dashboard template for risk visualization",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_status_updates.pdf",
+              "description": "Format and procedures for risk status updates",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_tolerance_policy.pdf",
+              "description": "Organizational risk tolerance policy and guidelines",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_appetite_statement.pdf",
+              "description": "Statement of organizational risk appetite",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "acceptable_risk_levels.pdf",
+              "description": "Definition of acceptable risk levels by category",
+              "required": false,
+              "scoring": 1
+            }
+          ],
+          "automation_tier": [
+            {
+              "file": "risk_assessment_tool_configuration.pdf",
+              "description": "Configuration of automated risk assessment tools",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "automated_risk_scoring.pdf",
+              "description": "Automated risk scoring algorithms and implementation",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_integration_procedures.pdf",
+              "description": "Integration of risk tools with change management systems",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_workflow_automation.pdf",
+              "description": "Automated workflows for risk assessment processes",
+              "required": false,
+              "scoring": 1.5
+            },
+            {
+              "file": "risk_monitoring_procedures.pdf",
+              "description": "Procedures for continuous risk monitoring",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_alert_thresholds.pdf",
+              "description": "Thresholds and alerts for risk management",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "continuous_risk_assessment.pdf",
+              "description": "Framework for continuous risk assessment",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_management_metrics.pdf",
+              "description": "KPIs and metrics for risk management effectiveness",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_kpi_dashboard.pdf",
+              "description": "Dashboard for risk management key performance indicators",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_performance_indicators.pdf",
+              "description": "Performance indicators for risk management processes",
+              "required": false,
+              "scoring": 1
+            }
+          ],
+          "enterprise_tier": [
+            {
+              "file": "enterprise_risk_management_framework.pdf",
+              "description": "Enterprise-wide risk management framework",
+              "required": false,
+              "scoring": 2
+            },
+            {
+              "file": "multi_team_risk_coordination.pdf",
+              "description": "Coordination procedures for multi-team risk management",
+              "required": false,
+              "scoring": 2
+            },
+            {
+              "file": "risk_management_training_program.pdf",
+              "description": "Training program for risk management competency",
+              "required": false,
+              "scoring": 2
+            },
+            {
+              "file": "integrated_risk_management.pdf",
+              "description": "Integration of risk management across all business functions",
+              "required": false,
+              "scoring": 2
+            },
+            {
+              "file": "regulatory_risk_assessment.pdf",
+              "description": "Assessment of regulatory and compliance risks",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "compliance_risk_framework.pdf",
+              "description": "Framework for managing compliance-related risks",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "third_party_risk_evaluation.pdf",
+              "description": "Evaluation procedures for third-party and vendor risks",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "supply_chain_risk_assessment.pdf",
+              "description": "Assessment of supply chain and dependency risks",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_management_maturity_assessment.pdf",
+              "description": "Assessment of risk management maturity and capability",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "continuous_improvement_risk_processes.pdf",
+              "description": "Continuous improvement processes for risk management",
+              "required": false,
+              "scoring": 1
+            },
+            {
+              "file": "risk_management_benchmarking.pdf",
+              "description": "Benchmarking procedures for risk management effectiveness",
+              "required": false,
+              "scoring": 1
+            }
+          ]
         }
-      ]
-    },
+      }
+    ],
+    "documentation_guidelines": {
+      "foundation_requirements": {
+        "minimum_passing": "At least 1 required document OR any risk/impact-related document",
+        "recommended": "All 3 required documents for solid risk assessment foundation"
+      },
+      "maturity_progression": {
+        "basic": "3-5 points: Foundation documents only",
+        "advanced": "8-11 points: Foundation + quantitative analysis + stakeholder impact",
+        "production": "12-15 points: Foundation + governance + automation",
+        "enterprise": "16-20 points: Comprehensive enterprise risk management"
+      },
+      "document_formats": {
+        "accepted": [".pdf", ".docx", ".md", ".xlsx"],
+        "preferred": ".pdf for formal documentation, .xlsx for risk registers and matrices"
+      },
+      "content_guidelines": {
+        "procedures": "Step-by-step risk assessment processes with clear decision criteria",
+        "templates": "Standardized forms for impact analysis and risk evaluation",
+        "matrices": "Risk probability/impact matrices with scoring methodologies",
+        "frameworks": "Comprehensive governance and management frameworks"
+      },
+      "risk_categories": {
+        "technical_risks": "System failures, performance impacts, security vulnerabilities",
+        "business_risks": "Customer impact, revenue loss, reputation damage",
+        "operational_risks": "Service disruption, resource constraints, timeline delays",
+        "compliance_risks": "Regulatory violations, audit findings, policy breaches"
+      }
+    }
+  },
+    
     "KSI-PIY-01": {
     "description": "Have an up-to-date information resource inventory or code defining all deployed assets, software, and services",
     "justification": "Validates asset inventory through AWS resource discovery and documented inventory records",
@@ -656,10 +2056,26 @@
       }
     ]
   },
-  "KSI-INR-03": {
-    "description": "Generate after action reports and regularly incorporate lessons learned into operations",
-    "justification": "Manual evidence required - after action reports, lessons learned documentation, and operational improvement tracking",
+   "KSI-INR-03": {
+    "description": "Generate after action reports and regularly incorporate lessons learned into operations with automated incident tracking",
+    "justification": "Hybrid validation combining automated SecurityHub incident analysis with manual after action report documentation",
     "cli_commands": [
+      {
+        "command": "aws securityhub get-insights --output json",
+        "note": "Retrieve SecurityHub insights to identify available incident analysis capabilities"
+      },
+      {
+        "command": "aws securityhub get-insight-results --insight-arn arn:aws:securityhub:us-east-1:893894210484:insight/893894210484/custom/5bcb2cd3-64e4-4493-b0ea-0dd45ec3b08c --output json",
+        "note": "Get specific incident insight results for after action analysis - production account specific"
+      },
+      {
+        "command": "aws securityhub get-findings --filters '{\"WorkflowState\":[{\"Value\":\"RESOLVED\",\"Comparison\":\"EQUALS\"}]}' --max-items 10 --output json",
+        "note": "Retrieve resolved security findings to demonstrate incident resolution and lessons learned"
+      },
+      {
+        "command": "aws securityhub describe-standards --output json",
+        "note": "Verify security standards are being tracked for continuous improvement"
+      },
       {
         "command": "evidence_check",
         "note": "Check evidence_v2/KSI-INR-03/ for after_action_reports.pdf, lessons_learned_database.xlsx, operational_improvements_tracking.pdf, and incident_response_improvements.pdf"
