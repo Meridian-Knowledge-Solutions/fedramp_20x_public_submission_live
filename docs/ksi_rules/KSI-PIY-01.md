@@ -1,13 +1,13 @@
 # KSI-PIY-01: Have an up-to-date information resource inventory or code defining all deployed assets, software, and services
 
-*Generated on 2025-06-09 23:35:36 UTC*
+*Generated on 2025-06-10 03:17:12 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-01`
 **Description:** Have an up-to-date information resource inventory or code defining all deployed assets, software, and services
 **Justification:** Validates asset inventory through AWS resource discovery and documented inventory records
-**Last Validation:** ✅ 2025-06-09T23:35:36.406713
+**Last Validation:** ✅ 2025-06-10T03:17:12.042553
 **Result:** ⚠️ Partial inventory coverage (expand documentation): ✅ AWS resource inventory: 11 tagged resources discovered; ❌ No manual asset inventory documentation found
 
 ## 🛠️ Implementation

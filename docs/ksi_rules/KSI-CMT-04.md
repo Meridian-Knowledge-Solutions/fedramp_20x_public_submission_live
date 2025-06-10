@@ -1,13 +1,13 @@
 # KSI-CMT-04: Have a documented change management procedure
 
-*Generated on 2025-06-09 23:35:36 UTC*
+*Generated on 2025-06-10 03:17:12 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-04`
 **Description:** Have a documented change management procedure
 **Justification:** Manual evidence required - documented procedures and policies
-**Last Validation:** ✅ 2025-06-09T23:35:36.399156
+**Last Validation:** ✅ 2025-06-10T03:17:12.029281
 **Result:** ✅ Documented change management procedure: ✅ Change management documentation found: configuration_management_policy_and_procedures.pdf, weekly_change_management_meeting_final.png
 
 ## 🛠️ Implementation

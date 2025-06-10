@@ -1,13 +1,13 @@
 # KSI-SVC-07: Use consistent, risk-informed security patching
 
-*Generated on 2025-06-09 23:35:36 UTC*
+*Generated on 2025-06-10 03:17:12 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-07`
 **Description:** Use consistent, risk-informed security patching
 **Justification:** Validates patch management through Systems Manager and automated patching
-**Last Validation:** ✅ 2025-06-09T23:35:36.408163
+**Last Validation:** ✅ 2025-06-10T03:17:12.044017
 **Result:** ✅ Consistent patch management: ✅ 17 patch baselines configured for consistent patching; ℹ️ No SSM-managed instances found (acceptable if no EC2 instances)
 
 ## 🛠️ Implementation

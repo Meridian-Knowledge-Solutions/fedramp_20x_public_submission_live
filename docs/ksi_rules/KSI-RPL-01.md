@@ -1,13 +1,13 @@
 # KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
-*Generated on 2025-06-09 23:35:36 UTC*
+*Generated on 2025-06-10 03:17:12 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-01`
 **Description:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 **Justification:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
-**Last Validation:** ✅ 2025-06-09T23:35:36.407275
+**Last Validation:** ✅ 2025-06-10T03:17:12.043105
 **Result:** ⚠️ Basic RTO/RPO definitions (expand business impact analysis): ✅ Core RTO/RPO documentation: rto_rpo_definitions.pdf, combined_tabletop_test_report_template.pdf
 
 ## 🛠️ Implementation
