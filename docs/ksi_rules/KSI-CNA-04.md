@@ -1,13 +1,13 @@
 # KSI-CNA-04: Use immutable infrastructure patterns
 
-*Generated on 2025-06-10 21:56:41 UTC*
+*Generated on 2025-06-10 22:02:47 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-04`
 **Description:** Use immutable infrastructure patterns
 **Justification:** Validates immutable infrastructure through Terraform-managed resources, versioned AMI pipelines, standardized deployment patterns, and replace-not-modify principles for traditional VM-based workloads
-**Last Validation:** ✅ 2025-06-10T21:56:41.699337
+**Last Validation:** ✅ 2025-06-10T22:02:47.538812
 **Result:** ⚠️ Minimal infrastructure automation (19%) - predominantly manual: ⚠️ No Terraform lock tables found - potential state management issues; ⚠️ No launch templates found - instances may be deployed inconsistently; ⚠️ No Auto Scaling Groups found - manual instance management; ⚠️ No custom AMIs found - using base images without customization; ✅ Serverless compute: 2 Lambda functions (inherently immutable); ✅ Configuration management: 1 SSM parameters; ⚠️ No CodeBuild projects found - potentially manual deployments
 
 ## 🛠️ Implementation

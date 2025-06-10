@@ -1,13 +1,13 @@
 # KSI-SVC-02: Encrypt or otherwise secure network traffic
 
-*Generated on 2025-06-10 21:56:41 UTC*
+*Generated on 2025-06-10 22:02:47 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-02`
 **Description:** Encrypt or otherwise secure network traffic
 **Justification:** Validates comprehensive network traffic encryption from basic service availability to enterprise-grade multi-layer encryption, covering load balancers, CDN, API gateways, databases, caching services, and hybrid connectivity with automated certificate management
-**Last Validation:** ✅ 2025-06-10T21:56:41.714587
+**Last Validation:** ✅ 2025-06-10T22:02:47.555878
 **Result:** ✅ Production-ready multi-layer traffic encryption and certificate management (60%): ✅ Load balancer encryption capability: 1 load balancers configured for traffic encryption; ✅ Private service communication: 6 VPC endpoints (3 interface, 1 gateway); ℹ️ No API Gateway configurations found; ✅ Database encryption capability: 1 RDS instances (0 with encrypted storage); ℹ️ No ElastiCache clusters for cache encryption; ✅ Automated certificate management: 1/1 active ACM certificates (100% healthy); ℹ️ No VPN connections for hybrid connectivity encryption; ✅ Enterprise-wide encryption governance: AWS Organizations enables centralized traffic encryption policies; ✅ Advanced organization features: SCPs for encryption policy enforcement enabled
 
 ## 🛠️ Implementation

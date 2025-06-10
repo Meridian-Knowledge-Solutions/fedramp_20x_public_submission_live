@@ -1,13 +1,13 @@
 # KSI-SVC-03: Encrypt all federal and sensitive information at rest
 
-*Generated on 2025-06-10 21:56:41 UTC*
+*Generated on 2025-06-10 22:02:47 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-03`
 **Description:** Encrypt all federal and sensitive information at rest
 **Justification:** Validates comprehensive at-rest encryption from basic storage service availability to enterprise-grade multi-service encryption, covering object storage, block storage, databases, data lakes, backup systems, and managed services with automated key management and compliance monitoring
-**Last Validation:** ✅ 2025-06-10T21:56:41.714818
+**Last Validation:** ✅ 2025-06-10T22:02:47.556128
 **Result:** ✅ Multi-service at-rest encryption established (32%): ✅ Object storage encryption: 1 S3 buckets configured (encryption validation requires bucket-level check); ✅ Block storage encryption: 8/8 EBS volumes encrypted (100%); ⚠️ RDS instances found but storage encryption not enabled; ℹ️ No DynamoDB tables found; ℹ️ No ElastiCache clusters found; ℹ️ No Redshift data warehouse clusters found; ℹ️ No EFS file systems found; ✅ Backup encryption: 1/1 backup vaults encrypted (100%); ✅ Encryption key infrastructure: 10 KMS keys (0 customer-managed, 10 AWS-managed); ℹ️ Single-account deployment (appropriate for pilot/development)
 
 ## 🛠️ Implementation
