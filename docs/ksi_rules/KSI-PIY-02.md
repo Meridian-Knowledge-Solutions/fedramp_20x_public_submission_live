@@ -1,13 +1,13 @@
 # KSI-PIY-02: Have policies outlining the security objectives of all information resources
 
-*Generated on 2025-06-10 15:04:05 UTC*
+*Generated on 2025-06-10 18:09:59 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-02`
 **Description:** Have policies outlining the security objectives of all information resources
 **Justification:** Manual evidence required - security policies and objectives documentation
-**Last Validation:** ✅ 2025-06-10T15:04:05.274844
+**Last Validation:** ✅ 2025-06-10T18:09:59.507677
 **Result:** ✅ Security policies outlining objectives: ✅ Core security policies: personnel_security_policy.pdf, data_classification_handling_policy.pdf, security_policy_collection_repository.zip
 
 ## 🛠️ Implementation

@@ -1,13 +1,13 @@
 # KSI-IAM-04: Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 
-*Generated on 2025-06-10 15:04:05 UTC*
+*Generated on 2025-06-10 18:09:59 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-04`
 **Description:** Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 **Justification:** Validates comprehensive authorization through IAM Identity Center permission sets (modern approach) and traditional IAM patterns for complete coverage of least privilege, role-based, attribute-based, and just-in-time access
-**Last Validation:** ✅ 2025-06-10T15:04:05.264955
+**Last Validation:** ✅ 2025-06-10T18:09:59.499671
 **Result:** ⚠️ Minimal authorization controls (35%): ℹ️ IAM Identity Center not configured (using traditional IAM); ✅ Traditional role-based access: 25 roles (20 service, 5 user-oriented) vs 3 users; ✅ Controlled user count: 3 users (appropriate for least privilege); ✅ Controlled policy count: 8 custom policies; ❌ Using permanent user credentials (not just-in-time)
 
 ## 🛠️ Implementation
