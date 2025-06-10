@@ -1,63 +1,103 @@
 # KSI-SVC-04: Manage configuration centrally
 
-*Generated on 2025-06-10 03:17:12 UTC*
+*Generated on 2025-06-10 04:03:18 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-04`
 **Description:** Manage configuration centrally
-**Justification:** Validates centralized configuration management through Systems Manager and Config
-**Last Validation:** ✅ 2025-06-10T03:17:12.043643
-**Result:** ⚠️ Basic configuration management available: ⚠️ SSM Parameter Store available but no parameters found; ⚠️ AWS Config service not accessible
+**Justification:** Validates comprehensive centralized configuration management from basic service availability to enterprise-grade configuration governance, covering parameter management, configuration compliance, automation, templates, secrets management, and organizational policy enforcement with version control and audit capabilities
+**Last Validation:** ✅ 2025-06-10T04:03:18.719238
+**Result:** ⚠️ Basic configuration management available: ⚠️ SSM Parameter Store available but no parameters found; ⚠️ AWS Config service not accessible; ✅ Configuration automation: 123 SSM documents (0 custom); ✅ Infrastructure as Code: 2/2 CloudFormation stacks; ✅ Secrets management: 1 centrally managed secrets; ✅ Configuration standards: 17 patch baselines for system management; ℹ️ No instances under Systems Manager centralized management; ✅ Configuration templates: 1 Service Catalog products for standardization; ✅ Enterprise governance: Organization-wide configuration policies and management standards
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `aws ssm describe-parameters --output json`
-   **Purpose:** Check Systems Manager Parameter Store for centralized config
+   **Purpose:** Check Systems Manager Parameter Store for centralized configuration management and application settings
 
 2. **Command:** `aws config describe-configuration-recorders --output json`
-   **Purpose:** Validate AWS Config for configuration management
+   **Purpose:** Validate AWS Config for configuration compliance monitoring and change tracking
+
+3. **Command:** `aws ssm list-documents --document-filter-list key=DocumentType,value=Command --output json`
+   **Purpose:** Check Systems Manager documents for configuration management workflows and deployment automation
+
+4. **Command:** `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
+   **Purpose:** Validate CloudFormation for Infrastructure as Code configuration management and template-based deployment
+
+5. **Command:** `aws secretsmanager list-secrets --output json`
+   **Purpose:** Check Secrets Manager for centralized secrets and sensitive configuration management
+
+6. **Command:** `aws ssm describe-patch-baselines --output json`
+   **Purpose:** Analyze patch baselines for centralized system configuration management and compliance standards
+
+7. **Command:** `aws config describe-config-rules --output json`
+   **Purpose:** Check Config rules for automated configuration compliance validation and policy enforcement
+
+8. **Command:** `aws ssm describe-instance-information --output json`
+   **Purpose:** Validate Systems Manager agent coverage for centralized instance configuration management
+
+9. **Command:** `aws servicecatalog search-products --output json`
+   **Purpose:** Check Service Catalog for standardized configuration templates and governed deployment patterns
+
+10. **Command:** `aws organizations describe-organization --output json`
+   **Purpose:** Validate enterprise-wide configuration policies and organizational governance standards across accounts
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
 - **Command:** `aws ssm describe-parameters --output json`
-  - **Purpose:** Check Systems Manager Parameter Store for centralized config
+  - **Purpose:** Check Systems Manager Parameter Store for centralized configuration management and application settings
 - **Command:** `aws config describe-configuration-recorders --output json`
-  - **Purpose:** Validate AWS Config for configuration management
+  - **Purpose:** Validate AWS Config for configuration compliance monitoring and change tracking
+- **Command:** `aws ssm list-documents --document-filter-list key=DocumentType,value=Command --output json`
+  - **Purpose:** Check Systems Manager documents for configuration management workflows and deployment automation
+- **Command:** `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
+  - **Purpose:** Validate CloudFormation for Infrastructure as Code configuration management and template-based deployment
+- **Command:** `aws secretsmanager list-secrets --output json`
+  - **Purpose:** Check Secrets Manager for centralized secrets and sensitive configuration management
+- **Command:** `aws ssm describe-patch-baselines --output json`
+  - **Purpose:** Analyze patch baselines for centralized system configuration management and compliance standards
+- **Command:** `aws config describe-config-rules --output json`
+  - **Purpose:** Check Config rules for automated configuration compliance validation and policy enforcement
+- **Command:** `aws ssm describe-instance-information --output json`
+  - **Purpose:** Validate Systems Manager agent coverage for centralized instance configuration management
+- **Command:** `aws servicecatalog search-products --output json`
+  - **Purpose:** Check Service Catalog for standardized configuration templates and governed deployment patterns
+- **Command:** `aws organizations describe-organization --output json`
+  - **Purpose:** Validate enterprise-wide configuration policies and organizational governance standards across accounts
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_SVC_04`
 
-**Documentation:** FINAL FIX: KSI-SVC-04: Centralized configuration management
+**Documentation:** Enhanced KSI-SVC-04: Manage configuration centrally
+Expected: SSM Parameter Store + Config Recorders + Comprehensive configuration management
 
-ISSUE: Still showing "'str' object has no attribute 'get'" error
-SOLUTION: More comprehensive error handling
+Scaling approach: Pilot (service availability) → Production (active management) → Enterprise (comprehensive governance)
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_SVC_04(cli_output):
     """
-    FINAL FIX: KSI-SVC-04: Centralized configuration management
+    Enhanced KSI-SVC-04: Manage configuration centrally
+    Expected: SSM Parameter Store + Config Recorders + Comprehensive configuration management
     
-    ISSUE: Still showing "'str' object has no attribute 'get'" error
-    SOLUTION: More comprehensive error handling
+    Scaling approach: Pilot (service availability) → Production (active management) → Enterprise (comprehensive governance)
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     ssm_parameters = None
     config_recorders = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output")
-        try:
-            if isinstance(raw_output, str):
-                if "describe-configuration-recorders" in cli_command:
-                    if any(error in raw_output for error in [
-                        "NoSuchConfigurationRecorderException",
+    ssm_documents = None
+    cloudformation_stacks = None
+    secrets_manager = None
+    patch_baselines = None
+    config_rules = None
+    ssm_instances = None
+    service_catalog = None
+    organizations = None
     # ... (additional validation logic) ...
 ```
 
@@ -65,15 +105,15 @@ def evaluate_KSI_SVC_04(cli_output):
 
 **Control Description:** Manage configuration centrally
 
-**Implementation Justification:** Validates centralized configuration management through Systems Manager and Config
+**Implementation Justification:** Validates comprehensive centralized configuration management from basic service availability to enterprise-grade configuration governance, covering parameter management, configuration compliance, automation, templates, secrets management, and organizational policy enforcement with version control and audit capabilities
 
 **FedRAMP 20x Category:** Service Configuration
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 10 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 2
+**Commands Executed:** 10
 **Validation Method:** validation-engine-sync
 
 ---

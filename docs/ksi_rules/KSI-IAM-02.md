@@ -1,13 +1,13 @@
 # KSI-IAM-02: Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 
-*Generated on 2025-06-10 03:17:12 UTC*
+*Generated on 2025-06-10 04:03:18 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-02`
 **Description:** Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 **Justification:** Validates passwordless authentication (SSO/SAML/temporary credentials) where feasible, otherwise strong password policy with mandatory MFA enforcement
-**Last Validation:** ✅ 2025-06-10T03:17:12.034466
+**Last Validation:** ✅ 2025-06-10T04:03:18.708159
 **Result:** ✅ Excellent authentication security (passwordless methods): ✅ 1 SAML providers configured (passwordless authentication); ⚠️ Using permanent user credentials (not passwordless); ✅ Strong MFA enforcement: 6 devices for 3 users (200% coverage); ❌ Password policy information not accessible
 
 ## 🛠️ Implementation

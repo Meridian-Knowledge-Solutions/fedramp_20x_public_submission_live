@@ -1,77 +1,119 @@
-# KSI-SVC-07: Use consistent, risk-informed security patching
+# KSI-SVC-07: Use consistent, risk-informed approach for applying security patches
 
-*Generated on 2025-06-10 03:17:12 UTC*
+*Generated on 2025-06-10 04:03:18 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-07`
-**Description:** Use consistent, risk-informed security patching
-**Justification:** Validates patch management through Systems Manager and automated patching
-**Last Validation:** ✅ 2025-06-10T03:17:12.044017
-**Result:** ✅ Consistent patch management: ✅ 17 patch baselines configured for consistent patching; ℹ️ No SSM-managed instances found (acceptable if no EC2 instances)
+**Description:** Use consistent, risk-informed approach for applying security patches
+**Justification:** Validates comprehensive risk-informed patch management from basic patch baseline configuration to enterprise-grade vulnerability-driven patching, covering automated deployment, compliance monitoring, container patching, lambda layer management, and organizational patch governance with risk assessment and testing workflows
+**Last Validation:** ✅ 2025-06-10T04:03:18.720118
+**Result:** ✅ Comprehensive patch management with automation and control: ✅ 17 patch baselines configured for consistent patching; ℹ️ No SSM-managed instances found (acceptable if no EC2 instances); ℹ️ No patch groups configured for risk segmentation; ✅ Patch automation: 14/123 documents for automated patching; ℹ️ No maintenance windows for controlled patch deployment; ℹ️ No ECR repositories for container image patching; ℹ️ No Lambda layers for serverless runtime patching; ✅ Enterprise governance: Organization-wide patch management policies and risk-informed standards
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `aws ssm describe-patch-baselines --output json`
-   **Purpose:** Check patch baselines for consistent patching approach
+   **Purpose:** Check patch baselines for consistent patching approach and vulnerability management standards
 
 2. **Command:** `aws ssm describe-instance-information --output json`
-   **Purpose:** Validate SSM agent coverage for automated patching
+   **Purpose:** Validate SSM agent coverage for automated patching and centralized system management
+
+3. **Command:** `aws ssm describe-patch-groups --output json`
+   **Purpose:** Analyze patch groups for risk-informed patching segmentation and deployment scheduling
+
+4. **Command:** `aws ssm list-documents --document-filter-list key=DocumentType,value=Command --output json`
+   **Purpose:** Check SSM documents for patch automation workflows and risk-informed deployment procedures
+
+5. **Command:** `aws ssm describe-maintenance-windows --output json`
+   **Purpose:** Validate maintenance windows for controlled patch deployment and risk mitigation scheduling
+
+6. **Command:** `aws inspector2 get-configuration --output json`
+   **Purpose:** Check Inspector for vulnerability-driven patch prioritization and risk assessment automation
+
+7. **Command:** `aws ecr describe-repositories --output json`
+   **Purpose:** Analyze container registries for container image patching and vulnerability scanning integration
+
+8. **Command:** `aws lambda list-layers --output json`
+   **Purpose:** Check Lambda layers for serverless runtime patching and dependency management
+
+9. **Command:** `aws config describe-config-rules --output json`
+   **Purpose:** Validate Config rules for patch compliance monitoring and governance automation
+
+10. **Command:** `aws organizations describe-organization --output json`
+   **Purpose:** Check enterprise-wide patch management policies and organizational risk-informed patching standards across accounts
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
 - **Command:** `aws ssm describe-patch-baselines --output json`
-  - **Purpose:** Check patch baselines for consistent patching approach
+  - **Purpose:** Check patch baselines for consistent patching approach and vulnerability management standards
 - **Command:** `aws ssm describe-instance-information --output json`
-  - **Purpose:** Validate SSM agent coverage for automated patching
+  - **Purpose:** Validate SSM agent coverage for automated patching and centralized system management
+- **Command:** `aws ssm describe-patch-groups --output json`
+  - **Purpose:** Analyze patch groups for risk-informed patching segmentation and deployment scheduling
+- **Command:** `aws ssm list-documents --document-filter-list key=DocumentType,value=Command --output json`
+  - **Purpose:** Check SSM documents for patch automation workflows and risk-informed deployment procedures
+- **Command:** `aws ssm describe-maintenance-windows --output json`
+  - **Purpose:** Validate maintenance windows for controlled patch deployment and risk mitigation scheduling
+- **Command:** `aws inspector2 get-configuration --output json`
+  - **Purpose:** Check Inspector for vulnerability-driven patch prioritization and risk assessment automation
+- **Command:** `aws ecr describe-repositories --output json`
+  - **Purpose:** Analyze container registries for container image patching and vulnerability scanning integration
+- **Command:** `aws lambda list-layers --output json`
+  - **Purpose:** Check Lambda layers for serverless runtime patching and dependency management
+- **Command:** `aws config describe-config-rules --output json`
+  - **Purpose:** Validate Config rules for patch compliance monitoring and governance automation
+- **Command:** `aws organizations describe-organization --output json`
+  - **Purpose:** Check enterprise-wide patch management policies and organizational risk-informed patching standards across accounts
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_SVC_07`
 
-**Documentation:** Simple rule for KSI-SVC-07: Consistent, risk-informed security patching
-Expected: SSM Patch Baselines + SSM Agent Coverage
+**Documentation:** Enhanced KSI-SVC-07: Use consistent, risk-informed approach for applying security patches
+Expected: SSM Patch Baselines + SSM Agent Coverage + Comprehensive patch management
+
+Scaling approach: Pilot (basic baselines) → Production (automation + compliance) → Enterprise (comprehensive governance)
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_SVC_07(cli_output):
     """
-    Simple rule for KSI-SVC-07: Consistent, risk-informed security patching
-    Expected: SSM Patch Baselines + SSM Agent Coverage
+    Enhanced KSI-SVC-07: Use consistent, risk-informed approach for applying security patches
+    Expected: SSM Patch Baselines + SSM Agent Coverage + Comprehensive patch management
+    
+    Scaling approach: Pilot (basic baselines) → Production (automation + compliance) → Enterprise (comprehensive governance)
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     patch_baselines = None
     ssm_instances = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if "describe-patch-baselines" in cli_command:
-            patch_baselines = raw_output.get("BaselineIdentities", [])
-        elif "describe-instance-information" in cli_command:
-            ssm_instances = raw_output.get("InstanceInformationList", [])
-    findings = []
-    patching_mechanisms = 0
-    if patch_baselines is not None:
+    patch_groups = None
+    ssm_documents = None
+    maintenance_windows = None
+    inspector_config = None
+    ecr_repositories = None
+    lambda_layers = None
+    config_rules = None
+    organizations = None
     # ... (additional validation logic) ...
 ```
 
 ## 📜 Compliance Mapping
 
-**Control Description:** Use consistent, risk-informed security patching
+**Control Description:** Use consistent, risk-informed approach for applying security patches
 
-**Implementation Justification:** Validates patch management through Systems Manager and automated patching
+**Implementation Justification:** Validates comprehensive risk-informed patch management from basic patch baseline configuration to enterprise-grade vulnerability-driven patching, covering automated deployment, compliance monitoring, container patching, lambda layer management, and organizational patch governance with risk assessment and testing workflows
 
 **FedRAMP 20x Category:** Service Configuration
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 10 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 2
+**Commands Executed:** 10
 **Validation Method:** validation-engine-sync
 
 ---

@@ -1,77 +1,119 @@
-# KSI-SVC-02: Encrypt or secure network traffic
+# KSI-SVC-02: Encrypt or otherwise secure network traffic
 
-*Generated on 2025-06-10 03:17:12 UTC*
+*Generated on 2025-06-10 04:03:18 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-02`
-**Description:** Encrypt or secure network traffic
-**Justification:** Validates network traffic encryption through load balancers, VPC endpoints, and HTTPS configurations
-**Last Validation:** ✅ 2025-06-10T03:17:12.043490
-**Result:** ✅ Network traffic security configured: ℹ️ No load balancers found (acceptable for low-impact); ⚠️ No VPC endpoints found - traffic goes over internet
+**Description:** Encrypt or otherwise secure network traffic
+**Justification:** Validates comprehensive network traffic encryption from basic service availability to enterprise-grade multi-layer encryption, covering load balancers, CDN, API gateways, databases, caching services, and hybrid connectivity with automated certificate management
+**Last Validation:** ✅ 2025-06-10T04:03:18.718614
+**Result:** ✅ Network traffic encryption established across multiple services: ℹ️ No load balancers found (acceptable for low-impact); ⚠️ No VPC endpoints found - traffic goes over internet; ℹ️ No API Gateway configurations found; ℹ️ No RDS instances for database connection encryption; ℹ️ No ElastiCache clusters for cache encryption; ℹ️ No ACM certificates for automated TLS management; ℹ️ No VPN connections for hybrid connectivity encryption; ✅ Enterprise governance: Organization-wide traffic encryption policies and standards
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `aws elbv2 describe-load-balancers --output json`
-   **Purpose:** Check load balancer SSL/TLS configurations
+   **Purpose:** Check Application and Network Load Balancer configurations for SSL/TLS traffic encryption
 
 2. **Command:** `aws ec2 describe-vpc-endpoints --output json`
-   **Purpose:** Validate VPC endpoints for private service communication
+   **Purpose:** Validate VPC endpoints for private AWS service communication and traffic isolation
+
+3. **Command:** `aws elbv2 describe-listeners --output json`
+   **Purpose:** Analyze load balancer listeners for HTTPS/TLS protocol enforcement and cipher configuration
+
+4. **Command:** `aws cloudfront list-distributions --output json`
+   **Purpose:** Check CloudFront CDN distributions for HTTPS enforcement and global traffic encryption
+
+5. **Command:** `aws apigateway get-rest-apis --output json`
+   **Purpose:** Validate API Gateway configurations for API traffic encryption and secure endpoint access
+
+6. **Command:** `aws rds describe-db-instances --output json`
+   **Purpose:** Check RDS database instances for SSL/TLS connection encryption and secure data transit
+
+7. **Command:** `aws elasticache describe-cache-clusters --output json`
+   **Purpose:** Analyze ElastiCache clusters for in-transit encryption and secure cache communication
+
+8. **Command:** `aws acm list-certificates --output json`
+   **Purpose:** Check AWS Certificate Manager for automated TLS certificate provisioning and management
+
+9. **Command:** `aws ec2 describe-vpn-connections --output json`
+   **Purpose:** Validate VPN connections for encrypted hybrid cloud connectivity and secure site-to-site communication
+
+10. **Command:** `aws organizations describe-organization --output json`
+   **Purpose:** Check enterprise-wide encryption policies and organizational traffic security standards across accounts
 
 ## 📋 Evidence Requirements
 
 ### 🖥️ CLI Validation
 - **Command:** `aws elbv2 describe-load-balancers --output json`
-  - **Purpose:** Check load balancer SSL/TLS configurations
+  - **Purpose:** Check Application and Network Load Balancer configurations for SSL/TLS traffic encryption
 - **Command:** `aws ec2 describe-vpc-endpoints --output json`
-  - **Purpose:** Validate VPC endpoints for private service communication
+  - **Purpose:** Validate VPC endpoints for private AWS service communication and traffic isolation
+- **Command:** `aws elbv2 describe-listeners --output json`
+  - **Purpose:** Analyze load balancer listeners for HTTPS/TLS protocol enforcement and cipher configuration
+- **Command:** `aws cloudfront list-distributions --output json`
+  - **Purpose:** Check CloudFront CDN distributions for HTTPS enforcement and global traffic encryption
+- **Command:** `aws apigateway get-rest-apis --output json`
+  - **Purpose:** Validate API Gateway configurations for API traffic encryption and secure endpoint access
+- **Command:** `aws rds describe-db-instances --output json`
+  - **Purpose:** Check RDS database instances for SSL/TLS connection encryption and secure data transit
+- **Command:** `aws elasticache describe-cache-clusters --output json`
+  - **Purpose:** Analyze ElastiCache clusters for in-transit encryption and secure cache communication
+- **Command:** `aws acm list-certificates --output json`
+  - **Purpose:** Check AWS Certificate Manager for automated TLS certificate provisioning and management
+- **Command:** `aws ec2 describe-vpn-connections --output json`
+  - **Purpose:** Validate VPN connections for encrypted hybrid cloud connectivity and secure site-to-site communication
+- **Command:** `aws organizations describe-organization --output json`
+  - **Purpose:** Check enterprise-wide encryption policies and organizational traffic security standards across accounts
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_SVC_02`
 
-**Documentation:** Simple rule for KSI-SVC-02: Network traffic encryption
-Expected: Load Balancers + VPC Endpoints
+**Documentation:** Enhanced KSI-SVC-02: Encrypt or otherwise secure network traffic
+Expected: Load Balancers + VPC Endpoints + Comprehensive traffic encryption
+
+Scaling approach: Pilot (service availability) → Production (active encryption) → Enterprise (comprehensive governance)
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_SVC_02(cli_output):
     """
-    Simple rule for KSI-SVC-02: Network traffic encryption
-    Expected: Load Balancers + VPC Endpoints
+    Enhanced KSI-SVC-02: Encrypt or otherwise secure network traffic
+    Expected: Load Balancers + VPC Endpoints + Comprehensive traffic encryption
+    
+    Scaling approach: Pilot (service availability) → Production (active encryption) → Enterprise (comprehensive governance)
     """
     if "commands" not in cli_output:
         return False, "❌ Multi-command format required"
     commands = cli_output["commands"]
     load_balancers = None
     vpc_endpoints = None
-    for cmd in commands:
-        cli_command = cmd.get("cli_command", "")
-        raw_output = cmd.get("raw_output", {})
-        if "describe-load-balancers" in cli_command:
-            load_balancers = raw_output.get("LoadBalancers", [])
-        elif "describe-vpc-endpoints" in cli_command:
-            vpc_endpoints = raw_output.get("VpcEndpoints", [])
-    findings = []
-    encryption_mechanisms = 0
-    if load_balancers is not None:
+    listeners = None
+    cloudfront_distributions = None
+    api_gateways = None
+    rds_instances = None
+    elasticache_clusters = None
+    acm_certificates = None
+    vpn_connections = None
+    organizations = None
     # ... (additional validation logic) ...
 ```
 
 ## 📜 Compliance Mapping
 
-**Control Description:** Encrypt or secure network traffic
+**Control Description:** Encrypt or otherwise secure network traffic
 
-**Implementation Justification:** Validates network traffic encryption through load balancers, VPC endpoints, and HTTPS configurations
+**Implementation Justification:** Validates comprehensive network traffic encryption from basic service availability to enterprise-grade multi-layer encryption, covering load balancers, CDN, API gateways, databases, caching services, and hybrid connectivity with automated certificate management
 
 **FedRAMP 20x Category:** Service Configuration
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 10 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 2
+**Commands Executed:** 10
 **Validation Method:** validation-engine-sync
 
 ---
