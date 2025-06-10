@@ -1928,15 +1928,11 @@
   },
   "KSI-TPR-02": {
     "description": "Regularly confirm services handling federal information are FedRAMP authorized and securely configured",
-    "justification": "Validates FedRAMP authorization verification and secure configuration of federal information handling services",
+    "justification": "Validates service inventory, FedRAMP authorization verification, and secure configuration compliance for services handling federal data",
     "cli_commands": [
       {
-        "command": "aws organizations list-accounts --output json",
-        "note": "Check for organizational structure and account boundaries for federal information"
-      },
-      {
         "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-TPR-02/ for fedramp_authorization_verification.xlsx, service_security_configurations.pdf, and federal_data_flow_analysis.pdf"
+        "note": "Primary validation through documentation: federal_data_service_inventory.xlsx, fedramp_authorization_verification.xlsx, service_security_configurations.pdf, regular_verification_process.pdf"
       }
     ]
   },
