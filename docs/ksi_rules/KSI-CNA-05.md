@@ -1,9 +1,13 @@
 # KSI-CNA-05: Have denial of service protection
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:33:42 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Have denial of service protection
 **Justification:** Validates comprehensive multi-layer DDoS protection through network-layer shields, application-layer filtering, edge protection, capacity-based mitigation, and automated response capabilities
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T12:33:14.268605
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:32.879708
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:33:41.770113
 >>>>>>> Stashed changes
 **Result:** ⚠️ Minimal DDoS protection (7%) - significant gaps: ⚠️ Shield status unclear: ; ⚠️ No regional WAF found - missing application-layer DDoS protection; ⚠️ No CloudFront WAF found - missing edge application protection; ⚠️ No load balancers found - missing traffic distribution for DDoS mitigation; ⚠️ No Auto Scaling Groups - missing capacity-based DDoS mitigation; ⚠️ No Route 53 hosted zones - DNS may be vulnerable to attacks; ⚠️ No CloudWatch alarms - missing DDoS detection and response
 

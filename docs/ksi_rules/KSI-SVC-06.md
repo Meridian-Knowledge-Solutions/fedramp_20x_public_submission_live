@@ -1,9 +1,13 @@
 # KSI-SVC-06: Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:33:42 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 **Justification:** Validates comprehensive automated key management from basic KMS availability to enterprise-grade key lifecycle management, covering encryption keys, certificates, rotation policies, access controls, hardware security modules, and organizational key governance with automated provisioning and compliance monitoring
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T12:33:14.280742
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:32.892469
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:33:41.782321
 >>>>>>> Stashed changes
 **Result:** ✅ Production-ready automated key lifecycle management with compliance monitoring (60%): ✅ Automated key management infrastructure: 7 KMS keys (0 customer-managed, 7 AWS-managed); ℹ️ No ACM certificates found (acceptable for serverless/internal architectures); ✅ Key governance structure: 1/16 customer-managed aliases (6%); ℹ️ No KMS-encrypted SecureString parameters found; ⚠️ Secrets Manager configured but no automatic rotation enabled; ✅ Modern certificate management: No legacy IAM certificates; ✅ Infrastructure as Code key management: 2/2 successful CloudFormation stacks (100%); ℹ️ No recent key management events in audit trail; ✅ Enterprise-wide key management governance: AWS Organizations enables centralized key policies; ✅ Advanced organization features: SCPs for key management policy enforcement enabled
 

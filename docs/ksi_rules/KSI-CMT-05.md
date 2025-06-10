@@ -1,9 +1,13 @@
 # KSI-CMT-05: Evaluate the risk and potential impact of any change
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:33:42 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Evaluate the risk and potential impact of any change
 **Justification:** Validates comprehensive risk and impact evaluation capabilities from pilot to enterprise maturity levels through assessment procedures, quantitative analysis, governance, automation, and compliance evidence
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T12:33:14.268078
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:32.879225
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:33:41.769617
 >>>>>>> Stashed changes
 **Result:** ✅ Risk and impact evaluation procedures - expand analysis methods (10%): ✅ Risk evaluation documentation found: Change Impact Analysis Template (KSI-CMT-05).pdf, Risk Assessment Procedure for Change Management (KSI-CMT-05).pdf
 

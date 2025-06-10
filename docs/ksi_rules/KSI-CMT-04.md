@@ -1,9 +1,13 @@
 # KSI-CMT-04: Have a documented change management procedure
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:33:42 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Have a documented change management procedure
 **Justification:** Validates comprehensive change management documentation capabilities from pilot to enterprise maturity levels through procedures, policies, governance, automation, and compliance evidence
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T12:33:14.268019
 =======
 **Last Validation:** ✅ 2025-06-10T12:33:32.879164
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:33:41.769558
 >>>>>>> Stashed changes
 **Result:** ✅ Documented change management procedure - expand process controls (10%): ✅ Change management documentation found: configuration_management_policy_and_procedures.pdf, weekly_change_management_meeting_final.png
 
