@@ -24,9 +24,9 @@ Here's what needs to be fixed, with the technical details for your team:
 
 **Issue:** Exception during evaluation: 'str' object has no attribute 'get'
 
-**Validation Method:** 2 commands (1 successful): aws organizations list-accounts --output json; evidence_check
+**Validation Method:** 7 commands (4 successful): aws organizations list-accounts --output json; aws config describe-configuration-recorders --output json (+5 more)
 
-**Last Checked:** 2025-06-10 18:51 UTC
+**Last Checked:** 2025-06-10 19:20 UTC
 
 ---
 ## 🎯 Next Steps
@@ -44,5 +44,5 @@ Contact our security team at security@meridianks.com for assistance with any of 
 ## 📞 Questions?
 
 📧 **Email:** security@meridianks.com  
-📅 **Report Generated:** 2025-06-10 18:51 UTC  
+📅 **Report Generated:** 2025-06-10 19:20 UTC  
 🔍 **Source:** Automated FedRAMP 20x validation pipeline
