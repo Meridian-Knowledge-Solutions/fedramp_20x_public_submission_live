@@ -1,9 +1,13 @@
 # KSI-MLA-02: Regularly review and audit logs
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
+>>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:18:23 UTC*
 >>>>>>> Stashed changes
 
 ## 📖 Overview
@@ -12,9 +16,13 @@
 **Description:** Regularly review and audit logs
 **Justification:** Validates comprehensive log review capabilities from basic notification-driven processes to enterprise-grade automated analysis, compliance governance, and cross-account log review
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T13:17:42.450524
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:11.042249
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:18:23.540559
 >>>>>>> Stashed changes
 **Result:** ✅ Established log review with basic automation (31%): ✅ Log review notifications: 2 SNS topics for alert delivery; ✅ Manual review capability: 3 log groups available for analysis; ✅ Security Hub available: Ready for advanced log analytics and correlation; ✅ Audit event analysis: 10 recent CloudTrail events available for review; ✅ Enterprise log aggregation: AWS Organizations enables centralized multi-account log review
 
