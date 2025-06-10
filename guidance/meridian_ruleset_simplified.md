@@ -53,13 +53,18 @@ def evaluate_KSI_XXX_XX(cli_output):
 
 ### **Assessment Categories**
 
-| Category | Description | Example |
-|----------|-------------|---------|
-| **SVC** | Service Hardening | Network encryption, key management, patching |
-| **MLA** | Monitoring & Logging | SIEM, vulnerability scanning, audit logs |
-| **CMT** | Change Management | Immutable deployments, testing automation, risk assessment |
-| **PIY** | Policy & Inventory | Asset management, security policies, development lifecycle |
-| **TPR** | Third-Party Risk | Vendor management, supply chain security |
+| Category | Full Name | Description | Examples |
+|----------|-----------|-------------|----------|
+| **CNA** | Cloud Native Architecture | Architecture and design principles for confidentiality, integrity, availability | Network controls, attack surface minimization, immutable infrastructure |
+| **SVC** | Service Configuration | Encryption policies, integrity verification, access restrictions | Network encryption, key management, patching |
+| **IAM** | Identity and Access Management | User data protection, access control, zero trust principles | MFA enforcement, least privilege, automated account security |
+| **MLA** | Monitoring, Logging, and Auditing | Event monitoring, activity logging, change auditing | SIEM, vulnerability scanning, audit logs |
+| **CMT** | Change Management | System changes documentation and baseline management | Immutable deployments, testing automation, risk assessment |
+| **PIY** | Policy and Inventory | Organized guidance for securing information resources | Asset management, security policies, development lifecycle |
+| **TPR** | Third-Party Information Resources | Supply chain risk management from third-party resources | Vendor management, supply chain security |
+| **CED** | Cybersecurity Education | Employee cybersecurity education and testing | Security training, awareness programs |
+| **RPL** | Recovery Planning | Incident response and recovery capabilities | RTO/RPO definition, backup systems, recovery testing |
+| **INR** | Incident Reporting | Security incident documentation, reporting, and analysis | Incident logs, regulatory reporting, lessons learned |
 
 ---
 
