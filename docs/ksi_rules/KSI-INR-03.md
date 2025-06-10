@@ -1,53 +1,13 @@
 # KSI-INR-03: Generate after action reports and regularly incorporate lessons learned into operations with automated incident tracking
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 13:17:42 UTC*
-=======
-*Generated on 2025-06-10 13:18:11 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:23 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:26 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:59 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:19:04 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 15:04:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-INR-03`
 **Description:** Generate after action reports and regularly incorporate lessons learned into operations with automated incident tracking
 **Justification:** Hybrid validation combining automated SecurityHub incident analysis with manual after action report documentation
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T13:17:42.449462
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:11.041279
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:23.539561
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:26.129635
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:58.714755
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:19:04.384427
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T15:04:05.265594
 **Result:** ⚠️ Basic after action reporting (increase lessons learned implementation): ✅ Core after action documentation: Sample After Action Reports and Implementation Examples.pdf; ✅ Recent after action reports: 2 AARs within last year; ⚠️ Limited evidence of lessons learned implementation into operations
 
 ## 🛠️ Implementation

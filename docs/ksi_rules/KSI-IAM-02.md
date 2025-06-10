@@ -1,53 +1,13 @@
 # KSI-IAM-02: Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 13:17:42 UTC*
-=======
-*Generated on 2025-06-10 13:18:11 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:23 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:26 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:58 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:19:04 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 15:04:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-02`
 **Description:** Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 **Justification:** Validates passwordless authentication (SSO/SAML/temporary credentials) where feasible, otherwise strong password policy with mandatory MFA enforcement
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T13:17:42.448340
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:11.039948
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:23.538487
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:26.128491
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:58.713549
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:19:04.382806
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T15:04:05.263901
 **Result:** ✅ Excellent authentication security (passwordless methods): ✅ 1 SAML providers configured (passwordless authentication); ⚠️ Using permanent user credentials (not passwordless); ✅ Strong MFA enforcement: 6 devices for 3 users (200% coverage); ❌ Password policy information not accessible
 
 ## 🛠️ Implementation

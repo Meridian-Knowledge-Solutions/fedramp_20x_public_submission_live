@@ -1,53 +1,13 @@
 # KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 13:17:42 UTC*
-=======
-*Generated on 2025-06-10 13:18:11 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:23 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:26 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:58 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:19:04 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 15:04:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-03`
 **Description:** Enforce appropriately secure authentication methods for non-user accounts and services
 **Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys) and detects insecure patterns
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T13:17:42.448495
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:11.040099
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:23.538647
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:26.128650
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:58.713701
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:19:04.382995
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T15:04:05.264058
 **Result:** ✅ Secure service authentication methods: ✅ 25 IAM roles available (13 service-oriented); ✅ 3 users found, none appear to be service accounts; ✅ 1 active access keys (reasonable for admin use); ℹ️ No EC2 instance profile information available
 
 ## 🛠️ Implementation

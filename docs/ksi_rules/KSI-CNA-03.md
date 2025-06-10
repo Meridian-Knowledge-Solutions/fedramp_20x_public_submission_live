@@ -1,53 +1,13 @@
 # KSI-CNA-03: Use logical networking for traffic flow controls
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 13:17:42 UTC*
-=======
-*Generated on 2025-06-10 13:18:11 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:23 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:26 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:58 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:19:04 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 15:04:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-03`
 **Description:** Use logical networking for traffic flow controls
 **Justification:** Validates comprehensive logical networking through software-defined routing, traffic steering, network policies, and modern cloud networking patterns for intentional traffic flow control
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T13:17:42.446056
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:11.037674
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:23.536117
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:26.126141
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:58.711284
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:19:04.380213
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T15:04:05.261610
 **Result:** ⚠️ Minimal logical networking (19%) - basic controls present: ✅ Logical routing infrastructure: 1/1 route tables with intentional traffic flows; ❌ No network access control: 1 NACLs found but no rules; ℹ️ No VPC endpoints found (acceptable for basic networking); ℹ️ No Transit Gateways found (appropriate for single-VPC environments); ℹ️ No load balancers found (acceptable when no applications deployed); ℹ️ No NAT Gateways found (acceptable for public subnet architectures); ℹ️ No VPC Flow Logs found (monitoring not required for basic networking)
 
 ## 🛠️ Implementation

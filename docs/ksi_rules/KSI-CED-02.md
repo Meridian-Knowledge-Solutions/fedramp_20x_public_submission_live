@@ -1,53 +1,13 @@
 # KSI-CED-02: Require role-specific training for high risk roles, including at least roles with privileged access
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 13:17:42 UTC*
-=======
-*Generated on 2025-06-10 13:18:11 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:23 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:26 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:59 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:19:04 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 15:04:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CED-02`
 **Description:** Require role-specific training for high risk roles, including at least roles with privileged access
 **Justification:** Manual evidence required - role-specific training curricula, privileged access training records, and specialized cybersecurity training documentation
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T13:17:42.441414
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:11.033043
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:23.531577
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:26.121459
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:58.706700
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:19:04.375420
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T15:04:05.256995
 **Result:** ✅ Role-specific training including privileged access: fedramp_role_based.png, cyber_security_training.png, security_training_roster.png
 
 ## 🛠️ Implementation

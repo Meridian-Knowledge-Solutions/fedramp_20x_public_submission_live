@@ -1,53 +1,13 @@
 # KSI-TPR-02: Regularly confirm services handling federal information are FedRAMP authorized and securely configured
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 13:17:42 UTC*
-=======
-*Generated on 2025-06-10 13:18:11 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:23 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:26 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:59 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:19:04 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 15:04:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-02`
 **Description:** Regularly confirm services handling federal information are FedRAMP authorized and securely configured
 **Justification:** Validates FedRAMP authorization verification and secure configuration of federal information handling services
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T13:17:42.459700
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:11.052118
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:23.549208
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:26.139454
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:58.724755
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:19:04.394882
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T15:04:05.277981
 **Result:** ✅ Services handling federal information verified FedRAMP authorized: ✅ Organizational structure: 14 accounts for federal information boundary management; ✅ FedRAMP verification documentation: FedRAMP_Low_Boundary_Diagram.pdf
 
 ## 🛠️ Implementation

@@ -1,53 +1,13 @@
 # KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 13:17:42 UTC*
-=======
-*Generated on 2025-06-10 13:18:11 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:23 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:26 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:59 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:19:04 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 15:04:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-01`
 **Description:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 **Justification:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T13:17:42.457241
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:11.049654
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:23.546833
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:26.137069
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:58.722199
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:19:04.392211
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T15:04:05.275362
 **Result:** ⚠️ Basic RTO/RPO definitions (expand business impact analysis): ✅ Core RTO/RPO documentation: rto_rpo_definitions.pdf, combined_tabletop_test_report_template.pdf
 
 ## 🛠️ Implementation

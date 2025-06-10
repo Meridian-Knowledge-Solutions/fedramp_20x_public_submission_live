@@ -1,53 +1,13 @@
 # KSI-SVC-01: Harden and review network and system configurations
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 13:17:42 UTC*
-=======
-*Generated on 2025-06-10 13:18:11 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:23 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:26 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:58 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:19:04 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 15:04:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-01`
 **Description:** Harden and review network and system configurations
 **Justification:** Validates comprehensive network and system hardening from basic security group configuration to enterprise-grade multi-layer defense, compliance monitoring, and advanced threat detection across cloud-native and traditional infrastructure
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T13:17:42.457721
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:11.050091
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:23.547240
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:26.137494
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:58.722661
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:19:04.392623
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T15:04:05.275867
 **Result:** ✅ Advanced hardening with automated security controls (55%): ✅ Network hardening foundation: 1 security groups (1 hardened, 0 require review); ℹ️ No EC2 instances (serverless/managed services architecture); ✅ Automated patch management: 17 patch baselines configured; ℹ️ 1 default Network ACLs (consider custom rules for enhanced security); ✅ Threat detection enabled: 1 GuardDuty detectors monitoring for threats; ℹ️ No Web Application Firewall configured; ✅ Enterprise-wide security governance: AWS Organizations enables centralized hardening policies; ✅ Advanced organization features: SCPs and advanced governance capabilities enabled
 
 ## 🛠️ Implementation

@@ -1,53 +1,13 @@
 # KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 13:17:42 UTC*
-=======
-*Generated on 2025-06-10 13:18:11 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:23 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:26 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:18:58 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 13:19:04 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 15:04:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-06`
 **Description:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 **Justification:** Validates end-to-end automated response workflows including threat detection, event triggers, and account security actions through modern AWS security services and Identity Center integration
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T13:17:42.449111
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:11.040957
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:23.539232
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:26.129276
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:18:58.714304
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T13:19:04.384081
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T15:04:05.265291
 **Result:** ✅ Strong automated response capabilities (68%): ✅ Advanced threat detection: GuardDuty enabled (1 detector(s)); ✅ Centralized security management: Security Hub enabled; ⚠️ 1 EventBridge rules found but none security-focused; ✅ Modern identity automation: Identity Center configured (1 instance(s)); ✅ Built-in automated identity controls: Session management, conditional access, risk-based authentication; ⚠️ No Config rules found for automated remediation; ⚠️ 1 Lambda functions found but none explicitly security-focused; ❌ No CloudWatch alarms found for security monitoring
 
 ## 🛠️ Implementation
