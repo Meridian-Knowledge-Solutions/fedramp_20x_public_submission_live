@@ -3,6 +3,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
@@ -13,12 +14,16 @@
 =======
 *Generated on 2025-06-10 13:18:26 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:18:59 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-07`
 **Description:** Document risk management decisions for software supply chain security
 **Justification:** Manual evidence required - supply chain risk management documentation and decisions
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -31,6 +36,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:26.136986
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:18:58.722089
 >>>>>>> Stashed changes
 **Result:** ⚠️ Basic supply chain risk management (expand coverage): ✅ Enhanced supply chain controls: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf, weekly_change_management_meeting_final.png; ✅ Supply chain risk documentation: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
 

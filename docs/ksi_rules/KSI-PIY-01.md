@@ -3,6 +3,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
@@ -13,12 +14,16 @@
 =======
 *Generated on 2025-06-10 13:18:26 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:18:59 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-01`
 **Description:** Have an up-to-date information resource inventory or code defining all deployed assets, software, and services
 **Justification:** Validates asset inventory through AWS resource discovery and documented inventory records
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -31,6 +36,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:26.136529
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:18:58.721651
 >>>>>>> Stashed changes
 **Result:** ⚠️ Partial inventory coverage (expand documentation): ✅ AWS resource inventory: 11 tagged resources discovered; ❌ No manual asset inventory documentation found
 

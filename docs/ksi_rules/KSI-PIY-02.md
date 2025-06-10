@@ -3,6 +3,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
@@ -13,12 +14,16 @@
 =======
 *Generated on 2025-06-10 13:18:26 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:18:59 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-02`
 **Description:** Have policies outlining the security objectives of all information resources
 **Justification:** Manual evidence required - security policies and objectives documentation
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -31,6 +36,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:26.136620
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:18:58.721735
 >>>>>>> Stashed changes
 **Result:** ✅ Security policies outlining objectives: ✅ Core security policies: personnel_security_policy.pdf, data_classification_handling_policy.pdf, security_policy_collection_repository.zip
 
