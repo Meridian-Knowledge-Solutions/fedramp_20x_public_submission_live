@@ -1,53 +1,13 @@
 # KSI-PIY-05: Document methods used to evaluate information resource implementations
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 12:33:14 UTC*
-=======
-*Generated on 2025-06-10 12:33:33 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:42 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:51 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:10 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:14 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 13:17:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-05`
 **Description:** Document methods used to evaluate information resource implementations
 **Justification:** Manual evidence required - evaluation methodologies and assessment procedures
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T12:33:14.278843
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:32.890603
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:41.780404
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:51.382484
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:09.975031
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:14.225647
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T13:17:42.456883
 **Result:** ⚠️ Basic evaluation procedures (expand coverage): ✅ Core evaluation methods: Information Resource Evaluation Methodology (KSI-PIY-05).pdf
 
 ## 🛠️ Implementation

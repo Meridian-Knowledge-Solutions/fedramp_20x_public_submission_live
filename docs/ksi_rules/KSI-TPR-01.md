@@ -1,53 +1,13 @@
 # KSI-TPR-01: Identify all third-party information resources
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 12:33:14 UTC*
-=======
-*Generated on 2025-06-10 12:33:33 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:42 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:51 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:10 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:14 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 13:17:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-01`
 **Description:** Identify all third-party information resources
 **Justification:** Validates third-party resource identification through AWS services and documented third-party inventory
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T12:33:14.281421
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:32.893510
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:41.782960
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:51.386401
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:09.977505
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:14.228164
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T13:17:42.459573
 **Result:** ⚠️ Partial third-party identification (expand documentation): ❌ No cross-account role data for third-party integration analysis; ✅ Documented third-party inventory: sbom_including_elastic.json, fedramp_moderate_vendor_list.xlsx, Elasticsearch Inc._06.04.2024_Self_Attestation.pdf
 
 ## 🛠️ Implementation

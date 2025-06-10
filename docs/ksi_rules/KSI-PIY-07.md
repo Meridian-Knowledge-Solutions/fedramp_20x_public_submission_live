@@ -1,53 +1,13 @@
 # KSI-PIY-07: Document risk management decisions for software supply chain security
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 12:33:14 UTC*
-=======
-*Generated on 2025-06-10 12:33:33 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:42 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:51 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:10 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:14 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 13:17:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-07`
 **Description:** Document risk management decisions for software supply chain security
 **Justification:** Manual evidence required - supply chain risk management documentation and decisions
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T12:33:14.278970
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:32.890743
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:41.780544
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:51.382630
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:09.975155
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:14.225788
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T13:17:42.457014
 **Result:** ⚠️ Basic supply chain risk management (expand coverage): ✅ Enhanced supply chain controls: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf, weekly_change_management_meeting_final.png; ✅ Supply chain risk documentation: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
 
 ## 🛠️ Implementation

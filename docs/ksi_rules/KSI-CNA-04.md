@@ -1,53 +1,13 @@
 # KSI-CNA-04: Use immutable infrastructure patterns
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 12:33:14 UTC*
-=======
-*Generated on 2025-06-10 12:33:33 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:42 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:51 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:10 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:14 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 13:17:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-04`
 **Description:** Use immutable infrastructure patterns
 **Justification:** Validates immutable infrastructure through Terraform-managed resources, versioned AMI pipelines, standardized deployment patterns, and replace-not-modify principles for traditional VM-based workloads
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T12:33:14.268534
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:32.879636
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:41.770042
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:51.371631
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:09.964347
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:14.214238
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T13:17:42.446135
 **Result:** ⚠️ Minimal infrastructure automation (12%) - predominantly manual: ⚠️ No Terraform lock tables found - potential state management issues; ⚠️ No launch templates found - instances may be deployed inconsistently; ⚠️ No Auto Scaling Groups found - manual instance management; ⚠️ No custom AMIs found - using base images without customization; ✅ Serverless compute: 1 Lambda functions (inherently immutable); ⚠️ No SSM parameters found - configuration may be hardcoded; ⚠️ No CodeBuild projects found - potentially manual deployments
 
 ## 🛠️ Implementation

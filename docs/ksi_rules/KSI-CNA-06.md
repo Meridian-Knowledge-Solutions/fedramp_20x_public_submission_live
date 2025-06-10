@@ -1,53 +1,13 @@
 # KSI-CNA-06: Design for high availability and recovery
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 12:33:14 UTC*
-=======
-*Generated on 2025-06-10 12:33:33 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:42 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:51 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:10 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:14 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 13:17:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-06`
 **Description:** Design for high availability and recovery
 **Justification:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T12:33:14.268717
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:32.879821
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:41.770223
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:51.371818
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:09.964528
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:14.214416
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T13:17:42.446319
 **Result:** ⚠️ Basic HA elements (44%) - needs significant enhancement: ✅ Excellent network HA: 6 subnets across 6 AZs; ✅ Balanced AZ distribution: Even subnet spread across zones; ℹ️ No RDS instances found; ⚠️ No load balancers found - missing application HA layer; ⚠️ No Auto Scaling Groups found - missing compute HA; ✅ Centralized backup strategy: 2 AWS Backup plans; ⚠️ No EBS snapshots found; ✅ Storage redundancy: 2 S3 buckets (built-in HA); ℹ️ No Route 53 hosted zones found
 
 ## 🛠️ Implementation

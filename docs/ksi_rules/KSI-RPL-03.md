@@ -1,53 +1,13 @@
 # KSI-RPL-03: Perform system backups aligned with recovery objectives
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-*Generated on 2025-06-10 12:33:14 UTC*
-=======
-*Generated on 2025-06-10 12:33:33 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:42 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:33:51 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:10 UTC*
->>>>>>> Stashed changes
-=======
-*Generated on 2025-06-10 12:34:14 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-10 13:17:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-03`
 **Description:** Perform system backups aligned with recovery objectives
 **Justification:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives INCLUDING retention policies
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-10T12:33:14.279313
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:32.891082
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:41.780934
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:33:51.384180
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:09.975404
->>>>>>> Stashed changes
-=======
-**Last Validation:** ✅ 2025-06-10T12:34:14.226162
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-10T13:17:42.457442
 **Result:** ✅ System backups with compliant retention aligned with recovery objectives: ✅ Backup infrastructure: 2 AWS Backup plans (Dailybackup, Monthly); ✅ Adequate retention: 35 days meets FedRAMP minimum (rule: DailyBackups); ✅ Full retention compliance: 1/1 rules meet requirements; ℹ️ No EBS snapshots (acceptable if using AWS Backup exclusively)
 
 ## 🛠️ Implementation
