@@ -4,6 +4,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
@@ -17,12 +18,16 @@
 =======
 *Generated on 2025-06-10 12:34:10 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:34:14 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-03`
 **Description:** Implement automated testing and validation of changes prior to deployment
 **Justification:** Validates comprehensive Infrastructure as Code testing capabilities from pilot to enterprise maturity levels through Terraform, Checkov, SARIF reports, CI/CD integration, and governance evidence
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -39,6 +44,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T12:34:09.963830
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:34:14.213649
 >>>>>>> Stashed changes
 **Result:** ✅ Comprehensive automated testing via Infrastructure as Code (30%): ✅ Infrastructure as Code testing foundation: Automated testing proof documented; ✅ Terraform security validation: Checkov compliance scanning; ✅ Standardized security reporting: SARIF format compliance
 

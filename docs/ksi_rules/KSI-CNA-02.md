@@ -4,6 +4,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
@@ -17,12 +18,16 @@
 =======
 *Generated on 2025-06-10 12:34:10 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:34:14 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-02`
 **Description:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 **Justification:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -39,6 +44,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T12:34:09.964176
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:34:14.214052
 >>>>>>> Stashed changes
 **Result:** ⚠️ Minimal isolation controls (15%) - major enhancements required: ⚠️ Default VPC configuration: All 6 subnets are public (standard AWS design); ✅ Excellent AZ segmentation: 6 subnets across 6 availability zones; ⚠️ Default security group usage: Using default security groups only; ✅ Lateral movement barriers: 1/1 security groups with specific rules; ℹ️ No EC2 instances found; ℹ️ No RDS instances found; ℹ️ No load balancers found; ℹ️ No EKS clusters found; ⚠️ Lambda exposure: 1 functions not in VPC (limited network isolation); ⚠️ Using default Network ACLs only (no additional subnet isolation)
 

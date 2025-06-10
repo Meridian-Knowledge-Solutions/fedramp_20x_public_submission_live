@@ -4,6 +4,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
 =======
 *Generated on 2025-06-10 12:33:33 UTC*
@@ -17,12 +18,16 @@
 =======
 *Generated on 2025-06-10 12:34:10 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 12:34:14 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-03`
 **Description:** Encrypt all federal and sensitive information at rest
 **Justification:** Validates comprehensive at-rest encryption from basic storage service availability to enterprise-grade multi-service encryption, covering object storage, block storage, databases, data lakes, backup systems, and managed services with automated key management and compliance monitoring
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -39,6 +44,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T12:34:09.975921
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T12:34:14.226683
 >>>>>>> Stashed changes
 **Result:** ✅ Basic at-rest encryption capability established (22%): ✅ Object storage encryption: 2 S3 buckets configured (encryption validation requires bucket-level check); ℹ️ No EBS volumes found (acceptable for serverless architectures); ℹ️ No RDS database instances found; ℹ️ No DynamoDB tables found; ℹ️ No ElastiCache clusters found; ℹ️ No Redshift data warehouse clusters found; ℹ️ No EFS file systems found; ✅ Backup encryption: 2/2 backup vaults encrypted (100%); ✅ Encryption key infrastructure: 7 KMS keys (0 customer-managed, 7 AWS-managed); ℹ️ Single-account deployment (appropriate for pilot/development)
 
