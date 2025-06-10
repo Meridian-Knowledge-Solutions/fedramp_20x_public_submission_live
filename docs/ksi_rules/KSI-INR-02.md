@@ -4,6 +4,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
@@ -17,12 +18,16 @@
 =======
 *Generated on 2025-06-10 13:18:59 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:19:04 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-INR-02`
 **Description:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 **Justification:** Validates incident logging infrastructure and manual incident tracking with pattern analysis
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -39,6 +44,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:58.714596
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:19:04.384270
 >>>>>>> Stashed changes
 **Result:** ⚠️ Good incident logging (increase analysis frequency): ⚠️ No dedicated security log groups found (may use general logging); ✅ Incident tracking and analysis: Incident Tracking and Analysis Template (KSI-INR-02).pdf; ✅ Recent reviews: 1 incident analysis documents updated within 6 months
 

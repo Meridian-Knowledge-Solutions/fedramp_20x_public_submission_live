@@ -4,6 +4,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
@@ -17,12 +18,16 @@
 =======
 *Generated on 2025-06-10 13:18:59 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:19:04 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-04`
 **Description:** Regularly test the capability to recover from incidents and contingencies
 **Justification:** Manual evidence required - recovery testing procedures, test results, and lessons learned documentation
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -39,6 +44,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:58.722485
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:19:04.392445
 >>>>>>> Stashed changes
 **Result:** ⚠️ Basic recovery testing (expand testing procedures): ✅ Core testing documentation: combined_tabletop_test_report_template.pdf; ✅ Recent testing: 2 test documents updated within last year
 

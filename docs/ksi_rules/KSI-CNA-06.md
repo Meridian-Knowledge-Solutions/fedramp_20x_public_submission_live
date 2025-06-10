@@ -4,6 +4,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 13:17:42 UTC*
 =======
 *Generated on 2025-06-10 13:18:11 UTC*
@@ -17,12 +18,16 @@
 =======
 *Generated on 2025-06-10 13:18:58 UTC*
 >>>>>>> Stashed changes
+=======
+*Generated on 2025-06-10 13:19:04 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-06`
 **Description:** Design for high availability and recovery
 **Justification:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -39,6 +44,9 @@
 >>>>>>> Stashed changes
 =======
 **Last Validation:** ✅ 2025-06-10T13:18:58.711552
+>>>>>>> Stashed changes
+=======
+**Last Validation:** ✅ 2025-06-10T13:19:04.380495
 >>>>>>> Stashed changes
 **Result:** ⚠️ Basic HA elements (44%) - needs significant enhancement: ✅ Excellent network HA: 6 subnets across 6 AZs; ✅ Balanced AZ distribution: Even subnet spread across zones; ℹ️ No RDS instances found; ⚠️ No load balancers found - missing application HA layer; ⚠️ No Auto Scaling Groups found - missing compute HA; ✅ Centralized backup strategy: 2 AWS Backup plans; ⚠️ No EBS snapshots found; ✅ Storage redundancy: 2 S3 buckets (built-in HA); ℹ️ No Route 53 hosted zones found
 
