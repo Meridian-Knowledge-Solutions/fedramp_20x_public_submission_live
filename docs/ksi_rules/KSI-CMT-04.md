@@ -1,56 +1,63 @@
 # KSI-CMT-04: Have a documented change management procedure
 
-*Generated on 2025-06-10 04:59:29 UTC*
+*Generated on 2025-06-10 07:07:24 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-04`
 **Description:** Have a documented change management procedure
-**Justification:** Manual evidence required - documented procedures and policies
-**Last Validation:** ✅ 2025-06-10T04:59:28.791979
-**Result:** ✅ Documented change management procedure: ✅ Change management documentation found: configuration_management_policy_and_procedures.pdf, weekly_change_management_meeting_final.png
+**Justification:** Validates comprehensive change management documentation capabilities from pilot to enterprise maturity levels through procedures, policies, governance, automation, and compliance evidence
+**Last Validation:** ✅ 2025-06-10T07:07:24.023983
+**Result:** ✅ Documented change management procedure - expand process controls (10%): ✅ Change management documentation found: configuration_management_policy_and_procedures.pdf, weekly_change_management_meeting_final.png
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `evidence_check`
-   **Purpose:** Check evidence_v2/KSI-CMT-04/ for change_management_procedure.pdf and related documentation
+   **Purpose:** Check evidence_v2/KSI-CMT-04/ for comprehensive change management documentation
 
 ## 📋 Evidence Requirements
 
 ### 📄 Manual Evidence
-- Check evidence_v2/KSI-CMT-04/ for change_management_procedure.pdf and related documentation
+- Check evidence_v2/KSI-CMT-04/ for comprehensive change management documentation
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_CMT_04`
 
-**Documentation:** KSI-CMT-04: Have a documented change management procedure
+**Documentation:** ENHANCED CMT-04: Have a documented change management procedure
 
-Expected: Manual evidence - documentation files
+Validates comprehensive change management documentation capabilities scaling from pilot to enterprise:
+- Documentation Foundation: Basic change management procedures and policies
+- Process Management: Templates, approval processes, and emergency procedures
+- Advanced Governance: Change advisory board, risk assessment, and communication plans
+- Automation Integration: Change tracking tools, workflow automation, and metrics
+- Enterprise Governance: Organization-wide standards, continuous improvement, and compliance
+
+Preserves current passing status while enabling maturity growth measurement.
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CMT_04(cli_output):
     """
-    KSI-CMT-04: Have a documented change management procedure
+    ENHANCED CMT-04: Have a documented change management procedure
     
-    Expected: Manual evidence - documentation files
+    Validates comprehensive change management documentation capabilities scaling from pilot to enterprise:
+    - Documentation Foundation: Basic change management procedures and policies
+    - Process Management: Templates, approval processes, and emergency procedures
+    - Advanced Governance: Change advisory board, risk assessment, and communication plans
+    - Automation Integration: Change tracking tools, workflow automation, and metrics
+    - Enterprise Governance: Organization-wide standards, continuous improvement, and compliance
+    
+    Preserves current passing status while enabling maturity growth measurement.
     """
     evidence_dir = Path("evidence_v2/KSI-CMT-04")
     if not evidence_dir.exists():
         return False, "❌ Evidence directory evidence_v2/KSI-CMT-04/ not found"
+    findings = []
+    change_management_score = 0  # Enhanced scoring for maturity measurement
+    max_score = 20              # Enhanced scoring system for maturity measurement
     required_docs = [
-        "change_management_procedure.pdf",
-        "change_management_policy.pdf", 
-        "change_request_template.pdf"
-    ]
-    optional_docs = [
-        "change_approval_process.pdf",
-        "emergency_change_procedure.pdf",
-        "change_calendar.pdf"
-    ]
-    found_required = []
     # ... (additional validation logic) ...
 ```
 
@@ -58,7 +65,7 @@ def evaluate_KSI_CMT_04(cli_output):
 
 **Control Description:** Have a documented change management procedure
 
-**Implementation Justification:** Manual evidence required - documented procedures and policies
+**Implementation Justification:** Validates comprehensive change management documentation capabilities from pilot to enterprise maturity levels through procedures, policies, governance, automation, and compliance evidence
 
 **FedRAMP 20x Category:** Change Management
 

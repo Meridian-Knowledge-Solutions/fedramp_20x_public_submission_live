@@ -1,57 +1,66 @@
 # KSI-CMT-03: Implement automated testing and validation of changes prior to deployment
 
-*Generated on 2025-06-10 04:59:29 UTC*
+*Generated on 2025-06-10 07:07:24 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-03`
 **Description:** Implement automated testing and validation of changes prior to deployment
-**Justification:** Validates automated testing through Infrastructure as Code security scanning with Checkov, SARIF reports, and pre-deployment validation via external automation
-**Last Validation:** ✅ 2025-06-10T04:59:28.791922
-**Result:** ✅ Comprehensive automated testing via Infrastructure as Code: Infrastructure as Code security scanning; SARIF security reports generated; Checkov compliance validation
+**Justification:** Validates comprehensive Infrastructure as Code testing capabilities from pilot to enterprise maturity levels through Terraform, Checkov, SARIF reports, CI/CD integration, and governance evidence
+**Last Validation:** ✅ 2025-06-10T07:07:24.023919
+**Result:** ✅ Comprehensive automated testing via Infrastructure as Code (30%): ✅ Infrastructure as Code testing foundation: Automated testing proof documented; ✅ Terraform security validation: Checkov compliance scanning; ✅ Standardized security reporting: SARIF format compliance
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `evidence_check`
-   **Purpose:** Check evidence_v2/KSI-CMT-03/ for automated_testing_proof.json, sarif_metadata.json, and checkov_scan_summary.json from Infrastructure as Code security automation
+   **Purpose:** Check evidence_v2/KSI-CMT-03/ for comprehensive Infrastructure as Code testing evidence files
 
 ## 📋 Evidence Requirements
 
 ### 📄 Manual Evidence
-- Check evidence_v2/KSI-CMT-03/ for automated_testing_proof.json, sarif_metadata.json, and checkov_scan_summary.json from Infrastructure as Code security automation
+- Check evidence_v2/KSI-CMT-03/ for comprehensive Infrastructure as Code testing evidence files
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_CMT_03`
 
-**Documentation:** KSI-CMT-03: Implement automated testing and validation of changes prior to deployment
+**Documentation:** ENHANCED CMT-03: Implement automated testing and validation of changes prior to deployment
+
+Validates comprehensive Infrastructure as Code testing capabilities scaling from pilot to enterprise:
+- Testing Foundation: Basic Checkov scanning and automated testing proof
+- Advanced IaC Testing: Multiple scan types, SARIF reports, and integration evidence  
+- Continuous Testing: CI/CD integration, policy as code, and comprehensive scanning
+- Testing Governance: Testing policies, compliance validation, and quality gates
+- Enterprise Governance: Organization-wide testing standards and comprehensive automation
 
 Uses Infrastructure as Code security scanning evidence from external automation
-instead of traditional CodeBuild/CodePipeline approaches.
+instead of traditional CodeBuild/CodePipeline approaches (Terraform + Checkov focus).
+
+Preserves current passing status while enabling maturity growth measurement.
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CMT_03(cli_output):
     """
-    KSI-CMT-03: Implement automated testing and validation of changes prior to deployment
+    ENHANCED CMT-03: Implement automated testing and validation of changes prior to deployment
+    
+    Validates comprehensive Infrastructure as Code testing capabilities scaling from pilot to enterprise:
+    - Testing Foundation: Basic Checkov scanning and automated testing proof
+    - Advanced IaC Testing: Multiple scan types, SARIF reports, and integration evidence  
+    - Continuous Testing: CI/CD integration, policy as code, and comprehensive scanning
+    - Testing Governance: Testing policies, compliance validation, and quality gates
+    - Enterprise Governance: Organization-wide testing standards and comprehensive automation
     
     Uses Infrastructure as Code security scanning evidence from external automation
-    instead of traditional CodeBuild/CodePipeline approaches.
+    instead of traditional CodeBuild/CodePipeline approaches (Terraform + Checkov focus).
+    
+    Preserves current passing status while enabling maturity growth measurement.
     """
     evidence_dir = Path("evidence_v2/KSI-CMT-03")
     if not evidence_dir.exists():
         return False, "❌ Evidence directory evidence_v2/KSI-CMT-03/ not found"
-    automated_testing_evidence = []
-    testing_score = 0
-    if (evidence_dir / "automated_testing_proof.json").exists():
-        automated_testing_evidence.append("Infrastructure as Code security scanning")
-        testing_score += 2
-        try:
-            with open(evidence_dir / "automated_testing_proof.json", 'r') as f:
-                proof_data = json.load(f)
-                scan_tool = proof_data.get('scan_tool', 'Unknown')
-                files_scanned = proof_data.get('files_scanned', 0)
+    findings = []
     # ... (additional validation logic) ...
 ```
 
@@ -59,7 +68,7 @@ def evaluate_KSI_CMT_03(cli_output):
 
 **Control Description:** Implement automated testing and validation of changes prior to deployment
 
-**Implementation Justification:** Validates automated testing through Infrastructure as Code security scanning with Checkov, SARIF reports, and pre-deployment validation via external automation
+**Implementation Justification:** Validates comprehensive Infrastructure as Code testing capabilities from pilot to enterprise maturity levels through Terraform, Checkov, SARIF reports, CI/CD integration, and governance evidence
 
 **FedRAMP 20x Category:** Change Management
 

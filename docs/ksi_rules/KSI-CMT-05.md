@@ -1,56 +1,63 @@
 # KSI-CMT-05: Evaluate the risk and potential impact of any change
 
-*Generated on 2025-06-10 04:59:29 UTC*
+*Generated on 2025-06-10 07:07:24 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-05`
 **Description:** Evaluate the risk and potential impact of any change
-**Justification:** Manual evidence required - risk assessment procedures and impact analysis documentation
-**Last Validation:** ✅ 2025-06-10T04:59:28.792036
-**Result:** ✅ Risk and impact evaluation procedures: ✅ Required documentation: Change Impact Analysis Template (KSI-CMT-05).pdf, Risk Assessment Procedure for Change Management (KSI-CMT-05).pdf
+**Justification:** Validates comprehensive risk and impact evaluation capabilities from pilot to enterprise maturity levels through assessment procedures, quantitative analysis, governance, automation, and compliance evidence
+**Last Validation:** ✅ 2025-06-10T07:07:24.024045
+**Result:** ✅ Risk and impact evaluation procedures - expand analysis methods (10%): ✅ Risk evaluation documentation found: Change Impact Analysis Template (KSI-CMT-05).pdf, Risk Assessment Procedure for Change Management (KSI-CMT-05).pdf
 
 ## 🛠️ Implementation
 
 ### Commands Executed
 1. **Command:** `evidence_check`
-   **Purpose:** Check evidence_v2/KSI-CMT-05/ for risk_assessment_procedure.pdf and change_impact_analysis_template.pdf
+   **Purpose:** Check evidence_v2/KSI-CMT-05/ for comprehensive risk and impact evaluation documentation
 
 ## 📋 Evidence Requirements
 
 ### 📄 Manual Evidence
-- Check evidence_v2/KSI-CMT-05/ for risk_assessment_procedure.pdf and change_impact_analysis_template.pdf
+- Check evidence_v2/KSI-CMT-05/ for comprehensive risk and impact evaluation documentation
 
 ## 🧠 Validation Logic
 
 **Function:** `evaluate_KSI_CMT_05`
 
-**Documentation:** KSI-CMT-05: Evaluate the risk and potential impact of any change
+**Documentation:** ENHANCED CMT-05: Evaluate the risk and potential impact of any change
 
-Expected: Manual evidence - risk assessment documentation
+Validates comprehensive risk and impact evaluation capabilities scaling from pilot to enterprise:
+- Risk Assessment Foundation: Basic risk procedures and impact analysis templates
+- Advanced Risk Management: Risk matrices, registers, and quantitative analysis methods
+- Risk Governance: Risk committees, escalation procedures, and stakeholder communication
+- Risk Automation: Risk assessment tools, automated scoring, and integrated workflows
+- Enterprise Risk Management: Organization-wide standards, continuous monitoring, and compliance
+
+Preserves current passing status while enabling maturity growth measurement.
 
 ### Rule Implementation
 ```python
 def evaluate_KSI_CMT_05(cli_output):
     """
-    KSI-CMT-05: Evaluate the risk and potential impact of any change
+    ENHANCED CMT-05: Evaluate the risk and potential impact of any change
     
-    Expected: Manual evidence - risk assessment documentation
+    Validates comprehensive risk and impact evaluation capabilities scaling from pilot to enterprise:
+    - Risk Assessment Foundation: Basic risk procedures and impact analysis templates
+    - Advanced Risk Management: Risk matrices, registers, and quantitative analysis methods
+    - Risk Governance: Risk committees, escalation procedures, and stakeholder communication
+    - Risk Automation: Risk assessment tools, automated scoring, and integrated workflows
+    - Enterprise Risk Management: Organization-wide standards, continuous monitoring, and compliance
+    
+    Preserves current passing status while enabling maturity growth measurement.
     """
     evidence_dir = Path("evidence_v2/KSI-CMT-05")
     if not evidence_dir.exists():
         return False, "❌ Evidence directory evidence_v2/KSI-CMT-05/ not found"
+    findings = []
+    risk_evaluation_score = 0  # Enhanced scoring for maturity measurement
+    max_score = 20            # Enhanced scoring system for maturity measurement
     required_docs = [
-        "risk_assessment_procedure.pdf",
-        "Change Impact Analysis Template (KSI-CMT-05).pdf",
-        "Risk Assessment Procedure for Change Management (KSI-CMT-05).pdf"
-    ]
-    optional_docs = [
-        "change_risk_register.pdf",
-        "impact_assessment_examples.pdf",
-        "rollback_procedures.pdf"
-    ]
-    found_required = []
     # ... (additional validation logic) ...
 ```
 
@@ -58,7 +65,7 @@ def evaluate_KSI_CMT_05(cli_output):
 
 **Control Description:** Evaluate the risk and potential impact of any change
 
-**Implementation Justification:** Manual evidence required - risk assessment procedures and impact analysis documentation
+**Implementation Justification:** Validates comprehensive risk and impact evaluation capabilities from pilot to enterprise maturity levels through assessment procedures, quantitative analysis, governance, automation, and compliance evidence
 
 **FedRAMP 20x Category:** Change Management
 
