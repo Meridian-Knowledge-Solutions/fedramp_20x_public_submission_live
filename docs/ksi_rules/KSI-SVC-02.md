@@ -1,14 +1,14 @@
 # KSI-SVC-02: Encrypt or otherwise secure network traffic
 
-*Generated on 2025-06-10 18:09:59 UTC*
+*Generated on 2025-06-10 18:51:13 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-02`
 **Description:** Encrypt or otherwise secure network traffic
 **Justification:** Validates comprehensive network traffic encryption from basic service availability to enterprise-grade multi-layer encryption, covering load balancers, CDN, API gateways, databases, caching services, and hybrid connectivity with automated certificate management
-**Last Validation:** ✅ 2025-06-10T18:09:59.508711
-**Result:** ✅ Network traffic encryption established across multiple services (25%): ℹ️ No load balancers found (acceptable for serverless/direct service architectures); ⚠️ No VPC endpoints found - traffic goes over internet; ℹ️ No API Gateway configurations found; ℹ️ No RDS instances for database connection encryption; ℹ️ No ElastiCache clusters for cache encryption; ℹ️ No ACM certificates for automated TLS management; ℹ️ No VPN connections for hybrid connectivity encryption; ✅ Enterprise-wide encryption governance: AWS Organizations enables centralized traffic encryption policies; ✅ Advanced organization features: SCPs for encryption policy enforcement enabled
+**Last Validation:** ✅ 2025-06-10T18:51:13.271592
+**Result:** ✅ Production-ready multi-layer traffic encryption and certificate management (60%): ✅ Load balancer encryption capability: 1 load balancers configured for traffic encryption; ✅ Private service communication: 6 VPC endpoints (3 interface, 1 gateway); ℹ️ No API Gateway configurations found; ✅ Database encryption capability: 1 RDS instances (0 with encrypted storage); ℹ️ No ElastiCache clusters for cache encryption; ✅ Automated certificate management: 1/1 active ACM certificates (100% healthy); ℹ️ No VPN connections for hybrid connectivity encryption; ✅ Enterprise-wide encryption governance: AWS Organizations enables centralized traffic encryption policies; ✅ Advanced organization features: SCPs for encryption policy enforcement enabled
 
 ## 🛠️ Implementation
 

@@ -1,14 +1,14 @@
 # KSI-CNA-01: Configure ALL information resources to limit inbound and outbound traffic
 
-*Generated on 2025-06-10 18:09:59 UTC*
+*Generated on 2025-06-10 18:51:13 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-01`
 **Description:** Configure ALL information resources to limit inbound and outbound traffic
 **Justification:** Validates comprehensive traffic controls across all AWS resources through multi-layered network security including ingress/egress controls, application-layer protection, and traffic monitoring
-**Last Validation:** ✅ 2025-06-10T18:09:59.496719
-**Result:** ⚠️ Minimal traffic controls (19%) - major gaps exist: ✅ VPC infrastructure: 1 VPC(s) detected; ✅ Strong ingress controls: 1/1 security groups restrictive; ❌ No egress controls: 0/1 security groups control outbound traffic; ⚠️ Using default Network ACLs only (1 total) - no custom subnet-level controls; ⚠️ No NAT gateways found - potential uncontrolled egress from private subnets; ⚠️ No VPC endpoints - all AWS service traffic routes through internet; ⚠️ No WAF protection found - missing application-layer traffic controls; ⚠️ No VPC Flow Logs found - limited traffic visibility
+**Last Validation:** ✅ 2025-06-10T18:51:13.254845
+**Result:** ✅ Strong multi-layer traffic controls (69%): ✅ VPC infrastructure: 1 VPC(s) detected; ✅ Strong ingress controls: 8/9 security groups restrictive; ❌ No egress controls: 0/9 security groups control outbound traffic; ✅ Default security group properly secured; ⚠️ Using default Network ACLs only (1 total) - no custom subnet-level controls; ✅ Controlled egress routing: 1 private route tables with NAT gateway routing; ✅ Managed egress: 1 NAT gateways for controlled outbound access; ✅ Private service access: 6 VPC endpoints reduce internet-bound traffic; ✅ Application-layer protection: 1 WAF Web ACLs configured; ✅ Traffic distribution: 1 load balancers (1 public, 0 internal); ⚠️ No VPC Flow Logs found - limited traffic visibility
 
 ## 🛠️ Implementation
 

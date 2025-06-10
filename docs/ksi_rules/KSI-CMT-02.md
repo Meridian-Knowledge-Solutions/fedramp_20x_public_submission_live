@@ -1,14 +1,14 @@
 # KSI-CMT-02: Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
 
-*Generated on 2025-06-10 18:09:59 UTC*
+*Generated on 2025-06-10 18:51:13 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-02`
 **Description:** Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
 **Justification:** Validates comprehensive immutable deployment capabilities from pilot to enterprise maturity levels through CloudFormation, Launch Templates, containers, serverless, and governance
-**Last Validation:** ✅ 2025-06-10T18:09:59.496296
-**Result:** ✅ Advanced immutable deployment foundation - expand coverage (48%): ✅ Immutable infrastructure foundation: 2/2 successful CloudFormation deployments (100%); ⚠️ No launch templates for immutable instance deployment; ℹ️ No ECR repositories for container-based immutable deployments; ⚠️ Lambda functions found but not using versioning for immutability; ℹ️ No Auto Scaling Groups for immutable scaling patterns; ℹ️ No ECS services for container orchestration; ℹ️ No CodeDeploy applications for automated immutable deployments; ℹ️ No load balancer target groups for immutable deployment patterns; ✅ Immutable deployment compliance: 5/394 Config rules for immutable governance; ✅ Configuration drift detection: CloudFormation enables immutable infrastructure drift monitoring; ✅ Enterprise-wide immutable deployment governance: AWS Organizations enables centralized deployment policies; ✅ Advanced organization features: SCPs for immutable deployment policy enforcement enabled
+**Last Validation:** ✅ 2025-06-10T18:51:13.254329
+**Result:** ✅ Advanced immutable deployment foundation - expand coverage (42%): ✅ Immutable infrastructure foundation: 8/8 successful CloudFormation deployments (100%); ⚠️ No launch templates for immutable instance deployment; ℹ️ No ECR repositories for container-based immutable deployments; ⚠️ Lambda functions found but not using versioning for immutability; ℹ️ No Auto Scaling Groups for immutable scaling patterns; ℹ️ No ECS services for container orchestration; ℹ️ No CodeDeploy applications for automated immutable deployments; ✅ Immutable deployment infrastructure: 2 target groups enabling blue/green immutable deployments; ℹ️ No Config rules for immutable deployment compliance monitoring; ✅ Configuration drift detection: CloudFormation enables immutable infrastructure drift monitoring; ✅ Enterprise-wide immutable deployment governance: AWS Organizations enables centralized deployment policies; ✅ Advanced organization features: SCPs for immutable deployment policy enforcement enabled
 
 ## 🛠️ Implementation
 
