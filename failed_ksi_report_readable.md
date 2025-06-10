@@ -22,20 +22,20 @@ Here's what needs to be fixed, with the technical details for your team:
 
 **What it does:** Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured
 
-**Issue:** Exception during evaluation: 'str' object has no attribute 'get'
+**Issue:** Insufficient FedRAMP service verification (20%):  Federal information service inventory: Federal Information Mapping - Meridian LMS.pdf;  No FedRAM...
 
-**Validation Method:** 7 commands (4 successful): aws organizations list-accounts --output json; aws config describe-configuration-recorders --output json (+5 more)
+**Validation Method:** 1 commands (1 successful): evidence_check
 
-**Last Checked:** 2025-06-10 19:20 UTC
+**Last Checked:** 2025-06-10 21:56 UTC
 
 ---
 ## 🎯 Next Steps
 
 🕐 **Estimated Time to Complete:** 1-2 weeks
 
-### 🔧 Technical Items (1 items)
-**Advanced setup** - Complex configurations:
-- KSI-TPR-02: Technical implementation needed
+### 📄 Documentation Items (1 items)
+**Quick wins** - Upload required documents:
+- KSI-TPR-02: Upload policy/procedure documents
 
 ### 📞 Need Help?
 Contact our security team at security@meridianks.com for assistance with any of these items.
@@ -44,5 +44,5 @@ Contact our security team at security@meridianks.com for assistance with any of 
 ## 📞 Questions?
 
 📧 **Email:** security@meridianks.com  
-📅 **Report Generated:** 2025-06-10 19:20 UTC  
+📅 **Report Generated:** 2025-06-10 21:56 UTC  
 🔍 **Source:** Automated FedRAMP 20x validation pipeline
