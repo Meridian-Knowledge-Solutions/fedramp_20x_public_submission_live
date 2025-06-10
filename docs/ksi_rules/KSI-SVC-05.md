@@ -1,13 +1,13 @@
 # KSI-SVC-05: Enforce system and information resource integrity through cryptographic means
 
-*Generated on 2025-06-10 22:02:47 UTC*
+*Generated on 2025-06-10 22:18:01 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-05`
 **Description:** Enforce system and information resource integrity through cryptographic means
 **Justification:** Validates comprehensive cryptographic integrity enforcement from basic audit trail validation to enterprise-grade multi-layer integrity protection, covering log validation, key management, code signing, database integrity, backup verification, and organizational integrity governance with automated monitoring and compliance
-**Last Validation:** ✅ 2025-06-10T22:02:47.556950
+**Last Validation:** ✅ 2025-06-10T22:18:00.807481
 **Result:** ✅ Production-ready multi-service cryptographic integrity with automated monitoring (68%): ✅ Audit integrity foundation: 1 CloudTrail trails (1 with log file validation, 0 active); ✅ Cryptographic infrastructure: 10 KMS keys (0 customer-managed, 10 AWS-managed); ✅ Key management governance: 4/21 customer-managed KMS aliases (19%); ✅ Object integrity capability: 1 S3 buckets for versioning and object integrity protection; ⚠️ RDS instances found but storage encryption not enabled for integrity; ✅ Backup integrity: 1/1 encrypted backup vaults (100%); ℹ️ No CloudWatch alarms for integrity monitoring; ✅ Integrity notification infrastructure: 1 SNS topics for integrity event communication; ✅ Enterprise-wide integrity governance: AWS Organizations enables centralized cryptographic integrity policies; ✅ Advanced organization features: SCPs for cryptographic integrity policy enforcement enabled
 
 ## 🛠️ Implementation

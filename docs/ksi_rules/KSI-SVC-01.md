@@ -1,13 +1,13 @@
 # KSI-SVC-01: Harden and review network and system configurations
 
-*Generated on 2025-06-10 22:02:47 UTC*
+*Generated on 2025-06-10 22:18:01 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-01`
 **Description:** Harden and review network and system configurations
 **Justification:** Validates comprehensive network and system hardening from basic security group configuration to enterprise-grade multi-layer defense, compliance monitoring, and advanced threat detection across cloud-native and traditional infrastructure
-**Last Validation:** ✅ 2025-06-10T22:02:47.555561
+**Last Validation:** ✅ 2025-06-10T22:18:00.806080
 **Result:** ✅ Production-ready multi-layer defense and automated compliance (68%): ✅ Network hardening foundation: 9 security groups (8 hardened, 1 require review); ✅ System configuration management: 4 instances configured; ⚠️ Partial system management: 3/4 instances under SSM (75% coverage); ✅ Automated patch management: 17 patch baselines configured; ℹ️ 1 default Network ACLs (consider custom rules for enhanced security); ✅ Threat detection enabled: 1 GuardDuty detectors monitoring for threats; ✅ Application layer protection: 1 Web ACLs configured; ✅ Enterprise-wide security governance: AWS Organizations enables centralized hardening policies; ✅ Advanced organization features: SCPs and advanced governance capabilities enabled
 
 ## 🛠️ Implementation
