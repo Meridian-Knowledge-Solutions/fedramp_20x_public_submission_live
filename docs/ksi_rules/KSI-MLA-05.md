@@ -1,13 +1,21 @@
 # KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
+=======
+*Generated on 2025-06-10 12:33:33 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-05`
 **Description:** Perform Infrastructure as Code and configuration evaluation and testing
 **Justification:** Validates comprehensive Infrastructure as Code security evaluation from basic CloudFormation deployment to enterprise-grade multi-account governance, automated testing, and configuration compliance management
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T12:33:14.275489
+=======
+**Last Validation:** ✅ 2025-06-10T12:33:32.887240
+>>>>>>> Stashed changes
 **Result:** ✅ Enterprise-grade Infrastructure as Code evaluation and testing: ✅ Infrastructure as Code deployment: 2/2 successful CloudFormation stacks; ⚠️ No SSM parameters for configuration management; ℹ️ Config service not available (acceptable for pilot environments); ✅ Infrastructure drift detection: 2 stacks monitored; ℹ️ No automated testing projects (consider for production); ℹ️ No automated deployment pipelines (consider for production); ✅ Enterprise multi-account governance: AWS Organizations enabled; ✅ Standardized IaC templates: 1 Service Catalog products
 
 ## 🛠️ Implementation

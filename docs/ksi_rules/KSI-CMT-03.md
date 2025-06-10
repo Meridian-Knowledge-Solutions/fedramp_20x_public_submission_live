@@ -1,13 +1,21 @@
 # KSI-CMT-03: Implement automated testing and validation of changes prior to deployment
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-10 12:33:14 UTC*
+=======
+*Generated on 2025-06-10 12:33:33 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CMT-03`
 **Description:** Implement automated testing and validation of changes prior to deployment
 **Justification:** Validates comprehensive Infrastructure as Code testing capabilities from pilot to enterprise maturity levels through Terraform, Checkov, SARIF reports, CI/CD integration, and governance evidence
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-10T12:33:14.267957
+=======
+**Last Validation:** ✅ 2025-06-10T12:33:32.879097
+>>>>>>> Stashed changes
 **Result:** ✅ Comprehensive automated testing via Infrastructure as Code (30%): ✅ Infrastructure as Code testing foundation: Automated testing proof documented; ✅ Terraform security validation: Checkov compliance scanning; ✅ Standardized security reporting: SARIF format compliance
 
 ## 🛠️ Implementation
