@@ -1739,17 +1739,18 @@ async function getAuthorizationSummary() {
         // NEW: Load command register for full command details
         async function loadCommandRegister() {
             try {
+                console.log('🔄 Attempting to load command register...');
                 const response = await fetch('./cli_command_register.json');
                 if (response.ok) {
                     commandRegister = await response.json();
                     console.log('✅ Command register loaded successfully');
                     return true;
                 } else {
-                    console.warn('⚠️ Could not load command register');
+                    console.warn('⚠️ Could not load command register (404 or other error)');
                     return false;
                 }
             } catch (error) {
-                console.warn('⚠️ Error loading command register:', error);
+                console.warn('⚠️ Error loading command register:', error.message);
                 return false;
             }
         }
@@ -2323,8 +2324,12 @@ async function getAuthorizationSummary() {
             try {
                 console.log('🔄 Attempting to load real validation data...');
                 
-                // First, load the command register for full command details
-                await loadCommandRegister();
+                // Try to load the command register (optional - don't break if it fails)
+                try {
+                    await loadCommandRegister();
+                } catch (error) {
+                    console.warn('⚠️ Command register loading failed (using fallback):', error);
+                }
                 
                 const response = await fetch('./unified_ksi_validations.json');
                 if (!response.ok) {
@@ -2684,7 +2689,15 @@ async function getAuthorizationSummary() {
             const totalCommands = ksi.commands_executed || 0;
             const successfulCommands = ksi.successful_commands || 0;
             const failedCommands = ksi.failed_commands || 0;
-            const hasFullCommands = commands.length === totalCommands;
+            
+            // Safely check if we have full commands
+            let hasFullCommands = false;
+            try {
+                hasFullCommands = commands.length === totalCommands && commands.length > 0;
+            } catch (error) {
+                console.warn('Error checking command completeness:', error);
+                hasFullCommands = false;
+            }
             
             // Extract interpretation details
             const interpretation = ksi.rawData?.cli_output_interpretation || '';
@@ -2692,7 +2705,13 @@ async function getAuthorizationSummary() {
 
             if (commands.length === 0) {
                 // Check if we might have commands in the register but failed to load them
-                const registerMightHaveCommands = commandRegister[ksi.id] && commandRegister[ksi.id].cli_commands;
+                let registerMightHaveCommands = false;
+                try {
+                    registerMightHaveCommands = commandRegister && commandRegister[ksi.id] && commandRegister[ksi.id].cli_commands;
+                } catch (error) {
+                    console.warn('Error checking command register:', error);
+                    registerMightHaveCommands = false;
+                }
                 
                 modalBody.innerHTML = `
                     <div class="no-commands-message">
@@ -2851,12 +2870,22 @@ async function getAuthorizationSummary() {
         }
 
         // NEW: Retry loading commands from register
-        function retryCommandLoading(ksiId) {
-            // Force reload of the specific KSI commands
-            const ksi = allKsis.find(k => k.id === ksiId);
-            if (ksi && ksi.rawData) {
-                ksi.detailed_commands = extractCommandDetails(ksi.rawData);
-                showCommandsModal(ksiId); // Reload the modal
+        async function retryCommandLoading(ksiId) {
+            try {
+                // Try to reload the command register first
+                await loadCommandRegister();
+                
+                // Force reload of the specific KSI commands
+                const ksi = allKsis.find(k => k.id === ksiId);
+                if (ksi && ksi.rawData) {
+                    ksi.detailed_commands = extractCommandDetails(ksi.rawData);
+                    showCommandsModal(ksiId); // Reload the modal
+                } else {
+                    console.warn('Could not find KSI data for retry');
+                }
+            } catch (error) {
+                console.error('Error during retry:', error);
+                alert('Failed to reload command details. Please try again later.');
             }
         }
 
@@ -3261,7 +3290,7 @@ Please provide guidance on how to remediate this KSI failure.`);
             filterKsis();
             updateMetrics();
             updateTimestamps();
-            loadRealData(); // Load live data
+            loadRealData(); // Load live data (will attempt command register loading internally)
         }
 
         // Global functions
