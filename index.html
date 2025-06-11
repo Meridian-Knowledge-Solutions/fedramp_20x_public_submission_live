@@ -912,7 +912,7 @@
             background: var(--bg-primary);
             border-radius: var(--radius-lg);
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             max-height: 90vh;
             overflow: hidden;
             box-shadow: var(--shadow-xl);
@@ -932,6 +932,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            text-align: center;
         }
 
         .cli-modal-title, .why-modal-title, .markdown-modal-title, .commands-modal-title {
@@ -967,6 +968,221 @@
             color: var(--text-primary);
             white-space: pre-wrap;
             word-break: break-all;
+        }
+
+        /* Enhanced Why Modal Styles */
+        .assessment-overview {
+            background: var(--bg-accent);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-item .stat-value.passed { color: var(--success-500); }
+        .stat-item .stat-value.failed { color: var(--danger-500); }
+        .stat-item .stat-value.warning { color: var(--warning-500); }
+
+        .stat-item .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--success-500), #34d399);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .score-badge.failed {
+            background: linear-gradient(135deg, var(--danger-500), #f87171);
+        }
+
+        .score-badge.warning {
+            background: linear-gradient(135deg, var(--warning-500), #fbbf24);
+        }
+
+        .technical-breakdown {
+            margin-bottom: 2rem;
+        }
+
+        .why-section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .check-list {
+            space-y: 0.75rem;
+        }
+
+        .check-item {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .check-item:hover {
+            border-color: var(--primary-500);
+            box-shadow: var(--shadow);
+        }
+
+        .check-item.passed {
+            border-left: 4px solid var(--success-500);
+            background: rgba(16, 185, 129, 0.02);
+        }
+
+        .check-item.failed {
+            border-left: 4px solid var(--danger-500);
+            background: rgba(239, 68, 68, 0.02);
+        }
+
+        .check-item.warning {
+            border-left: 4px solid var(--warning-500);
+            background: rgba(245, 158, 11, 0.02);
+        }
+
+        .check-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .check-icon {
+            font-size: 1.125rem;
+            margin-top: 0.125rem;
+        }
+
+        .check-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .check-percentage {
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            background: var(--bg-accent);
+            color: var(--text-secondary);
+        }
+
+        .check-details {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-left: 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .check-item.expanded .check-details {
+            max-height: 200px;
+            margin-top: 0.75rem;
+        }
+
+        .check-technical {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: var(--bg-accent);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s ease;
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        .check-item.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .requirement-section, .methodology-section {
+            background: var(--bg-accent);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        .requirement-text {
+            font-weight: 600;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            margin-top: 1rem;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .methodology-item {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .methodology-item h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .methodology-item p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.4;
         }
 
         /* Data Source Badge Styles */
@@ -1371,6 +1587,14 @@
             }
 
             .quick-access-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .methodology-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -2016,6 +2240,274 @@ async function getAuthorizationSummary() {
             return `Command ${index}: ${command.split(' ')[1] || 'AWS operation'}`;
         }
 
+        // ✅ ENHANCED: Parse detailed assessment data from assertion reason
+        function parseDetailedAssessment(assertionReason, ksiId) {
+            if (!assertionReason) {
+                return {
+                    overallScore: null,
+                    checks: [],
+                    hasDetailedBreakdown: false
+                };
+            }
+
+            // Extract overall score if present
+            const scoreMatch = assertionReason.match(/\((\d+)%\)/);
+            const overallScore = scoreMatch ? parseInt(scoreMatch[1]) : null;
+
+            // Parse individual check results
+            const checks = [];
+            
+            // Pattern for detailed checks like "✅ CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant)"
+            const detailedCheckPattern = /([✅❌⚠️])\s*([^:]+):\s*([^;]+)/g;
+            let match;
+            
+            while ((match = detailedCheckPattern.exec(assertionReason)) !== null) {
+                const [, icon, title, details] = match;
+                
+                let status = 'unknown';
+                if (icon === '✅') status = 'passed';
+                else if (icon === '❌') status = 'failed';
+                else if (icon === '⚠️') status = 'warning';
+                
+                checks.push({
+                    status,
+                    title: title.trim(),
+                    details: details.trim(),
+                    icon,
+                    percentage: extractPercentageFromDetails(details)
+                });
+            }
+
+            // If no detailed checks found, try to parse simpler format
+            if (checks.length === 0) {
+                const simpleChecks = assertionReason.split(/[;.]/).filter(part => 
+                    part.trim().length > 10 && (part.includes('✅') || part.includes('❌') || part.includes('⚠️'))
+                );
+                
+                simpleChecks.forEach(check => {
+                    const icon = check.includes('✅') ? '✅' : check.includes('❌') ? '❌' : '⚠️';
+                    const status = icon === '✅' ? 'passed' : icon === '❌' ? 'failed' : 'warning';
+                    const cleanCheck = check.replace(/[✅❌⚠️]/g, '').trim();
+                    
+                    checks.push({
+                        status,
+                        title: cleanCheck.length > 50 ? cleanCheck.substring(0, 50) + '...' : cleanCheck,
+                        details: cleanCheck,
+                        icon,
+                        percentage: null
+                    });
+                });
+            }
+
+            return {
+                overallScore,
+                checks,
+                hasDetailedBreakdown: checks.length > 0
+            };
+        }
+
+        function extractPercentageFromDetails(details) {
+            const percentMatch = details.match(/(\d+)%/);
+            return percentMatch ? percentMatch[1] : null;
+        }
+
+        // ✅ ENHANCED: Generate detailed breakdown for Why modal
+        function generateDetailedBreakdown(ksi, assessment) {
+            const statusIcon = getStatusIcon(ksi.status);
+            const statusText = ksi.status === 'passed' ? 'PASS' : 
+                              ksi.status === 'failed' ? 'FAIL' : 'WARNING';
+            
+            let modalContent = `
+                <!-- Assessment Overview -->
+                <div class="assessment-overview">
+                    <div class="overview-stats">
+                        <div class="stat-item">
+                            <div class="stat-value ${ksi.status}">${statusIcon} ${statusText}</div>
+                            <div class="stat-label">Result</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${assessment.overallScore || 'N/A'}${assessment.overallScore ? '%' : ''}</div>
+                            <div class="stat-label">Score</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${assessment.checks.length}</div>
+                            <div class="stat-label">Checks</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${ksi.commands_executed || 0}</div>
+                            <div class="stat-label">Commands</div>
+                        </div>
+                    </div>
+                    
+                    <div class="score-badge ${ksi.status}">
+                        🛡️ ${ksi.category} - ${ksi.status === 'passed' ? 'Compliance Achieved' : ksi.status === 'failed' ? 'Remediation Required' : 'Partial Compliance'}
+                    </div>
+                </div>
+
+                <!-- Technical Breakdown -->
+                <div class="technical-breakdown">
+                    <h4 class="why-section-title">🔍 Technical Assessment Breakdown</h4>
+                    
+                    <div class="check-list">
+            `;
+
+            if (assessment.checks.length > 0) {
+                assessment.checks.forEach((check, index) => {
+                    const percentage = check.percentage ? check.percentage : 
+                                     check.status === 'passed' ? 'Pass' : 
+                                     check.status === 'failed' ? 'Fail' : 'Partial';
+                    
+                    modalContent += `
+                        <div class="check-item ${check.status}" onclick="toggleCheckExpanded(this)">
+                            <div class="check-header">
+                                <span class="check-icon">${check.icon}</span>
+                                <span class="check-title">${check.title}</span>
+                                <span class="check-percentage">${percentage}</span>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="check-details">
+                                <p><strong>Finding:</strong> ${check.details}</p>
+                                <p><strong>Assessment:</strong> ${generateAssessmentExplanation(check)}</p>
+                                <div class="check-technical">${generateTechnicalCommand(check, ksi.id)}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                modalContent += `
+                    <div class="check-item ${ksi.status}">
+                        <div class="check-header">
+                            <span class="check-icon">${statusIcon}</span>
+                            <span class="check-title">Overall Assessment</span>
+                            <span class="check-percentage">${ksi.status === 'passed' ? 'Pass' : ksi.status === 'failed' ? 'Fail' : 'Partial'}</span>
+                        </div>
+                        <div class="check-details" style="max-height: none; margin-left: 0; margin-top: 0.75rem;">
+                            <p>${ksi.assertion_reason}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            modalContent += `
+                    </div>
+                </div>
+
+                <!-- Compliance Requirement -->
+                <div class="requirement-section">
+                    <h4 class="why-section-title">📋 Compliance Requirement</h4>
+                    <p>This KSI validates the implementation of security controls as required by FedRAMP Low baseline.</p>
+                    <div class="requirement-text">
+                        <strong>Requirement:</strong> ${ksi.requirement}
+                    </div>
+                </div>
+
+                <!-- Assessment Methodology -->
+                <div class="methodology-section">
+                    <h4 class="why-section-title">⚖️ Assessment Methodology</h4>
+                    <div class="methodology-grid">
+                        <div class="methodology-item">
+                            <h4>🎯 Threshold Calibration</h4>
+                            <p>Rules calibrated for Low Impact systems emphasizing service capability demonstration over operational maturity</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4>🔧 Multi-Command Validation</h4>
+                            <p>Uses ${ksi.commands_executed || 'multiple'} CLI commands for comprehensive evidence collection</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4>📊 Graduated Assessment</h4>
+                            <p>${assessment.overallScore ? `Numerical scoring (${assessment.overallScore}%)` : 'Binary assessment'} recognizes implementation levels while maintaining minimum standards</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4>🛡️ Risk-Proportionate</h4>
+                            <p>Assessment focused on essential protections appropriate for low-impact federal data</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            return modalContent;
+        }
+
+        function generateAssessmentExplanation(check) {
+            if (check.status === 'passed') {
+                return 'This security control meets or exceeds the required baseline for low-impact systems';
+            } else if (check.status === 'failed') {
+                return 'This security control requires remediation to meet the minimum baseline requirements';
+            } else {
+                return 'This security control partially meets requirements but may benefit from enhancement';
+            }
+        }
+
+        function generateTechnicalCommand(check, ksiId) {
+            // Generate relevant AWS CLI command based on the check
+            const title = check.title.toLowerCase();
+            
+            if (title.includes('cloudtrail')) return 'aws cloudtrail describe-trails --output json';
+            if (title.includes('log')) return 'aws logs describe-log-groups --output json';
+            if (title.includes('security')) return 'aws securityhub get-findings --max-items 100';
+            if (title.includes('kms') || title.includes('crypto')) return 'aws kms list-keys --output json';
+            if (title.includes('organization')) return 'aws organizations describe-organization --output json';
+            if (title.includes('retention')) return 'aws logs describe-log-groups --query "logGroups[*].retentionInDays"';
+            
+            return `aws cli validation command for ${ksiId}`;
+        }
+
+        function toggleCheckExpanded(element) {
+            element.classList.toggle('expanded');
+        }
+
+        // ✅ ENHANCED: Generate simple breakdown for KSIs without detailed data
+        function generateSimpleBreakdown(ksi) {
+            const statusIcon = getStatusIcon(ksi.status);
+            const statusText = ksi.status === 'passed' ? 'PASS' : 
+                              ksi.status === 'failed' ? 'FAIL' : 'WARNING';
+
+            return `
+                <div class="assessment-overview">
+                    <div class="overview-stats">
+                        <div class="stat-item">
+                            <div class="stat-value ${ksi.status}">${statusIcon} ${statusText}</div>
+                            <div class="stat-label">Result</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${ksi.commands_executed || 0}</div>
+                            <div class="stat-label">Commands</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${ksi.successful_commands || 0}</div>
+                            <div class="stat-label">Successful</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${ksi.status === 'passed' ? '100%' : ksi.status === 'failed' ? '0%' : '50%'}</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: var(--radius); margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+                    <h4 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        ${statusIcon} Assessment Outcome: ${ksi.status.toUpperCase()}
+                    </h4>
+                    <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-weight: 500;">
+                        ${ksi.assertion_reason}
+                    </div>
+                </div>
+                
+                <div class="requirement-section">
+                    <h4 class="why-section-title">🎯 Compliance Requirement</h4>
+                    <div class="requirement-text">
+                        ${ksi.requirement}
+                    </div>
+                    <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-secondary);">
+                        <strong>Category:</strong> ${ksi.category} <br>
+                        <strong>Validation Method:</strong> ${ksi.validation_method || 'Automated CLI Assessment'} <br>
+                        <strong>Command Source:</strong> ${ksi.command_source || 'Unknown'}
+                        ${ksi.timestamp ? `<br><strong>Last Validated:</strong> ${formatTimestamp(ksi.timestamp)}` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
         // ✅ ENHANCED: Load real data with command register support
         async function loadRealData() {
             try {
@@ -2185,7 +2677,6 @@ async function getAuthorizationSummary() {
                                 <div class="command-stat-label">Success Rate</div>
                             </div>
                         </div>
-                        <p><strong>KSI Result:</strong> ${ksi.assertion_reason}</p>
                         ${ksi.register_description ? `<p><strong>Description:</strong> ${ksi.register_description}</p>` : ''}
                         ${ksi.register_justification ? `<p><strong>Justification:</strong> ${ksi.register_justification}</p>` : ''}
                     </div>
@@ -2312,7 +2803,7 @@ async function getAuthorizationSummary() {
                     successful_commands: 8,
                     failed_commands: 0,
                     cli_command: '8 commands (8 successful): aws ec2 describe-security-groups; aws ec2 describe-network-acls; ...',
-                    assertion_reason: 'Comprehensive traffic controls configured across all AWS resources',
+                    assertion_reason: '✅ Comprehensive traffic controls configured across all AWS resources',
                     requirement: 'Multi-layered network security including ingress/egress controls',
                     detailed_commands: [
                         {
@@ -2375,6 +2866,77 @@ async function getAuthorizationSummary() {
                     command_source: 'sample_comprehensive'
                 },
                 {
+                    id: 'KSI-MLA-01',
+                    category: 'Multi-layered Audit Logging',
+                    status: 'passed',
+                    description: 'Log, aggregate, monitor, analyze, and audit all security events',
+                    commands_executed: 8,
+                    successful_commands: 8,
+                    failed_commands: 0,
+                    cli_command: '8 commands (8 successful): aws cloudtrail describe-trails; aws logs describe-log-groups; ...',
+                    assertion_reason: '✅ Production-ready SIEM with advanced monitoring capabilities (69%): ✅ CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant); ✅ Centralized log collection: 5 log groups (3 AWS services, 2 applications); ✅ Log retention management: 5/5 log groups with retention policies; ✅ Compliance-grade retention: 3 log groups with long-term retention (365+ days); ✅ Cryptographic infrastructure: 10 KMS keys available for log protection; ✅ Advanced threat detection: 20 Security Hub findings (4 active); ✅ Enterprise-wide logging: AWS Organizations enables centralized multi-account SIEM; ✅ Multi-region audit coverage: 1 trails across all regions',
+                    requirement: 'Log, aggregate, monitor, analyze, and audit all security events',
+                    detailed_commands: [
+                        {
+                            command: 'aws cloudtrail describe-trails --output json',
+                            description: 'CloudTrail foundation established',
+                            status: 'success',
+                            execution_time: '1.2s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws logs describe-log-groups --output json',
+                            description: 'Centralized log collection active',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws logs describe-log-groups --query "logGroups[*].retentionInDays"',
+                            description: 'Log retention management configured',
+                            status: 'success',
+                            execution_time: '0.9s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws logs describe-log-groups --query "logGroups[?retentionInDays>=365]"',
+                            description: 'Compliance-grade retention periods',
+                            status: 'success',
+                            execution_time: '0.7s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws kms list-keys --output json',
+                            description: 'Cryptographic infrastructure available',
+                            status: 'success',
+                            execution_time: '0.6s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws securityhub get-findings --max-items 100',
+                            description: 'Advanced threat detection active',
+                            status: 'success',
+                            execution_time: '1.0s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws organizations describe-organization --output json',
+                            description: 'Enterprise-wide logging capability',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws cloudtrail describe-trails --query "trailList[*].IncludeGlobalServiceEvents"',
+                            description: 'Multi-region audit coverage',
+                            status: 'success',
+                            execution_time: '0.5s',
+                            source: 'sample_data'
+                        }
+                    ],
+                    command_source: 'sample_comprehensive'
+                },
+                {
                     id: 'KSI-SVC-01',
                     category: 'Service Configuration',
                     status: 'failed',
@@ -2383,7 +2945,7 @@ async function getAuthorizationSummary() {
                     successful_commands: 1,
                     failed_commands: 1,
                     cli_command: '2 commands (1 successful): aws elbv2 describe-listeners; aws acm list-certificates',
-                    assertion_reason: 'TLS enforcement not properly configured for all load balancers',
+                    assertion_reason: '❌ TLS enforcement not properly configured for all load balancers: ✅ Load balancer listeners configured; ❌ Missing SSL/TLS certificates for secure communication',
                     requirement: 'TLS 1.2+ required for all communications',
                     detailed_commands: [
                         {
@@ -2458,11 +3020,8 @@ async function getAuthorizationSummary() {
                         <button class="action-btn primary" onclick="showCommandsModal('${ksi.id}')">
                             ⚡ Commands
                         </button>
-                        <button class="action-btn secondary" onclick="showCliDetails('${ksi.id}')">
-                            📋 Details
-                        </button>
                         <button class="action-btn secondary" onclick="showWhyModal('${ksi.id}')">
-                            🤔 Why?
+                            🤔 Why ${ksi.status === 'passed' ? 'Pass' : ksi.status === 'failed' ? 'Fail' : 'Result'}
                         </button>
                         ${ksi.status === 'failed' ? `
                             <button class="action-btn danger" onclick="createGitHubIssue('${ksi.id}')">
@@ -2635,85 +3194,58 @@ async function getAuthorizationSummary() {
             });
         }
 
-        function showCliDetails(ksiId) {
-            const ksi = allKsis.find(k => k.id === ksiId);
-            if (!ksi) return;
-
-            document.getElementById('modal-title').textContent = `${ksi.id} - CLI Details`;
-            
-            const cliContent = `Command: ${ksi.cli_command || 'No command available'}
-
-Execution Details:
-- Commands Executed: ${ksi.commands_executed || 0}
-- Successful: ${ksi.successful_commands || 0}
-- Failed: ${ksi.failed_commands || 0}
-- Status: ${ksi.status.toUpperCase()}
-
-Assessment Result:
-${ksi.assertion_reason || 'No detailed reason provided'}
-
-Validation Method:
-${ksi.validation_method || 'Unknown'}
-
-Evidence Path:
-${ksi.evidence_path || 'No specific path'}
-
-Requirement:
-${ksi.requirement || 'No requirement specified'}
-
-Command Source:
-${ksi.command_source || 'Unknown'}
-
-Timestamp:
-${ksi.timestamp ? formatTimestamp(ksi.timestamp) : 'Not available'}`;
-
-            document.getElementById('modal-content').textContent = cliContent;
-            document.getElementById('cli-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function formatTimestamp(timestamp) {
-            try {
-                return new Date(timestamp).toLocaleString();
-            } catch (e) {
-                return timestamp;
-            }
-        }
-
-        function closeCliModal() {
-            document.getElementById('cli-modal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function showWhyModal(ksiId) {
+        function showDetailsModal(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
 
             const modalTitle = document.getElementById('why-modal-title');
             const modalBody = document.getElementById('why-modal-body');
 
-            modalTitle.innerHTML = `🤔 Why ${ksi.id}?`;
+            modalTitle.innerHTML = `📋 ${ksi.id} Details`;
 
             modalBody.innerHTML = `
                 <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
-                    <h4 style="margin-bottom: 1rem;">📊 KSI Assessment Overview</h4>
-                    <p><strong>Status:</strong> ${ksi.status.toUpperCase()}</p>
+                    <h4 style="margin-bottom: 1rem;">📊 Assessment Summary</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${ksi.status.toUpperCase()}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">STATUS</div>
+                        </div>
+                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${ksi.commands_executed || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">COMMANDS</div>
+                        </div>
+                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${ksi.status === 'passed' ? '100%' : ksi.status === 'failed' ? '0%' : '50%'}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">SUCCESS</div>
+                        </div>
+                    </div>
                     <p><strong>Category:</strong> ${ksi.category}</p>
-                    <p><strong>Commands Executed:</strong> ${ksi.commands_executed || 0}</p>
-                    <p><strong>Command Source:</strong> ${ksi.command_source || 'Unknown'}</p>
+                    <p><strong>Validation Method:</strong> ${ksi.validation_method || 'Automated'}</p>
                 </div>
                 
                 <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
-                    <h4 style="margin-bottom: 1rem;">📋 Assessment Result</h4>
-                    <p><strong>Finding:</strong> ${ksi.assertion_reason}</p>
+                    <h4 style="margin-bottom: 1rem;">🎯 Requirement & Assessment</h4>
                     <p><strong>Requirement:</strong> ${ksi.requirement}</p>
+                    <p style="margin-top: 1rem;"><strong>Assessment Result:</strong></p>
+                    <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid var(--border-color); font-weight: 500;">
+                        ${ksi.assertion_reason}
+                    </div>
                 </div>
                 
                 <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <h4 style="margin-bottom: 1rem;">🔧 Technical Details</h4>
-                    <p><strong>CLI Pattern:</strong> ${ksi.cli_command}</p>
+                    <h4 style="margin-bottom: 1rem;">🔧 Technical Information</h4>
+                    <p><strong>Commands Executed:</strong> ${ksi.commands_executed || 0} (${ksi.successful_commands || 0} successful, ${ksi.failed_commands || 0} failed)</p>
+                    <p><strong>Command Source:</strong> ${ksi.command_source || 'Unknown'}</p>
                     <p><strong>Evidence Path:</strong> ${ksi.evidence_path || 'No specific path'}</p>
-                    <p><strong>Validation Method:</strong> ${ksi.validation_method || 'automated'}</p>
+                    ${ksi.timestamp ? `<p><strong>Last Validated:</strong> ${formatTimestamp(ksi.timestamp)}</p>` : ''}
+                    
+                    <div style="margin-top: 1rem;">
+                        <p><strong>Primary CLI Pattern:</strong></p>
+                        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid var(--border-color); font-family: 'Courier New', monospace; font-size: 0.875rem; word-break: break-all;">
+                            ${ksi.cli_command || 'No command information available'}
+                        </div>
+                    </div>
                 </div>
             `;
 
@@ -2724,6 +3256,44 @@ ${ksi.timestamp ? formatTimestamp(ksi.timestamp) : 'Not available'}`;
         function closeWhyModal() {
             document.getElementById('why-modal').classList.remove('active');
             document.body.style.overflow = '';
+        }
+
+        // ✅ ENHANCED: Show Why Modal with detailed technical breakdown
+        function showWhyModal(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            const modalTitle = document.getElementById('why-modal-title');
+            const modalBody = document.getElementById('why-modal-body');
+
+            // Dynamic title based on status
+            const statusText = ksi.status === 'passed' ? 'Pass' : 
+                              ksi.status === 'failed' ? 'Fail' : 'Result';
+            const statusIcon = getStatusIcon(ksi.status);
+            
+            modalTitle.innerHTML = `🤔 Why ${statusText}? - ${ksi.id}`;
+
+            // Parse detailed assessment data
+            const assessment = parseDetailedAssessment(ksi.assertion_reason, ksi.id);
+
+            if (assessment.hasDetailedBreakdown) {
+                // Show detailed technical breakdown
+                modalBody.innerHTML = generateDetailedBreakdown(ksi, assessment);
+            } else {
+                // Fallback to simple format
+                modalBody.innerHTML = generateSimpleBreakdown(ksi);
+            }
+
+            document.getElementById('why-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function formatTimestamp(timestamp) {
+            try {
+                return new Date(timestamp).toLocaleString();
+            } catch (e) {
+                return timestamp;
+            }
         }
 
         function createGitHubIssue(ksiId) {
@@ -3073,8 +3643,6 @@ ${formData.get('justification')}
         }
 
         // Global functions
-        window.showCliDetails = showCliDetails;
-        window.closeCliModal = closeCliModal;
         window.showWhyModal = showWhyModal;
         window.closeWhyModal = closeWhyModal;
         window.createGitHubIssue = createGitHubIssue;
@@ -3166,7 +3734,6 @@ ${formData.get('justification')}
                 document.getElementById('search-input').focus();
             }
             if (e.key === 'Escape') {
-                closeCliModal();
                 closeWhyModal();
                 closeCommandsModal();
                 closeMarkdownModal();
