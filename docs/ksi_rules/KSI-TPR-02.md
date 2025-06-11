@@ -1,13 +1,13 @@
 # KSI-TPR-02: Regularly confirm services handling federal information are FedRAMP authorized and securely configured
 
-*Generated on 2025-06-10 22:18:01 UTC*
+*Generated on 2025-06-11 03:17:49 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-02`
 **Description:** Regularly confirm services handling federal information are FedRAMP authorized and securely configured
 **Justification:** Validates service inventory, FedRAMP authorization verification, and secure configuration compliance for services handling federal data
-**Last Validation:** ✅ 2025-06-10T22:18:00.808743
+**Last Validation:** ✅ 2025-06-11T03:17:49.164567
 **Result:** ✅ Comprehensive FedRAMP service verification with integrated documentation (100%): ℹ️ Evidence validation triggered via CLI; ✅ Comprehensive federal information mapping: Federal Information Mapping - Meridian LMS.pdf; ✅ FedRAMP authorization verification included in comprehensive mapping; ✅ Security configuration compliance included in comprehensive mapping; ✅ Regular verification process included in comprehensive mapping
 
 ## 🛠️ Implementation
