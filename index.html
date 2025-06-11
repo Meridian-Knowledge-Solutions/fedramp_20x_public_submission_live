@@ -2603,9 +2603,8 @@ async function getAuthorizationSummary() {
                 populateCategoryFilter();
                 filterKsis();
                 
-                // Update POA&M data with new live data
-                const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
-                updatePOAMDisplay(failedKsis);
+                // Update POA&M data with comprehensive KSI analysis
+                updatePOAMDisplay(allKsis);
                 
                 if (dataTimestamp) {
                     updateTimestampsWithData(dataTimestamp);
@@ -2947,6 +2946,7 @@ async function getAuthorizationSummary() {
                     cli_command: '2 commands (1 successful): aws elbv2 describe-listeners; aws acm list-certificates',
                     assertion_reason: '❌ TLS enforcement not properly configured for all load balancers: ✅ Load balancer listeners configured; ❌ Missing SSL/TLS certificates for secure communication',
                     requirement: 'TLS 1.2+ required for all communications',
+                    timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days ago
                     detailed_commands: [
                         {
                             command: 'aws elbv2 describe-listeners --output json',
@@ -2964,6 +2964,36 @@ async function getAuthorizationSummary() {
                         }
                     ],
                     command_source: 'sample_mixed'
+                },
+                {
+                    id: 'KSI-LOG-03',
+                    category: 'Audit Logging',
+                    status: 'warning',
+                    description: 'Ensure log retention meets compliance requirements',
+                    commands_executed: 3,
+                    successful_commands: 2,
+                    failed_commands: 1,
+                    cli_command: '3 commands (2 successful): aws logs describe-log-groups; aws s3api get-bucket-logging; aws cloudtrail get-trail-status',
+                    assertion_reason: '⚠️ Partial compliance: Most logs retained properly but some short-term retention detected',
+                    requirement: 'Audit logs must be retained for minimum compliance period',
+                    timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days ago
+                    detailed_commands: [],
+                    command_source: 'sample_partial'
+                },
+                {
+                    id: 'KSI-NET-02',
+                    category: 'Network Security',
+                    status: 'passed',
+                    description: 'Network segmentation controls properly configured',
+                    commands_executed: 4,
+                    successful_commands: 4,
+                    failed_commands: 0,
+                    cli_command: '4 commands (4 successful): aws ec2 describe-vpcs; aws ec2 describe-subnets; aws ec2 describe-security-groups; aws ec2 describe-network-acls',
+                    assertion_reason: '✅ Network segmentation controls properly configured',
+                    requirement: 'Proper network isolation and access controls',
+                    timestamp: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString(), // 45 days ago (stale)
+                    detailed_commands: [],
+                    command_source: 'sample_stale'
                 }
             ];
         }
@@ -3495,13 +3525,12 @@ ${formData.get('justification')}
             return issue.html_url;
         }
 
-        // Load POA&M data from existing KSI validations
+        // Load POA&M data from existing KSI validations with enhanced logic
         async function loadPOAMData() {
             try {
                 // Try to use live data first
                 if (allKsis && allKsis.length > 0) {
-                    const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
-                    updatePOAMDisplay(failedKsis);
+                    updatePOAMDisplay(allKsis);
                 } else {
                     // Try to fetch directly
                     const response = await fetch('./unified_ksi_validations.json');
@@ -3515,54 +3544,205 @@ ${formData.get('justification')}
                             validations = data.validations;
                         }
                         
-                        const failedKsis = validations.filter(ksi => ksi.assertion === false);
-                        updatePOAMDisplay(failedKsis);
+                        // Process validations into KSI format for POA&M analysis
+                        const ksisForPOAM = validations.map(validation => ({
+                            id: validation.ksi_id || validation.validation_id || 'Unknown',
+                            status: (validation.assertion === true || validation.assertion === "true") ? 
+                                'passed' : 
+                                (validation.assertion === false || validation.assertion === "false") ? 
+                                    'failed' : 'warning',
+                            category: validation.long_name || validation.category || 'Unknown Category',
+                            description: validation.requirement || validation.description || 'No description available',
+                            assertion_reason: validation.assertion_reason || 'No assessment details provided',
+                            timestamp: validation.timestamp || validation.validation_timestamp || null
+                        }));
+                        
+                        updatePOAMDisplay(ksisForPOAM);
                     } else {
-                        // Use sample data
-                        const sampleKsis = [
+                        // Use sample data with comprehensive POA&M logic
+                        updatePOAMDisplay([
                             {
                                 id: 'KSI-SVC-01',
                                 category: 'Service Configuration',
                                 status: 'failed',
                                 description: 'Enforce encryption in transit for all network communications',
-                                commands_executed: 2,
-                                requirement: 'TLS 1.2+ required for all communications',
-                                cli_command: 'aws elbv2 describe-listeners --load-balancer-arn...',
-                                assertion_reason: 'TLS enforcement not properly configured'
+                                assertion_reason: 'TLS enforcement not properly configured',
+                                timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() // 5 days ago
                             }
-                        ];
-                        const failedCount = sampleKsis.filter(ksi => ksi.status === 'failed').length;
-                        document.getElementById('poam-total').textContent = failedCount;
+                        ]);
                     }
                 }
             } catch (error) {
-                console.log('Using sample POA&M data:', error);
-                document.getElementById('poam-total').textContent = '2';
+                console.log('Using sample POA&M data with enhanced logic:', error);
+                updatePOAMDisplay([]);
             }
         }
 
-        function updatePOAMDisplay(failedKsis) {
-            // Update stats
-            document.getElementById('poam-total').textContent = failedKsis.length;
-            document.getElementById('poam-high').textContent = failedKsis.filter(k => 
-                k.assertion_reason && k.assertion_reason.toLowerCase().includes('critical')).length;
-            document.getElementById('poam-overdue').textContent = Math.min(2, failedKsis.length);
+        // ✅ ENHANCED: Generate POA&M entries based on KSI validation results
+        function generatePOAMFromKSIs(ksis) {
+            const poamEntries = [];
+            let poamCounter = 1;
+
+            ksis.forEach(ksi => {
+                const poamEntry = evaluateKSIForPOAM(ksi, poamCounter);
+                if (poamEntry) {
+                    poamEntries.push(poamEntry);
+                    poamCounter++;
+                }
+            });
+
+            return poamEntries;
+        }
+
+        function evaluateKSIForPOAM(ksi, entryNumber) {
+            const now = new Date();
+            const validationDate = ksi.timestamp ? new Date(ksi.timestamp) : null;
+            const daysSinceValidation = validationDate ? Math.floor((now - validationDate) / (1000 * 60 * 60 * 24)) : null;
+            const isStale = daysSinceValidation && daysSinceValidation > 30; // 30 days freshness window
+
+            // ✅ Assertion passes - No POA&M entry (unless stale)
+            if (ksi.status === 'passed' && !isStale) {
+                return null;
+            }
+
+            // Determine severity and response timeline
+            let severity, responseTime, description;
+
+            if (ksi.status === 'failed') {
+                // ❌ Assertion fails - High-severity POA&M entry
+                severity = getCriticalityTier(ksi);
+                responseTime = getResponseTimeForSeverity(severity);
+                description = `Failed validation: ${ksi.description}`;
+            } else if (ksi.status === 'warning') {
+                // ⚠ Partial Assertion / Degraded - Lower-severity POA&M
+                severity = 'Medium';
+                responseTime = 60; // 60 days for medium severity
+                description = `Partial compliance detected: ${ksi.description}`;
+            } else if (isStale) {
+                // 🕒 Evidence stale - Freshness-based POA&M
+                severity = 'Low';
+                responseTime = 90; // 90 days for stale evidence
+                description = `Evidence validation required (${daysSinceValidation} days old): ${ksi.description}`;
+            }
+
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + responseTime);
+
+            return {
+                id: `POA&M-${String(entryNumber).padStart(3, '0')}`,
+                ksiId: ksi.id,
+                category: ksi.category,
+                severity,
+                description,
+                status: 'Open',
+                targetDate: targetDate.toISOString().split('T')[0],
+                daysOverdue: Math.max(0, daysSinceValidation - responseTime),
+                assertionReason: ksi.assertion_reason,
+                responseTime,
+                evidenceAge: daysSinceValidation
+            };
+        }
+
+        function getCriticalityTier(ksi) {
+            // Determine criticality based on KSI category and failure details
+            const criticalCategories = ['Access Control', 'Audit Logging', 'Encryption'];
+            const category = ksi.category || '';
             
-            // Populate table
+            if (criticalCategories.some(cat => category.includes(cat))) {
+                return 'High';
+            }
+            
+            // Check assertion reason for critical indicators
+            const reason = ksi.assertion_reason || '';
+            if (reason.toLowerCase().includes('critical') || reason.toLowerCase().includes('security')) {
+                return 'High';
+            }
+            
+            return 'Medium';
+        }
+
+        function getResponseTimeForSeverity(severity) {
+            const timelines = {
+                'Critical': 30,  // 30 days
+                'High': 60,      // 60 days  
+                'Medium': 90,    // 90 days
+                'Low': 120       // 120 days
+            };
+            return timelines[severity] || 90;
+        }
+
+        function updatePOAMDisplay(ksis) {
+            // ✅ ENHANCED: Generate POA&M entries based on comprehensive KSI analysis
+            const poamEntries = generatePOAMFromKSIs(ksis);
+            
+            // Calculate statistics
+            const totalEntries = poamEntries.length;
+            const highRiskEntries = poamEntries.filter(entry => entry.severity === 'High' || entry.severity === 'Critical').length;
+            const overdueEntries = poamEntries.filter(entry => entry.daysOverdue > 0).length;
+            
+            // Update stats
+            document.getElementById('poam-total').textContent = totalEntries;
+            document.getElementById('poam-high').textContent = highRiskEntries;
+            document.getElementById('poam-overdue').textContent = overdueEntries;
+            
+            // Populate table with dynamic POA&M entries
             const tbody = document.getElementById('poam-data');
-            tbody.innerHTML = failedKsis.slice(0, 10).map((ksi, index) => `
-                <tr style="border-bottom: 1px solid var(--border-color);">
-                    <td style="padding: 15px; border-bottom: 1px solid var(--border-color); color: var(--text-primary);">POA&M-${String(index + 1).padStart(3, '0')}</td>
-                    <td style="padding: 15px; border-bottom: 1px solid var(--border-color); color: var(--text-primary);">${ksi.ksi_id || ksi.id}</td>
-                    <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">
-                        <span style="background: var(--success-500); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em;">Low</span>
-                    </td>
-                    <td style="padding: 15px; border-bottom: 1px solid var(--border-color); color: var(--text-primary);">${getTargetDate()}</td>
-                    <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">
-                        <span style="background: var(--danger-500); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em;">Open</span>
-                    </td>
-                </tr>
-            `).join('');
+            tbody.innerHTML = poamEntries.slice(0, 10).map((entry) => {
+                const severityColor = getSeverityColor(entry.severity);
+                const statusColor = entry.daysOverdue > 0 ? 'var(--danger-500)' : 'var(--warning-500)';
+                const statusText = entry.daysOverdue > 0 ? 'Overdue' : 'Open';
+                
+                return `
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 15px; border-bottom: 1px solid var(--border-color); color: var(--text-primary);">
+                            <div style="font-weight: 600;">${entry.id}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                                ${entry.evidenceAge ? `Evidence: ${entry.evidenceAge} days old` : 'Current validation'}
+                            </div>
+                        </td>
+                        <td style="padding: 15px; border-bottom: 1px solid var(--border-color); color: var(--text-primary);">
+                            <div style="font-weight: 600;">${entry.ksiId}</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.25rem;">${entry.description}</div>
+                        </td>
+                        <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">
+                            <span style="background: ${severityColor}; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; font-weight: 600;">${entry.severity}</span>
+                        </td>
+                        <td style="padding: 15px; border-bottom: 1px solid var(--border-color); color: var(--text-primary);">
+                            <div>${entry.targetDate}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">
+                                ${entry.responseTime} day SLA
+                            </div>
+                        </td>
+                        <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">
+                            <span style="background: ${statusColor}; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; font-weight: 600;">${statusText}</span>
+                            ${entry.daysOverdue > 0 ? `<div style="font-size: 0.75rem; color: var(--danger-600); margin-top: 0.25rem; font-weight: 600;">+${entry.daysOverdue} days</div>` : ''}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            // Show message if no POA&M entries
+            if (poamEntries.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="padding: 2rem; text-align: center; color: var(--text-secondary);">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎉</div>
+                            <div><strong>No Active POA&M Items</strong></div>
+                            <div style="font-size: 0.875rem; margin-top: 0.5rem;">All KSIs are passing with fresh evidence</div>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        function getSeverityColor(severity) {
+            const colors = {
+                'Critical': 'var(--danger-600)',
+                'High': 'var(--danger-500)', 
+                'Medium': 'var(--warning-500)',
+                'Low': 'var(--info-500)'
+            };
+            return colors[severity] || 'var(--warning-500)';
         }
 
         function getTargetDate() {
