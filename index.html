@@ -669,7 +669,7 @@
             background: var(--bg-secondary);
             border: 2px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 1.5rem;
+            padding: 1.75rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -746,11 +746,11 @@
         .ksi-category {
             background: var(--bg-accent);
             color: var(--text-secondary);
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-sm);
+            padding: 0.375rem 1rem;
+            border-radius: var(--radius-lg);
             font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             display: inline-block;
             border: 1px solid var(--border-color);
         }
@@ -762,11 +762,26 @@
             margin-bottom: 1rem;
         }
 
+        .ksi-result {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .result-summary {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
         .ksi-meta {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 0.75rem;
-            margin-bottom: 1rem;
+            margin: 1.25rem 0;
         }
 
         .meta-item {
@@ -793,13 +808,15 @@
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
         }
 
         .action-btn {
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border: none;
-            border-radius: var(--radius);
+            border-radius: var(--radius-sm);
             font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
@@ -808,8 +825,9 @@
             display: inline-flex;
             align-items: center;
             gap: 0.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            text-transform: none;
+            letter-spacing: 0px;
+            white-space: nowrap;
         }
 
         .action-btn.primary {
@@ -843,17 +861,6 @@
         .action-btn.danger:hover {
             background: var(--danger-600);
             transform: translateY(-2px);
-        }
-
-        .action-btn.commands {
-            background: var(--gradient-orange);
-            color: white;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .action-btn.commands:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
         }
 
         /* Loading state */
@@ -2305,7 +2312,7 @@ async function getAuthorizationSummary() {
                     successful_commands: 8,
                     failed_commands: 0,
                     cli_command: '8 commands (8 successful): aws ec2 describe-security-groups; aws ec2 describe-network-acls; ...',
-                    assertion_reason: '✅ Comprehensive traffic controls configured across all AWS resources',
+                    assertion_reason: 'Comprehensive traffic controls configured across all AWS resources',
                     requirement: 'Multi-layered network security including ingress/egress controls',
                     detailed_commands: [
                         {
@@ -2376,7 +2383,7 @@ async function getAuthorizationSummary() {
                     successful_commands: 1,
                     failed_commands: 1,
                     cli_command: '2 commands (1 successful): aws elbv2 describe-listeners; aws acm list-certificates',
-                    assertion_reason: '❌ TLS enforcement not properly configured',
+                    assertion_reason: 'TLS enforcement not properly configured for all load balancers',
                     requirement: 'TLS 1.2+ required for all communications',
                     detailed_commands: [
                         {
@@ -2397,6 +2404,102 @@ async function getAuthorizationSummary() {
                     command_source: 'sample_mixed'
                 }
             ];
+        }
+
+        function renderKsis() {
+            const grid = document.getElementById('ksi-grid');
+            
+            if (filteredKsis.length === 0) {
+                grid.innerHTML = `
+                    <div class="loading">
+                        <h3>🔍 No KSIs Found</h3>
+                        <p>No KSIs match your current search criteria.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filteredKsis.map(ksi => {
+                // Clean up the assertion reason to be more readable
+                const cleanResult = cleanAssertionReason(ksi.assertion_reason);
+                
+                return `
+                <div class="ksi-card ${ksi.status}">
+                    <div class="ksi-card-header">
+                        <div class="ksi-id">${ksi.id}</div>
+                        <div class="ksi-status status-${ksi.status}">
+                            ${getStatusIcon(ksi.status)} ${ksi.status.toUpperCase()}
+                        </div>
+                    </div>
+                    
+                    <div class="ksi-category">${ksi.category}</div>
+                    <div class="ksi-description">${ksi.description}</div>
+                    
+                    <div class="ksi-meta">
+                        <div class="meta-item">
+                            <div class="meta-value">${ksi.commands_executed}</div>
+                            <div class="meta-label">Commands</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value">${ksi.status === 'passed' ? '100%' : ksi.status === 'failed' ? '0%' : '50%'}</div>
+                            <div class="meta-label">Success</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value">${ksi.detailed_commands?.length || 0}</div>
+                            <div class="meta-label">Details</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ksi-result">
+                        <div class="result-summary">${cleanResult}</div>
+                    </div>
+                    
+                    <div class="ksi-actions">
+                        <button class="action-btn primary" onclick="showCommandsModal('${ksi.id}')">
+                            ⚡ Commands
+                        </button>
+                        <button class="action-btn secondary" onclick="showCliDetails('${ksi.id}')">
+                            📋 Details
+                        </button>
+                        <button class="action-btn secondary" onclick="showWhyModal('${ksi.id}')">
+                            🤔 Why?
+                        </button>
+                        ${ksi.status === 'failed' ? `
+                            <button class="action-btn danger" onclick="createGitHubIssue('${ksi.id}')">
+                                🐛 Issue
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+
+        // Clean up assertion reasons to be more readable
+        function cleanAssertionReason(reason) {
+            if (!reason) return 'No assessment details available';
+            
+            // Remove excessive emoji and technical symbols
+            let cleaned = reason
+                .replace(/✅|❌|⚠️|🔍|📊|🛡️/g, '') // Remove emojis
+                .replace(/\s+/g, ' ') // Clean up multiple spaces
+                .trim();
+            
+            // Extract the main message (first sentence or main point)
+            const sentences = cleaned.split(/[.!;]/);
+            let mainMessage = sentences[0].trim();
+            
+            // If it's still too long, truncate intelligently
+            if (mainMessage.length > 120) {
+                mainMessage = mainMessage.substring(0, 120) + '...';
+            }
+            
+            // Add appropriate status icon
+            const statusIcon = reason.includes('✅') ? '✅' : 
+                              reason.includes('❌') ? '❌' : 
+                              reason.includes('⚠️') ? '⚠️' : '';
+            
+            return statusIcon + ' ' + mainMessage;
         }
 
         // Show data source notification
@@ -2487,70 +2590,6 @@ async function getAuthorizationSummary() {
 
             renderKsis();
             updateFilterChips();
-        }
-
-        function renderKsis() {
-            const grid = document.getElementById('ksi-grid');
-            
-            if (filteredKsis.length === 0) {
-                grid.innerHTML = `
-                    <div class="loading">
-                        <h3>🔍 No KSIs Found</h3>
-                        <p>No KSIs match your current search criteria.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            grid.innerHTML = filteredKsis.map(ksi => `
-                <div class="ksi-card ${ksi.status}">
-                    <div class="ksi-card-header">
-                        <div class="ksi-id">${ksi.id}</div>
-                        <div class="ksi-status status-${ksi.status}">
-                            ${getStatusIcon(ksi.status)} ${ksi.status.toUpperCase()}
-                        </div>
-                    </div>
-                    
-                    <div class="ksi-category">${ksi.category}</div>
-                    <div class="ksi-description">${ksi.description}</div>
-                    
-                    <div class="ksi-meta">
-                        <div class="meta-item">
-                            <div class="meta-value">${ksi.commands_executed}</div>
-                            <div class="meta-label">Commands</div>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-value">${ksi.detailed_commands?.length || 0}</div>
-                            <div class="meta-label">Detailed</div>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-value">${ksi.status === 'passed' ? '100%' : '0%'}</div>
-                            <div class="meta-label">Success</div>
-                        </div>
-                    </div>
-                    
-                    <div style="background: var(--bg-accent); padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.875rem;">
-                        <strong>Result:</strong> ${ksi.assertion_reason}
-                    </div>
-                    
-                    <div class="ksi-actions">
-                        <button class="action-btn commands" onclick="showCommandsModal('${ksi.id}')">
-                            ⚡ Show Commands
-                        </button>
-                        <button class="action-btn primary" onclick="showCliDetails('${ksi.id}')">
-                            📋 CLI Details
-                        </button>
-                        ${ksi.status === 'failed' ? `
-                            <button class="action-btn danger" onclick="createGitHubIssue('${ksi.id}')">
-                                🐛 Report Issue
-                            </button>
-                        ` : ''}
-                        <button class="action-btn secondary" onclick="showWhyModal('${ksi.id}')">
-                            🤔 Why?
-                        </button>
-                    </div>
-                </div>
-            `).join('');
         }
 
         function getStatusIcon(status) {
@@ -2919,7 +2958,7 @@ ${formData.get('justification')}
                                 commands_executed: 2,
                                 requirement: 'TLS 1.2+ required for all communications',
                                 cli_command: 'aws elbv2 describe-listeners --load-balancer-arn...',
-                                assertion_reason: '❌ TLS enforcement not properly configured'
+                                assertion_reason: 'TLS enforcement not properly configured'
                             }
                         ];
                         const failedCount = sampleKsis.filter(ksi => ksi.status === 'failed').length;
