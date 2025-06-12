@@ -11,7 +11,7 @@ It demonstrates **automated validation**, **machine-readable evidence**, and **c
 **🌐 [FedRAMP 20x Trust Center](https://meridian-knowledge-solutions.github.io/fedramp_20x_public_submission_live/)**
 
 ### 🚀 New Three-Tier POA&M System
-We implement a proactive enhancement tracking beyond traditional compliance gaps:
+We implemented a proactive enhancement tracking beyond traditional compliance gaps:
 - **🚨 Tier 1: Compliance POA&M** - Traditional remediation for failed validations (30-90 day SLAs)
 - **📈 Tier 2: Enhancement Tracking** - Proactive improvement opportunities in passing KSIs (180-day cycles)
 - **🕒 Tier 3: Staleness Tracking** - Evidence currency management (90-day refresh windows)
