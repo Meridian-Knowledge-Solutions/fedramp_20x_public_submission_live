@@ -1253,6 +1253,231 @@
             margin-top: 0.25rem;
         }
 
+        /* Data Source Badge Styles */
+        .data-source-badge {
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .data-source-badge.comprehensive {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-600);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .data-source-badge.fallback {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-600);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .data-source-badge.limited {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .commands-summary {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .commands-summary-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .commands-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .command-stat {
+            text-align: center;
+            background: var(--bg-secondary);
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .command-stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .command-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .commands-list {
+            margin-top: 1.5rem;
+        }
+
+        .command-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .command-item:hover {
+            border-color: var(--primary-500);
+            box-shadow: var(--shadow);
+        }
+
+        .command-header {
+            background: var(--bg-accent);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .command-header:hover {
+            background: var(--border-color);
+        }
+
+        .command-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .command-expand-btn {
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .command-expand-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .command-expand-btn.expanded {
+            transform: rotate(180deg);
+        }
+
+        .command-details {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .command-details.expanded {
+            display: block;
+        }
+
+        .command-code {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: auto;
+        }
+
+        .command-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .command-meta-item {
+            background: var(--bg-accent);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .command-meta-value {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+
+        .command-meta-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-top: 0.25rem;
+        }
+
+        .command-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .command-status.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-600);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .command-status.failed {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .command-status.unknown {
+            background: var(--bg-accent);
+            color: var(--text-tertiary);
+            border: 1px solid var(--border-color);
+        }
+
+        .no-commands-message {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .no-commands-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
         .tier-indicator {
             padding: 0.25rem 0.75rem;
             border-radius: var(--radius-sm);
@@ -1955,12 +2180,152 @@ async function getAuthorizationSummary() {
         let allKsis = [];
         let filteredKsis = [];
         let currentFilters = { status: '', category: '', search: '' };
-        let commandRegister = null;
+        let commandRegister = null; // Store the comprehensive command register
         let threeTierPOAM = {
             compliance: [],
             enhancement: [],
             staleness: []
         };
+
+        // ✅ ENHANCED: Load comprehensive command register
+        async function loadCommandRegister() {
+            try {
+                console.log('📋 Attempting to load comprehensive command register...');
+                const response = await fetch('./cli_command_register.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const register = await response.json();
+                console.log('✅ Command register loaded successfully');
+                console.log(`📊 Register contains ${Object.keys(register).length} KSIs with detailed commands`);
+                
+                commandRegister = register;
+                return register;
+            } catch (error) {
+                console.warn('⚠️ Could not load command register:', error.message);
+                commandRegister = null;
+                return null;
+            }
+        }
+
+        // ✅ ENHANCED: Extract command details with comprehensive register support
+        function extractCommandDetails(validation) {
+            const ksiId = validation.ksi_id || validation.validation_id || 'Unknown';
+            
+            // ✅ PRIORITY 1: Use comprehensive command register if available
+            if (commandRegister && commandRegister[ksiId]) {
+                const registerEntry = commandRegister[ksiId];
+                console.log(`🎯 Using comprehensive register for ${ksiId}: ${registerEntry.cli_commands?.length || 0} commands`);
+                
+                return {
+                    commands: registerEntry.cli_commands?.map((cmd, index) => ({
+                        command: cmd.command || cmd,
+                        description: cmd.note || `Command ${index + 1}`,
+                        status: determineCommandStatus(validation, index),
+                        execution_time: 'Unknown',
+                        source: 'comprehensive_register'
+                    })) || [],
+                    source: 'comprehensive_register',
+                    description: registerEntry.description,
+                    justification: registerEntry.justification
+                };
+            }
+            
+            // ✅ FALLBACK 1: Parse validation summary format
+            if (validation.cli_command) {
+                console.log(`📝 Using fallback parsing for ${ksiId}`);
+                return {
+                    commands: parseCliCommandString(validation),
+                    source: 'validation_summary'
+                };
+            }
+            
+            // ✅ FALLBACK 2: No command data available
+            console.log(`❌ No command data available for ${ksiId}`);
+            return {
+                commands: [],
+                source: 'no_data'
+            };
+        }
+
+        // ✅ HELPER: Determine command status based on validation results
+        function determineCommandStatus(validation, commandIndex) {
+            const successfulCommands = validation.successful_commands || 0;
+            const failedCommands = validation.failed_commands || 0;
+            const totalCommands = validation.commands_executed || 0;
+            
+            if (failedCommands === 0) return 'success';
+            if (successfulCommands === 0) return 'failed';
+            
+            // Mixed results - distribute based on success rate
+            return commandIndex < successfulCommands ? 'success' : 'failed';
+        }
+
+        // ✅ ENHANCED: Parse CLI command string (fallback method)
+        function parseCliCommandString(validation) {
+            const cliCommand = validation.cli_command;
+            const totalCommands = validation.commands_executed || 0;
+            
+            const commandMatch = cliCommand.match(/^(\d+)\s+commands?\s+\((\d+)\s+successful\):\s*(.+)$/);
+            
+            if (!commandMatch) {
+                return [{
+                    command: cliCommand,
+                    description: 'Primary validation command',
+                    status: validation.assertion === true ? 'success' : 'failed',
+                    execution_time: 'Unknown',
+                    source: 'fallback_single'
+                }];
+            }
+            
+            const [, totalStr, successfulStr, commandsStr] = commandMatch;
+            const successful = parseInt(successfulStr);
+            
+            let commandsList = commandsStr.split(';').map(cmd => cmd.trim());
+            
+            // Handle "(+X more)" truncation
+            const lastCommand = commandsList[commandsList.length - 1];
+            const moreMatch = lastCommand.match(/^(.+?)\s+\(\+(\d+)\s+more\)$/);
+            
+            if (moreMatch) {
+                commandsList[commandsList.length - 1] = moreMatch[1].trim();
+                const truncatedCount = parseInt(moreMatch[2]);
+                
+                for (let i = 0; i < truncatedCount; i++) {
+                    commandsList.push('... additional command not shown ...');
+                }
+            }
+            
+            return commandsList.map((cmd, index) => ({
+                command: cmd,
+                description: generateCommandDescription(cmd, index + 1),
+                status: index < successful ? 'success' : 'failed',
+                execution_time: 'Unknown',
+                source: 'fallback_parsed'
+            }));
+        }
+
+        function generateCommandDescription(command, index) {
+            const cmd = command.toLowerCase();
+            
+            if (cmd.includes('describe-security-groups')) return 'Check security group configurations';
+            if (cmd.includes('describe-network-acls')) return 'Analyze Network ACL configurations';
+            if (cmd.includes('describe-route-tables')) return 'Validate routing configurations';
+            if (cmd.includes('describe-nat-gateways')) return 'Check NAT Gateway configurations';
+            if (cmd.includes('describe-vpc-endpoints')) return 'Validate VPC endpoints';
+            if (cmd.includes('list-web-acls')) return 'Check WAF configurations';
+            if (cmd.includes('describe-load-balancers')) return 'Analyze load balancers';
+            if (cmd.includes('describe-log-groups')) return 'Check log configurations';
+            if (cmd.includes('describe-trails')) return 'Analyze CloudTrail configuration';
+            if (cmd.includes('list-users')) return 'List IAM users';
+            if (cmd.includes('get-account-summary')) return 'Get account-wide IAM statistics';
+            if (cmd.includes('describe-instances')) return 'Analyze EC2 instances';
+            if (cmd.includes('describe-subnets')) return 'Examine subnet configurations';
+            if (cmd.includes('describe-vpcs')) return 'Check VPC configurations';
+            
+            return `Command ${index}: ${command.split(' ')[1] || 'AWS operation'}`;
+        }
 
         // ✅ ENHANCED: Smart Partial Detection Engine
         function detectEnhancementOpportunities(assertionReason, ksiStatus) {
@@ -2617,10 +2982,64 @@ ${enhancementList}
                     assertion_reason: '✅ Comprehensive traffic controls configured across all AWS resources',
                     requirement: 'Multi-layered network security including ingress/egress controls',
                     detailed_commands: [
-                        { command: 'aws ec2 describe-security-groups --output json', description: 'Analyze security groups', status: 'success' },
-                        { command: 'aws ec2 describe-network-acls --output json', description: 'Check Network ACLs', status: 'success' }
+                        {
+                            command: 'aws ec2 describe-security-groups --output json',
+                            description: 'Analyze security groups for comprehensive ingress AND egress traffic controls',
+                            status: 'success',
+                            execution_time: '1.2s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws ec2 describe-network-acls --output json',
+                            description: 'Check Network ACLs for subnet-level traffic filtering (defense in depth)',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws ec2 describe-route-tables --output json',
+                            description: 'Validate route tables for controlled traffic routing and egress paths',
+                            status: 'success',
+                            execution_time: '0.9s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws ec2 describe-nat-gateways --output json',
+                            description: 'Check NAT Gateways for controlled egress traffic from private subnets',
+                            status: 'success',
+                            execution_time: '0.7s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws ec2 describe-vpc-endpoints --output json',
+                            description: 'Validate VPC endpoints for private service access (avoiding internet routing)',
+                            status: 'success',
+                            execution_time: '0.6s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws wafv2 list-web-acls --scope REGIONAL --output json',
+                            description: 'Check WAF for application-layer traffic filtering and protection',
+                            status: 'success',
+                            execution_time: '1.0s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws elbv2 describe-load-balancers --output json',
+                            description: 'Analyze load balancers for traffic distribution and access controls',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json',
+                            description: 'Verify VPC Flow Logs for traffic monitoring and visibility',
+                            status: 'success',
+                            execution_time: '0.5s',
+                            source: 'sample_data'
+                        }
                     ],
-                    command_source: 'sample_data'
+                    command_source: 'sample_comprehensive'
                 },
                 {
                     id: 'KSI-CNA-02',
@@ -2649,7 +3068,29 @@ ${enhancementList}
                             priority: 'High'
                         }
                     ],
-                    detailed_commands: [],
+                    detailed_commands: [
+                        {
+                            command: 'aws ec2 describe-availability-zones --output json',
+                            description: 'Validate availability zone configuration and distribution',
+                            status: 'success',
+                            execution_time: '0.5s',
+                            source: 'sample_enhanced'
+                        },
+                        {
+                            command: 'aws ec2 describe-subnets --output json',
+                            description: 'Analyze subnet segmentation across availability zones',
+                            status: 'success',
+                            execution_time: '1.1s',
+                            source: 'sample_enhanced'
+                        },
+                        {
+                            command: 'aws ec2 describe-instances --query "Reservations[*].Instances[*].[InstanceId,SubnetId,SecurityGroups]"',
+                            description: 'Check instance distribution and security group assignments',
+                            status: 'failed',
+                            execution_time: '2.3s',
+                            source: 'sample_enhanced'
+                        }
+                    ],
                     command_source: 'sample_enhanced'
                 },
                 {
@@ -2663,7 +3104,22 @@ ${enhancementList}
                     cli_command: '8 commands (8 successful): aws cloudtrail describe-trails; aws logs describe-log-groups; ...',
                     assertion_reason: '✅ Production-ready SIEM with advanced monitoring capabilities (69%): ✅ CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant); ✅ Centralized log collection: 5 log groups',
                     requirement: 'Log, aggregate, monitor, analyze, and audit all security events',
-                    detailed_commands: [],
+                    detailed_commands: [
+                        {
+                            command: 'aws cloudtrail describe-trails --output json',
+                            description: 'CloudTrail foundation established',
+                            status: 'success',
+                            execution_time: '1.2s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws logs describe-log-groups --output json',
+                            description: 'Centralized log collection active',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        }
+                    ],
                     command_source: 'sample_data'
                 },
                 {
@@ -2678,7 +3134,22 @@ ${enhancementList}
                     assertion_reason: '❌ TLS enforcement not properly configured for all load balancers: ✅ Load balancer listeners configured; ❌ Missing SSL/TLS certificates for secure communication',
                     requirement: 'TLS 1.2+ required for all communications',
                     timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days ago
-                    detailed_commands: [],
+                    detailed_commands: [
+                        {
+                            command: 'aws elbv2 describe-listeners --output json',
+                            description: 'Check listener configurations for TLS settings',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws acm list-certificates --output json',
+                            description: 'Validate SSL/TLS certificates',
+                            status: 'failed',
+                            execution_time: '0.5s',
+                            source: 'sample_data'
+                        }
+                    ],
                     command_source: 'sample_failed'
                 },
                 {
@@ -2728,6 +3199,12 @@ ${enhancementList}
         // ✅ ENHANCED: Load real data with command register support
         async function loadRealData() {
             try {
+                console.log('🔄 Starting data loading process...');
+                
+                // ✅ STEP 1: Load command register first
+                await loadCommandRegister();
+                
+                // ✅ STEP 2: Load validation data
                 console.log('🔄 Loading validation data...');
                 const response = await fetch('./unified_ksi_validations.json');
                 if (!response.ok) {
@@ -2773,8 +3250,10 @@ ${enhancementList}
                     throw new Error('No validation data found in the loaded JSON');
                 }
 
-                // Process validations with enhancement detection
+                // ✅ ENHANCED: Process with command details extraction
                 allKsis = validations.map(validation => {
+                    const commandDetails = extractCommandDetails(validation);
+                    
                     const ksi = {
                         id: validation.ksi_id || validation.validation_id || 'Unknown',
                         status: (validation.assertion === true || validation.assertion === "true") ? 
@@ -2793,8 +3272,11 @@ ${enhancementList}
                         evidence_path: validation.evidence_path || '',
                         requirement: validation.requirement || 'No requirement specified',
                         rawData: validation,
-                        detailed_commands: [],
-                        command_source: 'real_data'
+                        // ✅ ENHANCED: Rich command details from register or fallback
+                        detailed_commands: commandDetails.commands || [],
+                        command_source: commandDetails.source || 'unknown',
+                        register_description: commandDetails.description || null,
+                        register_justification: commandDetails.justification || null
                     };
 
                     // Detect enhancement opportunities for passed KSIs
@@ -2810,6 +3292,11 @@ ${enhancementList}
                 });
 
                 console.log(`📊 Processed ${allKsis.length} KSI validation records`);
+                
+                // Log command register usage
+                const registerUsage = allKsis.filter(k => k.command_source === 'comprehensive_register').length;
+                const fallbackUsage = allKsis.filter(k => k.command_source === 'validation_summary').length;
+                console.log(`🎯 Command sources: ${registerUsage} from register, ${fallbackUsage} from fallback`);
                 
                 updateMetrics();
                 populateCategoryFilter();
@@ -3074,7 +3561,7 @@ ${enhancementList}
             });
         }
 
-        // Simplified modals for core functionality
+        // ✅ ENHANCED: Show Commands Modal with comprehensive display
         function showCommandsModal(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
@@ -3083,20 +3570,161 @@ ${enhancementList}
             const modalBody = document.getElementById('commands-modal-body');
 
             modalTitle.innerHTML = `⚡ Commands for ${ksi.id}`;
-            modalBody.innerHTML = `
-                <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <h4>📊 Execution Summary</h4>
-                    <p><strong>Commands Executed:</strong> ${ksi.commands_executed}</p>
-                    <p><strong>Successful:</strong> ${ksi.successful_commands}</p>
-                    <p><strong>Failed:</strong> ${ksi.failed_commands}</p>
-                    <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 4px; margin-top: 1rem; font-family: monospace;">
-                        ${ksi.cli_command}
+
+            const commands = ksi.detailed_commands || [];
+            const totalCommands = ksi.commands_executed || 0;
+            const successfulCommands = ksi.successful_commands || 0;
+            const failedCommands = ksi.failed_commands || 0;
+            
+            // ✅ ENHANCED: Data source badge
+            const sourceBadgeInfo = getDataSourceBadge(ksi.command_source, commands.length, totalCommands);
+            
+            if (commands.length === 0) {
+                modalBody.innerHTML = `
+                    <div class="data-source-badge limited">
+                        <span>❌</span>
+                        <span>No Command Details Available</span>
                     </div>
-                </div>
-            `;
+                    <div class="no-commands-message">
+                        <div class="no-commands-icon">📋</div>
+                        <h3>No Detailed Command Information Available</h3>
+                        <p>This KSI validation executed <strong>${totalCommands || 0}</strong> commands, but detailed command information is not available.</p>
+                        <p><strong>Primary CLI Pattern:</strong></p>
+                        <div class="command-code">${ksi.cli_command || 'No command information available'}</div>
+                        <p><em>For full command details, check the comprehensive command register or CLI Details modal.</em></p>
+                    </div>
+                `;
+            } else {
+                modalBody.innerHTML = `
+                    ${sourceBadgeInfo.html}
+                    
+                    <div class="commands-summary">
+                        <h4 class="commands-summary-title">📊 Execution Summary</h4>
+                        <div class="commands-stats">
+                            <div class="command-stat">
+                                <div class="command-stat-value">${totalCommands}</div>
+                                <div class="command-stat-label">Total</div>
+                            </div>
+                            <div class="command-stat">
+                                <div class="command-stat-value">${commands.length}</div>
+                                <div class="command-stat-label">Detailed</div>
+                            </div>
+                            <div class="command-stat">
+                                <div class="command-stat-value">${successfulCommands}</div>
+                                <div class="command-stat-label">Successful</div>
+                            </div>
+                            <div class="command-stat">
+                                <div class="command-stat-value">${totalCommands > 0 ? Math.round((successfulCommands / totalCommands) * 100) : 0}%</div>
+                                <div class="command-stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                        ${ksi.register_description ? `<p><strong>Description:</strong> ${ksi.register_description}</p>` : ''}
+                        ${ksi.register_justification ? `<p><strong>Justification:</strong> ${ksi.register_justification}</p>` : ''}
+                    </div>
+
+                    <div class="commands-list">
+                        <h4 style="margin-bottom: 1rem; color: var(--text-primary);">📋 Command Details</h4>
+                        ${commands.map((cmd, index) => `
+                            <div class="command-item">
+                                <div class="command-header" onclick="toggleCommandDetails(${index})">
+                                    <div class="command-title">
+                                        <span class="command-status ${cmd.status}">${getCommandStatusIcon(cmd.status)} ${cmd.status.toUpperCase()}</span>
+                                        ${cmd.description}
+                                    </div>
+                                    <button class="command-expand-btn" id="expand-btn-${index}">▼</button>
+                                </div>
+                                <div class="command-details" id="command-details-${index}">
+                                    <p><strong>Description:</strong> ${cmd.description}</p>
+                                    <div class="command-code">${cmd.command}</div>
+                                    <div class="command-meta">
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.status}</div>
+                                            <div class="command-meta-label">Status</div>
+                                        </div>
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.execution_time}</div>
+                                            <div class="command-meta-label">Duration</div>
+                                        </div>
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.source || 'unknown'}</div>
+                                            <div class="command-meta-label">Source</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                        
+                        ${totalCommands > commands.length ? `
+                            <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; margin-top: 1rem; border: 1px solid var(--border-color);">
+                                <p style="color: var(--text-secondary); margin: 0;">
+                                    <strong>Note:</strong> ${totalCommands - commands.length} additional commands were executed but details are not available in this view.
+                                </p>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
 
             document.getElementById('commands-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
+        }
+
+        // ✅ NEW: Generate data source badge information
+        function getDataSourceBadge(source, detailCount, totalCount) {
+            switch (source) {
+                case 'comprehensive_register':
+                    return {
+                        html: `
+                            <div class="data-source-badge comprehensive">
+                                <span>✅</span>
+                                <span>Full Command Details Available - Showing all ${detailCount} commands from comprehensive command register</span>
+                            </div>
+                        `,
+                        type: 'comprehensive'
+                    };
+                case 'validation_summary':
+                    return {
+                        html: `
+                            <div class="data-source-badge fallback">
+                                <span>⚠️</span>
+                                <span>Parsed from Validation Summary - Showing ${detailCount} of ${totalCount} commands (command register not available)</span>
+                            </div>
+                        `,
+                        type: 'fallback'
+                    };
+                default:
+                    return {
+                        html: `
+                            <div class="data-source-badge limited">
+                                <span>❌</span>
+                                <span>Limited Command Information - No detailed command data available</span>
+                            </div>
+                        `,
+                        type: 'limited'
+                    };
+            }
+        }
+
+        function getCommandStatusIcon(status) {
+            const icons = {
+                success: '✅',
+                failed: '❌',
+                unknown: '❓'
+            };
+            return icons[status] || '❓';
+        }
+
+        function toggleCommandDetails(index) {
+            const details = document.getElementById(`command-details-${index}`);
+            const button = document.getElementById(`expand-btn-${index}`);
+            
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                button.classList.remove('expanded');
+            } else {
+                details.classList.add('expanded');
+                button.classList.add('expanded');
+            }
         }
 
         function showWhyModal(ksiId) {
