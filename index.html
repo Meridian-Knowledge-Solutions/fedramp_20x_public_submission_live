@@ -522,21 +522,6 @@
             color: var(--text-primary);
         }
 
-        .update-button {
-            background: none;
-            border: none;
-            color: var(--enhancement-500);
-            text-decoration: underline;
-            cursor: pointer;
-            font-size: inherit;
-            font-weight: inherit;
-            padding: 0;
-        }
-
-        .update-button:hover {
-            color: var(--enhancement-600);
-        }
-
         /* Trust Center */
         .trust-center-section {
             margin-bottom: 2rem;
@@ -1268,6 +1253,258 @@
             margin-top: 0.25rem;
         }
 
+        /* Data Source Badge Styles */
+        .data-source-badge {
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .data-source-badge.comprehensive {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-600);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .data-source-badge.fallback {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-600);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .data-source-badge.limited {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .commands-summary {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .commands-summary-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .commands-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .command-stat {
+            text-align: center;
+            background: var(--bg-secondary);
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .command-stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .command-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .commands-list {
+            margin-top: 1.5rem;
+        }
+
+        .command-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .command-item:hover {
+            border-color: var(--primary-500);
+            box-shadow: var(--shadow);
+        }
+
+        .command-header {
+            background: var(--bg-accent);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .command-header:hover {
+            background: var(--border-color);
+        }
+
+        .command-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .command-expand-btn {
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .command-expand-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .command-expand-btn.expanded {
+            transform: rotate(180deg);
+        }
+
+        .command-details {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .command-details.expanded {
+            display: block;
+        }
+
+        .command-code {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: auto;
+        }
+
+        .command-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .command-meta-item {
+            background: var(--bg-accent);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .command-meta-value {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+
+        .command-meta-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-top: 0.25rem;
+        }
+
+        .command-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .command-status.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-600);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .command-status.failed {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .command-status.unknown {
+            background: var(--bg-accent);
+            color: var(--text-tertiary);
+            border: 1px solid var(--border-color);
+        }
+
+        .no-commands-message {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .no-commands-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .tier-indicator {
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-compliance {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .tier-enhancement {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--enhancement-600);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .tier-staleness {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-600);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
         /* Trust Center styles */
         .trust-center-container {
             max-width: 1200px;
@@ -1565,8 +1802,8 @@
                     <div class="update-icon">📊</div>
                     <div class="update-content">
                         <div class="update-label">Three-Tier POA&M</div>
-                        <div class="update-time">
-                            <button class="update-button" onclick="showPOAMModal()">View Analysis</button>
+                        <div class="update-time" style="cursor: pointer; color: var(--enhancement-500); text-decoration: underline;">
+                            <button onclick="window.showPOAMModal()" style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer; font-size: inherit; font-weight: inherit;">View Analysis</button>
                         </div>
                     </div>
                 </div>
@@ -1654,7 +1891,7 @@
                                 <strong>Innovation:</strong> First FedRAMP 20x submission to implement proactive enhancement tracking beyond traditional compliance gaps
                             </div>
                             <div class="trust-item">
-                                <button onclick="showPOAMModal()" class="action-btn enhancement">📊 View Three-Tier Analysis</button>
+                                <button onclick="window.showPOAMModal()" class="action-btn enhancement">📊 View Three-Tier Analysis</button>
                             </div>
                         </div>
                     </div>
@@ -1743,7 +1980,7 @@
                     <div class="card-icon">📊</div>
                     <h3>Three-Tier POA&M</h3>
                     <p>Revolutionary improvement tracking</p>
-                    <button onclick="showPOAMModal()" class="access-btn">View POA&M</button>
+                    <button onclick="window.showPOAMModal()" class="access-btn">View POA&M</button>
                 </div>
                 
                 <div class="access-card">
@@ -1914,7 +2151,7 @@ async function getAuthorizationSummary() {
         </div>
     </div>
 
-    <!-- POA&M Modal -->
+    <!-- NEW: Three-Tier POA&M Modal -->
     <div class="poam-modal" id="poam-modal">
         <div class="poam-modal-content">
             <div class="poam-modal-header">
@@ -1927,11 +2164,11 @@ async function getAuthorizationSummary() {
         </div>
     </div>
 
-    <!-- Enhancement Modal -->
+    <!-- NEW: Enhancement Details Modal -->
     <div class="enhancement-modal" id="enhancement-modal">
         <div class="enhancement-modal-content">
             <div class="enhancement-modal-header">
-                <h3 class="enhancement-modal-title" id="enhancement-modal-title">📈 Enhancement Opportunity Details</h3>
+                <h3 class="enhancement-modal-title">📈 Enhancement Opportunity Details</h3>
                 <button class="close-btn" onclick="closeEnhancementModal()">&times;</button>
             </div>
             <div class="enhancement-modal-body" id="enhancement-modal-body">
@@ -1952,221 +2189,144 @@ async function getAuthorizationSummary() {
             staleness: []
         };
 
-        // ✅ MODAL FUNCTIONS - DEFINE FIRST FOR RELIABLE ACCESS
-        function showPOAMModal() {
-            console.log('🚀 Opening POA&M Modal...');
-            
-            const modal = document.getElementById('poam-modal');
-            const modalBody = document.getElementById('poam-modal-body');
-            
-            if (!modal || !modalBody) {
-                console.error('❌ POA&M Modal elements not found');
-                return;
-            }
-
-            const poam = generateThreeTierPOAM(allKsis);
-            
-            modalBody.innerHTML = `
-                <div class="poam-summary">
-                    <h4 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);">
-                        📊 Three-Tier POA&M Overview
-                    </h4>
-                    <div class="poam-stats">
-                        <div class="poam-stat">
-                            <div class="poam-stat-value">${poam.compliance.length}</div>
-                            <div class="poam-stat-label">Compliance</div>
-                        </div>
-                        <div class="poam-stat">
-                            <div class="poam-stat-value">${poam.enhancement.length}</div>
-                            <div class="poam-stat-label">Enhancement</div>
-                        </div>
-                        <div class="poam-stat">
-                            <div class="poam-stat-value">${poam.staleness.length}</div>
-                            <div class="poam-stat-label">Staleness</div>
-                        </div>
-                        <div class="poam-stat">
-                            <div class="poam-stat-value">${poam.compliance.length + poam.enhancement.length + poam.staleness.length}</div>
-                            <div class="poam-stat-label">Total Items</div>
-                        </div>
-                    </div>
-                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--enhancement-500); border-radius: 8px; padding: 1rem; margin-top: 1rem;">
-                        <strong style="color: var(--enhancement-600);">🚀 Innovation Highlight:</strong> 
-                        <span style="color: var(--text-primary);">First FedRAMP 20x submission to implement proactive enhancement tracking beyond traditional compliance gaps.</span>
-                    </div>
-                </div>
-
-                <div style="margin-top: 2rem;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">🚨 Tier 1: Compliance POA&M</h4>
-                    ${poam.compliance.length === 0 ? 
-                        '<p style="color: var(--text-secondary); font-style: italic;">✅ No compliance gaps detected - all KSIs passing validation</p>' :
-                        poam.compliance.map(item => `
-                            <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
-                                <h5 style="color: var(--danger-600); margin-bottom: 0.5rem;">${item.id}: ${item.ksiId}</h5>
-                                <p style="color: var(--text-secondary); margin-bottom: 1rem;">${item.description}</p>
-                                <div style="background: var(--bg-accent); padding: 0.75rem; border-radius: 4px; font-size: 0.875rem;">
-                                    <strong>Assessment:</strong> ${item.assertionReason}
-                                </div>
-                                <div style="margin-top: 1rem; display: flex; gap: 1rem; font-size: 0.875rem;">
-                                    <span><strong>Status:</strong> ${item.status}</span>
-                                    <span><strong>Target:</strong> ${item.targetDate}</span>
-                                    <span><strong>Severity:</strong> ${item.severity}</span>
-                                </div>
-                            </div>
-                        `).join('')
-                    }
-                </div>
-
-                <div style="margin-top: 2rem;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">📈 Tier 2: Enhancement Tracking</h4>
-                    ${poam.enhancement.length === 0 ? 
-                        '<p style="color: var(--text-secondary); font-style: italic;">ℹ️ No enhancement opportunities currently identified</p>' :
-                        poam.enhancement.map(item => `
-                            <div style="background: var(--bg-secondary); border: 1px solid var(--enhancement-500); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
-                                <h5 style="color: var(--enhancement-600); margin-bottom: 0.5rem;">${item.id}: ${item.ksiId}</h5>
-                                <p style="color: var(--text-secondary); margin-bottom: 1rem;">${item.description}</p>
-                                ${item.opportunities ? item.opportunities.map(opp => `
-                                    <div class="enhancement-opportunity">
-                                        <div class="title">${opp.type} (${opp.priority} Priority)</div>
-                                        <div class="description">${opp.description}</div>
-                                        <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">Evidence: ${opp.evidence}</div>
-                                    </div>
-                                `).join('') : ''}
-                                <div style="margin-top: 1rem; display: flex; gap: 1rem; font-size: 0.875rem;">
-                                    <span><strong>Status:</strong> ${item.status}</span>
-                                    <span><strong>Target:</strong> ${item.targetDate}</span>
-                                    <span><strong>Priority:</strong> ${item.priority}</span>
-                                </div>
-                                <div style="margin-top: 1rem;">
-                                    <button class="action-btn enhancement" onclick="showEnhancementModal('${item.ksiId}')">
-                                        📈 View Enhancement Plan
-                                    </button>
-                                </div>
-                            </div>
-                        `).join('')
-                    }
-                </div>
-
-                <div style="margin-top: 2rem;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">🕒 Tier 3: Staleness Tracking</h4>
-                    ${poam.staleness.length === 0 ? 
-                        '<p style="color: var(--text-secondary); font-style: italic;">✅ All evidence current - no stale validations detected</p>' :
-                        poam.staleness.map(item => `
-                            <div style="background: var(--bg-secondary); border: 1px solid var(--warning-500); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem;">
-                                <h5 style="color: var(--warning-600); margin-bottom: 0.5rem;">${item.id}: ${item.ksiId}</h5>
-                                <p style="color: var(--text-secondary); margin-bottom: 1rem;">${item.description}</p>
-                                <div style="margin-top: 1rem; display: flex; gap: 1rem; font-size: 0.875rem;">
-                                    <span><strong>Status:</strong> ${item.status}</span>
-                                    <span><strong>Target:</strong> ${item.targetDate}</span>
-                                    <span><strong>Age:</strong> ${item.evidenceAge} days</span>
-                                </div>
-                            </div>
-                        `).join('')
-                    }
-                </div>
-            `;
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            console.log('✅ POA&M Modal opened successfully');
-        }
-
-        function closePOAMModal() {
-            const modal = document.getElementById('poam-modal');
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-                console.log('✅ POA&M Modal closed');
+        // ✅ ENHANCED: Load comprehensive command register
+        async function loadCommandRegister() {
+            try {
+                console.log('📋 Attempting to load comprehensive command register...');
+                const response = await fetch('./cli_command_register.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const register = await response.json();
+                console.log('✅ Command register loaded successfully');
+                console.log(`📊 Register contains ${Object.keys(register).length} KSIs with detailed commands`);
+                
+                commandRegister = register;
+                return register;
+            } catch (error) {
+                console.warn('⚠️ Could not load command register:', error.message);
+                commandRegister = null;
+                return null;
             }
         }
 
-        function showEnhancementModal(ksiId) {
-            console.log('📈 Opening Enhancement Modal for:', ksiId);
+        // ✅ ENHANCED: Extract command details with comprehensive register support
+        function extractCommandDetails(validation) {
+            const ksiId = validation.ksi_id || validation.validation_id || 'Unknown';
             
-            const modal = document.getElementById('enhancement-modal');
-            const modalTitle = document.getElementById('enhancement-modal-title');
-            const modalBody = document.getElementById('enhancement-modal-body');
+            // ✅ PRIORITY 1: Use comprehensive command register if available
+            if (commandRegister && commandRegister[ksiId]) {
+                const registerEntry = commandRegister[ksiId];
+                console.log(`🎯 Using comprehensive register for ${ksiId}: ${registerEntry.cli_commands?.length || 0} commands`);
+                
+                return {
+                    commands: registerEntry.cli_commands?.map((cmd, index) => ({
+                        command: cmd.command || cmd,
+                        description: cmd.note || `Command ${index + 1}`,
+                        status: determineCommandStatus(validation, index),
+                        execution_time: 'Unknown',
+                        source: 'comprehensive_register'
+                    })) || [],
+                    source: 'comprehensive_register',
+                    description: registerEntry.description,
+                    justification: registerEntry.justification
+                };
+            }
             
-            if (!modal || !modalTitle || !modalBody) {
-                console.error('❌ Enhancement modal elements not found');
-                return;
+            // ✅ FALLBACK 1: Parse validation summary format
+            if (validation.cli_command) {
+                console.log(`📝 Using fallback parsing for ${ksiId}`);
+                return {
+                    commands: parseCliCommandString(validation),
+                    source: 'validation_summary'
+                };
             }
-
-            const ksi = allKsis.find(k => k.id === ksiId);
-            if (!ksi || !ksi.hasEnhancements) {
-                console.error('❌ KSI not found or has no enhancements:', ksiId);
-                return;
-            }
-
-            modalTitle.innerHTML = `📈 Enhancement Plan: ${ksi.id}`;
-
-            modalBody.innerHTML = `
-                <div style="background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                        🎯 Enhancement Overview
-                    </h4>
-                    <div style="margin-bottom: 1rem;">
-                        <strong style="color: var(--text-primary);">KSI:</strong> ${ksi.description}
-                    </div>
-                    <div style="margin-bottom: 1rem;">
-                        <strong style="color: var(--text-primary);">Current Status:</strong> 
-                        <span style="color: var(--success-500);">✅ Passed</span> (meets compliance requirements)
-                    </div>
-                    <div style="margin-bottom: 1rem;">
-                        <strong style="color: var(--text-primary);">Enhancement Cycle:</strong> 180 days
-                    </div>
-                    <div>
-                        <strong style="color: var(--text-primary);">Business Value:</strong> Proactive risk reduction and security maturity advancement
-                    </div>
-                </div>
-
-                <h4 style="color: var(--text-primary); margin-bottom: 1rem;">🔍 Identified Opportunities</h4>
-                ${ksi.enhancements.map((enhancement, index) => `
-                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
-                            <h5 style="color: var(--enhancement-600); margin: 0;">${enhancement.type}</h5>
-                            <span style="background: ${enhancement.priority === 'High' ? 'var(--danger-500)' : enhancement.priority === 'Medium' ? 'var(--warning-500)' : 'var(--info-500)'}; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">
-                                ${enhancement.priority} Priority
-                            </span>
-                        </div>
-                        <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">${enhancement.description}</p>
-                        <div style="background: var(--bg-accent); padding: 0.75rem; border-radius: 4px; font-size: 0.875rem;">
-                            <strong style="color: var(--text-primary);">Evidence:</strong> 
-                            <span style="color: var(--text-secondary);">${enhancement.evidence}</span>
-                        </div>
-                    </div>
-                `).join('')}
-
-                <div style="background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-top: 2rem;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">📋 Recommended Action Plan</h4>
-                    <ol style="margin: 0; padding-left: 1.5rem; color: var(--text-secondary);">
-                        <li style="margin-bottom: 0.5rem;">Assess current implementation against industry best practices</li>
-                        <li style="margin-bottom: 0.5rem;">Evaluate cost-benefit of enhancement opportunities</li>
-                        <li style="margin-bottom: 0.5rem;">Develop enhancement roadmap with priority sequencing</li>
-                        <li style="margin-bottom: 0.5rem;">Implement proof-of-concept for high-value improvements</li>
-                        ${ksi.enhancements.map(enh => `<li style="margin-bottom: 0.5rem;">Address ${enh.type.toLowerCase()}: ${enh.description}</li>`).join('')}
-                    </ol>
-                </div>
-
-                <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin-top: 1.5rem; text-align: center;">
-                    <p style="color: var(--text-secondary); margin: 0;">
-                        <strong>Assessment Details:</strong><br>
-                        ${ksi.assertion_reason}
-                    </p>
-                </div>
-            `;
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            console.log('✅ Enhancement Modal opened successfully');
+            
+            // ✅ FALLBACK 2: No command data available
+            console.log(`❌ No command data available for ${ksiId}`);
+            return {
+                commands: [],
+                source: 'no_data'
+            };
         }
 
-        function closeEnhancementModal() {
-            const modal = document.getElementById('enhancement-modal');
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-                console.log('✅ Enhancement Modal closed');
+        // ✅ HELPER: Determine command status based on validation results
+        function determineCommandStatus(validation, commandIndex) {
+            const successfulCommands = validation.successful_commands || 0;
+            const failedCommands = validation.failed_commands || 0;
+            const totalCommands = validation.commands_executed || 0;
+            
+            if (failedCommands === 0) return 'success';
+            if (successfulCommands === 0) return 'failed';
+            
+            // Mixed results - distribute based on success rate
+            return commandIndex < successfulCommands ? 'success' : 'failed';
+        }
+
+        // ✅ ENHANCED: Parse CLI command string (fallback method)
+        function parseCliCommandString(validation) {
+            const cliCommand = validation.cli_command;
+            const totalCommands = validation.commands_executed || 0;
+            
+            const commandMatch = cliCommand.match(/^(\d+)\s+commands?\s+\((\d+)\s+successful\):\s*(.+)$/);
+            
+            if (!commandMatch) {
+                return [{
+                    command: cliCommand,
+                    description: 'Primary validation command',
+                    status: validation.assertion === true ? 'success' : 'failed',
+                    execution_time: 'Unknown',
+                    source: 'fallback_single'
+                }];
             }
+            
+            const [, totalStr, successfulStr, commandsStr] = commandMatch;
+            const successful = parseInt(successfulStr);
+            
+            let commandsList = commandsStr.split(';').map(cmd => cmd.trim());
+            
+            // Handle "(+X more)" truncation
+            const lastCommand = commandsList[commandsList.length - 1];
+            const moreMatch = lastCommand.match(/^(.+?)\s+\(\+(\d+)\s+more\)$/);
+            
+            if (moreMatch) {
+                commandsList[commandsList.length - 1] = moreMatch[1].trim();
+                const truncatedCount = parseInt(moreMatch[2]);
+                
+                for (let i = 0; i < truncatedCount; i++) {
+                    commandsList.push('... additional command not shown ...');
+                }
+            }
+            
+            return commandsList.map((cmd, index) => ({
+                command: cmd,
+                description: generateCommandDescription(cmd, index + 1),
+                status: index < successful ? 'success' : 'failed',
+                execution_time: 'Unknown',
+                source: 'fallback_parsed'
+            }));
+        }
+
+        function generateCommandDescription(command, index) {
+            const cmd = command.toLowerCase();
+            
+            if (cmd.includes('describe-security-groups')) return 'Check security group configurations';
+            if (cmd.includes('describe-network-acls')) return 'Analyze Network ACL configurations';
+            if (cmd.includes('describe-route-tables')) return 'Validate routing configurations';
+            if (cmd.includes('describe-nat-gateways')) return 'Check NAT Gateway configurations';
+            if (cmd.includes('describe-vpc-endpoints')) return 'Validate VPC endpoints';
+            if (cmd.includes('list-web-acls')) return 'Check WAF configurations';
+            if (cmd.includes('describe-load-balancers')) return 'Analyze load balancers';
+            if (cmd.includes('describe-log-groups')) return 'Check log configurations';
+            if (cmd.includes('describe-trails')) return 'Analyze CloudTrail configuration';
+            if (cmd.includes('list-users')) return 'List IAM users';
+            if (cmd.includes('get-account-summary')) return 'Get account-wide IAM statistics';
+            if (cmd.includes('describe-instances')) return 'Analyze EC2 instances';
+            if (cmd.includes('describe-subnets')) return 'Examine subnet configurations';
+            if (cmd.includes('describe-vpcs')) return 'Check VPC configurations';
+            
+            return `Command ${index}: ${command.split(' ')[1] || 'AWS operation'}`;
         }
 
         // ✅ ENHANCED: Smart Partial Detection Engine
@@ -2443,6 +2603,372 @@ async function getAuthorizationSummary() {
             return timelines[severity] || 90;
         }
 
+        // ✅ ENHANCED: Show comprehensive three-tier POA&M modal
+        function showPOAMModal() {
+            const modalTitle = document.getElementById('poam-modal-title');
+            const modalBody = document.getElementById('poam-modal-body');
+            
+            modalTitle.innerHTML = '🚀 Revolutionary Three-Tier POA&M Analysis';
+            
+            const poam = generateThreeTierPOAM(allKsis);
+            
+            modalBody.innerHTML = `
+                <!-- POA&M Overview -->
+                <div class="poam-summary">
+                    <h4 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);">
+                        📊 Three-Tier POA&M Overview
+                    </h4>
+                    <div class="poam-stats">
+                        <div class="poam-stat">
+                            <div class="poam-stat-value">${poam.compliance.length}</div>
+                            <div class="poam-stat-label">Compliance</div>
+                        </div>
+                        <div class="poam-stat">
+                            <div class="poam-stat-value">${poam.enhancement.length}</div>
+                            <div class="poam-stat-label">Enhancement</div>
+                        </div>
+                        <div class="poam-stat">
+                            <div class="poam-stat-value">${poam.staleness.length}</div>
+                            <div class="poam-stat-label">Staleness</div>
+                        </div>
+                        <div class="poam-stat">
+                            <div class="poam-stat-value">${poam.compliance.length + poam.enhancement.length + poam.staleness.length}</div>
+                            <div class="poam-stat-label">Total Items</div>
+                        </div>
+                    </div>
+                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--enhancement-500); border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                        <strong style="color: var(--enhancement-600);">🚀 Innovation Highlight:</strong> 
+                        <span style="color: var(--text-primary);">First FedRAMP 20x submission to implement proactive enhancement tracking beyond traditional compliance gaps, demonstrating continuous improvement culture.</span>
+                    </div>
+                </div>
+
+                <!-- Tier Selector -->
+                <div class="poam-tier-selector">
+                    <button class="tier-btn active" onclick="showPOAMTier('compliance')">
+                        🚨 Tier 1: Compliance POA&M
+                        <div style="font-size: 0.8rem; margin-top: 0.25rem; opacity: 0.8;">${poam.compliance.length} items</div>
+                    </button>
+                    <button class="tier-btn" onclick="showPOAMTier('enhancement')">
+                        📈 Tier 2: Enhancement Tracking
+                        <div style="font-size: 0.8rem; margin-top: 0.25rem; opacity: 0.8;">${poam.enhancement.length} items</div>
+                    </button>
+                    <button class="tier-btn" onclick="showPOAMTier('staleness')">
+                        🕒 Tier 3: Staleness Tracking
+                        <div style="font-size: 0.8rem; margin-top: 0.25rem; opacity: 0.8;">${poam.staleness.length} items</div>
+                    </button>
+                </div>
+
+                <!-- Tier Content Sections -->
+                <div id="tier-compliance" class="tier-content active">
+                    ${generateTierContent(poam.compliance, 'compliance')}
+                </div>
+                
+                <div id="tier-enhancement" class="tier-content">
+                    ${generateTierContent(poam.enhancement, 'enhancement')}
+                </div>
+                
+                <div id="tier-staleness" class="tier-content">
+                    ${generateTierContent(poam.staleness, 'staleness')}
+                </div>
+            `;
+
+            document.getElementById('poam-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function generateTierContent(items, tierType) {
+            const tierInfo = {
+                compliance: {
+                    icon: '🚨',
+                    title: 'Compliance POA&M - Traditional Remediation',
+                    description: 'Failed validations requiring immediate remediation with 30-90 day SLAs',
+                    emptyMessage: 'No compliance gaps detected - all KSIs passing validation'
+                },
+                enhancement: {
+                    icon: '📈',
+                    title: 'Enhancement Tracking - Proactive Improvement',
+                    description: 'Passing KSIs with identified improvement opportunities on 180-day cycles',
+                    emptyMessage: 'No enhancement opportunities detected - all implementations at optimal level'
+                },
+                staleness: {
+                    icon: '🕒',
+                    title: 'Staleness Tracking - Evidence Currency',
+                    description: 'Evidence aging beyond 30-day freshness window requiring re-validation',
+                    emptyMessage: 'All evidence current - no stale validations detected'
+                }
+            };
+
+            const info = tierInfo[tierType];
+            
+            if (items.length === 0) {
+                return `
+                    <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">${info.icon}</div>
+                        <h3 style="color: var(--text-primary); margin-bottom: 1rem;">${info.title}</h3>
+                        <p style="margin-bottom: 1rem;">${info.description}</p>
+                        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--success-500); border-radius: 8px; padding: 1rem; color: var(--success-600);">
+                            <strong>✅ ${info.emptyMessage}</strong>
+                        </div>
+                    </div>
+                `;
+            }
+
+            return `
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        ${info.icon} ${info.title}
+                    </h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">${info.description}</p>
+                </div>
+                
+                <div class="poam-list">
+                    ${items.map((item, index) => `
+                        <div class="poam-item">
+                            <div class="poam-header" onclick="togglePOAMDetails(${index}, '${tierType}')">
+                                <div class="poam-title">
+                                    <span class="tier-indicator tier-${tierType}">${item.tier}</span>
+                                    <span>${item.id}: ${item.ksiId}</span>
+                                </div>
+                                <button class="poam-expand-btn" id="poam-expand-${tierType}-${index}">▼</button>
+                            </div>
+                            <div class="poam-details" id="poam-details-${tierType}-${index}">
+                                <div class="poam-info">
+                                    <strong style="color: var(--text-primary);">Description:</strong>
+                                    <p style="margin: 0.5rem 0; color: var(--text-secondary);">${item.description}</p>
+                                    
+                                    <strong style="color: var(--text-primary);">Action Plan:</strong>
+                                    <p style="margin: 0.5rem 0; color: var(--text-secondary);">${item.actionPlan}</p>
+                                    
+                                    ${item.opportunities ? `
+                                        <strong style="color: var(--text-primary);">Enhancement Opportunities:</strong>
+                                        ${item.opportunities.map(opp => `
+                                            <div class="enhancement-opportunity">
+                                                <div class="title">${opp.type} (${opp.priority} Priority)</div>
+                                                <div class="description">${opp.description}</div>
+                                                <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">Evidence: ${opp.evidence}</div>
+                                            </div>
+                                        `).join('')}
+                                    ` : ''}
+                                    
+                                    <strong style="color: var(--text-primary);">Assessment Details:</strong>
+                                    <div style="background: var(--bg-accent); padding: 0.75rem; border-radius: 4px; margin: 0.5rem 0; font-size: 0.875rem; color: var(--text-secondary);">
+                                        ${item.assertionReason}
+                                    </div>
+                                </div>
+                                
+                                <div class="poam-meta">
+                                    <div class="poam-meta-item">
+                                        <div class="poam-meta-value">${item.priority || item.severity}</div>
+                                        <div class="poam-meta-label">Priority</div>
+                                    </div>
+                                    <div class="poam-meta-item">
+                                        <div class="poam-meta-value">${item.status}</div>
+                                        <div class="poam-meta-label">Status</div>
+                                    </div>
+                                    <div class="poam-meta-item">
+                                        <div class="poam-meta-value">${item.targetDate}</div>
+                                        <div class="poam-meta-label">Target</div>
+                                    </div>
+                                    <div class="poam-meta-item">
+                                        <div class="poam-meta-value">${item.evidenceAge || 'Current'}</div>
+                                        <div class="poam-meta-label">Age (days)</div>
+                                    </div>
+                                </div>
+                                
+                                ${tierType === 'enhancement' ? `
+                                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                                        <button onclick="showEnhancementModal('${item.ksiId}')" class="action-btn enhancement">
+                                            📈 View Enhancement Plan
+                                        </button>
+                                        <button onclick="downloadEnhancementTemplate('${item.id}')" class="action-btn secondary">
+                                            📄 Download Template
+                                        </button>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function showPOAMTier(tierName) {
+            // Update tier buttons
+            document.querySelectorAll('.tier-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update tier content
+            document.querySelectorAll('.tier-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(`tier-${tierName}`).classList.add('active');
+        }
+
+        function togglePOAMDetails(index, tierType) {
+            const details = document.getElementById(`poam-details-${tierType}-${index}`);
+            const button = document.getElementById(`poam-expand-${tierType}-${index}`);
+            
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                button.classList.remove('expanded');
+            } else {
+                details.classList.add('expanded');
+                button.classList.add('expanded');
+            }
+        }
+
+        function closePOAMModal() {
+            document.getElementById('poam-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ✅ ENHANCED: Show Enhancement Modal with detailed improvement planning
+        function showEnhancementModal(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi || !ksi.hasEnhancements) return;
+
+            const modalTitle = document.getElementById('enhancement-modal-title');
+            const modalBody = document.getElementById('enhancement-modal-body');
+
+            modalTitle.innerHTML = `📈 Enhancement Plan: ${ksi.id}`;
+
+            modalBody.innerHTML = `
+                <div style="background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🎯 Enhancement Overview
+                    </h4>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="color: var(--text-primary);">KSI:</strong> ${ksi.description}
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="color: var(--text-primary);">Current Status:</strong> 
+                        <span style="color: var(--success-500);">✅ Passed</span> (meets compliance requirements)
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="color: var(--text-primary);">Enhancement Cycle:</strong> 180 days
+                    </div>
+                    <div>
+                        <strong style="color: var(--text-primary);">Business Value:</strong> Proactive risk reduction and security maturity advancement
+                    </div>
+                </div>
+
+                <h4 style="color: var(--text-primary); margin-bottom: 1rem;">🔍 Identified Opportunities</h4>
+                ${ksi.enhancements.map((enhancement, index) => `
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                            <h5 style="color: var(--enhancement-600); margin: 0;">${enhancement.type}</h5>
+                            <span style="background: ${enhancement.priority === 'High' ? 'var(--danger-500)' : enhancement.priority === 'Medium' ? 'var(--warning-500)' : 'var(--info-500)'}; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">
+                                ${enhancement.priority} Priority
+                            </span>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">${enhancement.description}</p>
+                        <div style="background: var(--bg-accent); padding: 0.75rem; border-radius: 4px; font-size: 0.875rem;">
+                            <strong style="color: var(--text-primary);">Evidence:</strong> 
+                            <span style="color: var(--text-secondary);">${enhancement.evidence}</span>
+                        </div>
+                    </div>
+                `).join('')}
+
+                <div style="background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-top: 2rem;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">📋 Recommended Action Plan</h4>
+                    <ol style="margin: 0; padding-left: 1.5rem; color: var(--text-secondary);">
+                        <li style="margin-bottom: 0.5rem;">Assess current implementation against industry best practices</li>
+                        <li style="margin-bottom: 0.5rem;">Evaluate cost-benefit of enhancement opportunities</li>
+                        <li style="margin-bottom: 0.5rem;">Develop enhancement roadmap with priority sequencing</li>
+                        <li style="margin-bottom: 0.5rem;">Implement proof-of-concept for high-value improvements</li>
+                        ${ksi.enhancements.map(enh => `<li style="margin-bottom: 0.5rem;">Address ${enh.type.toLowerCase()}: ${enh.description}</li>`).join('')}
+                    </ol>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem; justify-content: center;">
+                    <button onclick="downloadEnhancementTemplate('${ksi.id}')" class="action-btn enhancement">
+                        📄 Download Enhancement Template
+                    </button>
+                    <button onclick="createEnhancementIssue('${ksi.id}')" class="action-btn secondary">
+                        🐛 Create Tracking Issue
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('enhancement-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEnhancementModal() {
+            document.getElementById('enhancement-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function downloadEnhancementTemplate(enhancementId) {
+            const template = {
+                enhancement_id: enhancementId,
+                type: "Proactive Enhancement",
+                cycle_duration: "180 days",
+                opportunities: "List of identified improvement areas",
+                action_plan: "Detailed enhancement roadmap",
+                success_metrics: "KPIs to measure improvement",
+                business_value: "Expected ROI and risk reduction",
+                implementation_phases: ["Assessment", "Planning", "Development", "Validation"],
+                status: "Identified"
+            };
+            
+            const blob = new Blob([JSON.stringify(template, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `enhancement_template_${enhancementId}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function createEnhancementIssue(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            const issueTitle = encodeURIComponent(`[Enhancement Opportunity] ${ksi.id}: Proactive Security Improvements`);
+            const enhancementList = ksi.enhancements.map(enh => `- **${enh.type}**: ${enh.description} (${enh.priority} Priority)`).join('\n');
+            
+            const issueBody = encodeURIComponent(`## Enhancement Opportunity Report
+
+**KSI ID:** ${ksi.id}
+**Category:** ${ksi.category}
+**Current Status:** ✅ PASSED (Compliant)
+**Enhancement Type:** Proactive Improvement
+
+### Current Implementation
+${ksi.description}
+
+### Assessment Result
+${ksi.assertion_reason}
+
+### Identified Enhancement Opportunities
+${enhancementList}
+
+### Business Value
+- Proactive risk reduction
+- Enhanced security posture
+- Continuous improvement demonstration
+- FedRAMP 20x innovation showcase
+
+### Recommended Action Plan
+1. Assess current implementation against industry best practices
+2. Evaluate cost-benefit of enhancement opportunities  
+3. Develop enhancement roadmap with priority sequencing
+4. Implement proof-of-concept for high-value improvements
+
+### Success Metrics
+- [ ] Risk exposure reduction
+- [ ] Security control maturity advancement
+- [ ] Operational efficiency improvements
+- [ ] Compliance posture strengthening
+
+---
+**Enhancement Cycle:** 180 days
+**Priority:** Proactive Improvement
+**Generated by:** Revolutionary Three-Tier POA&M System`);
+
+            const githubUrl = `https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/issues/new?title=${issueTitle}&body=${issueBody}&labels=enhancement-opportunity,tier-2,continuous-improvement`;
+            window.open(githubUrl, '_blank');
+        }
+
         // ✅ ENHANCED: Initialize with sample data showcasing KSI-CNA-02
         function initializeSampleData() {
             allKsis = [
@@ -2457,7 +2983,65 @@ async function getAuthorizationSummary() {
                     cli_command: '8 commands (8 successful): aws ec2 describe-security-groups; aws ec2 describe-network-acls; ...',
                     assertion_reason: '✅ Comprehensive traffic controls configured across all AWS resources',
                     requirement: 'Multi-layered network security including ingress/egress controls',
-                    timestamp: new Date().toISOString()
+                    detailed_commands: [
+                        {
+                            command: 'aws ec2 describe-security-groups --output json',
+                            description: 'Analyze security groups for comprehensive ingress AND egress traffic controls',
+                            status: 'success',
+                            execution_time: '1.2s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws ec2 describe-network-acls --output json',
+                            description: 'Check Network ACLs for subnet-level traffic filtering (defense in depth)',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws ec2 describe-route-tables --output json',
+                            description: 'Validate route tables for controlled traffic routing and egress paths',
+                            status: 'success',
+                            execution_time: '0.9s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws ec2 describe-nat-gateways --output json',
+                            description: 'Check NAT Gateways for controlled egress traffic from private subnets',
+                            status: 'success',
+                            execution_time: '0.7s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws ec2 describe-vpc-endpoints --output json',
+                            description: 'Validate VPC endpoints for private service access (avoiding internet routing)',
+                            status: 'success',
+                            execution_time: '0.6s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws wafv2 list-web-acls --scope REGIONAL --output json',
+                            description: 'Check WAF for application-layer traffic filtering and protection',
+                            status: 'success',
+                            execution_time: '1.0s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws elbv2 describe-load-balancers --output json',
+                            description: 'Analyze load balancers for traffic distribution and access controls',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json',
+                            description: 'Verify VPC Flow Logs for traffic monitoring and visibility',
+                            status: 'success',
+                            execution_time: '0.5s',
+                            source: 'sample_data'
+                        }
+                    ],
+                    command_source: 'sample_comprehensive'
                 },
                 {
                     id: 'KSI-CNA-02',
@@ -2485,7 +3069,31 @@ async function getAuthorizationSummary() {
                             evidence: 'High service exposure identified',
                             priority: 'High'
                         }
-                    ]
+                    ],
+                    detailed_commands: [
+                        {
+                            command: 'aws ec2 describe-availability-zones --output json',
+                            description: 'Validate availability zone configuration and distribution',
+                            status: 'success',
+                            execution_time: '0.5s',
+                            source: 'sample_enhanced'
+                        },
+                        {
+                            command: 'aws ec2 describe-subnets --output json',
+                            description: 'Analyze subnet segmentation across availability zones',
+                            status: 'success',
+                            execution_time: '1.1s',
+                            source: 'sample_enhanced'
+                        },
+                        {
+                            command: 'aws ec2 describe-instances --query "Reservations[*].Instances[*].[InstanceId,SubnetId,SecurityGroups]"',
+                            description: 'Check instance distribution and security group assignments',
+                            status: 'failed',
+                            execution_time: '2.3s',
+                            source: 'sample_enhanced'
+                        }
+                    ],
+                    command_source: 'sample_enhanced'
                 },
                 {
                     id: 'KSI-MLA-01',
@@ -2498,7 +3106,23 @@ async function getAuthorizationSummary() {
                     cli_command: '8 commands (8 successful): aws cloudtrail describe-trails; aws logs describe-log-groups; ...',
                     assertion_reason: '✅ Production-ready SIEM with advanced monitoring capabilities (69%): ✅ CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant); ✅ Centralized log collection: 5 log groups',
                     requirement: 'Log, aggregate, monitor, analyze, and audit all security events',
-                    timestamp: new Date().toISOString()
+                    detailed_commands: [
+                        {
+                            command: 'aws cloudtrail describe-trails --output json',
+                            description: 'CloudTrail foundation established',
+                            status: 'success',
+                            execution_time: '1.2s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws logs describe-log-groups --output json',
+                            description: 'Centralized log collection active',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        }
+                    ],
+                    command_source: 'sample_data'
                 },
                 {
                     id: 'KSI-SVC-01',
@@ -2511,7 +3135,24 @@ async function getAuthorizationSummary() {
                     cli_command: '2 commands (1 successful): aws elbv2 describe-listeners; aws acm list-certificates',
                     assertion_reason: '❌ TLS enforcement not properly configured for all load balancers: ✅ Load balancer listeners configured; ❌ Missing SSL/TLS certificates for secure communication',
                     requirement: 'TLS 1.2+ required for all communications',
-                    timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() // 5 days ago
+                    timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days ago
+                    detailed_commands: [
+                        {
+                            command: 'aws elbv2 describe-listeners --output json',
+                            description: 'Check listener configurations for TLS settings',
+                            status: 'success',
+                            execution_time: '0.8s',
+                            source: 'sample_data'
+                        },
+                        {
+                            command: 'aws acm list-certificates --output json',
+                            description: 'Validate SSL/TLS certificates',
+                            status: 'failed',
+                            execution_time: '0.5s',
+                            source: 'sample_data'
+                        }
+                    ],
+                    command_source: 'sample_failed'
                 },
                 {
                     id: 'KSI-LOG-03',
@@ -2524,7 +3165,9 @@ async function getAuthorizationSummary() {
                     cli_command: '3 commands (2 successful): aws logs describe-log-groups; aws s3api get-bucket-logging; aws cloudtrail get-trail-status',
                     assertion_reason: '⚠️ Partial compliance: Most logs retained properly but some short-term retention detected',
                     requirement: 'Audit logs must be retained for minimum compliance period',
-                    timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // 2 days ago
+                    timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days ago
+                    detailed_commands: [],
+                    command_source: 'sample_partial'
                 },
                 {
                     id: 'KSI-NET-02',
@@ -2537,7 +3180,9 @@ async function getAuthorizationSummary() {
                     cli_command: '4 commands (4 successful): aws ec2 describe-vpcs; aws ec2 describe-subnets; aws ec2 describe-security-groups; aws ec2 describe-network-acls',
                     assertion_reason: '✅ Network segmentation controls properly configured',
                     requirement: 'Proper network isolation and access controls',
-                    timestamp: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString() // 45 days ago (stale)
+                    timestamp: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString(), // 45 days ago (stale)
+                    detailed_commands: [],
+                    command_source: 'sample_stale'
                 }
             ];
 
@@ -2553,61 +3198,123 @@ async function getAuthorizationSummary() {
             });
         }
 
-        function updateMetrics() {
-            const totalKsis = allKsis.length;
-            const passedCount = allKsis.filter(ksi => ksi.status === 'passed').length;
-            const failedCount = allKsis.filter(ksi => ksi.status === 'failed').length;
-            const warningCount = allKsis.filter(ksi => ksi.status === 'warning').length;
-            const enhancementCount = allKsis.filter(ksi => ksi.hasEnhancements).length;
-            const overallScore = totalKsis > 0 ? Math.round(((passedCount + warningCount * 0.5) / totalKsis) * 100 * 10) / 10 : 0;
-
-            document.getElementById('overall-score').textContent = overallScore + '%';
-            document.getElementById('passed-count').textContent = passedCount;
-            document.getElementById('failed-count').textContent = failedCount;
-            document.getElementById('enhancement-count').textContent = enhancementCount;
-            
-            console.log(`📊 Metrics updated: ${passedCount}/${totalKsis} passed (${overallScore}%), ${enhancementCount} enhancements`);
-        }
-
-        function populateCategoryFilter() {
-            const categories = [...new Set(allKsis.map(ksi => ksi.category))].sort();
-            const categoryFilter = document.getElementById('category-filter');
-            categoryFilter.innerHTML = '<option value="">All Categories</option>';
-            
-            categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category;
-                option.textContent = category;
-                categoryFilter.appendChild(option);
-            });
-        }
-
-        function filterKsis() {
-            const searchTerm = currentFilters.search.toLowerCase();
-            const statusFilter = currentFilters.status;
-            const categoryFilter = currentFilters.category;
-
-            filteredKsis = allKsis.filter(ksi => {
-                const matchesSearch = !searchTerm || 
-                    ksi.id.toLowerCase().includes(searchTerm) ||
-                    ksi.description.toLowerCase().includes(searchTerm) ||
-                    ksi.category.toLowerCase().includes(searchTerm);
+        // ✅ ENHANCED: Load real data with command register support
+        async function loadRealData() {
+            try {
+                console.log('🔄 Starting data loading process...');
                 
-                // Enhanced status filtering to include enhancement filter
-                let matchesStatus = true;
-                if (statusFilter === 'enhancement') {
-                    matchesStatus = ksi.hasEnhancements === true;
-                } else if (statusFilter) {
-                    matchesStatus = ksi.status === statusFilter;
+                // ✅ STEP 1: Load command register first
+                await loadCommandRegister();
+                
+                // ✅ STEP 2: Load validation data
+                console.log('🔄 Loading validation data...');
+                const response = await fetch('./unified_ksi_validations.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
-                const matchesCategory = !categoryFilter || ksi.category === categoryFilter;
+                const data = await response.json();
+                console.log('✅ Validation data loaded successfully');
                 
-                return matchesSearch && matchesStatus && matchesCategory;
-            });
+                updateDashboardWithRealData(data);
+                showDataSourceNotification('live');
+                
+            } catch (error) {
+                console.warn('⚠️ Could not load real data, using sample data:', error.message);
+                initializeSampleData();
+                showDataSourceNotification('sample');
+            }
+        }
 
-            renderKsis();
-            updateFilterChips();
+        // ✅ ENHANCED: Update dashboard with extracted command details
+        function updateDashboardWithRealData(data) {
+            try {
+                let validations = [];
+                let dataTimestamp = null;
+                
+                // Extract timestamp
+                if (data.metadata && data.metadata.generated_at) {
+                    dataTimestamp = new Date(data.metadata.generated_at);
+                } else if (data.generated_at) {
+                    dataTimestamp = new Date(data.generated_at);
+                } else if (data.timestamp) {
+                    dataTimestamp = new Date(data.timestamp);
+                }
+                
+                // Extract validation array
+                if (Array.isArray(data)) {
+                    validations = data;
+                } else if (data.validations && Array.isArray(data.validations)) {
+                    validations = data.validations;
+                }
+
+                if (validations.length === 0) {
+                    throw new Error('No validation data found in the loaded JSON');
+                }
+
+                // ✅ ENHANCED: Process with command details extraction
+                allKsis = validations.map(validation => {
+                    const commandDetails = extractCommandDetails(validation);
+                    
+                    const ksi = {
+                        id: validation.ksi_id || validation.validation_id || 'Unknown',
+                        status: (validation.assertion === true || validation.assertion === "true") ? 
+                            'passed' : 
+                            (validation.assertion === false || validation.assertion === "false") ? 
+                                'failed' : 'unknown',
+                        category: validation.long_name || validation.category || 'Unknown Category',
+                        description: validation.requirement || validation.description || 'No description available',
+                        commands_executed: validation.commands_executed || 0,
+                        successful_commands: validation.successful_commands || 0,
+                        failed_commands: validation.failed_commands || 0,
+                        cli_command: validation.cli_command || 'No command information',
+                        assertion_reason: validation.assertion_reason || 'No assessment details provided',
+                        timestamp: validation.timestamp || validation.validation_timestamp || null,
+                        validation_method: validation.validation_method || 'automated',
+                        evidence_path: validation.evidence_path || '',
+                        requirement: validation.requirement || 'No requirement specified',
+                        rawData: validation,
+                        // ✅ ENHANCED: Rich command details from register or fallback
+                        detailed_commands: commandDetails.commands || [],
+                        command_source: commandDetails.source || 'unknown',
+                        register_description: commandDetails.description || null,
+                        register_justification: commandDetails.justification || null
+                    };
+
+                    // Detect enhancement opportunities for passed KSIs
+                    if (ksi.status === 'passed') {
+                        const enhancements = detectEnhancementOpportunities(ksi.assertion_reason, ksi.status);
+                        if (enhancements.length > 0) {
+                            ksi.hasEnhancements = true;
+                            ksi.enhancements = enhancements;
+                        }
+                    }
+
+                    return ksi;
+                });
+
+                console.log(`📊 Processed ${allKsis.length} KSI validation records`);
+                
+                // Log command register usage
+                const registerUsage = allKsis.filter(k => k.command_source === 'comprehensive_register').length;
+                const fallbackUsage = allKsis.filter(k => k.command_source === 'validation_summary').length;
+                console.log(`🎯 Command sources: ${registerUsage} from register, ${fallbackUsage} from fallback`);
+                
+                updateMetrics();
+                populateCategoryFilter();
+                filterKsis();
+                
+                if (dataTimestamp) {
+                    updateTimestampsWithData(dataTimestamp);
+                } else {
+                    updateTimestamps();
+                }
+                
+            } catch (error) {
+                console.error('❌ Error processing real data:', error);
+                showDataSourceNotification('error');
+                initializeSampleData();
+            }
         }
 
         function renderKsis() {
@@ -2678,7 +3385,7 @@ async function getAuthorizationSummary() {
                             🤔 Why ${ksi.status === 'passed' ? 'Pass' : ksi.status === 'failed' ? 'Fail' : 'Result'}
                         </button>
                         ${hasEnhancements ? `
-                            <button class="action-btn enhancement" onclick="showEnhancementModal('${ksi.id}')">
+                            <button class="action-btn enhancement" onclick="window.showEnhancementModal('${ksi.id}')">
                                 📈 Enhance
                             </button>
                         ` : ''}
@@ -2714,6 +3421,103 @@ async function getAuthorizationSummary() {
                               reason.includes('⚠️') ? '⚠️' : '';
             
             return statusIcon + ' ' + mainMessage;
+        }
+
+        function showDataSourceNotification(type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 600;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+
+            if (type === 'live') {
+                notification.style.background = 'rgba(16, 185, 129, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '✅ Live data loaded';
+            } else if (type === 'sample') {
+                notification.style.background = 'rgba(245, 158, 11, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '⚠️ Using sample data with KSI-CNA-02 showcase';
+            } else if (type === 'error') {
+                notification.style.background = 'rgba(239, 68, 68, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '❌ Data load error';
+            }
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        function updateMetrics() {
+            const totalKsis = allKsis.length;
+            const passedCount = allKsis.filter(ksi => ksi.status === 'passed').length;
+            const failedCount = allKsis.filter(ksi => ksi.status === 'failed').length;
+            const warningCount = allKsis.filter(ksi => ksi.status === 'warning').length;
+            const enhancementCount = allKsis.filter(ksi => ksi.hasEnhancements).length;
+            const overallScore = totalKsis > 0 ? Math.round(((passedCount + warningCount * 0.5) / totalKsis) * 100 * 10) / 10 : 0;
+
+            document.getElementById('overall-score').textContent = overallScore + '%';
+            document.getElementById('passed-count').textContent = passedCount;
+            document.getElementById('failed-count').textContent = failedCount;
+            document.getElementById('enhancement-count').textContent = enhancementCount;
+            
+            console.log(`📊 Metrics updated: ${passedCount}/${totalKsis} passed (${overallScore}%), ${enhancementCount} enhancements`);
+        }
+
+        function populateCategoryFilter() {
+            const categories = [...new Set(allKsis.map(ksi => ksi.category))].sort();
+            const categoryFilter = document.getElementById('category-filter');
+            categoryFilter.innerHTML = '<option value="">All Categories</option>';
+            
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        function filterKsis() {
+            const searchTerm = currentFilters.search.toLowerCase();
+            const statusFilter = currentFilters.status;
+            const categoryFilter = currentFilters.category;
+
+            filteredKsis = allKsis.filter(ksi => {
+                const matchesSearch = !searchTerm || 
+                    ksi.id.toLowerCase().includes(searchTerm) ||
+                    ksi.description.toLowerCase().includes(searchTerm) ||
+                    ksi.category.toLowerCase().includes(searchTerm);
+                
+                // Enhanced status filtering to include enhancement filter
+                let matchesStatus = true;
+                if (statusFilter === 'enhancement') {
+                    matchesStatus = ksi.hasEnhancements === true;
+                } else if (statusFilter) {
+                    matchesStatus = ksi.status === statusFilter;
+                }
+                
+                const matchesCategory = !categoryFilter || ksi.category === categoryFilter;
+                
+                return matchesSearch && matchesStatus && matchesCategory;
+            });
+
+            renderKsis();
+            updateFilterChips();
         }
 
         function getStatusIcon(status) {
@@ -2759,7 +3563,7 @@ async function getAuthorizationSummary() {
             });
         }
 
-        // Show Commands Modal
+        // ✅ ENHANCED: Show Commands Modal with comprehensive display
         function showCommandsModal(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
@@ -2769,49 +3573,160 @@ async function getAuthorizationSummary() {
 
             modalTitle.innerHTML = `⚡ Commands for ${ksi.id}`;
 
-            modalBody.innerHTML = `
-                <div style="background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">📊 Execution Summary</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
-                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${ksi.commands_executed || 0}</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Total Commands</div>
-                        </div>
-                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--success-500);">${ksi.successful_commands || 0}</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Successful</div>
-                        </div>
-                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--danger-500);">${ksi.failed_commands || 0}</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Failed</div>
-                        </div>
-                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${ksi.commands_executed > 0 ? Math.round((ksi.successful_commands / ksi.commands_executed) * 100) : 0}%</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Success Rate</div>
-                        </div>
+            const commands = ksi.detailed_commands || [];
+            const totalCommands = ksi.commands_executed || 0;
+            const successfulCommands = ksi.successful_commands || 0;
+            const failedCommands = ksi.failed_commands || 0;
+            
+            // ✅ ENHANCED: Data source badge
+            const sourceBadgeInfo = getDataSourceBadge(ksi.command_source, commands.length, totalCommands);
+            
+            if (commands.length === 0) {
+                modalBody.innerHTML = `
+                    <div class="data-source-badge limited">
+                        <span>❌</span>
+                        <span>No Command Details Available</span>
                     </div>
-                </div>
+                    <div class="no-commands-message">
+                        <div class="no-commands-icon">📋</div>
+                        <h3>No Detailed Command Information Available</h3>
+                        <p>This KSI validation executed <strong>${totalCommands || 0}</strong> commands, but detailed command information is not available.</p>
+                        <p><strong>Primary CLI Pattern:</strong></p>
+                        <div class="command-code">${ksi.cli_command || 'No command information available'}</div>
+                        <p><em>For full command details, check the comprehensive command register or CLI Details modal.</em></p>
+                    </div>
+                `;
+            } else {
+                modalBody.innerHTML = `
+                    ${sourceBadgeInfo.html}
+                    
+                    <div class="commands-summary">
+                        <h4 class="commands-summary-title">📊 Execution Summary</h4>
+                        <div class="commands-stats">
+                            <div class="command-stat">
+                                <div class="command-stat-value">${totalCommands}</div>
+                                <div class="command-stat-label">Total</div>
+                            </div>
+                            <div class="command-stat">
+                                <div class="command-stat-value">${commands.length}</div>
+                                <div class="command-stat-label">Detailed</div>
+                            </div>
+                            <div class="command-stat">
+                                <div class="command-stat-value">${successfulCommands}</div>
+                                <div class="command-stat-label">Successful</div>
+                            </div>
+                            <div class="command-stat">
+                                <div class="command-stat-value">${totalCommands > 0 ? Math.round((successfulCommands / totalCommands) * 100) : 0}%</div>
+                                <div class="command-stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                        ${ksi.register_description ? `<p><strong>Description:</strong> ${ksi.register_description}</p>` : ''}
+                        ${ksi.register_justification ? `<p><strong>Justification:</strong> ${ksi.register_justification}</p>` : ''}
+                    </div>
 
-                <div style="background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">🖥️ Command Details</h4>
-                    <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.875rem; color: var(--text-primary); white-space: pre-wrap; word-wrap: break-word; overflow-x: auto;">
-${ksi.cli_command || 'No command information available'}
+                    <div class="commands-list">
+                        <h4 style="margin-bottom: 1rem; color: var(--text-primary);">📋 Command Details</h4>
+                        ${commands.map((cmd, index) => `
+                            <div class="command-item">
+                                <div class="command-header" onclick="toggleCommandDetails(${index})">
+                                    <div class="command-title">
+                                        <span class="command-status ${cmd.status}">${getCommandStatusIcon(cmd.status)} ${cmd.status.toUpperCase()}</span>
+                                        ${cmd.description}
+                                    </div>
+                                    <button class="command-expand-btn" id="expand-btn-${index}">▼</button>
+                                </div>
+                                <div class="command-details" id="command-details-${index}">
+                                    <p><strong>Description:</strong> ${cmd.description}</p>
+                                    <div class="command-code">${cmd.command}</div>
+                                    <div class="command-meta">
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.status}</div>
+                                            <div class="command-meta-label">Status</div>
+                                        </div>
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.execution_time}</div>
+                                            <div class="command-meta-label">Duration</div>
+                                        </div>
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.source || 'unknown'}</div>
+                                            <div class="command-meta-label">Source</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                        
+                        ${totalCommands > commands.length ? `
+                            <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; margin-top: 1rem; border: 1px solid var(--border-color);">
+                                <p style="color: var(--text-secondary); margin: 0;">
+                                    <strong>Note:</strong> ${totalCommands - commands.length} additional commands were executed but details are not available in this view.
+                                </p>
+                            </div>
+                        ` : ''}
                     </div>
-                    <div style="margin-top: 1rem;">
-                        <p><strong>Description:</strong> ${ksi.description}</p>
-                        <p><strong>Category:</strong> ${ksi.category}</p>
-                        <p><strong>Requirement:</strong> ${ksi.requirement || 'No requirement specified'}</p>
-                    </div>
-                </div>
-            `;
+                `;
+            }
 
             document.getElementById('commands-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeCommandsModal() {
-            document.getElementById('commands-modal').classList.remove('active');
-            document.body.style.overflow = '';
+        // ✅ NEW: Generate data source badge information
+        function getDataSourceBadge(source, detailCount, totalCount) {
+            switch (source) {
+                case 'comprehensive_register':
+                    return {
+                        html: `
+                            <div class="data-source-badge comprehensive">
+                                <span>✅</span>
+                                <span>Full Command Details Available - Showing all ${detailCount} commands from comprehensive command register</span>
+                            </div>
+                        `,
+                        type: 'comprehensive'
+                    };
+                case 'validation_summary':
+                    return {
+                        html: `
+                            <div class="data-source-badge fallback">
+                                <span>⚠️</span>
+                                <span>Parsed from Validation Summary - Showing ${detailCount} of ${totalCount} commands (command register not available)</span>
+                            </div>
+                        `,
+                        type: 'fallback'
+                    };
+                default:
+                    return {
+                        html: `
+                            <div class="data-source-badge limited">
+                                <span>❌</span>
+                                <span>Limited Command Information - No detailed command data available</span>
+                            </div>
+                        `,
+                        type: 'limited'
+                    };
+            }
+        }
+
+        function getCommandStatusIcon(status) {
+            const icons = {
+                success: '✅',
+                failed: '❌',
+                unknown: '❓'
+            };
+            return icons[status] || '❓';
+        }
+
+        function toggleCommandDetails(index) {
+            const details = document.getElementById(`command-details-${index}`);
+            const button = document.getElementById(`expand-btn-${index}`);
+            
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                button.classList.remove('expanded');
+            } else {
+                details.classList.add('expanded');
+                button.classList.add('expanded');
+            }
         }
 
         function showWhyModal(ksiId) {
@@ -2826,6 +3741,9 @@ ${ksi.cli_command || 'No command information available'}
             const statusIcon = getStatusIcon(ksi.status);
             
             modalTitle.innerHTML = `🤔 Why ${statusText}? - ${ksi.id}`;
+
+            // Parse and clean up the assertion reason
+            const cleanedAssessment = parseAndCleanAssessment(ksi.assertion_reason);
 
             modalBody.innerHTML = `
                 <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
@@ -2853,7 +3771,7 @@ ${ksi.cli_command || 'No command information available'}
                         ` : ''}
                     </div>
                     <p><strong>Category:</strong> ${ksi.category}</p>
-                    <p><strong>Validation Method:</strong> Automated</p>
+                    <p><strong>Validation Method:</strong> ${ksi.validation_method || 'Automated'}</p>
                 </div>
                 
                 <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
@@ -2862,7 +3780,7 @@ ${ksi.cli_command || 'No command information available'}
                     <div style="margin-top: 1rem;">
                         <strong>Assessment Result:</strong>
                         <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid var(--border-color);">
-                            ${ksi.assertion_reason}
+                            ${cleanedAssessment}
                         </div>
                     </div>
                 </div>
@@ -2878,7 +3796,7 @@ ${ksi.cli_command || 'No command information available'}
                             </div>
                         `).join('')}
                         <div style="margin-top: 1rem;">
-                            <button onclick="showEnhancementModal('${ksi.id}')" class="action-btn enhancement">
+                            <button onclick="window.showEnhancementModal('${ksi.id}')" class="action-btn enhancement">
                                 📈 View Enhancement Plan
                             </button>
                         </div>
@@ -2888,7 +3806,8 @@ ${ksi.cli_command || 'No command information available'}
                 <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
                     <h4 style="margin-bottom: 1rem;">🔧 Technical Information</h4>
                     <p><strong>Commands Executed:</strong> ${ksi.commands_executed || 0} (${ksi.successful_commands || 0} successful, ${ksi.failed_commands || 0} failed)</p>
-                    <p><strong>CLI Pattern:</strong> ${ksi.cli_command}</p>
+                    <p><strong>Command Source:</strong> ${ksi.command_source || 'Unknown'}</p>
+                    <p><strong>Evidence Path:</strong> ${ksi.evidence_path || 'No specific path'}</p>
                     ${ksi.timestamp ? `<p><strong>Last Validated:</strong> ${formatTimestamp(ksi.timestamp)}</p>` : ''}
                 </div>
             `;
@@ -2897,9 +3816,54 @@ ${ksi.cli_command || 'No command information available'}
             document.body.style.overflow = 'hidden';
         }
 
-        function closeWhyModal() {
-            document.getElementById('why-modal').classList.remove('active');
-            document.body.style.overflow = '';
+        // Clean up and parse assessment results for better readability
+        function parseAndCleanAssessment(assertionReason) {
+            if (!assertionReason) return 'No assessment details available';
+            
+            // Remove excessive technical symbols and clean up
+            let cleaned = assertionReason
+                .replace(/✅|❌|⚠️/g, '') // Remove status emojis temporarily
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            // Split into key findings
+            const findings = [];
+            const parts = assertionReason.split(/[;:]/);
+            
+            parts.forEach(part => {
+                const trimmed = part.trim();
+                if (trimmed.length > 10) {
+                    // Restore status indicators
+                    let status = '🔵';
+                    if (trimmed.includes('✅')) status = '✅';
+                    else if (trimmed.includes('❌')) status = '❌';
+                    else if (trimmed.includes('⚠️')) status = '⚠️';
+                    
+                    // Clean the text
+                    const cleanText = trimmed
+                        .replace(/✅|❌|⚠️/g, '')
+                        .replace(/^\s*[:\-]\s*/, '')
+                        .trim();
+                    
+                    if (cleanText.length > 5) {
+                        findings.push(`${status} ${cleanText}`);
+                    }
+                }
+            });
+
+            // If we have findings, format them nicely
+            if (findings.length > 0) {
+                return findings.slice(0, 6).map(finding => 
+                    `<div style="margin-bottom: 0.5rem; padding: 0.5rem; background: var(--bg-accent); border-radius: 4px;">${finding}</div>`
+                ).join('');
+            }
+
+            // Fallback to original but shortened
+            const shortened = assertionReason.length > 200 ? 
+                assertionReason.substring(0, 200) + '...' : 
+                assertionReason;
+            
+            return shortened;
         }
 
         function formatTimestamp(timestamp) {
@@ -2967,14 +3931,45 @@ Please provide guidance on how to remediate this KSI failure.`);
             }
         }
 
+        // Modal close functions
+        function closeCliModal() {
+            document.getElementById('cli-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeWhyModal() {
+            document.getElementById('why-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         function closeMarkdownModal() {
             document.getElementById('markdown-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeCommandsModal() {
+            document.getElementById('commands-modal').classList.remove('active');
             document.body.style.overflow = '';
         }
 
         function updateTimestamps() {
             const now = new Date();
             const timeString = now.toLocaleDateString() + ' ' + now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            const lastUpdatedEl = document.getElementById('last-updated');
+            const headerTimestampEl = document.getElementById('header-timestamp');
+            
+            if (lastUpdatedEl) {
+                lastUpdatedEl.textContent = timeString;
+            }
+            if (headerTimestampEl) {
+                headerTimestampEl.textContent = timeString;
+            }
+        }
+
+        function updateTimestampsWithData(dataTimestamp) {
+            const timeString = dataTimestamp.toLocaleDateString() + ' ' + 
+                             dataTimestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
             
             const lastUpdatedEl = document.getElementById('last-updated');
             const headerTimestampEl = document.getElementById('header-timestamp');
@@ -3092,61 +4087,62 @@ Please provide guidance on how to remediate this KSI failure.`);
             filterKsis();
             updateMetrics();
             updateTimestamps();
+            loadRealData();
             
-            console.log('✅ Dashboard initialization complete');
+            // Test modal elements
+            console.log('🧪 Testing modal elements...');
+            console.log('- POA&M Modal:', !!document.getElementById('poam-modal'));
+            console.log('- Enhancement Modal:', !!document.getElementById('enhancement-modal'));
+            console.log('- Commands Modal:', !!document.getElementById('commands-modal'));
+            console.log('- Why Modal:', !!document.getElementById('why-modal'));
         }
 
-        // Event listeners for modal closing
-        function setupModalEventListeners() {
-            // Close modals when clicking outside
-            document.getElementById('poam-modal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closePOAMModal();
-                }
-            });
+        // Global functions - Make sure all modal functions are accessible
+        window.showWhyModal = showWhyModal;
+        window.closeWhyModal = closeWhyModal;
+        window.createGitHubIssue = createGitHubIssue;
+        window.toggleTheme = toggleTheme;
+        window.showTab = showTab;
+        window.scrollToTrustSection = scrollToTrustSection;
+        window.showCommandsModal = showCommandsModal;
+        window.closeCommandsModal = closeCommandsModal;
+        window.toggleCommandDetails = toggleCommandDetails;
+        window.downloadJSON = downloadJSON;
+        window.viewFailedReport = viewFailedReport;
+        window.closeMarkdownModal = closeMarkdownModal;
+        window.downloadIncidentTemplate = downloadIncidentTemplate;
+        window.downloadClassificationGuide = downloadClassificationGuide;
+        window.showPOAMModal = showPOAMModal;
+        window.closePOAMModal = closePOAMModal;
+        window.showPOAMTier = showPOAMTier;
+        window.togglePOAMDetails = togglePOAMDetails;
+        window.showEnhancementModal = showEnhancementModal;
+        window.closeEnhancementModal = closeEnhancementModal;
+        window.downloadEnhancementTemplate = downloadEnhancementTemplate;
+        window.createEnhancementIssue = createEnhancementIssue;
 
-            document.getElementById('enhancement-modal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeEnhancementModal();
-                }
-            });
-
-            document.getElementById('commands-modal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeCommandsModal();
-                }
-            });
-
-            document.getElementById('why-modal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeWhyModal();
-                }
-            });
-
-            document.getElementById('markdown-modal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeMarkdownModal();
-                }
-            });
-
-            // Close modals with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closePOAMModal();
-                    closeEnhancementModal();
-                    closeCommandsModal();
-                    closeWhyModal();
-                    closeMarkdownModal();
-                }
-            });
-        }
+        // Auto-refresh every 5 minutes
+        setInterval(() => {
+            updateTimestamps();
+            loadRealData();
+        }, 300000);
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🚀 FedRAMP 20x Trust Center - Revolutionary Three-Tier POA&M System Loading...');
             initializeTheme();
             initializeDashboard();
-            setupModalEventListeners();
+            
+            // Add debug info
+            console.log('🔧 Debugging: POA&M Modal element exists:', !!document.getElementById('poam-modal'));
+            console.log('🔧 Debugging: Enhancement Modal element exists:', !!document.getElementById('enhancement-modal'));
+            console.log('🔧 Debugging: showPOAMModal function available:', typeof window.showPOAMModal);
+            console.log('🔧 Debugging: showEnhancementModal function available:', typeof window.showEnhancementModal);
+            
+            const searchBox = document.getElementById('search-input');
+            if (searchBox) {
+                searchBox.placeholder = 'Search KSIs... (Press / to focus)';
+            }
             
             // Federal access form handler
             const form = document.getElementById('federal-access-form');
@@ -3192,14 +4188,14 @@ Please provide guidance on how to remediate this KSI failure.`);
             console.log('✅ Revolutionary Three-Tier POA&M Dashboard initialization complete');
             console.log('🎯 Innovation: First FedRAMP 20x submission with proactive enhancement tracking');
             
-            // Test modal functionality
+            // Test POA&M functionality after a short delay
             setTimeout(() => {
-                console.log('🧪 Testing modal availability...');
-                console.log('- POA&M Modal element:', !!document.getElementById('poam-modal'));
-                console.log('- Enhancement Modal element:', !!document.getElementById('enhancement-modal'));
-                console.log('- showPOAMModal function:', typeof showPOAMModal);
-                console.log('- showEnhancementModal function:', typeof showEnhancementModal);
-                console.log('✅ All systems ready - buttons should work!');
+                console.log('🧪 Testing POA&M modal availability...');
+                if (typeof window.showPOAMModal === 'function') {
+                    console.log('✅ POA&M modal function is ready - buttons should work!');
+                } else {
+                    console.error('❌ POA&M modal function not properly initialized');
+                }
             }, 1000);
         });
 
@@ -3208,6 +4204,13 @@ Please provide guidance on how to remediate this KSI failure.`);
             if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
                 e.preventDefault();
                 document.getElementById('search-input').focus();
+            }
+            if (e.key === 'Escape') {
+                closeWhyModal();
+                closeCommandsModal();
+                closeMarkdownModal();
+                closePOAMModal();
+                closeEnhancementModal();
             }
         });
 
@@ -3240,3 +4243,4 @@ Please provide guidance on how to remediate this KSI failure.`);
     </script>
 </body>
 </html>
+                
