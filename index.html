@@ -2155,7 +2155,7 @@ async function getAuthorizationSummary() {
     <div class="poam-modal" id="poam-modal">
         <div class="poam-modal-content">
             <div class="poam-modal-header">
-                <h3 class="poam-modal-title" id="poam-modal-title">🚀 Revolutionary Three-Tier POA&M Analysis</h3>
+                <h3 class="poam-modal-title" id="poam-modal-title">🚀 Three-Tier POA&M Analysis</h3>
                 <button class="close-btn" onclick="closePOAMModal()">&times;</button>
             </div>
             <div class="poam-modal-body" id="poam-modal-body">
@@ -2608,7 +2608,7 @@ async function getAuthorizationSummary() {
             const modalTitle = document.getElementById('poam-modal-title');
             const modalBody = document.getElementById('poam-modal-body');
             
-            modalTitle.innerHTML = '🚀 Revolutionary Three-Tier POA&M Analysis';
+            modalTitle.innerHTML = '🚀 Three-Tier POA&M Analysis';
             
             const poam = generateThreeTierPOAM(allKsis);
             
@@ -3331,7 +3331,7 @@ ${enhancementList}
             }
 
             grid.innerHTML = filteredKsis.map(ksi => {
-                const cleanResult = cleanAssertionReason(ksi.assertion_reason);
+                const cleanResult = cleanAssertionReason(ksi.assertion_reason, ksi.status);
                 const hasEnhancements = ksi.hasEnhancements && ksi.enhancements && ksi.enhancements.length > 0;
                 
                 return `
@@ -3400,28 +3400,68 @@ ${enhancementList}
             }).join('');
         }
 
-        // Clean up assertion reasons to be more readable
-        function cleanAssertionReason(reason) {
-            if (!reason) return 'No assessment details available';
-            
-            let cleaned = reason
-                .replace(/✅|❌|⚠️|🔍|📊|🛡️/g, '')
-                .replace(/\s+/g, ' ')
-                .trim();
-            
-            const sentences = cleaned.split(/[.!;]/);
-            let mainMessage = sentences[0].trim();
-            
-            if (mainMessage.length > 120) {
-                mainMessage = mainMessage.substring(0, 120) + '...';
-            }
-            
-            const statusIcon = reason.includes('✅') ? '✅' : 
-                              reason.includes('❌') ? '❌' : 
-                              reason.includes('⚠️') ? '⚠️' : '';
-            
-            return statusIcon + ' ' + mainMessage;
+        
+        // Generate user-friendly summaries for KSI results
+function generateKsiSummary(assertion_reason, status) {
+    if (!assertion_reason) return 'No assessment details available';
+    
+    // For passed KSIs, show simple positive summaries
+    if (status === 'passed') {
+        const lowerReason = assertion_reason.toLowerCase();
+        
+        if (lowerReason.includes('security groups') || lowerReason.includes('firewall')) {
+            return '✅ Network security controls are properly configured';
         }
+        if (lowerReason.includes('encryption') || lowerReason.includes('tls') || lowerReason.includes('ssl')) {
+            return '✅ Encryption and data protection controls are active';
+        }
+        if (lowerReason.includes('logging') || lowerReason.includes('audit') || lowerReason.includes('cloudtrail')) {
+            return '✅ Security logging and monitoring are operational';
+        }
+        if (lowerReason.includes('access control') || lowerReason.includes('iam') || lowerReason.includes('permissions')) {
+            return '✅ Access controls and permissions are properly managed';
+        }
+        if (lowerReason.includes('change management') || lowerReason.includes('deployment')) {
+            return '✅ Change management processes are implemented';
+        }
+        if (lowerReason.includes('training') || lowerReason.includes('education')) {
+            return '✅ Security training and awareness programs are active';
+        }
+        if (lowerReason.includes('network') || lowerReason.includes('segmentation')) {
+            return '✅ Network architecture and segmentation are secure';
+        }
+        if (lowerReason.includes('immutable') || lowerReason.includes('infrastructure')) {
+            return '✅ Infrastructure deployment controls are operational';
+        }
+        
+        // Default positive summary
+        return '✅ Security control is properly implemented and operational';
+    }
+    
+    // For failed/warning KSIs, show more detailed but cleaned info
+    let cleaned = assertion_reason
+        .replace(/✅|❌|⚠️|🔍|📊|🛡️/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    
+    const sentences = cleaned.split(/[.!;]/);
+    let mainMessage = sentences[0].trim();
+    
+    if (mainMessage.length > 100) {
+        mainMessage = mainMessage.substring(0, 100) + '...';
+    }
+    
+    const statusIcon = assertion_reason.includes('✅') ? '✅' : 
+                      assertion_reason.includes('❌') ? '❌' : 
+                      assertion_reason.includes('⚠️') ? '⚠️' : '';
+    
+    return statusIcon + ' ' + mainMessage;
+}
+
+// Keep old function name as alias for compatibility
+function cleanAssertionReason(reason, status) {
+    return generateKsiSummary(reason, status);
+}
 
         function showDataSourceNotification(type) {
             const notification = document.createElement('div');
@@ -4080,7 +4120,7 @@ Please provide guidance on how to remediate this KSI failure.`);
         }
 
         function initializeDashboard() {
-            console.log('🔄 Initializing revolutionary three-tier POA&M dashboard...');
+            console.log('🔄 Initializing three-tier POA&M dashboard...');
             initializeSampleData();
             populateCategoryFilter();
             setupEventListeners();
@@ -4185,7 +4225,7 @@ Please provide guidance on how to remediate this KSI failure.`);
                 });
             }
             
-            console.log('✅ Revolutionary Three-Tier POA&M Dashboard initialization complete');
+            console.log('✅ Three-Tier POA&M Dashboard initialization complete');
             console.log('🎯 Innovation: First FedRAMP 20x submission with proactive enhancement tracking');
             
             // Test POA&M functionality after a short delay
