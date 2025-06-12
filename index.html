@@ -1802,7 +1802,9 @@
                     <div class="update-icon">📊</div>
                     <div class="update-content">
                         <div class="update-label">Three-Tier POA&M</div>
-                        <div class="update-time" onclick="showPOAMModal()" style="cursor: pointer; color: var(--enhancement-500);">View Analysis</div>
+                        <div class="update-time" style="cursor: pointer; color: var(--enhancement-500); text-decoration: underline;">
+                            <button onclick="window.showPOAMModal()" style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer; font-size: inherit; font-weight: inherit;">View Analysis</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1889,7 +1891,7 @@
                                 <strong>Innovation:</strong> First FedRAMP 20x submission to implement proactive enhancement tracking beyond traditional compliance gaps
                             </div>
                             <div class="trust-item">
-                                <button onclick="showPOAMModal()" class="action-btn enhancement">📊 View Three-Tier Analysis</button>
+                                <button onclick="window.showPOAMModal()" class="action-btn enhancement">📊 View Three-Tier Analysis</button>
                             </div>
                         </div>
                     </div>
@@ -1978,7 +1980,7 @@
                     <div class="card-icon">📊</div>
                     <h3>Three-Tier POA&M</h3>
                     <p>Revolutionary improvement tracking</p>
-                    <button onclick="showPOAMModal()" class="access-btn">View POA&M</button>
+                    <button onclick="window.showPOAMModal()" class="access-btn">View POA&M</button>
                 </div>
                 
                 <div class="access-card">
@@ -3383,7 +3385,7 @@ ${enhancementList}
                             🤔 Why ${ksi.status === 'passed' ? 'Pass' : ksi.status === 'failed' ? 'Fail' : 'Result'}
                         </button>
                         ${hasEnhancements ? `
-                            <button class="action-btn enhancement" onclick="showEnhancementModal('${ksi.id}')">
+                            <button class="action-btn enhancement" onclick="window.showEnhancementModal('${ksi.id}')">
                                 📈 Enhance
                             </button>
                         ` : ''}
@@ -3734,27 +3736,142 @@ ${enhancementList}
             const modalTitle = document.getElementById('why-modal-title');
             const modalBody = document.getElementById('why-modal-body');
 
-            modalTitle.innerHTML = `🤔 Why ${ksi.status}? - ${ksi.id}`;
+            const statusText = ksi.status === 'passed' ? 'Pass' : 
+                              ksi.status === 'failed' ? 'Fail' : 'Result';
+            const statusIcon = getStatusIcon(ksi.status);
+            
+            modalTitle.innerHTML = `🤔 Why ${statusText}? - ${ksi.id}`;
+
+            // Parse and clean up the assertion reason
+            const cleanedAssessment = parseAndCleanAssessment(ksi.assertion_reason);
+
             modalBody.innerHTML = `
-                <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <h4>📊 Assessment Summary</h4>
-                    <p><strong>Status:</strong> ${ksi.status.toUpperCase()}</p>
+                <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+                    <h4 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        📊 Assessment Summary
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${statusIcon} ${statusText.toUpperCase()}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">STATUS</div>
+                        </div>
+                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${ksi.commands_executed || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">COMMANDS</div>
+                        </div>
+                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${ksi.status === 'passed' ? '100%' : ksi.status === 'failed' ? '0%' : '50%'}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">SUCCESS</div>
+                        </div>
+                        ${ksi.hasEnhancements ? `
+                            <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                <div style="font-size: 1.5rem; font-weight: 800; color: var(--enhancement-500);">${ksi.enhancements.length}</div>
+                                <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">ENHANCEMENTS</div>
+                            </div>
+                        ` : ''}
+                    </div>
                     <p><strong>Category:</strong> ${ksi.category}</p>
-                    <p><strong>Commands:</strong> ${ksi.commands_executed}</p>
-                    ${ksi.hasEnhancements ? `<p><strong>Enhancements:</strong> ${ksi.enhancements.length} opportunities identified</p>` : ''}
+                    <p><strong>Validation Method:</strong> ${ksi.validation_method || 'Automated'}</p>
                 </div>
                 
-                <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <h4>🎯 Requirement & Assessment</h4>
+                <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+                    <h4 style="margin-bottom: 1rem;">🎯 Requirement & Assessment</h4>
                     <p><strong>Requirement:</strong> ${ksi.requirement}</p>
-                    <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
-                        ${ksi.assertion_reason}
+                    <div style="margin-top: 1rem;">
+                        <strong>Assessment Result:</strong>
+                        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid var(--border-color);">
+                            ${cleanedAssessment}
+                        </div>
                     </div>
+                </div>
+
+                ${ksi.hasEnhancements ? `
+                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--enhancement-500); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--enhancement-600); margin-bottom: 1rem;">📈 Enhancement Opportunities Identified</h4>
+                        ${ksi.enhancements.map(enh => `
+                            <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 6px; margin-bottom: 0.5rem; border: 1px solid var(--border-color);">
+                                <div style="font-weight: 600; color: var(--enhancement-600);">${enh.type} (${enh.priority} Priority)</div>
+                                <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.25rem;">${enh.description}</div>
+                                <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;"><em>Evidence: ${enh.evidence}</em></div>
+                            </div>
+                        `).join('')}
+                        <div style="margin-top: 1rem;">
+                            <button onclick="window.showEnhancementModal('${ksi.id}')" class="action-btn enhancement">
+                                📈 View Enhancement Plan
+                            </button>
+                        </div>
+                    </div>
+                ` : ''}
+                
+                <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h4 style="margin-bottom: 1rem;">🔧 Technical Information</h4>
+                    <p><strong>Commands Executed:</strong> ${ksi.commands_executed || 0} (${ksi.successful_commands || 0} successful, ${ksi.failed_commands || 0} failed)</p>
+                    <p><strong>Command Source:</strong> ${ksi.command_source || 'Unknown'}</p>
+                    <p><strong>Evidence Path:</strong> ${ksi.evidence_path || 'No specific path'}</p>
+                    ${ksi.timestamp ? `<p><strong>Last Validated:</strong> ${formatTimestamp(ksi.timestamp)}</p>` : ''}
                 </div>
             `;
 
             document.getElementById('why-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
+        }
+
+        // Clean up and parse assessment results for better readability
+        function parseAndCleanAssessment(assertionReason) {
+            if (!assertionReason) return 'No assessment details available';
+            
+            // Remove excessive technical symbols and clean up
+            let cleaned = assertionReason
+                .replace(/✅|❌|⚠️/g, '') // Remove status emojis temporarily
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            // Split into key findings
+            const findings = [];
+            const parts = assertionReason.split(/[;:]/);
+            
+            parts.forEach(part => {
+                const trimmed = part.trim();
+                if (trimmed.length > 10) {
+                    // Restore status indicators
+                    let status = '🔵';
+                    if (trimmed.includes('✅')) status = '✅';
+                    else if (trimmed.includes('❌')) status = '❌';
+                    else if (trimmed.includes('⚠️')) status = '⚠️';
+                    
+                    // Clean the text
+                    const cleanText = trimmed
+                        .replace(/✅|❌|⚠️/g, '')
+                        .replace(/^\s*[:\-]\s*/, '')
+                        .trim();
+                    
+                    if (cleanText.length > 5) {
+                        findings.push(`${status} ${cleanText}`);
+                    }
+                }
+            });
+
+            // If we have findings, format them nicely
+            if (findings.length > 0) {
+                return findings.slice(0, 6).map(finding => 
+                    `<div style="margin-bottom: 0.5rem; padding: 0.5rem; background: var(--bg-accent); border-radius: 4px;">${finding}</div>`
+                ).join('');
+            }
+
+            // Fallback to original but shortened
+            const shortened = assertionReason.length > 200 ? 
+                assertionReason.substring(0, 200) + '...' : 
+                assertionReason;
+            
+            return shortened;
+        }
+
+        function formatTimestamp(timestamp) {
+            try {
+                return new Date(timestamp).toLocaleString();
+            } catch (e) {
+                return timestamp;
+            }
         }
 
         function createGitHubIssue(ksiId) {
@@ -3971,9 +4088,16 @@ Please provide guidance on how to remediate this KSI failure.`);
             updateMetrics();
             updateTimestamps();
             loadRealData();
+            
+            // Test modal elements
+            console.log('🧪 Testing modal elements...');
+            console.log('- POA&M Modal:', !!document.getElementById('poam-modal'));
+            console.log('- Enhancement Modal:', !!document.getElementById('enhancement-modal'));
+            console.log('- Commands Modal:', !!document.getElementById('commands-modal'));
+            console.log('- Why Modal:', !!document.getElementById('why-modal'));
         }
 
-        // Global functions
+        // Global functions - Make sure all modal functions are accessible
         window.showWhyModal = showWhyModal;
         window.closeWhyModal = closeWhyModal;
         window.createGitHubIssue = createGitHubIssue;
@@ -3982,6 +4106,7 @@ Please provide guidance on how to remediate this KSI failure.`);
         window.scrollToTrustSection = scrollToTrustSection;
         window.showCommandsModal = showCommandsModal;
         window.closeCommandsModal = closeCommandsModal;
+        window.toggleCommandDetails = toggleCommandDetails;
         window.downloadJSON = downloadJSON;
         window.viewFailedReport = viewFailedReport;
         window.closeMarkdownModal = closeMarkdownModal;
@@ -4007,6 +4132,12 @@ Please provide guidance on how to remediate this KSI failure.`);
             console.log('🚀 FedRAMP 20x Trust Center - Revolutionary Three-Tier POA&M System Loading...');
             initializeTheme();
             initializeDashboard();
+            
+            // Add debug info
+            console.log('🔧 Debugging: POA&M Modal element exists:', !!document.getElementById('poam-modal'));
+            console.log('🔧 Debugging: Enhancement Modal element exists:', !!document.getElementById('enhancement-modal'));
+            console.log('🔧 Debugging: showPOAMModal function available:', typeof window.showPOAMModal);
+            console.log('🔧 Debugging: showEnhancementModal function available:', typeof window.showEnhancementModal);
             
             const searchBox = document.getElementById('search-input');
             if (searchBox) {
@@ -4056,6 +4187,16 @@ Please provide guidance on how to remediate this KSI failure.`);
             
             console.log('✅ Revolutionary Three-Tier POA&M Dashboard initialization complete');
             console.log('🎯 Innovation: First FedRAMP 20x submission with proactive enhancement tracking');
+            
+            // Test POA&M functionality after a short delay
+            setTimeout(() => {
+                console.log('🧪 Testing POA&M modal availability...');
+                if (typeof window.showPOAMModal === 'function') {
+                    console.log('✅ POA&M modal function is ready - buttons should work!');
+                } else {
+                    console.error('❌ POA&M modal function not properly initialized');
+                }
+            }, 1000);
         });
 
         // Keyboard shortcuts
