@@ -1,14 +1,14 @@
 # KSI-SVC-01: Harden and review network and system configurations
 
-*Generated on 2025-06-13 03:18:57 UTC*
+*Generated on 2025-06-13 17:07:48 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-01`
 **Description:** Harden and review network and system configurations
 **Justification:** Validates comprehensive network and system hardening from basic security group configuration to enterprise-grade multi-layer defense, compliance monitoring, and advanced threat detection across cloud-native and traditional infrastructure
-**Last Validation:** ✅ 2025-06-13T03:18:57.722434
-**Result:** ✅ Production-ready multi-layer defense and automated compliance (72%): ✅ Network hardening foundation: 9 security groups (8 hardened, 1 require review); ✅ System configuration management: 4 instances configured; ✅ Comprehensive system management: 4/4 instances under SSM (100% coverage); ✅ Automated patch management: 17 patch baselines configured; ℹ️ 1 default Network ACLs (consider custom rules for enhanced security); ✅ Threat detection enabled: 1 GuardDuty detectors monitoring for threats; ✅ Application layer protection: 1 Web ACLs configured; ✅ Enterprise-wide security governance: AWS Organizations enables centralized hardening policies; ✅ Advanced organization features: SCPs and advanced governance capabilities enabled
+**Last Validation:** ✅ 2025-06-13T17:07:48.429861
+**Result:** ✅ Production-ready multi-layer defense and automated compliance (72%): ✅ Network hardening foundation: 11 security groups (10 hardened, 1 require review); ✅ System configuration management: 4 instances configured; ✅ Comprehensive system management: 4/4 instances under SSM (100% coverage); ✅ Automated patch management: 17 patch baselines configured; ℹ️ 1 default Network ACLs (consider custom rules for enhanced security); ✅ Threat detection enabled: 1 GuardDuty detectors monitoring for threats; ✅ Application layer protection: 1 Web ACLs configured; ✅ Enterprise-wide security governance: AWS Organizations enables centralized hardening policies; ✅ Advanced organization features: SCPs and advanced governance capabilities enabled
 
 ## 🛠️ Implementation
 
