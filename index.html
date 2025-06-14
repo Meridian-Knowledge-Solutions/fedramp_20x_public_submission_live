@@ -3956,9 +3956,22 @@ Please provide guidance on how to remediate this KSI failure.`);
         }
 
         function downloadJSON() {
-            window.open('./unified_ksi_validations.json', '_blank');
-        }
-
+    // Fetch the actual JSON file and trigger download
+    fetch('./unified_ksi_validations.json')
+        .then(response => response.json())
+        .then(data => {
+            const jsonString = JSON.stringify(data, null, 2);
+            downloadFile(jsonString, 'unified_ksi_validations.json', 'application/json');
+        })
+        .catch(error => {
+            console.error('Error fetching JSON:', error);
+            // Fallback: try direct download approach
+            const link = document.createElement('a');
+            link.href = './unified_ksi_validations.json';
+            link.download = 'unified_ksi_validations.json';
+            link.click();
+        });
+}
         async function viewFailedReport() {
             try {
                 const response = await fetch('./failed_ksi_report_readable.md');
