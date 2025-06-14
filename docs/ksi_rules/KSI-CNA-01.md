@@ -1,13 +1,13 @@
 # KSI-CNA-01: Configure ALL information resources to limit inbound and outbound traffic
 
-*Generated on 2025-06-13 17:07:48 UTC*
+*Generated on 2025-06-14 01:19:05 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-01`
 **Description:** Configure ALL information resources to limit inbound and outbound traffic
 **Justification:** Validates comprehensive traffic controls across all AWS resources through multi-layered network security including ingress/egress controls, application-layer protection, and traffic monitoring
-**Last Validation:** ✅ 2025-06-13T17:07:48.413314
+**Last Validation:** ✅ 2025-06-14T01:19:04.863882
 **Result:** ✅ Strong multi-layer traffic controls (69%): ✅ VPC infrastructure: 1 VPC(s) detected; ✅ Strong ingress controls: 10/11 security groups restrictive; ❌ No egress controls: 1/11 security groups control outbound traffic; ✅ Default security group properly secured; ⚠️ Using default Network ACLs only (1 total) - no custom subnet-level controls; ✅ Controlled egress routing: 1 private route tables with NAT gateway routing; ✅ Managed egress: 1 NAT gateways for controlled outbound access; ✅ Private service access: 6 VPC endpoints reduce internet-bound traffic; ✅ Application-layer protection: 1 WAF Web ACLs configured; ✅ Traffic distribution: 1 load balancers (1 public, 0 internal); ⚠️ No VPC Flow Logs found - limited traffic visibility
 
 ## 🛠️ Implementation
