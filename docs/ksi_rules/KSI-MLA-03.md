@@ -1,14 +1,23 @@
 # KSI-MLA-03: Rapidly detect and remediate or mitigate vulnerabilities
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-14 01:19:05 UTC*
+=======
+*Generated on 2025-06-14 01:19:13 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-03`
 **Description:** Rapidly detect and remediate or mitigate vulnerabilities
 **Justification:** Validates comprehensive vulnerability detection and response from basic security monitoring to enterprise-grade automated remediation, threat intelligence, and cross-account vulnerability management
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-14T01:19:04.869813
 **Result:** ✅ Solid vulnerability detection foundation with automated capabilities (44%): ❌ Security Hub not configured for vulnerability detection; ⚠️ Inspector configured but no scanning features enabled; ✅ Active threat analysis: 15 active security findings (0 critical, 3 high); ✅ Comprehensive threat detection: 5 different vulnerability types identified; ✅ Intelligent threat detection: Advanced pattern recognition and behavioral analysis capabilities; ✅ Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection
+=======
+**Last Validation:** ✅ 2025-06-14T01:19:13.036372
+**Result:** ✅ Solid vulnerability detection foundation with automated capabilities (39%): ❌ Security Hub not configured for vulnerability detection; ℹ️ Inspector not configured (acceptable for serverless/pilot environments); ✅ Active threat analysis: 15 active security findings (0 critical, 3 high); ✅ Comprehensive threat detection: 5 different vulnerability types identified; ✅ Intelligent threat detection: Advanced pattern recognition and behavioral analysis capabilities; ✅ Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection
+>>>>>>> Stashed changes
 
 ## 🛠️ Implementation
 

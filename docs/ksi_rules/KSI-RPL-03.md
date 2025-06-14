@@ -1,13 +1,21 @@
 # KSI-RPL-03: Perform system backups aligned with recovery objectives
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-14 01:19:05 UTC*
+=======
+*Generated on 2025-06-14 01:19:13 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-03`
 **Description:** Perform system backups aligned with recovery objectives
 **Justification:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives INCLUDING retention policies
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-14T01:19:04.879150
+=======
+**Last Validation:** ✅ 2025-06-14T01:19:13.046758
+>>>>>>> Stashed changes
 **Result:** ✅ System backups with compliant retention aligned with recovery objectives: ✅ Backup infrastructure: 1 AWS Backup plans (ec2-backup-plan); ✅ Excellent retention: 90 days (rule: daily-backup); ✅ Full retention compliance: 1/1 rules meet requirements; ℹ️ No EBS snapshots (acceptable if using AWS Backup exclusively)
 
 ## 🛠️ Implementation

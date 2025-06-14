@@ -1,13 +1,21 @@
 # KSI-CNA-07: Follow AWS best practices
 
+<<<<<<< Updated upstream
 *Generated on 2025-06-14 01:19:05 UTC*
+=======
+*Generated on 2025-06-14 01:19:13 UTC*
+>>>>>>> Stashed changes
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-07`
 **Description:** Follow AWS best practices
 **Justification:** Validates comprehensive adherence to AWS Well-Architected Framework principles across security, reliability, performance, cost optimization, and operational excellence best practices
+<<<<<<< Updated upstream
 **Last Validation:** ✅ 2025-06-14T01:19:04.865390
+=======
+**Last Validation:** ✅ 2025-06-14T01:19:13.032641
+>>>>>>> Stashed changes
 **Result:** ⚠️ Basic AWS best practices (40%) - significant gaps remain: ❌ No active CloudTrail logging (critical security best practice); ✅ Encryption key management: 10 KMS keys; ✅ IAM best practices: 50 roles vs 2 users (service-oriented); ✅ Reliability architecture: 1/1 load balancers multi-AZ; ⚠️ No Auto Scaling Groups - missing automated scaling best practice; ✅ Data protection: 1 backup plans configured; ✅ Performance optimization: 4/4 instances using modern types; ✅ Storage optimization: 2 S3 buckets (cost-effective storage); ⚠️ No CloudWatch alarms - missing proactive monitoring; ⚠️ No Config rules - missing compliance automation
 
 ## 🛠️ Implementation
