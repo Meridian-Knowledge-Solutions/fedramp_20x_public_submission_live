@@ -1,21 +1,13 @@
 # KSI-INR-01: Report incidents according to FedRAMP requirements and cloud service provider policies
 
-<<<<<<< Updated upstream
-*Generated on 2025-06-14 01:19:05 UTC*
-=======
-*Generated on 2025-06-14 01:19:13 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-14 03:11:48 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-INR-01`
 **Description:** Report incidents according to FedRAMP requirements and cloud service provider policies
 **Justification:** Manual evidence required - incident reporting procedures, FedRAMP compliance documentation, and reporting policy alignment
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-14T01:19:04.867817
-=======
-**Last Validation:** ✅ 2025-06-14T01:19:13.034294
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-14T03:11:47.818159
 **Result:** ⚠️ Basic incident reporting (ensure FedRAMP compliance): ✅ Core reporting procedures: quick_reference_irp_guide.pdf, incident_reponse_policy.pdf, contingency_plan.pdf; ✅ Enhanced compliance procedures: IR.zip; ❌ No specific FedRAMP incident reporting compliance found (required)
 
 ## 🛠️ Implementation

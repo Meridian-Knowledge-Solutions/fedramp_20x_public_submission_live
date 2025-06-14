@@ -1,23 +1,14 @@
 # KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
 
-<<<<<<< Updated upstream
-*Generated on 2025-06-14 01:19:05 UTC*
-=======
-*Generated on 2025-06-14 01:19:13 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-14 03:11:48 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-05`
 **Description:** Perform Infrastructure as Code and configuration evaluation and testing
 **Justification:** Validates comprehensive Infrastructure as Code security evaluation from basic CloudFormation deployment to enterprise-grade multi-account governance, automated testing, and configuration compliance management
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-14T01:19:04.871527
+**Last Validation:** ✅ 2025-06-14T03:11:47.821851
 **Result:** ✅ Enterprise-grade Infrastructure as Code evaluation and testing: ✅ Infrastructure as Code deployment: 8/8 successful CloudFormation stacks; ✅ Parameterized configuration management: 1 SSM parameters; ⚠️ No Config rules for infrastructure evaluation; ✅ Infrastructure drift detection: 8 stacks monitored; ℹ️ No automated testing projects (consider for production); ℹ️ No automated deployment pipelines (consider for production); ✅ Deployment audit trail: 2 tracked deployment events; ✅ Resource governance: 2 managed CloudFormation resources; ✅ Enterprise multi-account governance: AWS Organizations enabled
-=======
-**Last Validation:** ✅ 2025-06-14T01:19:13.038105
-**Result:** ✅ Enterprise-grade Infrastructure as Code evaluation and testing: ✅ Infrastructure as Code deployment: 8/8 successful CloudFormation stacks; ✅ Parameterized configuration management: 1 SSM parameters; ℹ️ Config service not available (acceptable for pilot environments); ✅ Infrastructure drift detection: 8 stacks monitored; ℹ️ No automated testing projects (consider for production); ℹ️ No automated deployment pipelines (consider for production); ✅ Deployment audit trail: 2 tracked deployment events; ✅ Resource governance: 2 managed CloudFormation resources; ✅ Enterprise multi-account governance: AWS Organizations enabled
->>>>>>> Stashed changes
 
 ## 🛠️ Implementation
 

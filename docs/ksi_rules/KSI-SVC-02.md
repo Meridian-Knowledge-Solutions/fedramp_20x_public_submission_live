@@ -1,23 +1,14 @@
 # KSI-SVC-02: Encrypt or otherwise secure network traffic
 
-<<<<<<< Updated upstream
-*Generated on 2025-06-14 01:19:05 UTC*
-=======
-*Generated on 2025-06-14 01:19:13 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-14 03:11:48 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-02`
 **Description:** Encrypt or otherwise secure network traffic
 **Justification:** Validates comprehensive network traffic encryption from basic service availability to enterprise-grade multi-layer encryption, covering load balancers, CDN, API gateways, databases, caching services, and hybrid connectivity with automated certificate management
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-14T01:19:04.880222
+**Last Validation:** ✅ 2025-06-14T03:11:47.830601
 **Result:** ✅ Production-ready multi-layer traffic encryption and certificate management (60%): ✅ Load balancer encryption capability: 1 load balancers configured for traffic encryption; ✅ Private service communication: 6 VPC endpoints (3 interface, 1 gateway); ℹ️ No load balancer listeners configured; ℹ️ No CloudFront distributions for global traffic encryption; ℹ️ No API Gateway configurations found; ✅ Database encryption capability: 1 RDS instances (0 with encrypted storage); ℹ️ No ElastiCache clusters for cache encryption; ✅ Automated certificate management: 2/2 active ACM certificates (100% healthy); ℹ️ No VPN connections for hybrid connectivity encryption; ✅ Enterprise-wide encryption governance: AWS Organizations enables centralized traffic encryption policies; ✅ Advanced organization features: SCPs for encryption policy enforcement enabled
-=======
-**Last Validation:** ✅ 2025-06-14T01:19:13.047707
-**Result:** ✅ Production-ready multi-layer traffic encryption and certificate management (60%): ✅ Load balancer encryption capability: 1 load balancers configured for traffic encryption; ✅ Private service communication: 6 VPC endpoints (3 interface, 1 gateway); ℹ️ No API Gateway configurations found; ✅ Database encryption capability: 1 RDS instances (0 with encrypted storage); ℹ️ No ElastiCache clusters for cache encryption; ✅ Automated certificate management: 2/2 active ACM certificates (100% healthy); ℹ️ No VPN connections for hybrid connectivity encryption; ✅ Enterprise-wide encryption governance: AWS Organizations enables centralized traffic encryption policies; ✅ Advanced organization features: SCPs for encryption policy enforcement enabled
->>>>>>> Stashed changes
 
 ## 🛠️ Implementation
 

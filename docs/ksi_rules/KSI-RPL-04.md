@@ -1,21 +1,13 @@
 # KSI-RPL-04: Regularly test the capability to recover from incidents and contingencies
 
-<<<<<<< Updated upstream
-*Generated on 2025-06-14 01:19:05 UTC*
-=======
-*Generated on 2025-06-14 01:19:13 UTC*
->>>>>>> Stashed changes
+*Generated on 2025-06-14 03:11:48 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-RPL-04`
 **Description:** Regularly test the capability to recover from incidents and contingencies
 **Justification:** Manual evidence required - recovery testing procedures, test results, and lessons learned documentation
-<<<<<<< Updated upstream
-**Last Validation:** ✅ 2025-06-14T01:19:04.879227
-=======
-**Last Validation:** ✅ 2025-06-14T01:19:13.046849
->>>>>>> Stashed changes
+**Last Validation:** ✅ 2025-06-14T03:11:47.829804
 **Result:** ⚠️ Basic recovery testing (expand testing procedures): ✅ Core testing documentation: combined_tabletop_test_report_template.pdf; ✅ Recent testing: 2 test documents updated within last year
 
 ## 🛠️ Implementation
