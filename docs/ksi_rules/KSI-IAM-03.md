@@ -1,13 +1,13 @@
 # KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
 
-*Generated on 2025-06-14 03:11:48 UTC*
+*Generated on 2025-06-15 03:24:19 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-03`
 **Description:** Enforce appropriately secure authentication methods for non-user accounts and services
 **Justification:** Validates service accounts use appropriate authentication methods (roles, not long-term keys) and detects insecure patterns
-**Last Validation:** ✅ 2025-06-14T03:11:47.817071
+**Last Validation:** ✅ 2025-06-15T03:24:19.391826
 **Result:** ✅ Secure service authentication methods: ✅ 50 IAM roles available (24 service-oriented); ✅ 2 users found, none appear to be service accounts; ✅ 1 active access keys (reasonable for admin use); ℹ️ No EC2 instance profile information available
 
 ## 🛠️ Implementation

@@ -1,13 +1,13 @@
 # KSI-PIY-05: Document methods used to evaluate information resource implementations
 
-*Generated on 2025-06-14 03:11:48 UTC*
+*Generated on 2025-06-15 03:24:19 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-05`
 **Description:** Document methods used to evaluate information resource implementations
 **Justification:** Manual evidence required - evaluation methodologies and assessment procedures
-**Last Validation:** ✅ 2025-06-14T03:11:47.829385
+**Last Validation:** ✅ 2025-06-15T03:24:19.405841
 **Result:** ⚠️ Basic evaluation procedures (expand coverage): ✅ Core evaluation methods: Information Resource Evaluation Methodology (KSI-PIY-05).pdf
 
 ## 🛠️ Implementation
