@@ -148,7 +148,7 @@ Private Repository → CLI Commands → Evidence Collection → Assertion Logic 
 - Continuous monitoring data
 
 ### 📞 Agency Contact Information
-- **Primary Contact**: FedRAMP Program Office
+- **Primary Contact**: Meridian Federal Cloud Operations 
 - **Email**: [security@meridianks.com](mailto:security@meridianks.com)
 - **Phone**: +1 (571) 665-5287 
 - **Support**: 24/7 for critical security issues
