@@ -1,13 +1,13 @@
 # KSI-PIY-03: Maintain a vulnerability disclosure program
 
-*Generated on 2025-06-15 03:24:19 UTC*
+*Generated on 2025-06-16 03:21:46 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-PIY-03`
 **Description:** Maintain a vulnerability disclosure program
 **Justification:** Manual evidence required - vulnerability disclosure policy and program documentation
-**Last Validation:** ✅ 2025-06-15T03:24:19.405601
+**Last Validation:** ✅ 2025-06-16T03:21:45.708581
 **Result:** ✅ Vulnerability disclosure program maintained: ✅ Vulnerability disclosure documentation: vulnerability_disclosure_program_final.pdf
 
 ## 🛠️ Implementation
