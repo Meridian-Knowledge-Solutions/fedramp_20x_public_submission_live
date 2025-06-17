@@ -1,14 +1,14 @@
 # KSI-SVC-06: Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 
-*Generated on 2025-06-16 03:21:46 UTC*
+*Generated on 2025-06-17 03:18:07 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-SVC-06`
 **Description:** Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 **Justification:** Validates comprehensive automated key management from basic KMS availability to enterprise-grade key lifecycle management, covering encryption keys, certificates, rotation policies, access controls, hardware security modules, and organizational key governance with automated provisioning and compliance monitoring
-**Last Validation:** ✅ 2025-06-16T03:21:45.711710
-**Result:** ✅ Production-ready automated key lifecycle management with compliance monitoring (75%): ✅ Automated key management infrastructure: 10 KMS keys (0 customer-managed, 10 AWS-managed); ✅ Automated certificate management: 2 ACM certificates (2 issued, 0 pending); ✅ Key governance structure: 4/21 customer-managed aliases (19%); ℹ️ No KMS-encrypted SecureString parameters found; ⚠️ Secrets Manager configured but no automatic rotation enabled; ✅ Modern certificate management: No legacy IAM certificates; ✅ Infrastructure as Code key management: 8/8 successful CloudFormation stacks (100%); ℹ️ No Config rules for key management compliance monitoring; ✅ Key management audit trail: 4 recent key management events tracked; ✅ Enterprise-wide key management governance: AWS Organizations enables centralized key policies; ✅ Advanced organization features: SCPs for key management policy enforcement enabled
+**Last Validation:** ✅ 2025-06-17T03:18:06.904355
+**Result:** ✅ Enterprise-grade comprehensive automated key management governance with rotation (80%): ✅ Automated key management infrastructure: 11 KMS keys (0 customer-managed, 11 AWS-managed); ✅ Automated certificate management: 2 ACM certificates (2 issued, 0 pending); ✅ Key governance structure: 4/21 customer-managed aliases (19%); ✅ Automated encryption integration: 2 KMS-encrypted SecureString parameters; ⚠️ Secrets Manager configured but no automatic rotation enabled; ✅ Modern certificate management: No legacy IAM certificates; ✅ Infrastructure as Code key management: 8/8 successful CloudFormation stacks (100%); ℹ️ No Config rules for key management compliance monitoring; ✅ Key management audit trail: 4 recent key management events tracked; ✅ Enterprise-wide key management governance: AWS Organizations enables centralized key policies; ✅ Advanced organization features: SCPs for key management policy enforcement enabled
 
 ## 🛠️ Implementation
 

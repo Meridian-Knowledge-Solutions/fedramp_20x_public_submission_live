@@ -1,13 +1,13 @@
 # KSI-TPR-03: Identify and prioritize mitigation of potential supply chain risks
 
-*Generated on 2025-06-16 03:21:46 UTC*
+*Generated on 2025-06-17 03:18:07 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-TPR-03`
 **Description:** Identify and prioritize mitigation of potential supply chain risks
 **Justification:** Manual evidence required - supply chain risk assessment and mitigation planning
-**Last Validation:** ✅ 2025-06-16T03:21:45.714178
+**Last Validation:** ✅ 2025-06-17T03:18:06.905162
 **Result:** ⚠️ Basic supply chain risk assessment (expand mitigation planning): ✅ Core risk assessment: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
 
 ## 🛠️ Implementation
