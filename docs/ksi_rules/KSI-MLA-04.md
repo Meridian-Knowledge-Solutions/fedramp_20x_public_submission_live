@@ -1,13 +1,13 @@
 # KSI-MLA-04: Perform authenticated vulnerability scanning on information resources
 
-*Generated on 2025-06-18 04:16:46 UTC*
+*Generated on 2025-06-18 04:28:40 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-04`
 **Description:** Perform authenticated vulnerability scanning on information resources
 **Justification:** Validates comprehensive authenticated vulnerability scanning from basic service availability to enterprise-grade multi-service scanning, container security, and cloud-native vulnerability management
-**Last Validation:** ✅ 2025-06-18T04:16:45.745481
+**Last Validation:** ✅ 2025-06-18T04:28:40.200780
 **Result:** ✅ Enterprise-grade authenticated vulnerability scanning with comprehensive coverage (94%): ✅ Inspector service operational: Responds to coverage queries and scanning requests; ✅ Comprehensive scanning coverage: 7/4 instances under authenticated scanning; ⚠️ Inspector available but scanning features not fully enabled; ✅ System-level scanning capability: 4 SSM-managed instances for authenticated system assessment; ✅ Serverless code analysis: 2 Lambda functions available for authenticated code vulnerability scanning; ✅ Active workload scanning: 2 recently updated functions requiring ongoing vulnerability assessment; ✅ Comprehensive workload coverage: 3 service types available for authenticated scanning (EC2, Lambda, SSM); ✅ Active vulnerability intelligence: 20 authenticated scan findings (0 critical, 5 high); ✅ Comprehensive vulnerability discovery: High-volume scanning indicates thorough authenticated assessment; ✅ Automated discovery: Inspector service can automatically detect and scan new resources; ✅ Enterprise scanning governance: AWS Organizations enables centralized multi-account vulnerability scanning
 
 ## 🛠️ Implementation
