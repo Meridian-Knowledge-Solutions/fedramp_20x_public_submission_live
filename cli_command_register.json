@@ -62,7 +62,6 @@
         "note": "Analyze load balancer exposure patterns (internal vs internet-facing)"
       },
       {
-      {
         "command": "aws lambda list-functions --output json",
         "note": "Assess Lambda function isolation and VPC configuration for attack surface reduction"
       },
