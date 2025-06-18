@@ -1,13 +1,13 @@
 # KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-*Generated on 2025-06-18 04:28:40 UTC*
+*Generated on 2025-06-18 19:47:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-02`
 **Description:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 **Justification:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
-**Last Validation:** ✅ 2025-06-18T04:28:40.194849
+**Last Validation:** ✅ 2025-06-18T19:47:42.485941
 **Result:** ✅ Strong attack surface controls (62%): ✅ Strong attack surface minimization: 6/8 private subnets (75%); ⚠️ Basic AZ segmentation: 8 subnets across 2 availability zones; ✅ Strong micro-segmentation: 11/12 custom security groups; ⚠️ Limited lateral movement barriers: 5/12 security groups with specific rules; ✅ Minimal compute exposure: 4/4 instances in private subnets; ✅ Database isolation: All 1 RDS instances private; ⚠️ High service exposure: 1 internet-facing vs 0 internal load balancers; ℹ️ No EKS clusters found; ⚠️ Lambda exposure: 2 functions not in VPC (limited network isolation); ⚠️ Using default Network ACLs only (no additional subnet isolation)
 
 ## 🛠️ Implementation
