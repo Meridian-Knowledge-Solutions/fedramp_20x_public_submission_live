@@ -1,13 +1,13 @@
 # KSI-CNA-06: Design for high availability and recovery
 
-*Generated on 2025-06-18 03:16:27 UTC*
+*Generated on 2025-06-18 04:16:46 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-06`
 **Description:** Design for high availability and recovery
 **Justification:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
-**Last Validation:** ✅ 2025-06-18T03:16:27.389130
+**Last Validation:** ✅ 2025-06-18T04:16:45.739998
 **Result:** ⚠️ Moderate HA design (56%) - expand redundancy: ✅ Good network HA: 8 subnets across 2 AZs; ✅ Balanced AZ distribution: Even subnet spread across zones; ❌ No database HA: 1 RDS instances single-AZ; ✅ Excellent application HA: All 1 load balancers multi-AZ; ⚠️ No Auto Scaling Groups found - missing compute HA; ✅ Centralized backup strategy: 1 AWS Backup plans; ⚠️ No EBS snapshots found; ✅ Storage redundancy: 2 S3 buckets (built-in HA); ℹ️ No Route 53 hosted zones found
 
 ## 🛠️ Implementation

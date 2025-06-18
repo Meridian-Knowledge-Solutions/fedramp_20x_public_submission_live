@@ -1,13 +1,13 @@
 # KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-*Generated on 2025-06-18 03:16:27 UTC*
+*Generated on 2025-06-18 04:16:45 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-02`
 **Description:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 **Justification:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
-**Last Validation:** ✅ 2025-06-18T03:16:27.388529
+**Last Validation:** ✅ 2025-06-18T04:16:45.739352
 **Result:** ✅ Strong attack surface controls (62%): ✅ Strong attack surface minimization: 6/8 private subnets (75%); ⚠️ Basic AZ segmentation: 8 subnets across 2 availability zones; ✅ Strong micro-segmentation: 11/12 custom security groups; ⚠️ Limited lateral movement barriers: 5/12 security groups with specific rules; ✅ Minimal compute exposure: 4/4 instances in private subnets; ✅ Database isolation: All 1 RDS instances private; ⚠️ High service exposure: 1 internet-facing vs 0 internal load balancers; ℹ️ No EKS clusters found; ⚠️ Lambda exposure: 2 functions not in VPC (limited network isolation); ⚠️ Using default Network ACLs only (no additional subnet isolation)
 
 ## 🛠️ Implementation
@@ -28,16 +28,10 @@
 5. **Command:** `aws elbv2 describe-load-balancers --output json`
    **Purpose:** Analyze load balancer exposure patterns (internal vs internet-facing)
 
-6. **Command:** `aws eks describe-cluster --name $(aws eks list-clusters --query 'clusters[0]' --output text) --output json 2>/dev/null || echo '{"cluster":null}'`
-   **Purpose:** Check EKS cluster configuration for container workload isolation
-
-7. **Command:** `aws ecs list-clusters --output json`
-   **Purpose:** Evaluate ECS container workload segmentation and isolation
-
-8. **Command:** `aws lambda list-functions --output json`
+6. **Command:** `aws lambda list-functions --output json`
    **Purpose:** Assess Lambda function isolation and VPC configuration for attack surface reduction
 
-9. **Command:** `aws rds describe-db-instances --output json`
+7. **Command:** `aws rds describe-db-instances --output json`
    **Purpose:** Check database placement and exposure (should be in private subnets)
 
 ## 📋 Evidence Requirements
@@ -53,10 +47,6 @@
   - **Purpose:** Check Network ACLs for subnet-level isolation and lateral movement barriers
 - **Command:** `aws elbv2 describe-load-balancers --output json`
   - **Purpose:** Analyze load balancer exposure patterns (internal vs internet-facing)
-- **Command:** `aws eks describe-cluster --name $(aws eks list-clusters --query 'clusters[0]' --output text) --output json 2>/dev/null || echo '{"cluster":null}'`
-  - **Purpose:** Check EKS cluster configuration for container workload isolation
-- **Command:** `aws ecs list-clusters --output json`
-  - **Purpose:** Evaluate ECS container workload segmentation and isolation
 - **Command:** `aws lambda list-functions --output json`
   - **Purpose:** Assess Lambda function isolation and VPC configuration for attack surface reduction
 - **Command:** `aws rds describe-db-instances --output json`
@@ -116,9 +106,9 @@ def evaluate_KSI_CNA_02(cli_output):
 
 ## 📊 Recent Validation Results
 
-**Evidence Analysis:** ❌ All 9 commands failed execution | ⚠️ No usable output
+**Evidence Analysis:** ❌ All 7 commands failed execution | ⚠️ No usable output
 
-**Commands Executed:** 9
+**Commands Executed:** 7
 **Validation Method:** validation-engine-sync
 
 ---

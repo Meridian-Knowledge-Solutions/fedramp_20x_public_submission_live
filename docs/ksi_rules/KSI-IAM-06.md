@@ -1,13 +1,13 @@
 # KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
-*Generated on 2025-06-18 03:16:27 UTC*
+*Generated on 2025-06-18 04:16:46 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-06`
 **Description:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 **Justification:** Validates end-to-end automated response workflows including threat detection, event triggers, and account security actions through modern AWS security services and Identity Center integration
-**Last Validation:** ✅ 2025-06-18T03:16:27.390928
+**Last Validation:** ✅ 2025-06-18T04:16:45.741937
 **Result:** ✅ Strong automated response capabilities (82%): ✅ Advanced threat detection: GuardDuty enabled (1 detector(s)); ✅ Centralized security management: Security Hub enabled; ✅ Automated security triggers: 1 active EventBridge rules; ✅ Modern identity automation: Identity Center configured (1 instance(s)); ✅ Built-in automated identity controls: Session management, conditional access, risk-based authentication; ⚠️ No Config rules found for automated remediation; ⚠️ 2 Lambda functions found but none explicitly security-focused; ❌ No CloudWatch alarms found for security monitoring
 
 ## 🛠️ Implementation
