@@ -62,13 +62,6 @@
         "note": "Analyze load balancer exposure patterns (internal vs internet-facing)"
       },
       {
-        "command": "aws eks describe-cluster --name $(aws eks list-clusters --query 'clusters[0]' --output text) --output json 2>/dev/null || echo '{\"cluster\":null}'",
-        "note": "Check EKS cluster configuration for container workload isolation"
-      },
-      {
-        "command": "aws ecs list-clusters --output json",
-        "note": "Evaluate ECS container workload segmentation and isolation"
-      },
       {
         "command": "aws lambda list-functions --output json",
         "note": "Assess Lambda function isolation and VPC configuration for attack surface reduction"
