@@ -1,13 +1,13 @@
 # KSI-CNA-05: Have denial of service protection
 
-*Generated on 2025-06-18 19:47:42 UTC*
+*Generated on 2025-06-19 03:17:32 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-05`
 **Description:** Have denial of service protection
 **Justification:** Validates comprehensive multi-layer DDoS protection through network-layer shields, application-layer filtering, edge protection, capacity-based mitigation, and automated response capabilities
-**Last Validation:** ✅ 2025-06-18T19:47:42.486397
+**Last Validation:** ✅ 2025-06-19T03:17:32.373678
 **Result:** ⚠️ Moderate DDoS protection (43%) - expand coverage: ✅ AWS Shield Standard protection (provided by default - automatic network-layer protection); ✅ Regional application protection: 1 WAF Web ACLs; ⚠️ No CloudFront WAF found - missing edge application protection; ⚠️ No CloudFront distributions - missing edge-based DDoS protection; ✅ Traffic distribution: 1 load balancers (1 ALB, 0 NLB); ⚠️ No Auto Scaling Groups - missing capacity-based DDoS mitigation; ⚠️ No Route 53 hosted zones - DNS may be vulnerable to attacks; ⚠️ No CloudWatch alarms - missing DDoS detection and response
 
 ## 🛠️ Implementation
