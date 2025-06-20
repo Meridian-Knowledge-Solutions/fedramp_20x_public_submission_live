@@ -1,81 +1,27 @@
 # KSI-INR-02: Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Incident Reporting
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-INR-02`
-**Description:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
-**Justification:** Validates incident logging infrastructure and manual incident tracking with pattern analysis
-**Last Validation:** ✅ 2025-06-20T03:16:41.729526
-**Result:** ✅ Incident logging maintained with periodic pattern analysis: ✅ Security logging infrastructure: 1 security log groups configured; ✅ Incident tracking and analysis: Incident Tracking and Analysis Template (KSI-INR-02).pdf; ✅ Recent reviews: 1 incident analysis documents updated within 6 months
+**What it validates:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 
-## 🛠️ Implementation
+**Why it matters:** Validates incident logging infrastructure and manual incident tracking with pattern analysis
 
-### Commands Executed
-1. **Command:** `aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json`
-   **Purpose:** Check for security-related log groups for incident logging infrastructure
+## Validation Method
 
-2. **Command:** `evidence_check`
-   **Purpose:** Check evidence_v2/KSI-INR-02/ for incident_log_register.xlsx, incident_pattern_analysis.pdf, vulnerability_trend_reports.pdf, and periodic_incident_reviews.pdf
+1. `aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json`
+   *Check for security-related log groups for incident logging infrastructure*
 
-## 📋 Evidence Requirements
+2. **Manual Review:** Check evidence_v2/KSI-INR-02/ for incident_log_register.xlsx, incident_pattern_analysis.pdf, vulnerability_trend_reports.pdf, and periodic_incident_reviews.pdf
 
-### 🖥️ CLI Validation
-- **Command:** `aws logs describe-log-groups --log-group-name-prefix '/aws/security' --output json`
-  - **Purpose:** Check for security-related log groups for incident logging infrastructure
+## Latest Results
 
-### 📄 Manual Evidence
-- Check evidence_v2/KSI-INR-02/ for incident_log_register.xlsx, incident_pattern_analysis.pdf, vulnerability_trend_reports.pdf, and periodic_incident_reviews.pdf
-
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_INR_02`
-
-**Documentation:** KSI-INR-02: Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
-
-Expected: Security log groups + Manual incident tracking and analysis
-
-### Rule Implementation
-```python
-def evaluate_KSI_INR_02(cli_output):
-    """
-    KSI-INR-02: Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
-    
-    Expected: Security log groups + Manual incident tracking and analysis
-    """
-    evidence_dir = Path("evidence_v2/KSI-INR-02")
-    security_log_groups = None
-    if "commands" in cli_output:
-        for cmd in cli_output["commands"]:
-            cli_command = cmd.get("cli_command", "")
-            raw_output = cmd.get("raw_output", {})
-            if "describe-log-groups" in cli_command:
-                security_log_groups = raw_output.get("logGroups", [])
-    manual_evidence = []
-    if evidence_dir.exists():
-        tracking_files = [
-            "Incident Tracking and Analysis Template (KSI-INR-02).pdf",
-        ]
-        for doc in tracking_files:
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
-
-**Implementation Justification:** Validates incident logging infrastructure and manual incident tracking with pattern analysis
-
-**FedRAMP 20x Category:** Incident Reporting
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 2
-**Validation Method:** validation-engine-sync
+PASS Incident logging maintained with periodic pattern analysis: PASS Security logging infrastructure: 1 security log groups configured
+- PASS Incident tracking and analysis: Incident Tracking and Analysis Template (KSI-INR-02).pdf
+- PASS Recent reviews: 1 incident analysis documents updated within 6 months
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

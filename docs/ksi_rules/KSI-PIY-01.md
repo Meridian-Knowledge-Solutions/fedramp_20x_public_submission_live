@@ -1,82 +1,26 @@
 # KSI-PIY-01: Have an up-to-date information resource inventory or code defining all deployed assets, software, and services
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Policy and Inventory
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-PIY-01`
-**Description:** Have an up-to-date information resource inventory or code defining all deployed assets, software, and services
-**Justification:** Validates asset inventory through AWS resource discovery and documented inventory records
-**Last Validation:** ✅ 2025-06-20T03:16:41.741371
-**Result:** ⚠️ Partial inventory coverage (expand documentation): ✅ AWS resource inventory: 66 tagged resources discovered; ❌ No manual asset inventory documentation found
+**What it validates:** Have an up-to-date information resource inventory or code defining all deployed assets, software, and services
 
-## 🛠️ Implementation
+**Why it matters:** Validates asset inventory through AWS resource discovery and documented inventory records
 
-### Commands Executed
-1. **Command:** `aws resourcegroupstaggingapi get-resources --output json`
-   **Purpose:** Get comprehensive resource inventory across all AWS services
+## Validation Method
 
-2. **Command:** `evidence_check`
-   **Purpose:** Check evidence_v2/KSI-PIY-01/ for asset_inventory.xlsx and software_inventory.pdf
+1. `aws resourcegroupstaggingapi get-resources --output json`
+   *Get comprehensive resource inventory across all AWS services*
 
-## 📋 Evidence Requirements
+2. **Manual Review:** Check evidence_v2/KSI-PIY-01/ for asset_inventory.xlsx and software_inventory.pdf
 
-### 🖥️ CLI Validation
-- **Command:** `aws resourcegroupstaggingapi get-resources --output json`
-  - **Purpose:** Get comprehensive resource inventory across all AWS services
+## Latest Results
 
-### 📄 Manual Evidence
-- Check evidence_v2/KSI-PIY-01/ for asset_inventory.xlsx and software_inventory.pdf
-
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_PIY_01`
-
-**Documentation:** KSI-PIY-01: Have an up-to-date information resource inventory or code defining 
-all deployed assets, software, and services
-
-Expected: AWS Resource Inventory + Manual Asset Documentation
-
-### Rule Implementation
-```python
-def evaluate_KSI_PIY_01(cli_output):
-    """
-    KSI-PIY-01: Have an up-to-date information resource inventory or code defining 
-    all deployed assets, software, and services
-    
-    Expected: AWS Resource Inventory + Manual Asset Documentation
-    """
-    evidence_dir = Path("evidence_v2/KSI-PIY-01")
-    aws_resources = None
-    if "commands" in cli_output:
-        for cmd in cli_output["commands"]:
-            cli_command = cmd.get("cli_command", "")
-            raw_output = cmd.get("raw_output", {})
-            if "get-resources" in cli_command:
-                aws_resources = raw_output.get("ResourceTagMappingList", [])
-    manual_evidence = []
-    if evidence_dir.exists():
-        inventory_files = [
-            "asset_inventory.xlsx",
-            "software_inventory.pdf", 
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Have an up-to-date information resource inventory or code defining all deployed assets, software, and services
-
-**Implementation Justification:** Validates asset inventory through AWS resource discovery and documented inventory records
-
-**FedRAMP 20x Category:** Policy and Inventory
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 2
-**Validation Method:** validation-engine-sync
+WARNING Partial inventory coverage (expand documentation): PASS AWS resource inventory: 66 tagged resources discovered
+- FAIL No manual asset inventory documentation found
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

@@ -1,122 +1,55 @@
 # KSI-CNA-06: Design for high availability and recovery
 
-*Generated on 2025-06-20 03:16:41 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Cloud Native Architecture
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-CNA-06`
-**Description:** Design for high availability and recovery
-**Justification:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
-**Last Validation:** ✅ 2025-06-20T03:16:41.727520
-**Result:** ⚠️ Moderate HA design (56%) - expand redundancy: ✅ Good network HA: 8 subnets across 2 AZs; ✅ Balanced AZ distribution: Even subnet spread across zones; ❌ No database HA: 1 RDS instances single-AZ; ✅ Excellent application HA: All 1 load balancers multi-AZ; ⚠️ No Auto Scaling Groups found - missing compute HA; ✅ Centralized backup strategy: 1 AWS Backup plans; ⚠️ No EBS snapshots found; ✅ Storage redundancy: 2 S3 buckets (built-in HA); ℹ️ No Route 53 hosted zones found
+**What it validates:** Design for high availability and recovery
 
-## 🛠️ Implementation
+**Why it matters:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
 
-### Commands Executed
-1. **Command:** `aws ec2 describe-subnets --output json`
-   **Purpose:** Analyze subnet distribution across availability zones for network-level HA
+## Validation Method
 
-2. **Command:** `aws ec2 describe-availability-zones --output json`
-   **Purpose:** Check available AZs in region for HA planning and validation
+1. `aws ec2 describe-subnets --output json`
+   *Analyze subnet distribution across availability zones for network-level HA*
 
-3. **Command:** `aws rds describe-db-instances --output json`
-   **Purpose:** Validate RDS Multi-AZ deployments and database high availability
+2. `aws ec2 describe-availability-zones --output json`
+   *Check available AZs in region for HA planning and validation*
 
-4. **Command:** `aws elbv2 describe-load-balancers --output json`
-   **Purpose:** Check load balancers for application-layer HA and traffic distribution
+3. `aws rds describe-db-instances --output json`
+   *Validate RDS Multi-AZ deployments and database high availability*
 
-5. **Command:** `aws autoscaling describe-auto-scaling-groups --output json`
-   **Purpose:** Validate Auto Scaling Groups for compute resilience and multi-AZ distribution
+4. `aws elbv2 describe-load-balancers --output json`
+   *Check load balancers for application-layer HA and traffic distribution*
 
-6. **Command:** `aws backup list-backup-plans --output json`
-   **Purpose:** Check backup plans for data protection and recovery capabilities
+5. `aws autoscaling describe-auto-scaling-groups --output json`
+   *Validate Auto Scaling Groups for compute resilience and multi-AZ distribution*
 
-7. **Command:** `aws ec2 describe-snapshots --owner-ids self --output json`
-   **Purpose:** Validate EBS snapshot strategy for storage recovery
+6. `aws backup list-backup-plans --output json`
+   *Check backup plans for data protection and recovery capabilities*
 
-8. **Command:** `aws s3api list-buckets --output json`
-   **Purpose:** Check S3 buckets for storage redundancy and cross-region replication
+7. `aws ec2 describe-snapshots --owner-ids self --output json`
+   *Validate EBS snapshot strategy for storage recovery*
 
-9. **Command:** `aws route53 list-hosted-zones --output json`
-   **Purpose:** Validate DNS redundancy and health check capabilities
+8. `aws s3api list-buckets --output json`
+   *Check S3 buckets for storage redundancy and cross-region replication*
 
-## 📋 Evidence Requirements
+9. `aws route53 list-hosted-zones --output json`
+   *Validate DNS redundancy and health check capabilities*
 
-### 🖥️ CLI Validation
-- **Command:** `aws ec2 describe-subnets --output json`
-  - **Purpose:** Analyze subnet distribution across availability zones for network-level HA
-- **Command:** `aws ec2 describe-availability-zones --output json`
-  - **Purpose:** Check available AZs in region for HA planning and validation
-- **Command:** `aws rds describe-db-instances --output json`
-  - **Purpose:** Validate RDS Multi-AZ deployments and database high availability
-- **Command:** `aws elbv2 describe-load-balancers --output json`
-  - **Purpose:** Check load balancers for application-layer HA and traffic distribution
-- **Command:** `aws autoscaling describe-auto-scaling-groups --output json`
-  - **Purpose:** Validate Auto Scaling Groups for compute resilience and multi-AZ distribution
-- **Command:** `aws backup list-backup-plans --output json`
-  - **Purpose:** Check backup plans for data protection and recovery capabilities
-- **Command:** `aws ec2 describe-snapshots --owner-ids self --output json`
-  - **Purpose:** Validate EBS snapshot strategy for storage recovery
-- **Command:** `aws s3api list-buckets --output json`
-  - **Purpose:** Check S3 buckets for storage redundancy and cross-region replication
-- **Command:** `aws route53 list-hosted-zones --output json`
-  - **Purpose:** Validate DNS redundancy and health check capabilities
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_CNA_06`
-
-**Documentation:** Enhanced KSI-CNA-06: Design for high availability and recovery
-
-Validates comprehensive high availability and recovery across all infrastructure layers:
-- Network HA (multi-AZ subnet distribution, availability zone coverage)
-- Database HA (RDS Multi-AZ, read replicas, backup retention)
-- Application HA (load balancers, health checks, traffic distribution)
-- Compute HA (Auto Scaling Groups, multi-AZ instance distribution)
-- Storage HA (EBS snapshots, S3 redundancy, cross-region replication)
-- DNS HA (Route 53 health checks, failover routing)
-- Backup and Recovery (automated backups, point-in-time recovery)
-
-### Rule Implementation
-```python
-def evaluate_KSI_CNA_06(cli_output):
-    """
-    Enhanced KSI-CNA-06: Design for high availability and recovery
-    
-    Validates comprehensive high availability and recovery across all infrastructure layers:
-    - Network HA (multi-AZ subnet distribution, availability zone coverage)
-    - Database HA (RDS Multi-AZ, read replicas, backup retention)
-    - Application HA (load balancers, health checks, traffic distribution)
-    - Compute HA (Auto Scaling Groups, multi-AZ instance distribution)
-    - Storage HA (EBS snapshots, S3 redundancy, cross-region replication)
-    - DNS HA (Route 53 health checks, failover routing)
-    - Backup and Recovery (automated backups, point-in-time recovery)
-    """
-    if "commands" not in cli_output:
-        return False, "❌ Multi-command format required"
-    commands = cli_output["commands"]
-    subnets = None
-    availability_zones = None
-    rds_instances = None
-    load_balancers = None
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Design for high availability and recovery
-
-**Implementation Justification:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
-
-**FedRAMP 20x Category:** Cloud Native Architecture
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 9 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 9
-**Validation Method:** validation-engine-sync
+WARNING Moderate HA design (56%) - expand redundancy: PASS Good network HA: 8 subnets across 2 AZs
+- PASS Balanced AZ distribution: Even subnet spread across zones
+- FAIL No database HA: 1 RDS instances single-AZ
+- PASS Excellent application HA: All 1 load balancers multi-AZ
+- WARNING No Auto Scaling Groups found - missing compute HA
+- PASS Centralized backup strategy: 1 AWS Backup plans
+- WARNING No EBS snapshots found
+- PASS Storage redundancy: 2 S3 buckets (built-in HA)
+- INFO No Route 53 hosted zones found
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

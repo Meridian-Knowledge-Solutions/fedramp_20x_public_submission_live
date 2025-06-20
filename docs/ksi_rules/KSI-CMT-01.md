@@ -1,127 +1,59 @@
 # KSI-CMT-01: Establish and maintain configuration baselines
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Change Management
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-CMT-01`
-**Description:** Establish and maintain configuration baselines
-**Justification:** Validates comprehensive configuration baseline management from pilot to enterprise maturity levels through CloudTrail, Config, CloudFormation, monitoring, and governance
-**Last Validation:** ✅ 2025-06-20T03:16:41.725598
-**Result:** ✅ Production-ready configuration baseline management with automated compliance (60%): ✅ System modification logging configured: 1 CloudTrail trails (1 global events); ✅ Configuration baseline recording: 1 Config recorders (1 comprehensive); ℹ️ No Config rules for baseline compliance monitoring; ✅ Infrastructure baseline templates: 8/8 successful CloudFormation stacks (100%); ✅ Configuration parameter baselines: 5 SSM parameters for standardized configuration; ✅ Drift detection capability: CloudFormation enables baseline drift detection; ℹ️ No CloudWatch alarms for baseline monitoring; ✅ Baseline notification infrastructure: 1 SNS topics for configuration alerts; ✅ Enterprise-wide baseline governance: AWS Organizations enables centralized configuration policies; ✅ Advanced organization features: SCPs for baseline policy enforcement enabled
+**What it validates:** Establish and maintain configuration baselines
 
-## 🛠️ Implementation
+**Why it matters:** Validates comprehensive configuration baseline management from pilot to enterprise maturity levels through CloudTrail, Config, CloudFormation, monitoring, and governance
 
-### Commands Executed
-1. **Command:** `aws cloudtrail describe-trails --output json`
-   **Purpose:** Check CloudTrail for system modification logging and baseline change tracking
+## Validation Method
 
-2. **Command:** `aws configservice describe-configuration-recorders --output json`
-   **Purpose:** Validate Config for configuration baseline recording and change monitoring
+1. `aws cloudtrail describe-trails --output json`
+   *Check CloudTrail for system modification logging and baseline change tracking*
 
-3. **Command:** `aws configservice describe-config-rules --output json`
-   **Purpose:** Assess Config rules for baseline compliance monitoring and automated enforcement
+2. `aws configservice describe-configuration-recorders --output json`
+   *Validate Config for configuration baseline recording and change monitoring*
 
-4. **Command:** `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json`
-   **Purpose:** Check CloudFormation stacks for Infrastructure as Code baseline templates
+3. `aws configservice describe-config-rules --output json`
+   *Assess Config rules for baseline compliance monitoring and automated enforcement*
 
-5. **Command:** `aws ssm describe-parameters --max-items 50 --output json`
-   **Purpose:** Evaluate SSM Parameter Store for configuration baseline management
+4. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json`
+   *Check CloudFormation stacks for Infrastructure as Code baseline templates*
 
-6. **Command:** `aws cloudwatch describe-alarms --max-records 50 --output json`
-   **Purpose:** Check CloudWatch alarms for baseline violation monitoring and alerting
+5. `aws ssm describe-parameters --max-items 50 --output json`
+   *Evaluate SSM Parameter Store for configuration baseline management*
 
-7. **Command:** `aws sns list-topics --output json`
-   **Purpose:** Assess SNS topics for baseline notification infrastructure
+6. `aws cloudwatch describe-alarms --max-records 50 --output json`
+   *Check CloudWatch alarms for baseline violation monitoring and alerting*
 
-8. **Command:** `aws configservice describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0:5].ConfigRuleName' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"RemediationConfigurations": []}'`
-   **Purpose:** Check Config remediation for automated baseline enforcement (graceful fallback)
+7. `aws sns list-topics --output json`
+   *Assess SNS topics for baseline notification infrastructure*
 
-9. **Command:** `aws s3api list-buckets --output json`
-   **Purpose:** Identify S3 buckets for baseline storage and configuration management
+8. `aws configservice describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0:5].ConfigRuleName' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"RemediationConfigurations": []}'`
+   *Check Config remediation for automated baseline enforcement (graceful fallback)*
 
-10. **Command:** `aws organizations describe-organization --output json 2>/dev/null || echo '{"Organization": null}'`
-   **Purpose:** Check for enterprise-wide baseline governance through AWS Organizations
+9. `aws s3api list-buckets --output json`
+   *Identify S3 buckets for baseline storage and configuration management*
 
-## 📋 Evidence Requirements
+10. `aws organizations describe-organization --output json 2>/dev/null || echo '{"Organization": null}'`
+   *Check for enterprise-wide baseline governance through AWS Organizations*
 
-### 🖥️ CLI Validation
-- **Command:** `aws cloudtrail describe-trails --output json`
-  - **Purpose:** Check CloudTrail for system modification logging and baseline change tracking
-- **Command:** `aws configservice describe-configuration-recorders --output json`
-  - **Purpose:** Validate Config for configuration baseline recording and change monitoring
-- **Command:** `aws configservice describe-config-rules --output json`
-  - **Purpose:** Assess Config rules for baseline compliance monitoring and automated enforcement
-- **Command:** `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json`
-  - **Purpose:** Check CloudFormation stacks for Infrastructure as Code baseline templates
-- **Command:** `aws ssm describe-parameters --max-items 50 --output json`
-  - **Purpose:** Evaluate SSM Parameter Store for configuration baseline management
-- **Command:** `aws cloudwatch describe-alarms --max-records 50 --output json`
-  - **Purpose:** Check CloudWatch alarms for baseline violation monitoring and alerting
-- **Command:** `aws sns list-topics --output json`
-  - **Purpose:** Assess SNS topics for baseline notification infrastructure
-- **Command:** `aws configservice describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0:5].ConfigRuleName' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"RemediationConfigurations": []}'`
-  - **Purpose:** Check Config remediation for automated baseline enforcement (graceful fallback)
-- **Command:** `aws s3api list-buckets --output json`
-  - **Purpose:** Identify S3 buckets for baseline storage and configuration management
-- **Command:** `aws organizations describe-organization --output json 2>/dev/null || echo '{"Organization": null}'`
-  - **Purpose:** Check for enterprise-wide baseline governance through AWS Organizations
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_CMT_01`
-
-**Documentation:** ENHANCED CMT-01: Establish and maintain configuration baselines
-
-Validates comprehensive configuration baseline management capabilities scaling from pilot to enterprise:
-- Baseline Foundation: CloudTrail + Config for system modification tracking and configuration recording
-- Configuration Management: Config rules, CloudFormation templates, and parameter management
-- Advanced Baseline Controls: Remediation, drift detection, and compliance automation
-- Monitoring & Alerting: CloudWatch monitoring, SNS notifications, and automated responses
-- Enterprise Governance: Organization-wide configuration baseline policies and standards
-
-Preserves current passing status while enabling maturity growth measurement.
-
-### Rule Implementation
-```python
-def evaluate_KSI_CMT_01(cli_output):
-    """
-    ENHANCED CMT-01: Establish and maintain configuration baselines
-    
-    Validates comprehensive configuration baseline management capabilities scaling from pilot to enterprise:
-    - Baseline Foundation: CloudTrail + Config for system modification tracking and configuration recording
-    - Configuration Management: Config rules, CloudFormation templates, and parameter management
-    - Advanced Baseline Controls: Remediation, drift detection, and compliance automation
-    - Monitoring & Alerting: CloudWatch monitoring, SNS notifications, and automated responses
-    - Enterprise Governance: Organization-wide configuration baseline policies and standards
-    
-    Preserves current passing status while enabling maturity growth measurement.
-    """
-    if "commands" not in cli_output:
-        return False, "❌ Multi-command format required"
-    commands = cli_output["commands"]
-    cloudtrail_trails = None
-    config_recorders = None
-    config_rules = None
-    cloudformation_stacks = None
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Establish and maintain configuration baselines
-
-**Implementation Justification:** Validates comprehensive configuration baseline management from pilot to enterprise maturity levels through CloudTrail, Config, CloudFormation, monitoring, and governance
-
-**FedRAMP 20x Category:** Change Management
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 10 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 10
-**Validation Method:** validation-engine-sync
+PASS Production-ready configuration baseline management with automated compliance (60%): PASS System modification logging configured: 1 CloudTrail trails (1 global events)
+- PASS Configuration baseline recording: 1 Config recorders (1 comprehensive)
+- INFO No Config rules for baseline compliance monitoring
+- PASS Infrastructure baseline templates: 8/8 successful CloudFormation stacks (100%)
+- PASS Configuration parameter baselines: 5 SSM parameters for standardized configuration
+- PASS Drift detection capability: CloudFormation enables baseline drift detection
+- INFO No CloudWatch alarms for baseline monitoring
+- PASS Baseline notification infrastructure: 1 SNS topics for configuration alerts
+- PASS Enterprise-wide baseline governance: AWS Organizations enables centralized configuration policies
+- PASS Advanced organization features: SCPs for baseline policy enforcement enabled
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

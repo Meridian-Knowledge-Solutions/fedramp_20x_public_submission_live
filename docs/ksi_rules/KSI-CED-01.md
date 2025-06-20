@@ -1,74 +1,22 @@
 # KSI-CED-01: Ensure all employees receive security awareness training
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Cybersecurity Education
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-CED-01`
-**Description:** Ensure all employees receive security awareness training
-**Justification:** Manual evidence required - security awareness training programs, completion records, and training materials
-**Last Validation:** ✅ 2025-06-20T03:16:41.725343
-**Result:** ✅ Security awareness training evidence: cyber_security_training.png, security_training_roster.png, fedramp_role_based.png
+**What it validates:** Ensure all employees receive security awareness training
 
-## 🛠️ Implementation
+**Why it matters:** Manual evidence required - security awareness training programs, completion records, and training materials
 
-### Commands Executed
-1. **Command:** `evidence_check`
-   **Purpose:** Check evidence_v2/KSI-CED-01/ for security_awareness_training_program.pdf, employee_training_records.xlsx, training_completion_certificates.pdf, and annual_training_schedule.pdf
+## Validation Method
 
-## 📋 Evidence Requirements
+1. **Manual Review:** Check evidence_v2/KSI-CED-01/ for security_awareness_training_program.pdf, employee_training_records.xlsx, training_completion_certificates.pdf, and annual_training_schedule.pdf
 
-### 📄 Manual Evidence
-- Check evidence_v2/KSI-CED-01/ for security_awareness_training_program.pdf, employee_training_records.xlsx, training_completion_certificates.pdf, and annual_training_schedule.pdf
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_CED_01`
-
-**Documentation:** KSI-CED-01: Ensure all employees receive security awareness training
-
-Expected: Manual evidence - training documentation
-
-### Rule Implementation
-```python
-def evaluate_KSI_CED_01(cli_output):
-    """
-    KSI-CED-01: Ensure all employees receive security awareness training
-    
-    Expected: Manual evidence - training documentation
-    """
-    evidence_dir = Path("evidence_v2/KSI-CED-01")
-    if not evidence_dir.exists():
-        return False, "❌ Evidence directory evidence_v2/KSI-CED-01/ not found"
-    training_files = [
-        "cyber_security_training.png",
-        "security_training_roster.png", 
-        "fedramp_role_based.png"
-    ]
-    found_files = []
-    for doc in training_files:
-        if (evidence_dir / doc).exists():
-            found_files.append(doc)
-    all_files = list(evidence_dir.glob("*"))
-    training_evidence = [f.name for f in all_files if any(keyword in f.name.lower() 
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Ensure all employees receive security awareness training
-
-**Implementation Justification:** Manual evidence required - security awareness training programs, completion records, and training materials
-
-**FedRAMP 20x Category:** Cybersecurity Education
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 1 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 1
-**Validation Method:** validation-engine-sync
+- PASS Security awareness training evidence: cyber_security_training.png, security_training_roster.png, fedramp_role_based.png
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

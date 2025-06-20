@@ -1,121 +1,58 @@
 # KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Monitoring, Logging, and Auditing
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-MLA-05`
-**Description:** Perform Infrastructure as Code and configuration evaluation and testing
-**Justification:** Validates comprehensive Infrastructure as Code security evaluation from basic CloudFormation deployment to enterprise-grade multi-account governance, automated testing, and configuration compliance management
-**Last Validation:** ✅ 2025-06-20T03:16:41.733198
-**Result:** ✅ Enterprise-grade Infrastructure as Code evaluation and testing: ✅ Infrastructure as Code deployment: 8/8 successful CloudFormation stacks; ✅ Parameterized configuration management: 5 SSM parameters; ⚠️ No Config rules for infrastructure evaluation; ✅ Infrastructure drift detection: 8 stacks monitored; ℹ️ No automated testing projects (consider for production); ℹ️ No automated deployment pipelines (consider for production); ✅ Deployment audit trail: 2 tracked deployment events; ✅ Resource governance: 2 managed CloudFormation resources; ✅ Enterprise multi-account governance: AWS Organizations enabled
+**What it validates:** Perform Infrastructure as Code and configuration evaluation and testing
 
-## 🛠️ Implementation
+**Why it matters:** Validates comprehensive Infrastructure as Code security evaluation from basic CloudFormation deployment to enterprise-grade multi-account governance, automated testing, and configuration compliance management
 
-### Commands Executed
-1. **Command:** `aws config describe-config-rules --output json`
-   **Purpose:** Check Config rules for Infrastructure as Code evaluation and configuration compliance monitoring
+## Validation Method
 
-2. **Command:** `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
-   **Purpose:** Validate CloudFormation stacks for Infrastructure as Code configuration testing and deployment
+1. `aws config describe-config-rules --output json`
+   *Check Config rules for Infrastructure as Code evaluation and configuration compliance monitoring*
 
-3. **Command:** `aws cloudformation describe-stacks --output json`
-   **Purpose:** Analyze detailed stack configuration for drift detection and infrastructure validation
+2. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
+   *Validate CloudFormation stacks for Infrastructure as Code configuration testing and deployment*
 
-4. **Command:** `aws ssm describe-parameters --max-results 50 --output json`
-   **Purpose:** Check Systems Manager Parameter Store for centralized configuration management
+3. `aws cloudformation describe-stacks --output json`
+   *Analyze detailed stack configuration for drift detection and infrastructure validation*
 
-5. **Command:** `aws codebuild list-projects --output json`
-   **Purpose:** Validate automated Infrastructure as Code testing through build projects and validation pipelines
+4. `aws ssm describe-parameters --max-results 50 --output json`
+   *Check Systems Manager Parameter Store for centralized configuration management*
 
-6. **Command:** `aws codepipeline list-pipelines --output json`
-   **Purpose:** Check for automated Infrastructure as Code deployment pipelines and change validation
+5. `aws codebuild list-projects --output json`
+   *Validate automated Infrastructure as Code testing through build projects and validation pipelines*
 
-7. **Command:** `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateStack --start-time 2025-05-01 --output json`
-   **Purpose:** Analyze deployment audit trail for Infrastructure as Code change tracking and compliance
+6. `aws codepipeline list-pipelines --output json`
+   *Check for automated Infrastructure as Code deployment pipelines and change validation*
 
-8. **Command:** `aws resourcegroupstaggingapi get-resources --resource-type-filters cloudformation --output json`
-   **Purpose:** Check resource inventory and tag-based governance for Infrastructure as Code assets
+7. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateStack --start-time 2025-05-01 --output json`
+   *Analyze deployment audit trail for Infrastructure as Code change tracking and compliance*
 
-9. **Command:** `aws organizations describe-organization --output json`
-   **Purpose:** Validate enterprise-level multi-account governance for Infrastructure as Code standardization
+8. `aws resourcegroupstaggingapi get-resources --resource-type-filters cloudformation --output json`
+   *Check resource inventory and tag-based governance for Infrastructure as Code assets*
 
-10. **Command:** `aws servicecatalog search-products --output json`
-   **Purpose:** Check standardized Infrastructure as Code templates and governance through Service Catalog
+9. `aws organizations describe-organization --output json`
+   *Validate enterprise-level multi-account governance for Infrastructure as Code standardization*
 
-## 📋 Evidence Requirements
+10. `aws servicecatalog search-products --output json`
+   *Check standardized Infrastructure as Code templates and governance through Service Catalog*
 
-### 🖥️ CLI Validation
-- **Command:** `aws config describe-config-rules --output json`
-  - **Purpose:** Check Config rules for Infrastructure as Code evaluation and configuration compliance monitoring
-- **Command:** `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
-  - **Purpose:** Validate CloudFormation stacks for Infrastructure as Code configuration testing and deployment
-- **Command:** `aws cloudformation describe-stacks --output json`
-  - **Purpose:** Analyze detailed stack configuration for drift detection and infrastructure validation
-- **Command:** `aws ssm describe-parameters --max-results 50 --output json`
-  - **Purpose:** Check Systems Manager Parameter Store for centralized configuration management
-- **Command:** `aws codebuild list-projects --output json`
-  - **Purpose:** Validate automated Infrastructure as Code testing through build projects and validation pipelines
-- **Command:** `aws codepipeline list-pipelines --output json`
-  - **Purpose:** Check for automated Infrastructure as Code deployment pipelines and change validation
-- **Command:** `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateStack --start-time 2025-05-01 --output json`
-  - **Purpose:** Analyze deployment audit trail for Infrastructure as Code change tracking and compliance
-- **Command:** `aws resourcegroupstaggingapi get-resources --resource-type-filters cloudformation --output json`
-  - **Purpose:** Check resource inventory and tag-based governance for Infrastructure as Code assets
-- **Command:** `aws organizations describe-organization --output json`
-  - **Purpose:** Validate enterprise-level multi-account governance for Infrastructure as Code standardization
-- **Command:** `aws servicecatalog search-products --output json`
-  - **Purpose:** Check standardized Infrastructure as Code templates and governance through Service Catalog
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_MLA_05`
-
-**Documentation:** Enhanced KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
-Expected: Config Rules + CloudFormation Stacks + Additional IaC capabilities
-
-Scaling approach: Pilot (basic IaC) → Production (testing + compliance) → Enterprise (governance)
-
-### Rule Implementation
-```python
-def evaluate_KSI_MLA_05(cli_output):
-    """
-    Enhanced KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
-    Expected: Config Rules + CloudFormation Stacks + Additional IaC capabilities
-    
-    Scaling approach: Pilot (basic IaC) → Production (testing + compliance) → Enterprise (governance)
-    """
-    if "commands" not in cli_output:
-        return False, "❌ Multi-command format required"
-    commands = cli_output["commands"]
-    config_rules = None
-    cloudformation_stacks = None
-    stack_details = None
-    ssm_parameters = None
-    codebuild_projects = None
-    codepipeline_pipelines = None
-    deployment_audit = None
-    resource_governance = None
-    organizations = None
-    service_catalog = None
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Perform Infrastructure as Code and configuration evaluation and testing
-
-**Implementation Justification:** Validates comprehensive Infrastructure as Code security evaluation from basic CloudFormation deployment to enterprise-grade multi-account governance, automated testing, and configuration compliance management
-
-**FedRAMP 20x Category:** Monitoring, Logging, and Auditing
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 10 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 10
-**Validation Method:** validation-engine-sync
+PASS Enterprise-grade Infrastructure as Code evaluation and testing: PASS Infrastructure as Code deployment: 8/8 successful CloudFormation stacks
+- PASS Parameterized configuration management: 5 SSM parameters
+- WARNING No Config rules for infrastructure evaluation
+- PASS Infrastructure drift detection: 8 stacks monitored
+- INFO No automated testing projects (consider for production)
+- INFO No automated deployment pipelines (consider for production)
+- PASS Deployment audit trail: 2 tracked deployment events
+- PASS Resource governance: 2 managed CloudFormation resources
+- PASS Enterprise multi-account governance: AWS Organizations enabled
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

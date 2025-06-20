@@ -1,111 +1,48 @@
 # KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Identity and Access Management
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-IAM-06`
-**Description:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
-**Justification:** Validates end-to-end automated response workflows including threat detection, event triggers, and account security actions through modern AWS security services and Identity Center integration
-**Last Validation:** ✅ 2025-06-20T03:16:41.729320
-**Result:** ✅ Strong automated response capabilities (82%): ✅ Advanced threat detection: GuardDuty enabled (1 detector(s)); ✅ Centralized security management: Security Hub enabled; ✅ Automated security triggers: 1 active EventBridge rules; ✅ Modern identity automation: Identity Center configured (1 instance(s)); ✅ Built-in automated identity controls: Session management, conditional access, risk-based authentication; ⚠️ No Config rules found for automated remediation; ⚠️ 2 Lambda functions found but none explicitly security-focused; ❌ No CloudWatch alarms found for security monitoring
+**What it validates:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
-## 🛠️ Implementation
+**Why it matters:** Validates end-to-end automated response workflows including threat detection, event triggers, and account security actions through modern AWS security services and Identity Center integration
 
-### Commands Executed
-1. **Command:** `aws events list-rules --output json`
-   **Purpose:** Check EventBridge rules for automated security response triggers (critical for automation)
+## Validation Method
 
-2. **Command:** `aws guardduty list-detectors --output json`
-   **Purpose:** Validate GuardDuty threat detection service for suspicious activity identification
+1. `aws events list-rules --output json`
+   *Check EventBridge rules for automated security response triggers (critical for automation)*
 
-3. **Command:** `aws securityhub describe-hub --output json`
-   **Purpose:** Check Security Hub for centralized security findings and automated response coordination
+2. `aws guardduty list-detectors --output json`
+   *Validate GuardDuty threat detection service for suspicious activity identification*
 
-4. **Command:** `aws sso-admin list-instances --output json`
-   **Purpose:** Validate Identity Center for built-in automated session and access controls
+3. `aws securityhub describe-hub --output json`
+   *Check Security Hub for centralized security findings and automated response coordination*
 
-5. **Command:** `aws config describe-config-rules --output json`
-   **Purpose:** Check Config rules for automated compliance remediation and account security
+4. `aws sso-admin list-instances --output json`
+   *Validate Identity Center for built-in automated session and access controls*
 
-6. **Command:** `aws lambda list-functions --output json`
-   **Purpose:** Identify automated response functions for account disabling and security actions
+5. `aws config describe-config-rules --output json`
+   *Check Config rules for automated compliance remediation and account security*
 
-7. **Command:** `aws cloudwatch describe-alarms --output json`
-   **Purpose:** Check CloudWatch alarms for suspicious privileged account activity monitoring
+6. `aws lambda list-functions --output json`
+   *Identify automated response functions for account disabling and security actions*
 
-## 📋 Evidence Requirements
+7. `aws cloudwatch describe-alarms --output json`
+   *Check CloudWatch alarms for suspicious privileged account activity monitoring*
 
-### 🖥️ CLI Validation
-- **Command:** `aws events list-rules --output json`
-  - **Purpose:** Check EventBridge rules for automated security response triggers (critical for automation)
-- **Command:** `aws guardduty list-detectors --output json`
-  - **Purpose:** Validate GuardDuty threat detection service for suspicious activity identification
-- **Command:** `aws securityhub describe-hub --output json`
-  - **Purpose:** Check Security Hub for centralized security findings and automated response coordination
-- **Command:** `aws sso-admin list-instances --output json`
-  - **Purpose:** Validate Identity Center for built-in automated session and access controls
-- **Command:** `aws config describe-config-rules --output json`
-  - **Purpose:** Check Config rules for automated compliance remediation and account security
-- **Command:** `aws lambda list-functions --output json`
-  - **Purpose:** Identify automated response functions for account disabling and security actions
-- **Command:** `aws cloudwatch describe-alarms --output json`
-  - **Purpose:** Check CloudWatch alarms for suspicious privileged account activity monitoring
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_IAM_06`
-
-**Documentation:** Enhanced KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
-in response to suspicious activity
-
-Validates comprehensive automated response workflows:
-- Threat detection (GuardDuty, Security Hub, CloudWatch)
-- Event triggers (EventBridge rules for automation)
-- Response actions (Lambda functions, Config remediation)
-- Identity management (Identity Center automated controls)
-- End-to-end workflows (not just isolated components)
-
-### Rule Implementation
-```python
-def evaluate_KSI_IAM_06(cli_output):
-    """
-    Enhanced KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access 
-    in response to suspicious activity
-    
-    Validates comprehensive automated response workflows:
-    - Threat detection (GuardDuty, Security Hub, CloudWatch)
-    - Event triggers (EventBridge rules for automation)
-    - Response actions (Lambda functions, Config remediation)
-    - Identity management (Identity Center automated controls)
-    - End-to-end workflows (not just isolated components)
-    """
-    if "commands" not in cli_output:
-        return False, "❌ Multi-command format required"
-    commands = cli_output["commands"]
-    event_rules = None
-    guardduty_detectors = None
-    security_hub = None
-    sso_instances = None
-    config_rules = None
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
-
-**Implementation Justification:** Validates end-to-end automated response workflows including threat detection, event triggers, and account security actions through modern AWS security services and Identity Center integration
-
-**FedRAMP 20x Category:** Identity and Access Management
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 7 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 7
-**Validation Method:** validation-engine-sync
+PASS Strong automated response capabilities (82%): PASS Advanced threat detection: GuardDuty enabled (1 detector(s))
+- PASS Centralized security management: Security Hub enabled
+- PASS Automated security triggers: 1 active EventBridge rules
+- PASS Modern identity automation: Identity Center configured (1 instance(s))
+- PASS Built-in automated identity controls: Session management, conditional access, risk-based authentication
+- WARNING No Config rules found for automated remediation
+- WARNING 2 Lambda functions found but none explicitly security-focused
+- FAIL No CloudWatch alarms found for security monitoring
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

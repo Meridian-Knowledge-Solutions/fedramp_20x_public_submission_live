@@ -1,127 +1,60 @@
 # KSI-SVC-03: Encrypt all federal and sensitive information at rest
 
-*Generated on 2025-06-20 03:16:41 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Service Configuration
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-SVC-03`
-**Description:** Encrypt all federal and sensitive information at rest
-**Justification:** Validates comprehensive at-rest encryption from basic storage service availability to enterprise-grade multi-service encryption, covering object storage, block storage, databases, data lakes, backup systems, and managed services with automated key management and compliance monitoring
-**Last Validation:** ✅ 2025-06-20T03:16:41.743439
-**Result:** ✅ Multi-service at-rest encryption established (32%): ✅ Object storage encryption: 2 S3 buckets configured (encryption validation requires bucket-level check); ✅ Block storage encryption: 8/8 EBS volumes encrypted (100%); ⚠️ RDS instances found but storage encryption not enabled; ℹ️ No RDS snapshots found; ℹ️ No DynamoDB tables found; ℹ️ No ElastiCache clusters found; ℹ️ No Redshift data warehouse clusters found; ℹ️ No EFS file systems found; ✅ Backup encryption: 1/1 backup vaults encrypted (100%); ✅ Encryption key infrastructure: 11 KMS keys (0 customer-managed, 11 AWS-managed); ℹ️ Single-account deployment (appropriate for pilot/development)
+**What it validates:** Encrypt all federal and sensitive information at rest
 
-## 🛠️ Implementation
+**Why it matters:** Validates comprehensive at-rest encryption from basic storage service availability to enterprise-grade multi-service encryption, covering object storage, block storage, databases, data lakes, backup systems, and managed services with automated key management and compliance monitoring
 
-### Commands Executed
-1. **Command:** `aws s3api list-buckets --output json`
-   **Purpose:** Get S3 buckets for object storage encryption validation and federal data protection
+## Validation Method
 
-2. **Command:** `aws ec2 describe-volumes --output json`
-   **Purpose:** Check EBS volume encryption status for block storage and instance data protection
+1. `aws s3api list-buckets --output json`
+   *Get S3 buckets for object storage encryption validation and federal data protection*
 
-3. **Command:** `aws rds describe-db-instances --output json`
-   **Purpose:** Validate RDS database encryption for structured data at rest and backup encryption
+2. `aws ec2 describe-volumes --output json`
+   *Check EBS volume encryption status for block storage and instance data protection*
 
-4. **Command:** `aws rds describe-db-snapshots --owner-type self --output json`
-   **Purpose:** Check RDS snapshot encryption for database backup and recovery data protection
+3. `aws rds describe-db-instances --output json`
+   *Validate RDS database encryption for structured data at rest and backup encryption*
 
-5. **Command:** `aws dynamodb list-tables --output json`
-   **Purpose:** Analyze DynamoDB tables for NoSQL database encryption and managed service protection
+4. `aws rds describe-db-snapshots --owner-type self --output json`
+   *Check RDS snapshot encryption for database backup and recovery data protection*
 
-6. **Command:** `aws elasticache describe-cache-clusters --output json`
-   **Purpose:** Check ElastiCache clusters for in-memory data encryption and cache protection
+5. `aws dynamodb list-tables --output json`
+   *Analyze DynamoDB tables for NoSQL database encryption and managed service protection*
 
-7. **Command:** `aws redshift describe-clusters --output json`
-   **Purpose:** Validate Redshift data warehouse encryption for analytics and big data protection
+6. `aws elasticache describe-cache-clusters --output json`
+   *Check ElastiCache clusters for in-memory data encryption and cache protection*
 
-8. **Command:** `aws efs describe-file-systems --output json`
-   **Purpose:** Check Elastic File System encryption for shared storage and distributed application data
+7. `aws redshift describe-clusters --output json`
+   *Validate Redshift data warehouse encryption for analytics and big data protection*
 
-9. **Command:** `aws backup list-backup-vaults --output json`
-   **Purpose:** Validate AWS Backup vault encryption for centralized backup data protection and compliance
+8. `aws efs describe-file-systems --output json`
+   *Check Elastic File System encryption for shared storage and distributed application data*
 
-10. **Command:** `aws kms list-keys --output json`
-   **Purpose:** Check KMS key management for enterprise encryption key governance and automated key rotation
+9. `aws backup list-backup-vaults --output json`
+   *Validate AWS Backup vault encryption for centralized backup data protection and compliance*
 
-## 📋 Evidence Requirements
+10. `aws kms list-keys --output json`
+   *Check KMS key management for enterprise encryption key governance and automated key rotation*
 
-### 🖥️ CLI Validation
-- **Command:** `aws s3api list-buckets --output json`
-  - **Purpose:** Get S3 buckets for object storage encryption validation and federal data protection
-- **Command:** `aws ec2 describe-volumes --output json`
-  - **Purpose:** Check EBS volume encryption status for block storage and instance data protection
-- **Command:** `aws rds describe-db-instances --output json`
-  - **Purpose:** Validate RDS database encryption for structured data at rest and backup encryption
-- **Command:** `aws rds describe-db-snapshots --owner-type self --output json`
-  - **Purpose:** Check RDS snapshot encryption for database backup and recovery data protection
-- **Command:** `aws dynamodb list-tables --output json`
-  - **Purpose:** Analyze DynamoDB tables for NoSQL database encryption and managed service protection
-- **Command:** `aws elasticache describe-cache-clusters --output json`
-  - **Purpose:** Check ElastiCache clusters for in-memory data encryption and cache protection
-- **Command:** `aws redshift describe-clusters --output json`
-  - **Purpose:** Validate Redshift data warehouse encryption for analytics and big data protection
-- **Command:** `aws efs describe-file-systems --output json`
-  - **Purpose:** Check Elastic File System encryption for shared storage and distributed application data
-- **Command:** `aws backup list-backup-vaults --output json`
-  - **Purpose:** Validate AWS Backup vault encryption for centralized backup data protection and compliance
-- **Command:** `aws kms list-keys --output json`
-  - **Purpose:** Check KMS key management for enterprise encryption key governance and automated key rotation
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_SVC_03`
-
-**Documentation:** ENHANCED SVC-03: Encrypt all federal and sensitive information at rest
-
-Validates comprehensive at-rest encryption capabilities scaling from pilot to enterprise:
-- Encryption Foundation: S3 Buckets + EBS Volumes for basic storage encryption
-- Database Encryption: RDS instances, snapshots, and NoSQL database encryption
-- Advanced Storage Encryption: Multi-service encryption across cache, warehouse, and file systems
-- Key Management: KMS infrastructure and customer-managed encryption keys
-- Enterprise Governance: Organization-wide encryption policies and compliance
-
-Preserves current passing status while enabling maturity growth measurement.
-
-### Rule Implementation
-```python
-def evaluate_KSI_SVC_03(cli_output):
-    """
-    ENHANCED SVC-03: Encrypt all federal and sensitive information at rest
-    
-    Validates comprehensive at-rest encryption capabilities scaling from pilot to enterprise:
-    - Encryption Foundation: S3 Buckets + EBS Volumes for basic storage encryption
-    - Database Encryption: RDS instances, snapshots, and NoSQL database encryption
-    - Advanced Storage Encryption: Multi-service encryption across cache, warehouse, and file systems
-    - Key Management: KMS infrastructure and customer-managed encryption keys
-    - Enterprise Governance: Organization-wide encryption policies and compliance
-    
-    Preserves current passing status while enabling maturity growth measurement.
-    """
-    if "commands" not in cli_output:
-        return False, "❌ Multi-command format required"
-    commands = cli_output["commands"]
-    s3_buckets = None
-    ebs_volumes = None
-    rds_instances = None
-    rds_snapshots = None
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Encrypt all federal and sensitive information at rest
-
-**Implementation Justification:** Validates comprehensive at-rest encryption from basic storage service availability to enterprise-grade multi-service encryption, covering object storage, block storage, databases, data lakes, backup systems, and managed services with automated key management and compliance monitoring
-
-**FedRAMP 20x Category:** Service Configuration
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 10 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 10
-**Validation Method:** validation-engine-sync
+PASS Multi-service at-rest encryption established (32%): PASS Object storage encryption: 2 S3 buckets configured (encryption validation requires bucket-level check)
+- PASS Block storage encryption: 8/8 EBS volumes encrypted (100%)
+- WARNING RDS instances found but storage encryption not enabled
+- INFO No RDS snapshots found
+- INFO No DynamoDB tables found
+- INFO No ElastiCache clusters found
+- INFO No Redshift data warehouse clusters found
+- INFO No EFS file systems found
+- PASS Backup encryption: 1/1 backup vaults encrypted (100%)
+- PASS Encryption key infrastructure: 11 KMS keys (0 customer-managed, 11 AWS-managed)
+- INFO Single-account deployment (appropriate for pilot/development)
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

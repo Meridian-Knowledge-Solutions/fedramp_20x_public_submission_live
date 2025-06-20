@@ -1,127 +1,60 @@
 # KSI-SVC-06: Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Service Configuration
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-SVC-06`
-**Description:** Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
-**Justification:** Validates comprehensive automated key management from basic KMS availability to enterprise-grade key lifecycle management, covering encryption keys, certificates, rotation policies, access controls, hardware security modules, and organizational key governance with automated provisioning and compliance monitoring
-**Last Validation:** ✅ 2025-06-20T03:16:41.744561
-**Result:** ✅ Enterprise-grade comprehensive automated key management governance with rotation (80%): ✅ Automated key management infrastructure: 11 KMS keys (0 customer-managed, 11 AWS-managed); ✅ Automated certificate management: 2 ACM certificates (2 issued, 0 pending); ✅ Key governance structure: 4/21 customer-managed aliases (19%); ✅ Automated encryption integration: 4 KMS-encrypted SecureString parameters; ⚠️ Secrets Manager configured but no automatic rotation enabled; ✅ Modern certificate management: No legacy IAM certificates; ✅ Infrastructure as Code key management: 8/8 successful CloudFormation stacks (100%); ℹ️ No Config rules for key management compliance monitoring; ✅ Key management audit trail: 4 recent key management events tracked; ✅ Enterprise-wide key management governance: AWS Organizations enables centralized key policies; ✅ Advanced organization features: SCPs for key management policy enforcement enabled
+**What it validates:** Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 
-## 🛠️ Implementation
+**Why it matters:** Validates comprehensive automated key management from basic KMS availability to enterprise-grade key lifecycle management, covering encryption keys, certificates, rotation policies, access controls, hardware security modules, and organizational key governance with automated provisioning and compliance monitoring
 
-### Commands Executed
-1. **Command:** `aws kms list-keys --output json`
-   **Purpose:** Check KMS keys for automated key management and cryptographic service availability
+## Validation Method
 
-2. **Command:** `aws acm list-certificates --output json`
-   **Purpose:** Validate ACM certificates for automated certificate lifecycle management and SSL/TLS provisioning
+1. `aws kms list-keys --output json`
+   *Check KMS keys for automated key management and cryptographic service availability*
 
-3. **Command:** `aws kms list-aliases --output json`
-   **Purpose:** Analyze KMS key aliases for key management governance and organizational naming standards
+2. `aws acm list-certificates --output json`
+   *Validate ACM certificates for automated certificate lifecycle management and SSL/TLS provisioning*
 
-4. **Command:** `aws ssm describe-parameters --parameter-filters Key=Type,Values=SecureString --output json`
-   **Purpose:** Check Systems Manager SecureString parameters for KMS-encrypted configuration management
+3. `aws kms list-aliases --output json`
+   *Analyze KMS key aliases for key management governance and organizational naming standards*
 
-5. **Command:** `aws secretsmanager list-secrets --output json`
-   **Purpose:** Validate Secrets Manager for automated secrets rotation and centralized credential management
+4. `aws ssm describe-parameters --parameter-filters Key=Type,Values=SecureString --output json`
+   *Check Systems Manager SecureString parameters for KMS-encrypted configuration management*
 
-6. **Command:** `aws iam list-server-certificates --output json`
-   **Purpose:** Check IAM server certificates for legacy certificate management and migration tracking
+5. `aws secretsmanager list-secrets --output json`
+   *Validate Secrets Manager for automated secrets rotation and centralized credential management*
 
-7. **Command:** `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
-   **Purpose:** Analyze CloudFormation stacks for Infrastructure as Code key management and automated provisioning
+6. `aws iam list-server-certificates --output json`
+   *Check IAM server certificates for legacy certificate management and migration tracking*
 
-8. **Command:** `aws config describe-config-rules --output json`
-   **Purpose:** Check Config rules for key management compliance monitoring and policy enforcement
+7. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
+   *Analyze CloudFormation stacks for Infrastructure as Code key management and automated provisioning*
 
-9. **Command:** `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateKey --start-time 2025-05-01 --output json`
-   **Purpose:** Validate key management audit trail for creation, rotation, and access tracking
+8. `aws config describe-config-rules --output json`
+   *Check Config rules for key management compliance monitoring and policy enforcement*
 
-10. **Command:** `aws organizations describe-organization --output json`
-   **Purpose:** Check enterprise-wide key management policies and organizational governance standards across accounts
+9. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateKey --start-time 2025-05-01 --output json`
+   *Validate key management audit trail for creation, rotation, and access tracking*
 
-## 📋 Evidence Requirements
+10. `aws organizations describe-organization --output json`
+   *Check enterprise-wide key management policies and organizational governance standards across accounts*
 
-### 🖥️ CLI Validation
-- **Command:** `aws kms list-keys --output json`
-  - **Purpose:** Check KMS keys for automated key management and cryptographic service availability
-- **Command:** `aws acm list-certificates --output json`
-  - **Purpose:** Validate ACM certificates for automated certificate lifecycle management and SSL/TLS provisioning
-- **Command:** `aws kms list-aliases --output json`
-  - **Purpose:** Analyze KMS key aliases for key management governance and organizational naming standards
-- **Command:** `aws ssm describe-parameters --parameter-filters Key=Type,Values=SecureString --output json`
-  - **Purpose:** Check Systems Manager SecureString parameters for KMS-encrypted configuration management
-- **Command:** `aws secretsmanager list-secrets --output json`
-  - **Purpose:** Validate Secrets Manager for automated secrets rotation and centralized credential management
-- **Command:** `aws iam list-server-certificates --output json`
-  - **Purpose:** Check IAM server certificates for legacy certificate management and migration tracking
-- **Command:** `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
-  - **Purpose:** Analyze CloudFormation stacks for Infrastructure as Code key management and automated provisioning
-- **Command:** `aws config describe-config-rules --output json`
-  - **Purpose:** Check Config rules for key management compliance monitoring and policy enforcement
-- **Command:** `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateKey --start-time 2025-05-01 --output json`
-  - **Purpose:** Validate key management audit trail for creation, rotation, and access tracking
-- **Command:** `aws organizations describe-organization --output json`
-  - **Purpose:** Check enterprise-wide key management policies and organizational governance standards across accounts
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_SVC_06`
-
-**Documentation:** ENHANCED SVC-06: Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
-
-Validates comprehensive automated key management capabilities scaling from pilot to enterprise:
-- Key Management Foundation: KMS Keys + ACM Certificates for automated key and certificate lifecycle
-- Key Governance: Customer-managed KMS aliases and governance structures
-- Advanced Key Management: SecureString integration, automated rotation, legacy certificate management
-- Automation & Compliance: IaC provisioning, Config rules, and audit trail monitoring
-- Enterprise Governance: Organization-wide key management policies and standards
-
-Preserves current passing status while enabling maturity growth measurement.
-
-### Rule Implementation
-```python
-def evaluate_KSI_SVC_06(cli_output):
-    """
-    ENHANCED SVC-06: Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
-    
-    Validates comprehensive automated key management capabilities scaling from pilot to enterprise:
-    - Key Management Foundation: KMS Keys + ACM Certificates for automated key and certificate lifecycle
-    - Key Governance: Customer-managed KMS aliases and governance structures
-    - Advanced Key Management: SecureString integration, automated rotation, legacy certificate management
-    - Automation & Compliance: IaC provisioning, Config rules, and audit trail monitoring
-    - Enterprise Governance: Organization-wide key management policies and standards
-    
-    Preserves current passing status while enabling maturity growth measurement.
-    """
-    if "commands" not in cli_output:
-        return False, "❌ Multi-command format required"
-    commands = cli_output["commands"]
-    kms_keys = None
-    acm_certificates = None
-    kms_aliases = None
-    ssm_secure_parameters = None
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
-
-**Implementation Justification:** Validates comprehensive automated key management from basic KMS availability to enterprise-grade key lifecycle management, covering encryption keys, certificates, rotation policies, access controls, hardware security modules, and organizational key governance with automated provisioning and compliance monitoring
-
-**FedRAMP 20x Category:** Service Configuration
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 10 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 10
-**Validation Method:** validation-engine-sync
+PASS Enterprise-grade comprehensive automated key management governance with rotation (80%): PASS Automated key management infrastructure: 11 KMS keys (0 customer-managed, 11 AWS-managed)
+- PASS Automated certificate management: 2 ACM certificates (2 issued, 0 pending)
+- PASS Key governance structure: 4/21 customer-managed aliases (19%)
+- PASS Automated encryption integration: 4 KMS-encrypted SecureString parameters
+- WARNING Secrets Manager configured but no automatic rotation enabled
+- PASS Modern certificate management: No legacy IAM certificates
+- PASS Infrastructure as Code key management: 8/8 successful CloudFormation stacks (100%)
+- INFO No Config rules for key management compliance monitoring
+- PASS Key management audit trail: 4 recent key management events tracked
+- PASS Enterprise-wide key management governance: AWS Organizations enables centralized key policies
+- PASS Advanced organization features: SCPs for key management policy enforcement enabled
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

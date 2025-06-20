@@ -1,116 +1,50 @@
 # KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-*Generated on 2025-06-20 03:16:41 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Cloud Native Architecture
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-CNA-02`
-**Description:** Design systems to minimize the attack surface and minimize lateral movement if compromised
-**Justification:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
-**Last Validation:** ✅ 2025-06-20T03:16:41.726852
-**Result:** ✅ Strong attack surface controls (65%): ✅ Strong attack surface minimization: 6/8 private subnets (75%); ⚠️ Basic AZ segmentation: 8 subnets across 2 availability zones; ✅ Strong micro-segmentation: 11/12 custom security groups; ✅ Lateral movement barriers: 6/12 security groups with specific rules; ✅ Minimal compute exposure: 4/4 instances in private subnets; ✅ Database isolation: All 1 RDS instances private; ⚠️ High service exposure: 1 internet-facing vs 0 internal load balancers; ℹ️ No EKS clusters found; ⚠️ Lambda exposure: 2 functions not in VPC (limited network isolation); ⚠️ Using default Network ACLs only (no additional subnet isolation)
+**What it validates:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-## 🛠️ Implementation
+**Why it matters:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
 
-### Commands Executed
-1. **Command:** `aws ec2 describe-subnets --output json`
-   **Purpose:** Analyze subnet segmentation for attack surface isolation (public vs private)
+## Validation Method
 
-2. **Command:** `aws ec2 describe-security-groups --output json`
-   **Purpose:** Evaluate micro-segmentation and lateral movement prevention through security group rules
+1. `aws ec2 describe-subnets --output json`
+   *Analyze subnet segmentation for attack surface isolation (public vs private)*
 
-3. **Command:** `aws ec2 describe-instances --output json`
-   **Purpose:** Assess compute workload exposure and placement for attack surface minimization
+2. `aws ec2 describe-security-groups --output json`
+   *Evaluate micro-segmentation and lateral movement prevention through security group rules*
 
-4. **Command:** `aws ec2 describe-network-acls --output json`
-   **Purpose:** Check Network ACLs for subnet-level isolation and lateral movement barriers
+3. `aws ec2 describe-instances --output json`
+   *Assess compute workload exposure and placement for attack surface minimization*
 
-5. **Command:** `aws elbv2 describe-load-balancers --output json`
-   **Purpose:** Analyze load balancer exposure patterns (internal vs internet-facing)
+4. `aws ec2 describe-network-acls --output json`
+   *Check Network ACLs for subnet-level isolation and lateral movement barriers*
 
-6. **Command:** `aws lambda list-functions --output json`
-   **Purpose:** Assess Lambda function isolation and VPC configuration for attack surface reduction
+5. `aws elbv2 describe-load-balancers --output json`
+   *Analyze load balancer exposure patterns (internal vs internet-facing)*
 
-7. **Command:** `aws rds describe-db-instances --output json`
-   **Purpose:** Check database placement and exposure (should be in private subnets)
+6. `aws lambda list-functions --output json`
+   *Assess Lambda function isolation and VPC configuration for attack surface reduction*
 
-## 📋 Evidence Requirements
+7. `aws rds describe-db-instances --output json`
+   *Check database placement and exposure (should be in private subnets)*
 
-### 🖥️ CLI Validation
-- **Command:** `aws ec2 describe-subnets --output json`
-  - **Purpose:** Analyze subnet segmentation for attack surface isolation (public vs private)
-- **Command:** `aws ec2 describe-security-groups --output json`
-  - **Purpose:** Evaluate micro-segmentation and lateral movement prevention through security group rules
-- **Command:** `aws ec2 describe-instances --output json`
-  - **Purpose:** Assess compute workload exposure and placement for attack surface minimization
-- **Command:** `aws ec2 describe-network-acls --output json`
-  - **Purpose:** Check Network ACLs for subnet-level isolation and lateral movement barriers
-- **Command:** `aws elbv2 describe-load-balancers --output json`
-  - **Purpose:** Analyze load balancer exposure patterns (internal vs internet-facing)
-- **Command:** `aws lambda list-functions --output json`
-  - **Purpose:** Assess Lambda function isolation and VPC configuration for attack surface reduction
-- **Command:** `aws rds describe-db-instances --output json`
-  - **Purpose:** Check database placement and exposure (should be in private subnets)
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_CNA_02`
-
-**Documentation:** FIXED KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
-
-Validates comprehensive attack surface reduction and lateral movement prevention:
-- Attack surface minimization (private placement, service exposure, workload isolation)
-- Network segmentation (subnets, security groups, NACLs)
-- Lateral movement barriers (micro-segmentation, isolation boundaries)
-- Modern cloud-native security (containers, serverless, service mesh)
-- Defense-in-depth architecture
-
-FIXES APPLIED:
-- Removed unfair penalties for default VPC configurations
-- No penalty for public subnets in default VPC (AWS standard design)
-- No penalty for using default security groups if properly configured
-- Maintains comprehensive assessment with fair scoring
-
-### Rule Implementation
-```python
-def evaluate_KSI_CNA_02(cli_output):
-    """
-    FIXED KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
-    
-    Validates comprehensive attack surface reduction and lateral movement prevention:
-    - Attack surface minimization (private placement, service exposure, workload isolation)
-    - Network segmentation (subnets, security groups, NACLs)
-    - Lateral movement barriers (micro-segmentation, isolation boundaries)
-    - Modern cloud-native security (containers, serverless, service mesh)
-    - Defense-in-depth architecture
-    
-    FIXES APPLIED:
-    - Removed unfair penalties for default VPC configurations
-    - No penalty for public subnets in default VPC (AWS standard design)
-    - No penalty for using default security groups if properly configured
-    - Maintains comprehensive assessment with fair scoring
-    """
-    if "commands" not in cli_output:
-        return False, "❌ Multi-command format required"
-    commands = cli_output["commands"]
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Design systems to minimize the attack surface and minimize lateral movement if compromised
-
-**Implementation Justification:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
-
-**FedRAMP 20x Category:** Cloud Native Architecture
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 7 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 7
-**Validation Method:** validation-engine-sync
+PASS Strong attack surface controls (65%): PASS Strong attack surface minimization: 6/8 private subnets (75%)
+- WARNING Basic AZ segmentation: 8 subnets across 2 availability zones
+- PASS Strong micro-segmentation: 11/12 custom security groups
+- PASS Lateral movement barriers: 6/12 security groups with specific rules
+- PASS Minimal compute exposure: 4/4 instances in private subnets
+- PASS Database isolation: All 1 RDS instances private
+- WARNING High service exposure: 1 internet-facing vs 0 internal load balancers
+- INFO No EKS clusters found
+- WARNING Lambda exposure: 2 functions not in VPC (limited network isolation)
+- WARNING Using default Network ACLs only (no additional subnet isolation)
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

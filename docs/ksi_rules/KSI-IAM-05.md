@@ -1,111 +1,46 @@
 # KSI-IAM-05: Apply zero trust design principles
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Identity and Access Management
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-IAM-05`
-**Description:** Apply zero trust design principles
-**Justification:** Validates comprehensive zero trust implementation through Identity Center (modern approach), network security, continuous monitoring, conditional access, and secure communications patterns
-**Last Validation:** ✅ 2025-06-20T03:16:41.729118
-**Result:** ⚠️ Basic zero trust elements (46%): ✅ Modern identity platform: IAM Identity Center configured (1 instance(s)); ❌ No MFA devices found (zero trust requires multi-factor authentication); ✅ Network micro-segmentation: 10 restrictive vs 2 permissive security groups; ⚠️ Unknown credential type; ✅ Secure private communications: 6 VPC endpoints configured; ❌ No continuous monitoring found (zero trust requires comprehensive logging)
+**What it validates:** Apply zero trust design principles
 
-## 🛠️ Implementation
+**Why it matters:** Validates comprehensive zero trust implementation through Identity Center (modern approach), network security, continuous monitoring, conditional access, and secure communications patterns
 
-### Commands Executed
-1. **Command:** `aws sso-admin list-instances --output json`
-   **Purpose:** Check IAM Identity Center for modern zero trust user access patterns
+## Validation Method
 
-2. **Command:** `aws cloudtrail describe-trails --output json`
-   **Purpose:** Validate continuous monitoring and verification logging (must be active)
+1. `aws sso-admin list-instances --output json`
+   *Check IAM Identity Center for modern zero trust user access patterns*
 
-3. **Command:** `aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text) --output json 2>/dev/null || echo '{"IsLogging":false}'`
-   **Purpose:** Verify CloudTrail is actively logging (zero trust requires continuous monitoring)
+2. `aws cloudtrail describe-trails --output json`
+   *Validate continuous monitoring and verification logging (must be active)*
 
-4. **Command:** `aws ec2 describe-security-groups --output json`
-   **Purpose:** Analyze network micro-segmentation and least privilege network access
+3. `aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text) --output json 2>/dev/null || echo '{"IsLogging":false}'`
+   *Verify CloudTrail is actively logging (zero trust requires continuous monitoring)*
 
-5. **Command:** `aws ec2 describe-vpc-endpoints --output json`
-   **Purpose:** Validate secure private communications (VPC endpoints for AWS services)
+4. `aws ec2 describe-security-groups --output json`
+   *Analyze network micro-segmentation and least privilege network access*
 
-6. **Command:** `aws iam list-virtual-mfa-devices --output json`
-   **Purpose:** Check multi-factor authentication enforcement (verify explicitly principle)
+5. `aws ec2 describe-vpc-endpoints --output json`
+   *Validate secure private communications (VPC endpoints for AWS services)*
 
-7. **Command:** `aws sts get-caller-identity --output json`
-   **Purpose:** Validate current session type (temporary credentials indicate zero trust access)
+6. `aws iam list-virtual-mfa-devices --output json`
+   *Check multi-factor authentication enforcement (verify explicitly principle)*
 
-## 📋 Evidence Requirements
+7. `aws sts get-caller-identity --output json`
+   *Validate current session type (temporary credentials indicate zero trust access)*
 
-### 🖥️ CLI Validation
-- **Command:** `aws sso-admin list-instances --output json`
-  - **Purpose:** Check IAM Identity Center for modern zero trust user access patterns
-- **Command:** `aws cloudtrail describe-trails --output json`
-  - **Purpose:** Validate continuous monitoring and verification logging (must be active)
-- **Command:** `aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text) --output json 2>/dev/null || echo '{"IsLogging":false}'`
-  - **Purpose:** Verify CloudTrail is actively logging (zero trust requires continuous monitoring)
-- **Command:** `aws ec2 describe-security-groups --output json`
-  - **Purpose:** Analyze network micro-segmentation and least privilege network access
-- **Command:** `aws ec2 describe-vpc-endpoints --output json`
-  - **Purpose:** Validate secure private communications (VPC endpoints for AWS services)
-- **Command:** `aws iam list-virtual-mfa-devices --output json`
-  - **Purpose:** Check multi-factor authentication enforcement (verify explicitly principle)
-- **Command:** `aws sts get-caller-identity --output json`
-  - **Purpose:** Validate current session type (temporary credentials indicate zero trust access)
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_IAM_05`
-
-**Documentation:** Enhanced KSI-IAM-05: Apply zero trust design principles
-
-Validates comprehensive zero trust implementation:
-- Never trust, always verify (MFA, continuous authentication)
-- Assume breach (network segmentation, monitoring)
-- Verify explicitly (multi-factor, device compliance)
-- Least privilege access (just-in-time, time-limited sessions)
-- Secure communications (private networks, encryption)
-- Monitor everything (active logging, real-time visibility)
-
-### Rule Implementation
-```python
-def evaluate_KSI_IAM_05(cli_output):
-    """
-    Enhanced KSI-IAM-05: Apply zero trust design principles
-    
-    Validates comprehensive zero trust implementation:
-    - Never trust, always verify (MFA, continuous authentication)
-    - Assume breach (network segmentation, monitoring)
-    - Verify explicitly (multi-factor, device compliance)
-    - Least privilege access (just-in-time, time-limited sessions)
-    - Secure communications (private networks, encryption)
-    - Monitor everything (active logging, real-time visibility)
-    """
-    if "commands" not in cli_output:
-        return False, "❌ Multi-command format required"
-    commands = cli_output["commands"]
-    sso_instances = None
-    cloudtrail_trails = None
-    trail_status = None
-    security_groups = None
-    vpc_endpoints = None
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Apply zero trust design principles
-
-**Implementation Justification:** Validates comprehensive zero trust implementation through Identity Center (modern approach), network security, continuous monitoring, conditional access, and secure communications patterns
-
-**FedRAMP 20x Category:** Identity and Access Management
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 7 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 7
-**Validation Method:** validation-engine-sync
+WARNING Basic zero trust elements (46%): PASS Modern identity platform: IAM Identity Center configured (1 instance(s))
+- FAIL No MFA devices found (zero trust requires multi-factor authentication)
+- PASS Network micro-segmentation: 10 restrictive vs 2 permissive security groups
+- WARNING Unknown credential type
+- PASS Secure private communications: 6 VPC endpoints configured
+- FAIL No continuous monitoring found (zero trust requires comprehensive logging)
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

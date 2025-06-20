@@ -1,80 +1,25 @@
 # KSI-TPR-01: Identify all third-party information resources
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Third-Party Information Resources
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-TPR-01`
-**Description:** Identify all third-party information resources
-**Justification:** Validates third-party resource identification through AWS services and documented third-party inventory
-**Last Validation:** ✅ 2025-06-20T03:16:41.745259
-**Result:** ⚠️ Partial third-party identification (expand documentation): ✅ Documented third-party inventory: sbom_including_elastic.json, fedramp_moderate_vendor_list.xlsx, Elasticsearch Inc._06.04.2024_Self_Attestation.pdf
+**What it validates:** Identify all third-party information resources
 
-## 🛠️ Implementation
+**Why it matters:** Validates third-party resource identification through AWS services and documented third-party inventory
 
-### Commands Executed
-1. **Command:** `aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json`
-   **Purpose:** Check for cross-account roles indicating third-party integrations
+## Validation Method
 
-2. **Command:** `evidence_check`
-   **Purpose:** Check evidence_v2/KSI-TPR-01/ for third_party_inventory.xlsx, saas_services_list.pdf, and vendor_registry.pdf
+1. `aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json`
+   *Check for cross-account roles indicating third-party integrations*
 
-## 📋 Evidence Requirements
+2. **Manual Review:** Check evidence_v2/KSI-TPR-01/ for third_party_inventory.xlsx, saas_services_list.pdf, and vendor_registry.pdf
 
-### 🖥️ CLI Validation
-- **Command:** `aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json`
-  - **Purpose:** Check for cross-account roles indicating third-party integrations
+## Latest Results
 
-### 📄 Manual Evidence
-- Check evidence_v2/KSI-TPR-01/ for third_party_inventory.xlsx, saas_services_list.pdf, and vendor_registry.pdf
-
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_TPR_01`
-
-**Documentation:** Fixed rule for KSI-TPR-01: Identify all third-party information resources
-Expected: Cross-account roles + Manual third-party inventory
-
-### Rule Implementation
-```python
-def evaluate_KSI_TPR_01(cli_output):
-    """
-    Fixed rule for KSI-TPR-01: Identify all third-party information resources
-    Expected: Cross-account roles + Manual third-party inventory
-    """
-    evidence_dir = Path("evidence_v2/KSI-TPR-01")
-    cross_account_roles = None
-    if "commands" in cli_output:
-        for cmd in cli_output["commands"]:
-            cli_command = cmd.get("cli_command", "")
-            raw_output = cmd.get("raw_output", {})
-            if not isinstance(raw_output, dict):
-                continue
-            if "list-roles" in cli_command:
-                cross_account_roles = raw_output.get("Roles", [])
-    manual_evidence = []
-    if evidence_dir.exists():
-        inventory_files = [
-            "sbom_including_elastic.json",
-            "fedramp_moderate_vendor_list.xlsx",
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Identify all third-party information resources
-
-**Implementation Justification:** Validates third-party resource identification through AWS services and documented third-party inventory
-
-**FedRAMP 20x Category:** Third-Party Information Resources
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 2 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 2
-**Validation Method:** validation-engine-sync
+- WARNING Partial third-party identification (expand documentation): PASS Documented third-party inventory: sbom_including_elastic.json, fedramp_moderate_vendor_list.xlsx, Elasticsearch Inc._06.04.2024_Self_Attestation.pdf
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

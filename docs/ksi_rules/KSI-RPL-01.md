@@ -1,74 +1,22 @@
 # KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Recovery Planning
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-RPL-01`
-**Description:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
-**Justification:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
-**Last Validation:** ✅ 2025-06-20T03:16:41.742028
-**Result:** ⚠️ Basic RTO/RPO definitions (expand business impact analysis): ✅ Core RTO/RPO documentation: rto_rpo_definitions.pdf, combined_tabletop_test_report_template.pdf
+**What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
-## 🛠️ Implementation
+**Why it matters:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
 
-### Commands Executed
-1. **Command:** `evidence_check`
-   **Purpose:** Check evidence_v2/KSI-RPL-01/ for rto_rpo_definitions.pdf, business_impact_analysis.pdf, and recovery_objectives_matrix.xlsx
+## Validation Method
 
-## 📋 Evidence Requirements
+1. **Manual Review:** Check evidence_v2/KSI-RPL-01/ for rto_rpo_definitions.pdf, business_impact_analysis.pdf, and recovery_objectives_matrix.xlsx
 
-### 📄 Manual Evidence
-- Check evidence_v2/KSI-RPL-01/ for rto_rpo_definitions.pdf, business_impact_analysis.pdf, and recovery_objectives_matrix.xlsx
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_RPL_01`
-
-**Documentation:** KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
-
-Expected: Manual evidence - RTO/RPO definitions and business impact analysis
-
-### Rule Implementation
-```python
-def evaluate_KSI_RPL_01(cli_output):
-    """
-    KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
-    
-    Expected: Manual evidence - RTO/RPO definitions and business impact analysis
-    """
-    evidence_dir = Path("evidence_v2/KSI-RPL-01")
-    if not evidence_dir.exists():
-        return False, "❌ Evidence directory evidence_v2/KSI-RPL-01/ not found"
-    required_docs = [
-        "rto_rpo_definitions.pdf",
-        "combined_tabletop_test_report_template.pdf"
-    ]
-    optional_docs = [
-        "service_level_agreements.pdf",
-        "criticality_assessment.pdf",
-        "recovery_time_analysis.pdf",
-        "data_loss_tolerance_matrix.xlsx",
-        "business_continuity_requirements.pdf"
-    ]
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
-
-**Implementation Justification:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
-
-**FedRAMP 20x Category:** Recovery Planning
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 1 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 1
-**Validation Method:** validation-engine-sync
+- WARNING Basic RTO/RPO definitions (expand business impact analysis): PASS Core RTO/RPO documentation: rto_rpo_definitions.pdf, combined_tabletop_test_report_template.pdf
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*

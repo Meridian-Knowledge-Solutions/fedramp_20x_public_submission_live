@@ -1,117 +1,52 @@
 # KSI-MLA-01: Operate a SIEM or similar system for centralized, tamper-resistant logging
 
-*Generated on 2025-06-20 03:16:42 UTC*
+## Overview
 
-## 📖 Overview
+**Category:** Monitoring, Logging, and Auditing
+**Status:** PASS
+**Last Check:** 2025-06-20 08:12
 
-**KSI ID:** `KSI-MLA-01`
-**Description:** Operate a SIEM or similar system for centralized, tamper-resistant logging
-**Justification:** Validates comprehensive SIEM capabilities from basic centralized logging to enterprise-grade log management, analysis, and compliance
-**Last Validation:** ✅ 2025-06-20T03:16:41.730568
-**Result:** ✅ Production-ready SIEM with advanced monitoring capabilities (69%): ✅ CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant); ✅ Centralized log collection: 6 log groups (4 AWS services, 2 applications); ✅ Log retention management: 5/6 log groups with retention policies; ✅ Compliance-grade retention: 3 log groups with long-term retention (365+ days); ✅ Cryptographic infrastructure: 11 KMS keys available for log protection; ✅ Advanced threat detection: 20 Security Hub findings (2 active); ✅ Enterprise-wide logging: AWS Organizations enables centralized multi-account SIEM; ✅ Multi-region audit coverage: 1 trails across all regions; ✅ Global service monitoring: 1 trails capturing global AWS events
+**What it validates:** Operate a SIEM or similar system for centralized, tamper-resistant logging
 
-## 🛠️ Implementation
+**Why it matters:** Validates comprehensive SIEM capabilities from basic centralized logging to enterprise-grade log management, analysis, and compliance
 
-### Commands Executed
-1. **Command:** `aws cloudtrail describe-trails --output json`
-   **Purpose:** Check CloudTrail for centralized, tamper-resistant logging foundation
+## Validation Method
 
-2. **Command:** `aws logs describe-log-groups --output json`
-   **Purpose:** Validate centralized log collection and retention policies in CloudWatch
+1. `aws cloudtrail describe-trails --output json`
+   *Check CloudTrail for centralized, tamper-resistant logging foundation*
 
-3. **Command:** `aws cloudwatch describe-alarms --output json`
-   **Purpose:** Check automated log analysis and real-time alerting capabilities
+2. `aws logs describe-log-groups --output json`
+   *Validate centralized log collection and retention policies in CloudWatch*
 
-4. **Command:** `aws kms list-keys --output json`
-   **Purpose:** Validate cryptographic protection and encryption for sensitive logs
+3. `aws cloudwatch describe-alarms --output json`
+   *Check automated log analysis and real-time alerting capabilities*
 
-5. **Command:** `aws config describe-delivery-channels --output json`
-   **Purpose:** Check compliance-grade log delivery and audit trail mechanisms
+4. `aws kms list-keys --output json`
+   *Validate cryptographic protection and encryption for sensitive logs*
 
-6. **Command:** `aws s3api list-buckets --output json`
-   **Purpose:** Validate log archival, long-term storage, and forensic capabilities
+5. `aws config describe-delivery-channels --output json`
+   *Check compliance-grade log delivery and audit trail mechanisms*
 
-7. **Command:** `aws securityhub get-findings --max-results 20 --output json`
-   **Purpose:** Check advanced threat detection and security event correlation
+6. `aws s3api list-buckets --output json`
+   *Validate log archival, long-term storage, and forensic capabilities*
 
-8. **Command:** `aws organizations describe-organization --output json`
-   **Purpose:** Validate enterprise-wide centralized logging and cross-account capabilities
+7. `aws securityhub get-findings --max-results 20 --output json`
+   *Check advanced threat detection and security event correlation*
 
-## 📋 Evidence Requirements
+8. `aws organizations describe-organization --output json`
+   *Validate enterprise-wide centralized logging and cross-account capabilities*
 
-### 🖥️ CLI Validation
-- **Command:** `aws cloudtrail describe-trails --output json`
-  - **Purpose:** Check CloudTrail for centralized, tamper-resistant logging foundation
-- **Command:** `aws logs describe-log-groups --output json`
-  - **Purpose:** Validate centralized log collection and retention policies in CloudWatch
-- **Command:** `aws cloudwatch describe-alarms --output json`
-  - **Purpose:** Check automated log analysis and real-time alerting capabilities
-- **Command:** `aws kms list-keys --output json`
-  - **Purpose:** Validate cryptographic protection and encryption for sensitive logs
-- **Command:** `aws config describe-delivery-channels --output json`
-  - **Purpose:** Check compliance-grade log delivery and audit trail mechanisms
-- **Command:** `aws s3api list-buckets --output json`
-  - **Purpose:** Validate log archival, long-term storage, and forensic capabilities
-- **Command:** `aws securityhub get-findings --max-results 20 --output json`
-  - **Purpose:** Check advanced threat detection and security event correlation
-- **Command:** `aws organizations describe-organization --output json`
-  - **Purpose:** Validate enterprise-wide centralized logging and cross-account capabilities
+## Latest Results
 
-## 🧠 Validation Logic
-
-**Function:** `evaluate_KSI_MLA_01`
-
-**Documentation:** ENHANCED MLA-01: Operate a SIEM or similar system for centralized, tamper-resistant logging
-
-Validates comprehensive SIEM capabilities scaling from pilot to enterprise:
-- SIEM Foundation: CloudTrail tamper resistance + centralized log collection
-- Log Management: Retention policies, encryption, compliance-grade storage
-- Analysis & Alerting: Real-time monitoring, automated threat detection
-- Advanced SIEM: Cross-account logging, forensic capabilities, security correlation
-- Enterprise Features: Compliance delivery, long-term archival, governance
-
-Preserves current passing status while enabling maturity growth measurement.
-
-### Rule Implementation
-```python
-def evaluate_KSI_MLA_01(cli_output):
-    """
-    ENHANCED MLA-01: Operate a SIEM or similar system for centralized, tamper-resistant logging
-    
-    Validates comprehensive SIEM capabilities scaling from pilot to enterprise:
-    - SIEM Foundation: CloudTrail tamper resistance + centralized log collection
-    - Log Management: Retention policies, encryption, compliance-grade storage
-    - Analysis & Alerting: Real-time monitoring, automated threat detection
-    - Advanced SIEM: Cross-account logging, forensic capabilities, security correlation
-    - Enterprise Features: Compliance delivery, long-term archival, governance
-    
-    Preserves current passing status while enabling maturity growth measurement.
-    """
-    if "commands" not in cli_output:
-        return False, "❌ Multi-command format required"
-    commands = cli_output["commands"]
-    cloudtrail_trails = None
-    log_groups = None
-    cloudwatch_alarms = None
-    kms_keys = None
-    # ... (additional validation logic) ...
-```
-
-## 📜 Compliance Mapping
-
-**Control Description:** Operate a SIEM or similar system for centralized, tamper-resistant logging
-
-**Implementation Justification:** Validates comprehensive SIEM capabilities from basic centralized logging to enterprise-grade log management, analysis, and compliance
-
-**FedRAMP 20x Category:** Monitoring, Logging, and Auditing
-
-## 📊 Recent Validation Results
-
-**Evidence Analysis:** ❌ All 8 commands failed execution | ⚠️ No usable output
-
-**Commands Executed:** 8
-**Validation Method:** validation-engine-sync
+PASS Production-ready SIEM with advanced monitoring capabilities (69%): PASS CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant)
+- PASS Centralized log collection: 6 log groups (4 AWS services, 2 applications)
+- PASS Log retention management: 5/6 log groups with retention policies
+- PASS Compliance-grade retention: 3 log groups with long-term retention (365+ days)
+- PASS Cryptographic infrastructure: 11 KMS keys available for log protection
+- PASS Advanced threat detection: 20 Security Hub findings (2 active)
+- PASS Enterprise-wide logging: AWS Organizations enables centralized multi-account SIEM
+- PASS Multi-region audit coverage: 1 trails across all regions
+- PASS Global service monitoring: 1 trails capturing global AWS events
 
 ---
-*Documentation auto-generated from KSI validation pipeline*
-*Source: cli_command_register.json, unified_ksi_validations.json*
+*Generated 2025-06-20 08:12 UTC*
