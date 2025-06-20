@@ -1,14 +1,14 @@
 # KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
 
-*Generated on 2025-06-19 03:17:32 UTC*
+*Generated on 2025-06-20 03:16:41 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CNA-02`
 **Description:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 **Justification:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
-**Last Validation:** ✅ 2025-06-19T03:17:32.372690
-**Result:** ✅ Strong attack surface controls (62%): ✅ Strong attack surface minimization: 6/8 private subnets (75%); ⚠️ Basic AZ segmentation: 8 subnets across 2 availability zones; ✅ Strong micro-segmentation: 11/12 custom security groups; ⚠️ Limited lateral movement barriers: 5/12 security groups with specific rules; ✅ Minimal compute exposure: 4/4 instances in private subnets; ✅ Database isolation: All 1 RDS instances private; ⚠️ High service exposure: 1 internet-facing vs 0 internal load balancers; ℹ️ No EKS clusters found; ⚠️ Lambda exposure: 2 functions not in VPC (limited network isolation); ⚠️ Using default Network ACLs only (no additional subnet isolation)
+**Last Validation:** ✅ 2025-06-20T03:16:41.726852
+**Result:** ✅ Strong attack surface controls (65%): ✅ Strong attack surface minimization: 6/8 private subnets (75%); ⚠️ Basic AZ segmentation: 8 subnets across 2 availability zones; ✅ Strong micro-segmentation: 11/12 custom security groups; ✅ Lateral movement barriers: 6/12 security groups with specific rules; ✅ Minimal compute exposure: 4/4 instances in private subnets; ✅ Database isolation: All 1 RDS instances private; ⚠️ High service exposure: 1 internet-facing vs 0 internal load balancers; ℹ️ No EKS clusters found; ⚠️ Lambda exposure: 2 functions not in VPC (limited network isolation); ⚠️ Using default Network ACLs only (no additional subnet isolation)
 
 ## 🛠️ Implementation
 

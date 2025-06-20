@@ -1,13 +1,13 @@
 # KSI-IAM-05: Apply zero trust design principles
 
-*Generated on 2025-06-19 03:17:32 UTC*
+*Generated on 2025-06-20 03:16:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-IAM-05`
 **Description:** Apply zero trust design principles
 **Justification:** Validates comprehensive zero trust implementation through Identity Center (modern approach), network security, continuous monitoring, conditional access, and secure communications patterns
-**Last Validation:** ✅ 2025-06-19T03:17:32.376561
+**Last Validation:** ✅ 2025-06-20T03:16:41.729118
 **Result:** ⚠️ Basic zero trust elements (46%): ✅ Modern identity platform: IAM Identity Center configured (1 instance(s)); ❌ No MFA devices found (zero trust requires multi-factor authentication); ✅ Network micro-segmentation: 10 restrictive vs 2 permissive security groups; ⚠️ Unknown credential type; ✅ Secure private communications: 6 VPC endpoints configured; ❌ No continuous monitoring found (zero trust requires comprehensive logging)
 
 ## 🛠️ Implementation

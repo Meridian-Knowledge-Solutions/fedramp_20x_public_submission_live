@@ -1,14 +1,14 @@
 # KSI-MLA-01: Operate a SIEM or similar system for centralized, tamper-resistant logging
 
-*Generated on 2025-06-19 03:17:32 UTC*
+*Generated on 2025-06-20 03:16:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-MLA-01`
 **Description:** Operate a SIEM or similar system for centralized, tamper-resistant logging
 **Justification:** Validates comprehensive SIEM capabilities from basic centralized logging to enterprise-grade log management, analysis, and compliance
-**Last Validation:** ✅ 2025-06-19T03:17:32.378039
-**Result:** ✅ Production-ready SIEM with advanced monitoring capabilities (69%): ✅ CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant); ✅ Centralized log collection: 6 log groups (4 AWS services, 2 applications); ✅ Log retention management: 5/6 log groups with retention policies; ✅ Compliance-grade retention: 3 log groups with long-term retention (365+ days); ✅ Cryptographic infrastructure: 11 KMS keys available for log protection; ✅ Advanced threat detection: 20 Security Hub findings (3 active); ✅ Enterprise-wide logging: AWS Organizations enables centralized multi-account SIEM; ✅ Multi-region audit coverage: 1 trails across all regions; ✅ Global service monitoring: 1 trails capturing global AWS events
+**Last Validation:** ✅ 2025-06-20T03:16:41.730568
+**Result:** ✅ Production-ready SIEM with advanced monitoring capabilities (69%): ✅ CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant); ✅ Centralized log collection: 6 log groups (4 AWS services, 2 applications); ✅ Log retention management: 5/6 log groups with retention policies; ✅ Compliance-grade retention: 3 log groups with long-term retention (365+ days); ✅ Cryptographic infrastructure: 11 KMS keys available for log protection; ✅ Advanced threat detection: 20 Security Hub findings (2 active); ✅ Enterprise-wide logging: AWS Organizations enables centralized multi-account SIEM; ✅ Multi-region audit coverage: 1 trails across all regions; ✅ Global service monitoring: 1 trails capturing global AWS events
 
 ## 🛠️ Implementation
 

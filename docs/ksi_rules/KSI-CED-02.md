@@ -1,13 +1,13 @@
 # KSI-CED-02: Require role-specific training for high risk roles, including at least roles with privileged access
 
-*Generated on 2025-06-19 03:17:32 UTC*
+*Generated on 2025-06-20 03:16:42 UTC*
 
 ## 📖 Overview
 
 **KSI ID:** `KSI-CED-02`
 **Description:** Require role-specific training for high risk roles, including at least roles with privileged access
 **Justification:** Manual evidence required - role-specific training curricula, privileged access training records, and specialized cybersecurity training documentation
-**Last Validation:** ✅ 2025-06-19T03:17:32.370917
+**Last Validation:** ✅ 2025-06-20T03:16:41.725424
 **Result:** ✅ Role-specific training including privileged access: fedramp_role_based.png, cyber_security_training.png, security_training_roster.png
 
 ## 🛠️ Implementation
