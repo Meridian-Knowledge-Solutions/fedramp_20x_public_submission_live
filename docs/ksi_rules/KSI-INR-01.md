@@ -4,7 +4,7 @@
 
 **Category:** Incident Reporting
 **Status:** PASS
-**Last Check:** 2025-06-20 21:02
+**Last Check:** 2025-06-21 03:13
 
 **What it validates:** Report incidents according to FedRAMP requirements and cloud service provider policies
 
@@ -21,4 +21,4 @@ WARNING Basic incident reporting (ensure FedRAMP compliance): PASS Core reportin
 - FAIL No specific FedRAMP incident reporting compliance found (required)
 
 ---
-*Generated 2025-06-20 21:02 UTC*
+*Generated 2025-06-21 03:13 UTC*
