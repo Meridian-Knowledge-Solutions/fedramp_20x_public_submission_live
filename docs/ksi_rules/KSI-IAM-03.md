@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-21 03:13
+**Last Check:** 2025-06-22 03:25
 
 **What it validates:** Enforce appropriately secure authentication methods for non-user accounts and services
 
@@ -32,4 +32,4 @@ PASS Secure service authentication methods: PASS 52 IAM roles available (25 serv
 - INFO No EC2 instance profile information available
 
 ---
-*Generated 2025-06-21 03:13 UTC*
+*Generated 2025-06-22 03:25 UTC*
