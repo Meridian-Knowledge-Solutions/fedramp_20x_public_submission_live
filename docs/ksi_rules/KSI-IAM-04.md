@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-22 03:25
+**Last Check:** 2025-06-23 02:11
 
 **What it validates:** Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 
@@ -39,4 +39,4 @@ WARNING Minimal authorization controls (35%): INFO IAM Identity Center not confi
 - WARNING Unknown credential type
 
 ---
-*Generated 2025-06-22 03:25 UTC*
+*Generated 2025-06-23 02:11 UTC*
