@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-23 09:42
+**Last Check:** 2025-06-23 10:12
 
 **What it validates:** Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 
@@ -15,8 +15,8 @@
 1. `aws sso-admin list-instances --output json`
    *Check for AWS IAM Identity Center (modern permission set approach)*
 
-2. `aws sso-admin list-permission-sets --instance-arn $(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text) --output json 2>/dev/null || echo '{"PermissionSets":[]}'`
-   *List permission sets for role-based and attribute-based access validation*
+2. `INSTANCE_ARN=$(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text 2>/dev/null) && aws sso-admin list-permission-sets --instance-arn "$INSTANCE_ARN" --output json 2>/dev/null || echo '{"PermissionSets":[]}'`
+   *ROBUST: Get instance ARN first, then list permission sets with proper error handling*
 
 3. `aws iam list-roles --output json`
    *Analyze traditional IAM roles for service accounts and legacy access patterns*
@@ -40,4 +40,4 @@ PASS Good traditional authorization model (60%) - consider upgrading to IAM Iden
 - WARNING Direct user session: Not using just-in-time access (consider SSO)
 
 ---
-*Generated 2025-06-23 09:42 UTC*
+*Generated 2025-06-23 10:12 UTC*
