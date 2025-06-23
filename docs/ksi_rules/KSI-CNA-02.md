@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-06-23 11:17
+**Last Check:** 2025-06-23 12:19
 
 **What it validates:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 
@@ -42,9 +42,8 @@ PASS Strong attack surface controls (70%): PASS Strong attack surface minimizati
 - PASS Minimal compute exposure: 4/4 instances in private subnets
 - PASS Database isolation: All 1 RDS instances private
 - WARNING High service exposure: 1 internet-facing vs 0 internal load balancers
-- INFO No EKS clusters found
 - WARNING Lambda exposure: 2 functions not in VPC (limited network isolation)
 - PASS Advanced segmentation barriers: 1/1 Network ACLs with custom isolation rules
 
 ---
-*Generated 2025-06-23 11:17 UTC*
+*Generated 2025-06-23 12:19 UTC*
