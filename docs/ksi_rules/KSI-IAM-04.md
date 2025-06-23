@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-23 08:55
+**Last Check:** 2025-06-23 09:42
 
 **What it validates:** Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 
@@ -32,11 +32,12 @@
 
 ## Latest Results
 
-WARNING Minimal authorization controls (35%): INFO IAM Identity Center not configured (using traditional IAM)
-- PASS Traditional role-based access: 53 roles (26 service, 27 user-oriented) vs 2 users
+PASS Good traditional authorization model (60%) - consider upgrading to IAM Identity Center: PASS IAM Identity Center configured: 1 instance(s)
+- WARNING IAM Identity Center configured but no permission sets found
+- PASS Traditional role-based access: 53 roles (31 service, 22 user-oriented) vs 2 users
 - PASS Controlled user count: 2 users (appropriate for least privilege)
 - PASS Controlled policy count: 2 custom policies
-- WARNING Unknown credential type
+- WARNING Direct user session: Not using just-in-time access (consider SSO)
 
 ---
-*Generated 2025-06-23 08:55 UTC*
+*Generated 2025-06-23 09:42 UTC*
