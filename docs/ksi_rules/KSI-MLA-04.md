@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-06-23 10:12
+**Last Check:** 2025-06-23 11:17
 
 **What it validates:** Perform authenticated vulnerability scanning on information resources
 
@@ -51,4 +51,4 @@ PASS Enterprise-grade authenticated vulnerability scanning with comprehensive co
 - PASS Enterprise scanning governance: AWS Organizations enables centralized multi-account vulnerability scanning
 
 ---
-*Generated 2025-06-23 10:12 UTC*
+*Generated 2025-06-23 11:17 UTC*
