@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-06-23 03:26
+**Last Check:** 2025-06-23 04:26
 
 **What it validates:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 
@@ -47,4 +47,4 @@ PASS Strong attack surface controls (65%): PASS Strong attack surface minimizati
 - WARNING Using default Network ACLs only (no additional subnet isolation)
 
 ---
-*Generated 2025-06-23 03:26 UTC*
+*Generated 2025-06-23 04:26 UTC*
