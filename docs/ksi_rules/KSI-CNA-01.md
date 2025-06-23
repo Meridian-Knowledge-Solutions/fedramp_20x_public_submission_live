@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-06-23 04:26
+**Last Check:** 2025-06-23 07:40
 
 **What it validates:** Configure ALL information resources to limit inbound and outbound traffic
 
@@ -38,11 +38,11 @@
 
 ## Latest Results
 
-PASS Strong multi-layer traffic controls (69%): PASS VPC infrastructure: 1 VPC(s) detected
+PASS Strong multi-layer traffic controls (84%): PASS VPC infrastructure: 1 VPC(s) detected
 - PASS Strong ingress controls: 11/12 security groups restrictive
-- FAIL No egress controls: 1/12 security groups control outbound traffic
+- WARNING Limited egress controls: 3/12 security groups control outbound traffic
 - PASS Default security group properly secured
-- WARNING Using default Network ACLs only (1 total) - no custom subnet-level controls
+- PASS Custom network controls: 1/1 Network ACLs with custom traffic filtering rules
 - PASS Controlled egress routing: 1 private route tables with NAT gateway routing
 - PASS Managed egress: 1 NAT gateways for controlled outbound access
 - PASS Private service access: 6 VPC endpoints reduce internet-bound traffic
@@ -51,4 +51,4 @@ PASS Strong multi-layer traffic controls (69%): PASS VPC infrastructure: 1 VPC(s
 - WARNING No VPC Flow Logs found - limited traffic visibility
 
 ---
-*Generated 2025-06-23 04:26 UTC*
+*Generated 2025-06-23 07:40 UTC*

@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-06-23 04:26
+**Last Check:** 2025-06-23 07:40
 
 **What it validates:** Use immutable infrastructure patterns
 
@@ -41,13 +41,15 @@
 
 ## Latest Results
 
-WARNING Minimal infrastructure automation (19%) - predominantly manual: WARNING No Terraform lock tables found - potential state management issues
+WARNING Minimal infrastructure automation (22%) - predominantly manual: WARNING No Terraform state buckets detected - potential local state usage
+- WARNING No Terraform lock tables found - potential state management issues
 - WARNING No launch templates found - instances may be deployed inconsistently
 - WARNING No Auto Scaling Groups found - manual instance management
 - WARNING No custom AMIs found - using base images without customization
 - PASS Serverless compute: 2 Lambda functions (inherently immutable)
 - PASS Configuration management: 5 SSM parameters
+- PASS Parameter versioning: 1 parameters with version history
 - WARNING No CodeBuild projects found - potentially manual deployments
 
 ---
-*Generated 2025-06-23 04:26 UTC*
+*Generated 2025-06-23 07:40 UTC*

@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-06-23 04:26
+**Last Check:** 2025-06-23 07:40
 
 **What it validates:** Use logical networking for traffic flow controls
 
@@ -41,14 +41,14 @@
 
 ## Latest Results
 
-PASS Strong logical networking controls (69%): PASS Logical routing infrastructure: 5/5 route tables with intentional traffic flows
-- PASS Advanced routing patterns: 1 route tables with custom traffic control
-- FAIL No network access control: 1 NACLs found but no rules
-- PASS Advanced service routing: 6 VPC endpoints (1 gateway, 3 interface)
+PASS Comprehensive logical networking for traffic flow control (88%): PASS Logical routing infrastructure: 5/5 route tables with intentional traffic flows
+- PASS Advanced routing patterns: 3 route tables with custom traffic control
+- PASS Advanced network access control: 1/1 NACLs with custom traffic flow policies
+- PASS Advanced service routing: 6 VPC endpoints (1 gateway, 3 interface, 2 GWLB)
 - INFO No Transit Gateways found (appropriate for single-VPC environments)
 - PASS Application-layer traffic control: 1 Application Load Balancers
 - PASS Controlled egress routing: 1 active NAT Gateways
 - INFO No VPC Flow Logs found (monitoring not required for basic networking)
 
 ---
-*Generated 2025-06-23 04:26 UTC*
+*Generated 2025-06-23 07:40 UTC*
