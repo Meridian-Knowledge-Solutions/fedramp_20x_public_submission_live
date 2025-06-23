@@ -160,7 +160,7 @@
     "justification": "Validates comprehensive multi-layer DDoS protection through network-layer shields, application-layer filtering, edge protection, capacity-based mitigation, and automated response capabilities",
     "cli_commands": [
       {
-        "command": "aws shield describe-subscription --output json",
+        "command": "",
         "note": "Check AWS Shield Advanced subscription for premium DDoS protection and response team"
       },
       {
@@ -245,7 +245,11 @@
       },
       {
         "command": "aws cloudtrail describe-trails --output json",
-        "note": "Validate CloudTrail logging (security and operational excellence best practice)"
+        "note": "Validate CloudTrail configuration (security and operational excellence best practice)"
+      },
+      {
+        "command": "aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text) --output json 2>/dev/null || echo '{\"IsLogging\":false}'",
+        "note": "Check CloudTrail logging status (critical for accurate security assessment)"
       },
       {
         "command": "aws kms list-keys --output json",
@@ -278,6 +282,10 @@
       {
         "command": "aws backup list-backup-plans --output json",
         "note": "Check backup strategies (reliability best practices)"
+      },
+      {
+        "command": "aws organizations describe-organization --output json 2>/dev/null || echo '{\"Organization\":null}'",
+        "note": "Check AWS Organizations setup (governance and operational excellence best practices)"
       }
     ]
   },
