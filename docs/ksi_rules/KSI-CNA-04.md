@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Cloud Native Architecture
-**Status:** PASS
-**Last Check:** 2025-06-24 18:34
+**Status:** FAIL
+**Last Check:** 2025-06-24 18:59
 
 **What it validates:** Use immutable infrastructure patterns
 
@@ -41,10 +41,7 @@
 
 ## Latest Results
 
-PASS Basic immutable patterns established (34%) - expand practices: WARNING No S3 state backend detected - potential local state usage
-- PASS External configuration management: 6 SSM parameters
-- PASS Configuration versioning: 1 parameters with version history
-- PASS Serverless compute: 3 Lambda functions (inherently immutable)
+- Exception during evaluation: No module named 'dateutil'
 
 ---
-*Generated 2025-06-24 18:34 UTC*
+*Generated 2025-06-24 18:59 UTC*
