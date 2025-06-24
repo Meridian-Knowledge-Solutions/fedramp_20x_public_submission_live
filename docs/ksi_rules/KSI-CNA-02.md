@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-06-24 02:28
+**Last Check:** 2025-06-24 03:19
 
 **What it validates:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 
@@ -35,15 +35,15 @@
 
 ## Latest Results
 
-PASS Strong attack surface controls (70%): PASS Strong attack surface minimization: 6/8 private subnets (75%)
+PASS Strong attack surface controls (75%): PASS Strong attack surface minimization: 6/8 private subnets (75%)
 - WARNING Basic AZ segmentation: 8 subnets across 2 availability zones
 - PASS Strong micro-segmentation: 13/14 custom security groups
 - PASS Lateral movement barriers: 7/14 security groups with specific rules
 - PASS Minimal compute exposure: 4/4 instances in private subnets
 - PASS Database isolation: All 1 RDS instances private
 - WARNING High service exposure: 1 internet-facing vs 0 internal load balancers
-- WARNING Lambda exposure: 2 functions not in VPC (limited network isolation)
+- PASS Lambda isolation: 1/3 functions in VPC
 - PASS Advanced segmentation barriers: 1/1 Network ACLs with custom isolation rules
 
 ---
-*Generated 2025-06-24 02:28 UTC*
+*Generated 2025-06-24 03:19 UTC*
