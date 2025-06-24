@@ -685,7 +685,7 @@
       }
     ]
   },
-  "KSI-IAM-04": {
+   "KSI-IAM-04": {
     "description": "Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services",
     "justification": "Validates comprehensive authorization through IAM Identity Center permission sets (modern approach) and traditional IAM patterns for complete coverage of least privilege, role-based, attribute-based, and just-in-time access",
     "cli_commands": [
@@ -694,8 +694,8 @@
         "note": "Check for AWS IAM Identity Center (modern permission set approach)"
       },
       {
-        "command": "aws sso-admin list-permission-sets --instance-arn $(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text) --output json 2>/dev/null || echo '{\"PermissionSets\":[]}'",
-        "note": "List permission sets for role-based and attribute-based access validation"
+        "command": "INSTANCE_ARN=$(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text 2>/dev/null) && aws sso-admin list-permission-sets --instance-arn \"$INSTANCE_ARN\" --output json 2>/dev/null || echo '{\"PermissionSets\":[]}'",
+        "note": "ROBUST: Get instance ARN first, then list permission sets with proper error handling"
       },
       {
         "command": "aws iam list-roles --output json",
@@ -868,7 +868,7 @@
     "justification": "Validates comprehensive vulnerability detection and response from basic security monitoring to enterprise-grade automated remediation, threat intelligence, and cross-account vulnerability management",
     "cli_commands": [
       {
-        "command": "aws securityhub get-enabled-standards --output json",
+        "command": "aws securityhub get-enabled-standards --region us-east-1 --output json",
         "note": "Check Security Hub standards for foundational vulnerability detection and compliance monitoring"
       },
       {
@@ -1980,51 +1980,87 @@
       }
     ]
   },
-  "KSI-RPL-01": {
+   "KSI-RPL-01": {
     "description": "Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)",
-    "justification": "Manual evidence required - documented RTO/RPO definitions and business impact analysis",
+    "justification": "Validates documented RTO/RPO definitions with technical infrastructure capability verification through RDS backup retention and point-in-time recovery settings",
     "cli_commands": [
       {
+        "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,LatestRestorableTime,PreferredBackupWindow]' --output json",
+        "note": "Validate RDS backup retention (BackupRetentionPeriod > 0) and point-in-time recovery capability for RPO validation"
+      },
+      {
+        "command": "aws backup list-backup-plans --output json",
+        "note": "Check backup plan frequency and retention alignment with documented RTO/RPO objectives"
+      },
+      {
         "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-RPL-01/ for rto_rpo_definitions.pdf, business_impact_analysis.pdf, and recovery_objectives_matrix.xlsx"
+        "note": "Check evidence_v2/KSI-RPL-01/ for rto_rpo_definitions.pdf with actual infrastructure-validated objectives, business_impact_analysis.pdf, and recovery_objectives_matrix.xlsx"
       }
     ]
   },
   "KSI-RPL-02": {
     "description": "Develop and maintain a recovery plan that aligns with defined recovery objectives",
-    "justification": "Manual evidence required - disaster recovery plans, incident response procedures, and recovery playbooks",
+    "justification": "Validates recovery plans with technical implementation evidence through backup configurations and recovery automation capabilities",
     "cli_commands": [
       {
+        "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,DeletionProtection,BackupRetentionPeriod,PreferredMaintenanceWindow]' --output json",
+        "note": "Verify RDS recovery configuration aligns with documented recovery procedures"
+      },
+      {
+        "command": "aws backup describe-backup-plans --output json",
+        "note": "Validate backup plan configuration supports documented recovery procedures"
+      },
+      {
         "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-RPL-02/ for disaster_recovery_plan.pdf, incident_response_plan.pdf, recovery_procedures_playbook.pdf, and business_continuity_plan.pdf"
+        "note": "Check evidence_v2/KSI-RPL-02/ for disaster_recovery_plan.pdf (updated with technical validation), incident_response_plan.pdf, recovery_procedures_playbook.pdf, and business_continuity_plan.pdf"
       }
     ]
   },
   "KSI-RPL-03": {
-      "description": "Perform system backups aligned with recovery objectives",
-      "justification": "Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives INCLUDING retention policies",
-      "cli_commands": [
-        {
-          "command": "aws backup list-backup-plans --output json",
-          "note": "Check AWS Backup plans for systematic backup implementation"
-        },
-        {
-          "command": "aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --output json",
-          "note": "Get detailed backup plan configuration including retention policies"
-        },
-        {
-          "command": "aws ec2 describe-snapshots --owner-ids self --output json",
-          "note": "Validate EBS snapshots for system backup coverage"
-        }
-      ]
-    },
-  "KSI-RPL-04": {
-    "description": "Regularly test the capability to recover from incidents and contingencies",
-    "justification": "Manual evidence required - recovery testing procedures, test results, and lessons learned documentation",
+    "description": "Perform system backups aligned with recovery objectives",
+    "justification": "Validates comprehensive backup implementation through AWS Backup, EBS snapshots, and RDS backups with retention policies and operational evidence",
     "cli_commands": [
       {
+        "command": "aws backup list-backup-plans --output json",
+        "note": "Check AWS Backup plans for systematic backup implementation"
+      },
+      {
+        "command": "aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --output json",
+        "note": "Get detailed backup plan configuration including retention policies"
+      },
+      {
+        "command": "aws backup list-backup-jobs --by-state COMPLETED --max-results 20 --output json",
+        "note": "Validate recent successful backup operations and timing to prove backups are functioning"
+      },
+      {
+        "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,DeletionProtection]' --output json",
+        "note": "Confirm RDS automated backup configuration and data protection settings"
+      },
+      {
+        "command": "aws ec2 describe-snapshots --owner-ids self --output json",
+        "note": "Validate EBS snapshots for system backup coverage"
+      }
+    ]
+  },
+  "KSI-RPL-04": {
+    "description": "Regularly test the capability to recover from incidents and contingencies",
+    "justification": "Validates recovery testing through historical restore operations, backup job performance metrics, and documented test procedures with actual results",
+    "cli_commands": [
+      {
+        "command": "aws backup list-restore-jobs --max-results 20 --output json",
+        "note": "Document historical restore operations proving actual recovery testing has been performed"
+      },
+      {
+        "command": "aws backup list-backup-jobs --by-state COMPLETED --by-created-after 2024-05-01 --output json",
+        "note": "Show recent backup completions with timing data to validate recovery time objectives"
+      },
+      {
+        "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,LatestRestorableTime,PreferredBackupWindow]' --output json",
+        "note": "Verify point-in-time recovery capability and backup timing for recovery testing validation"
+      },
+      {
         "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-RPL-04/ for recovery_testing_procedures.pdf, disaster_recovery_test_results.xlsx, tabletop_exercise_reports.pdf, and recovery_lessons_learned.pdf"
+        "note": "Check evidence_v2/KSI-RPL-04/ for recovery_testing_procedures.pdf, disaster_recovery_test_results.xlsx with actual restore times, tabletop_exercise_reports.pdf, and recovery_lessons_learned.pdf"
       }
     ]
   },
