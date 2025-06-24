@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-06-24 16:59
+**Last Check:** 2025-06-24 17:21
 
 **What it validates:** Operate a SIEM or similar system for centralized, tamper-resistant logging
 
@@ -49,4 +49,4 @@ PASS Mature SIEM with solid log management and alerting (64%): PASS CloudTrail f
 - PASS Global service monitoring: 1 trails capturing global AWS events
 
 ---
-*Generated 2025-06-24 16:59 UTC*
+*Generated 2025-06-24 17:21 UTC*
