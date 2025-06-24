@@ -4,19 +4,25 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-06-24 00:57
+**Last Check:** 2025-06-24 01:46
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
-**Why it matters:** Manual evidence required - documented RTO/RPO definitions and business impact analysis
+**Why it matters:** Validates documented RTO/RPO definitions with technical infrastructure capability verification through RDS backup retention and point-in-time recovery settings
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-RPL-01/ for rto_rpo_definitions.pdf, business_impact_analysis.pdf, and recovery_objectives_matrix.xlsx
+1. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,LatestRestorableTime,PreferredBackupWindow]' --output json`
+   *Validate RDS backup retention (BackupRetentionPeriod > 0) and point-in-time recovery capability for RPO validation*
+
+2. `aws backup list-backup-plans --output json`
+   *Check backup plan frequency and retention alignment with documented RTO/RPO objectives*
+
+3. **Manual Review:** Check evidence_v2/KSI-RPL-01/ for rto_rpo_definitions.pdf with actual infrastructure-validated objectives, business_impact_analysis.pdf, and recovery_objectives_matrix.xlsx
 
 ## Latest Results
 
 - WARNING Basic RTO/RPO definitions (expand business impact analysis): PASS Core RTO/RPO documentation: rto_rpo_definitions.pdf, combined_tabletop_test_report_template.pdf
 
 ---
-*Generated 2025-06-24 00:57 UTC*
+*Generated 2025-06-24 01:46 UTC*

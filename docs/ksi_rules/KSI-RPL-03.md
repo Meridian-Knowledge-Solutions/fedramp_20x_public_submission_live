@@ -4,11 +4,11 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-06-24 00:57
+**Last Check:** 2025-06-24 01:46
 
 **What it validates:** Perform system backups aligned with recovery objectives
 
-**Why it matters:** Validates backup implementation through AWS Backup, EBS snapshots, and RDS backups aligned with documented objectives INCLUDING retention policies
+**Why it matters:** Validates comprehensive backup implementation through AWS Backup, EBS snapshots, and RDS backups with retention policies and operational evidence
 
 ## Validation Method
 
@@ -18,7 +18,13 @@
 2. `aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --output json`
    *Get detailed backup plan configuration including retention policies*
 
-3. `aws ec2 describe-snapshots --owner-ids self --output json`
+3. `aws backup list-backup-jobs --by-state COMPLETED --max-results 20 --output json`
+   *Validate recent successful backup operations and timing to prove backups are functioning*
+
+4. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,DeletionProtection]' --output json`
+   *Confirm RDS automated backup configuration and data protection settings*
+
+5. `aws ec2 describe-snapshots --owner-ids self --output json`
    *Validate EBS snapshots for system backup coverage*
 
 ## Latest Results
@@ -29,4 +35,4 @@ PASS System backups with compliant retention aligned with recovery objectives: P
 - INFO No EBS snapshots (acceptable if using AWS Backup exclusively)
 
 ---
-*Generated 2025-06-24 00:57 UTC*
+*Generated 2025-06-24 01:46 UTC*

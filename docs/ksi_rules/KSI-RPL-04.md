@@ -4,15 +4,24 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-06-24 00:57
+**Last Check:** 2025-06-24 01:46
 
 **What it validates:** Regularly test the capability to recover from incidents and contingencies
 
-**Why it matters:** Manual evidence required - recovery testing procedures, test results, and lessons learned documentation
+**Why it matters:** Validates recovery testing through historical restore operations, backup job performance metrics, and documented test procedures with actual results
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-RPL-04/ for recovery_testing_procedures.pdf, disaster_recovery_test_results.xlsx, tabletop_exercise_reports.pdf, and recovery_lessons_learned.pdf
+1. `aws backup list-restore-jobs --max-results 20 --output json`
+   *Document historical restore operations proving actual recovery testing has been performed*
+
+2. `aws backup list-backup-jobs --by-state COMPLETED --by-created-after 2024-05-01 --output json`
+   *Show recent backup completions with timing data to validate recovery time objectives*
+
+3. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,LatestRestorableTime,PreferredBackupWindow]' --output json`
+   *Verify point-in-time recovery capability and backup timing for recovery testing validation*
+
+4. **Manual Review:** Check evidence_v2/KSI-RPL-04/ for recovery_testing_procedures.pdf, disaster_recovery_test_results.xlsx with actual restore times, tabletop_exercise_reports.pdf, and recovery_lessons_learned.pdf
 
 ## Latest Results
 
@@ -20,4 +29,4 @@ WARNING Basic recovery testing (expand testing procedures): PASS Core testing do
 - PASS Recent testing: 2 test documents updated within last year
 
 ---
-*Generated 2025-06-24 00:57 UTC*
+*Generated 2025-06-24 01:46 UTC*
