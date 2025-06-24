@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** FAIL
-**Last Check:** 2025-06-24 02:05
+**Status:** PASS
+**Last Check:** 2025-06-24 02:28
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -22,7 +22,9 @@
 
 ## Latest Results
 
-- Exception during evaluation: 'list' object has no attribute 'get'
+WARNING Basic RTO/RPO definitions (expand technical validation): PASS Core RTO/RPO documentation: rto_rpo_definitions.pdf, combined_tabletop_test_report_template.pdf
+- FAIL No RDS backup retention configured
+- PASS Backup infrastructure supports RTO/RPO: 1 backup plans configured
 
 ---
-*Generated 2025-06-24 02:05 UTC*
+*Generated 2025-06-24 02:28 UTC*

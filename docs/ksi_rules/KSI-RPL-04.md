@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** FAIL
-**Last Check:** 2025-06-24 02:05
+**Status:** PASS
+**Last Check:** 2025-06-24 02:28
 
 **What it validates:** Regularly test the capability to recover from incidents and contingencies
 
@@ -25,7 +25,10 @@
 
 ## Latest Results
 
-- Exception during evaluation: 'list' object has no attribute 'get'
+WARNING Basic recovery testing (expand operational validation): PASS Core testing documentation: combined_tabletop_test_report_template.pdf
+- PASS Recent testing: 2 test documents updated within last year
+- WARNING No completed restore operations found - limited evidence of actual recovery testing
+- PASS Point-in-time recovery testing capability: 1/1 databases ready for RPO validation
 
 ---
-*Generated 2025-06-24 02:05 UTC*
+*Generated 2025-06-24 02:28 UTC*

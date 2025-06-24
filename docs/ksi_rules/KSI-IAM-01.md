@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-24 02:05
+**Last Check:** 2025-06-24 02:28
 
 **What it validates:** Enforce phishing-resistant MFA for all user authentication
 
@@ -34,4 +34,4 @@ PASS Strong MFA coverage (80% coverage): PASS Identity Center: 1 active instance
 - Traditional IAM users: 2
 
 ---
-*Generated 2025-06-24 02:05 UTC*
+*Generated 2025-06-24 02:28 UTC*

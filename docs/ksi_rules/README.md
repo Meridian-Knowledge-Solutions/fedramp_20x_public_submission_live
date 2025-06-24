@@ -61,10 +61,10 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Recovery Planning
 
-- [FAIL] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
-- [FAIL] [KSI-RPL-02](KSI-RPL-02.md): Develop and maintain a recovery plan that aligns with defined recovery objectives
-- [FAIL] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
-- [FAIL] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
+- [PASS] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+- [PASS] [KSI-RPL-02](KSI-RPL-02.md): Develop and maintain a recovery plan that aligns with defined recovery objectives
+- [PASS] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
+- [PASS] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
 
 ## Service Configuration
 
@@ -86,9 +86,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 51
-- **Passing:** 47
-- **Failing:** 4
+- **Passing:** 51
+- **Failing:** 0
 - **Not Tested:** 0
 
 ---
-*Generated 2025-06-24 02:05 UTC*
+*Generated 2025-06-24 02:28 UTC*
