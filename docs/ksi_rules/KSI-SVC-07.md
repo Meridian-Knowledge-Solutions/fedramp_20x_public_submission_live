@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-06-23 12:19
+**Last Check:** 2025-06-24 00:10
 
 **What it validates:** Use consistent, risk-informed approach for applying security patches
 
@@ -44,8 +44,8 @@
 
 ## Latest Results
 
-PASS Advanced risk-informed patching with controlled deployment and compliance (50%): PASS Consistent patch management: 17 patch baselines configured for standardized patching
-- PASS Automated patch deployment capability: 4/4 instances with SSM agent online (100%)
+PASS Advanced risk-informed patching with controlled deployment and compliance (45%): PASS Consistent patch management: 17 patch baselines configured for standardized patching
+- WARNING SSM agents installed but none online (4 total)
 - INFO No patch groups configured for risk-based segmentation
 - INFO No maintenance windows for controlled patch deployment
 - PASS Patch automation framework: 14/123 documents for automated patching (11%)
@@ -57,4 +57,4 @@ PASS Advanced risk-informed patching with controlled deployment and compliance (
 - PASS Advanced organization features: SCPs for patch management policy enforcement enabled
 
 ---
-*Generated 2025-06-23 12:19 UTC*
+*Generated 2025-06-24 00:10 UTC*

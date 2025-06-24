@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-06-23 12:19
+**Last Check:** 2025-06-24 00:10
 
 **What it validates:** Have denial of service protection
 
@@ -38,14 +38,14 @@
 
 ## Latest Results
 
-WARNING Moderate DDoS protection (43%) - expand coverage: PASS AWS Shield Standard protection (provided by default - automatic network-layer protection)
+WARNING Moderate DDoS protection (50%) - expand coverage: PASS AWS Shield Standard protection (provided by default - automatic network-layer protection)
 - PASS Regional application protection: 1 WAF Web ACLs
 - WARNING No CloudFront WAF found - missing edge application protection
 - WARNING No CloudFront distributions - missing edge-based DDoS protection
 - PASS Traffic distribution: 1 load balancers (1 ALB, 0 NLB)
 - WARNING No Auto Scaling Groups - missing capacity-based DDoS mitigation
-- WARNING No Route 53 hosted zones - DNS may be vulnerable to attacks
+- PASS DNS resilience: 1 Route 53 hosted zones
 - WARNING No CloudWatch alarms - missing DDoS detection and response
 
 ---
-*Generated 2025-06-23 12:19 UTC*
+*Generated 2025-06-24 00:10 UTC*

@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-06-23 12:19
+**Last Check:** 2025-06-24 00:10
 
 **What it validates:** Rapidly detect and remediate or mitigate vulnerabilities
 
@@ -12,7 +12,7 @@
 
 ## Validation Method
 
-1. `aws securityhub get-enabled-standards --output json`
+1. `aws securityhub get-enabled-standards --region us-east-1 --output json`
    *Check Security Hub standards for foundational vulnerability detection and compliance monitoring*
 
 2. `aws inspector2 get-configuration --output json`
@@ -46,4 +46,4 @@ PASS Solid vulnerability detection foundation with automated capabilities (44%):
 - PASS Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection
 
 ---
-*Generated 2025-06-23 12:19 UTC*
+*Generated 2025-06-24 00:10 UTC*

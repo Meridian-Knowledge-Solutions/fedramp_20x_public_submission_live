@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-06-23 12:19
+**Last Check:** 2025-06-24 00:10
 
 **What it validates:** Manage configuration centrally
 
@@ -44,17 +44,17 @@
 
 ## Latest Results
 
-PASS Production-ready comprehensive configuration management with advanced automation (78%): PASS Parameter management: 5 SSM parameters for centralized configuration
+PASS Production-ready comprehensive configuration management with advanced automation (70%): PASS Parameter management: 6 SSM parameters for centralized configuration
 - INFO AWS Config available but not configured
 - PASS Configuration automation: 123 SSM documents (0 custom, 123 AWS-managed)
 - PASS Infrastructure as Code: 8/8 successful CloudFormation stacks (100%)
 - PASS Secure configuration management: 1 centrally managed secrets
 - PASS System configuration standards: 17 patch baselines for standardized management
 - INFO No Config rules for automated compliance validation
-- PASS Centralized instance management: 4/4 instances under SSM management (100% online)
+- WARNING Instances registered with SSM but none online
 - INFO No Service Catalog products for configuration standardization
 - PASS Enterprise-wide configuration governance: AWS Organizations enables centralized configuration policies
 - PASS Advanced organization features: SCPs for configuration policy enforcement enabled
 
 ---
-*Generated 2025-06-23 12:19 UTC*
+*Generated 2025-06-24 00:10 UTC*
