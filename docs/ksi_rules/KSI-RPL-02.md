@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** PASS
-**Last Check:** 2025-06-24 01:46
+**Status:** FAIL
+**Last Check:** 2025-06-24 02:05
 
 **What it validates:** Develop and maintain a recovery plan that aligns with defined recovery objectives
 
@@ -22,8 +22,7 @@
 
 ## Latest Results
 
-WARNING Good recovery planning (enhance maintenance procedures): PASS Core recovery plans: incident_reponse_policy.pdf, contingency_planning_policy.pdf
-- PASS Plan maintenance: 3 files updated within last year
+- Exception during evaluation: 'list' object has no attribute 'get'
 
 ---
-*Generated 2025-06-24 01:46 UTC*
+*Generated 2025-06-24 02:05 UTC*

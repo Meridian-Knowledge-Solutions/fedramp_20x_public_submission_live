@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** PASS
-**Last Check:** 2025-06-24 01:46
+**Status:** FAIL
+**Last Check:** 2025-06-24 02:05
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -22,7 +22,7 @@
 
 ## Latest Results
 
-- WARNING Basic RTO/RPO definitions (expand business impact analysis): PASS Core RTO/RPO documentation: rto_rpo_definitions.pdf, combined_tabletop_test_report_template.pdf
+- Exception during evaluation: 'list' object has no attribute 'get'
 
 ---
-*Generated 2025-06-24 01:46 UTC*
+*Generated 2025-06-24 02:05 UTC*

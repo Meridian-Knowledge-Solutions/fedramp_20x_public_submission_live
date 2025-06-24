@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** PASS
-**Last Check:** 2025-06-24 01:46
+**Status:** FAIL
+**Last Check:** 2025-06-24 02:05
 
 **What it validates:** Perform system backups aligned with recovery objectives
 
@@ -29,10 +29,7 @@
 
 ## Latest Results
 
-PASS System backups with compliant retention aligned with recovery objectives: PASS Backup infrastructure: 1 AWS Backup plans (ec2-backup-plan)
-- PASS Excellent retention: 90 days (rule: daily-backup)
-- PASS Full retention compliance: 1/1 rules meet requirements
-- INFO No EBS snapshots (acceptable if using AWS Backup exclusively)
+- Exception during evaluation: 'list' object has no attribute 'get'
 
 ---
-*Generated 2025-06-24 01:46 UTC*
+*Generated 2025-06-24 02:05 UTC*
