@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-25 08:45
+**Last Check:** 2025-06-25 09:11
 
 **What it validates:** Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 
@@ -42,4 +42,4 @@ PASS Excellent modern authorization model (80%): PASS IAM Identity Center config
 - WARNING Direct user session: Not using just-in-time access (consider SSO)
 
 ---
-*Generated 2025-06-25 08:45 UTC*
+*Generated 2025-06-25 09:11 UTC*
