@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-25 18:26
+**Last Check:** 2025-06-25 18:42
 
 **What it validates:** Apply zero trust design principles
 
@@ -21,7 +21,7 @@
 3. `aws cloudtrail describe-trails --output json`
    *Validate continuous monitoring and verification logging (must be active)*
 
-4. `aws cloudtrail get-trail-status --name meridianks-Management-events --output json`
+4. `aws cloudtrail get-trail-status --name arn:aws:cloudtrail:us-east-1:155765116562:trail/meridianks-Management-events --output json`
    *Verify CloudTrail is actively logging (zero trust requires continuous monitoring)*
 
 5. `aws ec2 describe-security-groups --output json`
@@ -38,7 +38,7 @@
 
 ## Latest Results
 
-PASS Strong zero trust foundation (87%): PASS Modern identity platform: IAM Identity Center configured (1 instance(s))
+PASS Comprehensive zero trust implementation (88%): PASS Modern identity platform: IAM Identity Center configured (1 instance(s))
 - PASS Federated MFA enforcement: External IdP (Okta) enforces MFA upstream of AWS
 - PASS External IdP provisioning: 8/8 users via SCIM (100%)
 - PASS Okta identity provider: 8/8 users with Okta IDs (100%)
@@ -46,7 +46,7 @@ PASS Strong zero trust foundation (87%): PASS Modern identity platform: IAM Iden
 - PASS Excellent network micro-segmentation: 13 restrictive vs 1 permissive security groups (93% restrictive)
 - PASS Role-based credentials: Using assumed role session
 - PASS Comprehensive secure communications: 7 VPC endpoints configured (4 interface, 1 gateway, 2 gateway-lb)
-- WARNING CloudTrail 'meridianks-Management-events' excellently configured (multi-region, integrity-protected, encrypted, organization-wide, global-services, custom-events) but not actively logging
+- PASS Active continuous monitoring: CloudTrail 'meridianks-Management-events' actively logging
 
 ---
-*Generated 2025-06-25 18:26 UTC*
+*Generated 2025-06-25 18:42 UTC*

@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-25 18:26
+**Last Check:** 2025-06-25 18:42
 
 **What it validates:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
@@ -24,8 +24,8 @@
 4. `aws sso-admin list-instances --output json`
    *Validate Identity Center for built-in automated session and access controls*
 
-5. `aws sts get-caller-identity --output json`
-   *Check Config rules in management account (155765116562) for automated compliance remediation*
+5. `aws configservice describe-config-rules --output json`
+   *Check Config rules in management account for automated compliance remediation*
 
 6. `aws lambda list-functions --output json`
    *Identify automated response functions for account disabling and security actions*
@@ -45,4 +45,4 @@ PASS Strong automated response capabilities (79%): PASS Advanced threat detectio
 - FAIL No CloudWatch alarms found for security monitoring
 
 ---
-*Generated 2025-06-25 18:26 UTC*
+*Generated 2025-06-25 18:42 UTC*
