@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-06-25 20:36
+**Last Check:** 2025-06-25 20:54
 
 **What it validates:** Operate a SIEM or similar system for centralized, tamper-resistant logging
 
@@ -49,4 +49,4 @@ PASS Production-ready SIEM with advanced monitoring capabilities (69%): PASS Clo
 - PASS Global service monitoring: 1 trails capturing global AWS events
 
 ---
-*Generated 2025-06-25 20:36 UTC*
+*Generated 2025-06-25 20:54 UTC*
