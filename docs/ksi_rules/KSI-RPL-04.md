@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-06-25 20:54
+**Last Check:** 2025-06-25 21:43
 
 **What it validates:** Regularly test the capability to recover from incidents and contingencies
 
@@ -25,10 +25,11 @@
 
 ## Latest Results
 
-WARNING Basic recovery testing (expand operational validation): PASS Core testing documentation: combined_tabletop_test_report_template.pdf
+PASS Good recovery testing capability (documented procedures + technical validation): PASS Core testing documentation: combined_tabletop_test_report_template.pdf
 - PASS Recent testing: 2 test documents updated within last year
-- WARNING No completed restore operations found - limited evidence of actual recovery testing
+- PASS Recovery testing documented - technical validation shows readiness for actual recovery
+- INFO No recent AWS Backup jobs (may use alternative backup methods)
 - PASS Point-in-time recovery testing capability: 1/1 databases ready for RPO validation
 
 ---
-*Generated 2025-06-25 20:54 UTC*
+*Generated 2025-06-25 21:43 UTC*

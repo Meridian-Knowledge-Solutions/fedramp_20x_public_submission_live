@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-06-25 20:54
+**Last Check:** 2025-06-25 21:43
 
 **What it validates:** Encrypt all federal and sensitive information at rest
 
@@ -38,11 +38,9 @@
 PASS Multi-service at-rest encryption established (32%): PASS Object storage encryption: 2 S3 buckets configured (encryption validation requires bucket-level check)
 - PASS Block storage encryption: 8/8 EBS volumes encrypted (100%)
 - WARNING RDS instances found but storage encryption not enabled
-- INFO No RDS snapshots found
-- INFO No EFS file systems found
 - PASS Backup encryption: 1/1 backup vaults encrypted (100%)
 - PASS Encryption key infrastructure: 11 KMS keys (0 customer-managed, 11 AWS-managed)
 - INFO Single-account deployment (appropriate for pilot/development)
 
 ---
-*Generated 2025-06-25 20:54 UTC*
+*Generated 2025-06-25 21:43 UTC*
