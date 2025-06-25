@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-25 09:11
+**Last Check:** 2025-06-25 09:45
 
 **What it validates:** Apply zero trust design principles
 
@@ -38,12 +38,12 @@
 
 ## Latest Results
 
-WARNING Basic zero trust elements (33%): WARNING No IAM Identity Center - missing modern zero trust identity platform
+WARNING Basic zero trust elements (38%): WARNING No IAM Identity Center - missing modern zero trust identity platform
 - FAIL No MFA enforcement detected (zero trust requires multi-factor authentication)
 - PASS Network micro-segmentation: 13 restrictive vs 1 permissive security groups
-- WARNING Unknown credential type
-- PASS Secure private communications: 7 VPC endpoints configured
+- WARNING Session credentials redacted - cannot verify session type
+- PASS Comprehensive secure communications: 7 VPC endpoints configured
 - FAIL No CloudTrail monitoring configured
 
 ---
-*Generated 2025-06-25 09:11 UTC*
+*Generated 2025-06-25 09:45 UTC*
