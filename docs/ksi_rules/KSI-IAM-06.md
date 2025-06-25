@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-25 17:03
+**Last Check:** 2025-06-25 17:31
 
 **What it validates:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
@@ -24,7 +24,7 @@
 4. `aws sso-admin list-instances --output json`
    *Validate Identity Center for built-in automated session and access controls*
 
-5. `AWS_ACCOUNT_ID=155765116562 aws sts assume-role --role-arn arn:aws:iam::155765116562:role/OrganizationAccountAccessRole --role-session-name config-validation --duration-seconds 900 --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text | { read ak sk st; AWS_ACCESS_KEY_ID="$ak" AWS_SECRET_ACCESS_KEY="$sk" AWS_SESSION_TOKEN="$st" aws configservice describe-config-rules --output json; }`
+5. `aws sts get-caller-identity --output json`
    *Check Config rules in management account (155765116562) for automated compliance remediation*
 
 6. `aws lambda list-functions --output json`
@@ -45,4 +45,4 @@ PASS Strong automated response capabilities (79%): PASS Advanced threat detectio
 - FAIL No CloudWatch alarms found for security monitoring
 
 ---
-*Generated 2025-06-25 17:03 UTC*
+*Generated 2025-06-25 17:31 UTC*

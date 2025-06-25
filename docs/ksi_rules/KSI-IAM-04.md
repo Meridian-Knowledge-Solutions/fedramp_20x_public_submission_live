@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-25 17:03
+**Last Check:** 2025-06-25 17:31
 
 **What it validates:** Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 
@@ -42,4 +42,4 @@ PASS Excellent modern authorization model (100%): PASS IAM Identity Center confi
 - PASS SSO session inferred: Identity Center active with permission sets (ARN redacted for security)
 
 ---
-*Generated 2025-06-25 17:03 UTC*
+*Generated 2025-06-25 17:31 UTC*
