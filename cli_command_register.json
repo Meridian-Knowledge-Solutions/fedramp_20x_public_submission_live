@@ -33,7 +33,7 @@
       },
       {
         "command": "aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json",
-        "note": "Verify VPC Flow Logs for traffic monitoring and visibility"
+        "note": "Verify VPC Flow Logs for traffic monitoring and visibility (CloudWatch destination)"
       }
     ]
   },
@@ -715,13 +715,17 @@
       }
     ]
   },
-  "KSI-IAM-05": {
+   "KSI-IAM-05": {
     "description": "Apply zero trust design principles",
-    "justification": "Validates comprehensive zero trust implementation through Identity Center (modern approach), network security, continuous monitoring, conditional access, and secure communications patterns",
+    "justification": "Validates comprehensive zero trust implementation through Identity Center (modern approach), federated MFA detection (consistent with IAM-01), network security, continuous monitoring, conditional access, and secure communications patterns",
     "cli_commands": [
       {
         "command": "aws sso-admin list-instances --output json",
         "note": "Check IAM Identity Center for modern zero trust user access patterns"
+      },
+      {
+        "command": "aws identitystore list-users --identity-store-id $(aws sso-admin list-instances --query 'Instances[0].IdentityStoreId' --output text) --output json 2>/dev/null || echo '{\"Users\":[]}'",
+        "note": "List Identity Center users to detect federated MFA enforcement patterns (external IdP integration via SCIM/Okta)"
       },
       {
         "command": "aws cloudtrail describe-trails --output json",
@@ -741,7 +745,7 @@
       },
       {
         "command": "aws iam list-virtual-mfa-devices --output json",
-        "note": "Check multi-factor authentication enforcement (verify explicitly principle)"
+        "note": "Check traditional IAM MFA devices (fallback for non-federated scenarios)"
       },
       {
         "command": "aws sts get-caller-identity --output json",
