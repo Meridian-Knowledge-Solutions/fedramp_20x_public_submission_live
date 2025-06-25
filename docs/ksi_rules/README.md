@@ -15,7 +15,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-CNA-01](KSI-CNA-01.md): Configure ALL information resources to limit inbound and outbound traffic
 - [PASS] [KSI-CNA-02](KSI-CNA-02.md): Design systems to minimize the attack surface and minimize lateral movement if compromised
 - [PASS] [KSI-CNA-03](KSI-CNA-03.md): Use logical networking for traffic flow controls
-- [FAIL] [KSI-CNA-04](KSI-CNA-04.md): Use immutable infrastructure patterns
+- [PASS] [KSI-CNA-04](KSI-CNA-04.md): Use immutable infrastructure patterns
 - [PASS] [KSI-CNA-05](KSI-CNA-05.md): Have denial of service protection
 - [PASS] [KSI-CNA-06](KSI-CNA-06.md): Design for high availability and recovery
 - [PASS] [KSI-CNA-07](KSI-CNA-07.md): Follow AWS best practices
@@ -86,9 +86,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 51
-- **Passing:** 50
-- **Failing:** 1
+- **Passing:** 51
+- **Failing:** 0
 - **Not Tested:** 0
 
 ---
-*Generated 2025-06-24 18:59 UTC*
+*Generated 2025-06-25 00:49 UTC*
