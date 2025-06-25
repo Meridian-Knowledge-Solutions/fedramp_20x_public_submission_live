@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-25 15:58
+**Last Check:** 2025-06-25 16:49
 
 **What it validates:** Apply zero trust design principles
 
@@ -21,7 +21,7 @@
 3. `aws cloudtrail describe-trails --output json`
    *Validate continuous monitoring and verification logging (must be active)*
 
-4. `aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text) --output json 2>/dev/null || echo '{"IsLogging":false}'`
+4. `aws cloudtrail get-trail-status --name meridianks-Management-events --output json`
    *Verify CloudTrail is actively logging (zero trust requires continuous monitoring)*
 
 5. `aws ec2 describe-security-groups --output json`
@@ -49,4 +49,4 @@ PASS Comprehensive zero trust implementation (91%): PASS Modern identity platfor
 - WARNING CloudTrail 'meridianks-Management-events' excellently configured (multi-region, integrity-protected, encrypted, organization-wide, global-services, custom-events) but not actively logging
 
 ---
-*Generated 2025-06-25 15:58 UTC*
+*Generated 2025-06-25 16:49 UTC*

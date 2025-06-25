@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-25 15:58
+**Last Check:** 2025-06-25 16:49
 
 **What it validates:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
@@ -24,8 +24,8 @@
 4. `aws sso-admin list-instances --output json`
    *Validate Identity Center for built-in automated session and access controls*
 
-5. `aws configservice describe-config-rules --output json`
-   *Check Config rules for automated compliance remediation and account security*
+5. `MGMT_ACCOUNT=$(aws organizations describe-organization --query 'Organization.MasterAccountId' --output text 2>/dev/null) && if [ -n "$MGMT_ACCOUNT" ] && [ "$MGMT_ACCOUNT" != "None" ]; then aws sts assume-role --role-arn arn:aws:iam::${MGMT_ACCOUNT}:role/OrganizationAccountAccessRole --role-session-name config-validation --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text | { read ak sk st; AWS_ACCESS_KEY_ID="$ak" AWS_SECRET_ACCESS_KEY="$sk" AWS_SESSION_TOKEN="$st" aws configservice describe-config-rules --output json; }; else aws configservice describe-config-rules --output json; fi`
+   *Check Config rules for automated compliance remediation (auto-discovers management account)*
 
 6. `aws lambda list-functions --output json`
    *Identify automated response functions for account disabling and security actions*
@@ -45,4 +45,4 @@ PASS Strong automated response capabilities (79%): PASS Advanced threat detectio
 - FAIL No CloudWatch alarms found for security monitoring
 
 ---
-*Generated 2025-06-25 15:58 UTC*
+*Generated 2025-06-25 16:49 UTC*
