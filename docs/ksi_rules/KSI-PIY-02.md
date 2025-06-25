@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-06-25 00:49
+**Last Check:** 2025-06-25 03:19
 
 **What it validates:** Have policies outlining the security objectives of all information resources
 
@@ -19,4 +19,4 @@
 - PASS Security policies outlining objectives: PASS Core security policies: personnel_security_policy.pdf, data_classification_handling_policy.pdf, security_policy_collection_repository.zip
 
 ---
-*Generated 2025-06-25 00:49 UTC*
+*Generated 2025-06-25 03:19 UTC*
