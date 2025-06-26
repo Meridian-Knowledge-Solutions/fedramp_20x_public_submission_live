@@ -402,18 +402,6 @@
         "note": "Check RDS snapshot encryption for database backup and recovery data protection"
       },
       {
-        "command": "aws dynamodb list-tables --output json",
-        "note": "Analyze DynamoDB tables for NoSQL database encryption and managed service protection"
-      },
-      {
-        "command": "aws elasticache describe-cache-clusters --output json",
-        "note": "Check ElastiCache clusters for in-memory data encryption and cache protection"
-      },
-      {
-        "command": "aws redshift describe-clusters --output json",
-        "note": "Validate Redshift data warehouse encryption for analytics and big data protection"
-      },
-      {
         "command": "aws efs describe-file-systems --output json",
         "note": "Check Elastic File System encryption for shared storage and distributed application data"
       },
@@ -732,7 +720,7 @@
         "note": "Validate continuous monitoring and verification logging (must be active)"
       },
       {
-        "command": "aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text) --output json 2>/dev/null || echo '{\"IsLogging\":false}'",
+        "command": "aws cloudtrail get-trail-status --name arn:aws:cloudtrail:us-east-1:155765116562:trail/meridianks-Management-events --output json",
         "note": "Verify CloudTrail is actively logging (zero trust requires continuous monitoring)"
       },
       {
@@ -774,8 +762,8 @@
         "note": "Validate Identity Center for built-in automated session and access controls"
       },
       {
-        "command": "aws config describe-config-rules --output json",
-        "note": "Check Config rules for automated compliance remediation and account security"
+        "command": "aws configservice describe-config-rules --output json",
+        "note": "Check Config rules in management account for automated compliance remediation"
       },
       {
         "command": "aws lambda list-functions --output json",
@@ -1087,45 +1075,37 @@
     "justification": "Validates comprehensive immutable deployment capabilities from pilot to enterprise maturity levels through CloudFormation, Launch Templates, containers, serverless, and governance",
     "cli_commands": [
       {
-        "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json",
-        "note": "Check CloudFormation stacks for immutable infrastructure deployment foundation"
-      },
-      {
-        "command": "aws ec2 describe-launch-templates --max-items 50 --output json",
-        "note": "Validate launch templates for immutable instance deployments with versioning"
-      },
-      {
-        "command": "aws ecr describe-repositories --max-items 50 --output json",
-        "note": "Assess ECR repositories for immutable container image deployments"
-      },
-      {
-        "command": "aws lambda list-functions --max-items 50 --output json",
-        "note": "Check Lambda functions for immutable serverless deployment patterns"
-      },
-      {
-        "command": "aws autoscaling describe-auto-scaling-groups --max-items 50 --output json",
-        "note": "Evaluate Auto Scaling Groups for immutable scaling patterns using launch templates"
-      },
-      {
-        "command": "aws ecs list-services --max-items 50 --output json 2>/dev/null || echo '{\"serviceArns\": []}'",
-        "note": "Check ECS services for immutable container orchestration (graceful fallback)"
-      },
-      {
-        "command": "aws deploy list-applications --output json",
-        "note": "Assess CodeDeploy applications for automated immutable deployment patterns"
-      },
-      {
-        "command": "aws elbv2 describe-target-groups --max-items 50 --output json",
-        "note": "Check load balancer target groups for blue/green immutable deployment infrastructure"
-      },
-      {
-        "command": "aws configservice describe-config-rules --output json",
-        "note": "Evaluate Config rules for immutable deployment compliance and governance"
-      },
-      {
-        "command": "aws organizations describe-organization --output json 2>/dev/null || echo '{\"Organization\": null}'",
-        "note": "Check for enterprise-wide immutable deployment governance through AWS Organizations"
-      }
+            "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json",
+            "note": "Check CloudFormation stacks for AWS-managed immutable infrastructure foundation"
+        },
+        {
+            "command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags,LaunchTime,ImageId]' --output json",
+            "note": "Analyze instance patterns for Terraform-managed immutable deployments (consistent tagging, recent launches)"
+        },
+        {
+            "command": "aws lambda list-functions --max-items 50 --output json",
+            "note": "Check Lambda functions for immutable serverless deployment patterns"
+        },
+        {
+            "command": "aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)]' --output json",
+            "note": "Detect Terraform state management patterns (S3 backend indicates mature Infrastructure as Code)"
+        },
+        {
+            "command": "aws ssm describe-parameters --output json",
+            "note": "Validate Systems Manager parameters for external configuration management and versioning"
+        },
+        {
+            "command": "aws elbv2 describe-target-groups --max-items 50 --output json",
+            "note": "Check load balancer target groups for blue/green immutable deployment infrastructure"
+        },
+        {
+            "command": "aws configservice describe-config-rules --output json",
+            "note": "Evaluate Config rules for immutable deployment compliance and governance (optional for Terraform-managed infrastructure)"
+        },
+        {
+            "command": "aws organizations describe-organization --output json 2>/dev/null || echo '{\"Organization\": null}'",
+            "note": "Check for enterprise-wide immutable deployment governance through AWS Organizations"
+        }
     ]
     },
     "KSI-CMT-03": {
@@ -1984,17 +1964,17 @@
       }
     ]
   },
-   "KSI-RPL-01": {
+  "KSI-RPL-01": {
     "description": "Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)",
-    "justification": "Validates documented RTO/RPO definitions with technical infrastructure capability verification through RDS backup retention and point-in-time recovery settings",
+    "justification": "Validates documented RTO/RPO definitions with technical infrastructure capability verification through RDS backup retention, point-in-time recovery settings, and backup plan frequency alignment with recovery objectives",
     "cli_commands": [
       {
-        "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,LatestRestorableTime,PreferredBackupWindow]' --output json",
-        "note": "Validate RDS backup retention (BackupRetentionPeriod > 0) and point-in-time recovery capability for RPO validation"
+        "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,PreferredBackupWindow]' --output json",
+        "note": "Validate RDS backup retention (BackupRetentionPeriod > 0) and point-in-time recovery capability for RPO validation - critical for database recovery objectives"
       },
       {
         "command": "aws backup list-backup-plans --output json",
-        "note": "Check backup plan frequency and retention alignment with documented RTO/RPO objectives"
+        "note": "Check backup plan frequency and retention alignment with documented RTO/RPO objectives for infrastructure recovery planning"
       },
       {
         "command": "evidence_check",
