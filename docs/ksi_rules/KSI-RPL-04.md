@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-06-26 00:10
+**Last Check:** 2025-06-26 02:27
 
 **What it validates:** Regularly test the capability to recover from incidents and contingencies
 
@@ -32,4 +32,4 @@ PASS Good recovery testing capability (documented procedures + technical validat
 - PASS Point-in-time recovery testing capability: 1/1 databases ready for RPO validation
 
 ---
-*Generated 2025-06-26 00:10 UTC*
+*Generated 2025-06-26 02:27 UTC*

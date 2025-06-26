@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-06-26 00:10
+**Last Check:** 2025-06-26 02:27
 
 **What it validates:** Apply zero trust design principles
 
@@ -43,10 +43,10 @@ PASS Comprehensive zero trust implementation (88%): PASS Modern identity platfor
 - PASS External IdP provisioning: 8/8 users via SCIM (100%)
 - PASS Okta identity provider: 8/8 users with Okta IDs (100%)
 - PASS Complete federation coverage: 100% of users from external IdP
-- PASS Excellent network micro-segmentation: 13 restrictive vs 1 permissive security groups (93% restrictive)
+- PASS Excellent network micro-segmentation: 11 restrictive vs 1 permissive security groups (92% restrictive)
 - PASS Role-based credentials: Using assumed role session
 - PASS Comprehensive secure communications: 7 VPC endpoints configured (4 interface, 1 gateway, 2 gateway-lb)
 - PASS Active continuous monitoring: CloudTrail 'meridianks-Management-events' actively logging
 
 ---
-*Generated 2025-06-26 00:10 UTC*
+*Generated 2025-06-26 02:27 UTC*
