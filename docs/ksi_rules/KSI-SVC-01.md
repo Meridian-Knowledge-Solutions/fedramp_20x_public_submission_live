@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-06-26 05:10
+**Last Check:** 2025-06-26 23:21
 
 **What it validates:** Harden and review network and system configurations
 
@@ -44,7 +44,7 @@
 
 ## Latest Results
 
-PASS Production-ready multi-layer defense and automated compliance (72%): PASS Network hardening foundation: 14 security groups (13 hardened, 1 require review)
+PASS Production-ready multi-layer defense and automated compliance (72%): PASS Network hardening foundation: 12 security groups (12 hardened, 0 require review)
 - PASS System configuration management: 4 instances configured
 - PASS Comprehensive system management: 4/4 instances under SSM (100% coverage)
 - PASS Automated patch management: 17 patch baselines configured
@@ -56,4 +56,4 @@ PASS Production-ready multi-layer defense and automated compliance (72%): PASS N
 - PASS Advanced organization features: SCPs and advanced governance capabilities enabled
 
 ---
-*Generated 2025-06-26 05:10 UTC*
+*Generated 2025-06-26 23:21 UTC*

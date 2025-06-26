@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-06-26 05:10
+**Last Check:** 2025-06-26 23:21
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -25,7 +25,7 @@
 PASS RTO/RPO objectives defined with technical validation: PASS Core RTO/RPO documentation: rto_rpo_definitions.pdf
 - PASS RDS backup retention validated: 1/1 databases with BackupRetentionPeriod > 0
 - PASS Point-in-time recovery capability: 1/1 databases support RPO objectives
-- PASS Backup infrastructure supports RTO/RPO: 1 backup plans configured
+- PASS Backup infrastructure supports RTO/RPO: 2 backup plans configured
 
 ---
-*Generated 2025-06-26 05:10 UTC*
+*Generated 2025-06-26 23:21 UTC*
