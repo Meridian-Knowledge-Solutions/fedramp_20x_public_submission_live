@@ -147,7 +147,7 @@ Private Repository → CLI Commands → Evidence Collection → Assertion Logic 
 - 3PAO assessment reports
 - Continuous monitoring data
 
-### 📞 Agency Contact Information
+### 📞 CSP Contact Information
 - **Primary Contact**: Meridian Federal Cloud Operations 
 - **Email**: [security@meridianks.com](mailto:security@meridianks.com)
 - **Phone**: +1 (571) 665-5287 
