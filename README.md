@@ -203,6 +203,8 @@ This repository supports GSA's FedRAMP 20x pilot goals of:
 - RFC-0008 (Continuous Reporting)
 - RFC-0011 (Trust Center Requirements)
 - FedRAMP 20x Low Authorization Requirements
+- FedRAMP Minimum Assessment Standard
+- FedRAMP 20x Low Definitions and Rules
 
 ---
 
