@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Change Management
-**Status:** PASS
-**Last Check:** 2025-06-26 02:27
+**Status:** FAIL
+**Last Check:** 2025-06-26 02:53
 
 **What it validates:** Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
 
@@ -38,16 +38,7 @@
 
 ## Latest Results
 
-PASS Advanced immutable deployment foundation - expand Infrastructure as Code coverage (75%): PASS Immutable infrastructure foundation: 8/8 successful CloudFormation deployments (100%)
-- WARNING No compute instances found for Infrastructure as Code assessment
-- PASS Immutable serverless functions: 3 Lambda functions (inherently immutable)
-- PASS External configuration management: 6 SSM parameters for immutable configuration
-- PASS Configuration versioning: 1 parameters with version history
-- PASS Immutable deployment infrastructure: 2 target groups enabling blue/green immutable deployments
-- PASS Configuration drift detection: CloudFormation enables immutable infrastructure drift monitoring
-- INFO No Config rules for immutable deployment compliance monitoring
-- PASS Enterprise-wide immutable deployment governance: AWS Organizations enables centralized deployment policies
-- PASS Advanced organization features: SCPs for immutable deployment policy enforcement enabled
+- Exception during evaluation: No module named 'dateutil'
 
 ---
-*Generated 2025-06-26 02:27 UTC*
+*Generated 2025-06-26 02:53 UTC*

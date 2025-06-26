@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-06-26 02:27
+**Last Check:** 2025-06-26 02:53
 
 **What it validates:** Operate a SIEM or similar system for centralized, tamper-resistant logging
 
@@ -43,10 +43,10 @@ PASS Production-ready SIEM with advanced monitoring capabilities (69%): PASS Clo
 - PASS Log retention management: 8/8 log groups with retention policies
 - PASS Compliance-grade retention: 4 log groups with long-term retention (365+ days)
 - PASS Cryptographic infrastructure: 11 KMS keys available for log protection
-- PASS Advanced threat detection: 20 Security Hub findings (4 active)
+- PASS Advanced threat detection: 20 Security Hub findings (2 active)
 - PASS Enterprise-wide logging: AWS Organizations enables centralized multi-account SIEM
 - PASS Multi-region audit coverage: 1 trails across all regions
 - PASS Global service monitoring: 1 trails capturing global AWS events
 
 ---
-*Generated 2025-06-26 02:27 UTC*
+*Generated 2025-06-26 02:53 UTC*

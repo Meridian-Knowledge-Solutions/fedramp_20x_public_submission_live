@@ -5,7 +5,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Change Management
 
 - [PASS] [KSI-CMT-01](KSI-CMT-01.md): Establish and maintain configuration baselines
-- [PASS] [KSI-CMT-02](KSI-CMT-02.md): Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
+- [FAIL] [KSI-CMT-02](KSI-CMT-02.md): Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
 - [PASS] [KSI-CMT-03](KSI-CMT-03.md): Implement automated testing and validation of changes prior to deployment
 - [PASS] [KSI-CMT-04](KSI-CMT-04.md): Have a documented change management procedure
 - [PASS] [KSI-CMT-05](KSI-CMT-05.md): Evaluate the risk and potential impact of any change
@@ -86,9 +86,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 51
-- **Passing:** 51
-- **Failing:** 0
+- **Passing:** 50
+- **Failing:** 1
 - **Not Tested:** 0
 
 ---
-*Generated 2025-06-26 02:27 UTC*
+*Generated 2025-06-26 02:53 UTC*
