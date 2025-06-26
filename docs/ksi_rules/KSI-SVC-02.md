@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-06-26 03:40
+**Last Check:** 2025-06-26 05:10
 
 **What it validates:** Encrypt or otherwise secure network traffic
 
@@ -44,12 +44,12 @@
 
 ## Latest Results
 
-PASS Production-ready multi-layer traffic encryption and certificate management (65%): PASS Load balancer encryption capability: 1 load balancers configured for traffic encryption
+PASS Production-ready multi-layer traffic encryption and certificate management (70%): PASS Load balancer encryption capability: 1 load balancers configured for traffic encryption
 - PASS Private service communication: 7 VPC endpoints (4 interface, 1 gateway)
 - INFO No load balancer listeners configured
 - INFO No CloudFront distributions for global traffic encryption
 - PASS API encryption capability: 1 API Gateway endpoints (HTTPS by default)
-- PASS Database encryption capability: 1 RDS instances (0 with encrypted storage)
+- PASS Database encryption capability: 1 RDS instances (1 with encrypted storage)
 - INFO No ElastiCache clusters for cache encryption
 - PASS Automated certificate management: 2/2 active ACM certificates (100% healthy)
 - INFO No VPN connections for hybrid connectivity encryption
@@ -57,4 +57,4 @@ PASS Production-ready multi-layer traffic encryption and certificate management 
 - PASS Advanced organization features: SCPs for encryption policy enforcement enabled
 
 ---
-*Generated 2025-06-26 03:40 UTC*
+*Generated 2025-06-26 05:10 UTC*
