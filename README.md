@@ -171,7 +171,7 @@ This implementation demonstrates:
 
 - **Service**: Meridian Knowledge Solutions Learning Management System (LMS)
 - **Authorization Level**: FedRAMP 20x Low
-- **Hosting Environment**: AWS GovCloud (US-East)
+- **Hosting Environment**: AWS Commercial (US-East)
 - **Assessment Method**: Machine-readable validation with automated KSI assessment
 
 ---
