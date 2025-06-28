@@ -1767,8 +1767,8 @@
 
             <div class="header-info">
                 <div class="header-info-content">
-                    <div class="header-info-title">Enhanced Three-Tier POA&M System</div>
-                    <div class="header-info-subtitle">🚨 Compliance Tracking | ⚠️ Warning Items | ℹ️ Info Items | 📈 Enhancement Opportunities | 🕒 Evidence Currency</div>
+                    <div class="header-info-title">Enhanced FedRAMP 20x POA&M System</div>
+                    <div class="header-info-subtitle">✅ Compliance Tracking | ⚠️ Warning Tracking | ℹ️ Info Tracking | 📈 Enhancement Opportunities | 🕒 Evidence Currency</div>
                     <div class="header-info-meta">
                         <div class="header-info-item">
                             <span>⏰</span>
@@ -1795,27 +1795,27 @@
                 <div class="stat-card">
                     <div class="stat-value primary" id="overall-score">Loading...</div>
                     <div class="stat-label">Overall Compliance</div>
-                    <div class="stat-change positive">↗ Live Data Loading</div>
+                    <div class="stat-change positive">↗ Assertion-Based Scoring</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value success" id="passed-count">-</div>
-                    <div class="stat-label">KSIs Passed</div>
+                    <div class="stat-label">KSIs Compliant</div>
                     <div class="stat-change positive">✓ Meeting Requirements</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value danger" id="failed-count">-</div>
-                    <div class="stat-label">KSIs Failed (High POA&M)</div>
-                    <div class="stat-change positive">🚨 High Priority</div>
+                    <div class="stat-label">KSIs Non-Compliant</div>
+                    <div class="stat-change positive">🚨 Remediation Required</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value warning" id="warning-count">-</div>
-                    <div class="stat-label">KSIs Warning (Medium POA&M)</div>
-                    <div class="stat-change positive">⚠️ Medium Priority</div>
+                    <div class="stat-label">Warning Tracking Items</div>
+                    <div class="stat-change positive">⚠️ Enhancement Opportunities</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value info" id="info-count">-</div>
-                    <div class="stat-label">KSIs Info (Low POA&M)</div>
-                    <div class="stat-change positive">ℹ️ Low Priority</div>
+                    <div class="stat-label">Info Tracking Items</div>
+                    <div class="stat-change positive">ℹ️ Improvement Opportunities</div>
                 </div>
                 <div class="stat-card enhancement">
                     <div class="stat-value enhancement" id="enhancement-count">-</div>
@@ -1924,19 +1924,19 @@
                                 <strong>🚨 Tier 1: Compliance POA&M</strong> - Traditional remediation for failed validations (60-day SLAs)
                             </div>
                             <div class="trust-item">
-                                <strong>⚠️ NEW: Warning POA&M</strong> - Medium priority items requiring attention (90-day SLAs)
+                                <strong>⚠️ NEW: Warning Tracking</strong> - Enhancement opportunities requiring attention (90-day tracking)
                             </div>
                             <div class="trust-item">
-                                <strong>ℹ️ NEW: Info POA&M</strong> - Low priority informational items (120-day SLAs)
+                                <strong>ℹ️ NEW: Info Tracking</strong> - Improvement opportunities for continuous enhancement (120-day tracking)
                             </div>
                             <div class="trust-item">
-                                <strong>📈 Tier 2: Enhancement Tracking</strong> - Proactive improvement opportunities in passing KSIs (180-day cycles)
+                                <strong>📈 Tier 2: Enhancement Tracking</strong> - Proactive improvement opportunities in compliant KSIs (180-day cycles)
                             </div>
                             <div class="trust-item">
                                 <strong>🕒 Tier 3: Staleness Tracking</strong> - Evidence currency management (90-day refresh windows)
                             </div>
                             <div class="trust-item">
-                                <strong>Innovation:</strong> First FedRAMP 20x submission to implement multi-level POA&M tracking beyond traditional binary compliance
+                                <strong>Innovation:</strong> First FedRAMP 20x submission to implement multi-level POA&M tracking beyond traditional binary compliance. Warning/Info items track improvements without penalizing compliance scores.
                             </div>
                             <div class="trust-item">
                                 <button onclick="window.showPOAMModal()" class="action-btn enhancement">📊 View Enhanced POA&M Analysis</button>
@@ -2798,27 +2798,30 @@ async function getAuthorizationSummary() {
             }, 5000);
         }
 
-        // ✅ ENHANCED: Update metrics to include warning and info counts
+        // ✅ FIXED: Correct FedRAMP 20x compliance calculation
         function updateMetrics() {
             const totalKsis = allKsis.length;
-            const passedCount = allKsis.filter(ksi => ksi.status === 'passed').length;
-            const failedCount = allKsis.filter(ksi => ksi.status === 'failed').length;
+            
+            // ✅ COMPLIANCE = assertion field only (binary pass/fail)
+            const compliantKsis = allKsis.filter(ksi => ksi.rawData && (ksi.rawData.assertion === true || ksi.rawData.assertion === "true")).length;
+            const nonCompliantKsis = allKsis.filter(ksi => ksi.rawData && (ksi.rawData.assertion === false || ksi.rawData.assertion === "false")).length;
+            
+            // ✅ POA&M TRACKING = enhancement opportunities (separate from compliance)
             const warningCount = allKsis.filter(ksi => ksi.status === 'warning').length;
             const infoCount = allKsis.filter(ksi => ksi.status === 'info').length;
             const enhancementCount = allKsis.filter(ksi => ksi.hasEnhancements).length;
             
-            // Calculate overall score with weighted scoring
-            const overallScore = totalKsis > 0 ? 
-                Math.round(((passedCount + warningCount * 0.7 + infoCount * 0.5) / totalKsis) * 100 * 10) / 10 : 0;
+            // ✅ CORRECT: Compliance = assertion-based only
+            const complianceScore = totalKsis > 0 ? Math.round((compliantKsis / totalKsis) * 100 * 10) / 10 : 0;
 
-            document.getElementById('overall-score').textContent = overallScore + '%';
-            document.getElementById('passed-count').textContent = passedCount;
-            document.getElementById('failed-count').textContent = failedCount;
+            document.getElementById('overall-score').textContent = complianceScore + '%';
+            document.getElementById('passed-count').textContent = compliantKsis;
+            document.getElementById('failed-count').textContent = nonCompliantKsis;
             document.getElementById('warning-count').textContent = warningCount;
             document.getElementById('info-count').textContent = infoCount;
             document.getElementById('enhancement-count').textContent = enhancementCount;
             
-            console.log(`📊 Updated metrics: ${passedCount}P/${failedCount}F/${warningCount}W/${infoCount}I (${overallScore}%), ${enhancementCount} enhancements`);
+            console.log(`📊 FIXED metrics: ${compliantKsis}/${totalKsis} compliant (${complianceScore}%) | POA&M tracking: ${warningCount}W/${infoCount}I/${enhancementCount}E`);
         }
 
         function populateCategoryFilter() {
