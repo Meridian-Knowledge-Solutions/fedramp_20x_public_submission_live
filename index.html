@@ -1025,7 +1025,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Modals */
+        /* Enhanced Why Modal Styles */
         .cli-modal, .why-modal, .markdown-modal, .commands-modal, .poam-modal, .enhancement-modal {
             display: none;
             position: fixed;
@@ -1109,6 +1109,187 @@
             color: var(--text-primary);
             white-space: pre-wrap;
             word-break: break-all;
+        }
+
+        /* Enhanced Why Modal Content Styles */
+        .why-summary-card {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-summary-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-summary-icon {
+            font-size: 2rem;
+            padding: 0.5rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .why-summary-text h4 {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .why-summary-text p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .why-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .why-metric {
+            text-align: center;
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .why-metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .why-metric-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .why-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .why-section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .why-validation-grid {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .why-validation-item {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .why-validation-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .why-validation-content {
+            flex: 1;
+        }
+
+        .why-validation-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .why-validation-description {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .why-metric-badge {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .why-metric-badge.success {
+            background: var(--gradient-success);
+        }
+
+        .why-metric-badge.warning {
+            background: var(--gradient-warning);
+        }
+
+        .why-metric-badge.danger {
+            background: linear-gradient(135deg, var(--danger-500), #f87171);
+        }
+
+        .why-raw-details {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .why-raw-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .why-raw-content {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 200px;
+            overflow-y: auto;
         }
 
         /* POA&M Modal Specific Styles */
@@ -1725,6 +1906,10 @@
                 padding: 0.75rem;
                 font-size: 0.875rem;
             }
+
+            .why-metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         /* Utilities */
@@ -2161,6 +2346,7 @@ async function getAuthorizationSummary() {
         </div>
     </div>
 
+    <!-- Enhanced Why Modal -->
     <div class="why-modal" id="why-modal">
         <div class="why-modal-content">
             <div class="why-modal-header">
@@ -2168,7 +2354,7 @@ async function getAuthorizationSummary() {
                 <button class="close-btn" onclick="closeWhyModal()">&times;</button>
             </div>
             <div class="why-modal-body" id="why-modal-body">
-                <!-- Why content will be inserted here -->
+                <!-- Enhanced Why content will be inserted here -->
             </div>
         </div>
     </div>
@@ -2473,6 +2659,128 @@ async function getAuthorizationSummary() {
             return priorityMap[type] || 'Low';
         }
 
+        // ✅ ENHANCED: Parse assertion reason into structured validation points
+        function parseAssertionReason(assertionReason, ksiStatus) {
+            if (!assertionReason) return { summary: 'No assessment details available', validations: [] };
+            
+            const validations = [];
+            let summary = '';
+            
+            // Split by checkmarks and other indicators
+            const segments = assertionReason.split(/(?=✅|❌|⚠️|ℹ️|🔍|📊|🛡️)/);
+            
+            segments.forEach((segment, index) => {
+                if (segment.trim() === '') return;
+                
+                const icon = segment.match(/^(✅|❌|⚠️|ℹ️|🔍|📊|🛡️)/)?.[1] || '';
+                const content = segment.replace(/^(✅|❌|⚠️|ℹ️|🔍|📊|🛡️)/, '').trim();
+                
+                if (index === 0 && !icon) {
+                    summary = content.split('.')[0].trim();
+                    return;
+                }
+                
+                // Extract metrics from content
+                const metrics = extractMetrics(content);
+                
+                // Determine validation type
+                let validationType = 'general';
+                if (content.toLowerCase().includes('security group') || content.toLowerCase().includes('firewall')) {
+                    validationType = 'network_security';
+                } else if (content.toLowerCase().includes('encryption') || content.toLowerCase().includes('tls')) {
+                    validationType = 'encryption';
+                } else if (content.toLowerCase().includes('logging') || content.toLowerCase().includes('audit')) {
+                    validationType = 'logging';
+                } else if (content.toLowerCase().includes('access control') || content.toLowerCase().includes('iam')) {
+                    validationType = 'access_control';
+                } else if (content.toLowerCase().includes('infrastructure') || content.toLowerCase().includes('terraform')) {
+                    validationType = 'infrastructure';
+                }
+                
+                validations.push({
+                    icon: icon || (ksiStatus === 'passed' ? '✅' : ksiStatus === 'failed' ? '❌' : ksiStatus === 'warning' ? '⚠️' : 'ℹ️'),
+                    type: validationType,
+                    title: generateValidationTitle(content, validationType),
+                    description: cleanValidationDescription(content),
+                    metrics: metrics
+                });
+            });
+            
+            // Generate summary if not found
+            if (!summary) {
+                summary = ksiStatus === 'passed' ? 'Security control validation completed successfully' :
+                         ksiStatus === 'failed' ? 'Security control validation identified issues' :
+                         ksiStatus === 'warning' ? 'Low risk findings identified requiring attention' :
+                         'Improvement opportunities identified for enhancement';
+            }
+            
+            return { summary, validations };
+        }
+
+        function extractMetrics(content) {
+            const metrics = [];
+            
+            // Extract percentages
+            const percentageMatches = content.match(/(\d+(?:\.\d+)?)\s*%/g);
+            if (percentageMatches) {
+                percentageMatches.forEach(match => {
+                    const value = parseFloat(match);
+                    metrics.push({
+                        type: 'percentage',
+                        value: value,
+                        label: `${value}%`,
+                        status: value >= 90 ? 'success' : value >= 70 ? 'warning' : 'danger'
+                    });
+                });
+            }
+            
+            // Extract counts
+            const countMatches = content.match(/(\d+)\s+(resources?|instances?|functions?|groups?|policies?|rules?)/gi);
+            if (countMatches) {
+                countMatches.forEach(match => {
+                    const parts = match.split(/\s+/);
+                    const value = parseInt(parts[0]);
+                    const unit = parts.slice(1).join(' ');
+                    metrics.push({
+                        type: 'count',
+                        value: value,
+                        label: `${value} ${unit}`,
+                        status: 'info'
+                    });
+                });
+            }
+            
+            return metrics;
+        }
+
+        function generateValidationTitle(content, type) {
+            const typeMap = {
+                'network_security': 'Network Security Controls',
+                'encryption': 'Encryption & Data Protection',
+                'logging': 'Security Logging & Monitoring',
+                'access_control': 'Access Control & IAM',
+                'infrastructure': 'Infrastructure Configuration',
+                'general': 'Security Control Validation'
+            };
+            
+            return typeMap[type] || 'Security Control Validation';
+        }
+
+        function cleanValidationDescription(content) {
+            // Remove redundant phrases and clean up the text
+            let cleaned = content
+                .replace(/✅|❌|⚠️|ℹ️|🔍|📊|🛡️/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+            
+            // Limit length and add ellipsis if needed
+            if (cleaned.length > 150) {
+                cleaned = cleaned.substring(0, 150) + '...';
+            }
+            
+            return cleaned;
+        }
+
         // ✅ ENHANCED: Load real data with correct status determination
         async function loadRealData() {
             try {
@@ -2631,7 +2939,7 @@ async function getAuthorizationSummary() {
                 const hasEnhancements = ksi.hasEnhancements && ksi.enhancements && ksi.enhancements.length > 0;
                 
                 return `
-                <div class="ksi-card ${ksi.status}                     ${ksi.status === 'info' ? 'enhancement info' : hasEnhancements ? 'enhancement' : ''}">
+                <div class="ksi-card ${ksi.status} ${ksi.status === 'info' ? 'enhancement info' : hasEnhancements ? 'enhancement' : ''}">
                     <div class="ksi-card-header">
                         <div class="ksi-id">${ksi.id}</div>
                         <div class="ksi-status status-${ksi.status}">
@@ -2941,6 +3249,7 @@ async function getAuthorizationSummary() {
             document.body.style.overflow = 'hidden';
         }
 
+        // ✅ ENHANCED: Show improved Why modal with structured content
         function showWhyModal(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
@@ -2956,33 +3265,95 @@ async function getAuthorizationSummary() {
             
             modalTitle.innerHTML = `🤔 Why ${statusText}? - ${ksi.id}`;
 
+            // Parse the assertion reason into structured content
+            const parsedReason = parseAssertionReason(ksi.assertion_reason, ksi.status);
+
             modalBody.innerHTML = `
-                <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
-                    <h4 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                        📊 Assessment Summary
-                    </h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
-                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${statusIcon} ${statusText.toUpperCase()}</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">STATUS</div>
-                        </div>
-                        <div style="text-align: center; background: var(--bg-secondary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">${ksi.commands_executed || 0}</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem;">COMMANDS</div>
+                <!-- Summary Card -->
+                <div class="why-summary-card">
+                    <div class="why-summary-header">
+                        <div class="why-summary-icon">${statusIcon}</div>
+                        <div class="why-summary-text">
+                            <h4>${statusText.toUpperCase()} - ${ksi.id}</h4>
+                            <p>${ksi.category}</p>
                         </div>
                     </div>
-                    <p><strong>Category:</strong> ${ksi.category}</p>
-                    <p><strong>Validation Method:</strong> ${ksi.validation_method || 'Automated'}</p>
-                </div>
-                
-                <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
-                    <h4 style="margin-bottom: 1rem;">🎯 Requirement & Assessment</h4>
-                    <p><strong>Requirement:</strong> ${ksi.requirement}</p>
-                    <div style="margin-top: 1rem;">
-                        <strong>Assessment Result:</strong>
-                        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid var(--border-color);">
-                            ${ksi.assertion_reason}
+                    <div class="why-metrics-grid">
+                        <div class="why-metric">
+                            <div class="why-metric-value">${statusText}</div>
+                            <div class="why-metric-label">Status</div>
                         </div>
+                        <div class="why-metric">
+                            <div class="why-metric-value">${ksi.commands_executed || 0}</div>
+                            <div class="why-metric-label">Commands</div>
+                        </div>
+                        <div class="why-metric">
+                            <div class="why-metric-value">${ksi.commands_executed > 0 ? Math.round((ksi.successful_commands / ksi.commands_executed) * 100) : 0}%</div>
+                            <div class="why-metric-label">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assessment Summary -->
+                <div class="why-section">
+                    <div class="why-section-title">
+                        🎯 Assessment Summary
+                    </div>
+                    <p><strong>Requirement:</strong> ${ksi.requirement}</p>
+                    <p><strong>Validation Method:</strong> ${ksi.validation_method || 'Automated'}</p>
+                    <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin-top: 1rem; border: 1px solid var(--border-color);">
+                        <strong>Key Finding:</strong> ${parsedReason.summary}
+                    </div>
+                </div>
+
+                <!-- Validation Points -->
+                ${parsedReason.validations.length > 0 ? `
+                <div class="why-section">
+                    <div class="why-section-title">
+                        📋 Validation Points
+                    </div>
+                    <div class="why-validation-grid">
+                        ${parsedReason.validations.map(validation => `
+                            <div class="why-validation-item">
+                                <div class="why-validation-icon">${validation.icon}</div>
+                                <div class="why-validation-content">
+                                    <div class="why-validation-title">
+                                        ${validation.title}
+                                        ${validation.metrics.map(metric => `
+                                            <span class="why-metric-badge ${metric.status}">${metric.label}</span>
+                                        `).join('')}
+                                    </div>
+                                    <div class="why-validation-description">${validation.description}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- Technical Details -->
+                <div class="why-section">
+                    <div class="why-section-title">
+                        🔧 Technical Details
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid var(--border-color);">
+                            <div style="font-weight: 700; color: var(--text-primary);">${ksi.commands_executed || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Commands Executed</div>
+                        </div>
+                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid var(--border-color);">
+                            <div style="font-weight: 700; color: var(--text-primary);">${ksi.successful_commands || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Successful</div>
+                        </div>
+                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid var(--border-color);">
+                            <div style="font-weight: 700; color: var(--text-primary);">${ksi.failed_commands || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Failed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="why-raw-details">
+                        <div class="why-raw-title">📄 Complete Assessment Details</div>
+                        <div class="why-raw-content">${ksi.assertion_reason}</div>
                     </div>
                 </div>
             `;
@@ -3082,7 +3453,7 @@ Please provide guidance on how to address this ${ksi.status === 'failed' ? 'comp
             }
         }
 
-        // Enhanced POA&M Modal (stub - can be expanded)
+        // Enhanced POA&M Modal
         function showPOAMModal() {
             const modalTitle = document.getElementById('poam-modal-title');
             const modalBody = document.getElementById('poam-modal-body');
@@ -3332,6 +3703,7 @@ Please provide guidance on how to address this ${ksi.status === 'failed' ? 'comp
             console.log('   - Warning/Info detection via assertion_reason parsing');  
             console.log('   - Real data from unified_ksi_validations.json');
             console.log('   - Enhanced POA&M multi-tier tracking');
+            console.log('   - ENHANCED Why Modal with structured content parsing');
             
             // Federal access form handler
             const form = document.getElementById('federal-access-form');
@@ -3356,7 +3728,7 @@ Please provide guidance on how to address this ${ksi.status === 'failed' ? 'comp
                 });
             }
             
-            console.log('✅ FIXED Dashboard initialization complete - now showing accurate metrics from real data');
+            console.log('✅ ENHANCED Dashboard initialization complete - now showing accurate metrics with improved Why modal');
         });
 
         // Keyboard shortcuts
