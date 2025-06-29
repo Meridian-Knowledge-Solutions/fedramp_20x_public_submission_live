@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1111,6 +1111,453 @@
             word-break: break-all;
         }
 
+        /* ENHANCED MODERN COMMANDS MODAL STYLES */
+        .commands-modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .commands-modal-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Modern Data Source Badge */
+        .data-source-badge {
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            border: 2px solid;
+            backdrop-filter: blur(10px);
+        }
+
+        .data-source-badge.comprehensive {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(34, 197, 94, 0.1));
+            color: var(--success-600);
+            border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.1);
+        }
+
+        .data-source-badge.fallback {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.1));
+            color: var(--warning-600);
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.1);
+        }
+
+        .data-source-badge.limited {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(248, 113, 113, 0.1));
+            color: var(--danger-600);
+            border-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 8px 32px rgba(239, 68, 68, 0.1);
+        }
+
+        /* Modern Commands Summary */
+        .commands-summary {
+            background: linear-gradient(145deg, var(--bg-secondary), var(--bg-accent));
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commands-summary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .commands-summary-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Modern Stats Grid */
+        .commands-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .command-stat {
+            text-align: center;
+            background: var(--bg-secondary);
+            padding: 1.5rem 1rem;
+            border-radius: var(--radius);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .command-stat:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-500);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .command-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+        }
+
+        .command-stat-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .command-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Modern Command Description Boxes */
+        .commands-summary .description-box,
+        .commands-summary .justification-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.05));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .commands-summary .description-box::before,
+        .commands-summary .justification-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .commands-summary .description-box strong,
+        .commands-summary .justification-box strong {
+            color: var(--primary-600);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Modern Primary Command Box */
+        .primary-command-box {
+            background: var(--gray-900);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .primary-command-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+        }
+
+        .primary-command-box strong {
+            color: #00ff88;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .primary-command-box .command-text {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #00d4ff;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Modern Commands List */
+        .commands-list {
+            margin-top: 2rem;
+        }
+
+        .commands-list h4 {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        /* Enhanced Command Items */
+        .command-item {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .command-item:hover {
+            border-color: var(--primary-500);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .command-header {
+            background: linear-gradient(135deg, var(--bg-accent), var(--bg-secondary));
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .command-header:hover {
+            background: linear-gradient(135deg, var(--border-color), var(--bg-accent));
+        }
+
+        .command-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+        }
+
+        .command-number {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 800;
+            min-width: 60px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .command-status {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid;
+        }
+
+        .command-status.success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(34, 197, 94, 0.1));
+            color: var(--success-600);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .command-status.failed {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(248, 113, 113, 0.1));
+            color: var(--danger-600);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .command-status.unknown {
+            background: var(--bg-accent);
+            color: var(--text-tertiary);
+            border-color: var(--border-color);
+        }
+
+        .command-expand-btn {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            color: var(--text-tertiary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .command-expand-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--primary-500);
+            background: var(--bg-accent);
+        }
+
+        .command-expand-btn.expanded {
+            transform: rotate(180deg);
+            background: var(--primary-500);
+            color: white;
+            border-color: var(--primary-500);
+        }
+
+        .command-details {
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            display: none;
+            background: linear-gradient(145deg, var(--bg-primary), var(--bg-secondary));
+        }
+
+        .command-details.expanded {
+            display: block;
+        }
+
+        /* Enhanced Command Code Display */
+        .command-code {
+            background: var(--gray-900);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #00ff88;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: auto;
+            position: relative;
+            background-image: 
+                linear-gradient(90deg, transparent 0%, transparent 98%, rgba(0, 255, 136, 0.1) 100%),
+                linear-gradient(0deg, rgba(0, 255, 136, 0.05) 0%, transparent 100%);
+        }
+
+        .command-code::before {
+            content: '$ ';
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        /* Modern Meta Grid */
+        .command-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .command-meta-item {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .command-meta-item:hover {
+            border-color: var(--primary-500);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .command-meta-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+        }
+
+        .command-meta-value {
+            font-weight: 800;
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .command-meta-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* No Commands Message */
+        .no-commands-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            background: linear-gradient(135deg, var(--bg-accent), var(--bg-secondary));
+            border-radius: var(--radius-lg);
+            border: 2px dashed var(--border-color);
+        }
+
+        .no-commands-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .no-commands-message h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .no-commands-message p {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
         /* Enhanced Why Modal Content Styles */
         .why-summary-card {
             background: var(--bg-accent);
@@ -1258,38 +1705,6 @@
 
         .why-metric-badge.danger {
             background: linear-gradient(135deg, var(--danger-500), #f87171);
-        }
-
-        .why-raw-details {
-            background: var(--bg-accent);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .why-raw-title {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .why-raw-content {
-            font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 1rem;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            max-height: 200px;
-            overflow-y: auto;
         }
 
         /* POA&M Modal Specific Styles */
@@ -1468,231 +1883,6 @@
             font-size: 0.75rem;
             color: var(--text-tertiary);
             margin-top: 0.25rem;
-        }
-
-        /* Data Source Badge Styles */
-        .data-source-badge {
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius);
-            font-size: 0.875rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .data-source-badge.comprehensive {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success-600);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .data-source-badge.fallback {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--warning-600);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
-        .data-source-badge.limited {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger-600);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .commands-summary {
-            background: var(--bg-accent);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .commands-summary-title {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .commands-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .command-stat {
-            text-align: center;
-            background: var(--bg-secondary);
-            padding: 0.75rem;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-color);
-        }
-
-        .command-stat-value {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .command-stat-label {
-            font-size: 0.75rem;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .commands-list {
-            margin-top: 1.5rem;
-        }
-
-        .command-item {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            margin-bottom: 1rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .command-item:hover {
-            border-color: var(--primary-500);
-            box-shadow: var(--shadow);
-        }
-
-        .command-header {
-            background: var(--bg-accent);
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .command-header:hover {
-            background: var(--border-color);
-        }
-
-        .command-title {
-            font-weight: 700;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .command-expand-btn {
-            background: none;
-            border: none;
-            color: var(--text-tertiary);
-            font-size: 1.25rem;
-            cursor: pointer;
-            padding: 0.25rem;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .command-expand-btn:hover {
-            color: var(--text-primary);
-        }
-
-        .command-expand-btn.expanded {
-            transform: rotate(180deg);
-        }
-
-        .command-details {
-            padding: 1.5rem;
-            border-top: 1px solid var(--border-color);
-            display: none;
-        }
-
-        .command-details.expanded {
-            display: block;
-        }
-
-        .command-code {
-            background: var(--bg-accent);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 1rem;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.875rem;
-            color: var(--text-primary);
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            overflow-x: auto;
-        }
-
-        .command-meta {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-
-        .command-meta-item {
-            background: var(--bg-accent);
-            padding: 0.5rem;
-            border-radius: var(--radius-sm);
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
-
-        .command-meta-value {
-            font-weight: 700;
-            color: var(--text-primary);
-            font-size: 0.875rem;
-        }
-
-        .command-meta-label {
-            font-size: 0.75rem;
-            color: var(--text-tertiary);
-            margin-top: 0.25rem;
-        }
-
-        .command-status {
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .command-status.success {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success-600);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .command-status.failed {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger-600);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .command-status.unknown {
-            background: var(--bg-accent);
-            color: var(--text-tertiary);
-            border: 1px solid var(--border-color);
-        }
-
-        .no-commands-message {
-            text-align: center;
-            padding: 3rem 2rem;
-            color: var(--text-secondary);
-        }
-
-        .no-commands-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
         }
 
         .tier-indicator {
@@ -1908,6 +2098,14 @@
             }
 
             .why-metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .commands-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .command-meta {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -3208,7 +3406,7 @@ async function getAuthorizationSummary() {
             });
         }
 
-        // ✅ ENHANCED: Show detailed commands modal with full command list
+        // ✅ ENHANCED: Show detailed commands modal with modern UI
         function showCommandsModal(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
@@ -3221,11 +3419,11 @@ async function getAuthorizationSummary() {
             // Determine data source badge
             const getDataSourceBadge = (source) => {
                 if (source === 'comprehensive_register') {
-                    return '<div class="data-source-badge comprehensive">📋 Comprehensive Command Register</div>';
+                    return '<div class="data-source-badge comprehensive">📋 Comprehensive Command Register - Complete Details Available</div>';
                 } else if (source === 'validation_summary') {
-                    return '<div class="data-source-badge fallback">⚠️ Parsed from Validation Summary</div>';
+                    return '<div class="data-source-badge fallback">⚠️ Parsed from Validation Summary - Limited Details</div>';
                 } else {
-                    return '<div class="data-source-badge limited">❌ Limited Command Data Available</div>';
+                    return '<div class="data-source-badge limited">❌ Minimal Command Data - Summary Only</div>';
                 }
             };
 
@@ -3233,11 +3431,11 @@ async function getAuthorizationSummary() {
                 ${getDataSourceBadge(ksi.command_source)}
                 
                 <div class="commands-summary">
-                    <h4 class="commands-summary-title">📊 Execution Summary</h4>
+                    <h4 class="commands-summary-title">📊 Command Execution Overview</h4>
                     <div class="commands-stats">
                         <div class="command-stat">
                             <div class="command-stat-value">${ksi.commands_executed}</div>
-                            <div class="command-stat-label">Total</div>
+                            <div class="command-stat-label">Total Commands</div>
                         </div>
                         <div class="command-stat">
                             <div class="command-stat-value">${ksi.successful_commands}</div>
@@ -3254,37 +3452,33 @@ async function getAuthorizationSummary() {
                     </div>
                     
                     ${ksi.register_description ? `
-                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border-color);">
-                            <strong>📝 Description:</strong> ${ksi.register_description}
+                        <div class="description-box">
+                            <strong>📝 Validation Description:</strong> ${ksi.register_description}
                         </div>
                     ` : ''}
                     
                     ${ksi.register_justification ? `
-                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border-color);">
-                            <strong>🎯 Justification:</strong> ${ksi.register_justification}
+                        <div class="justification-box">
+                            <strong>🎯 Technical Justification:</strong> ${ksi.register_justification}
                         </div>
                     ` : ''}
 
-                    <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border-color);">
-                        <strong>Primary Command Pattern:</strong>
-                        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 6px; margin-top: 0.5rem; font-family: monospace; border: 1px solid var(--border-color);">
-                            ${ksi.cli_command}
-                        </div>
+                    <div class="primary-command-box">
+                        <strong>🔧 Primary Command Pattern</strong>
+                        <div class="command-text">${ksi.cli_command}</div>
                     </div>
                 </div>
 
                 ${ksi.detailed_commands.length > 0 ? `
                     <div class="commands-list">
-                        <h4 style="margin-bottom: 1rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
-                            ⚡ Detailed Command Execution (${ksi.detailed_commands.length} commands)
-                        </h4>
+                        <h4>⚡ Detailed Command Breakdown (${ksi.detailed_commands.length} commands)</h4>
                         
                         ${ksi.detailed_commands.map((cmd, index) => `
                             <div class="command-item">
                                 <div class="command-header" onclick="toggleCommandDetails(${index})">
                                     <div class="command-title">
-                                        <span style="background: var(--bg-accent); padding: 0.25rem 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; margin-right: 0.5rem;">#${index + 1}</span>
-                                        ${cmd.description || `Command ${index + 1}`}
+                                        <span class="command-number">#${index + 1}</span>
+                                        <span>${cmd.description || `Command ${index + 1}`}</span>
                                         <span class="command-status ${cmd.status}">${cmd.status.toUpperCase()}</span>
                                     </div>
                                     <button class="command-expand-btn" id="expand-btn-${index}">▼</button>
@@ -3307,12 +3501,6 @@ async function getAuthorizationSummary() {
                                             <div class="command-meta-label">Source</div>
                                         </div>
                                     </div>
-                                    
-                                    ${cmd.description && cmd.description !== `Command ${index + 1}` ? `
-                                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin-top: 1rem; border: 1px solid var(--border-color);">
-                                            <strong>Description:</strong> ${cmd.description}
-                                        </div>
-                                    ` : ''}
                                 </div>
                             </div>
                         `).join('')}
@@ -3447,11 +3635,6 @@ async function getAuthorizationSummary() {
                             <div style="font-weight: 700; color: var(--text-primary);">${ksi.failed_commands || 0}</div>
                             <div style="font-size: 0.75rem; color: var(--text-tertiary);">Failed</div>
                         </div>
-                    </div>
-                    
-                    <div class="why-raw-details">
-                        <div class="why-raw-title">📄 Complete Assessment Details</div>
-                        <div class="why-raw-content">${ksi.assertion_reason}</div>
                     </div>
                 </div>
             `;
@@ -3797,13 +3980,12 @@ Please provide guidance on how to address this ${ksi.status === 'failed' ? 'comp
             initializeTheme();
             initializeDashboard();
             
-            console.log('🔧 FIXED Dashboard initialized with:');
-            console.log('   - Proper status determination using determineKsiStatus()');
-            console.log('   - Warning/Info detection via assertion_reason parsing');  
-            console.log('   - Real data from unified_ksi_validations.json');
-            console.log('   - Enhanced POA&M multi-tier tracking');
-            console.log('   - ENHANCED Why Modal with structured content parsing');
-            console.log('   - FIXED Commands Modal with full command list from register');
+            console.log('🔧 ENHANCED Dashboard initialized with modern Commands Modal');
+            console.log('   - Removed redundant "Complete Assessment Details" section');
+            console.log('   - Modern gradient styling and improved visual hierarchy');
+            console.log('   - Enhanced command status indicators and badges');
+            console.log('   - Better organized summary sections');
+            console.log('   - Improved command details expansion');
             
             // Federal access form handler
             const form = document.getElementById('federal-access-form');
@@ -3828,7 +4010,7 @@ Please provide guidance on how to address this ${ksi.status === 'failed' ? 'comp
                 });
             }
             
-            console.log('✅ ENHANCED Dashboard initialization complete - now showing accurate metrics with improved modals');
+            console.log('✅ ENHANCED Dashboard initialization complete');
         });
 
         // Keyboard shortcuts
