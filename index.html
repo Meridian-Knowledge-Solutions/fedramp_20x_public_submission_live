@@ -1745,7 +1745,7 @@
                     <div class="logo">MKS</div>
                     <div class="title-section">
                         <h1>FedRAMP 20x Trust Center</h1>
-                        <div class="subtitle">Meridian Knowledge Solutions - Three-Tier POA&M System</div>
+                        <div class="subtitle">Meridian Knowledge Solutions - Risk-Based POA&M System</div>
                     </div>
                 </div>
                 <div class="header-right">
@@ -1768,7 +1768,7 @@
             <div class="header-info">
                 <div class="header-info-content">
                     <div class="header-info-title">Enhanced FedRAMP 20x POA&M System</div>
-                    <div class="header-info-subtitle">✅ Compliance Tracking | ⚠️ Warning Tracking | ℹ️ Info Tracking | 📈 Enhancement Opportunities | 🕒 Evidence Currency</div>
+                    <div class="header-info-subtitle">✅ Compliance Tracking | 🟡 Medium Risk Findings | 🟢 Low Risk Observations | 📈 Improvement Opportunities | 🕒 Evidence Currency</div>
                     <div class="header-info-meta">
                         <div class="header-info-item">
                             <span>⏰</span>
@@ -1809,18 +1809,18 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-value warning" id="warning-count">-</div>
-                    <div class="stat-label">Warning Tracking Items</div>
-                    <div class="stat-change positive">⚠️ Enhancement Opportunities</div>
+                    <div class="stat-label">Medium Risk Findings</div>
+                    <div class="stat-change positive">🟡 90-Day Tracking</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value info" id="info-count">-</div>
-                    <div class="stat-label">Info Tracking Items</div>
-                    <div class="stat-change positive">ℹ️ Improvement Opportunities</div>
+                    <div class="stat-label">Low Risk Observations</div>
+                    <div class="stat-change positive">🟢 120-Day Tracking</div>
                 </div>
                 <div class="stat-card enhancement">
                     <div class="stat-value enhancement" id="enhancement-count">-</div>
-                    <div class="stat-label">Enhancement Opportunities</div>
-                    <div class="stat-change enhancement">📈 Proactive Improvement</div>
+                    <div class="stat-label">Improvement Opportunities</div>
+                    <div class="stat-change enhancement">📈 Proactive Enhancement</div>
                 </div>
             </div>
 
@@ -1917,29 +1917,29 @@
                     <!-- Enhanced POA&M System -->
                     <div class="trust-card enhancement-indicator">
                         <div class="trust-card-header" style="background: var(--gradient-enhancement);">
-                            <h3 class="trust-card-title">🚀 Enhanced POA&M System</h3>
+                            <h3 class="trust-card-title">🚀 Risk-Based POA&M System</h3>
                         </div>
                         <div class="trust-card-content">
                             <div class="trust-item">
                                 <strong>🚨 Tier 1: Compliance POA&M</strong> - Traditional remediation for failed validations (60-day SLAs)
                             </div>
                             <div class="trust-item">
-                                <strong>⚠️ NEW: Warning Tracking</strong> - Enhancement opportunities requiring attention (90-day tracking)
+                                <strong>🟡 NEW: Medium Risk Findings</strong> - Moderate findings requiring attention (90-day tracking)
                             </div>
                             <div class="trust-item">
-                                <strong>ℹ️ NEW: Info Tracking</strong> - Improvement opportunities for continuous enhancement (120-day tracking)
+                                <strong>🟢 NEW: Low Risk Observations</strong> - Minor observations for continuous enhancement (120-day tracking)
                             </div>
                             <div class="trust-item">
-                                <strong>📈 Tier 2: Enhancement Tracking</strong> - Proactive improvement opportunities in compliant KSIs (180-day cycles)
+                                <strong>📈 Tier 2: Improvement Opportunities</strong> - Proactive enhancement opportunities in compliant KSIs (180-day cycles)
                             </div>
                             <div class="trust-item">
                                 <strong>🕒 Tier 3: Staleness Tracking</strong> - Evidence currency management (90-day refresh windows)
                             </div>
                             <div class="trust-item">
-                                <strong>Innovation:</strong> First FedRAMP 20x submission to implement multi-level POA&M tracking beyond traditional binary compliance. Warning/Info items track improvements without penalizing compliance scores.
+                                <strong>Innovation:</strong> First FedRAMP 20x submission to implement risk-based POA&M tracking beyond traditional binary compliance. Medium/Low risk items track improvements without penalizing compliance scores.
                             </div>
                             <div class="trust-item">
-                                <button onclick="window.showPOAMModal()" class="action-btn enhancement">📊 View Enhanced POA&M Analysis</button>
+                                <button onclick="window.showPOAMModal()" class="action-btn enhancement">📊 View Risk-Based POA&M Analysis</button>
                             </div>
                         </div>
                     </div>
@@ -1959,9 +1959,9 @@
                                 <option value="">All Status</option>
                                 <option value="passed">Passed</option>
                                 <option value="failed">Failed</option>
-                                <option value="warning">Warning</option>
-                                <option value="info">Info</option>
-                                <option value="enhancement">Enhancement</option>
+                                <option value="warning">Medium Risk</option>
+                                <option value="info">Low Risk</option>
+                                <option value="enhancement">Improvement</option>
                             </select>
                         </div>
                         <div class="filter-group">
@@ -1982,9 +1982,9 @@
                     <div class="filter-chip active" data-status="">All</div>
                     <div class="filter-chip" data-status="passed">✅ Passed</div>
                     <div class="filter-chip" data-status="failed">❌ Failed</div>
-                    <div class="filter-chip" data-status="warning">⚠️ Warning</div>
-                    <div class="filter-chip" data-status="info">ℹ️ Info</div>
-                    <div class="filter-chip" data-status="enhancement">📈 Enhancement</div>
+                    <div class="filter-chip" data-status="warning">🟡 Medium Risk</div>
+                    <div class="filter-chip" data-status="info">🟢 Low Risk</div>
+                    <div class="filter-chip" data-status="enhancement">📈 Improvement</div>
                 </div>
 
                 <!-- KSI Grid -->
@@ -2028,8 +2028,8 @@
                 
                 <div class="access-card enhancement-indicator">
                     <div class="card-icon">📊</div>
-                    <h3>Enhanced POA&M</h3>
-                    <p>Multi-level improvement tracking</p>
+                    <h3>Risk-Based POA&M</h3>
+                    <p>Multi-level risk tracking</p>
                     <button onclick="window.showPOAMModal()" class="access-btn">View POA&M</button>
                 </div>
                 
@@ -2065,8 +2065,8 @@ async function getAuthorizationSummary() {
         total_ksis: data.length,
         passed: data.filter(ksi => ksi.assertion === true).length,
         failed: data.filter(ksi => ksi.assertion === false).length,
-        warning: data.filter(ksi => (ksi.assertion_reason || '').includes('warning')).length,
-        info: data.filter(ksi => (ksi.assertion_reason || '').includes('info')).length,
+        medium_risk: data.filter(ksi => (ksi.assertion_reason || '').includes('warning')).length,
+        low_risk: data.filter(ksi => (ksi.assertion_reason || '').includes('info')).length,
         compliance_percentage: (data.filter(ksi => ksi.assertion === true).length / data.length * 100).toFixed(1)
     };
 }
@@ -2208,7 +2208,7 @@ async function getAuthorizationSummary() {
     <div class="poam-modal" id="poam-modal">
         <div class="poam-modal-content">
             <div class="poam-modal-header">
-                <h3 class="poam-modal-title" id="poam-modal-title">🚀 Enhanced POA&M Analysis</h3>
+                <h3 class="poam-modal-title" id="poam-modal-title">🚀 Risk-Based POA&M Analysis</h3>
                 <button class="close-btn" onclick="closePOAMModal()">&times;</button>
             </div>
             <div class="poam-modal-body" id="poam-modal-body">
@@ -2221,7 +2221,7 @@ async function getAuthorizationSummary() {
     <div class="enhancement-modal" id="enhancement-modal">
         <div class="enhancement-modal-content">
             <div class="enhancement-modal-header">
-                <h3 class="enhancement-modal-title" id="enhancement-modal-title">📈 Enhancement Opportunity Details</h3>
+                <h3 class="enhancement-modal-title" id="enhancement-modal-title">📈 Improvement Opportunity Details</h3>
                 <button class="close-btn" onclick="closeEnhancementModal()">&times;</button>
             </div>
             <div class="enhancement-modal-body" id="enhancement-modal-body">
@@ -2651,7 +2651,7 @@ async function getAuthorizationSummary() {
                     
                     ${hasEnhancements ? `
                         <div class="enhancement-badge">
-                            📈 ${ksi.enhancements.length} Enhancement Opportunit${ksi.enhancements.length === 1 ? 'y' : 'ies'}
+                            📈 ${ksi.enhancements.length} Improvement Opportunit${ksi.enhancements.length === 1 ? 'y' : 'ies'}
                         </div>
                         ${ksi.enhancements.slice(0, 2).map(enh => `
                             <div class="enhancement-opportunity">
@@ -2685,11 +2685,11 @@ async function getAuthorizationSummary() {
                             ⚡ Commands
                         </button>
                         <button class="action-btn secondary" onclick="showWhyModal('${ksi.id}')">
-                            🤔 Why ${ksi.status === 'passed' ? 'Pass' : ksi.status === 'failed' ? 'Fail' : ksi.status === 'warning' ? 'Warning' : ksi.status === 'info' ? 'Info' : 'Result'}
+                            🤔 Why ${ksi.status === 'passed' ? 'Pass' : ksi.status === 'failed' ? 'Fail' : ksi.status === 'warning' ? 'Medium Risk' : ksi.status === 'info' ? 'Low Risk' : 'Result'}
                         </button>
                         ${hasEnhancements ? `
                             <button class="action-btn enhancement" onclick="window.showEnhancementModal('${ksi.id}')">
-                                📈 Enhance
+                                📈 Improve
                             </button>
                         ` : ''}
                         ${ksi.status === 'failed' ? `
@@ -2699,12 +2699,12 @@ async function getAuthorizationSummary() {
                         ` : ''}
                         ${ksi.status === 'warning' ? `
                             <button class="action-btn warning" onclick="createGitHubIssue('${ksi.id}')">
-                                ⚠️ Warning Issue
+                                🟡 Medium Risk Issue
                             </button>
                         ` : ''}
                         ${ksi.status === 'info' ? `
                             <button class="action-btn info" onclick="createGitHubIssue('${ksi.id}')">
-                                ℹ️ Info Issue
+                                🟢 Low Risk Issue
                             </button>
                         ` : ''}
                     </div>
@@ -2821,7 +2821,7 @@ async function getAuthorizationSummary() {
             document.getElementById('info-count').textContent = infoCount;
             document.getElementById('enhancement-count').textContent = enhancementCount;
             
-            console.log(`📊 FIXED metrics: ${compliantKsis}/${totalKsis} compliant (${complianceScore}%) | POA&M tracking: ${warningCount}W/${infoCount}I/${enhancementCount}E`);
+            console.log(`📊 FIXED metrics: ${compliantKsis}/${totalKsis} compliant (${complianceScore}%) | POA&M tracking: ${warningCount} Medium Risk/${infoCount} Low Risk/${enhancementCount} Improvements`);
         }
 
         function populateCategoryFilter() {
@@ -2870,8 +2870,8 @@ async function getAuthorizationSummary() {
             const icons = {
                 passed: '✅',
                 failed: '❌',
-                warning: '⚠️',
-                info: 'ℹ️'
+                warning: '🟡',
+                info: '🟢'
             };
             return icons[status] || '❓';
         }
@@ -2960,8 +2960,8 @@ async function getAuthorizationSummary() {
 
             const statusText = ksi.status === 'passed' ? 'Pass' : 
                               ksi.status === 'failed' ? 'Fail' : 
-                              ksi.status === 'warning' ? 'Warning' :
-                              ksi.status === 'info' ? 'Info' : 'Result';
+                              ksi.status === 'warning' ? 'Medium Risk' :
+                              ksi.status === 'info' ? 'Low Risk' : 'Result';
             const statusIcon = getStatusIcon(ksi.status);
             
             modalTitle.innerHTML = `🤔 Why ${statusText}? - ${ksi.id}`;
@@ -3008,17 +3008,17 @@ async function getAuthorizationSummary() {
 
             const statusLabels = {
                 'failed': 'high-priority,compliance-failure',
-                'warning': 'medium-priority,compliance-warning', 
-                'info': 'low-priority,compliance-info'
+                'warning': 'medium-priority,medium-risk-finding', 
+                'info': 'low-priority,low-risk-observation'
             };
 
             const issueTitle = encodeURIComponent(`[${ksi.status.toUpperCase()} KSI] ${ksi.id}: ${ksi.description.substring(0, 60)}...`);
-            const issueBody = encodeURIComponent(`## Enhanced POA&M Entry Report
+            const issueBody = encodeURIComponent(`## Risk-Based POA&M Entry Report
 
 **KSI ID:** ${ksi.id}
 **Category:** ${ksi.category}
 **Status:** ${ksi.status.toUpperCase()}
-**POA&M Priority:** ${ksi.status === 'failed' ? 'High (60 days)' : ksi.status === 'warning' ? 'Medium (90 days)' : 'Low (120 days)'}
+**POA&M Priority:** ${ksi.status === 'failed' ? 'High (60 days)' : ksi.status === 'warning' ? 'Medium Risk (90 days)' : 'Low Risk (120 days)'}
 
 ### Description
 ${ksi.description}
@@ -3031,13 +3031,13 @@ ${ksi.description}
 ${ksi.assertion_reason || 'No detailed reason provided'}
 
 ### POA&M Classification
-- **Tier:** Compliance POA&M
-- **Severity:** ${ksi.status === 'failed' ? 'High' : ksi.status === 'warning' ? 'Medium' : 'Low'}
-- **Response Time:** ${ksi.status === 'failed' ? '60' : ksi.status === 'warning' ? '90' : '120'} days
-- **Business Impact:** ${ksi.status === 'failed' ? 'Critical' : ksi.status === 'warning' ? 'Moderate' : 'Low'} - requires attention per enhanced POA&M system
+- **Tier:** ${ksi.status === 'failed' ? 'Compliance POA&M' : 'Risk-Based Tracking'}
+- **Risk Level:** ${ksi.status === 'failed' ? 'High' : ksi.status === 'warning' ? 'Medium' : 'Low'}
+- **Tracking Period:** ${ksi.status === 'failed' ? '60' : ksi.status === 'warning' ? '90' : '120'} days
+- **Impact:** ${ksi.status === 'failed' ? 'Compliance' : ksi.status === 'warning' ? 'Medium Risk Finding' : 'Low Risk Observation'} - requires attention per risk-based POA&M system
 
 ### Expected Resolution
-Please provide guidance on how to remediate this ${ksi.status} KSI condition.`);
+Please provide guidance on how to address this ${ksi.status === 'failed' ? 'compliance failure' : ksi.status === 'warning' ? 'medium risk finding' : 'low risk observation'}.`);
 
             const labels = statusLabels[ksi.status] || 'general-compliance';
             const githubUrl = `https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live/issues/new?title=${issueTitle}&body=${issueBody}&labels=${labels}`;
@@ -3097,15 +3097,15 @@ Please provide guidance on how to remediate this ${ksi.status} KSI condition.`);
             const modalTitle = document.getElementById('poam-modal-title');
             const modalBody = document.getElementById('poam-modal-body');
             
-            modalTitle.innerHTML = '🚀 Enhanced POA&M Analysis';
+            modalTitle.innerHTML = '🚀 Risk-Based POA&M Analysis';
             
             modalBody.innerHTML = `
                 <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
-                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Enhanced POA&M System</h3>
-                    <p style="margin-bottom: 1rem;">Multi-level tracking system showing compliance, enhancement, and staleness tiers.</p>
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Risk-Based POA&M System</h3>
+                    <p style="margin-bottom: 1rem;">Multi-level tracking system showing compliance, risk findings, and improvement opportunities.</p>
                     <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--enhancement-500); border-radius: 8px; padding: 1rem; margin-top: 1.5rem; color: var(--enhancement-600);">
-                        <strong>🚀 Innovation:</strong> First FedRAMP 20x submission with multi-level POA&M tracking beyond traditional binary compliance.
+                        <strong>🚀 Innovation:</strong> First FedRAMP 20x submission with risk-based POA&M tracking beyond traditional binary compliance.
                     </div>
                 </div>
             `;
@@ -3114,18 +3114,17 @@ Please provide guidance on how to remediate this ${ksi.status} KSI condition.`);
             document.body.style.overflow = 'hidden';
         }
 
-        // Enhanced Enhancement Modal (stub - can be expanded)
         function showEnhancementModal(ksiId) {
             const modalTitle = document.getElementById('enhancement-modal-title');
             const modalBody = document.getElementById('enhancement-modal-body');
             
-            modalTitle.innerHTML = `📈 Enhancement Details: ${ksiId}`;
+            modalTitle.innerHTML = `📈 Improvement Details: ${ksiId}`;
             
             modalBody.innerHTML = `
                 <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">📈</div>
-                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Enhancement Opportunities</h3>
-                    <p style="margin-bottom: 1rem;">Proactive improvement opportunities identified for passed KSIs.</p>
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Improvement Opportunities</h3>
+                    <p style="margin-bottom: 1rem;">Proactive improvement opportunities identified for compliant KSIs.</p>
                     <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--enhancement-500); border-radius: 8px; padding: 1rem; margin-top: 1.5rem; color: var(--enhancement-600);">
                         <strong>📈 Continuous Improvement:</strong> Moving beyond compliance to proactive security enhancement.
                     </div>
@@ -3294,7 +3293,7 @@ Please provide guidance on how to remediate this ${ksi.status} KSI condition.`);
         }
 
         function initializeDashboard() {
-            console.log('🔄 Initializing enhanced POA&M dashboard with FIXED status determination...');
+            console.log('🔄 Initializing enhanced POA&M dashboard with risk-based terminology...');
             populateCategoryFilter();
             setupEventListeners();
             updateTimestamps();
