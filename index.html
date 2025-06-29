@@ -3208,7 +3208,7 @@ async function getAuthorizationSummary() {
             });
         }
 
-        // Modal and utility functions (keeping existing implementations)
+        // ✅ ENHANCED: Show detailed commands modal with full command list
         function showCommandsModal(ksiId) {
             const ksi = allKsis.find(k => k.id === ksiId);
             if (!ksi) return;
@@ -3218,7 +3218,20 @@ async function getAuthorizationSummary() {
 
             modalTitle.innerHTML = `⚡ Commands for ${ksi.id}`;
 
+            // Determine data source badge
+            const getDataSourceBadge = (source) => {
+                if (source === 'comprehensive_register') {
+                    return '<div class="data-source-badge comprehensive">📋 Comprehensive Command Register</div>';
+                } else if (source === 'validation_summary') {
+                    return '<div class="data-source-badge fallback">⚠️ Parsed from Validation Summary</div>';
+                } else {
+                    return '<div class="data-source-badge limited">❌ Limited Command Data Available</div>';
+                }
+            };
+
             modalBody.innerHTML = `
+                ${getDataSourceBadge(ksi.command_source)}
+                
                 <div class="commands-summary">
                     <h4 class="commands-summary-title">📊 Execution Summary</h4>
                     <div class="commands-stats">
@@ -3234,19 +3247,104 @@ async function getAuthorizationSummary() {
                             <div class="command-stat-value">${ksi.commands_executed > 0 ? Math.round((ksi.successful_commands / ksi.commands_executed) * 100) : 0}%</div>
                             <div class="command-stat-label">Success Rate</div>
                         </div>
+                        <div class="command-stat">
+                            <div class="command-stat-value">${ksi.detailed_commands.length}</div>
+                            <div class="command-stat-label">Detailed</div>
+                        </div>
+                    </div>
+                    
+                    ${ksi.register_description ? `
+                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border-color);">
+                            <strong>📝 Description:</strong> ${ksi.register_description}
+                        </div>
+                    ` : ''}
+                    
+                    ${ksi.register_justification ? `
+                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border-color);">
+                            <strong>🎯 Justification:</strong> ${ksi.register_justification}
+                        </div>
+                    ` : ''}
+
+                    <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border-color);">
+                        <strong>Primary Command Pattern:</strong>
+                        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 6px; margin-top: 0.5rem; font-family: monospace; border: 1px solid var(--border-color);">
+                            ${ksi.cli_command}
+                        </div>
                     </div>
                 </div>
 
-                <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border-color);">
-                    <strong>Primary Command Pattern:</strong>
-                    <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 6px; margin-top: 0.5rem; font-family: monospace; border: 1px solid var(--border-color);">
-                        ${ksi.cli_command}
+                ${ksi.detailed_commands.length > 0 ? `
+                    <div class="commands-list">
+                        <h4 style="margin-bottom: 1rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+                            ⚡ Detailed Command Execution (${ksi.detailed_commands.length} commands)
+                        </h4>
+                        
+                        ${ksi.detailed_commands.map((cmd, index) => `
+                            <div class="command-item">
+                                <div class="command-header" onclick="toggleCommandDetails(${index})">
+                                    <div class="command-title">
+                                        <span style="background: var(--bg-accent); padding: 0.25rem 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; margin-right: 0.5rem;">#${index + 1}</span>
+                                        ${cmd.description || `Command ${index + 1}`}
+                                        <span class="command-status ${cmd.status}">${cmd.status.toUpperCase()}</span>
+                                    </div>
+                                    <button class="command-expand-btn" id="expand-btn-${index}">▼</button>
+                                </div>
+                                
+                                <div class="command-details" id="command-details-${index}">
+                                    <div class="command-code">${cmd.command}</div>
+                                    
+                                    <div class="command-meta">
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.status}</div>
+                                            <div class="command-meta-label">Status</div>
+                                        </div>
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.execution_time || 'Unknown'}</div>
+                                            <div class="command-meta-label">Duration</div>
+                                        </div>
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.source || 'unknown'}</div>
+                                            <div class="command-meta-label">Source</div>
+                                        </div>
+                                    </div>
+                                    
+                                    ${cmd.description && cmd.description !== `Command ${index + 1}` ? `
+                                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin-top: 1rem; border: 1px solid var(--border-color);">
+                                            <strong>Description:</strong> ${cmd.description}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
                     </div>
-                </div>
+                ` : `
+                    <div class="no-commands-message">
+                        <div class="no-commands-icon">⚠️</div>
+                        <h3>No Detailed Commands Available</h3>
+                        <p>Only summary command information is available for this KSI.</p>
+                        <p>The command register may not contain detailed information for this validation.</p>
+                    </div>
+                `}
             `;
 
             document.getElementById('commands-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
+        }
+
+        // ✅ Helper function to toggle command details
+        function toggleCommandDetails(index) {
+            const details = document.getElementById(`command-details-${index}`);
+            const expandBtn = document.getElementById(`expand-btn-${index}`);
+            
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                expandBtn.textContent = '▼';
+                expandBtn.classList.remove('expanded');
+            } else {
+                details.classList.add('expanded');
+                expandBtn.textContent = '▲';
+                expandBtn.classList.add('expanded');
+            }
         }
 
         // ✅ ENHANCED: Show improved Why modal with structured content
@@ -3685,6 +3783,7 @@ Please provide guidance on how to address this ${ksi.status === 'failed' ? 'comp
         window.closePOAMModal = closePOAMModal;
         window.showEnhancementModal = showEnhancementModal;
         window.closeEnhancementModal = closeEnhancementModal;
+        window.toggleCommandDetails = toggleCommandDetails;
 
         // Auto-refresh every 5 minutes
         setInterval(() => {
@@ -3704,6 +3803,7 @@ Please provide guidance on how to address this ${ksi.status === 'failed' ? 'comp
             console.log('   - Real data from unified_ksi_validations.json');
             console.log('   - Enhanced POA&M multi-tier tracking');
             console.log('   - ENHANCED Why Modal with structured content parsing');
+            console.log('   - FIXED Commands Modal with full command list from register');
             
             // Federal access form handler
             const form = document.getElementById('federal-access-form');
@@ -3728,7 +3828,7 @@ Please provide guidance on how to address this ${ksi.status === 'failed' ? 'comp
                 });
             }
             
-            console.log('✅ ENHANCED Dashboard initialization complete - now showing accurate metrics with improved Why modal');
+            console.log('✅ ENHANCED Dashboard initialization complete - now showing accurate metrics with improved modals');
         });
 
         // Keyboard shortcuts
