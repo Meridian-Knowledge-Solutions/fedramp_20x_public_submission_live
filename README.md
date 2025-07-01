@@ -12,9 +12,9 @@ It demonstrates **automated validation**, **machine-readable evidence**, and **c
 
 ### 🚀 New Three-Tier POA&M System
 We implemented a proactive enhancement tracking beyond traditional compliance gaps:
-- **🚨 Tier 1: Compliance POA&M** - Traditional remediation for failed validations (30-90 day SLAs)
-- **📈 Tier 2: Enhancement Tracking** - Proactive improvement opportunities in passing KSIs (180-day cycles)
-- **🕒 Tier 3: Staleness Tracking** - Evidence currency management (90-day refresh windows)
+- **🚨 Tier 1: Compliance POA&M** - Traditional remediation for failed validations (30 day SLA)
+- **📈 Tier 2: Low Risk Findings** - Low risk findings in passing KSIs (90 day cycles)
+- **🕒 Tier 3: Improvement Opportunities** - Proactive improvement opportunities (180-day cycles)
 
 ### 📊 Dual-Interface Design
 - **🔍 Compliance Dashboard** - Real-time KSI monitoring and analysis
