@@ -47,48 +47,55 @@ Each CLI command was selected based on:
 
 ---
 
-## 📊 **Complete KSI Command Mapping Matrix - CURRENT STATUS**
+## 📊 **Complete KSI Command Mapping Matrix**
 
-### **CLI-Validated KSI Index (Updated July 2025)**
+### **CLI-Validated KSI Index**
 
-| Category | KSI Count | CLI Coverage | Compliance Status | Primary Validation Method |
-|----------|-----------|--------------|-------------------|---------------------------|
-| **Cloud Native Architecture (CNA)** | 7 | 95% | ✅ **7/7 PASSING** | Multi-command technical validation |
-| **Service Configuration (SVC)** | 7 | 90% | ✅ **7/7 PASSING** | AWS service configuration analysis |
-| **Identity & Access Management (IAM)** | 6 | 95% | ✅ **6/6 PASSING** | Federated identity + traditional IAM |
-| **Monitoring, Logging & Auditing (MLA)** | 6 | 85% | ✅ **6/6 PASSING** | CloudTrail + centralized logging |
-| **Third-Party Resources (TPR)** | 4 | 70% | ✅ **4/4 PASSING** | Hybrid CLI + documentation |
-| **Policy & Inventory (PIY)** | 7 | 45% | ✅ **7/7 PASSING** | Hybrid CLI + documentation |
-| **Change Management (CMT)** | 5 | 60% | ✅ **5/5 PASSING** | IaC validation + documentation |
-| **Cybersecurity Education (CED)** | 2 | 20% | ✅ **2/2 PASSING** | Evidence-based validation |
-| **Recovery Planning (RPL)** | 4 | 65% | ✅ **4/4 PASSING** | Backup systems + documentation |
-| **Incident Reporting (INR)** | 3 | 50% | ✅ **3/3 PASSING** | Logging systems + documentation |
-
-**TOTAL: 100% COMPLIANCE - 51/51 KSIs PASSING**
+| Category | KSI Count | CLI Coverage | Primary Validation Method |
+|----------|-----------|--------------|---------------------------|
+| **Cloud Native Architecture (CNA)** | 7 | 95% | Multi-command technical validation |
+| **Service Configuration (SVC)** | 7 | 90% | AWS service configuration analysis |
+| **Identity & Access Management (IAM)** | 6 | 95% | Federated identity + traditional IAM |
+| **Monitoring, Logging & Auditing (MLA)** | 6 | 85% | CloudTrail + centralized logging |
+| **Third-Party Resources (TPR)** | 4 | 70% | Hybrid CLI + documentation |
+| **Policy & Inventory (PIY)** | 7 | 45% | Hybrid CLI + documentation |
+| **Change Management (CMT)** | 5 | 60% | IaC validation + documentation |
+| **Cybersecurity Education (CED)** | 2 | 20% | Evidence-based validation |
+| **Recovery Planning (RPL)** | 4 | 65% | Backup systems + documentation |
+| **Incident Reporting (INR)** | 3 | 50% | Logging systems + documentation |
 
 **Total KSIs with CLI Commands**: 45+ out of 51 total
 
 ---
 
-## 🎯 **Current Achievement: 100% FedRAMP 20x Compliance**
+## 🎯 **Technical Validation Methodology**
 
-**Status as of July 2, 2025**: All 51 Key Security Indicators are **PASSING** with comprehensive automation and documentation evidence.
+### **Command Selection Criteria**
 
-### **High-Performance Categories (90%+ CLI Coverage)**
-- **KSI-CNA**: 97% average compliance with sophisticated network validation
-- **KSI-IAM**: 95%+ compliance with advanced federated identity logic  
-- **KSI-SVC**: 90%+ compliance with comprehensive service configuration
-- **KSI-MLA**: 85%+ compliance with enterprise-grade SIEM capabilities
+Each CLI command was selected based on:
+1. **Direct relevance** to the KSI security objective
+2. **Technical accuracy** in validating the control implementation
+3. **Comprehensive coverage** when combined with other commands
+4. **Reliability** in AWS cloud environments
+5. **Auditability** through detailed JSON output
 
-### **Successfully Hybrid Categories (40-89% CLI Coverage)**
-- **KSI-RPL**: 65% CLI coverage with backup system validation + recovery documentation
-- **KSI-CMT**: 60% CLI coverage with Infrastructure-as-Code validation + change procedures
-- **KSI-TPR**: 70% CLI coverage with vulnerability scanning + third-party documentation
-- **KSI-PIY**: 45% CLI coverage with resource discovery + policy documentation
-- **KSI-INR**: 50% CLI coverage with logging infrastructure + incident procedures
+### **Validation Approaches by Coverage Level**
 
-### **Evidence-Based Categories (Successfully Implemented)**
-- **KSI-CED**: Training programs with comprehensive documentation validation
+#### **High CLI Coverage (80%+ Technical Validation)**
+- **Multi-command defense-in-depth**: 5-10 complementary commands per KSI
+- **Operational verification**: Both configuration AND runtime status validation
+- **Service redundancy**: Multiple validation paths prevent single points of failure
+- **Error resilience**: Graceful handling of unavailable AWS services
+
+#### **Medium CLI Coverage (50-79% Technical Validation)**
+- **Hybrid validation**: CLI technical validation + manual evidence requirements
+- **Core infrastructure validation**: Key services validated through CLI
+- **Documentation supplement**: Policy and procedural evidence required
+
+#### **Low CLI Coverage (<50% Technical Validation)**
+- **Evidence-based validation**: Primarily manual documentation requirements
+- **Limited CLI enhancement**: Basic technical validation where applicable
+- **Process-oriented**: Inherently organizational requirements
 
 ---
 
@@ -115,13 +122,12 @@ Each CLI command was selected based on:
 - ✅ Defense-in-depth approach
 - ✅ Monitoring and visibility included
 
-**Technical Coverage Assessment**: **COMPREHENSIVE (97%)**
+**Technical Coverage Assessment**: **COMPREHENSIVE**
 - ✅ All network layers covered (L3-L7) 
-- ✅ Strong ingress controls: 12/12 security groups restrictive
-- ✅ Strong egress controls: 12/12 security groups control outbound traffic
-- ✅ Custom network controls: 1/1 Network ACLs with custom traffic filtering
-- ✅ Private service access: 7 VPC endpoints reduce internet-bound traffic
-- ✅ Application-layer protection: 1 WAF Web ACLs configured
+- ✅ Defense-in-depth ingress and egress validation
+- ✅ Multi-layer traffic control verification
+- ✅ Application-layer protection assessment
+- ✅ Traffic monitoring and visibility validation
 
 ---
 
@@ -129,22 +135,21 @@ Each CLI command was selected based on:
 
 **Security Objective**: Attack surface minimization and lateral movement prevention through network segmentation
 
-**Current Status**: ✅ **PASSING (85% compliance)** - "Excellent attack surface minimization and lateral movement prevention"
-
 | Command | Technical Justification | Coverage Area |
 |---------|------------------------|---------------|
-| `aws ec2 describe-subnets` | **Network segmentation analysis**: Validates 6/8 private subnets (75%) across 2 availability zones | Network Segmentation |
-| `aws ec2 describe-security-groups` | **Micro-segmentation validation**: Confirms 11/12 custom security groups with specific rules | Micro-segmentation |
-| `aws ec2 describe-instances` | **Workload placement assessment**: Validates 4/4 instances in private subnets | Instance Placement |
-| `aws ec2 describe-network-acls` | **Subnet-level isolation**: Provides 1/1 Network ACLs with custom isolation rules | Network Isolation |
-| `aws elbv2 describe-load-balancers` | **Exposure pattern analysis**: Single internet-facing load balancer with private backend services | Service Exposure |
-| `aws lambda list-functions` | **Serverless isolation**: Confirms 1/4 functions in VPC | Serverless Security |
-| `aws rds describe-db-instances` | **Database placement validation**: All 1 RDS instances private | Data Tier Security |
+| `aws ec2 describe-subnets` | **Network segmentation analysis**: Validates subnet placement across AZs and public/private segregation patterns | Network Segmentation |
+| `aws ec2 describe-security-groups` | **Micro-segmentation validation**: Confirms custom security groups implementing least-privilege access | Micro-segmentation |
+| `aws ec2 describe-instances` | **Workload placement assessment**: Validates compute resource placement in appropriate security contexts | Instance Placement |
+| `aws ec2 describe-network-acls` | **Subnet-level isolation**: Validates Network ACLs providing subnet-level access controls | Network Isolation |
+| `aws elbv2 describe-load-balancers` | **Exposure pattern analysis**: Validates load balancer placement to minimize attack surface | Service Exposure |
+| `aws lambda list-functions` | **Serverless isolation**: Confirms serverless workload VPC configuration patterns | Serverless Security |
+| `aws rds describe-db-instances` | **Database placement validation**: Ensures databases are properly isolated in private subnets | Data Tier Security |
 
-**Technical Coverage Assessment**: **EXCELLENT (85%)**
-- ✅ Strong attack surface minimization: 75% private subnets
-- ✅ Excellent micro-segmentation: 92% custom security groups
-- ✅ Complete database isolation: 100% private RDS instances
+**Technical Coverage Assessment**: **COMPREHENSIVE**
+- ✅ Multi-tier architecture validation
+- ✅ Network segmentation analysis  
+- ✅ Workload placement verification
+- ✅ Database isolation assessment
 
 ---
 
@@ -152,24 +157,22 @@ Each CLI command was selected based on:
 
 **Security Objective**: Logical network segmentation and traffic flow control enforcement
 
-**Current Status**: ✅ **PASSING (106% compliance)** - "Comprehensive logical networking for traffic flow control"
-
 | Command | Technical Justification | Coverage Area |
 |---------|------------------------|---------------|
-| `aws ec2 describe-route-tables` | **Traffic flow routing analysis**: Validates 5/5 route tables with intentional traffic flows | Routing Logic |
-| `aws ec2 describe-network-acls` | **Subnet-level traffic filtering**: Confirms 1/1 NACLs with custom traffic flow policies | Traffic Filtering |
-| `aws ec2 describe-vpc-endpoints` | **Private service routing**: Validates 7 VPC endpoints (1 gateway, 4 interface, 2 GWLB) | Service Access |
-| `aws ec2 describe-transit-gateways` | **Centralized routing validation**: Single-VPC architecture (no Transit Gateways needed) | Cross-VPC Routing |
+| `aws ec2 describe-route-tables` | **Traffic flow routing analysis**: Validates custom routing patterns and logical traffic flow controls | Routing Logic |
+| `aws ec2 describe-network-acls` | **Subnet-level traffic filtering**: Confirms network ACL rules for subnet-wide traffic flow policies | Traffic Filtering |
+| `aws ec2 describe-vpc-endpoints` | **Private service routing**: Validates VPC endpoints for controlled service access patterns | Service Access |
+| `aws ec2 describe-transit-gateways` | **Centralized routing validation**: Checks Transit Gateway for enterprise-scale network routing control | Cross-VPC Routing |
 | `aws ec2 describe-vpc-peering-connections` | **Cross-network communication**: Validates controlled VPC communication patterns | Network Interconnect |
-| `aws elbv2 describe-load-balancers` | **Application-layer traffic distribution**: Confirms 1 Application Load Balancers | Application Routing |
-| `aws route53 list-hosted-zones` | **DNS-based traffic routing**: Validates 1 private Route 53 hosted zone | DNS Control |
-| `aws ec2 describe-nat-gateways` | **Managed egress flow**: Confirms 1 active NAT Gateways | Egress Management |
-| `aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs` | **Traffic flow monitoring**: Validates 1 VPC Flow Log groups | Flow Monitoring |
+| `aws elbv2 describe-load-balancers` | **Application-layer traffic distribution**: Confirms load balancer traffic flow patterns | Application Routing |
+| `aws route53 list-hosted-zones` | **DNS-based traffic routing**: Validates DNS resolver controls for logical networking | DNS Control |
+| `aws ec2 describe-nat-gateways` | **Managed egress flow**: Confirms controlled egress traffic flow from private networks | Egress Management |
+| `aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs` | **Traffic flow monitoring**: Validates flow log capabilities for traffic control verification | Flow Monitoring |
 
-**Technical Coverage Assessment**: **EXCEPTIONAL (106%)**
-- ✅ Advanced routing patterns: 4 route tables with custom traffic control
-- ✅ Comprehensive VPC endpoints: 7 endpoints providing private service access
-- ✅ Appropriate single-VPC architecture design
+**Technical Coverage Assessment**: **COMPREHENSIVE**
+- ✅ Advanced logical networking validation
+- ✅ Multiple traffic control mechanisms
+- ✅ Enterprise-scale routing capabilities
 
 ---
 
@@ -177,26 +180,22 @@ Each CLI command was selected based on:
 
 **Security Objective**: Immutable infrastructure deployment with strict privilege definitions
 
-**Current Status**: ✅ **PASSING (62% compliance)** - "Comprehensive Terraform-managed immutable infrastructure"
-
 | Command | Technical Justification | Coverage Area |
 |---------|------------------------|---------------|
-| `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags,LaunchTime,ImageId]'` | **Instance deployment pattern analysis**: Validates 4/4 instances with standardized deployment patterns | Instance Management |
+| `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags,LaunchTime,ImageId]'` | **Instance deployment pattern analysis**: Validates Infrastructure-as-Code deployment patterns through consistent tagging | Instance Management |
 | `aws ec2 describe-launch-templates` | **Standardized deployment validation**: Confirms versioned launch templates for consistent deployments | Template Management |
 | `aws autoscaling describe-auto-scaling-groups` | **Instance replacement patterns**: Validates Auto Scaling Groups for immutable scaling strategies | Scaling Patterns |
-| `aws ec2 describe-images --owners self` | **Custom AMI pipeline validation**: Confirms versioned machine image pipeline | Image Management |
-| `aws lambda list-functions` | **Serverless immutability**: Validates 4 Lambda functions (inherently immutable) | Serverless Computing |
-| `aws s3api list-buckets --query 'Buckets[?contains(Name, terraform) or contains(Name, tfstate)]'` | **Infrastructure-as-Code detection**: Identifies Terraform state management | IaC Management |
-| `aws dynamodb list-tables` | **State locking validation**: Checks for Terraform state locking tables | State Management |
-| `aws codebuild list-projects` | **CI/CD pipeline validation**: Confirms build projects for automation | Build Automation |
-| `aws ssm describe-parameters` | **Configuration management**: Validates Systems Manager parameters for versioned config | Config Management |
+| `aws ec2 describe-images --owners self` | **Custom AMI pipeline validation**: Confirms versioned machine image pipeline for immutable deployments | Image Management |
+| `aws lambda list-functions` | **Serverless immutability**: Validates serverless functions as inherently immutable compute patterns | Serverless Computing |
+| `aws s3api list-buckets --query 'Buckets[?contains(Name, terraform) or contains(Name, tfstate)]'` | **Infrastructure-as-Code detection**: Identifies Terraform state management patterns | IaC Management |
+| `aws dynamodb list-tables` | **State locking validation**: Checks for Terraform state locking tables indicating advanced IaC practices | State Management |
+| `aws codebuild list-projects` | **CI/CD pipeline validation**: Confirms build projects for automated deployment pipelines | Build Automation |
+| `aws ssm describe-parameters` | **Configuration management**: Validates Systems Manager parameters for versioned configuration | Config Management |
 
-**Technical Coverage Assessment**: **GOOD (62%)**
-- ✅ Infrastructure as Code deployment: 4/4 instances with standardized patterns
-- ✅ Immutable deployment patterns: 4/4 instances recently deployed
-- ✅ Serverless functions: 4 Lambda functions (inherently immutable)
-
----
+**Technical Coverage Assessment**: **COMPREHENSIVE**
+- ✅ Infrastructure-as-Code pattern detection
+- ✅ Immutable deployment validation
+- ✅ Serverless architecture assessment
 
 #### **KSI-CNA-05: Have denial of service protection**
 
