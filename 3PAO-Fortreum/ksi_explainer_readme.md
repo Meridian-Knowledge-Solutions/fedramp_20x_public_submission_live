@@ -144,7 +144,7 @@ Passing Criteria: ≥80% restrictive security groups + some egress controls + ne
 
 ## License
 
-[Add your license here]
+GitHub Default
 
 ## Contributing
 
