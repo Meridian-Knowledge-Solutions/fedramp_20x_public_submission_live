@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-07-05 02:36
+**Last Check:** 2025-07-06 02:45
 
 **What it validates:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
@@ -46,4 +46,4 @@ PASS Enterprise-grade automated response capabilities (119%): PASS Advanced thre
 - PASS Enterprise multi-account security governance: Cross-account automation capabilities
 
 ---
-*Generated 2025-07-05 02:36 UTC*
+*Generated 2025-07-06 02:45 UTC*
