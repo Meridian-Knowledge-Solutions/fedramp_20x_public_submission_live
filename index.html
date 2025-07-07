@@ -23,141 +23,215 @@
 
         :root {
             /* ✅ MERIDIAN KNOWLEDGE SOLUTIONS PROFESSIONAL COLOR PALETTE */
-            
-            /* Meridian Primary Brand Colors (Professional Blues) */
-            --primary-500: #1e40af;          /* Meridian Deep Blue */
-            --primary-600: #1e3a8a;          /* Meridian Navy */
-            --accent-500: #0891b2;           /* Knowledge Teal */
-            --accent-600: #0e7490;           /* Deep Teal */
-            
-            /* Professional Success Colors */
-            --success-500: #059669;          /* Government Green */
-            --success-600: #047857;          /* Deep Success */
-            
-            /* Professional Warning/Alert Colors */
-            --warning-500: #d97706;          /* Professional Amber */
-            --warning-600: #b45309;          /* Deep Warning */
-            --danger-500: #dc2626;           /* Professional Red */
-            --danger-600: #b91c1c;           /* Deep Danger */
-            --info-500: #0284c7;             /* Professional Info Blue */
-            --info-600: #0369a1;             /* Deep Info */
-            
-            /* Meridian Enhancement Colors */
-            --orange-500: #ea580c;           /* Professional Orange */
-            --orange-600: #c2410c;           /* Deep Orange */
-            --enhancement-500: #2563eb;      /* Meridian Enhancement Blue */
-            --enhancement-600: #1d4ed8;      /* Deep Enhancement */
-            
-            /* Professional Neutrals (Corporate Gray Scale) */
-            --gray-25: #fafafa;
-            --gray-50: #f5f5f5;
-            --gray-100: #f0f0f0;
-            --gray-200: #e5e5e5;
-            --gray-300: #d4d4d4;
-            --gray-400: #a3a3a3;
-            --gray-500: #737373;
-            --gray-600: #525252;
-            --gray-700: #404040;
-            --gray-800: #262626;
-            --gray-900: #171717;
-            
-            /* ✅ MERIDIAN THEME VARIABLES */
-            --bg-primary: var(--gray-25);
-            --bg-secondary: white;
-            --bg-accent: var(--gray-50);
-            --text-primary: var(--gray-900);
-            --text-secondary: var(--gray-700);
-            --text-tertiary: var(--gray-600);
-            --border-color: var(--gray-200);
-            --backdrop-blur: rgba(255, 255, 255, 0.95);
-            
-            /* ✅ MERIDIAN PROFESSIONAL GRADIENTS */
-            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
-            --gradient-accent: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
-            --gradient-success: linear-gradient(135deg, var(--success-500) 0%, #059669 100%);
-            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
-            --gradient-orange: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
-            --gradient-enhancement: linear-gradient(135deg, var(--enhancement-500) 0%, #3b82f6 100%);
-            --gradient-warning: linear-gradient(135deg, var(--warning-500) 0%, #f59e0b 100%);
-            --gradient-info: linear-gradient(135deg, var(--info-500) 0%, #0ea5e9 100%);
-            
-            /* Professional Design System */
-            --radius: 16px;
-            --radius-sm: 8px;
-            --radius-lg: 24px;
-            --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
+    
+    /* Meridian Primary Brand Colors (Professional Blues) */
+    --primary-500: #1e40af;          /* Meridian Deep Blue */
+    --primary-600: #1e3a8a;          /* Meridian Navy */
+    --accent-500: #0891b2;           /* Knowledge Teal */
+    --accent-600: #0e7490;           /* Deep Teal */
+    
+    /* Professional Success Colors */
+    --success-500: #059669;          /* Government Green */
+    --success-600: #047857;          /* Deep Success */
+    
+    /* Professional Warning/Alert Colors */
+    --warning-500: #d97706;          /* Professional Amber */
+    --warning-600: #b45309;          /* Deep Warning */
+    --danger-500: #dc2626;           /* Professional Red */
+    --danger-600: #b91c1c;           /* Deep Danger */
+    --info-500: #0284c7;             /* Professional Info Blue */
+    --info-600: #0369a1;             /* Deep Info */
+    
+    /* Meridian Enhancement Colors */
+    --orange-500: #ea580c;           /* Professional Orange */
+    --orange-600: #c2410c;           /* Deep Orange */
+    --enhancement-500: #2563eb;      /* Meridian Enhancement Blue */
+    --enhancement-600: #1d4ed8;      /* Deep Enhancement */
+    
+    /* Professional Neutrals (Corporate Gray Scale) */
+    --gray-25: #fafafa;
+    --gray-50: #f5f5f5;
+    --gray-100: #f0f0f0;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+    
+    /* ✅ MERIDIAN LIGHT THEME VARIABLES (DEFAULT) */
+    --bg-primary: var(--gray-25);
+    --bg-secondary: white;
+    --bg-accent: var(--gray-50);
+    --text-primary: var(--gray-900);
+    --text-secondary: var(--gray-700);
+    --text-tertiary: var(--gray-600);
+    --border-color: var(--gray-200);
+    --backdrop-blur: rgba(255, 255, 255, 0.95);
+    
+    /* ✅ MERIDIAN PROFESSIONAL GRADIENTS */
+    --gradient-primary: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    --gradient-accent: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
+    --gradient-success: linear-gradient(135deg, var(--success-500) 0%, #059669 100%);
+    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+    --gradient-orange: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+    --gradient-enhancement: linear-gradient(135deg, var(--enhancement-500) 0%, #3b82f6 100%);
+    --gradient-warning: linear-gradient(135deg, var(--warning-500) 0%, #f59e0b 100%);
+    --gradient-info: linear-gradient(135deg, var(--info-500) 0%, #0ea5e9 100%);
+    
+    /* Professional Design System */
+    --radius: 16px;
+    --radius-sm: 8px;
+    --radius-lg: 24px;
+    --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
 
-        /* ✅ MERIDIAN DARK MODE (Professional Enterprise Theme) */
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-accent: #334155;
-            --text-primary: #f8fafc;
-            --text-secondary: #e2e8f0;
-            --text-tertiary: #cbd5e1;
-            --border-color: #475569;
-            --backdrop-blur: rgba(15, 23, 42, 0.95);
-            --gradient-card: linear-gradient(145deg, rgba(30,41,59,0.9) 0%, rgba(30,41,59,0.7) 100%);
-            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #0f172a 100%);
-        }
+/* ✅ MERIDIAN DARK MODE (Professional Enterprise Theme) - CONSOLIDATED */
+[data-theme="dark"] {
+    /* Dark Background Variables */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-accent: #334155;
+    
+    /* Dark Text Variables */
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+    --text-tertiary: #cbd5e1;
+    
+    /* Dark UI Variables */
+    --border-color: #475569;
+    --backdrop-blur: rgba(15, 23, 42, 0.95);
+    
+    /* Dark Mode Gradients */
+    --gradient-primary: linear-gradient(135deg, #1e40af 0%, #0f172a 100%);
+    --gradient-card: linear-gradient(145deg, rgba(30,41,59,0.9) 0%, rgba(30,41,59,0.7) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
+    
+    /* Dark Mode Shadows */
+    --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
 
-        /* ✅ MERIDIAN PROFESSIONAL BODY STYLING */
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--gradient-primary);
-            min-height: 100vh;
-            color: var(--text-primary);
-            line-height: 1.6;
-            transition: all 0.3s ease;
-        }
+/* ✅ MERIDIAN PROFESSIONAL BODY STYLING */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--gradient-primary);
+    min-height: 100vh;
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    margin: 0;
+    padding: 0;
+}
 
-        [data-theme="dark"] body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
+/* Dark mode body background override */
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
 
-        /* ✅ MERIDIAN DARK MODE (Professional Enterprise Theme) */
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-accent: #334155;
-            --text-primary: #f8fafc;
-            --text-secondary: #e2e8f0;
-            --text-tertiary: #cbd5e1;
-            --border-color: #475569;
-            --backdrop-blur: rgba(15, 23, 42, 0.95);
-            --gradient-card: linear-gradient(145deg, rgba(30,41,59,0.9) 0%, rgba(30,41,59,0.7) 100%);
-            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #0f172a 100%);
-        }
+/* ✅ ADDITIONAL COMPONENTS FOR PROPER DARK MODE SUPPORT */
 
-        /* Dark Mode */
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-accent: #334155;
-            --text-primary: #ffffff;
-            --text-secondary: #e2e8f0;
-            --text-tertiary: #cbd5e1;
-            --border-color: #475569;
-            --backdrop-blur: rgba(30, 41, 59, 0.95);
-            --gradient-card: linear-gradient(145deg, rgba(30,41,59,0.9) 0%, rgba(30,41,59,0.7) 100%);
-        }
+/* Cards and panels */
+.card, .panel, .container {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--gradient-primary);
-            min-height: 100vh;
-            color: var(--text-primary);
-            line-height: 1.6;
-            transition: all 0.3s ease;
-        }
+/* Input fields */
+input, textarea, select {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
 
-        [data-theme="dark"] body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
+input::placeholder, textarea::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+/* Links */
+a {
+    color: var(--primary-500);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-600);
+}
+
+[data-theme="dark"] a {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] a:hover {
+    color: #93c5fd;
+}
+
+/* Text elements */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+}
+
+p, span, div {
+    color: var(--text-secondary);
+}
+
+/* Borders and dividers */
+hr, .divider {
+    border-color: var(--border-color);
+}
+
+/* Code blocks */
+code, pre {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+/* Tables */
+table {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+th {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Modal/dropdown backgrounds */
+.modal, .dropdown, .popover {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+}
 
         /* Enhancement Animations */
         @keyframes enhancement-pulse {
