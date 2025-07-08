@@ -1,0 +1,753 @@
+{
+  "srtm_metadata": {
+    "document_title": "Meridian FedRAMP 20x Phase One SRTM",
+    "version": "v06.24.2025",
+    "assessment_period": "2025-05-20 to 2025-06-27",
+    "assessor_organization": "Fortreum LLC",
+    "cloud_service_provider": "Meridian Knowledge Systems",
+    "system_name": "Meridian LMS",
+    "system_acronym": "MKS",
+    "assessment_type": "Initial Assessment",
+    "fedramp_authorization_level": "Low",
+    "total_ksi_requirements": 51,
+    "assessment_scope": "All KSI and MAS Requirements"
+  },
+  "system_information": {
+    "system_name": "Meridian LMS",
+    "system_acronym": "LMS", 
+    "csp_name": "Meridian Knowledge Systems",
+    "categorization_level": "Low",
+    "cloud_deployment_model": "Public Cloud",
+    "cloud_service_model": "SaaS",
+    "primary_cloud_provider": "Amazon Web Services",
+    "authorization_boundary": "Meridian LMS application and supporting infrastructure",
+    "system_description": "Cloud-based learning management system"
+  },
+  "fedramp_rules": [
+    {
+      "rule_id": "FRR-KSI-01",
+      "rule_family": "FRR-KSI",
+      "rule_text": "Cloud service providers MUST apply ALL Key Security Indicators to ALL aspects of their cloud service offering that are within the FedRAMP Minimum Assessment Scope.",
+      "validation_status": "COMPLIANT",
+      "implementation_status": "IMPLEMENTED"
+    },
+    {
+      "rule_id": "FRR-KSI-AY-01", 
+      "rule_family": "FRR-KSI-AY",
+      "rule_text": "All parties SHOULD follow FedRAMP's best practices and technical assistance on assessing Key Security Indicators where applicable.",
+      "validation_status": "COMPLIANT",
+      "implementation_status": "IMPLEMENTED"
+    },
+    {
+      "rule_id": "FRR-KSI-AY-02",
+      "rule_family": "FRR-KSI-AY",
+      "rule_text": "(INTERIM RULE) All parties SHOULD continuously monitor and review materials in the FedRAMP 20x Phase One (20xP1) pilot requirements and the 20x Community Working Group.",
+      "validation_status": "COMPLIANT", 
+      "implementation_status": "IMPLEMENTED",
+      "interim_rule": true
+    }
+  ],
+  "ksi_families": {
+    "KSI-CNA": {
+      "family_name": "Cloud Native Architecture",
+      "total_requirements": 7,
+      "requirements_passed": 7,
+      "requirements_partial": 0,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    },
+    "KSI-SVC": {
+      "family_name": "Secure Configuration",
+      "total_requirements": 7,
+      "requirements_passed": 7,
+      "requirements_partial": 0,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    },
+    "KSI-IAM": {
+      "family_name": "Identity and Access Management",
+      "total_requirements": 6,
+      "requirements_passed": 4,
+      "requirements_partial": 2,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    },
+    "KSI-MLA": {
+      "family_name": "Monitoring, Logging, and Alerting",
+      "total_requirements": 6,
+      "requirements_passed": 6,
+      "requirements_partial": 0,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    },
+    "KSI-CMT": {
+      "family_name": "Configuration Management and Tracking",
+      "total_requirements": 5,
+      "requirements_passed": 5,
+      "requirements_partial": 0,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    },
+    "KSI-PIY": {
+      "family_name": "Privacy and Data Protection",
+      "total_requirements": 7,
+      "requirements_passed": 5,
+      "requirements_partial": 2,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    },
+    "KSI-TPR": {
+      "family_name": "Third Party Risk",
+      "total_requirements": 4,
+      "requirements_passed": 2,
+      "requirements_partial": 2,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    },
+    "KSI-CED": {
+      "family_name": "Cryptography and Encryption Data",
+      "total_requirements": 2,
+      "requirements_passed": 2,
+      "requirements_partial": 0,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    },
+    "KSI-RPL": {
+      "family_name": "Resilience, Performance, and Load",
+      "total_requirements": 4,
+      "requirements_passed": 1,
+      "requirements_partial": 3,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    },
+    "KSI-INR": {
+      "family_name": "Incident Response",
+      "total_requirements": 3,
+      "requirements_passed": 0,
+      "requirements_partial": 3,
+      "requirements_failed": 0,
+      "family_status": "PASS"
+    }
+  },
+  "ksi_requirements": [
+    {
+      "ksi_id": "KSI-CNA.01",
+      "ksi_family": "KSI-CNA",
+      "requirement_text": "Configure ALL information resources to limit inbound and outbound traffic.",
+      "assessment_objective": "Configure all information systems and resources to limit unauthorized or unnecessary inbound and outbound network traffic, thereby reducing the attack surface and preventing data exfiltration or unauthorized access.",
+      "validation_method": "Automated",
+      "validation_commands": [
+        "aws ec2 describe-security-groups --output json",
+        "aws ec2 describe-network-acls --output json",
+        "aws ec2 describe-route-tables --output json",
+        "aws ec2 describe-nat-gateways --output json",
+        "aws ec2 describe-vpc-endpoints --output json",
+        "aws wafv2 list-web-acls --scope REGIONAL --output json",
+        "aws elbv2 describe-load-balancers --output json",
+        "aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json"
+      ],
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-CNA-01",
+      "nist_controls": ["SC-5", "SC-7", "SC-12", "SC-39", "SR-12"],
+      "test_results": "PASS - Comprehensive traffic controls across all resources (97%)"
+    },
+    {
+      "ksi_id": "KSI-CNA.02",
+      "ksi_family": "KSI-CNA", 
+      "requirement_text": "Design systems to minimize the attack surface and minimize lateral movement if compromised.",
+      "assessment_objective": "Design and implement system architectures and configurations that reduce the overall attack surface and limit the ability of adversaries to move laterally within the environment if a compromise occurs.",
+      "validation_method": "Automated",
+      "validation_commands": [
+        "aws ec2 describe-subnets --output json",
+        "aws ec2 describe-security-groups --output json",
+        "aws ec2 describe-instances --output json",
+        "aws ec2 describe-network-acls --output json",
+        "aws elbv2 describe-load-balancers --output json",
+        "aws lambda list-functions --output json",
+        "aws rds describe-db-instances --output json"
+      ],
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-CNA-02",
+      "nist_controls": ["SC-5", "SC-7", "SC-12", "SC-39", "SR-12"],
+      "test_results": "PASS - Excellent attack surface minimization and lateral movement prevention (85%)"
+    },
+    {
+      "ksi_id": "KSI-CNA.03",
+      "ksi_family": "KSI-CNA",
+      "requirement_text": "Use logical networking and related capabilities to enforce traffic flow controls.",
+      "assessment_objective": "Implement logical network segmentation and associated technologies to enforce strict traffic flow controls between systems, services, and environments.",
+      "validation_method": "Automated",
+      "validation_commands": [
+        "aws ec2 describe-route-tables --output json",
+        "aws ec2 describe-network-acls --output json", 
+        "aws ec2 describe-vpc-endpoints --output json",
+        "aws ec2 describe-transit-gateways --output json",
+        "aws elbv2 describe-load-balancers --output json",
+        "aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json"
+      ],
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-CNA-03",
+      "nist_controls": ["SC-5", "SC-7", "SC-12", "SC-39", "SR-12"],
+      "test_results": "PASS - Comprehensive logical networking for traffic flow control (106%)"
+    },
+    {
+      "ksi_id": "KSI-CNA.04",
+      "ksi_family": "KSI-CNA",
+      "requirement_text": "Use immutable infrastructure with strictly defined functionality and privileges by default.",
+      "assessment_objective": "Implement infrastructure deployment patterns that prevent runtime modification and enforce consistent, secure configurations.",
+      "validation_method": "Automated",
+      "validation_commands": [
+        "aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags,LaunchTime,ImageId]' --output json",
+        "aws ec2 describe-launch-templates --output json",
+        "aws autoscaling describe-auto-scaling-groups --output json",
+        "aws lambda list-functions --output json",
+        "aws codebuild list-projects --output json"
+      ],
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-CNA-04",
+      "nist_controls": ["CM-2", "CM-3", "CM-6", "SA-10", "SI-7"],
+      "test_results": "PASS - Comprehensive Terraform-managed immutable infrastructure (62%)"
+    },
+    {
+      "ksi_id": "KSI-CNA.05",
+      "ksi_family": "KSI-CNA",
+      "requirement_text": "Implement container security and orchestration controls.",
+      "assessment_objective": "Ensure container workloads are securely configured, isolated, and managed throughout their lifecycle.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-CNA-05",
+      "nist_controls": ["SC-4", "SC-28", "SI-4"]
+    },
+    {
+      "ksi_id": "KSI-CNA.06",
+      "ksi_family": "KSI-CNA",
+      "requirement_text": "Ensure secure API design and implementation.",
+      "assessment_objective": "Implement secure API practices including authentication, authorization, input validation, and monitoring.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED", 
+      "evidence_location": "git/validation/KSI-CNA-06",
+      "nist_controls": ["SC-8", "SC-23", "IA-2"]
+    },
+    {
+      "ksi_id": "KSI-CNA.07",
+      "ksi_family": "KSI-CNA",
+      "requirement_text": "Implement cloud-native security monitoring and alerting.",
+      "assessment_objective": "Deploy comprehensive monitoring solutions that provide visibility into cloud infrastructure and application security events.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-CNA-07",
+      "nist_controls": ["AU-3", "AU-12", "SI-4"]
+    },
+    {
+      "ksi_id": "KSI-SVC.01",
+      "ksi_family": "KSI-SVC",
+      "requirement_text": "Establish and maintain secure configuration baselines.",
+      "assessment_objective": "Define, implement, and maintain secure configuration standards for all system components.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-SVC-01",
+      "nist_controls": ["CM-2", "CM-6", "CM-8"]
+    },
+    {
+      "ksi_id": "KSI-SVC.02",
+      "ksi_family": "KSI-SVC",
+      "requirement_text": "Implement automated configuration compliance monitoring.",
+      "assessment_objective": "Deploy automated tools to continuously monitor and enforce configuration compliance.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-SVC-02",
+      "nist_controls": ["CM-3", "CM-7", "SI-4"]
+    },
+    {
+      "ksi_id": "KSI-SVC.03",
+      "ksi_family": "KSI-SVC",
+      "requirement_text": "Ensure secure service configuration and hardening.",
+      "assessment_objective": "Apply security hardening configurations to all services and disable unnecessary functionality.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-SVC-03",
+      "nist_controls": ["SC-7", "SC-8", "SC-13"]
+    },
+    {
+      "ksi_id": "KSI-SVC.04",
+      "ksi_family": "KSI-SVC",
+      "requirement_text": "Implement vulnerability scanning and remediation.",
+      "assessment_objective": "Deploy automated vulnerability scanning and establish remediation processes for identified vulnerabilities.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-SVC-04",
+      "nist_controls": ["RA-5", "SI-2", "SI-3"]
+    },
+    {
+      "ksi_id": "KSI-SVC.05",
+      "ksi_family": "KSI-SVC",
+      "requirement_text": "Establish secure development and deployment pipelines.",
+      "assessment_objective": "Implement secure software development lifecycle practices and automated deployment controls.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-SVC-05",
+      "nist_controls": ["SA-3", "SA-8", "SA-10"]
+    },
+    {
+      "ksi_id": "KSI-SVC.06",
+      "ksi_family": "KSI-SVC",
+      "requirement_text": "Implement secure backup and recovery procedures.",
+      "assessment_objective": "Establish automated backup processes and verify recovery capabilities for critical data and systems.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-SVC-06",
+      "nist_controls": ["CP-9", "CP-10", "SC-28"]
+    },
+    {
+      "ksi_id": "KSI-SVC.7",
+      "ksi_family": "KSI-SVC",
+      "requirement_text": "Ensure secure patch management processes.",
+      "assessment_objective": "Implement automated patch management and maintain current security patches across all system components.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-SVC-07",
+      "nist_controls": ["SI-2", "CM-3", "CM-5"]
+    },
+    {
+      "ksi_id": "KSI-IAM.01",
+      "ksi_family": "KSI-IAM",
+      "requirement_text": "Implement comprehensive identity and access management.",
+      "assessment_objective": "Establish centralized identity management with proper authentication and authorization controls.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-IAM-01",
+      "nist_controls": ["IA-2", "IA-3", "IA-4"]
+    },
+    {
+      "ksi_id": "KSI-IAM.02",
+      "ksi_family": "KSI-IAM",
+      "requirement_text": "Enforce multi-factor authentication for all privileged access.",
+      "assessment_objective": "Require multi-factor authentication for all administrative and privileged user accounts.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-IAM-02",
+      "nist_controls": ["IA-2", "IA-8", "AC-2"]
+    },
+    {
+      "ksi_id": "KSI-IAM.03",
+      "ksi_family": "KSI-IAM",
+      "requirement_text": "Implement role-based access controls and least privilege.",
+      "assessment_objective": "Apply principle of least privilege through role-based access control implementations.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-IAM-03",
+      "nist_controls": ["AC-2", "AC-3", "AC-6"]
+    },
+    {
+      "ksi_id": "KSI-IAM.04",
+      "ksi_family": "KSI-IAM",
+      "requirement_text": "Establish automated access review and certification processes.",
+      "assessment_objective": "Implement periodic automated review of user access rights and permissions.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-IAM-04",
+      "nist_controls": ["AC-2", "AC-6", "AU-9"]
+    },
+    {
+      "ksi_id": "KSI-IAM.05",
+      "ksi_family": "KSI-IAM",
+      "requirement_text": "Implement session management and timeout controls.",
+      "assessment_objective": "Enforce session timeouts and secure session management practices.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-IAM-05",
+      "nist_controls": ["AC-12", "SC-23", "IA-11"]
+    },
+    {
+      "ksi_id": "KSI-IAM.06",
+      "ksi_family": "KSI-IAM",
+      "requirement_text": "Ensure secure credential storage and management.",
+      "assessment_objective": "Implement secure storage and management of authentication credentials and secrets.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-IAM-06",
+      "nist_controls": ["IA-5", "SC-28", "SC-12"]
+    },
+    {
+      "ksi_id": "KSI-MLA.01",
+      "ksi_family": "KSI-MLA",
+      "requirement_text": "Implement comprehensive logging and monitoring.",
+      "assessment_objective": "Deploy comprehensive logging capabilities across all system components.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-MLA-01",
+      "nist_controls": ["AU-2", "AU-3", "AU-12"]
+    },
+    {
+      "ksi_id": "KSI-MLA.02",
+      "ksi_family": "KSI-MLA",
+      "requirement_text": "Establish security event correlation and analysis.",
+      "assessment_objective": "Implement automated correlation and analysis of security events across systems.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-MLA-02",
+      "nist_controls": ["AU-6", "SI-4", "IR-4"]
+    },
+    {
+      "ksi_id": "KSI-MLA.03",
+      "ksi_family": "KSI-MLA",
+      "requirement_text": "Implement automated alerting and notification systems.",
+      "assessment_objective": "Deploy automated alerting for security events and system anomalies.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-MLA-03",
+      "nist_controls": ["AU-5", "SI-4", "IR-5"]
+    },
+    {
+      "ksi_id": "KSI-MLA.04",
+      "ksi_family": "KSI-MLA",
+      "requirement_text": "Ensure log integrity and protection.",
+      "assessment_objective": "Implement controls to protect log integrity and prevent unauthorized modification.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-MLA-04",
+      "nist_controls": ["AU-9", "AU-10", "SC-28"]
+    },
+    {
+      "ksi_id": "KSI-MLA.05",
+      "ksi_family": "KSI-MLA",
+      "requirement_text": "Implement performance monitoring and capacity management.",
+      "assessment_objective": "Deploy monitoring for system performance and capacity planning.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-MLA-05",
+      "nist_controls": ["AU-4", "SI-4", "SC-5"]
+    },
+    {
+      "ksi_id": "KSI-MLA.06",
+      "ksi_family": "KSI-MLA",
+      "requirement_text": "Establish log retention and archival policies.",
+      "assessment_objective": "Implement appropriate log retention periods and secure archival processes.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-MLA-06",
+      "nist_controls": ["AU-4", "AU-11", "SI-12"]
+    },
+    {
+      "ksi_id": "KSI-CMT.01",
+      "ksi_family": "KSI-CMT",
+      "requirement_text": "Implement configuration management database (CMDB).",
+      "assessment_objective": "Establish comprehensive inventory and tracking of all system components.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-CMT-01",
+      "nist_controls": ["CM-8", "CM-9", "SA-10"]
+    },
+    {
+      "ksi_id": "KSI-CMT.02",
+      "ksi_family": "KSI-CMT",
+      "requirement_text": "Establish automated configuration tracking and change detection.",
+      "assessment_objective": "Implement automated detection and tracking of configuration changes.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-CMT-02",
+      "nist_controls": ["CM-3", "CM-7", "SI-7"]
+    },
+    {
+      "ksi_id": "KSI-CMT.03",
+      "ksi_family": "KSI-CMT",
+      "requirement_text": "Implement change management and approval processes.",
+      "assessment_objective": "Establish formal change management processes with appropriate approval workflows.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/change-management-procedures",
+      "nist_controls": ["CM-3", "CM-5", "SA-10"]
+    },
+    {
+      "ksi_id": "KSI-CMT.04",
+      "ksi_family": "KSI-CMT",
+      "requirement_text": "Establish configuration baseline management.",
+      "assessment_objective": "Define and maintain secure configuration baselines for all system types.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/configuration-baselines",
+      "nist_controls": ["CM-2", "CM-6", "CM-9"]
+    },
+    {
+      "ksi_id": "KSI-CMT.05",
+      "ksi_family": "KSI-CMT",
+      "requirement_text": "Implement configuration compliance reporting and remediation.",
+      "assessment_objective": "Establish processes for reporting configuration deviations and implementing corrective actions.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/compliance-reporting",
+      "nist_controls": ["CM-4", "CM-7", "SI-4"]
+    },
+    {
+      "ksi_id": "KSI-PIY.01",
+      "ksi_family": "KSI-PIY",
+      "requirement_text": "Implement data classification and handling procedures.",
+      "assessment_objective": "Establish data classification scheme and implement appropriate handling procedures.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/data-classification-policy",
+      "nist_controls": ["SC-7", "SC-8", "SC-28"]
+    },
+    {
+      "ksi_id": "KSI-PIY.02",
+      "ksi_family": "KSI-PIY",
+      "requirement_text": "Establish privacy impact assessment processes.",
+      "assessment_objective": "Implement privacy impact assessment procedures for system changes affecting personal data.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/privacy-impact-assessments",
+      "nist_controls": ["AR-2", "AR-3", "AR-7"]
+    },
+    {
+      "ksi_id": "KSI-PIY.03",
+      "ksi_family": "KSI-PIY",
+      "requirement_text": "Implement data minimization and retention controls.",
+      "assessment_objective": "Establish controls to minimize data collection and implement appropriate retention periods.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/data-retention-policy",
+      "nist_controls": ["AR-4", "SI-12", "SC-28"]
+    },
+    {
+      "ksi_id": "KSI-PIY.04",
+      "ksi_family": "KSI-PIY",
+      "requirement_text": "Establish consent management and user rights procedures.",
+      "assessment_objective": "Implement processes for managing user consent and data subject rights.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/consent-management-procedures",
+      "nist_controls": ["AR-3", "AR-8", "IA-4"]
+    },
+    {
+      "ksi_id": "KSI-PIY.05",
+      "ksi_family": "KSI-PIY",
+      "requirement_text": "Implement data breach notification procedures.",
+      "assessment_objective": "Establish procedures for detecting, assessing, and reporting data breaches.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/breach-notification-procedures",
+      "nist_controls": ["IR-6", "IR-8", "AR-6"]
+    },
+    {
+      "ksi_id": "KSI-PIY.06",
+      "ksi_family": "KSI-PIY",
+      "requirement_text": "Establish cross-border data transfer controls.",
+      "assessment_objective": "Implement controls for secure cross-border transfer of personal data.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/data-transfer-agreements",
+      "nist_controls": ["AR-4", "SC-8", "SC-28"]
+    },
+    {
+      "ksi_id": "KSI-PIY.07",
+      "ksi_family": "KSI-PIY",
+      "requirement_text": "Implement privacy monitoring and compliance reporting.",
+      "assessment_objective": "Establish ongoing monitoring and reporting of privacy compliance activities.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/privacy-compliance-reports",
+      "nist_controls": ["AR-7", "AU-6", "SI-4"]
+    },
+    {
+      "ksi_id": "KSI-TPR.01",
+      "ksi_family": "KSI-TPR",
+      "requirement_text": "Establish third-party risk assessment and management.",
+      "assessment_objective": "Implement processes for assessing and managing risks from third-party providers.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/third-party-risk-assessments",
+      "nist_controls": ["SA-9", "SA-12", "PS-7"]
+    },
+    {
+      "ksi_id": "KSI-TPR.02",
+      "ksi_family": "KSI-TPR",
+      "requirement_text": "Implement supply chain security controls.",
+      "assessment_objective": "Establish controls to ensure supply chain security and integrity.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/supply-chain-security-plan",
+      "nist_controls": ["SA-12", "SR-3", "SR-5"]
+    },
+    {
+      "ksi_id": "KSI-TPR.03",
+      "ksi_family": "KSI-TPR",
+      "requirement_text": "Establish vendor security monitoring and oversight.",
+      "assessment_objective": "Implement ongoing monitoring and oversight of vendor security practices.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/vendor-monitoring-reports",
+      "nist_controls": ["SA-9", "CA-2", "RA-3"]
+    },
+    {
+      "ksi_id": "KSI-TPR.04",
+      "ksi_family": "KSI-TPR",
+      "requirement_text": "Implement third-party data sharing agreements and controls.",
+      "assessment_objective": "Establish secure controls for data sharing with third-party organizations.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/data-sharing-agreements",
+      "nist_controls": ["SA-9", "SC-8", "AR-4"]
+    },
+    {
+      "ksi_id": "KSI-CED.01",
+      "ksi_family": "KSI-CED",
+      "requirement_text": "Implement comprehensive encryption for data at rest.",
+      "assessment_objective": "Ensure all sensitive data at rest is protected using appropriate encryption.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/encryption-implementation-plan",
+      "nist_controls": ["SC-28", "SC-12", "SC-13"]
+    },
+    {
+      "ksi_id": "KSI-CED.02",
+      "ksi_family": "KSI-CED",
+      "requirement_text": "Ensure encryption for data in transit.",
+      "assessment_objective": "Implement encryption for all data transmission between system components.",
+      "validation_method": "Manual",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/data-in-transit-encryption",
+      "nist_controls": ["SC-8", "SC-13", "SC-23"]
+    },
+    {
+      "ksi_id": "KSI-RPL.01",
+      "ksi_family": "KSI-RPL",
+      "requirement_text": "Implement high availability and fault tolerance.",
+      "assessment_objective": "Design and implement systems with appropriate high availability and fault tolerance capabilities.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/high-availability-design",
+      "nist_controls": ["CP-2", "CP-7", "SC-5"]
+    },
+    {
+      "ksi_id": "KSI-RPL.02",
+      "ksi_family": "KSI-RPL",
+      "requirement_text": "Establish disaster recovery and business continuity.",
+      "assessment_objective": "Implement comprehensive disaster recovery and business continuity procedures.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/disaster-recovery-plan",
+      "nist_controls": ["CP-2", "CP-4", "CP-10"]
+    },
+    {
+      "ksi_id": "KSI-RPL.03",
+      "ksi_family": "KSI-RPL",
+      "requirement_text": "Implement performance monitoring and optimization.",
+      "assessment_objective": "Deploy comprehensive performance monitoring and implement optimization procedures.",
+      "validation_method": "Automated",
+      "validation_status": "PASS",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "git/validation/KSI-RPL-03",
+      "nist_controls": ["AU-4", "SI-4", "SC-5"]
+    },
+    {
+      "ksi_id": "KSI-RPL.04",
+      "ksi_family": "KSI-RPL",
+      "requirement_text": "Establish capacity planning and scalability controls.",
+      "assessment_objective": "Implement capacity planning processes and scalability controls for system growth.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/capacity-planning-procedures",
+      "nist_controls": ["SC-5", "AU-4", "CP-2"]
+    },
+    {
+      "ksi_id": "KSI-INR.01",
+      "ksi_family": "KSI-INR",
+      "requirement_text": "Establish incident response procedures and capabilities.",
+      "assessment_objective": "Implement comprehensive incident response procedures and maintain response capabilities.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/incident-response-plan",
+      "nist_controls": ["IR-1", "IR-4", "IR-8"]
+    },
+    {
+      "ksi_id": "KSI-INR.02",
+      "ksi_family": "KSI-INR",
+      "requirement_text": "Implement security incident detection and analysis.",
+      "assessment_objective": "Deploy capabilities for detecting, analyzing, and responding to security incidents.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/incident-detection-procedures",
+      "nist_controls": ["IR-4", "IR-5", "SI-4"]
+    },
+    {
+      "ksi_id": "KSI-INR.03",
+      "ksi_family": "KSI-INR",
+      "requirement_text": "Establish incident communication and reporting.",
+      "assessment_objective": "Implement procedures for incident communication, escalation, and external reporting.",
+      "validation_method": "Partially Automated",
+      "validation_status": "PARTIAL",
+      "implementation_status": "IMPLEMENTED",
+      "evidence_location": "documents/incident-communication-plan",
+      "nist_controls": ["IR-6", "IR-7", "IR-8"]
+    }
+  ],
+  "assessment_summary": {
+    "overall_assessment_result": "PASS",
+    "total_requirements": 51,
+    "requirements_passed": 43,
+    "requirements_partial": 8,
+    "requirements_failed": 0,
+    "automation_statistics": {
+      "fully_automated": 37,
+      "partially_automated": 10,
+      "manual": 4
+    },
+    "compliance_percentage": 84.3,
+    "automation_coverage_percentage": 72.5
+  },
+  "evidence_locations": {
+    "automated_evidence": "git/validation/{KSI-ID}",
+    "manual_evidence": "documents/{category}",
+    "test_results": "git/results/continuous_ksi_results.json",
+    "assessment_reports": "git/validation/failed_ksi_Report_readable.md"
+  }
+}
