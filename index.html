@@ -191,11 +191,30 @@ a:hover {
 
 /* Text elements */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--text-primary);
+    color: var(--text-primary) !important;
 }
 
-p, span, div {
+p, span, div, li, td, th {
     color: var(--text-secondary);
+}
+
+/* Ensure all text uses proper variables */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] li,
+[data-theme="dark"] td,
+[data-theme="dark"] th {
+    color: var(--text-secondary) !important;
 }
 
 /* Borders and dividers */
@@ -738,6 +757,13 @@ td {
             color: var(--primary-600);
             text-decoration: underline;
         }
+        [data-theme="dark"] .trust-link {
+            color: #60a5fa;
+        }
+
+        [data-theme="dark"] .trust-link:hover {
+            color: #93c5fd;
+        }
 
         .materials-section {
             margin-bottom: 1.5rem;
@@ -770,6 +796,11 @@ td {
         .materials-list li {
             margin-bottom: 0.5rem;
             font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .materials-list li {
+            color: var(--text-secondary) !important;
         }
 
         /* KSI Section */
@@ -2055,18 +2086,32 @@ td {
         .trust-center-header {
             text-align: center;
             margin-bottom: 40px;
-            color: white;
+            color: white; /* Force white for light mode against blue background */
+        }
+
+        .trust-center-header * {
+            color: white; /* Ensure all child elements are white in light mode */
+        }
+
+        [data-theme="dark"] .trust-center-header {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .trust-center-header * {
+            color: var(--text-primary);
         }
 
         .trust-center-header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
+            color: var(--text-primary);
         }
 
         .trust-center-subtitle {
             font-size: 1.2em;
             opacity: 0.9;
             margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9); /* White with slight transparency for light mode */
         }
 
         .compliance-badge-large {
@@ -2075,6 +2120,12 @@ td {
             border-radius: 25px;
             display: inline-block;
             font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .compliance-badge-large {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
         }
 
         .quick-access-grid {
@@ -2255,6 +2306,67 @@ td {
             white-space: nowrap;
             border: 0;
         }
+        /* FIXED: Form elements for dark mode */
+        .trust-section input,
+        .trust-section select,
+        .trust-section textarea {
+    background: var(--bg-accent);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary) !important;
+    border-radius: 8px;
+}
+
+[data-theme="dark"] .trust-section input,
+[data-theme="dark"] .trust-section select,
+[data-theme="dark"] .trust-section textarea {
+    background: var(--bg-accent);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.trust-section label {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .trust-section label {
+    color: var(--text-primary) !important;
+}
+
+/* FIXED: Pre and code elements in trust section */
+.trust-section pre {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .trust-section pre {
+    background: var(--bg-accent);
+    color: var(--text-primary) !important;
+}
+
+.trust-section code {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+[data-theme="dark"] .trust-section code {
+    background: var(--bg-accent);
+    color: var(--text-primary) !important;
+}
+
+/* FIXED: Div text color in trust section */
+.trust-section div {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .trust-section div {
+    color: var(--text-secondary) !important;
+}
     </style>
 </head>
 <body>
