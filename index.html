@@ -2367,6 +2367,86 @@ td {
 [data-theme="dark"] .trust-section div {
     color: var(--text-secondary) !important;
 }
+/* FIXED: Modal content for dark mode */
+.commands-modal-content,
+.why-modal-content,
+.markdown-modal-content,
+.poam-modal-content,
+.enhancement-modal-content {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.commands-modal-body,
+.why-modal-body,
+.markdown-modal-body,
+.poam-modal-body,
+.enhancement-modal-body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Fix all text elements inside modals for dark mode */
+[data-theme="dark"] .commands-modal-body *,
+[data-theme="dark"] .why-modal-body *,
+[data-theme="dark"] .markdown-modal-body *,
+[data-theme="dark"] .poam-modal-body *,
+[data-theme="dark"] .enhancement-modal-body * {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .commands-modal-body p,
+[data-theme="dark"] .commands-modal-body div,
+[data-theme="dark"] .commands-modal-body span,
+[data-theme="dark"] .why-modal-body p,
+[data-theme="dark"] .why-modal-body div,
+[data-theme="dark"] .why-modal-body span {
+    color: var(--text-secondary) !important;
+}
+
+/* Fix Command Execution Overview modal specifically */
+[data-theme="dark"] .commands-modal-title {
+    color: white !important;
+}
+
+[data-theme="dark"] .command-stat-value {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .command-stat-label {
+    color: var(--text-tertiary) !important;
+}
+
+/* Fix the validation description text that appears dark blue */
+[data-theme="dark"] .validation-description,
+[data-theme="dark"] .command-description,
+[data-theme="dark"] .requirement-description {
+    color: var(--text-secondary) !important;
+}
+
+/* Fix command descriptions and validation text specifically */
+[data-theme="dark"] .commands-summary,
+[data-theme="dark"] .commands-summary *,
+[data-theme="dark"] .description-box,
+[data-theme="dark"] .description-box *,
+[data-theme="dark"] .justification-box,
+[data-theme="dark"] .justification-box *,
+[data-theme="dark"] .primary-command-box,
+[data-theme="dark"] .command-item,
+[data-theme="dark"] .command-title,
+[data-theme="dark"] .command-details {
+    color: var(--text-primary) !important;
+}
+
+/* Ensure all modal text is properly colored */
+[data-theme="dark"] .modal * {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal p,
+[data-theme="dark"] .modal div:not(.command-stat-value) {
+    color: var(--text-secondary) !important;
+}
     </style>
 </head>
 <body>
@@ -2552,10 +2632,10 @@ td {
                                 <strong>🚨 Tier 1: Compliance POA&M</strong> - Traditional remediation for failed validations (60-day SLAs)
                             </div>
                             <div class="trust-item">
-                                <strong>🟡 Low Risk Findings</strong> - Minor findings requiring attention (90-day tracking)
+                                <strong>🟡 NEW: Low Risk Findings</strong> - Minor findings requiring attention (90-day tracking)
                             </div>
                             <div class="trust-item">
-                                <strong>📈 Improvement Opportunities</strong> - Enhancement suggestions for continuous improvement (180-day tracking)
+                                <strong>📈 NEW: Improvement Opportunities</strong> - Enhancement suggestions for continuous improvement (180-day tracking)
                             </div>
                             <div class="trust-item">
                                 <strong>🕒 Tier 3: Staleness Tracking</strong> - Evidence currency management (90-day refresh windows)
