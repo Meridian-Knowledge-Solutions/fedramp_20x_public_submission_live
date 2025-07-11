@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-07-10 02:40
+**Last Check:** 2025-07-11 02:43
 
 **What it validates:** Perform authenticated vulnerability scanning on information resources
 
@@ -46,11 +46,11 @@ PASS Enterprise-grade authenticated vulnerability scanning with comprehensive co
 - PASS Serverless code analysis: 4 Lambda functions available for authenticated code vulnerability scanning
 - PASS Active Lambda scanning: 4 functions actively scanned by Inspector
 - PASS Comprehensive workload coverage: 3 service types available for authenticated scanning (EC2, Lambda, SSM)
-- PASS Active vulnerability intelligence: 20 authenticated scan findings (0 critical, 8 high, 9 medium, 3 low)
+- PASS Active vulnerability intelligence: 20 authenticated scan findings (0 critical, 8 high, 7 medium, 5 low)
 - PASS Comprehensive vulnerability discovery: High-volume scanning indicates thorough authenticated assessment
 - PASS Automated discovery: Inspector service can automatically detect and scan new resources
 - PASS Enterprise scanning governance: AWS Organizations enables centralized multi-account vulnerability scanning
 - PASS Enterprise scanning integration: Multi-service Inspector configuration for comprehensive authenticated assessment
 
 ---
-*Generated 2025-07-10 02:40 UTC*
+*Generated 2025-07-11 02:43 UTC*

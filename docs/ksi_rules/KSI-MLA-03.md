@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-07-10 02:40
+**Last Check:** 2025-07-11 02:43
 
 **What it validates:** Rapidly detect and remediate or mitigate vulnerabilities
 
@@ -38,14 +38,15 @@
 
 ## Latest Results
 
-PASS Advanced vulnerability management with automated remediation (72%): FAIL Security Hub not configured for vulnerability detection
+PASS Advanced vulnerability management with automated remediation (78%): FAIL Security Hub not configured for vulnerability detection
 - PASS Automated vulnerability scanning: Inspector EC2, ECR scanning enabled
 - PASS Multi-service vulnerability coverage: Both EC2 and ECR scanning for comprehensive assessment
 - PASS Automated patch management: 17 patch baselines (15 default, 2 custom)
 - PASS Tailored remediation: 2 custom patch baselines for targeted vulnerability response
-- PASS Active threat analysis: 28 active security findings (0 critical, 9 high)
+- PASS Active threat analysis: 32 active security findings (0 critical, 9 high)
+- PASS Comprehensive threat detection: 5 different vulnerability types identified
 - PASS Intelligent threat detection: Advanced pattern recognition and behavioral analysis capabilities
 - PASS Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection
 
 ---
-*Generated 2025-07-10 02:40 UTC*
+*Generated 2025-07-11 02:43 UTC*
