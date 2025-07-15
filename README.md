@@ -1,6 +1,6 @@
 # FedRAMP 20x Public Trust Center – Meridian LMS
 
-This repository is the **public-facing trust center** for Meridian Knowledge Solutions' FedRAMP 20x Low authorization, providing real-time compliance visibility and transparency for federal agencies.
+This repository is the **public-facing trust center** for Meridian LMS FedRAMP 20x Low authorization, providing real-time compliance visibility and transparency for federal agencies.
 
 It demonstrates **automated validation**, **machine-readable evidence**, and **continuous compliance monitoring** aligned with GSA's FedRAMP 20x pilot goals.
 
