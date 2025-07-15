@@ -3,7 +3,7 @@
 
 ## What We Built
 
-As part of our FedRAMP 20x Phase One pilot, Meridian Knowledge Solutions created this interactive demonstration tool to showcase the assessment methodology that earned our Low Impact authorization. This tool uses the exact CLI commands and validation logic from our successful Fortreum LLC assessment.
+As part of our FedRAMP 20x Phase One pilot, Meridian Knowledge Solutions created this interactive demonstration tool to showcase the assessment methodology that we used for our 20x Low pilot submission. This tool uses the exact CLI commands and validation logic from our successful Fortreum LLC assessment.
 
 ## Why We're Sharing This
 
