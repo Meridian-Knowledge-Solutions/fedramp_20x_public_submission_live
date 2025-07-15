@@ -1,4 +1,4 @@
-# FedRAMP 20x Public Trust Center – Meridian Knowledge Solutions LMS
+# FedRAMP 20x Public Trust Center – Meridian LMS
 
 This repository is the **public-facing trust center** for Meridian Knowledge Solutions' FedRAMP 20x Low authorization, providing real-time compliance visibility and transparency for federal agencies.
 
@@ -169,7 +169,7 @@ This implementation demonstrates:
 
 ## 🚀 Service Information
 
-- **Service**: Meridian Knowledge Solutions Learning Management System (LMS)
+- **Service**: Meridian LMS
 - **Authorization Level**: FedRAMP 20x Low
 - **Hosting Environment**: AWS Commercial (US-East)
 - **Assessment Method**: Machine-readable validation with automated KSI assessment
