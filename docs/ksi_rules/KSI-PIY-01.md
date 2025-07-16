@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-07-15 02:45
+**Last Check:** 2025-07-16 02:42
 
 **What it validates:** Have an up-to-date information resource inventory or code defining all deployed assets, software, and services
 
@@ -19,8 +19,8 @@
 
 ## Latest Results
 
-WARNING Partial inventory coverage (expand documentation): PASS AWS resource inventory: 165 tagged resources discovered
+WARNING Partial inventory coverage (expand documentation): PASS AWS resource inventory: 177 tagged resources discovered
 - FAIL No manual asset inventory documentation found
 
 ---
-*Generated 2025-07-15 02:45 UTC*
+*Generated 2025-07-16 02:42 UTC*
