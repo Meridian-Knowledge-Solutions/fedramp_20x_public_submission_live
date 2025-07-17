@@ -607,10 +607,6 @@
         "command": "aws identitystore list-users --identity-store-id d-9067ccc0ff --output json",
         "note": "Get Identity Center users for accurate user count"
       },
-      {
-        "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-IAM-01/ for sso_mfa_enforcement_screenshot.png showing Identity Center MFA always-on configuration"
-      }
     ]
   },
   "KSI-IAM-02": {
