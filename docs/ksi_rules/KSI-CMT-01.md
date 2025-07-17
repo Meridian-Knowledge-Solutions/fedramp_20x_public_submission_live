@@ -1,59 +1,52 @@
-# KSI-CMT-01: Establish and maintain configuration baselines
+# KSI-CMT-01: Log and monitor system modifications
 
 ## Overview
 
 **Category:** Change Management
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Establish and maintain configuration baselines
+**What it validates:** Log and monitor system modifications
 
-**Why it matters:** Validates comprehensive configuration baseline management from pilot to enterprise maturity levels through CloudTrail, Config, CloudFormation, monitoring, and governance
+**Why it matters:** Validates comprehensive system modification logging from basic change detection to enterprise-grade change tracking, covering CloudTrail audit, configuration monitoring, event automation, and organizational change governance with real-time alerting and compliance tracking
 
 ## Validation Method
 
 1. `aws cloudtrail describe-trails --output json`
-   *Check CloudTrail for system modification logging and baseline change tracking*
+   *Check CloudTrail configuration for comprehensive system modification logging and audit trail*
 
-2. `aws configservice describe-configuration-recorders --output json`
-   *Validate Config for configuration baseline recording and change monitoring*
+2. `aws config describe-configuration-recorders --output json`
+   *Validate Config for configuration change recording and system modification tracking*
 
-3. `aws configservice describe-config-rules --output json`
-   *Assess Config rules for baseline compliance monitoring and automated enforcement*
+3. `aws logs describe-log-groups --output json`
+   *Check CloudWatch log groups for application and system change logging*
 
-4. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json`
-   *Check CloudFormation stacks for Infrastructure as Code baseline templates*
+4. `aws events list-rules --output json`
+   *Validate EventBridge rules for real-time change monitoring and automated alerting*
 
-5. `aws ssm describe-parameters --max-items 50 --output json`
-   *Evaluate SSM Parameter Store for configuration baseline management*
+5. `aws cloudwatch describe-alarms --output json`
+   *Check CloudWatch alarms for change detection and system modification alerting*
 
-6. `aws cloudwatch describe-alarms --max-records 50 --output json`
-   *Check CloudWatch alarms for baseline violation monitoring and alerting*
+6. `aws sns list-topics --output json`
+   *Validate SNS topics for change notification workflows and stakeholder communication*
 
-7. `aws sns list-topics --output json`
-   *Assess SNS topics for baseline notification infrastructure*
+7. `aws lambda list-functions --output json`
+   *Check Lambda functions for automated change response and modification tracking workflows*
 
-8. `aws configservice describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0:5].ConfigRuleName' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"RemediationConfigurations": []}'`
-   *Check Config remediation for automated baseline enforcement (graceful fallback)*
+8. `aws ssm describe-instance-information --output json`
+   *Validate Systems Manager for instance-level change tracking and centralized modification monitoring*
 
-9. `aws s3api list-buckets --output json`
-   *Identify S3 buckets for baseline storage and configuration management*
-
-10. `aws organizations describe-organization --output json 2>/dev/null || echo '{"Organization": null}'`
-   *Check for enterprise-wide baseline governance through AWS Organizations*
+9. `aws organizations describe-organization --output json`
+   *Check enterprise-wide change logging policies and organizational modification governance*
 
 ## Latest Results
 
-PASS Production-ready configuration baseline management with automated compliance (60%): PASS System modification logging configured: 1 CloudTrail trails (1 global events)
-- PASS Configuration baseline recording: 1 Config recorders (1 comprehensive)
-- INFO No Config rules for baseline compliance monitoring
-- PASS Infrastructure baseline templates: 8/8 successful CloudFormation stacks (100%)
-- PASS Configuration parameter baselines: 6 SSM parameters for standardized configuration
-- PASS Drift detection capability: CloudFormation enables baseline drift detection
+PASS Configuration baseline management with compliance monitoring established (30%): PASS System modification logging configured: 1 CloudTrail trails (1 global events)
+- INFO AWS Config not configured (acceptable for low-impact environments)
 - INFO No CloudWatch alarms for baseline monitoring
 - PASS Baseline notification infrastructure: 1 SNS topics for configuration alerts
 - PASS Enterprise-wide baseline governance: AWS Organizations enables centralized configuration policies
 - PASS Advanced organization features: SCPs for baseline policy enforcement enabled
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

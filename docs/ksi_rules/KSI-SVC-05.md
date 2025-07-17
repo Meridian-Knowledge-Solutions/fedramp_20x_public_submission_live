@@ -1,12 +1,12 @@
-# KSI-SVC-05: Enforce system and information resource integrity through cryptographic means
+# KSI-SVC-05: Continuously verify information resource integrity
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Enforce system and information resource integrity through cryptographic means
+**What it validates:** Continuously verify information resource integrity
 
 **Why it matters:** Validates comprehensive cryptographic integrity enforcement from basic audit trail validation to enterprise-grade multi-layer integrity protection, covering log validation, key management, code signing, database integrity, backup verification, and organizational integrity governance with automated monitoring and compliance
 
@@ -57,4 +57,4 @@ PASS Production-ready multi-service cryptographic integrity with automated monit
 - PASS Advanced organization features: SCPs for cryptographic integrity policy enforcement enabled
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

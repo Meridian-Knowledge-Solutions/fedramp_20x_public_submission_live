@@ -1,19 +1,19 @@
-# KSI-SVC-02: Encrypt or otherwise secure network traffic
+# KSI-SVC-02: Encrypt or secure network traffic
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Encrypt or otherwise secure network traffic
+**What it validates:** Encrypt or secure network traffic
 
-**Why it matters:** Validates comprehensive network traffic encryption from basic service availability to enterprise-grade multi-layer encryption, covering load balancers, CDN, API gateways, databases, caching services, and hybrid connectivity with automated certificate management
+**Why it matters:** Validates comprehensive network traffic encryption from basic HTTPS enforcement to enterprise-grade multi-protocol encryption, covering load balancers, CDN, APIs, databases, caching, VPN, and organizational encryption policies with certificate management
 
 ## Validation Method
 
-1. `aws elbv2 describe-load-balancers --output json`
-   *Check Application and Network Load Balancer configurations for SSL/TLS traffic encryption*
+1. `aws acm list-certificates --output json`
+   *Check SSL/TLS certificates for encrypted network communications and certificate management*
 
 2. `aws ec2 describe-vpc-endpoints --output json`
    *Validate VPC endpoints for private AWS service communication and traffic isolation*
@@ -44,7 +44,7 @@
 
 ## Latest Results
 
-PASS Enterprise-grade comprehensive network traffic encryption with governance (78%): PASS Load balancer encryption capability: 1 load balancers configured for traffic encryption
+PASS Production-ready multi-layer traffic encryption and certificate management (67%): FAIL No load balancer data available
 - PASS Private service communication: 7 VPC endpoints (4 interface, 1 gateway)
 - INFO No load balancer listeners configured
 - INFO No CloudFront distributions for global traffic encryption
@@ -56,4 +56,4 @@ PASS Enterprise-grade comprehensive network traffic encryption with governance (
 - PASS Advanced organization features: SCPs for encryption policy enforcement enabled
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

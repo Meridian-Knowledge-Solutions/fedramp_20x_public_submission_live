@@ -1,12 +1,12 @@
-# KSI-CNA-06: Design for high availability and recovery
+# KSI-CNA-06: Design systems for high availability and rapid recovery
 
 ## Overview
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Design for high availability and recovery
+**What it validates:** Design systems for high availability and rapid recovery
 
 **Why it matters:** Validates comprehensive high availability through multi-AZ deployments, redundant infrastructure, automated failover, backup strategies, and disaster recovery capabilities across all service layers
 
@@ -52,4 +52,4 @@ PASS Excellent high availability design for pilot environment (100%): PASS Stron
 - PASS DNS infrastructure: 1 Route 53 hosted zone(s)
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

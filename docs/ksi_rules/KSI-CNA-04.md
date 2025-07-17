@@ -1,52 +1,44 @@
-# KSI-CNA-04: Use immutable infrastructure patterns
+# KSI-CNA-04: Use immutable infrastructure with strictly defined functionality and privileges by default
 
 ## Overview
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Use immutable infrastructure patterns
+**What it validates:** Use immutable infrastructure with strictly defined functionality and privileges by default
 
-**Why it matters:** Validates immutable infrastructure through Terraform-managed resources, versioned AMI pipelines, standardized deployment patterns, and replace-not-modify principles for traditional VM-based workloads
+**Why it matters:** Validates immutable infrastructure patterns through Infrastructure as Code, container usage, serverless adoption, and configuration management
 
 ## Validation Method
 
-1. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags,LaunchTime,ImageId]' --output json`
-   *Analyze instance patterns for Terraform-managed immutable deployments (consistent tagging, recent launches)*
+1. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
+   *Check CloudFormation stacks for Infrastructure as Code immutable deployment patterns*
 
 2. `aws ec2 describe-launch-templates --output json`
-   *Check launch templates for standardized, versioned instance deployment patterns*
+   *Validate launch templates for consistent immutable instance deployment*
 
 3. `aws autoscaling describe-auto-scaling-groups --output json`
-   *Validate Auto Scaling Groups for instance replacement patterns (immutable scaling)*
+   *Check Auto Scaling Groups for immutable instance replacement patterns*
 
-4. `aws ec2 describe-images --owners self --output json`
-   *Check custom AMIs for versioned machine image pipeline (immutable base images)*
+4. `aws ecs describe-clusters --output json`
+   *Validate containerized infrastructure for immutable deployment patterns*
 
 5. `aws lambda list-functions --output json`
-   *Validate serverless functions (immutable compute even in VM-focused architectures)*
+   *Check serverless functions as immutable compute resources*
 
-6. `aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)]' --output json`
-   *Detect Terraform state management patterns (S3 backend indicates mature IaC)*
+6. `aws ec2 describe-images --owners self --output json`
+   *Validate custom AMIs for immutable image-based deployments*
 
-7. `aws dynamodb list-tables --output json`
-   *Check for Terraform state locking tables (DynamoDB indicates advanced IaC patterns)*
-
-8. `aws codebuild list-projects --output json`
-   *Check for CI/CD build projects (AMI pipelines, Terraform automation)*
-
-9. `aws ssm describe-parameters --output json`
-   *Validate Systems Manager parameters for configuration management and versioning*
+7. `aws ssm describe-documents --document-filter-list key=DocumentType,value=Command --output json`
+   *Check Systems Manager documents for immutable configuration management*
 
 ## Latest Results
 
-PASS Comprehensive Terraform-managed immutable infrastructure (62%): PASS Infrastructure as Code deployment: 4/4 instances with standardized deployment patterns
-- PASS Immutable deployment patterns: 4/4 instances recently deployed (< 6 months)
-- PASS Consistent naming patterns: 4/4 instances follow standardized naming
+WARNING Minimal immutable infrastructure (12%) - strengthen patterns: FAIL No compute instances found for IaC assessment
 - PASS Serverless functions: 4 Lambda functions (inherently immutable)
 - INFO No launch templates found
 - INFO No Auto Scaling Groups found
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

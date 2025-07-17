@@ -4,25 +4,25 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
 **What it validates:** Have denial of service protection
 
-**Why it matters:** Validates comprehensive multi-layer DDoS protection through network-layer shields, application-layer filtering, edge protection, capacity-based mitigation, and automated response capabilities
+**Why it matters:** Validates comprehensive DDoS protection through AWS Shield, CloudFront, WAF, load balancers, and monitoring systems for traffic-based attacks
 
 ## Validation Method
 
-1. ``
-   *Check AWS Shield Advanced subscription for premium DDoS protection and response team*
+1. `aws shield describe-subscription --output json`
+   *Check AWS Shield subscription status for DDoS protection coverage*
 
-2. `aws wafv2 list-web-acls --scope REGIONAL --output json`
-   *Validate WAF for application-layer DDoS protection and rate limiting*
+2. `aws cloudfront list-distributions --output json`
+   *Validate CloudFront distributions for DDoS mitigation and global edge protection*
 
 3. `aws wafv2 list-web-acls --scope CLOUDFRONT --output json`
-   *Check CloudFront WAF for edge-based application protection*
+   *Check CloudFront WAF rules for application-layer DDoS protection*
 
-4. `aws cloudfront list-distributions --output json`
-   *Verify CloudFront distributions for edge-based DDoS protection and traffic distribution*
+4. `aws wafv2 list-web-acls --scope REGIONAL --output json`
+   *Validate regional WAF rules for regional DDoS protection*
 
 5. `aws elbv2 describe-load-balancers --output json`
    *Check load balancers for traffic distribution and DDoS mitigation capabilities*
@@ -44,4 +44,4 @@ PASS Comprehensive DoS protection established (94%): PASS Network-layer protecti
 - PASS Internal DNS resilience: 1 private Route 53 hosted zone(s)
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

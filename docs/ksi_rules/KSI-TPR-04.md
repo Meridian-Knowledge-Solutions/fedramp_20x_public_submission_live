@@ -1,26 +1,29 @@
-# KSI-TPR-04: Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
+# KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities, with contractual notification requirements or active monitoring services
 
 ## Overview
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Monitor third party software for upstream vulnerabilities with contractual notification or active monitoring
+**What it validates:** Monitor third party software information resources for upstream vulnerabilities, with contractual notification requirements or active monitoring services
 
-**Why it matters:** Validates vulnerability monitoring through Inspector, Security Hub, and contractual requirements documentation
+**Why it matters:** Validates third-party vulnerability monitoring through Inspector, Security Hub, and active monitoring of external dependencies
 
 ## Validation Method
 
-1. `aws inspector2 list-findings --max-results 20 --output json`
-   *Check Inspector findings for third-party component vulnerabilities*
+1. `aws inspector2 get-configuration --output json`
+   *Check Inspector for third-party component vulnerability monitoring*
 
-2. **Manual Review:** Check evidence_v2/KSI-TPR-04/ for vulnerability_monitoring_contracts.pdf, upstream_vulnerability_procedures.pdf, and third_party_notification_agreements.pdf
+2. `aws securityhub describe-hub --output json`
+   *Validate Security Hub for third-party vulnerability finding aggregation*
+
+3. **Manual Review:** Check evidence_v2/KSI-TPR-04/ for vendor_vulnerability_monitoring_contracts.pdf, upstream_vulnerability_alerts.xlsx, and third_party_monitoring_procedures.pdf
 
 ## Latest Results
 
-PASS Third-party software vulnerability monitoring established: PASS Active third-party vulnerability monitoring: 20 component vulnerabilities detected
+WARNING Basic vulnerability monitoring capability: WARNING Inspector vulnerability monitoring not accessible
 - PASS Manual evidence validation completed (vulnerability monitoring documentation verified)
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

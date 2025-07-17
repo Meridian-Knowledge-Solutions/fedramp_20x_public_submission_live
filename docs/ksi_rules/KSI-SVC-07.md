@@ -1,12 +1,12 @@
-# KSI-SVC-07: Use consistent, risk-informed approach for applying security patches
+# KSI-SVC-07: Use a consistent, risk-informed approach for applying security patches
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Use consistent, risk-informed approach for applying security patches
+**What it validates:** Use a consistent, risk-informed approach for applying security patches
 
 **Why it matters:** Validates comprehensive risk-informed patch management from basic patch baseline configuration to enterprise-grade vulnerability-driven patching, covering automated deployment, compliance monitoring, container patching, lambda layer management, and organizational patch governance with risk assessment and testing workflows
 
@@ -57,4 +57,4 @@ PASS Advanced risk-informed patching with controlled deployment and compliance (
 - PASS Advanced organization features: SCPs for patch management policy enforcement enabled
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

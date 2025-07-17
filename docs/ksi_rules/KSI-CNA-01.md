@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
 **What it validates:** Configure ALL information resources to limit inbound and outbound traffic
 
@@ -31,10 +31,10 @@
    *Check WAF for application-layer traffic filtering and protection*
 
 7. `aws elbv2 describe-load-balancers --output json`
-   *Analyze load balancers for traffic distribution and access controls*
+   *Analyze load balancers for traffic distribution and control capabilities*
 
-8. `aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json`
-   *Verify VPC Flow Logs for traffic monitoring and visibility (CloudWatch destination)*
+8. `aws logs describe-log-groups --log-group-name-prefix '/aws/vpc/flowlogs' --output json`
+   *Check VPC Flow Logs for traffic monitoring and analysis capabilities*
 
 ## Latest Results
 
@@ -51,4 +51,4 @@ PASS Comprehensive traffic controls across all resources (97%): PASS VPC infrast
 - PASS Traffic visibility: 1 VPC Flow Log groups for traffic monitoring
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

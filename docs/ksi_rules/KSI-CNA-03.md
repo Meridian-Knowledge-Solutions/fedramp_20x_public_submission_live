@@ -1,54 +1,49 @@
-# KSI-CNA-03: Use logical networking for traffic flow controls
+# KSI-CNA-03: Use logical networking and related capabilities to enforce traffic flow controls
 
 ## Overview
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Use logical networking for traffic flow controls
+**What it validates:** Use logical networking and related capabilities to enforce traffic flow controls
 
-**Why it matters:** Validates comprehensive logical networking through software-defined routing, traffic steering, network policies, and modern cloud networking patterns for intentional traffic flow control
+**Why it matters:** Validates logical networking implementation through VPC design, subnet segmentation, routing controls, and network security enforcement
 
 ## Validation Method
 
-1. `aws ec2 describe-route-tables --output json`
-   *Analyze route tables for custom traffic flow controls and logical routing patterns*
+1. `aws ec2 describe-vpcs --output json`
+   *Check VPC configuration for logical network isolation and traffic control foundation*
 
-2. `aws ec2 describe-network-acls --output json`
-   *Evaluate Network ACLs for subnet-level traffic filtering and flow control policies*
+2. `aws ec2 describe-subnets --output json`
+   *Validate subnet design for logical segmentation and traffic isolation*
 
-3. `aws ec2 describe-vpc-endpoints --output json`
-   *Check VPC endpoints for private service routing and traffic flow optimization*
+3. `aws ec2 describe-route-tables --output json`
+   *Analyze routing tables for traffic flow control and network segmentation*
 
-4. `aws ec2 describe-transit-gateways --output json`
-   *Validate Transit Gateway for centralized network routing and cross-VPC traffic control*
+4. `aws ec2 describe-internet-gateways --output json`
+   *Check internet gateways for controlled external connectivity*
 
-5. `aws ec2 describe-vpc-peering-connections --output json`
-   *Check VPC peering for controlled cross-network communication patterns*
+5. `aws ec2 describe-nat-gateways --output json`
+   *Validate NAT gateways for controlled outbound traffic from private networks*
 
-6. `aws elbv2 describe-load-balancers --output json`
-   *Analyze load balancers for application-layer traffic distribution and flow control*
+6. `aws ec2 describe-vpc-endpoints --output json`
+   *Check VPC endpoints for secure service communications without internet transit*
 
-7. `aws route53 list-hosted-zones --output json`
-   *Check DNS-based traffic routing and resolver controls for logical networking*
+7. `aws directconnect describe-connections --output json`
+   *Validate dedicated connections for enterprise traffic flow controls*
 
-8. `aws ec2 describe-nat-gateways --output json`
-   *Validate NAT Gateways for controlled egress traffic flow from private networks*
-
-9. `aws logs describe-log-groups --log-group-name-prefix /aws/vpc/flowlogs --output json`
-   *Verify VPC Flow Logs for traffic flow monitoring and control validation*
+8. `aws ec2 describe-transit-gateways --output json`
+   *Check transit gateways for inter-VPC and hybrid traffic control*
 
 ## Latest Results
 
-PASS Comprehensive logical networking for traffic flow control (106%): PASS Logical routing infrastructure: 5/5 route tables with intentional traffic flows
+PASS Solid logical networking foundation (69%): PASS Logical routing infrastructure: 5/5 route tables with intentional traffic flows
 - PASS Advanced routing patterns: 4 route tables with custom traffic control
-- PASS Advanced network access control: 1/1 NACLs with custom traffic flow policies
+- FAIL Network ACL information not available
 - PASS Advanced service routing: 7 VPC endpoints (1 gateway, 4 interface, 2 GWLB)
 - PASS Single-VPC architecture: No Transit Gateways needed (appropriate design)
-- PASS Application-layer traffic control: 1 Application Load Balancers
 - PASS Controlled egress routing: 1 active NAT Gateways
-- PASS Traffic flow monitoring: 1 VPC Flow Log groups
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

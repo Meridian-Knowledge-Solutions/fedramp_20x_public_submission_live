@@ -1,18 +1,21 @@
-# KSI-TPR-02: Regularly confirm services handling federal information are FedRAMP authorized and securely configured
+# KSI-TPR-02: Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured
 
 ## Overview
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Regularly confirm services handling federal information are FedRAMP authorized and securely configured
+**What it validates:** Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured
 
-**Why it matters:** Validates service inventory, FedRAMP authorization verification, and secure configuration compliance for services handling federal data
+**Why it matters:** Validates FedRAMP authorization verification through service assessment, compliance monitoring, and authorization status tracking
 
 ## Validation Method
 
-1. **Manual Review:** Primary validation through documentation: federal_data_service_inventory.xlsx, fedramp_authorization_verification.xlsx, service_security_configurations.pdf, regular_verification_process.pdf
+1. `aws organizations list-accounts --output json`
+   *Check organizational structure for FedRAMP authorized service boundaries*
+
+2. **Manual Review:** Check evidence_v2/KSI-TPR-02/ for fedramp_authorization_verification.xlsx, service_authorization_status.pdf, compliance_monitoring_procedures.pdf, and federal_data_handling_matrix.pdf
 
 ## Latest Results
 
@@ -23,4 +26,4 @@ PASS Comprehensive FedRAMP service verification with integrated documentation (1
 - PASS Regular verification process included in comprehensive mapping
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

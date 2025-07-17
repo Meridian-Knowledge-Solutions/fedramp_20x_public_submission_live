@@ -4,7 +4,7 @@
 
 **Category:** Change Management
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
 **What it validates:** Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
 
@@ -15,30 +15,36 @@
 1. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json`
    *Check CloudFormation stacks for AWS-managed immutable infrastructure foundation*
 
-2. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags,LaunchTime,ImageId]' --output json`
-   *Analyze instance patterns for Terraform-managed immutable deployments (consistent tagging, recent launches)*
+2. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,LaunchTime,ImageId,InstanceType]' --output json`
+   *Validate EC2 instances for immutable deployment patterns (Image-based vs direct modification)*
 
-3. `aws lambda list-functions --max-items 50 --output json`
-   *Check Lambda functions for immutable serverless deployment patterns*
+3. `aws ec2 describe-launch-templates --output json`
+   *Check launch templates for standardized immutable instance deployment*
 
-4. `aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)]' --output json`
-   *Detect Terraform state management patterns (S3 backend indicates mature Infrastructure as Code)*
+4. `aws autoscaling describe-auto-scaling-groups --output json`
+   *Validate Auto Scaling Groups for immutable scaling and instance replacement patterns*
 
-5. `aws ssm describe-parameters --output json`
-   *Validate Systems Manager parameters for external configuration management and versioning*
+5. `aws ecs describe-services --output json`
+   *Check containerized services for immutable container deployment and rolling update patterns*
 
-6. `aws elbv2 describe-target-groups --max-items 50 --output json`
-   *Check load balancer target groups for blue/green immutable deployment infrastructure*
+6. `aws lambda list-functions --output json`
+   *Validate serverless functions for immutable code deployment (function versioning)*
 
-7. `aws configservice describe-config-rules --output json`
-   *Evaluate Config rules for immutable deployment compliance and governance (optional for Terraform-managed infrastructure)*
+7. `aws codedeploy list-applications --output json`
+   *Check CodeDeploy applications for automated immutable deployment workflows*
 
-8. `aws organizations describe-organization --output json 2>/dev/null || echo '{"Organization": null}'`
-   *Check for enterprise-wide immutable deployment governance through AWS Organizations*
+8. `aws ecr describe-repositories --output json`
+   *Validate container registries for immutable container image management*
+
+9. `aws servicecatalog search-products --output json`
+   *Check Service Catalog for standardized immutable resource templates and governance*
+
+10. `aws organizations describe-organization --output json`
+   *Validate enterprise-wide immutable deployment policies and organizational governance standards*
 
 ## Latest Results
 
-PASS Enterprise-grade comprehensive immutable deployment with Terraform and cross-account governance (95%): PASS Immutable infrastructure foundation: 8/8 successful CloudFormation deployments (100%)
+PASS Advanced Terraform-managed immutable deployment foundation (72%): PASS Immutable infrastructure foundation: 8/8 successful CloudFormation deployments (100%)
 - PASS External Terraform Infrastructure as Code: 17 managed files documented
 - PASS Immutable deployment method: Terraform Infrastructure as Code
 - PASS Automated immutable deployment: GitHub Actions CI/CD integration
@@ -49,13 +55,12 @@ PASS Enterprise-grade comprehensive immutable deployment with Terraform and cros
 - PASS Serverless-first immutable architecture: 4 Lambda functions (no EC2 instances expected)
 - 🎯 External Infrastructure as Code excellence: Advanced immutable deployment automation
 - PASS Immutable serverless functions: 4 Lambda functions (inherently immutable)
-- PASS External configuration management: 6 SSM parameters for immutable configuration
-- PASS Configuration versioning: 1 parameters with version history
-- PASS Immutable deployment infrastructure: 2 target groups enabling blue/green immutable deployments
+- WARNING No external configuration management detected
+- INFO No load balancer target groups for blue/green deployment patterns
 - PASS Configuration drift detection: CloudFormation enables immutable infrastructure drift monitoring
-- PASS Immutable deployment compliance: 394 Config rules for governance monitoring
+- PASS Immutable deployment compliance: 407 Config rules for governance monitoring
 - PASS Enterprise-wide immutable deployment governance: AWS Organizations enables centralized deployment policies
 - PASS Advanced organization features: SCPs for immutable deployment policy enforcement enabled
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

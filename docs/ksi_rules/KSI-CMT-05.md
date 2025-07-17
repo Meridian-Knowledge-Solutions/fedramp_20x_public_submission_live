@@ -4,19 +4,19 @@
 
 **Category:** Change Management
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
 **What it validates:** Evaluate the risk and potential impact of any change
 
-**Why it matters:** Validates comprehensive risk and impact evaluation capabilities from pilot to enterprise maturity levels through assessment procedures, quantitative analysis, governance, automation, and compliance evidence
+**Why it matters:** Manual evidence required - risk assessment procedures, impact analysis documentation, and change evaluation frameworks
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-CMT-05/ for comprehensive risk and impact evaluation documentation
+1. **Manual Review:** Check evidence_v2/KSI-CMT-05/ for risk_assessment_procedures.pdf, change_impact_analysis_template.xlsx, risk_evaluation_framework.pdf, and change_approval_matrix.pdf
 
 ## Latest Results
 
 - PASS Risk and impact evaluation procedures - expand analysis methods (10%): PASS Risk evaluation documentation found: Risk Assessment Procedure for Change Management (KSI-CMT-05).pdf, Change Impact Analysis Template (KSI-CMT-05).pdf
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

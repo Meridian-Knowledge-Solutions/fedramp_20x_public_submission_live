@@ -4,15 +4,15 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
 **What it validates:** Document risk management decisions for software supply chain security
 
-**Why it matters:** Manual evidence required - supply chain risk management documentation and decisions
+**Why it matters:** Manual evidence required - supply chain risk assessments, vendor security evaluations, and risk management decision documentation
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-PIY-07/ for supply_chain_risk_management.pdf, vendor_security_assessments.pdf, and software_supply_chain_policy.pdf
+1. **Manual Review:** Check evidence_v2/KSI-PIY-07/ for supply_chain_risk_assessment.pdf, vendor_security_evaluations.xlsx, risk_management_decisions.pdf, and software_supply_chain_policy.pdf
 
 ## Latest Results
 
@@ -20,4 +20,4 @@ WARNING Basic supply chain risk management (expand coverage): PASS Enhanced supp
 - PASS Supply chain risk documentation: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

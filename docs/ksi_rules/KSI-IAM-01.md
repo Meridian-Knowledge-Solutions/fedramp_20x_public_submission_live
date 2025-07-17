@@ -1,12 +1,12 @@
-# KSI-IAM-01: Enforce phishing-resistant MFA for all user authentication
+# KSI-IAM-01: Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 
 ## Overview
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Enforce phishing-resistant MFA for all user authentication
+**What it validates:** Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 
 **Why it matters:** Validates MFA enforcement through Identity Center configuration evidence showing always-on MFA requirements, combined with traditional IAM user analysis
 
@@ -38,4 +38,4 @@ PASS Comprehensive federated MFA enforcement (100%): PASS AWS Identity Center: 1
 - PASS Federated MFA enforcement: External IdP (Okta) enforces MFA upstream of AWS
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

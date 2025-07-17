@@ -1,18 +1,18 @@
-# KSI-INR-01: Report incidents according to FedRAMP requirements and cloud service provider policies
+# KSI-INR-01: Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
 
 ## Overview
 
 **Category:** Incident Reporting
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
-**What it validates:** Report incidents according to FedRAMP requirements and cloud service provider policies
+**What it validates:** Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
 
-**Why it matters:** Manual evidence required - incident reporting procedures, FedRAMP compliance documentation, and reporting policy alignment
+**Why it matters:** Manual evidence required - incident documentation, reporting procedures, analysis frameworks, and regulatory compliance processes
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-INR-01/ for incident_reporting_procedures.pdf, fedramp_incident_reporting_policy.pdf, incident_notification_templates.pdf, and regulatory_compliance_procedures.pdf
+1. **Manual Review:** Check evidence_v2/KSI-INR-01/ for incident_documentation_procedures.pdf, fedramp_incident_reporting_policy.pdf, incident_analysis_framework.pdf, regulatory_compliance_procedures.pdf, and continuous_improvement_process.pdf
 
 ## Latest Results
 
@@ -21,4 +21,4 @@ WARNING Basic incident reporting (ensure FedRAMP compliance): PASS Core reportin
 - FAIL No specific FedRAMP incident reporting compliance found (required)
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*

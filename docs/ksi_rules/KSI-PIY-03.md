@@ -4,19 +4,19 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-07-17 20:18
+**Last Check:** 2025-07-17 22:08
 
 **What it validates:** Maintain a vulnerability disclosure program
 
-**Why it matters:** Manual evidence required - vulnerability disclosure policy and program documentation
+**Why it matters:** Manual evidence required - vulnerability disclosure policy, reporting procedures, and responsible disclosure documentation
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-PIY-03/ for vulnerability_disclosure_policy.pdf and responsible_disclosure_program.pdf
+1. **Manual Review:** Check evidence_v2/KSI-PIY-03/ for vulnerability_disclosure_policy.pdf, responsible_disclosure_procedures.pdf, security_contact_information.pdf, and vulnerability_reporting_guidelines.pdf
 
 ## Latest Results
 
 - PASS Vulnerability disclosure program maintained: PASS Vulnerability disclosure documentation: vulnerability_disclosure_program_final.pdf
 
 ---
-*Generated 2025-07-17 20:18 UTC*
+*Generated 2025-07-17 22:08 UTC*
