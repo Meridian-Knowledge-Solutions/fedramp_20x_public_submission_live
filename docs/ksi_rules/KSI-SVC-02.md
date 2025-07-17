@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-07-16 02:42
+**Last Check:** 2025-07-17 02:43
 
 **What it validates:** Encrypt or otherwise secure network traffic
 
@@ -48,7 +48,7 @@ PASS Enterprise-grade comprehensive network traffic encryption with governance (
 - PASS Private service communication: 7 VPC endpoints (4 interface, 1 gateway)
 - INFO No load balancer listeners configured
 - INFO No CloudFront distributions for global traffic encryption
-- PASS API encryption capability: 1 API Gateway endpoints (HTTPS by default)
+- PASS API encryption capability: 2 API Gateway endpoints (HTTPS by default)
 - PASS Database encryption capability: 1 RDS instances (1 with encrypted storage)
 - INFO No ElastiCache clusters for cache encryption
 - PASS Automated certificate management: 2/2 active ACM certificates (100% healthy)
@@ -56,4 +56,4 @@ PASS Enterprise-grade comprehensive network traffic encryption with governance (
 - PASS Advanced organization features: SCPs for encryption policy enforcement enabled
 
 ---
-*Generated 2025-07-16 02:42 UTC*
+*Generated 2025-07-17 02:43 UTC*
