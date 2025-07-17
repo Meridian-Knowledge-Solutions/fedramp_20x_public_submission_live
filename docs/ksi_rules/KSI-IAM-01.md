@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-07-17 22:33
+**Last Check:** 2025-07-17 23:37
 
 **What it validates:** Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 
@@ -24,8 +24,6 @@
 4. `aws identitystore list-users --identity-store-id d-9067ccc0ff --output json`
    *Get Identity Center users for accurate user count*
 
-5. **Manual Review:** Check evidence_v2/KSI-IAM-01/ for sso_mfa_enforcement_screenshot.png showing Identity Center MFA always-on configuration
-
 ## Latest Results
 
 PASS Comprehensive federated MFA enforcement (100%): PASS AWS Identity Center: 1 active instance(s)
@@ -38,4 +36,4 @@ PASS Comprehensive federated MFA enforcement (100%): PASS AWS Identity Center: 1
 - PASS Federated MFA enforcement: External IdP (Okta) enforces MFA upstream of AWS
 
 ---
-*Generated 2025-07-17 22:33 UTC*
+*Generated 2025-07-17 23:37 UTC*

@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-07-17 22:33
+**Last Check:** 2025-07-17 23:37
 
 **What it validates:** Perform system backups aligned with recovery objectives
 
@@ -30,7 +30,7 @@ PASS System backups with compliant retention aligned with recovery objectives: P
 - WARNING Backup plan details not available - cannot validate retention policies
 - PASS Backup operations validated: 50 successful backup jobs prove backups are functioning
 - PASS RDS backup configuration: 1/1 databases with automated backups
-- PASS Additional backup coverage: 56 EBS snapshots
+- PASS Additional backup coverage: 62 EBS snapshots
 
 ---
-*Generated 2025-07-17 22:33 UTC*
+*Generated 2025-07-17 23:37 UTC*

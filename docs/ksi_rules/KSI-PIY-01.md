@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-07-17 22:33
+**Last Check:** 2025-07-17 23:37
 
 **What it validates:** Establish and maintain complete inventories of all information resources
 
@@ -28,8 +28,8 @@
 
 ## Latest Results
 
-WARNING Partial inventory coverage (expand documentation): PASS AWS resource inventory: 190 tagged resources discovered
+WARNING Partial inventory coverage (expand documentation): PASS AWS resource inventory: 201 tagged resources discovered
 - FAIL No manual asset inventory documentation found
 
 ---
-*Generated 2025-07-17 22:33 UTC*
+*Generated 2025-07-17 23:37 UTC*
