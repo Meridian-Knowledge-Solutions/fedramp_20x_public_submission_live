@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-07-19 00:16
+**Last Check:** 2025-07-19 00:24
 
 **What it validates:** Operate a Security Information and Event Management (SIEM) or similar system(s) for centralized, tamper-resistant logging of events, activities, and changes
 
@@ -52,4 +52,4 @@ PASS Mature SIEM with solid log management and alerting (67%): PASS CloudTrail f
 - PASS Enterprise-wide CloudTrail: Organization-wide audit coverage
 
 ---
-*Generated 2025-07-19 00:16 UTC*
+*Generated 2025-07-19 00:24 UTC*
