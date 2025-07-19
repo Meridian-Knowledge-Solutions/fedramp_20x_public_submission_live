@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-07-19 08:57
+**Last Check:** 2025-07-19 10:08
 
 **What it validates:** Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 
@@ -44,14 +44,17 @@
 
 ## Latest Results
 
-PASS Advanced automated key management with rotation and governance controls (55%): FAIL No KMS key data available
+PASS Enterprise-grade comprehensive automated key management governance with rotation (90%): PASS Automated key management infrastructure: 13 KMS keys (0 customer-managed, 13 AWS-managed)
 - PASS Automated certificate management: 2 ACM certificates (2 issued, 0 pending)
-- PASS Key governance structure: 6/22 customer-managed aliases (27%)
+- PASS Key governance structure: 5/22 customer-managed aliases (23%)
+- PASS Automated encryption integration: 4 KMS-encrypted SecureString parameters
+- PASS Automated credential rotation: 1/1 secrets with automatic rotation (100%)
 - PASS Modern certificate management: No legacy IAM certificates
 - PASS Infrastructure as Code key management: 8/8 successful CloudFormation stacks (100%)
 - INFO No Config rules for key management compliance monitoring
+- PASS Key management audit trail: 5 recent key management events tracked
 - PASS Enterprise-wide key management governance: AWS Organizations enables centralized key policies
 - PASS Advanced organization features: SCPs for key management policy enforcement enabled
 
 ---
-*Generated 2025-07-19 08:57 UTC*
+*Generated 2025-07-19 10:08 UTC*

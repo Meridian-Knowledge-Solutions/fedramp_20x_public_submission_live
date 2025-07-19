@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-07-19 08:57
+**Last Check:** 2025-07-19 10:08
 
 **What it validates:** Continuously verify information resource integrity
 
@@ -44,9 +44,9 @@
 
 ## Latest Results
 
-PASS Production-ready multi-service cryptographic integrity with automated monitoring (65%): PASS Audit integrity foundation: 1 CloudTrail trails (1 with log file validation, 0 active)
-- FAIL No KMS key data available
-- PASS Key management governance: 6/22 customer-managed KMS aliases (27%)
+PASS Production-ready multi-service cryptographic integrity with automated monitoring (75%): PASS Audit integrity foundation: 1 CloudTrail trails (1 with log file validation, 0 active)
+- PASS Cryptographic infrastructure: 13 KMS keys (0 customer-managed, 13 AWS-managed)
+- PASS Key management governance: 5/22 customer-managed KMS aliases (23%)
 - PASS Object integrity capability: 2 S3 buckets for versioning and object integrity protection
 - PASS Database integrity: 1/1 RDS instances with encrypted storage (100%)
 - INFO Config available but not configured for configuration integrity tracking
@@ -57,4 +57,4 @@ PASS Production-ready multi-service cryptographic integrity with automated monit
 - PASS Advanced organization features: SCPs for cryptographic integrity policy enforcement enabled
 
 ---
-*Generated 2025-07-19 08:57 UTC*
+*Generated 2025-07-19 10:08 UTC*
