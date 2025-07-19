@@ -4,7 +4,7 @@
 
 **Category:** Change Management
 **Status:** PASS
-**Last Check:** 2025-07-19 00:01
+**Last Check:** 2025-07-19 00:10
 
 **What it validates:** Evaluate the risk and potential impact of any change
 
@@ -19,4 +19,4 @@
 - PASS Risk and impact evaluation procedures - expand analysis methods (10%): PASS Risk evaluation documentation found: Risk Assessment Procedure for Change Management (KSI-CMT-05).pdf, Change Impact Analysis Template (KSI-CMT-05).pdf
 
 ---
-*Generated 2025-07-19 00:01 UTC*
+*Generated 2025-07-19 00:10 UTC*
