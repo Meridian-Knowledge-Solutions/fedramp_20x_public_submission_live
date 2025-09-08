@@ -1,0 +1,5175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FedRAMP 20x Trust Center - Meridian Knowledge Solutions</title>
+
+        <!--FAVICON LINES -->
+    <link rel="icon" type="image/png" href="meridian-favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="meridian-favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="meridian-favicon.png">
+    <link rel="apple-touch-icon" href="meridian-favicon.png">
+    <link rel="shortcut icon" href="meridian-favicon.png">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-TileColor" content="#6366f1">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* ✅ MERIDIAN KNOWLEDGE SOLUTIONS PROFESSIONAL COLOR PALETTE */
+    
+    /* Meridian Primary Brand Colors (Professional Blues) */
+    --primary-500: #1e40af;          /* Meridian Deep Blue */
+    --primary-600: #1e3a8a;          /* Meridian Navy */
+    --accent-500: #0891b2;           /* Knowledge Teal */
+    --accent-600: #0e7490;           /* Deep Teal */
+    
+    /* Professional Success Colors */
+    --success-500: #059669;          /* Government Green */
+    --success-600: #047857;          /* Deep Success */
+    
+    /* Professional Warning/Alert Colors */
+    --warning-500: #d97706;          /* Professional Amber */
+    --warning-600: #b45309;          /* Deep Warning */
+    --danger-500: #dc2626;           /* Professional Red */
+    --danger-600: #b91c1c;           /* Deep Danger */
+    --info-500: #0284c7;             /* Professional Info Blue */
+    --info-600: #0369a1;             /* Deep Info */
+    
+    /* Meridian Enhancement Colors */
+    --orange-500: #ea580c;           /* Professional Orange */
+    --orange-600: #c2410c;           /* Deep Orange */
+    --enhancement-500: #2563eb;      /* Meridian Enhancement Blue */
+    --enhancement-600: #1d4ed8;      /* Deep Enhancement */
+    
+    /* Professional Neutrals (Corporate Gray Scale) */
+    --gray-25: #fafafa;
+    --gray-50: #f5f5f5;
+    --gray-100: #f0f0f0;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+    
+    /* ✅ MERIDIAN LIGHT THEME VARIABLES (DEFAULT) */
+    --bg-primary: var(--gray-25);
+    --bg-secondary: white;
+    --bg-accent: var(--gray-50);
+    --text-primary: var(--gray-900);
+    --text-secondary: var(--gray-700);
+    --text-tertiary: var(--gray-600);
+    --border-color: var(--gray-200);
+    --backdrop-blur: rgba(255, 255, 255, 0.95);
+    
+    /* ✅ MERIDIAN PROFESSIONAL GRADIENTS */
+    --gradient-primary: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    --gradient-accent: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
+    --gradient-success: linear-gradient(135deg, var(--success-500) 0%, #059669 100%);
+    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+    --gradient-orange: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+    --gradient-enhancement: linear-gradient(135deg, var(--enhancement-500) 0%, #3b82f6 100%);
+    --gradient-warning: linear-gradient(135deg, var(--warning-500) 0%, #f59e0b 100%);
+    --gradient-info: linear-gradient(135deg, var(--info-500) 0%, #0ea5e9 100%);
+    
+    /* Professional Design System */
+    --radius: 16px;
+    --radius-sm: 8px;
+    --radius-lg: 24px;
+    --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* ✅ MERIDIAN DARK MODE (Professional Enterprise Theme) - CONSOLIDATED */
+[data-theme="dark"] {
+    /* Dark Background Variables */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-accent: #334155;
+    
+    /* Dark Text Variables */
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+    --text-tertiary: #cbd5e1;
+    
+    /* Dark UI Variables */
+    --border-color: #475569;
+    --backdrop-blur: rgba(15, 23, 42, 0.95);
+    
+    /* Dark Mode Gradients */
+    --gradient-primary: linear-gradient(135deg, #1e40af 0%, #0f172a 100%);
+    --gradient-card: linear-gradient(145deg, rgba(30,41,59,0.9) 0%, rgba(30,41,59,0.7) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
+    
+    /* Dark Mode Shadows */
+    --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* ✅ MERIDIAN PROFESSIONAL BODY STYLING */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--gradient-primary);
+    min-height: 100vh;
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    margin: 0;
+    padding: 0;
+}
+
+/* Dark mode body background override */
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* ✅ ADDITIONAL COMPONENTS FOR PROPER DARK MODE SUPPORT */
+
+/* Cards and panels */
+.card, .panel, .container {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+/* Input fields */
+input, textarea, select {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+/* Links */
+a {
+    color: var(--primary-500);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-600);
+}
+
+[data-theme="dark"] a {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] a:hover {
+    color: #93c5fd;
+}
+
+/* Text elements */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+}
+
+p, span, div, li, td, th {
+    color: var(--text-secondary);
+}
+
+/* Ensure all text uses proper variables */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] li,
+[data-theme="dark"] td,
+[data-theme="dark"] th {
+    color: var(--text-secondary) !important;
+}
+
+/* Borders and dividers */
+hr, .divider {
+    border-color: var(--border-color);
+}
+
+/* Code blocks */
+code, pre {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+/* Tables */
+table {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+th {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Modal/dropdown backgrounds */
+.modal, .dropdown, .popover {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+}
+
+        /* Enhancement Animations */
+        @keyframes enhancement-pulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+        }
+
+        @keyframes continuous-improvement {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .enhancement-indicator {
+            animation: enhancement-pulse 2s infinite;
+        }
+
+        .continuous-improvement {
+            animation: continuous-improvement 2s infinite;
+        }
+
+        /* Header */
+        .header {
+            background: var(--backdrop-blur);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            /* background removed - no background needed */
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* box-shadow removed - no background to shadow */
+            overflow: hidden;
+        }
+
+        .title-section h1 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            font-size: 1.25rem;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-500);
+            transform: scale(1.05);
+        }
+
+        .status-badge {
+            background: var(--gradient-success);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 5px;
+            margin: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="dark"] .tab-navigation {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        [data-theme="dark"] .tab-btn {
+            color: white;
+        }
+
+        .tab-btn.active {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            box-shadow: var(--shadow);
+        }
+
+        [data-theme="dark"] .tab-btn.active {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Header Info Section */
+        .header-info {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .header-info-content {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .header-info-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .header-info-subtitle {
+            margin-bottom: 0.5rem;
+        }
+
+        .header-info-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .header-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-secondary);
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .compliance-badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-600);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Enhanced Stats Grid with updated metrics */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .stat-card.enhancement::before {
+            background: var(--gradient-enhancement);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-500);
+        }
+
+        .stat-card.enhancement:hover {
+            border-color: var(--enhancement-500);
+        }
+
+        .stat-value {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .stat-value.primary {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-value.success { color: var(--success-500); }
+        .stat-value.danger { color: var(--danger-500); }
+        .stat-value.warning { color: var(--warning-500); }
+        .stat-value.info { color: var(--info-500); }
+        .stat-value.enhancement { 
+            color: var(--enhancement-500);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-change {
+            font-size: 0.75rem;
+            margin-top: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .stat-change.positive {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-500);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .stat-change.enhancement {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--enhancement-500);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* Enhancement Indicators */
+        .enhancement-badge {
+            background: var(--gradient-enhancement);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 0.5rem;
+            box-shadow: var(--shadow-sm);
+            animation: enhancement-pulse 3s infinite;
+        }
+
+        .enhancement-opportunity {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+        }
+
+        .enhancement-opportunity .title {
+            font-weight: 600;
+            color: var(--enhancement-600);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .enhancement-opportunity .description {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Update Info */
+        .update-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .update-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .update-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-500);
+        }
+
+        .update-icon {
+            font-size: 1.5rem;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-sm);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .update-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .update-time {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Trust Center */
+        .trust-center-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .trust-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-500);
+        }
+
+        .trust-card-header {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .trust-card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .trust-card-content {
+            padding: 2rem;
+        }
+
+        .trust-item {
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .trust-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .trust-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .trust-link {
+            color: var(--primary-500);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .trust-link:hover {
+            color: var(--primary-600);
+            text-decoration: underline;
+        }
+        [data-theme="dark"] .trust-link {
+            color: #60a5fa;
+        }
+
+        [data-theme="dark"] .trust-link:hover {
+            color: #93c5fd;
+        }
+
+        .materials-section {
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background: var(--bg-accent);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .materials-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .materials-header {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .materials-list {
+            margin: 0;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .materials-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .materials-list li {
+            color: var(--text-secondary) !important;
+        }
+
+        /* KSI Section */
+        .ksi-section {
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ksi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .ksi-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-select, .search-box {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            background: var(--bg-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-select {
+            cursor: pointer;
+        }
+
+        .search-box {
+            min-width: 200px;
+        }
+
+        .filter-select:focus, .search-box:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .search-box::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .filter-chips {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-chip {
+            background: var(--bg-accent);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-chip.active {
+            background: var(--gradient-accent);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .filter-chip:hover:not(.active) {
+            background: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        /* KSI Grid */
+        .ksi-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        }
+
+        .ksi-card {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .ksi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .ksi-card.passed::before { background: var(--gradient-success); }
+        .ksi-card.failed::before { background: linear-gradient(135deg, var(--danger-500), #f87171); }
+        .ksi-card.warning::before { background: var(--gradient-warning); }
+        .ksi-card.info::before { background: var(--gradient-enhancement); }
+        .ksi-card.enhancement::before { background: var(--gradient-enhancement); }
+
+        .ksi-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-500);
+        }
+
+        .ksi-card.enhancement:hover {
+            border-color: var(--enhancement-500);
+        }
+
+        .ksi-card.info:hover {
+            border-color: var(--enhancement-500);
+        }
+
+        .ksi-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .ksi-id {
+            font-weight: 800;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-accent);
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .ksi-status {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .status-passed {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-600);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .status-failed {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-600);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .status-info {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--enhancement-600);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .status-enhancement {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--enhancement-600);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .ksi-category {
+            background: var(--bg-accent);
+            color: var(--text-secondary);
+            padding: 0.375rem 1rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+            border: 1px solid var(--border-color);
+        }
+
+        .ksi-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .ksi-result {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .result-summary {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .ksi-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin: 1.25rem 0;
+        }
+
+        .meta-item {
+            background: var(--bg-accent);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .meta-value {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-top: 0.25rem;
+        }
+
+        .ksi-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            text-transform: none;
+            letter-spacing: 0px;
+            white-space: nowrap;
+        }
+
+        .action-btn.primary {
+            background: var(--gradient-accent);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .action-btn.secondary {
+            background: var(--bg-accent);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .action-btn.secondary:hover {
+            background: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.danger {
+            background: var(--danger-500);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-btn.danger:hover {
+            background: var(--danger-600);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.warning {
+            background: var(--warning-500);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-btn.warning:hover {
+            background: var(--warning-600);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.info {
+            background: var(--info-500);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-btn.info:hover {
+            background: var(--info-600);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.enhancement {
+            background: var(--gradient-enhancement);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .action-btn.enhancement:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Loading state */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--primary-500);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Enhanced Why Modal Styles */
+        .cli-modal, .why-modal, .markdown-modal, .commands-modal, .poam-modal, .enhancement-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .cli-modal.active, .why-modal.active, .markdown-modal.active, .commands-modal.active, .poam-modal.active, .enhancement-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .cli-modal-content, .why-modal-content, .markdown-modal-content, .commands-modal-content, .poam-modal-content, .enhancement-modal-content {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .commands-modal-content, .poam-modal-content {
+            max-width: 1000px;
+        }
+
+        .cli-modal-header, .why-modal-header, .markdown-modal-header, .commands-modal-header, .poam-modal-header, .enhancement-modal-header {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .poam-modal-header, .enhancement-modal-header {
+            background: var(--gradient-enhancement);
+        }
+
+        .cli-modal-title, .why-modal-title, .markdown-modal-title, .commands-modal-title, .poam-modal-title, .enhancement-modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .close-btn:hover {
+            opacity: 1;
+        }
+
+        .cli-content, .why-modal-body, .markdown-modal-body, .commands-modal-body, .poam-modal-body, .enhancement-modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .cli-content {
+            font-family: 'Courier New', monospace;
+            background: var(--bg-accent);
+            color: var(--text-primary);
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        /* ENHANCED MODERN COMMANDS MODAL STYLES */
+        .commands-modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .commands-modal-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Modern Data Source Badge */
+        .data-source-badge {
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            border: 2px solid;
+            backdrop-filter: blur(10px);
+        }
+
+        .data-source-badge.comprehensive {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(34, 197, 94, 0.1));
+            color: var(--success-600);
+            border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.1);
+        }
+
+        .data-source-badge.fallback {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.1));
+            color: var(--warning-600);
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.1);
+        }
+
+        .data-source-badge.limited {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(248, 113, 113, 0.1));
+            color: var(--danger-600);
+            border-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 8px 32px rgba(239, 68, 68, 0.1);
+        }
+
+        /* Modern Commands Summary */
+        .commands-summary {
+            background: linear-gradient(145deg, var(--bg-secondary), var(--bg-accent));
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commands-summary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .commands-summary-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Modern Stats Grid */
+        .commands-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .command-stat {
+            text-align: center;
+            background: var(--bg-secondary);
+            padding: 1.5rem 1rem;
+            border-radius: var(--radius);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .command-stat:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-500);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .command-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+        }
+
+        .command-stat-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .command-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Modern Command Description Boxes */
+        .commands-summary .description-box,
+        .commands-summary .justification-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.05));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .commands-summary .description-box::before,
+        .commands-summary .justification-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .commands-summary .description-box strong,
+        .commands-summary .justification-box strong {
+            color: var(--primary-600);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Modern Primary Command Box */
+        .primary-command-box {
+            background: var(--gray-900);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .primary-command-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+        }
+
+        .primary-command-box strong {
+            color: #00ff88;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .primary-command-box .command-text {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #00d4ff;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Modern Commands List */
+        .commands-list {
+            margin-top: 2rem;
+        }
+
+        .commands-list h4 {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        /* Enhanced Command Items */
+        .command-item {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .command-item:hover {
+            border-color: var(--primary-500);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .command-header {
+            background: linear-gradient(135deg, var(--bg-accent), var(--bg-secondary));
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .command-header:hover {
+            background: linear-gradient(135deg, var(--border-color), var(--bg-accent));
+        }
+
+        .command-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+        }
+
+        .command-number {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 800;
+            min-width: 60px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .command-status {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid;
+        }
+
+        .command-status.success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(34, 197, 94, 0.1));
+            color: var(--success-600);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .command-status.failed {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(248, 113, 113, 0.1));
+            color: var(--danger-600);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .command-status.unknown {
+            background: var(--bg-accent);
+            color: var(--text-tertiary);
+            border-color: var(--border-color);
+        }
+
+        .command-expand-btn {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            color: var(--text-tertiary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .command-expand-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--primary-500);
+            background: var(--bg-accent);
+        }
+
+        .command-expand-btn.expanded {
+            transform: rotate(180deg);
+            background: var(--primary-500);
+            color: white;
+            border-color: var(--primary-500);
+        }
+
+        .command-details {
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            display: none;
+            background: linear-gradient(145deg, var(--bg-primary), var(--bg-secondary));
+        }
+
+        .command-details.expanded {
+            display: block;
+        }
+
+        /* Enhanced Command Code Display */
+        .command-code {
+            background: var(--gray-900);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #00ff88;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: auto;
+            position: relative;
+            background-image: 
+                linear-gradient(90deg, transparent 0%, transparent 98%, rgba(0, 255, 136, 0.1) 100%),
+                linear-gradient(0deg, rgba(0, 255, 136, 0.05) 0%, transparent 100%);
+        }
+
+        .command-code::before {
+            content: '$ ';
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        /* Modern Meta Grid */
+        .command-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .command-meta-item {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .command-meta-item:hover {
+            border-color: var(--primary-500);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .command-meta-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+        }
+
+        .command-meta-value {
+            font-weight: 800;
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .command-meta-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* No Commands Message */
+        .no-commands-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            background: linear-gradient(135deg, var(--bg-accent), var(--bg-secondary));
+            border-radius: var(--radius-lg);
+            border: 2px dashed var(--border-color);
+        }
+
+        .no-commands-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .no-commands-message h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .no-commands-message p {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Why Modal Content Styles */
+        .why-summary-card {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-summary-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-summary-icon {
+            font-size: 2rem;
+            padding: 0.5rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .why-summary-text h4 {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .why-summary-text p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .why-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .why-metric {
+            text-align: center;
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .why-metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .why-metric-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .why-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .why-section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .why-validation-grid {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .why-validation-item {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .why-validation-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .why-validation-content {
+            flex: 1;
+        }
+
+        .why-validation-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .why-validation-description {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .why-metric-badge {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .why-metric-badge.success {
+            background: var(--gradient-success);
+        }
+
+        .why-metric-badge.warning {
+            background: var(--gradient-warning);
+        }
+
+        .why-metric-badge.danger {
+            background: linear-gradient(135deg, var(--danger-500), #f87171);
+        }
+
+        /* POA&M Modal Specific Styles */
+        .poam-tier-selector {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--bg-accent);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .tier-btn {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .tier-btn.active, .tier-btn:hover {
+            border-color: var(--enhancement-500);
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .tier-content {
+            display: none;
+        }
+
+        .tier-content.active {
+            display: block;
+        }
+
+        .poam-summary {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .poam-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .poam-stat {
+            text-align: center;
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .poam-stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .poam-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .poam-list {
+            margin-top: 1.5rem;
+        }
+
+        .poam-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .poam-item:hover {
+            border-color: var(--enhancement-500);
+            box-shadow: var(--shadow);
+        }
+
+        .poam-header {
+            background: var(--bg-accent);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .poam-header:hover {
+            background: var(--border-color);
+        }
+
+        .poam-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .poam-expand-btn {
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .poam-expand-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .poam-expand-btn.expanded {
+            transform: rotate(180deg);
+        }
+
+        .poam-details {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .poam-details.expanded {
+            display: block;
+        }
+
+
+        /* Enhanced POA&M Modal Styles */
+.findings-overview {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.findings-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--bg-accent);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.summary-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+.summary-card.failed {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: var(--danger-500);
+}
+
+.summary-card.warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: var(--warning-500);
+}
+
+.summary-card.info {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--enhancement-500);
+}
+
+.summary-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.summary-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 8px 0 4px 0;
+}
+
+.summary-timeframe {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.no-findings {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.no-findings-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.no-findings h3 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.findings-section {
+    margin-bottom: 30px;
+}
+
+.findings-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.findings-header.failed {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-600);
+    border: 1px solid var(--danger-200);
+}
+
+.findings-header.warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning-600);
+    border: 1px solid var(--warning-200);
+}
+
+.findings-header.info {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--enhancement-600);
+    border: 1px solid var(--enhancement-200);
+}
+
+.findings-icon {
+    font-size: 1.2rem;
+}
+
+.priority-badge {
+    margin-left: auto;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.priority-badge.high {
+    background: var(--danger-500);
+    color: white;
+}
+
+.priority-badge.medium {
+    background: var(--warning-500);
+    color: white;
+}
+
+.priority-badge.low {
+    background: var(--enhancement-500);
+    color: white;
+}
+
+.findings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.finding-item {
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.finding-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.finding-item.failed {
+    border-left: 4px solid var(--danger-500);
+}
+
+.finding-item.warning {
+    border-left: 4px solid var(--warning-500);
+}
+
+.finding-item.info {
+    border-left: 4px solid var(--enhancement-500);
+}
+
+.finding-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.finding-id {
+    font-family: monospace;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.finding-category {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--enhancement-600);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.finding-description {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.finding-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.finding-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.findings-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 30px;
+}
+
+.action-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn.export {
+    background: var(--enhancement-500);
+    color: white;
+}
+
+.action-btn.template {
+    background: var(--warning-500);
+    color: white;
+}
+
+.action-btn.priority {
+    background: var(--danger-500);
+    color: white;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Dark mode support */
+[data-theme="dark"] .findings-summary {
+    background: var(--bg-accent);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .finding-item {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .finding-id {
+    background: var(--bg-accent);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .findings-summary {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .findings-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .action-btn {
+        justify-content: center;
+    }
+    
+    .finding-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .finding-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+
+
+
+        .poam-info {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .poam-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .poam-meta-item {
+            background: var(--bg-accent);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .poam-meta-value {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+
+        .poam-meta-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-top: 0.25rem;
+        }
+
+        .tier-indicator {
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-compliance {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger-600);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .tier-enhancement {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--enhancement-600);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .tier-staleness {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-600);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        /* Trust Center styles */
+        .trust-center-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .trust-center-header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white; /* Force white for light mode against blue background */
+        }
+
+        .trust-center-header * {
+            color: white; /* Ensure all child elements are white in light mode */
+        }
+
+        [data-theme="dark"] .trust-center-header {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .trust-center-header * {
+            color: var(--text-primary);
+        }
+
+        .trust-center-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .trust-center-subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9); /* White with slight transparency for light mode */
+        }
+
+        .compliance-badge-large {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .compliance-badge-large {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+        }
+
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .access-card {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .access-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .access-card .card-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .access-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .access-card p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .access-btn {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .access-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .trust-section {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .trust-section h2 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .trust-section p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .trust-section h4 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+
+        .compliance-check {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 6px;
+        }
+
+        .compliance-check.passed {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        [data-theme="dark"] .compliance-check.passed {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .compliance-check-icon {
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .api-endpoint {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 5px 0;
+            font-family: monospace;
+            color: var(--text-primary);
+        }
+
+        .api-method {
+            color: var(--success-600);
+            font-weight: bold;
+        }
+
+        .timestamp {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Dark mode support for SCN elements */
+        [data-theme="dark"] .scn-recent-activity {
+            background: var(--bg-accent);
+            border-color: var(--border-color);
+        }
+
+        [data-theme="dark"] .scn-detail-card {
+            background: var(--bg-accent);
+            border-color: var(--border-color);
+        }
+
+        [data-theme="dark"] .scn-file-list {
+            background: var(--bg-accent);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-info-meta {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+                margin: 1rem auto;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .ksi-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .ksi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cli-modal, .why-modal, .commands-modal, .poam-modal, .enhancement-modal {
+                padding: 1rem;
+            }
+
+            .commands-modal-content, .poam-modal-content, .enhancement-modal-content {
+                max-height: 90vh;
+            }
+
+            .commands-modal-header, .poam-modal-header, .enhancement-modal-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .commands-modal-body, .poam-modal-body, .enhancement-modal-body {
+                padding: 1.5rem;
+            }
+
+            .quick-access-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .poam-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .poam-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tier-btn {
+                padding: 0.75rem;
+                font-size: 0.875rem;
+            }
+
+            .why-metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .commands-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .command-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .scn-dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .scn-details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scn-compliance-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utilities */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        /* FIXED: Form elements for dark mode */
+        .trust-section input,
+        .trust-section select,
+        .trust-section textarea {
+    background: var(--bg-accent);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary) !important;
+    border-radius: 8px;
+}
+
+[data-theme="dark"] .trust-section input,
+[data-theme="dark"] .trust-section select,
+[data-theme="dark"] .trust-section textarea {
+    background: var(--bg-accent);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.trust-section label {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .trust-section label {
+    color: var(--text-primary) !important;
+}
+
+/* FIXED: Pre and code elements in trust section */
+.trust-section pre {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .trust-section pre {
+    background: var(--bg-accent);
+    color: var(--text-primary) !important;
+}
+
+.trust-section code {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+[data-theme="dark"] .trust-section code {
+    background: var(--bg-accent);
+    color: var(--text-primary) !important;
+}
+
+/* FIXED: Div text color in trust section */
+.trust-section div {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .trust-section div {
+    color: var(--text-secondary) !important;
+}
+/* FIXED: Modal content for dark mode */
+.commands-modal-content,
+.why-modal-content,
+.markdown-modal-content,
+.poam-modal-content,
+.enhancement-modal-content {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.commands-modal-body,
+.why-modal-body,
+.markdown-modal-body,
+.poam-modal-body,
+.enhancement-modal-body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Fix all text elements inside modals for dark mode */
+[data-theme="dark"] .commands-modal-body *,
+[data-theme="dark"] .why-modal-body *,
+[data-theme="dark"] .markdown-modal-body *,
+[data-theme="dark"] .poam-modal-body *,
+[data-theme="dark"] .enhancement-modal-body * {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .commands-modal-body p,
+[data-theme="dark"] .commands-modal-body div,
+[data-theme="dark"] .commands-modal-body span,
+[data-theme="dark"] .why-modal-body p,
+[data-theme="dark"] .why-modal-body div,
+[data-theme="dark"] .why-modal-body span {
+    color: var(--text-secondary) !important;
+}
+
+/* Fix Command Execution Overview modal specifically */
+[data-theme="dark"] .commands-modal-title {
+    color: white !important;
+}
+
+[data-theme="dark"] .command-stat-value {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .command-stat-label {
+    color: var(--text-tertiary) !important;
+}
+
+/* Fix the validation description text that appears dark blue */
+[data-theme="dark"] .validation-description,
+[data-theme="dark"] .command-description,
+[data-theme="dark"] .requirement-description {
+    color: var(--text-secondary) !important;
+}
+
+/* Fix command descriptions and validation text specifically */
+[data-theme="dark"] .commands-summary,
+[data-theme="dark"] .commands-summary *,
+[data-theme="dark"] .description-box,
+[data-theme="dark"] .description-box *,
+[data-theme="dark"] .justification-box,
+[data-theme="dark"] .justification-box *,
+[data-theme="dark"] .primary-command-box,
+[data-theme="dark"] .command-item,
+[data-theme="dark"] .command-title,
+[data-theme="dark"] .command-details {
+    color: var(--text-primary) !important;
+}
+
+/* Ensure all modal text is properly colored */
+[data-theme="dark"] .modal * {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal p,
+[data-theme="dark"] .modal div:not(.command-stat-value) {
+    color: var(--text-secondary) !important;
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-top">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="meridian-favicon.png" alt="MKS Logo" style="width: 32px; height: 32px; border-radius: 8px;">
+                    </div>
+                    <div class="title-section">
+                        <h1>FedRAMP 20x Trust Center</h1>
+                        <div class="subtitle">Meridian LMS</div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                    <div class="status-badge">
+                        <span>🛡️</span>
+                        <span>Authorized - Limited Pilot Authorization</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="showTab('compliance')">🔍 Compliance Dashboard</button>
+                <button class="tab-btn" onclick="showTab('trust-center')">🛡️ Trust Center (RFC-0011)</button>
+            </div>
+
+            <div class="header-info">
+                <div class="header-info-content">
+                    <div class="header-info-title">Enhanced FedRAMP 20x POA&M System</div>
+                    <div class="header-info-subtitle">✅ Compliance Tracking | 🟡 Low Risk Findings | 📈 Improvement Opportunities | 🕒 Evidence Currency</div>
+                    <div class="header-info-meta">
+                        <div class="header-info-item">
+                            <span>⏰</span>
+                            <span>Last updated: <span id="header-timestamp">Loading...</span></span>
+                        </div>
+                        <div class="header-info-item">
+                            <span class="continuous-improvement">🚀</span>
+                            <span>CONTINUOUS IMPROVEMENT ACTIVE</span>
+                        </div>
+                    </div>
+                    <div class="compliance-badge">
+                        Compliant with RFC-0008 (Continuous Reporting) and RFC-0011 (Trust Center Requirements)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tab 1 - Compliance Dashboard -->
+    <div id="compliance-tab" class="tab-content active">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value primary" id="overall-score">Loading...</div>
+                    <div class="stat-label">Overall Compliance</div>
+                    <div class="stat-change positive">↗ Assertion-Based Scoring</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value success" id="passed-count">-</div>
+                    <div class="stat-label">KSIs Compliant</div>
+                    <div class="stat-change positive">✓ Meeting Requirements</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value danger" id="failed-count">-</div>
+                    <div class="stat-label">KSIs Non-Compliant</div>
+                    <div class="stat-change positive">🚨 Remediation Required</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value warning" id="warning-count">-</div>
+                    <div class="stat-label">Low Risk Findings</div>
+                    <div class="stat-change positive">🟡 90-Day Tracking</div>
+                </div>
+                <div class="stat-card enhancement">
+                    <div class="stat-value info" id="info-count">-</div>
+                    <div class="stat-label">Improvement Opportunities</div>
+                    <div class="stat-change enhancement">📈 Proactive Enhancement</div>
+                </div>
+            </div>
+
+            <!-- Last Updated Information -->
+            <div class="update-info">
+                <div class="update-card">
+                    <div class="update-icon">⏰</div>
+                    <div class="update-content">
+                        <div class="update-label">Last Updated</div>
+                        <div class="update-time" id="last-updated">Loading...</div>
+                    </div>
+                </div>
+                <div class="update-card">
+                    <div class="update-icon">🔄</div>
+                    <div class="update-content">
+                        <div class="update-label">Next Update</div>
+                        <div class="update-time" id="next-update">Every 24 hours</div>
+                    </div>
+                </div>
+                <div class="update-card">
+                    <div class="update-icon">📊</div>
+                    <div class="update-content">
+                        <div class="update-label">Enhanced POA&M System</div>
+                        <div class="update-time" style="cursor: pointer; color: var(--enhancement-500); text-decoration: underline;">
+                            <button onclick="window.showPOAMModal()" style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer; font-size: inherit; font-weight: inherit;">View Analysis</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Center Section -->
+            <div class="trust-center-section">
+                <h2 class="section-title">🛡️ Trust Center</h2>
+                <div class="trust-grid">
+                    <!-- FedRAMP Authorization Data -->
+                    <div class="trust-card">
+                        <div class="trust-card-header">
+                            <h3 class="trust-card-title">🔷 FedRAMP Authorization Data (RFC-0011)</h3>
+                        </div>
+                        <div class="trust-card-content">
+                            <div class="trust-item">
+                                <strong>Service Description:</strong> Meridian LMS for Government is a secure, scalable learning management system purpose-built for the training, compliance, and workforce development needs of public sector organizations. It supports blended learning, role-based training paths, real-time reporting, and advanced features like career development tools and a native learning record store (LRS). The platform is fully Section 508 and WCAG 2.2 compliant, FedRAMP-authorized, and deployable in AWS, on-premises, or private cloud environments.
+                            </div>
+                            <div class="trust-item">
+                                <strong>Impact Level:</strong> Low (20x)
+                            </div>
+                            <div class="trust-item">
+                                <strong>FedRAMP Marketplace:</strong> <a href="https://marketplace.fedramp.gov/products/FR2527956755">View Listing</a>
+                            </div>
+                            <div class="trust-item">
+                                <strong>Assessment Method:</strong> Machine-readable validation with automated KSI assessment
+                            </div>
+                            <div class="trust-item">
+                                <strong>Hosting Environment:</strong> AWS Commercial (US-East)
+                            </div>
+                            <div class="trust-item">
+                                <strong>Evidence Repository:</strong> <a href="https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission-live" target="_blank" class="trust-link">GitHub Public Repo</a>
+                            </div>
+                            <div class="trust-item">
+                                <strong>Validation Data:</strong> 
+                                <a href="#" onclick="downloadJSON()" class="trust-link">📄 Download JSON</a> | 
+                                <a href="#" onclick="viewFailedReport()" class="trust-link">📋 Failed KSI Report</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Available Materials -->
+                    <div class="trust-card">
+                        <div class="trust-card-header">
+                            <h3 class="trust-card-title">📋 Available Materials</h3>
+                        </div>
+                        <div class="trust-card-content">
+                            <div class="materials-section">
+                                <div class="materials-header">🔒 Public Materials:</div>
+                                <ul class="materials-list">
+                                    <li>Real-time compliance dashboard</li>
+                                    <li>KSI validation methodology</li>
+                                    <li>Service architecture overview</li>
+                                    <li>Continuous monitoring reports</li>
+                                </ul>
+                            </div>
+                            <div class="materials-section">
+                                <div class="materials-header">🔐 Federal Agency Access:</div>
+                                <ul class="materials-list">
+                                    <li>Complete authorization package</li>
+                                    <li>Detailed security plans</li>
+                                    <li>3PAO assessment reports</li>
+                                    <li>Continuous monitoring data</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced POA&M System -->
+                    <div class="trust-card enhancement-indicator">
+                        <div class="trust-card-header" style="background: var(--gradient-enhancement);">
+                            <h3 class="trust-card-title">🚀 Risk-Based POA&M System</h3>
+                        </div>
+                        <div class="trust-card-content">
+                            <div class="trust-item">
+                                <strong>🚨 Tier 1: Compliance POA&M</strong> - Traditional remediation for failed validations (30-day SLAs)
+                            </div>
+                            <div class="trust-item">
+                                <strong>🟡 Low Risk Findings</strong> - Minor findings requiring attention (90-day SLAs)
+                            </div>
+                            <div class="trust-item">
+                                <strong>📈 Improvement Opportunities</strong> - Enhancement suggestions for continuous improvement (180-day SLAs)
+                            </div>
+                            <div class="trust-item">
+                                <strong>🕒 Tier 3: Staleness Tracking</strong> - Evidence currency management (7-day refresh windows)
+                            </div>
+                            <div class="trust-item">
+                                <strong>Innovation:</strong> We implement risk-based POA&M tracking beyond traditional binary compliance. Warning indicators map to low risk findings (90-day tracking), info indicators map to improvement opportunities (180-day tracking).
+                            </div>
+                            <div class="trust-item">
+                                <button onclick="window.showPOAMModal()" class="action-btn enhancement">📊 View Risk-Based POA&M Analysis</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KSI Details Section -->
+            <div class="ksi-section">
+                <div class="ksi-header">
+                    <h2 class="ksi-title">
+                        🔍 Key Security Indicators
+                    </h2>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="status-filter" class="sr-only">Filter by status</label>
+                            <select id="status-filter" class="filter-select">
+                                <option value="">All Status</option>
+                                <option value="passed">Passed</option>
+                                <option value="failed">Failed</option>
+                                <option value="warning">Low Risk</option>
+                                <option value="info">Improvement</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="category-filter" class="sr-only">Filter by category</label>
+                            <select id="category-filter" class="filter-select">
+                                <option value="">All Categories</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="search-input" class="sr-only">Search KSIs</label>
+                            <input type="text" id="search-input" class="search-box" placeholder="Search KSIs...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Filter Chips -->
+                <div class="filter-chips" id="filter-chips">
+                    <div class="filter-chip active" data-status="">All</div>
+                    <div class="filter-chip" data-status="passed">✅ Passed</div>
+                    <div class="filter-chip" data-status="failed">❌ Failed</div>
+                    <div class="filter-chip" data-status="warning">🟡 Low Risk</div>
+                    <div class="filter-chip" data-status="info">📈 Improvement</div>
+                </div>
+
+                <!-- KSI Grid -->
+                <div class="ksi-grid" id="ksi-grid">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading KSI data...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab 2 - Trust Center RFC-0011 -->
+    <div id="trust-center-tab" class="tab-content">
+        <div class="trust-center-container">
+            <!-- Trust Center Header -->
+            <div class="trust-center-header">
+                <h1>🛡️ RFC-0011 Compliant Trust Center</h1>
+                <p class="trust-center-subtitle">Federal agency access to authorization data</p>
+                <div class="compliance-badge-large">
+                    API Access • Enhanced POA&M • Incident Reporting • Agency Workflow
+                </div>
+            </div>
+
+            <!-- Quick Access Cards -->
+            <div class="quick-access-grid">
+                <div class="access-card">
+                    <div class="card-icon">🔧</div>
+                    <h3>API Access</h3>
+                    <p>Machine-readable authorization data</p>
+                    <button onclick="scrollToTrustSection('api-section')" class="access-btn">View API Docs</button>
+                </div>
+                
+                <div class="access-card">
+                    <div class="card-icon">📋</div>
+                    <h3>Request Access</h3>
+                    <p>Federal agency request workflow</p>
+                    <button onclick="scrollToTrustSection('agency-form-section')" class="access-btn">Submit Request</button>
+                </div>
+                
+                <div class="access-card enhancement-indicator">
+                    <div class="card-icon">📊</div>
+                    <h3>Risk-Based POA&M</h3>
+                    <p>Multi-level risk tracking</p>
+                    <button onclick="window.showPOAMModal()" class="access-btn">View POA&M</button>
+                </div>
+                
+                <div class="access-card">
+                    <div class="card-icon">🚨</div>
+                    <h3>Incident Reports</h3>
+                    <p>Security incident templates</p>
+                    <button onclick="scrollToTrustSection('incident-section')" class="access-btn">Get Templates</button>
+                </div>
+            </div>
+
+            <!-- API Section -->
+            <div id="api-section" class="trust-section">
+                <h2>🔧 API Access (RFC-0011)</h2>
+                <p>Programmatic access to real-time authorization data for federal agencies</p>
+                
+                <h4>Available Endpoints:</h4>
+                <div style="background: var(--bg-accent); color: var(--text-primary); padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border-color);">
+                    <div style="margin-bottom: 10px;"><strong>GET</strong> ./unified_ksi_validations.json - Complete KSI validation results</div>
+                    <div style="margin-bottom: 10px;"><strong>GET</strong> ./failed_ksi_report_readable.md - Human-readable remediation guidance</div>
+                    <div><strong>GET</strong> ./evidence_commit_metadata.json - Audit trail and evidence metadata</div>
+                </div>
+                
+                <h4>Usage Example:</h4>
+                <pre style="background: var(--bg-accent); color: var(--text-primary); padding: 15px; border-radius: 5px; overflow-x: auto; border: 1px solid var(--border-color);">
+// Fetch current compliance status
+async function getAuthorizationSummary() {
+    const base = 'https://meridian-knowledge-solutions.github.io/fedramp_20x_public_submission-live';
+    const response = await fetch(`${base}/unified_ksi_validations.json`);
+    const data = await response.json();
+    
+    return {
+        total_ksis: data.length,
+        passed: data.filter(ksi => ksi.assertion === true).length,
+        failed: data.filter(ksi => ksi.assertion === false).length,
+        low_risk: data.filter(ksi => (ksi.assertion_reason || '').includes('warning')).length,
+        improvements: data.filter(ksi => (ksi.assertion_reason || '').includes('info')).length,
+        compliance_percentage: (data.filter(ksi => ksi.assertion === true).length / data.length * 100).toFixed(1)
+    };
+}
+                </pre>
+            </div>
+
+            <!-- Agency Form Section -->
+            <div id="agency-form-section" class="trust-section">
+                <h2>📋 Federal Agency Access Request</h2>
+                <p>Official process for federal agencies to request access to authorization materials</p>
+                
+                <form id="federal-access-form" style="max-width: 600px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Federal Agency *</label>
+                            <input type="text" name="agency" required style="width: 100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); color: var(--text-primary);">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Authorizing Official *</label>
+                            <input type="text" name="ao_name" required style="width: 100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); color: var(--text-primary);">
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Official Email (.gov/.mil) *</label>
+                        <input type="email" name="email" required style="width: 100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); color: var(--text-primary);">
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Access Type *</label>
+                        <select name="access_type" required style="width: 100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); color: var(--text-primary);">
+                            <option value="">Select access type...</option>
+                            <option value="full_package">Complete Authorization Package</option>
+                            <option value="api_credentials">API Access Credentials</option>
+                            <option value="monitoring_data">Continuous Monitoring Reports</option>
+                            <option value="poam_access">Enhanced POA&M Analysis</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Business Justification *</label>
+                        <textarea name="justification" required rows="4" style="width: 100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); color: var(--text-primary);"></textarea>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: flex; align-items: flex-start; color: var(--text-primary);">
+                            <input type="checkbox" name="certification" required style="margin-right: 10px; margin-top: 3px;">
+                            I certify that I am an authorized federal government representative.
+                        </label>
+                    </div>
+                    
+                    <button type="submit" style="background: var(--gradient-accent); color: white; border: none; padding: 15px 30px; border-radius: 10px; font-weight: 600; cursor: pointer; box-shadow: var(--shadow-sm);">
+                        Submit Federal Access Request
+                    </button>
+                </form>
+                
+                <div id="form-response" style="margin-top: 20px;"></div>
+            </div>
+
+            <!-- Incident Section -->
+            <div id="incident-section" class="trust-section">
+                <h2>🚨 Security Incident Reporting</h2>
+                <p>FedRAMP-compliant incident classification, reporting templates, and notification procedures</p>
+                
+                <div style="background: rgba(245, 158, 11, 0.1); border: 2px solid var(--warning-500); border-radius: 10px; padding: 25px; margin-bottom: 30px; color: var(--text-primary);">
+                    <h4 style="color: var(--warning-600); margin-bottom: 15px;">🚨 Emergency Security Hotline</h4>
+                    <div><strong>Phone:</strong> +1 (571) 665-5287</div>
+                    <div><strong>Email:</strong> security@meridianks.com</div>
+                    <div><strong>Response SLA:</strong> 1 hour for Category 1-2 incidents</div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: var(--bg-accent); padding: 25px; border-radius: 10px; border-left: 4px solid var(--danger-500); border: 1px solid var(--border-color);">
+                        <h4 style="color: var(--text-primary);">📋 Incident Report Template</h4>
+                        <p style="color: var(--text-secondary);">Standardized FedRAMP incident reporting format</p>
+                        <button onclick="downloadIncidentTemplate()" style="background: var(--danger-500); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; box-shadow: var(--shadow-sm);">Download Template</button>
+                    </div>
+                    
+                    <div style="background: var(--bg-accent); padding: 25px; border-radius: 10px; border-left: 4px solid var(--danger-500); border: 1px solid var(--border-color);">
+                        <h4 style="color: var(--text-primary);">📊 Classification Guide</h4>
+                        <p style="color: var(--text-secondary);">FedRAMP Categories 1-5 with notification timelines</p>
+                        <button onclick="downloadClassificationGuide()" style="background: var(--danger-500); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; box-shadow: var(--shadow-sm);">Download Guide</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab 3 - Enhanced SCN Transparency -->
+    <div id="scn-transparency-tab" class="tab-content">
+        <div class="trust-center-container">
+            <!-- Trust Center Header -->
+            <div class="trust-center-header">
+                <h1>🛡️ Enhanced Trust Center with SCN Transparency</h1>
+                <p class="trust-center-subtitle">Real-time change management transparency for federal agencies</p>
+                <div class="compliance-badge-large">
+                    RFC-0011 Compliant • FedRAMP 20x • Enhanced SCN Automation • Public Transparency
+                </div>
+            </div>
+
+                
+                <div class="access-card" onclick="scrollToSection('api-section-scn')">
+                    <div class="card-icon">🔧</div>
+                    <h3>Enhanced API Access</h3>
+                    <button class="access-btn">View API Docs</button>
+                </div>
+                
+                <div class="access-card" onclick="scrollToSection('compliance-status-section')">
+                    <div class="card-icon">📊</div>
+                    <h3>Compliance Dashboard</h3>
+                    <p>Real-time FedRAMP 20x status</p>
+                    <button class="access-btn">View Status</button>
+                </div>
+                
+                <div class="access-card" onclick="scrollToSection('evidence-packages-section')">
+                    <div class="card-icon">📋</div>
+                    <h3>Evidence Packages</h3>
+                    <p>Professional audit-ready documentation</p>
+                    <button class="access-btn">Download Evidence</button>
+                </div>
+            </div>
+
+            <!-- SCN Transparency Section -->
+            <div id="scn-transparency-section" class="trust-section">
+                <h2>🔄 Enhanced SCN Transparency Dashboard</h2>
+                <p>Real-time visibility into all significant change notifications with FedRAMP 20x compliance</p>
+                
+                <!-- SCN Dashboard -->
+                <div class="scn-dashboard">
+                    <div class="scn-status-card">
+                        <div class="scn-status-value" id="scn-status-value">Loading...</div>
+                        <div class="scn-status-label">Current SCN Status</div>
+                        <div style="margin-top: 10px; font-size: 0.8rem;">
+                            Last Updated: <span id="scn-last-update">Loading...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="scn-recent-activity">
+                        <h4>Recent SCN Activity</h4>
+                        <div id="scn-activity-list">
+                            <div class="loading-spinner"></div> Loading recent changes...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current SCN Details -->
+                <div id="scn-current-details">
+                    <h4>Current Change Classification Details</h4>
+                    <div class="scn-details-grid">
+                        <div class="scn-detail-card">
+                            <strong>Service Offering ID:</strong>
+                            <div id="scn-service-id">Loading...</div>
+                        </div>
+                        <div class="scn-detail-card">
+                            <strong>3PAO Assessment:</strong>
+                            <div id="scn-3pao">Loading...</div>
+                        </div>
+                        <div class="scn-detail-card">
+                            <strong>Customer Impact:</strong>
+                            <div id="scn-customer-impact">Loading...</div>
+                        </div>
+                        <div class="scn-detail-card">
+                            <strong>Files Changed:</strong>
+                            <div id="scn-file-count">Loading...</div>
+                        </div>
+                    </div>
+
+                    <!-- FedRAMP 20x Compliance Status -->
+                    <h4 style="margin-top: 25px;">FedRAMP 20x Compliance Verification</h4>
+                    <div class="scn-compliance-grid" id="scn-compliance-checks">
+                        <div class="loading-spinner"></div> Loading compliance status...
+                    </div>
+                </div>
+
+                <!-- Change Files Detail -->
+                <div style="margin-top: 25px;">
+                    <h4>Changed Files (Latest Classification)</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 10px;">Complete transparency of all files included in the current change classification</p>
+                    <div class="scn-file-list" id="scn-files-list">
+                        Loading file list...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced API Access Section -->
+            <div id="api-section-scn" class="trust-section">
+                <h2>🔧 Enhanced API Access (RFC-0011 + SCN)</h2>
+                <p>Programmatic access to real-time authorization and change notification data</p>
+                
+                <h4>Core Compliance Endpoints:</h4>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span> ./unified_ksi_validations.json - Complete KSI validation results
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span> ./failed_ksi_report_readable.md - Human-readable remediation guidance
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span> ./evidence_commit_metadata.json - Complete audit trail metadata
+                </div>
+
+                <h4 style="margin-top: 20px;">Enhanced SCN Transparency Endpoints:</h4>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span> ./scn_automation/scn_classification.json - Latest SCN classification with complete FRR-SCN-09 elements
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span> ./scn_automation/enhanced_scn_status.json - Real-time SCN automation status
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span> ./scn_automation/external_repo_changes.json - External repository monitoring data
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span> ./directory_index.json - Complete repository structure guide
+                </div>
+
+                <h4 style="margin-top: 20px;">Usage Example - SCN Data:</h4>
+                <pre style="background: var(--bg-accent); padding: 15px; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border-color);">
+// Fetch current SCN classification status
+async function getSCNStatus() {
+    const base = 'https://meridian-knowledge-solutions.github.io/fedramp_20x_public_submission-live';
+    
+    // Get current SCN classification
+    const scnResponse = await fetch(`${base}/scn_automation/scn_classification.json`);
+    const scnData = await scnResponse.json();
+    
+    // Get enhanced automation status
+    const statusResponse = await fetch(`${base}/scn_automation/enhanced_scn_status.json`);
+    const statusData = await statusResponse.json();
+    
+    return {
+        scn_type: scnData.scn_type,
+        requires_notification: scnData.requires_notification,
+        service_id: scnData.service_offering_fedramp_id,
+        automation_active: statusData.enhanced_scn_automation.monitoring_active,
+        compliance_status: scnData.fedramp_20x_compliance,
+        files_changed: scnData.file_count,
+        last_classification: scnData.timestamp
+    };
+}
+                </pre>
+            </div>
+
+            <!-- Compliance Status Section -->
+            <div id="compliance-status-section" class="trust-section">
+                <h2>📊 Real-Time Compliance Status</h2>
+                <p>Live monitoring of FedRAMP 20x requirements and enhanced SCN automation</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="scn-detail-card">
+                        <strong>Enhanced SCN Automation:</strong>
+                        <div id="enhanced-scn-active">Loading...</div>
+                    </div>
+                    <div class="scn-detail-card">
+                        <strong>FedRAMP 20x Compliant:</strong>
+                        <div id="fedramp-compliant">Loading...</div>
+                    </div>
+                    <div class="scn-detail-card">
+                        <strong>Emergency Mode Support:</strong>
+                        <div id="emergency-support">Loading...</div>
+                    </div>
+                    <div class="scn-detail-card">
+                        <strong>Public Transparency:</strong>
+                        <div id="public-transparency">Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evidence Packages Section -->
+            <div id="evidence-packages-section" class="trust-section">
+                <h2>📋 Professional Evidence Packages</h2>
+                <p>Audit-ready documentation with complete metadata and compliance trails</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div class="access-card">
+                        <div class="card-icon">📄</div>
+                        <h4>SCN Compliance Package</h4>
+                        <p>Complete SCN documentation with FRR-SCN-09 elements</p>
+                        <button class="access-btn" onclick="downloadEvidence('scn')">Download SCN Evidence</button>
+                    </div>
+                    
+                    <div class="access-card">
+                        <div class="card-icon">📊</div>
+                        <h4>KSI Validation Package</h4>
+                        <p>Complete KSI evidence with validation results</p>
+                        <button class="access-btn" onclick="downloadEvidence('ksi')">Download KSI Evidence</button>
+                    </div>
+                    
+                    <div class="access-card">
+                        <div class="card-icon">🔍</div>
+                        <h4>Audit Trail Package</h4>
+                        <p>Complete audit metadata with Git SHA tracking</p>
+                        <button class="access-btn" onclick="downloadEvidence('audit')">Download Audit Trail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Modals -->
+    <div class="cli-modal" id="cli-modal">
+        <div class="cli-modal-content">
+            <div class="cli-modal-header">
+                <h3 class="cli-modal-title" id="modal-title">CLI Details</h3>
+                <button class="close-btn" onclick="closeCliModal()">&times;</button>
+            </div>
+            <div class="cli-content" id="modal-content">
+                <!-- CLI content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Why Modal -->
+    <div class="why-modal" id="why-modal">
+        <div class="why-modal-content">
+            <div class="why-modal-header">
+                <h3 class="why-modal-title" id="why-modal-title">🤔 Why This Result?</h3>
+                <button class="close-btn" onclick="closeWhyModal()">&times;</button>
+            </div>
+            <div class="why-modal-body" id="why-modal-body">
+                <!-- Enhanced Why content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="markdown-modal" id="markdown-modal">
+        <div class="markdown-modal-content">
+            <div class="markdown-modal-header">
+                <h3 class="markdown-modal-title">Failed KSI Report</h3>
+                <button class="close-btn" onclick="closeMarkdownModal()">&times;</button>
+            </div>
+            <div class="markdown-modal-body" id="markdown-modal-body">
+                <!-- Markdown content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="commands-modal" id="commands-modal">
+        <div class="commands-modal-content">
+            <div class="commands-modal-header">
+                <h3 class="commands-modal-title" id="commands-modal-title">⚡ Commands Executed</h3>
+                <button class="close-btn" onclick="closeCommandsModal()">&times;</button>
+            </div>
+            <div class="commands-modal-body" id="commands-modal-body">
+                <!-- Commands content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced POA&M Modal -->
+    <div class="poam-modal" id="poam-modal">
+        <div class="poam-modal-content">
+            <div class="poam-modal-header">
+                <h3 class="poam-modal-title" id="poam-modal-title">🚀 Risk-Based POA&M Analysis</h3>
+                <button class="close-btn" onclick="closePOAMModal()">&times;</button>
+            </div>
+            <div class="poam-modal-body" id="poam-modal-body">
+                <!-- Enhanced POA&M content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhancement Details Modal -->
+    <div class="enhancement-modal" id="enhancement-modal">
+        <div class="enhancement-modal-content">
+            <div class="enhancement-modal-header">
+                <h3 class="enhancement-modal-title" id="enhancement-modal-title">📈 Improvement Opportunity Details</h3>
+                <button class="close-btn" onclick="closeEnhancementModal()">&times;</button>
+            </div>
+            <div class="enhancement-modal-body" id="enhancement-modal-body">
+                <!-- Enhancement details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ✅ GLOBAL VARIABLES: Enhanced for multi-level POA&M system
+        let allKsis = [];
+        let filteredKsis = [];
+        let currentFilters = { status: '', category: '', search: '' };
+        let commandRegister = null; // Store the comprehensive command register
+        let enhancedPOAM = {
+            compliance: [],
+            enhancement: [],
+            staleness: []
+        };
+
+        // ✅ Determine KSI status including low risk and improvement opportunities
+        function determineKsiStatus(validation) {
+            const assertion = validation.assertion;
+            const reason = (validation.assertion_reason || '').toLowerCase();
+            
+            // Check for explicit status indicators in assertion_reason
+            if (reason.includes('warning') || reason.includes('⚠️')) {
+                return 'warning'; // Low Risk Findings
+            }
+            if (reason.includes('info') || reason.includes('ℹ️') || reason.includes('informational')) {
+                return 'info'; // Improvement Opportunities
+            }
+            
+            // Default assertion-based logic
+            if (assertion === true || assertion === "true") {
+                return 'passed';
+            } else if (assertion === false || assertion === "false") {
+                return 'failed';
+            }
+            
+            return 'unknown';
+        }
+
+        // ✅ ENHANCED: Load comprehensive command register
+        async function loadCommandRegister() {
+            try {
+                console.log('📋 Attempting to load comprehensive command register...');
+                const response = await fetch('./cli_command_register.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const register = await response.json();
+                console.log('✅ Command register loaded successfully');
+                console.log(`📊 Register contains ${Object.keys(register).length} KSIs with detailed commands`);
+                
+                commandRegister = register;
+                return register;
+            } catch (error) {
+                console.warn('⚠️ Could not load command register:', error.message);
+                commandRegister = null;
+                return null;
+            }
+        }
+
+        // ✅ ENHANCED: Extract command details with comprehensive register support
+        function extractCommandDetails(validation) {
+            const ksiId = validation.ksi_id || validation.validation_id || 'Unknown';
+            
+            // ✅ PRIORITY 1: Use comprehensive command register if available
+            if (commandRegister && commandRegister[ksiId]) {
+                const registerEntry = commandRegister[ksiId];
+                console.log(`🎯 Using comprehensive register for ${ksiId}: ${registerEntry.cli_commands?.length || 0} commands`);
+                
+                return {
+                    commands: registerEntry.cli_commands?.map((cmd, index) => ({
+                        command: cmd.command || cmd,
+                        description: cmd.note || `Command ${index + 1}`,
+                        status: determineCommandStatus(validation, index),
+                        execution_time: 'Unknown',
+                        source: 'comprehensive_register'
+                    })) || [],
+                    source: 'comprehensive_register',
+                    description: registerEntry.description,
+                    justification: registerEntry.justification
+                };
+            }
+            
+            // ✅ FALLBACK 1: Parse validation summary format
+            if (validation.cli_command) {
+                console.log(`📝 Using fallback parsing for ${ksiId}`);
+                return {
+                    commands: parseCliCommandString(validation),
+                    source: 'validation_summary'
+                };
+            }
+            
+            // ✅ FALLBACK 2: No command data available
+            console.log(`❌ No command data available for ${ksiId}`);
+            return {
+                commands: [],
+                source: 'no_data'
+            };
+        }
+
+        // ✅ HELPER: Determine command status based on validation results
+        function determineCommandStatus(validation, commandIndex) {
+            const successfulCommands = validation.successful_commands || 0;
+            const failedCommands = validation.failed_commands || 0;
+            const totalCommands = validation.commands_executed || 0;
+            
+            if (failedCommands === 0) return 'success';
+            if (successfulCommands === 0) return 'failed';
+            
+            // Mixed results - distribute based on success rate
+            return commandIndex < successfulCommands ? 'success' : 'failed';
+        }
+
+        // ✅ ENHANCED: Parse CLI command string (fallback method)
+        function parseCliCommandString(validation) {
+            const cliCommand = validation.cli_command;
+            const totalCommands = validation.commands_executed || 0;
+            
+            const commandMatch = cliCommand.match(/^(\d+)\s+commands?\s+\((\d+)\s+successful\):\s*(.+)$/);
+            
+            if (!commandMatch) {
+                return [{
+                    command: cliCommand,
+                    description: 'Primary validation command',
+                    status: validation.assertion === true ? 'success' : 'failed',
+                    execution_time: 'Unknown',
+                    source: 'fallback_single'
+                }];
+            }
+            
+            const [, totalStr, successfulStr, commandsStr] = commandMatch;
+            const successful = parseInt(successfulStr);
+            
+            let commandsList = commandsStr.split(';').map(cmd => cmd.trim());
+            
+            // Handle "(+X more)" truncation
+            const lastCommand = commandsList[commandsList.length - 1];
+            const moreMatch = lastCommand.match(/^(.+?)\s+\(\+(\d+)\s+more\)$/);
+            
+            if (moreMatch) {
+                commandsList[commandsList.length - 1] = moreMatch[1].trim();
+                const truncatedCount = parseInt(moreMatch[2]);
+                
+                for (let i = 0; i < truncatedCount; i++) {
+                    commandsList.push('... additional command not shown ...');
+                }
+            }
+            
+            return commandsList.map((cmd, index) => ({
+                command: cmd,
+                description: generateCommandDescription(cmd, index + 1),
+                status: index < successful ? 'success' : 'failed',
+                execution_time: 'Unknown',
+                source: 'fallback_parsed'
+            }));
+        }
+
+        function generateCommandDescription(command, index) {
+            const cmd = command.toLowerCase();
+            
+            if (cmd.includes('describe-security-groups')) return 'Check security group configurations';
+            if (cmd.includes('describe-network-acls')) return 'Analyze Network ACL configurations';
+            if (cmd.includes('describe-route-tables')) return 'Validate routing configurations';
+            if (cmd.includes('describe-nat-gateways')) return 'Check NAT Gateway configurations';
+            if (cmd.includes('describe-vpc-endpoints')) return 'Validate VPC endpoints';
+            if (cmd.includes('list-web-acls')) return 'Check WAF configurations';
+            if (cmd.includes('describe-load-balancers')) return 'Analyze load balancers';
+            if (cmd.includes('describe-log-groups')) return 'Check log configurations';
+            if (cmd.includes('describe-trails')) return 'Analyze CloudTrail configuration';
+            if (cmd.includes('list-users')) return 'List IAM users';
+            if (cmd.includes('get-account-summary')) return 'Get account-wide IAM statistics';
+            if (cmd.includes('describe-instances')) return 'Analyze EC2 instances';
+            if (cmd.includes('describe-subnets')) return 'Examine subnet configurations';
+            if (cmd.includes('describe-vpcs')) return 'Check VPC configurations';
+            
+            return `Command ${index}: ${command.split(' ')[1] || 'AWS operation'}`;
+        }
+
+        // ✅ ENHANCED: Smart Partial Detection Engine
+        function detectEnhancementOpportunities(assertionReason, ksiStatus) {
+            if (ksiStatus !== 'passed') return [];
+            
+            const opportunities = [];
+            const reason = assertionReason || '';
+            
+            // Pattern detection for enhancement opportunities
+            const patterns = [
+                {
+                    pattern: /basic\s+(\w+)/gi,
+                    type: 'Basic Implementation',
+                    description: 'Consider upgrading from basic to advanced configuration'
+                },
+                {
+                    pattern: /minimal\s+(\w+)/gi,
+                    type: 'Minimal Configuration',
+                    description: 'Opportunity to enhance beyond minimum requirements'
+                },
+                {
+                    pattern: /single\s+(\w+)/gi,
+                    type: 'Single Point Configuration',
+                    description: 'Consider implementing redundancy or multi-point architecture'
+                },
+                {
+                    pattern: /limited\s+(\w+)/gi,
+                    type: 'Limited Scope',
+                    description: 'Opportunity to expand coverage or capabilities'
+                },
+                {
+                    pattern: /(\d+)%.*partial/gi,
+                    type: 'Partial Implementation',
+                    description: 'Identified areas for completion or enhancement'
+                },
+                {
+                    pattern: /(high|significant|substantial).*exposure/gi,
+                    type: 'Exposure Risk',
+                    description: 'Opportunity to reduce risk exposure through enhanced controls'
+                },
+                {
+                    pattern: /segmentation.*detected/gi,
+                    type: 'Segmentation Enhancement',
+                    description: 'Network segmentation can be enhanced for better isolation'
+                }
+            ];
+            
+            patterns.forEach(({ pattern, type, description }) => {
+                const matches = reason.match(pattern);
+                if (matches) {
+                    opportunities.push({
+                        type,
+                        description,
+                        evidence: matches[0],
+                        priority: calculateEnhancementPriority(type, matches[0])
+                    });
+                }
+            });
+            
+            return opportunities;
+        }
+
+        function calculateEnhancementPriority(type, evidence) {
+            const priorityMap = {
+                'Exposure Risk': 'High',
+                'Segmentation Enhancement': 'High', 
+                'Single Point Configuration': 'Medium',
+                'Basic Implementation': 'Medium',
+                'Partial Implementation': 'Medium',
+                'Minimal Configuration': 'Low',
+                'Limited Scope': 'Low'
+            };
+            
+            return priorityMap[type] || 'Low';
+        }
+
+        // ✅ ENHANCED: Parse assertion reason into structured validation points
+        function parseAssertionReason(assertionReason, ksiStatus) {
+            if (!assertionReason) return { summary: 'No assessment details available', validations: [] };
+            
+            const validations = [];
+            let summary = '';
+            
+            // Split by checkmarks and other indicators
+            const segments = assertionReason.split(/(?=✅|❌|⚠️|ℹ️|🔍|📊|🛡️)/);
+            
+            segments.forEach((segment, index) => {
+                if (segment.trim() === '') return;
+                
+                const icon = segment.match(/^(✅|❌|⚠️|ℹ️|🔍|📊|🛡️)/)?.[1] || '';
+                const content = segment.replace(/^(✅|❌|⚠️|ℹ️|🔍|📊|🛡️)/, '').trim();
+                
+                if (index === 0 && !icon) {
+                    summary = content.split('.')[0].trim();
+                    return;
+                }
+                
+                // Extract metrics from content
+                const metrics = extractMetrics(content);
+                
+                // Determine validation type
+                let validationType = 'general';
+                if (content.toLowerCase().includes('security group') || content.toLowerCase().includes('firewall')) {
+                    validationType = 'network_security';
+                } else if (content.toLowerCase().includes('encryption') || content.toLowerCase().includes('tls')) {
+                    validationType = 'encryption';
+                } else if (content.toLowerCase().includes('logging') || content.toLowerCase().includes('audit')) {
+                    validationType = 'logging';
+                } else if (content.toLowerCase().includes('access control') || content.toLowerCase().includes('iam')) {
+                    validationType = 'access_control';
+                } else if (content.toLowerCase().includes('infrastructure') || content.toLowerCase().includes('terraform')) {
+                    validationType = 'infrastructure';
+                }
+                
+                validations.push({
+                    icon: icon || (ksiStatus === 'passed' ? '✅' : ksiStatus === 'failed' ? '❌' : ksiStatus === 'warning' ? '⚠️' : 'ℹ️'),
+                    type: validationType,
+                    title: generateValidationTitle(content, validationType),
+                    description: cleanValidationDescription(content),
+                    metrics: metrics
+                });
+            });
+            
+            // Generate summary if not found
+            if (!summary) {
+                summary = ksiStatus === 'passed' ? 'Security control validation completed successfully' :
+                         ksiStatus === 'failed' ? 'Security control validation identified issues' :
+                         ksiStatus === 'warning' ? 'Low risk findings identified requiring attention' :
+                         'Improvement opportunities identified for enhancement';
+            }
+            
+            return { summary, validations };
+        }
+
+        function extractMetrics(content) {
+            const metrics = [];
+            
+            // Extract percentages
+            const percentageMatches = content.match(/(\d+(?:\.\d+)?)\s*%/g);
+            if (percentageMatches) {
+                percentageMatches.forEach(match => {
+                    const value = parseFloat(match);
+                    metrics.push({
+                        type: 'percentage',
+                        value: value,
+                        label: `${value}%`,
+                        status: value >= 90 ? 'success' : value >= 70 ? 'warning' : 'danger'
+                    });
+                });
+            }
+            
+            // Extract counts
+            const countMatches = content.match(/(\d+)\s+(resources?|instances?|functions?|groups?|policies?|rules?)/gi);
+            if (countMatches) {
+                countMatches.forEach(match => {
+                    const parts = match.split(/\s+/);
+                    const value = parseInt(parts[0]);
+                    const unit = parts.slice(1).join(' ');
+                    metrics.push({
+                        type: 'count',
+                        value: value,
+                        label: `${value} ${unit}`,
+                        status: 'info'
+                    });
+                });
+            }
+            
+            return metrics;
+        }
+
+        function generateValidationTitle(content, type) {
+            const typeMap = {
+                'network_security': 'Network Security Controls',
+                'encryption': 'Encryption & Data Protection',
+                'logging': 'Security Logging & Monitoring',
+                'access_control': 'Access Control & IAM',
+                'infrastructure': 'Infrastructure Configuration',
+                'general': 'Security Control Validation'
+            };
+            
+            return typeMap[type] || 'Security Control Validation';
+        }
+
+        function cleanValidationDescription(content) {
+            // Remove redundant phrases and clean up the text
+            let cleaned = content
+                .replace(/✅|❌|⚠️|ℹ️|🔍|📊|🛡️/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+            
+            // Limit length and add ellipsis if needed
+            if (cleaned.length > 150) {
+                cleaned = cleaned.substring(0, 150) + '...';
+            }
+            
+            return cleaned;
+        }
+
+        // ✅ ENHANCED: Load real data with correct status determination
+        async function loadRealData() {
+            try {
+                console.log('🔄 Starting data loading process...');
+                
+                // ✅ STEP 1: Load command register first
+                await loadCommandRegister();
+                
+                // ✅ STEP 2: Load validation data
+                console.log('🔄 Loading validation data...');
+                const response = await fetch('./unified_ksi_validations.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                console.log('✅ Validation data loaded successfully');
+                
+                updateDashboardWithRealData(data);
+                showDataSourceNotification('live');
+                
+            } catch (error) {
+                console.warn('⚠️ Could not load real data, using fallback:', error.message);
+                initializeFallbackData();
+                showDataSourceNotification('sample');
+            }
+        }
+
+        // ✅ FIXED: Update dashboard with proper status determination
+        function updateDashboardWithRealData(data) {
+            try {
+                let validations = [];
+                let dataTimestamp = null;
+                
+                // Extract timestamp
+                if (data.metadata && data.metadata.generated_at) {
+                    dataTimestamp = new Date(data.metadata.generated_at);
+                } else if (data.generated_at) {
+                    dataTimestamp = new Date(data.generated_at);
+                } else if (data.timestamp) {
+                    dataTimestamp = new Date(data.timestamp);
+                }
+                
+                // Extract validation array
+                if (Array.isArray(data)) {
+                    validations = data;
+                } else if (data.validations && Array.isArray(data.validations)) {
+                    validations = data.validations;
+                }
+
+                if (validations.length === 0) {
+                    throw new Error('No validation data found in the loaded JSON');
+                }
+
+                // ✅ FIXED: Process with proper status determination
+                allKsis = validations.map(validation => {
+                    const commandDetails = extractCommandDetails(validation);
+                    
+                    const ksi = {
+                        id: validation.ksi_id || validation.validation_id || 'Unknown',
+                        status: determineKsiStatus(validation), // ✅ FIXED: Use proper status determination
+                        category: validation.long_name || validation.category || 'Unknown Category',
+                        description: validation.requirement || validation.description || 'No description available',
+                        commands_executed: validation.commands_executed || 0,
+                        successful_commands: validation.successful_commands || 0,
+                        failed_commands: validation.failed_commands || 0,
+                        cli_command: validation.cli_command || 'No command information',
+                        assertion_reason: validation.assertion_reason || 'No assessment details provided',
+                        timestamp: validation.timestamp || validation.validation_timestamp || null,
+                        validation_method: validation.validation_method || 'automated',
+                        evidence_path: validation.evidence_path || '',
+                        requirement: validation.requirement || 'No requirement specified',
+                        rawData: validation,
+                        detailed_commands: commandDetails.commands || [],
+                        command_source: commandDetails.source || 'unknown',
+                        register_description: commandDetails.description || null,
+                        register_justification: commandDetails.justification || null
+                    };
+
+                    // Detect enhancement opportunities for passed KSIs
+                    if (ksi.status === 'passed') {
+                        const enhancements = detectEnhancementOpportunities(ksi.assertion_reason, ksi.status);
+                        if (enhancements.length > 0) {
+                            ksi.hasEnhancements = true;
+                            ksi.enhancements = enhancements;
+                        }
+                    }
+
+                    return ksi;
+                });
+
+                console.log(`📊 Processed ${allKsis.length} KSI validation records`);
+                console.log(`📊 Status breakdown:`, getStatusBreakdown());
+                
+                updateMetrics();
+                populateCategoryFilter();
+                filterKsis();
+                
+                if (dataTimestamp) {
+                    updateTimestampsWithData(dataTimestamp);
+                } else {
+                    updateTimestamps();
+                }
+                
+            } catch (error) {
+                console.error('❌ Error processing real data:', error);
+                showDataSourceNotification('error');
+                initializeFallbackData();
+            }
+        }
+
+        // ✅ HELPER: Get status breakdown for debugging
+        function getStatusBreakdown() {
+            const breakdown = { passed: 0, failed: 0, warning: 0, info: 0, unknown: 0 };
+            allKsis.forEach(ksi => {
+                breakdown[ksi.status] = (breakdown[ksi.status] || 0) + 1;
+            });
+            return breakdown;
+        }
+
+        // ✅ Initialize fallback data in case real data fails
+        function initializeFallbackData() {
+            allKsis = [
+                {
+                    id: 'KSI-CNA-01',
+                    category: 'Cloud Native Architecture',
+                    status: 'passed',
+                    description: 'Configure ALL information resources to limit inbound and outbound traffic',
+                    commands_executed: 8,
+                    successful_commands: 8,
+                    failed_commands: 0,
+                    cli_command: '8 commands (8 successful): aws ec2 describe-security-groups; aws ec2 describe-network-acls; ...',
+                    assertion_reason: '✅ Comprehensive traffic controls configured across all AWS resources',
+                    requirement: 'Multi-layered network security including ingress/egress controls',
+                    detailed_commands: [],
+                    command_source: 'fallback'
+                }
+            ];
+        }
+
+        function renderKsis() {
+            const grid = document.getElementById('ksi-grid');
+            
+            if (filteredKsis.length === 0) {
+                grid.innerHTML = `
+                    <div class="loading">
+                        <h3>🔍 No KSIs Found</h3>
+                        <p>No KSIs match your current search criteria.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filteredKsis.map(ksi => {
+                const cleanResult = generateKsiSummary(ksi.assertion_reason, ksi.status);
+                const hasEnhancements = ksi.hasEnhancements && ksi.enhancements && ksi.enhancements.length > 0;
+                
+                return `
+                <div class="ksi-card ${ksi.status} ${ksi.status === 'info' ? 'enhancement info' : hasEnhancements ? 'enhancement' : ''}">
+                    <div class="ksi-card-header">
+                        <div class="ksi-id">${ksi.id}</div>
+                        <div class="ksi-status status-${ksi.status}">
+                            ${getStatusIcon(ksi.status)} ${ksi.status.toUpperCase()}
+                        </div>
+                    </div>
+                    
+                    <div class="ksi-category">${ksi.category}</div>
+                    <div class="ksi-description">${ksi.description}</div>
+                    
+                    ${hasEnhancements ? `
+                        <div class="enhancement-badge">
+                            📈 ${ksi.enhancements.length} Improvement Opportunit${ksi.enhancements.length === 1 ? 'y' : 'ies'}
+                        </div>
+                        ${ksi.enhancements.slice(0, 2).map(enh => `
+                            <div class="enhancement-opportunity">
+                                <div class="title">${enh.type} (${enh.priority})</div>
+                                <div class="description">${enh.evidence}</div>
+                            </div>
+                        `).join('')}
+                    ` : ''}
+                    
+                    <div class="ksi-meta">
+                        <div class="meta-item">
+                            <div class="meta-value">${ksi.commands_executed}</div>
+                            <div class="meta-label">Commands</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value">${ksi.status === 'passed' ? '100%' : ksi.status === 'failed' ? '0%' : '50%'}</div>
+                            <div class="meta-label">Success</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value">${hasEnhancements ? ksi.enhancements.length : 0}</div>
+                            <div class="meta-label">Enhance</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ksi-result">
+                        <div class="result-summary">${cleanResult}</div>
+                    </div>
+                    
+                    <div class="ksi-actions">
+                        <button class="action-btn primary" onclick="showCommandsModal('${ksi.id}')">
+                            ⚡ Commands
+                        </button>
+                        <button class="action-btn secondary" onclick="showWhyModal('${ksi.id}')">
+                            🤔 Why ${ksi.status === 'passed' ? 'Pass' : ksi.status === 'failed' ? 'Fail' : ksi.status === 'warning' ? 'Low Risk' : ksi.status === 'info' ? 'Improvement' : 'Result'}
+                        </button>
+                        ${hasEnhancements ? `
+                            <button class="action-btn enhancement" onclick="window.showEnhancementModal('${ksi.id}')">
+                                📈 Improve
+                            </button>
+                        ` : ''}
+                        ${ksi.status === 'failed' ? `
+                            <button class="action-btn danger" onclick="createGitHubIssue('${ksi.id}')">
+                                🐛 Issue
+                            </button>
+                        ` : ''}
+                        ${ksi.status === 'warning' ? `
+                            <button class="action-btn warning" onclick="createGitHubIssue('${ksi.id}')">
+                                🟡 Low Risk Issue
+                            </button>
+                        ` : ''}
+                        ${ksi.status === 'info' ? `
+                            <button class="action-btn info" onclick="createGitHubIssue('${ksi.id}')">
+                                📈 Improvement Issue
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+
+        // Generate user-friendly summaries for KSI results
+        function generateKsiSummary(assertion_reason, status) {
+            if (!assertion_reason) return 'No assessment details available';
+            
+            // For passed KSIs, show simple positive summaries
+            if (status === 'passed') {
+                const lowerReason = assertion_reason.toLowerCase();
+                
+                if (lowerReason.includes('security groups') || lowerReason.includes('firewall')) {
+                    return '✅ Network security controls are properly configured';
+                }
+                if (lowerReason.includes('encryption') || lowerReason.includes('tls') || lowerReason.includes('ssl')) {
+                    return '✅ Encryption and data protection controls are active';
+                }
+                if (lowerReason.includes('logging') || lowerReason.includes('audit') || lowerReason.includes('cloudtrail')) {
+                    return '✅ Security logging and monitoring are operational';
+                }
+                if (lowerReason.includes('access control') || lowerReason.includes('iam') || lowerReason.includes('permissions')) {
+                    return '✅ Access controls and permissions are properly managed';
+                }
+                
+                return '✅ Security control is properly implemented and operational';
+            }
+            
+            // For warning/info/failed KSIs, show more detailed but cleaned info
+            let cleaned = assertion_reason
+                .replace(/✅|❌|⚠️|ℹ️|🔍|📊|🛡️/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+            
+            const sentences = cleaned.split(/[.!;]/);
+            let mainMessage = sentences[0].trim();
+            
+            if (mainMessage.length > 100) {
+                mainMessage = mainMessage.substring(0, 100) + '...';
+            }
+            
+            const statusIcon = assertion_reason.includes('✅') ? '✅' : 
+                              assertion_reason.includes('❌') ? '❌' : 
+                              assertion_reason.includes('⚠️') ? '⚠️' :
+                              assertion_reason.includes('ℹ️') ? 'ℹ️' : '';
+            
+            return statusIcon + ' ' + mainMessage;
+        }
+
+        function showDataSourceNotification(type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 600;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+
+            if (type === 'live') {
+                notification.style.background = 'rgba(16, 185, 129, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '✅ Live data loaded - showing real validation results';
+            } else if (type === 'sample') {
+                notification.style.background = 'rgba(245, 158, 11, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '⚠️ Using fallback data - unified_ksi_validations.json not available';
+            } else if (type === 'error') {
+                notification.style.background = 'rgba(239, 68, 68, 0.9)';
+                notification.style.color = 'white';
+                notification.textContent = '❌ Data load error';
+            }
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        // ✅ FIXED: Correct FedRAMP 20x compliance calculation
+        function updateMetrics() {
+            const totalKsis = allKsis.length;
+            
+            // ✅ COMPLIANCE = assertion field only (binary pass/fail)
+            const compliantKsis = allKsis.filter(ksi => ksi.rawData && (ksi.rawData.assertion === true || ksi.rawData.assertion === "true")).length;
+            const nonCompliantKsis = allKsis.filter(ksi => ksi.rawData && (ksi.rawData.assertion === false || ksi.rawData.assertion === "false")).length;
+            
+            // ✅ POA&M TRACKING = Warning → Low Risk, Info → Improvement Opportunities
+            const warningCount = allKsis.filter(ksi => ksi.status === 'warning').length; // Low Risk Findings
+            const infoCount = allKsis.filter(ksi => ksi.status === 'info').length; // Improvement Opportunities
+            const enhancementCount = allKsis.filter(ksi => ksi.hasEnhancements).length; // Additional enhancements
+            
+            // ✅ CORRECT: Compliance = assertion-based only
+            const complianceScore = totalKsis > 0 ? Math.round((compliantKsis / totalKsis) * 100 * 10) / 10 : 0;
+
+            document.getElementById('overall-score').textContent = complianceScore + '%';
+            document.getElementById('passed-count').textContent = compliantKsis;
+            document.getElementById('failed-count').textContent = nonCompliantKsis;
+            document.getElementById('warning-count').textContent = warningCount; // Low Risk Findings
+            document.getElementById('info-count').textContent = infoCount; // Improvement Opportunities
+            
+            console.log(`📊 FIXED metrics: ${compliantKsis}/${totalKsis} compliant (${complianceScore}%) | POA&M tracking: ${warningCount} Low Risk/${infoCount} Improvements/${enhancementCount} Additional`);
+        }
+
+        function populateCategoryFilter() {
+            const categories = [...new Set(allKsis.map(ksi => ksi.category))].sort();
+            const categoryFilter = document.getElementById('category-filter');
+            categoryFilter.innerHTML = '<option value="">All Categories</option>';
+            
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        function filterKsis() {
+            const searchTerm = currentFilters.search.toLowerCase();
+            const statusFilter = currentFilters.status;
+            const categoryFilter = currentFilters.category;
+
+            filteredKsis = allKsis.filter(ksi => {
+                const matchesSearch = !searchTerm || 
+                    ksi.id.toLowerCase().includes(searchTerm) ||
+                    ksi.description.toLowerCase().includes(searchTerm) ||
+                    ksi.category.toLowerCase().includes(searchTerm);
+                
+                // Updated status filtering - info now represents improvement opportunities
+                let matchesStatus = true;
+                if (statusFilter) {
+                    matchesStatus = ksi.status === statusFilter;
+                }
+                
+                const matchesCategory = !categoryFilter || ksi.category === categoryFilter;
+                
+                return matchesSearch && matchesStatus && matchesCategory;
+            });
+
+            renderKsis();
+            updateFilterChips();
+        }
+
+        // ✅ ENHANCED: Updated status icons
+        function getStatusIcon(status) {
+            const icons = {
+                passed: '✅',
+                failed: '❌',
+                warning: '🟡',
+                info: '📈'
+            };
+            return icons[status] || '❓';
+        }
+
+        function updateFilterChips() {
+            const chips = document.querySelectorAll('.filter-chip');
+            chips.forEach(chip => {
+                const status = chip.getAttribute('data-status');
+                chip.classList.toggle('active', status === currentFilters.status);
+            });
+        }
+
+        function setupEventListeners() {
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                currentFilters.search = e.target.value;
+                filterKsis();
+            });
+
+            document.getElementById('status-filter').addEventListener('change', (e) => {
+                currentFilters.status = e.target.value;
+                filterKsis();
+            });
+
+            document.getElementById('category-filter').addEventListener('change', (e) => {
+                currentFilters.category = e.target.value;
+                filterKsis();
+            });
+
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const status = chip.getAttribute('data-status');
+                    currentFilters.status = status;
+                    document.getElementById('status-filter').value = status;
+                    filterKsis();
+                });
+            });
+        }
+
+        // ✅ ENHANCED: Show detailed commands modal with modern UI
+        function showCommandsModal(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            const modalTitle = document.getElementById('commands-modal-title');
+            const modalBody = document.getElementById('commands-modal-body');
+
+            modalTitle.innerHTML = `⚡ Commands for ${ksi.id}`;
+
+            // Determine data source badge
+            const getDataSourceBadge = (source) => {
+                if (source === 'comprehensive_register') {
+                    return '<div class="data-source-badge comprehensive">📋 Comprehensive Command Register - Complete Details Available</div>';
+                } else if (source === 'validation_summary') {
+                    return '<div class="data-source-badge fallback">⚠️ Parsed from Validation Summary - Limited Details</div>';
+                } else {
+                    return '<div class="data-source-badge limited">❌ Minimal Command Data - Summary Only</div>';
+                }
+            };
+
+            modalBody.innerHTML = `
+                ${getDataSourceBadge(ksi.command_source)}
+                
+                <div class="commands-summary">
+                    <h4 class="commands-summary-title">📊 Command Execution Overview</h4>
+                    <div class="commands-stats">
+                        <div class="command-stat">
+                            <div class="command-stat-value">${ksi.commands_executed}</div>
+                            <div class="command-stat-label">Total Commands</div>
+                        </div>
+                        <div class="command-stat">
+                            <div class="command-stat-value">${ksi.successful_commands}</div>
+                            <div class="command-stat-label">Successful</div>
+                        </div>
+                        <div class="command-stat">
+                            <div class="command-stat-value">${ksi.commands_executed > 0 ? Math.round((ksi.successful_commands / ksi.commands_executed) * 100) : 0}%</div>
+                            <div class="command-stat-label">Success Rate</div>
+                        </div>
+                        <div class="command-stat">
+                            <div class="command-stat-value">${ksi.detailed_commands.length}</div>
+                            <div class="command-stat-label">Detailed</div>
+                        </div>
+                    </div>
+                    
+                    ${ksi.register_description ? `
+                        <div class="description-box">
+                            <strong>📝 Validation Description:</strong> ${ksi.register_description}
+                        </div>
+                    ` : ''}
+                    
+                    ${ksi.register_justification ? `
+                        <div class="justification-box">
+                            <strong>🎯 Technical Justification:</strong> ${ksi.register_justification}
+                        </div>
+                    ` : ''}
+
+                    <div class="primary-command-box">
+                        <strong>🔧 Primary Command Pattern</strong>
+                        <div class="command-text">${ksi.cli_command}</div>
+                    </div>
+                </div>
+
+                ${ksi.detailed_commands.length > 0 ? `
+                    <div class="commands-list">
+                        <h4>⚡ Detailed Command Breakdown (${ksi.detailed_commands.length} commands)</h4>
+                        
+                        ${ksi.detailed_commands.map((cmd, index) => `
+                            <div class="command-item">
+                                <div class="command-header" onclick="toggleCommandDetails(${index})">
+                                    <div class="command-title">
+                                        <span class="command-number">#${index + 1}</span>
+                                        <span>${cmd.description || `Command ${index + 1}`}</span>
+                                        <span class="command-status ${cmd.status}">${cmd.status.toUpperCase()}</span>
+                                    </div>
+                                    <button class="command-expand-btn" id="expand-btn-${index}">▼</button>
+                                </div>
+                                
+                                <div class="command-details" id="command-details-${index}">
+                                    <div class="command-code">${cmd.command}</div>
+                                    
+                                    <div class="command-meta">
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.status}</div>
+                                            <div class="command-meta-label">Status</div>
+                                        </div>
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.execution_time || 'Unknown'}</div>
+                                            <div class="command-meta-label">Duration</div>
+                                        </div>
+                                        <div class="command-meta-item">
+                                            <div class="command-meta-value">${cmd.source || 'unknown'}</div>
+                                            <div class="command-meta-label">Source</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : `
+                    <div class="no-commands-message">
+                        <div class="no-commands-icon">⚠️</div>
+                        <h3>No Detailed Commands Available</h3>
+                        <p>Only summary command information is available for this KSI.</p>
+                        <p>The command register may not contain detailed information for this validation.</p>
+                    </div>
+                `}
+            `;
+
+            document.getElementById('commands-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // ✅ Helper function to toggle command details
+        function toggleCommandDetails(index) {
+            const details = document.getElementById(`command-details-${index}`);
+            const expandBtn = document.getElementById(`expand-btn-${index}`);
+            
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                expandBtn.textContent = '▼';
+                expandBtn.classList.remove('expanded');
+            } else {
+                details.classList.add('expanded');
+                expandBtn.textContent = '▲';
+                expandBtn.classList.add('expanded');
+            }
+        }
+
+        // ✅ ENHANCED: Show improved Why modal with structured content
+        function showWhyModal(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            const modalTitle = document.getElementById('why-modal-title');
+            const modalBody = document.getElementById('why-modal-body');
+
+            const statusText = ksi.status === 'passed' ? 'Pass' : 
+                              ksi.status === 'failed' ? 'Fail' : 
+                              ksi.status === 'warning' ? 'Low Risk' :
+                              ksi.status === 'info' ? 'Improvement' : 'Result';
+            const statusIcon = getStatusIcon(ksi.status);
+            
+            modalTitle.innerHTML = `🤔 Why ${statusText}? - ${ksi.id}`;
+
+            // Parse the assertion reason into structured content
+            const parsedReason = parseAssertionReason(ksi.assertion_reason, ksi.status);
+
+            modalBody.innerHTML = `
+                <!-- Summary Card -->
+                <div class="why-summary-card">
+                    <div class="why-summary-header">
+                        <div class="why-summary-icon">${statusIcon}</div>
+                        <div class="why-summary-text">
+                            <h4>${statusText.toUpperCase()} - ${ksi.id}</h4>
+                            <p>${ksi.category}</p>
+                        </div>
+                    </div>
+                    <div class="why-metrics-grid">
+                        <div class="why-metric">
+                            <div class="why-metric-value">${statusText}</div>
+                            <div class="why-metric-label">Status</div>
+                        </div>
+                        <div class="why-metric">
+                            <div class="why-metric-value">${ksi.commands_executed || 0}</div>
+                            <div class="why-metric-label">Commands</div>
+                        </div>
+                        <div class="why-metric">
+                            <div class="why-metric-value">${ksi.commands_executed > 0 ? Math.round((ksi.successful_commands / ksi.commands_executed) * 100) : 0}%</div>
+                            <div class="why-metric-label">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assessment Summary -->
+                <div class="why-section">
+                    <div class="why-section-title">
+                        🎯 Assessment Summary
+                    </div>
+                    <p><strong>Requirement:</strong> ${ksi.requirement}</p>
+                    <p><strong>Validation Method:</strong> ${ksi.validation_method || 'Automated'}</p>
+                    <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin-top: 1rem; border: 1px solid var(--border-color);">
+                        <strong>Key Finding:</strong> ${parsedReason.summary}
+                    </div>
+                </div>
+
+                <!-- Validation Points -->
+                ${parsedReason.validations.length > 0 ? `
+                <div class="why-section">
+                    <div class="why-section-title">
+                        📋 Validation Points
+                    </div>
+                    <div class="why-validation-grid">
+                        ${parsedReason.validations.map(validation => `
+                            <div class="why-validation-item">
+                                <div class="why-validation-icon">${validation.icon}</div>
+                                <div class="why-validation-content">
+                                    <div class="why-validation-title">
+                                        ${validation.title}
+                                        ${validation.metrics.map(metric => `
+                                            <span class="why-metric-badge ${metric.status}">${metric.label}</span>
+                                        `).join('')}
+                                    </div>
+                                    <div class="why-validation-description">${validation.description}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- Technical Details -->
+                <div class="why-section">
+                    <div class="why-section-title">
+                        🔧 Technical Details
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid var(--border-color);">
+                            <div style="font-weight: 700; color: var(--text-primary);">${ksi.commands_executed || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Commands Executed</div>
+                        </div>
+                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid var(--border-color);">
+                            <div style="font-weight: 700; color: var(--text-primary);">${ksi.successful_commands || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Successful</div>
+                        </div>
+                        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid var(--border-color);">
+                            <div style="font-weight: 700; color: var(--text-primary);">${ksi.failed_commands || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-tertiary);">Failed</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('why-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Enhanced GitHub issue creation
+        function createGitHubIssue(ksiId) {
+            const ksi = allKsis.find(k => k.id === ksiId);
+            if (!ksi) return;
+
+            const statusLabels = {
+                'failed': 'high-priority,compliance-failure',
+                'warning': 'low-priority,low-risk-finding', 
+                'info': 'improvement,enhancement-opportunity'
+            };
+
+            const issueTitle = encodeURIComponent(`[${ksi.status.toUpperCase()} KSI] ${ksi.id}: ${ksi.description.substring(0, 60)}...`);
+            const issueBody = encodeURIComponent(`## Risk-Based POA&M Entry Report
+
+**KSI ID:** ${ksi.id}
+**Category:** ${ksi.category}
+**Status:** ${ksi.status.toUpperCase()}
+**POA&M Priority:** ${ksi.status === 'failed' ? 'High (30 days)' : ksi.status === 'warning' ? 'Low Risk (90 days)' : 'Improvement Opportunity (180 days)'}
+
+### Description
+${ksi.description}
+
+### Technical Details
+- **Commands Executed:** ${ksi.commands_executed || 0}
+- **CLI Command:** \`${ksi.cli_command || 'N/A'}\`
+
+### Assessment Result
+${ksi.assertion_reason || 'No detailed reason provided'}
+
+### POA&M Classification
+- **Tier:** ${ksi.status === 'failed' ? 'Compliance POA&M' : ksi.status === 'warning' ? 'Low Risk Tracking' : 'Improvement Opportunity Tracking'}
+- **Risk Level:** ${ksi.status === 'failed' ? 'High' : ksi.status === 'warning' ? 'Low' : 'Enhancement'}
+- **Tracking Period:** ${ksi.status === 'failed' ? '30' : ksi.status === 'warning' ? '90' : '180'} days
+- **Impact:** ${ksi.status === 'failed' ? 'Compliance' : ksi.status === 'warning' ? 'Low Risk Finding' : 'Improvement Opportunity'} - requires attention per risk-based POA&M system
+
+### Expected Resolution
+Please provide guidance on how to address this ${ksi.status === 'failed' ? 'compliance failure' : ksi.status === 'warning' ? 'low risk finding' : 'improvement opportunity'}.`);
+
+            const labels = statusLabels[ksi.status] || 'general-compliance';
+            const githubUrl = `https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission-live/issues/new?title=${issueTitle}&body=${issueBody}&labels=${labels}`;
+            window.open(githubUrl, '_blank');
+        }
+
+        // Utility functions
+        function downloadJSON() {
+            fetch('./unified_ksi_validations.json')
+                .then(response => response.json())
+                .then(data => {
+                    const jsonString = JSON.stringify(data, null, 2);
+                    const blob = new Blob([jsonString], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'unified_ksi_validations.json';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    console.error('Error fetching JSON:', error);
+                    const link = document.createElement('a');
+                    link.href = './unified_ksi_validations.json';
+                    link.download = 'unified_ksi_validations.json';
+                    link.click();
+                });
+        }
+
+        async function viewFailedReport() {
+            try {
+                const response = await fetch('./failed_ksi_report_readable.md');
+                if (response.ok) {
+                    const markdown = await response.text();
+                    
+                    const html = markdown
+                        .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+                        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+                        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+                        .replace(/^\- (.+)$/gm, '<li>$1</li>')
+                        .replace(/(\n\n)/g, '</p><p>')
+                        .replace(/^(.+)$/gm, '<p>$1</p>');
+                    
+                    document.getElementById('markdown-modal-body').innerHTML = html;
+                    document.getElementById('markdown-modal').classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    throw new Error('Could not load report');
+                }
+            } catch (error) {
+                alert('Could not load failed KSI report. Please try again later.');
+            }
+        }
+
+        // Enhanced POA&M Modal with Consolidated Findings View
+function showPOAMModal() {
+    const modalTitle = document.getElementById('poam-modal-title');
+    const modalBody = document.getElementById('poam-modal-body');
+    
+    modalTitle.innerHTML = '📊 Consolidated Findings Analysis';
+    
+    // Get findings by category
+    const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
+    const warningKsis = allKsis.filter(ksi => ksi.status === 'warning');
+    const infoKsis = allKsis.filter(ksi => ksi.status === 'info');
+    
+    const totalFindings = failedKsis.length + warningKsis.length + infoKsis.length;
+    
+    modalBody.innerHTML = `
+        <div class="findings-overview">
+            <!-- Summary Header -->
+            <div class="findings-summary">
+                <div class="summary-card failed">
+                    <div class="summary-number">${failedKsis.length}</div>
+                    <div class="summary-label">Non-Compliant</div>
+                    <div class="summary-timeframe">30-day remediation</div>
+                </div>
+                <div class="summary-card warning">
+                    <div class="summary-number">${warningKsis.length}</div>
+                    <div class="summary-label">Low Risk</div>
+                    <div class="summary-timeframe">90-day tracking</div>
+                </div>
+                <div class="summary-card info">
+                    <div class="summary-number">${infoKsis.length}</div>
+                    <div class="summary-label">Improvements</div>
+                    <div class="summary-timeframe">180-day tracking</div>
+                </div>
+            </div>
+            
+            ${totalFindings === 0 ? `
+                <div class="no-findings">
+                    <div class="no-findings-icon">🎉</div>
+                    <h3>All KSIs Are Compliant</h3>
+                    <p>No findings requiring remediation or tracking at this time.</p>
+                </div>
+            ` : ''}
+            
+            <!-- Non-Compliant Findings -->
+            ${failedKsis.length > 0 ? `
+                <div class="findings-section">
+                    <h3 class="findings-header failed">
+                        <span class="findings-icon">🚨</span>
+                        Non-Compliant KSIs (${failedKsis.length})
+                        <span class="priority-badge high">HIGH PRIORITY</span>
+                    </h3>
+                    <div class="findings-list">
+                        ${failedKsis.map(ksi => `
+                            <div class="finding-item failed" onclick="showKSIDetails('${ksi.id}')">
+                                <div class="finding-header">
+                                    <span class="finding-id">${ksi.id}</span>
+                                    <span class="finding-category">${ksi.category}</span>
+                                </div>
+                                <div class="finding-description">${ksi.description}</div>
+                                <div class="finding-meta">
+                                    <span class="deadline">⏰ 30-day deadline</span>
+                                    <span class="action-required">📋 POA&M Required</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : ''}
+            
+            <!-- Low Risk Findings -->
+            ${warningKsis.length > 0 ? `
+                <div class="findings-section">
+                    <h3 class="findings-header warning">
+                        <span class="findings-icon">🟡</span>
+                        Low Risk Findings (${warningKsis.length})
+                        <span class="priority-badge medium">MEDIUM PRIORITY</span>
+                    </h3>
+                    <div class="findings-list">
+                        ${warningKsis.map(ksi => `
+                            <div class="finding-item warning" onclick="showKSIDetails('${ksi.id}')">
+                                <div class="finding-header">
+                                    <span class="finding-id">${ksi.id}</span>
+                                    <span class="finding-category">${ksi.category}</span>
+                                </div>
+                                <div class="finding-description">${ksi.description}</div>
+                                <div class="finding-meta">
+                                    <span class="deadline">⏰ 90-day tracking</span>
+                                    <span class="risk-level">📊 Low Risk</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : ''}
+            
+            <!-- Improvement Opportunities -->
+            ${infoKsis.length > 0 ? `
+                <div class="findings-section">
+                    <h3 class="findings-header info">
+                        <span class="findings-icon">📈</span>
+                        Improvement Opportunities (${infoKsis.length})
+                        <span class="priority-badge low">ENHANCEMENT</span>
+                    </h3>
+                    <div class="findings-list">
+                        ${infoKsis.map(ksi => `
+                            <div class="finding-item info" onclick="showKSIDetails('${ksi.id}')">
+                                <div class="finding-header">
+                                    <span class="finding-id">${ksi.id}</span>
+                                    <span class="finding-category">${ksi.category}</span>
+                                </div>
+                                <div class="finding-description">${ksi.description}</div>
+                                <div class="finding-meta">
+                                    <span class="deadline">⏰ 180-day tracking</span>
+                                    <span class="enhancement">🚀 Enhancement</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : ''}
+            
+            <!-- Action Buttons -->
+            <div class="findings-actions">
+                <button onclick="exportFindings()" class="action-btn export">
+                    📄 Export Findings Report
+                </button>
+                <button onclick="generatePOAMTemplate()" class="action-btn template">
+                    📋 Generate POA&M Template
+                </button>
+                ${failedKsis.length > 0 ? `
+                    <button onclick="prioritizeRemediation()" class="action-btn priority">
+                        🚨 Prioritize Remediation
+                    </button>
+                ` : ''}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('poam-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Helper function to show individual KSI details (integrates with existing system)
+function showKSIDetails(ksiId) {
+    // Close the POA&M modal first
+    closePOAMModal();
+    
+    // Find and show the specific KSI (could integrate with existing Why modal)
+    const ksi = allKsis.find(k => k.id === ksiId);
+    if (ksi) {
+        showWhyModal(ksiId, ksi.status, ksi.assertion_reason);
+    }
+}
+
+// Additional helper functions
+function exportFindings() {
+    const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
+    const warningKsis = allKsis.filter(ksi => ksi.status === 'warning');
+    const infoKsis = allKsis.filter(ksi => ksi.status === 'info');
+    
+    const report = {
+        generated: new Date().toISOString(),
+        summary: {
+            total_findings: failedKsis.length + warningKsis.length + infoKsis.length,
+            non_compliant: failedKsis.length,
+            low_risk: warningKsis.length,
+            improvements: infoKsis.length
+        },
+        findings: {
+            non_compliant: failedKsis.map(ksi => ({
+                id: ksi.id,
+                category: ksi.category,
+                description: ksi.description,
+                priority: 'HIGH',
+                deadline: '30 days'
+            })),
+            low_risk: warningKsis.map(ksi => ({
+                id: ksi.id,
+                category: ksi.category,
+                description: ksi.description,
+                priority: 'MEDIUM',
+                deadline: '90 days'
+            })),
+            improvements: infoKsis.map(ksi => ({
+                id: ksi.id,
+                category: ksi.category,
+                description: ksi.description,
+                priority: 'LOW',
+                deadline: '180 days'
+            }))
+        }
+    };
+    
+    downloadJSON(report, 'consolidated_findings_report.json');
+}
+
+function generatePOAMTemplate() {
+    // Integration point for POA&M template generation
+    console.log('Generating POA&M template...');
+    // Could integrate with existing POA&M generation logic
+}
+
+function prioritizeRemediation() {
+    // Could show a sub-modal with prioritized remediation plan
+    console.log('Showing remediation priorities...');
+}
+
+        function showEnhancementModal(ksiId) {
+            const modalTitle = document.getElementById('enhancement-modal-title');
+            const modalBody = document.getElementById('enhancement-modal-body');
+            
+            modalTitle.innerHTML = `📈 Improvement Details: ${ksiId}`;
+            
+            modalBody.innerHTML = `
+                <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📈</div>
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Improvement Opportunities</h3>
+                    <p style="margin-bottom: 1rem;">Proactive improvement opportunities identified for compliant KSIs.</p>
+                    <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--enhancement-500); border-radius: 8px; padding: 1rem; margin-top: 1.5rem; color: var(--enhancement-600);">
+                        <strong>📈 Continuous Improvement:</strong> Moving beyond compliance to proactive security enhancement.
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('enhancement-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Modal close functions
+        function closeCliModal() {
+            document.getElementById('cli-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeWhyModal() {
+            document.getElementById('why-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeMarkdownModal() {
+            document.getElementById('markdown-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeCommandsModal() {
+            document.getElementById('commands-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closePOAMModal() {
+            document.getElementById('poam-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeEnhancementModal() {
+            document.getElementById('enhancement-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateTimestamps() {
+            const now = new Date();
+            const timeString = now.toLocaleDateString() + ' ' + now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            const lastUpdatedEl = document.getElementById('last-updated');
+            const headerTimestampEl = document.getElementById('header-timestamp');
+            
+            if (lastUpdatedEl) {
+                lastUpdatedEl.textContent = timeString;
+            }
+            if (headerTimestampEl) {
+                headerTimestampEl.textContent = timeString;
+            }
+        }
+
+        function updateTimestampsWithData(dataTimestamp) {
+            const timeString = dataTimestamp.toLocaleDateString() + ' ' + 
+                             dataTimestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            const lastUpdatedEl = document.getElementById('last-updated');
+            const headerTimestampEl = document.getElementById('header-timestamp');
+            
+            if (lastUpdatedEl) {
+                lastUpdatedEl.textContent = timeString;
+            }
+            if (headerTimestampEl) {
+                headerTimestampEl.textContent = timeString;
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            document.getElementById('theme-icon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (tabName === 'compliance') {
+                document.getElementById('compliance-tab').classList.add('active');
+                document.querySelector('.tab-btn[onclick="showTab(\'compliance\')"]').classList.add('active');
+            } else if (tabName === 'trust-center') {
+                document.getElementById('trust-center-tab').classList.add('active');
+                document.querySelector('.tab-btn[onclick="showTab(\'trust-center\')"]').classList.add('active');
+            }
+        }
+
+        function scrollToTrustSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function downloadEvidence(type) {
+            const urls = {
+                'scn': './scn_automation/scn_classification.json',
+                'ksi': './unified_ksi_validations.json',
+                'audit': './evidence_commit_metadata.json'
+            };
+            
+            if (urls[type]) {
+                window.open(urls[type], '_blank');
+            }
+        }
+
+        function downloadIncidentTemplate() {
+            const template = {
+                incident_id: "INC-YYYY-###",
+                classification: "FedRAMP Category 1-5",
+                detection_time: "ISO 8601 timestamp",
+                affected_systems: ["system boundary identifiers"],
+                description: "Detailed incident description",
+                remediation_actions: "Response and containment actions",
+                fedramp_notification_required: "true/false",
+                status: "Open/Resolved/Closed"
+            };
+            
+            const blob = new Blob([JSON.stringify(template, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'fedramp_incident_template.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadClassificationGuide() {
+            const guide = `# FedRAMP Incident Classification Guide
+
+## Category 1: Unauthorized Access to Federal Information
+- Timeline: Immediate notification (within 1 hour)
+- FedRAMP PMO: Required
+- Agencies: Immediate notification required
+
+## Category 2: Denial of Service Impacting Federal Operations  
+- Timeline: Within 4 hours
+- FedRAMP PMO: Required
+- Agencies: Within 4 hours
+
+## Category 3: Malicious Code on Federal Systems
+- Timeline: Within 4 hours  
+- FedRAMP PMO: Required for federal boundaries
+- Agencies: Within 4 hours
+
+## Category 4: Improper Usage Affecting Federal Data
+- Timeline: Within 24 hours
+- FedRAMP PMO: As appropriate
+- Agencies: Within 24 hours
+
+## Category 5: Scans/Probes/Attempted Access
+- Timeline: Monthly reporting acceptable
+- FedRAMP PMO: Summary reporting
+- Agencies: As contractually required`;
+            
+            const blob = new Blob([guide], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'fedramp_incident_classification_guide.md';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+
+        function initializeDashboard() {
+            console.log('🔄 Initializing enhanced POA&M dashboard with updated risk-based terminology...');
+            populateCategoryFilter();
+            setupEventListeners();
+            updateTimestamps();
+            loadRealData(); // This will now use the proper status determination
+            
+            console.log('🧪 Testing enhanced modal elements...');
+            console.log('- POA&M Modal:', !!document.getElementById('poam-modal'));
+            console.log('- Enhancement Modal:', !!document.getElementById('enhancement-modal'));
+            console.log('- Commands Modal:', !!document.getElementById('commands-modal'));
+            console.log('- Why Modal:', !!document.getElementById('why-modal'));
+        }
+
+        // Global functions
+        window.showWhyModal = showWhyModal;
+        window.closeWhyModal = closeWhyModal;
+        window.createGitHubIssue = createGitHubIssue;
+        window.toggleTheme = toggleTheme;
+        window.showTab = showTab;
+        window.scrollToTrustSection = scrollToTrustSection;
+        window.scrollToSection = scrollToSection;
+        window.showCommandsModal = showCommandsModal;
+        window.closeCommandsModal = closeCommandsModal;
+        window.downloadJSON = downloadJSON;
+        window.viewFailedReport = viewFailedReport;
+        window.closeMarkdownModal = closeMarkdownModal;
+        window.downloadIncidentTemplate = downloadIncidentTemplate;
+        window.downloadClassificationGuide = downloadClassificationGuide;
+        window.showPOAMModal = showPOAMModal;
+        window.closePOAMModal = closePOAMModal;
+        window.showEnhancementModal = showEnhancementModal;
+        window.closeEnhancementModal = closeEnhancementModal;
+        window.toggleCommandDetails = toggleCommandDetails;
+        window.downloadEvidence = downloadEvidence;
+
+        // Auto-refresh every 5 minutes
+        setInterval(() => {
+            updateTimestamps();
+            loadRealData();
+        }, 300000);
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Enhanced FedRAMP 20x Trust Center Loading...');
+            initializeTheme();
+            initializeDashboard();
+            
+            console.log('🔧 ENHANCED Dashboard initialized with modern Commands Modal');
+            console.log('   - Removed redundant "Complete Assessment Details" section');
+            console.log('   - Modern gradient styling and improved visual hierarchy');
+            console.log('   - Enhanced command status indicators and badges');
+            console.log('   - Better organized summary sections');
+            console.log('   - Improved command details expansion');
+            console.log('   - Added SCN Transparency tab and functionality');
+            
+            // Federal access form handler
+            const form = document.getElementById('federal-access-form');
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(e.target);
+                    const requestId = `REQ-${Date.now()}`;
+                    
+                    document.getElementById('form-response').innerHTML = `
+                        <div style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 20px; border-radius: 10px;">
+                            <h4>✅ Request Submitted Successfully</h4>
+                            <p><strong>Request ID:</strong> ${requestId}</p>
+                            <p>Your federal access request has been created for transparency.</p>
+                            <p><strong>Next Steps:</strong> Our team will respond within 24 hours.</p>
+                            <p><strong>Questions?</strong> Contact security@meridianks.com</p>
+                        </div>
+                    `;
+                    
+                    form.reset();
+                });
+            }
+            
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                document.getElementById('search-input').focus();
+            }
+            if (e.key === 'Escape') {
+                closeWhyModal();
+                closeCommandsModal();
+                closeMarkdownModal();
+                closePOAMModal();
+                closeEnhancementModal();
+            }
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

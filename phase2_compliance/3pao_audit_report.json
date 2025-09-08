@@ -1,0 +1,65 @@
+{
+  "report_metadata": {
+<<<<<<< Updated upstream
+    "generated_timestamp": "2025-09-07T18:44:57.380937",
+=======
+    "generated_timestamp": "2025-09-07T18:45:01.105076",
+>>>>>>> Stashed changes
+    "report_version": "2.1-fixed",
+    "assessment_period": "continuous",
+    "validator_version": "ruleset_master_v2_logical_consistency_fixed"
+  },
+  "validation_summary": {
+    "total_ksis": 51,
+    "passing_ksis": 51,
+    "failing_ksis": 0,
+    "overall_pass_rate": "100.0%",
+    "assessment_scope": "FedRAMP 20xP1 KSI Framework",
+    "validation_approach": "Automated CLI + Evidence-based Hybrid"
+  },
+  "consistency_analysis": {
+    "historical_consistency_checks": 21,
+    "average_consistency_score": "100.0%",
+    "consistency_status": "excellent"
+  },
+  "technical_validation": {
+<<<<<<< Updated upstream
+    "latest_technical_check": "2025-09-07T18:44:57.374139",
+=======
+    "latest_technical_check": "2025-09-07T18:45:01.098312",
+>>>>>>> Stashed changes
+    "technical_issues_found": 0,
+    "technical_status": "pass",
+    "validation_categories": [
+      "logical_consistency",
+      "scoring_mathematics",
+      "command_execution",
+      "evidence_alignment",
+      "cli_execution_success",
+      "command_counting_accuracy"
+    ]
+  },
+  "methodology_documentation": {
+    "scoring_approach": "Maturity-based assessment (0-100%, capped)",
+    "validation_types": [
+      "CLI-based infrastructure validation",
+      "Evidence-based document validation"
+    ],
+    "consistency_mechanism": "Infrastructure fingerprinting with historical comparison",
+    "error_handling": "Graceful degradation with partial credit for pilot environments",
+    "multi_command_support": "Enhanced support for hybrid CLI + evidence validation patterns"
+  },
+  "compliance_alignment": {
+    "fedramp_20x_standards": "Full compliance",
+    "nist_sp_800_53": "Aligned control mapping",
+    "aws_security_frameworks": "Native service validation"
+  },
+  "quality_assurance": {
+    "percentage_validation": "Scores properly capped at 100%",
+    "evidence_validation": "Multi-command pattern support",
+    "cli_monitoring": "Comprehensive execution success tracking",
+    "command_counting": "Accurate multi-command execution counting",
+    "json_structure_handling": "Fixed nested JSON parsing",
+    "logical_consistency": "Smart mixed-indicator assessment for maturity-based validation"
+  }
+}

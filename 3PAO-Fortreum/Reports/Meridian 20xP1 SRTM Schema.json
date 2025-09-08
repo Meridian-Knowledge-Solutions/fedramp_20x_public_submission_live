@@ -1,0 +1,675 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fedramp.gov/schemas/20x/srtm/v1.0.0/srtm-complete.schema.json",
+  "title": "FedRAMP 20x Security Requirements Traceability Matrix (SRTM) - Complete Structure",
+  "description": "JSON schema for complete FedRAMP 20x SRTM with all KSI families",
+  "type": "object",
+  "required": [
+    "document_metadata",
+    "goals_and_objectives",
+    "definitions",
+    "system_information",
+    "fedramp_rules",
+    "ksi_summary_complete",
+    "submission_requirements",
+    "ksi_si_details",
+    "fedramp_rev5_information",
+    "assessment_overview",
+    "mas_assessment",
+    "evidence_tracker",
+    "findings_and_recommendations",
+    "complete_ksi_requirements",
+    "assessment_statistics"
+  ],
+  "properties": {
+    "document_metadata": {
+      "type": "object",
+      "title": "Document Metadata",
+      "description": "Metadata about the SRTM document and assessment",
+      "required": [
+        "title",
+        "version",
+        "assessment_period",
+        "assessor_organization",
+        "cloud_service_provider",
+        "system_name",
+        "system_acronym",
+        "assessment_type",
+        "total_worksheets_covered",
+        "logical_sections_extracted",
+        "worksheet_list",
+        "extraction_date",
+        "completeness"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Official title of the SRTM document"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^v\\d{2}\\.\\d{2}\\.\\d{4}.*$",
+          "description": "Version number in format vMM.DD.YYYY with optional suffix"
+        },
+        "assessment_period": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2} to \\d{4}-\\d{2}-\\d{2}$",
+          "description": "Assessment period in format YYYY-MM-DD to YYYY-MM-DD"
+        },
+        "assessor_organization": {
+          "type": "string",
+          "description": "Name of the Third Party Assessment Organization (3PAO)"
+        },
+        "cloud_service_provider": {
+          "type": "string",
+          "description": "Name of the Cloud Service Provider being assessed"
+        },
+        "system_name": {
+          "type": "string",
+          "description": "Name of the system being assessed"
+        },
+        "system_acronym": {
+          "type": "string",
+          "description": "Acronym or short name for the system"
+        },
+        "assessment_type": {
+          "type": "string",
+          "enum": ["Initial Assessment", "Annual Assessment", "Significant Change Assessment"],
+          "description": "Type of FedRAMP assessment"
+        },
+        "total_worksheets_covered": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Total number of Excel worksheets processed"
+        },
+        "logical_sections_extracted": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of structured data blocks parsed from workbooks"
+        },
+        "worksheet_list": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "List of worksheet names from the source Excel file"
+        },
+        "extraction_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when JSON was generated from Excel files"
+        },
+        "completeness": {
+          "type": "string",
+          "description": "Assessment of extraction completeness"
+        },
+        "conversion_status": {
+          "type": "string",
+          "description": "Status of the conversion process"
+        }
+      },
+      "additionalProperties": false
+    },
+    "goals_and_objectives": {
+      "type": "array",
+      "title": "Goals and Objectives",
+      "description": "Strategic goals and objectives for the FedRAMP 20x pilot",
+      "items": {
+        "type": "object",
+        "required": ["goal_id", "description"],
+        "properties": {
+          "goal_id": {
+            "type": "string",
+            "pattern": "^GOAL-\\d+$",
+            "description": "Unique identifier for the goal"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Detailed description of the goal or objective"
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "definitions": {
+      "type": "array",
+      "title": "Definitions",
+      "description": "Glossary of terms and definitions for FedRAMP 20x",
+      "items": {
+        "type": "object",
+        "required": ["id", "term", "definition", "notes"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^FRD-\\d{3}$",
+            "description": "Unique identifier for the definition"
+          },
+          "term": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Term being defined"
+          },
+          "definition": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Definition of the term"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Additional notes or context"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "system_information": {
+      "type": "object",
+      "title": "System Information",
+      "description": "Detailed information about the system being assessed",
+      "required": [
+        "System Name",
+        "System Acronym",
+        "CSP Name",
+        "3PAO Name",
+        "Categorization Level",
+        "Cloud Deployment Model",
+        "Cloud Service Model",
+        "Primary Cloud Provider",
+        "Authorization Boundary",
+        "System Description",
+        "Data Types"
+      ],
+      "properties": {
+        "System Name": { "type": "string" },
+        "System Acronym": { "type": "string" },
+        "CSP Name": { "type": "string" },
+        "3PAO Name": { "type": "string" },
+        "Categorization Level": {
+          "type": "string",
+          "enum": ["Low", "Moderate", "High"]
+        },
+        "Cloud Deployment Model": {
+          "type": "string",
+          "enum": ["Public Cloud", "Private Cloud", "Hybrid Cloud", "Community Cloud"]
+        },
+        "Cloud Service Model": {
+          "type": "string",
+          "enum": ["SaaS", "PaaS", "IaaS"]
+        },
+        "Primary Cloud Provider": { "type": "string" },
+        "Authorization Boundary": { "type": "string" },
+        "System Description": { "type": "string" },
+        "Data Types": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "fedramp_rules": {
+      "type": "array",
+      "title": "FedRAMP Rules",
+      "description": "FedRAMP 20x compliance rules and requirements",
+      "items": {
+        "type": "object",
+        "required": ["family", "rule_id", "rule_text", "validation", "notes"],
+        "properties": {
+          "family": {
+            "type": "string",
+            "pattern": "^FRR-[A-Z]+$",
+            "description": "Rule family identifier"
+          },
+          "rule_id": {
+            "type": "string",
+            "pattern": "^FRR-[A-Z]+-\\d{2}$",
+            "description": "Unique rule identifier"
+          },
+          "rule_text": {
+            "type": "string",
+            "minLength": 20,
+            "description": "Full text of the compliance rule"
+          },
+          "validation": {
+            "type": "string",
+            "description": "Validation method for the rule"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Additional notes about the rule"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "ksi_summary_complete": {
+      "type": "array",
+      "title": "Complete KSI Summary",
+      "description": "Complete summary of all Key Security Indicators",
+      "items": {
+        "type": "object",
+        "required": ["family", "ksi_rule_id", "name", "result", "automation_results"],
+        "properties": {
+          "family": {
+            "type": "string",
+            "pattern": "^(KSI-[A-Z]{3}|FRR-[A-Z]+)$",
+            "description": "KSI family or rule family identifier"
+          },
+          "ksi_rule_id": {
+            "type": "string",
+            "description": "KSI or rule identifier"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Human-readable name of the requirement"
+          },
+          "result": {
+            "oneOf": [
+              {"type": "boolean"},
+              {"type": "string", "enum": ["partial"]}
+            ],
+            "description": "Assessment result - boolean for pass/fail or 'partial' string"
+          },
+          "automation_results": {
+            "type": "string",
+            "description": "Results from automated validation"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "complete_ksi_requirements": {
+      "type": "array",
+      "title": "Complete KSI Requirements",
+      "description": "Detailed Key Security Indicator requirements with validation information",
+      "items": {
+        "type": "object",
+        "required": ["ksi_id", "ksi_family", "requirement_text", "assessment_objective", "validation_method", "validation_status", "implementation_status", "automation_status", "evidence_location", "nist_controls", "test_results", "mitigation_required"],
+        "properties": {
+          "ksi_id": {
+            "type": "string",
+            "pattern": "^KSI-[A-Z]{3}\\.(\\d{2}|\\d)$",
+            "description": "Unique KSI identifier"
+          },
+          "ksi_family": {
+            "type": "string",
+            "pattern": "^KSI-[A-Z]{3}$",
+            "description": "KSI family identifier"
+          },
+          "requirement_text": {
+            "type": "string",
+            "minLength": 20,
+            "description": "Full text of the security requirement"
+          },
+          "assessment_objective": {
+            "type": "string",
+            "description": "Objective of the assessment for this requirement"
+          },
+          "validation_method": {
+            "type": "string",
+            "enum": ["Automated", "Partially Automated", "Manual"],
+            "description": "Method used to validate this requirement"
+          },
+          "validation_commands": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^aws\\s+",
+              "description": "AWS CLI command for automated validation"
+            },
+            "description": "List of validation commands for automated testing"
+          },
+          "validation_status": {
+            "type": "string",
+            "enum": ["PASS", "PARTIAL", "FAIL", "NOT_TESTED"],
+            "description": "Current validation status"
+          },
+          "implementation_status": {
+            "type": "string",
+            "enum": ["IMPLEMENTED", "IN_PROGRESS", "PLANNED", "NOT_APPLICABLE"],
+            "description": "Implementation status of the control"
+          },
+          "automation_status": {
+            "type": "string",
+            "enum": ["Fully Automated", "Partially Automated", "Manual"],
+            "description": "Level of automation for this requirement"
+          },
+          "evidence_location": {
+            "type": "string",
+            "description": "Location of evidence for this requirement"
+          },
+          "nist_controls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}-\\d{1,2}(\\(\\d+\\))?$",
+              "description": "NIST SP 800-53 control identifier"
+            },
+            "description": "Related NIST controls"
+          },
+          "test_results": {
+            "type": "string",
+            "description": "Detailed test results"
+          },
+          "mitigation_required": {
+            "type": "boolean",
+            "description": "Whether mitigation is required"
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "assessment_overview": {
+      "type": "object",
+      "title": "Assessment Overview",
+      "description": "Overview of the 3PAO assessment",
+      "required": ["title", "client", "assessor", "assessment_type", "system", "scope", "period", "ksi_compliance_summary"],
+      "properties": {
+        "title": { "type": "string" },
+        "client": { "type": "string" },
+        "assessor": { "type": "string" },
+        "assessment_type": { "type": "string" },
+        "system": { "type": "string" },
+        "scope": { "type": "string" },
+        "period": { "type": "string" },
+        "ksi_compliance_summary": {
+          "type": "object",
+          "description": "Summary of compliance for all KSI families",
+          "patternProperties": {
+            "^KSI-[A-Z]{3}$": {
+              "type": "object",
+              "required": ["name", "total_requirements", "requirements_met", "requirements_partial", "requirements_not_met", "overall_status", "automation_status", "mitigation_required"],
+              "properties": {
+                "name": { "type": "string" },
+                "total_requirements": { "type": "integer" },
+                "requirements_met": { "type": "integer" },
+                "requirements_partial": { "type": "integer" },
+                "requirements_not_met": { "type": "integer" },
+                "overall_status": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "automation_status": {
+                  "type": "string",
+                  "enum": ["Fully Automated", "Partially Automated", "Manual"]
+                },
+                "mitigation_required": {
+                  "type": "string",
+                  "enum": ["Yes", "No"]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "submission_requirements": {
+      "type": "array",
+      "title": "Submission Requirements",
+      "description": "FedRAMP submission requirements and their status",
+      "items": {
+        "type": "object",
+        "required": ["requirement", "instructions", "status"],
+        "properties": {
+          "requirement": {
+            "type": "string",
+            "minLength": 5,
+            "description": "Name of the submission requirement"
+          },
+          "instructions": {
+            "type": "string",
+            "description": "Instructions for fulfilling the requirement"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Complete", "In Progress", "Not Started", "N/A", "Scheduled"],
+            "description": "Current status of the requirement"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "ksi_si_details": {
+      "type": "array",
+      "title": "KSI Special Indicators",
+      "description": "Details for special Key Security Indicators",
+      "items": {
+        "type": "object",
+        "required": ["family", "ksi_id", "name", "description", "assessment_objective", "test_method"],
+        "properties": {
+          "family": {
+            "type": "string",
+            "pattern": "^KSI-[A-Z]{3}$"
+          },
+          "ksi_id": {
+            "type": "string",
+            "pattern": "^KSI-[A-Z]{3}\\.(\\d{2}|\\d)$"
+          },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "assessment_objective": { "type": "string" },
+          "test_method": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "fedramp_rev5_information": {
+      "type": "array",
+      "title": "FedRAMP Revision Information",
+      "description": "Information about FedRAMP baseline and revisions",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mas_assessment": {
+      "type": "array",
+      "title": "Minimum Assessment Scope",
+      "description": "Assessment of components within minimum assessment scope",
+      "items": {
+        "type": "object",
+        "required": ["component", "in_scope", "assessment_status", "findings", "automation_level"],
+        "properties": {
+          "component": { "type": "string" },
+          "in_scope": { "type": "boolean" },
+          "assessment_status": {
+            "type": "string",
+            "enum": ["Complete", "In Progress", "Not Started", "N/A"]
+          },
+          "findings": { "type": "string" },
+          "automation_level": {
+            "type": "string",
+            "enum": ["Fully Automated", "Partially Automated", "Manual Verification"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence_tracker": {
+      "type": "array",
+      "title": "Evidence Tracker",
+      "description": "Tracking of evidence collection for assessment",
+      "items": {
+        "type": "object",
+        "required": ["evidence_id", "evidence_type", "location", "collection_date", "status"],
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "pattern": "^EVD-\\d{3}$",
+            "description": "Unique evidence identifier"
+          },
+          "ksi_requirement": {
+            "type": "string",
+            "pattern": "^(KSI-[A-Z]{3}\\.(\\d{2}|\\d)|ALL)$",
+            "description": "Related KSI requirement or ALL for global evidence"
+          },
+          "evidence_type": {
+            "type": "string",
+            "enum": ["Automated CLI Output", "Manual Documentation", "Privacy Impact Assessment", "Continuous Monitoring Results"],
+            "description": "Type of evidence"
+          },
+          "location": {
+            "type": "string",
+            "description": "Location where evidence is stored"
+          },
+          "collection_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date evidence was collected"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Complete", "Pending Review", "In Progress"],
+            "description": "Status of evidence collection"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "findings_and_recommendations": {
+      "type": "array",
+      "title": "Findings and Recommendations",
+      "description": "Assessment findings and recommendations",
+      "items": {
+        "type": "object",
+        "required": ["finding_id", "severity", "category", "description", "recommendation", "status", "target_completion"],
+        "properties": {
+          "finding_id": {
+            "type": "string",
+            "pattern": "^(F|OBS)-\\d{3}$",
+            "description": "Unique finding identifier"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["Critical", "High", "Medium", "Low", "Informational", "Observation"],
+            "description": "Severity level of the finding"
+          },
+          "category": { "type": "string", "description": "Category of the finding" },
+          "description": {
+            "type": "string",
+            "minLength": 20,
+            "description": "Detailed description of the finding"
+          },
+          "recommendation": {
+            "type": "string",
+            "description": "Recommended remediation action"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Open", "Closed", "In Progress", "Informational"],
+            "description": "Current status of the finding"
+          },
+          "target_completion": {
+            "type": "string",
+            "pattern": "^(\\d{4}-\\d{2}-\\d{2}|N/A)$",
+            "description": "Target completion date or N/A"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "assessment_statistics": {
+      "type": "object",
+      "title": "Assessment Statistics",
+      "description": "Statistical summary of the assessment",
+      "required": [
+        "total_requirements_assessed",
+        "fully_automated_validations",
+        "partially_automated_validations",
+        "manual_validations",
+        "automation_coverage_percentage",
+        "requirements_passed",
+        "requirements_partial",
+        "requirements_failed",
+        "overall_compliance_rate",
+        "total_evidence_items",
+        "automated_evidence_items",
+        "manual_evidence_items",
+        "total_worksheets_processed",
+        "data_extraction_completeness"
+      ],
+      "properties": {
+        "total_requirements_assessed": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Total number of requirements assessed"
+        },
+        "fully_automated_validations": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of fully automated validations"
+        },
+        "partially_automated_validations": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of partially automated validations"
+        },
+        "manual_validations": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of manual validations"
+        },
+        "automation_coverage_percentage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percentage of requirements with automation"
+        },
+        "requirements_passed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of requirements that passed"
+        },
+        "requirements_partial": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of requirements with partial compliance"
+        },
+        "requirements_failed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of requirements that failed"
+        },
+        "overall_compliance_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Overall compliance percentage"
+        },
+        "total_evidence_items": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of evidence items"
+        },
+        "automated_evidence_items": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of automated evidence items"
+        },
+        "manual_evidence_items": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of manual evidence items"
+        },
+        "total_worksheets_processed": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Total worksheets processed"
+        },
+        "data_extraction_completeness": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percentage of data extraction completeness"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,50 @@
+{
+  "last_updated": "2025-09-08T09:32:28Z",
+  "organization": "Meridian Knowledge Solutions",
+  "service": "FedRAMP 20x Compliance Monitoring",
+  "phase_2_ready": true,
+  "security_note": "evidence_v2 directory excluded from public repository for security",
+  "root_files": {
+    "unified_ksi_validations.json": "Latest KSI validation results",
+    "results/": "KSI validation result files",
+    "docs/": "KSI documentation", 
+    "validation/": "KSI validation engine results"
+  },
+  "excluded_directories": {
+    "evidence_v2": "Raw evidence files excluded for security - available in private repository only"
+  },
+  "organized_directories": {
+    "scn_automation": {
+      "description": "Enhanced SCN automation results",
+      "key_files": [
+        "scn_classification.json",
+        "scn_issues/",
+        "external_repo_changes.json",
+        "enhanced_scn_status.json"
+      ]
+    },
+    "compliance_evidence": {
+      "description": "Complete SCN compliance evidence packages",
+      "key_files": [
+        "enhanced_scn_compliance/",
+        "package_metadata.json"
+      ]
+    },
+    "audit_summaries": {
+      "description": "SCN audit summaries and metadata",
+      "key_files": [
+        "scn_classification.json",
+        "evidence_commit_metadata.json"
+      ]
+    },
+    "phase2_compliance": {
+      "description": "Phase 2 3PAO compliance validation results",
+      "key_files": [
+        "validation_consistency_log.json",
+        "technical_validation_log.json", 
+        "3pao_audit_report.json",
+        "fingerprint_cache.json"
+      ]
+    }
+  }
+}

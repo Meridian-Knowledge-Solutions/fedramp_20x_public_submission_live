@@ -1,0 +1,392 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FedRAMP 20x Unified KSI Validations",
+  "description": "Schema for automated FedRAMP 20x Key Security Indicator validation results",
+  "type": "object",
+  "required": [
+    "metadata",
+    "validations"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": [
+        "generated_at",
+        "generator_version",
+        "total_ksis",
+        "total_passed",
+        "total_failed"
+      ],
+      "properties": {
+        "generated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when validation was last executed"
+        },
+        "generator_version": {
+          "type": "string",
+          "description": "Version of the validation generator (e.g., multi-command-v2)",
+          "examples": ["multi-command-v2", "single-command", "hybrid"]
+        },
+        "total_ksis": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of KSIs evaluated"
+        },
+        "total_passed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of KSIs that passed validation"
+        },
+        "total_failed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of KSIs that failed validation"
+        },
+        "category_summary": {
+          "type": "object",
+          "description": "Summary of results by KSI category",
+          "patternProperties": {
+            "^KSI-[A-Z]{3}$": {
+              "type": "object",
+              "required": ["total", "passed", "failed", "long_name"],
+              "properties": {
+                "total": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "Total KSIs in this category"
+                },
+                "passed": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "KSIs that passed in this category"
+                },
+                "failed": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "KSIs that failed in this category"
+                },
+                "long_name": {
+                  "type": "string",
+                  "description": "Full descriptive name of the category"
+                }
+              }
+            }
+          }
+        },
+        "environment": {
+          "type": "string",
+          "description": "Deployment environment (dev, staging, prod)",
+          "examples": ["development", "staging", "production", "pilot"]
+        },
+        "aws_region": {
+          "type": "string",
+          "description": "Primary AWS region for validation",
+          "pattern": "^[a-z]{2}-[a-z]+-[0-9]$"
+        },
+        "validation_id": {
+          "type": "string",
+          "description": "Unique identifier for this validation run"
+        }
+      }
+    },
+    "validations": {
+      "type": "array",
+      "description": "Array of individual KSI validation results",
+      "items": {
+        "type": "object",
+        "required": [
+          "ksi_id",
+          "validation_id",
+          "assertion",
+          "assertion_reason",
+          "cli_command",
+          "cli_output_digest",
+          "cli_output_interpretation",
+          "timestamp"
+        ],
+        "properties": {
+          "ksi_id": {
+            "type": "string",
+            "pattern": "^KSI-[A-Z]{3}-[0-9]{2}$",
+            "description": "FedRAMP Key Security Indicator identifier",
+            "examples": ["KSI-CMT-03", "KSI-CNA-05", "KSI-IAM-01"]
+          },
+          "validation_id": {
+            "type": "string",
+            "description": "Unique identifier matching ksi_id for this validation"
+          },
+          "assertion": {
+            "type": "boolean",
+            "description": "Whether the KSI passed (true) or failed (false) validation"
+          },
+          "assertion_reason": {
+            "type": "string",
+            "description": "Human-readable explanation of the validation result"
+          },
+          "cli_command": {
+            "type": "string",
+            "description": "Summary of CLI command(s) used for validation"
+          },
+          "cli_output_digest": {
+            "type": "string",
+            "description": "Hash or summary of CLI output for integrity verification"
+          },
+          "cli_output_interpretation": {
+            "type": "string",
+            "description": "Interpretation of CLI command execution results"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When this specific KSI validation was performed"
+          },
+          "validation_method": {
+            "type": "string",
+            "description": "Method used for this specific KSI validation",
+            "examples": ["validation-engine-sync", "cli-direct", "manual", "evidence_check"]
+          },
+          "commands_executed": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of CLI commands executed for this KSI"
+          },
+          "successful_commands": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of CLI commands that executed successfully"
+          },
+          "failed_commands": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of CLI commands that failed"
+          },
+          "original_timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Original timestamp from validation engine"
+          },
+          "synced_from_validation_engine": {
+            "type": "boolean",
+            "description": "Whether this result was synced from validation engine"
+          },
+          "requirement": {
+            "type": "string",
+            "description": "The specific FedRAMP requirement being validated"
+          },
+          "long_name": {
+            "type": "string",
+            "description": "Full descriptive name of the KSI category"
+          },
+          "category_prefix": {
+            "type": "string",
+            "pattern": "^KSI-[A-Z]{3}$",
+            "description": "Category prefix (e.g., KSI-CMT, KSI-CNA)"
+          },
+          "total_category_controls": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Total number of controls in this category"
+          },
+          "evidence_path": {
+            "type": "string",
+            "description": "File path to evidence artifacts for this KSI"
+          },
+          "title": {
+            "type": "string",
+            "description": "Human-readable title for the KSI"
+          },
+          "control": {
+            "type": "string",
+            "description": "Control family name (e.g., Change Management, Cloud Native Architecture)",
+            "examples": ["Change Management", "Cloud Native Architecture", "Identity and Access Management"]
+          },
+          "cli_output_snippet": {
+            "type": "string",
+            "description": "Brief excerpt of CLI output for display purposes"
+          },
+          "raw_cli_output": {
+            "type": "object",
+            "description": "Complete CLI output in structured format"
+          },
+          "interpretation": {
+            "type": "string",
+            "description": "Additional interpretation or context for the validation"
+          },
+          "evidence_analysis": {
+            "type": "string",
+            "description": "Analysis of evidence quality and completeness"
+          },
+          "risk_level": {
+            "type": "string",
+            "description": "Risk assessment for this control failure",
+            "enum": ["low", "medium", "high", "critical"]
+          },
+          "remediation_priority": {
+            "type": "string",
+            "description": "Priority level for remediation efforts",
+            "enum": ["immediate", "high", "medium", "low"]
+          },
+          "remediation_effort": {
+            "type": "string",
+            "description": "Estimated effort required for remediation",
+            "enum": ["quick_fix", "configuration", "development", "policy"]
+          },
+          "commit_sha": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{7,40}$",
+            "description": "Git commit SHA for traceability"
+          },
+          "automation_confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Confidence level in automated validation result (0-100)"
+          },
+          "manual_verification_required": {
+            "type": "boolean",
+            "description": "Whether manual verification is recommended for this result"
+          },
+          "last_passing_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When this KSI last passed validation (if currently failing)"
+          },
+          "failure_count": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of consecutive validation failures"
+          },
+          "trend": {
+            "type": "string",
+            "description": "Trend over recent validations",
+            "enum": ["improving", "stable", "degrading", "new_failure", "persistent_failure"]
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "description": "Summary statistics and categorized results",
+      "properties": {
+        "by_category": {
+          "type": "object",
+          "description": "Results grouped by control family",
+          "patternProperties": {
+            "^[A-Z]{3}$": {
+              "type": "object",
+              "properties": {
+                "category_name": {
+                  "type": "string"
+                },
+                "total": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "passing": {
+                  "type": "integer", 
+                  "minimum": 0
+                },
+                "failing": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "pass_rate": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                }
+              }
+            }
+          }
+        },
+        "by_remediation_type": {
+          "type": "object",
+          "description": "Failures categorized by remediation approach",
+          "properties": {
+            "quick_fixes": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of failures requiring quick fixes (document uploads, etc.)"
+            },
+            "configuration_issues": {
+              "type": "integer", 
+              "minimum": 0,
+              "description": "Number of failures requiring configuration changes"
+            },
+            "technical_issues": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of failures requiring technical development"
+            },
+            "policy_issues": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of failures requiring policy/process updates"
+            }
+          }
+        },
+        "authorization_readiness": {
+          "type": "object",
+          "description": "Assessment of readiness for FedRAMP authorization",
+          "properties": {
+            "target_pass_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Target pass rate for authorization (typically 90%+)"
+            },
+            "current_gap": {
+              "type": "integer",
+              "description": "Number of additional KSIs needed to meet target"
+            },
+            "estimated_remediation_time": {
+              "type": "string",
+              "description": "Estimated time to reach authorization readiness"
+            },
+            "readiness_status": {
+              "type": "string",
+              "enum": ["ready", "near_ready", "requires_work", "significant_gaps"],
+              "description": "Overall readiness assessment"
+            }
+          }
+        }
+      }
+    },
+    "validation_config": {
+      "type": "object",
+      "description": "Configuration and metadata about the validation process",
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "description": "Version of this schema",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "validation_engine_version": {
+          "type": "string",
+          "description": "Version of the validation engine"
+        },
+        "rule_set_version": {
+          "type": "string",
+          "description": "Version of the KSI validation rules"
+        },
+        "aws_cli_version": {
+          "type": "string",
+          "description": "Version of AWS CLI used"
+        },
+        "python_version": {
+          "type": "string",
+          "description": "Python version used for validation"
+        },
+        "excluded_ksis": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^KSI-[A-Z]{3}-[0-9]{2}$"
+          },
+          "description": "KSIs excluded from this validation run"
+        }
+      }
+    }
+  }
+}
