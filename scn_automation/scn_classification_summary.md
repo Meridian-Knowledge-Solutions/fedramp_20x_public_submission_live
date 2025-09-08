@@ -1,6 +1,6 @@
 # FedRAMP 20x SCN Summary: ROUTINE_RECURRING
 
-**Classification Date:** `2025-09-08T09:32:00.731820`
+**Classification Date:** `2025-09-08T19:00:51.814195`
 **FedRAMP ID:** `FR2527956755`
 **Method:** File-Level Classification with Contextual Diff Analysis
 
@@ -15,9 +15,9 @@
 
 - **Total Files:** 1
 - **File Classifications:**
-  - `.github/workflows/fedramp-cvm-pipeline.yaml`: **routine_recurring**
+  - `.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml`: **routine_recurring**
 - **Commit Details (Private-Safe):**
-  - `fedramp-20x-submission-final@3317eb05` by *Kwahf33*: Update fedramp-cvm-pipeline.yaml
+  - `fedramp-20x-submission-final@298ad021` by *Kwahf33*: Update FedRAMP 20x CLI Validation Pipeline.yaml
 
 ## 3. Impact Analysis (FRR-SCN-09)
 
