@@ -4,11 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-<<<<<<< Updated upstream
-**Last Check:** 2025-09-08 18:55
-=======
-**Last Check:** 2025-09-08 19:00
->>>>>>> Stashed changes
+**Last Check:** 2025-09-08 19:16
 
 **What it validates:** Centrally track and prioritize the mitigation and/or remediation of identified vulnerabilities
 
@@ -55,8 +51,4 @@ PASS Production-ready automated vulnerability tracking and remediation workflows
 - PASS Enterprise governance: Organization-wide vulnerability tracking policies and remediation standards
 
 ---
-<<<<<<< Updated upstream
-*Generated 2025-09-08 18:55 UTC*
-=======
-*Generated 2025-09-08 19:00 UTC*
->>>>>>> Stashed changes
+*Generated 2025-09-08 19:16 UTC*

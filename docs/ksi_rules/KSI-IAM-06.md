@@ -4,11 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-<<<<<<< Updated upstream
-**Last Check:** 2025-09-08 18:55
-=======
-**Last Check:** 2025-09-08 19:00
->>>>>>> Stashed changes
+**Last Check:** 2025-09-08 19:16
 
 **What it validates:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
@@ -59,8 +55,4 @@ PASS Enterprise-grade automated response capabilities (91%): PASS Advanced threa
 - INFO Multi-account architecture detected (governance centralized)
 
 ---
-<<<<<<< Updated upstream
-*Generated 2025-09-08 18:55 UTC*
-=======
-*Generated 2025-09-08 19:00 UTC*
->>>>>>> Stashed changes
+*Generated 2025-09-08 19:16 UTC*

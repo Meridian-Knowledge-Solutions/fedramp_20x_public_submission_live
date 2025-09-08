@@ -4,11 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-<<<<<<< Updated upstream
-**Last Check:** 2025-09-08 18:55
-=======
-**Last Check:** 2025-09-08 19:00
->>>>>>> Stashed changes
+**Last Check:** 2025-09-08 19:16
 
 **What it validates:** Establish and maintain complete inventories of all information resources
 
@@ -36,8 +32,4 @@ PASS Complete information resource inventory maintained: PASS Comprehensive AWS 
 - PASS Basic inventory documentation: complete_asset_inventory.xlsx
 
 ---
-<<<<<<< Updated upstream
-*Generated 2025-09-08 18:55 UTC*
-=======
-*Generated 2025-09-08 19:00 UTC*
->>>>>>> Stashed changes
+*Generated 2025-09-08 19:16 UTC*

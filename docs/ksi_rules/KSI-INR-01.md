@@ -4,11 +4,7 @@
 
 **Category:** Incident Reporting
 **Status:** PASS
-<<<<<<< Updated upstream
-**Last Check:** 2025-09-08 18:55
-=======
-**Last Check:** 2025-09-08 19:00
->>>>>>> Stashed changes
+**Last Check:** 2025-09-08 19:16
 
 **What it validates:** Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
 
@@ -25,8 +21,4 @@ WARNING Basic incident reporting (ensure FedRAMP compliance): PASS Core reportin
 - FAIL No specific FedRAMP incident reporting compliance found (required)
 
 ---
-<<<<<<< Updated upstream
-*Generated 2025-09-08 18:55 UTC*
-=======
-*Generated 2025-09-08 19:00 UTC*
->>>>>>> Stashed changes
+*Generated 2025-09-08 19:16 UTC*
