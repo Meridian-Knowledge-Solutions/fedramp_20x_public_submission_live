@@ -4,7 +4,7 @@
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-09-09 22:13
+**Last Check:** 2025-09-09 22:43
 
 **What it validates:** Monitor third party software for upstream vulnerabilities
 
@@ -32,8 +32,9 @@
 
 ## Latest Results
 
-PASS Vulnerability monitoring capability available: PASS Inspector vulnerability monitoring operational (no current vulnerabilities)
-- WARNING No contractual vulnerability notification agreements documented
+WARNING  Basic vulnerability monitoring established: WARNING  AWS Inspector status: DISABLED
+- PASS Inspector vulnerability findings: 50 total (30 medium, 17 high, 3 low)
+- Consider expanding monitoring coverage
 
 ---
-*Generated 2025-09-09 22:13 UTC*
+*Generated 2025-09-09 22:43 UTC*

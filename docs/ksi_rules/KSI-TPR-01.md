@@ -4,7 +4,7 @@
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-09-09 22:13
+**Last Check:** 2025-09-09 22:43
 
 **What it validates:** Identify all third-party information resources
 
@@ -32,8 +32,10 @@
 
 ## Latest Results
 
-PASS Comprehensive third-party identification with quality evidence: INFO Single-account environment: Third-party integrations may use API keys or service endpoints
-- PASS High-quality third-party evidence including SBOM: sbom_including_elastic.json, fedramp_moderate_vendor_list.xlsx, Elasticsearch Inc._06.04.2024_Self_Attestation.pdf
+PASS Good third-party integration coverage: 2 integrations identified
+- PASS SAML identity providers: 1 external authentication integrations
+- PASS OIDC providers: 1 modern OAuth2/OpenID Connect integrations
+- PASS API Gateway endpoints: 2 APIs potentially exposing services to third parties
 
 ---
-*Generated 2025-09-09 22:13 UTC*
+*Generated 2025-09-09 22:43 UTC*
