@@ -51,7 +51,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Policy and Inventory
 
-- [PASS] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
+- [FAIL] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
 - [PASS] [KSI-PIY-02](KSI-PIY-02.md): Establish and maintain organization-wide information security and technology policies
 - [PASS] [KSI-PIY-03](KSI-PIY-03.md): Maintain a vulnerability disclosure program
 - [PASS] [KSI-PIY-04](KSI-PIY-04.md): Build security considerations into SDLC and align with CISA Secure By Design principles
@@ -81,14 +81,14 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
 - [PASS] [KSI-TPR-02](KSI-TPR-02.md): Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured
 - [PASS] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
-- [PASS] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software information resources for upstream vulnerabilities, with contractual notification requirements or active monitoring services
+- [PASS] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
 
 ## Summary
 
 - **Total KSIs:** 51
-- **Passing:** 51
-- **Failing:** 0
+- **Passing:** 50
+- **Failing:** 1
 - **Not Tested:** 0
 
 ---
-*Generated 2025-09-09 05:20 UTC*
+*Generated 2025-09-09 22:13 UTC*

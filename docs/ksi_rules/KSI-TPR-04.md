@@ -1,29 +1,39 @@
-# KSI-TPR-04: Monitor third party software information resources for upstream vulnerabilities, with contractual notification requirements or active monitoring services
+# KSI-TPR-04: Monitor third party software for upstream vulnerabilities
 
 ## Overview
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-09-09 05:20
+**Last Check:** 2025-09-09 22:13
 
-**What it validates:** Monitor third party software information resources for upstream vulnerabilities, with contractual notification requirements or active monitoring services
+**What it validates:** Monitor third party software for upstream vulnerabilities
 
-**Why it matters:** Validates third-party vulnerability monitoring through Inspector, Security Hub, and active monitoring of external dependencies
+**Why it matters:** AWS Inspector and ECR vulnerability scanning provides automated monitoring of third-party software components and container images
 
 ## Validation Method
 
 1. `aws inspector2 get-configuration --output json`
-   *Check Inspector for third-party component vulnerability monitoring*
+   *Inspector configuration status for automated vulnerability scanning*
 
-2. `aws securityhub describe-hub --output json`
-   *Validate Security Hub for third-party vulnerability finding aggregation*
+2. `aws inspector2 list-findings --filter-criteria '{"findingStatus":[{"value":"ACTIVE","comparison":"EQUALS"}]}' --max-results 50 --output json`
+   *Active vulnerability findings from automated scanning*
 
-3. **Manual Review:** Check evidence_v2/KSI-TPR-04/ for vendor_vulnerability_monitoring_contracts.pdf, upstream_vulnerability_alerts.xlsx, and third_party_monitoring_procedures.pdf
+3. `aws inspector2 list-findings --filter-criteria '{"componentType":[{"value":"NPM","comparison":"EQUALS"}]}' --max-results 20 --output json`
+   *NPM package vulnerabilities in third-party JavaScript dependencies*
+
+4. `aws inspector2 list-findings --filter-criteria '{"componentType":[{"value":"PYTHON_PKG","comparison":"EQUALS"}]}' --max-results 20 --output json`
+   *Python package vulnerabilities in third-party Python dependencies*
+
+5. `aws ecr describe-repositories --output json`
+   *ECR repositories for container image vulnerability scanning*
+
+6. `aws ecr describe-image-scan-findings --repository-name $(aws ecr describe-repositories --query 'repositories[0].repositoryName' --output text) --image-id imageTag=latest --output json 2>/dev/null || echo '{"imageScanFindings":{"findings":[]}}'`
+   *Container image vulnerability scan findings for third-party components*
 
 ## Latest Results
 
-WARNING Basic vulnerability monitoring capability: WARNING Inspector vulnerability monitoring not accessible
-- PASS Manual evidence validation completed (vulnerability monitoring documentation verified)
+PASS Vulnerability monitoring capability available: PASS Inspector vulnerability monitoring operational (no current vulnerabilities)
+- WARNING No contractual vulnerability notification agreements documented
 
 ---
-*Generated 2025-09-09 05:20 UTC*
+*Generated 2025-09-09 22:13 UTC*

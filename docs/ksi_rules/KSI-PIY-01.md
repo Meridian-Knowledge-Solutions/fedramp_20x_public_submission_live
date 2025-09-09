@@ -3,33 +3,40 @@
 ## Overview
 
 **Category:** Policy and Inventory
-**Status:** PASS
-**Last Check:** 2025-09-09 05:20
+**Status:** FAIL
+**Last Check:** 2025-09-09 22:13
 
 **What it validates:** Establish and maintain complete inventories of all information resources
 
-**Why it matters:** Validates comprehensive asset inventory through Config, Systems Manager, and automated discovery across all AWS resources and services
+**Why it matters:** Comprehensive AWS resource discovery through native APIs provides real-time automated inventory validation
 
 ## Validation Method
 
-1. `aws configservice describe-configuration-recorders --output json`
-   *Check Config service for comprehensive resource inventory and tracking*
+1. `aws ec2 describe-instances --output json`
+   *EC2 compute instance inventory with state and configuration details*
 
-2. `aws ssm describe-instance-information --output json`
-   *Validate Systems Manager inventory for compute resource tracking*
+2. `aws rds describe-db-instances --output json`
+   *RDS database instance inventory with configuration and backup settings*
 
-3. `aws resourcegroupstaggingapi get-resources --output json`
-   *Check resource tagging for organized inventory management and categorization*
+3. `aws lambda list-functions --output json`
+   *Lambda serverless function inventory with runtime and configuration details*
 
-4. `aws support describe-trusted-advisor-checks --language en --output json`
-   *Validate Trusted Advisor for resource optimization and inventory insights*
+4. `aws s3api list-buckets --output json`
+   *S3 storage bucket inventory for data storage resources*
 
-5. **Manual Review:** Check evidence_v2/KSI-PIY-01/ for complete_asset_inventory.xlsx, resource_discovery_procedures.pdf, and inventory_maintenance_schedule.pdf
+5. `aws elbv2 describe-load-balancers --output json`
+   *Load balancer inventory for traffic distribution resources*
+
+6. `aws route53 list-hosted-zones --output json`
+   *DNS zone inventory for domain and routing resources*
+
+7. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
+   *Infrastructure as Code stack inventory for managed resource collections*
 
 ## Latest Results
 
-PASS Complete information resource inventory maintained: PASS Comprehensive AWS resource inventory: 872 tagged resources discovered
+FAIL Inadequate information resource inventory: FAIL No AWS resource inventory data
 - PASS Basic inventory documentation: complete_asset_inventory.xlsx
 
 ---
-*Generated 2025-09-09 05:20 UTC*
+*Generated 2025-09-09 22:13 UTC*
