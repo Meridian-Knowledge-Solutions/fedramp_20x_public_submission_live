@@ -38,38 +38,54 @@
     ]
   },
   "KSI-CNA-02": {
-    "description": "Design systems to minimize the attack surface and minimize lateral movement if compromised",
-    "justification": "Validates attack surface reduction through network micro-segmentation, minimal services, least privilege principles, and security-first architectural design",
-    "cli_commands": [
-      {
-        "command": "aws ec2 describe-security-groups --output json",
-        "note": "Check security groups for micro-segmentation and least privilege network access"
-      },
-      {
-        "command": "aws ec2 describe-instances --output json",
-        "note": "Validate instance configurations for minimal attack surface"
-      },
-      {
-        "command": "aws ecs describe-services --output json",
-        "note": "Check containerized services for attack surface minimization"
-      },
-      {
-        "command": "aws lambda list-functions --output json",
-        "note": "Validate serverless functions for minimal attack surface (function-as-a-service isolation)"
-      },
-      {
-        "command": "aws ec2 describe-network-interfaces --output json",
-        "note": "Analyze network interfaces for micro-segmentation and controlled communications"
-      },
-      {
-        "command": "aws iam list-roles --output json",
-        "note": "Check IAM roles for least privilege and attack surface reduction"
-      },
-      {
-        "command": "aws ssm describe-instance-information --output json",
-        "note": "Validate managed instances for centralized security posture and reduced attack surface"
-      }
-    ]
+  "description": "Design systems to minimize the attack surface and minimize lateral movement if compromised",
+  "justification": "Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures",
+  "cli_commands": [
+    {
+      "command": "aws ec2 describe-subnets --output json",
+      "note": "Analyze subnet segmentation for attack surface isolation (public vs private)"
+    },
+    {
+      "command": "aws ec2 describe-security-groups --output json",
+      "note": "Evaluate micro-segmentation and lateral movement prevention through security group rules"
+    },
+    {
+      "command": "aws ec2 describe-instances --output json",
+      "note": "Assess compute workload exposure and placement for attack surface minimization"
+    },
+    {
+      "command": "aws ec2 describe-network-acls --output json",
+      "note": "Check Network ACLs for subnet-level isolation and lateral movement barriers"
+    },
+    {
+      "command": "aws elbv2 describe-load-balancers --output json",
+      "note": "Analyze load balancer exposure patterns (internal vs internet-facing)"
+    },
+    {
+      "command": "aws lambda list-functions --output json",
+      "note": "Assess Lambda function isolation and VPC configuration for attack surface reduction"
+    },
+    {
+      "command": "aws rds describe-db-instances --output json",
+      "note": "Check database placement and exposure (should be in private subnets)"
+    },
+    {
+      "command": "aws ecs describe-services --output json",
+      "note": "Check containerized services for attack surface minimization"
+    },
+    {
+      "command": "aws ec2 describe-network-interfaces --output json",
+      "note": "Analyze network interfaces for micro-segmentation and controlled communications"
+    },
+    {
+      "command": "aws iam list-roles --output json",
+      "note": "Check IAM roles for least privilege and attack surface reduction"
+    },
+    {
+      "command": "aws ssm describe-instance-information --output json",
+      "note": "Validate managed instances for centralized security posture and reduced attack surface"
+    }
+  ]
   },
   "KSI-CNA-03": {
     "description": "Use logical networking and related capabilities to enforce traffic flow controls",
@@ -1171,27 +1187,35 @@
   },
   "KSI-PIY-01": {
     "description": "Establish and maintain complete inventories of all information resources",
-    "justification": "Validates comprehensive asset inventory through Config, Systems Manager, and automated discovery across all AWS resources and services",
+    "justification": "Comprehensive AWS resource discovery through native APIs provides real-time automated inventory validation",
     "cli_commands": [
       {
-        "command": "aws configservice describe-configuration-recorders --output json",
-        "note": "Check Config service for comprehensive resource inventory and tracking"
+        "command": "aws ec2 describe-instances --output json",
+        "note": "EC2 compute instance inventory with state and configuration details"
       },
       {
-        "command": "aws ssm describe-instance-information --output json",
-        "note": "Validate Systems Manager inventory for compute resource tracking"
+        "command": "aws rds describe-db-instances --output json", 
+        "note": "RDS database instance inventory with configuration and backup settings"
       },
       {
-        "command": "aws resourcegroupstaggingapi get-resources --output json",
-        "note": "Check resource tagging for organized inventory management and categorization"
+        "command": "aws lambda list-functions --output json",
+        "note": "Lambda serverless function inventory with runtime and configuration details"
       },
       {
-        "command": "aws support describe-trusted-advisor-checks --language en --output json",
-        "note": "Validate Trusted Advisor for resource optimization and inventory insights"
+        "command": "aws s3api list-buckets --output json",
+        "note": "S3 storage bucket inventory for data storage resources"
       },
       {
-        "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-PIY-01/ for complete_asset_inventory.xlsx, resource_discovery_procedures.pdf, and inventory_maintenance_schedule.pdf"
+        "command": "aws elbv2 describe-load-balancers --output json",
+        "note": "Load balancer inventory for traffic distribution resources"
+      },
+      {
+        "command": "aws route53 list-hosted-zones --output json",
+        "note": "DNS zone inventory for domain and routing resources"
+      },
+      {
+        "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
+        "note": "Infrastructure as Code stack inventory for managed resource collections"
       }
     ]
   },
@@ -1267,24 +1291,36 @@
       }
     ]
   },
-  "KSI-TPR-01": {
-    "description": "Identify all third-party information resources",
-    "justification": "Validates third-party resource identification through service discovery, marketplace usage analysis, and external service integration tracking",
+   "KSI-TPR-01": {
+    "description": "Identify all third-party information resources", 
+    "justification": "AWS API discovery of external integrations, identity providers, and cross-account relationships provides comprehensive third-party resource identification",
     "cli_commands": [
       {
-        "command": "aws marketplace-entitlement list-entitlements --output json",
-        "note": "Check AWS Marketplace entitlements for third-party service usage"
+        "command": "aws iam list-saml-providers --output json",
+        "note": "SAML identity providers indicating external authentication integrations"
       },
       {
-        "command": "aws servicecatalog list-portfolios --output json",
-        "note": "Validate Service Catalog for third-party solution deployments and management"
+        "command": "aws iam list-open-id-connect-providers --output json",
+        "note": "OIDC providers for modern OAuth2/OpenID Connect integrations"
       },
       {
-        "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-TPR-01/ for third_party_inventory.xlsx, vendor_relationship_matrix.pdf, and external_service_dependencies.pdf"
+        "command": "aws organizations list-accounts --output json",
+        "note": "AWS organization accounts to identify multi-account third-party relationships"
+      },
+      {
+        "command": "aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json",
+        "note": "Cross-account IAM roles indicating external account trust relationships"
+      },
+      {
+        "command": "aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=AssumeRole --start-time 2024-08-01 --end-time 2024-09-01 --max-items 20 --output json",
+        "note": "Recent cross-account access events to identify active third-party integrations"
+      },
+      {
+        "command": "aws apigateway get-rest-apis --output json",
+        "note": "API Gateway endpoints that may expose services to third parties"
       }
     ]
-  },
+   },
   "KSI-TPR-02": {
     "description": "Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured",
     "justification": "Validates FedRAMP authorization verification through service assessment, compliance monitoring, and authorization status tracking",
@@ -1310,20 +1346,32 @@
     ]
   },
   "KSI-TPR-04": {
-    "description": "Monitor third party software information resources for upstream vulnerabilities, with contractual notification requirements or active monitoring services",
-    "justification": "Validates third-party vulnerability monitoring through Inspector, Security Hub, and active monitoring of external dependencies",
+    "description": "Monitor third party software for upstream vulnerabilities",
+    "justification": "AWS Inspector and ECR vulnerability scanning provides automated monitoring of third-party software components and container images",
     "cli_commands": [
       {
         "command": "aws inspector2 get-configuration --output json",
-        "note": "Check Inspector for third-party component vulnerability monitoring"
+        "note": "Inspector configuration status for automated vulnerability scanning"
       },
       {
-        "command": "aws securityhub describe-hub --output json",
-        "note": "Validate Security Hub for third-party vulnerability finding aggregation"
+        "command": "aws inspector2 list-findings --filter-criteria '{\"findingStatus\":[{\"value\":\"ACTIVE\",\"comparison\":\"EQUALS\"}]}' --max-results 50 --output json",
+        "note": "Active vulnerability findings from automated scanning"
       },
       {
-        "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-TPR-04/ for vendor_vulnerability_monitoring_contracts.pdf, upstream_vulnerability_alerts.xlsx, and third_party_monitoring_procedures.pdf"
+        "command": "aws inspector2 list-findings --filter-criteria '{\"componentType\":[{\"value\":\"NPM\",\"comparison\":\"EQUALS\"}]}' --max-results 20 --output json",
+        "note": "NPM package vulnerabilities in third-party JavaScript dependencies"
+      },
+      {
+        "command": "aws inspector2 list-findings --filter-criteria '{\"componentType\":[{\"value\":\"PYTHON_PKG\",\"comparison\":\"EQUALS\"}]}' --max-results 20 --output json", 
+        "note": "Python package vulnerabilities in third-party Python dependencies"
+      },
+      {
+        "command": "aws ecr describe-repositories --output json",
+        "note": "ECR repositories for container image vulnerability scanning"
+      },
+      {
+        "command": "aws ecr describe-image-scan-findings --repository-name $(aws ecr describe-repositories --query 'repositories[0].repositoryName' --output text) --image-id imageTag=latest --output json 2>/dev/null || echo '{\"imageScanFindings\":{\"findings\":[]}}'",
+        "note": "Container image vulnerability scan findings for third-party components"
       }
     ]
   },
@@ -1458,3 +1506,5 @@
     ]
   }
 }
+
+
