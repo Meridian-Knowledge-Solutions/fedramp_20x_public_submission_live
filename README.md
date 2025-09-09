@@ -8,7 +8,7 @@ It demonstrates **automated validation**, **machine-readable evidence**, **SCN a
 
 ## 🌐 Live Trust Center Dashboard
 
-**🌐 [FedRAMP 20x Trust Center](https://meridian-knowledge-solutions.github.io/fedramp_20x_public_submission-live/)**
+**🌐 [FedRAMP 20x Trust Center](https://meridian-knowledge-solutions.github.io/fedramp_20x_public_submission_live/)**
 
 ### 🚀 Three-Tier POA&M System
 We implemented a proactive enhancement tracking beyond traditional compliance gaps:
@@ -102,7 +102,7 @@ Evidence Collection → CLI Execution → Assertion Processing → Validation En
 
 ### **KSI-to-Evidence Mapping**
 Each KSI validation includes complete traceability:
-- **CLI Commands**: Automated evidence collection via AWS APIs (893894210484:role/githubactions_role)
+- **CLI Commands**: Automated evidence collection via AWS APIs (githubactions_role)
 - **Manual Evidence**: Policy documents, procedures, and organizational artifacts stored in `evidence_v2/`
 - **Validation Results**: Machine-readable pass/fail with detailed reasoning in `unified_ksi_validations.json`
 - **Evidence Paths**: Direct links to supporting evidence files with git commit tracking
