@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-09-09 22:43
+**Last Check:** 2025-09-10 02:36
 
 **What it validates:** Establish and maintain organization-wide information security and technology policies
 
@@ -19,4 +19,4 @@
 - PASS Security policies outlining objectives: PASS Core security policies: personnel_security_policy.pdf, data_classification_handling_policy.pdf, security_policy_collection_repository.zip
 
 ---
-*Generated 2025-09-09 22:43 UTC*
+*Generated 2025-09-10 02:36 UTC*

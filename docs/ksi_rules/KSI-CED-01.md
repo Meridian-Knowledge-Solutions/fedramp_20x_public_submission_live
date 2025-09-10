@@ -4,7 +4,7 @@
 
 **Category:** Cybersecurity Education
 **Status:** PASS
-**Last Check:** 2025-09-09 22:43
+**Last Check:** 2025-09-10 02:36
 
 **What it validates:** Ensure all employees receive security awareness training
 
@@ -19,4 +19,4 @@
 - PASS Security awareness training evidence: cyber_security_training.png, security_training_roster.png, fedramp_role_based.png
 
 ---
-*Generated 2025-09-09 22:43 UTC*
+*Generated 2025-09-10 02:36 UTC*

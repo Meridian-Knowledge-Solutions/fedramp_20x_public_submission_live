@@ -7,7 +7,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387221",
+    "timestamp": "2025-09-10T02:36:20.860546",
     "validation_method": "multi-command"
   },
   {
@@ -18,7 +18,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387231",
+    "timestamp": "2025-09-10T02:36:20.860556",
     "validation_method": "multi-command"
   },
   {
@@ -29,7 +29,7 @@
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387234",
+    "timestamp": "2025-09-10T02:36:20.860559",
     "validation_method": "multi-command"
   },
   {
@@ -40,7 +40,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387237",
+    "timestamp": "2025-09-10T02:36:20.860562",
     "validation_method": "multi-command"
   },
   {
@@ -51,7 +51,7 @@
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387239",
+    "timestamp": "2025-09-10T02:36:20.860565",
     "validation_method": "multi-command"
   },
   {
@@ -62,7 +62,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387242",
+    "timestamp": "2025-09-10T02:36:20.860567",
     "validation_method": "multi-command"
   },
   {
@@ -73,7 +73,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387244",
+    "timestamp": "2025-09-10T02:36:20.860569",
     "validation_method": "multi-command"
   },
   {
@@ -84,7 +84,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387246",
+    "timestamp": "2025-09-10T02:36:20.860577",
     "validation_method": "multi-command"
   },
   {
@@ -95,7 +95,7 @@
     "cli_command": "11 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387249",
+    "timestamp": "2025-09-10T02:36:20.860579",
     "validation_method": "multi-command"
   },
   {
@@ -106,7 +106,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387251",
+    "timestamp": "2025-09-10T02:36:20.860582",
     "validation_method": "multi-command"
   },
   {
@@ -117,7 +117,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387253",
+    "timestamp": "2025-09-10T02:36:20.860584",
     "validation_method": "multi-command"
   },
   {
@@ -128,18 +128,18 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387255",
+    "timestamp": "2025-09-10T02:36:20.860586",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-CNA-06",
     "validation_id": "KSI-CNA-06",
     "assertion": true,
-    "assertion_reason": "\u2705 Excellent high availability design for pilot environment (100%): \u2705 Strong network HA: 8 subnets across 2 AZs; \u2705 Balanced subnet distribution across availability zones; \u2705 Application HA: 1 multi-AZ load balancer(s) providing traffic distribution; \u2705 Active backup strategy: 2 AWS Backup plan(s) with recent execution; \u2705 Storage redundancy: 4 S3 bucket(s) with built-in 11-9s durability; \u2705 Database HA-ready: 1 RDS instance(s) with multi-AZ subnet groups (easily convertible); \u2139\ufe0f Compute HA via Infrastructure as Code (Terraform-managed instances acceptable for pilot); \u2705 Bonus: Storage recovery via 394 EBS snapshot(s); \u2705 DNS infrastructure: 1 Route 53 hosted zone(s)",
+    "assertion_reason": "\u2705 Excellent high availability design for pilot environment (100%): \u2705 Strong network HA: 8 subnets across 2 AZs; \u2705 Balanced subnet distribution across availability zones; \u2705 Application HA: 1 multi-AZ load balancer(s) providing traffic distribution; \u2705 Active backup strategy: 2 AWS Backup plan(s) with recent execution; \u2705 Storage redundancy: 4 S3 bucket(s) with built-in 11-9s durability; \u2705 Database HA-ready: 1 RDS instance(s) with multi-AZ subnet groups (easily convertible); \u2139\ufe0f Compute HA via Infrastructure as Code (Terraform-managed instances acceptable for pilot); \u2705 Bonus: Storage recovery via 402 EBS snapshot(s); \u2705 DNS infrastructure: 1 Route 53 hosted zone(s)",
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387258",
+    "timestamp": "2025-09-10T02:36:20.860589",
     "validation_method": "multi-command"
   },
   {
@@ -150,7 +150,7 @@
     "cli_command": "12 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387260",
+    "timestamp": "2025-09-10T02:36:20.860591",
     "validation_method": "multi-command"
   },
   {
@@ -161,7 +161,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387262",
+    "timestamp": "2025-09-10T02:36:20.860596",
     "validation_method": "multi-command"
   },
   {
@@ -172,7 +172,7 @@
     "cli_command": "5 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387269",
+    "timestamp": "2025-09-10T02:36:20.860599",
     "validation_method": "multi-command"
   },
   {
@@ -183,7 +183,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387272",
+    "timestamp": "2025-09-10T02:36:20.860601",
     "validation_method": "multi-command"
   },
   {
@@ -194,7 +194,7 @@
     "cli_command": "6 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387274",
+    "timestamp": "2025-09-10T02:36:20.860603",
     "validation_method": "multi-command"
   },
   {
@@ -205,7 +205,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387276",
+    "timestamp": "2025-09-10T02:36:20.860606",
     "validation_method": "multi-command"
   },
   {
@@ -216,7 +216,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387278",
+    "timestamp": "2025-09-10T02:36:20.860608",
     "validation_method": "multi-command"
   },
   {
@@ -227,7 +227,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387281",
+    "timestamp": "2025-09-10T02:36:20.860610",
     "validation_method": "multi-command"
   },
   {
@@ -238,7 +238,7 @@
     "cli_command": "3 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387283",
+    "timestamp": "2025-09-10T02:36:20.860613",
     "validation_method": "multi-command"
   },
   {
@@ -249,7 +249,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387285",
+    "timestamp": "2025-09-10T02:36:20.860615",
     "validation_method": "multi-command"
   },
   {
@@ -260,7 +260,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387290",
+    "timestamp": "2025-09-10T02:36:20.860617",
     "validation_method": "multi-command"
   },
   {
@@ -271,7 +271,7 @@
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387330",
+    "timestamp": "2025-09-10T02:36:20.860620",
     "validation_method": "multi-command"
   },
   {
@@ -282,7 +282,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387333",
+    "timestamp": "2025-09-10T02:36:20.860622",
     "validation_method": "multi-command"
   },
   {
@@ -293,7 +293,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387335",
+    "timestamp": "2025-09-10T02:36:20.860624",
     "validation_method": "multi-command"
   },
   {
@@ -304,7 +304,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387356",
+    "timestamp": "2025-09-10T02:36:20.860629",
     "validation_method": "multi-command"
   },
   {
@@ -315,7 +315,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387359",
+    "timestamp": "2025-09-10T02:36:20.860631",
     "validation_method": "multi-command"
   },
   {
@@ -326,7 +326,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387361",
+    "timestamp": "2025-09-10T02:36:20.860634",
     "validation_method": "multi-command"
   },
   {
@@ -337,7 +337,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387364",
+    "timestamp": "2025-09-10T02:36:20.860636",
     "validation_method": "multi-command"
   },
   {
@@ -348,7 +348,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387366",
+    "timestamp": "2025-09-10T02:36:20.860639",
     "validation_method": "multi-command"
   },
   {
@@ -359,7 +359,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387368",
+    "timestamp": "2025-09-10T02:36:20.860641",
     "validation_method": "multi-command"
   },
   {
@@ -370,7 +370,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387371",
+    "timestamp": "2025-09-10T02:36:20.860646",
     "validation_method": "multi-command"
   },
   {
@@ -381,7 +381,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387373",
+    "timestamp": "2025-09-10T02:36:20.860648",
     "validation_method": "multi-command"
   },
   {
@@ -392,7 +392,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387383",
+    "timestamp": "2025-09-10T02:36:20.860650",
     "validation_method": "multi-command"
   },
   {
@@ -403,7 +403,7 @@
     "cli_command": "3 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387386",
+    "timestamp": "2025-09-10T02:36:20.860653",
     "validation_method": "multi-command"
   },
   {
@@ -414,29 +414,29 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387388",
+    "timestamp": "2025-09-10T02:36:20.860655",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-RPL-03",
     "validation_id": "KSI-RPL-03",
     "assertion": true,
-    "assertion_reason": "\u2705 System backups with compliant retention aligned with recovery objectives: \u2705 Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan); \u26a0\ufe0f Backup plan details not available - cannot validate retention policies; \u2705 Backup operations validated: 50 successful backup jobs prove backups are functioning; \u2705 RDS backup configuration: 1/1 databases with automated backups; \u2705 Additional backup coverage: 394 EBS snapshots",
+    "assertion_reason": "\u2705 System backups with compliant retention aligned with recovery objectives: \u2705 Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan); \u26a0\ufe0f Backup plan details not available - cannot validate retention policies; \u2705 Backup operations validated: 50 successful backup jobs prove backups are functioning; \u2705 RDS backup configuration: 1/1 databases with automated backups; \u2705 Additional backup coverage: 402 EBS snapshots",
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387390",
+    "timestamp": "2025-09-10T02:36:20.860657",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-RPL-04",
     "validation_id": "KSI-RPL-04",
     "assertion": true,
-    "assertion_reason": "\u2705 Regular recovery testing capability validated with operational proof: \u2705 Core testing documentation: combined_tabletop_test_report_template.pdf; \u2705 Recent testing: 2 test documents updated within last year; \u2705 Recovery capability demonstrated through working backup infrastructure and documented procedures; \u2705 Backup infrastructure validation: 188 recent backup operations prove recovery foundation; \u2705 Point-in-time recovery testing capability: 1/1 databases ready for RPO validation",
+    "assertion_reason": "\u2705 Regular recovery testing capability validated with operational proof: \u2705 Core testing documentation: combined_tabletop_test_report_template.pdf; \u2705 Recent testing: 2 test documents updated within last year; \u2705 Recovery capability demonstrated through working backup infrastructure and documented procedures; \u2705 Backup infrastructure validation: 189 recent backup operations prove recovery foundation; \u2705 Point-in-time recovery testing capability: 1/1 databases ready for RPO validation",
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387393",
+    "timestamp": "2025-09-10T02:36:20.860660",
     "validation_method": "multi-command"
   },
   {
@@ -447,7 +447,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387395",
+    "timestamp": "2025-09-10T02:36:20.860662",
     "validation_method": "multi-command"
   },
   {
@@ -458,7 +458,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387397",
+    "timestamp": "2025-09-10T02:36:20.860664",
     "validation_method": "multi-command"
   },
   {
@@ -469,7 +469,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387399",
+    "timestamp": "2025-09-10T02:36:20.860666",
     "validation_method": "multi-command"
   },
   {
@@ -480,7 +480,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387402",
+    "timestamp": "2025-09-10T02:36:20.860669",
     "validation_method": "multi-command"
   },
   {
@@ -491,7 +491,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387406",
+    "timestamp": "2025-09-10T02:36:20.860671",
     "validation_method": "multi-command"
   },
   {
@@ -502,7 +502,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387408",
+    "timestamp": "2025-09-10T02:36:20.860673",
     "validation_method": "multi-command"
   },
   {
@@ -513,7 +513,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387411",
+    "timestamp": "2025-09-10T02:36:20.860677",
     "validation_method": "multi-command"
   },
   {
@@ -524,7 +524,7 @@
     "cli_command": "6 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387413",
+    "timestamp": "2025-09-10T02:36:20.860680",
     "validation_method": "multi-command"
   },
   {
@@ -535,7 +535,7 @@
     "cli_command": "2 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387415",
+    "timestamp": "2025-09-10T02:36:20.860682",
     "validation_method": "multi-command"
   },
   {
@@ -546,7 +546,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387417",
+    "timestamp": "2025-09-10T02:36:20.860684",
     "validation_method": "multi-command"
   },
   {
@@ -557,7 +557,7 @@
     "cli_command": "6 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-09T22:43:56.387420",
+    "timestamp": "2025-09-10T02:36:20.860687",
     "validation_method": "multi-command"
   }
 ]
