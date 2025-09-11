@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-10 02:36
+**Last Check:** 2025-09-11 02:38
 
 **What it validates:** Use a consistent, risk-informed approach for applying security patches
 
@@ -57,4 +57,4 @@ PASS Advanced risk-informed patching with controlled deployment and compliance (
 - PASS Advanced organization features: SCPs for patch management policy enforcement enabled
 
 ---
-*Generated 2025-09-10 02:36 UTC*
+*Generated 2025-09-11 02:39 UTC*
