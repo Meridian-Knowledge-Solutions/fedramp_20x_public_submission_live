@@ -1,25 +1,29 @@
-# FedRAMP 20x SCN Summary: ERROR
+# FedRAMP 20x SCN Summary: ROUTINE_RECURRING
 
-**Classification Date:** `2025-09-11T02:39:47.059734`
+**Classification Date:** `2025-09-11T07:30:39.392544`
 **FedRAMP ID:** `FR2527956755`
 **Method:** File-Level Classification with Contextual Diff Analysis
 
 ## 1. Classification Details
 
-- **SCN Type:** `ERROR`
-- **Reasoning:** Classification error: 'list' object has no attribute 'get'
+- **SCN Type:** `ROUTINE_RECURRING`
+- **Reasoning:** All files represent routine operational maintenance
 - **Notification Required:** `False`
 - **Production Overrides Applied:** 0
 
 ## 2. File-Level Analysis
 
-- **Total Files:** 0
+- **Total Files:** 1
+- **File Classifications:**
+  - `.github/workflows/run-vdr-script.yml`: **routine_recurring**
+- **Commit Details (Private-Safe):**
+  - `fedramp-20x-submission-final@80561f95` by *Kwahf33*: Update run-vdr-script.yml
 
 ## 3. Impact Analysis (FRR-SCN-09)
 
-- **Security Risk:** Unknown - Classification failed; risk cannot be determined
-- **Availability Impact:** No expected impact
-- **Customer Impact:** No customer impact
+- **Security Risk:** Low - Standard, low-risk maintenance with mature processes
+- **Availability Impact:** No expected availability impact
+- **Customer Impact:** Regular maintenance, no customer impact
 - **Customer Action Required:** `No`
 
 ## 5. Compliance
