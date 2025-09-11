@@ -1,69 +1,36 @@
 {
-  "timestamp": "2025-09-11T07:30:39.392544",
-  "scn_type": "routine_recurring",
+  "timestamp": "2025-09-11T07:41:13.493627",
+  "scn_type": "error",
   "emergency_mode": false,
   "requires_notification": false,
   "service_offering_fedramp_id": "FR2527956755",
   "3pao_name": "Fortreum, LLC",
   "related_poam": "N/A",
-  "significant_change_type": "routine_recurring",
-  "explanation_of_categorization": "All files represent routine operational maintenance",
-  "short_description_of_change": "File-level classified change affecting 1 files",
+  "significant_change_type": "error",
+  "explanation_of_categorization": "Classification error: 'list' object has no attribute 'get'",
+  "short_description_of_change": "File-level classified change affecting 0 files",
   "reason_for_change": "Continuous improvement, operational maintenance, and security enhancement",
   "summary_of_customer_impact": {
     "impact_level": "None",
-    "description": "Regular maintenance, no customer impact",
+    "description": "No customer impact",
     "customer_action_required": "No"
   },
   "plan_and_timeline_for_change": {
     "timeline_status": "No notification required for this SCN type"
   },
   "copy_of_business_or_security_impact_analysis": {
-    "security_risk_assessment": "Low - Standard, low-risk maintenance with mature processes",
-    "availability_impact_assessment": "No expected availability impact"
+    "security_risk_assessment": "Unknown - Classification failed; risk cannot be determined",
+    "availability_impact_assessment": "No expected impact"
   },
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-11T07:30:39.392544"
+    "approval_date": "2025-09-11T07:41:13.493627"
   },
-  "changed_files_detailed": [
-    {
-      "file": ".github/workflows/run-vdr-script.yml",
-      "commit": {
-        "sha": "80561f95",
-        "message": "Update run-vdr-script.yml",
-        "author": "Kwahf33",
-        "date": "2025-09-11 01:24:04 -0600",
-        "repository": "fedramp-20x-submission-final",
-        "commit_reference": "fedramp-20x-submission-final@80561f95",
-        "verification_method": "git_log_local"
-      },
-      "diff": "diff --git a/.github/workflows/run-vdr-script.yml b/.github/workflows/run-vdr-script.yml\nindex fe05350..4cabec9 100644\n--- a/.github/workflows/run-vdr-script.yml\n+++ b/.github/workflows/run-vdr-script.yml\n@@ -10,6 +10,9 @@ jobs:\n     steps:\n       - name: Check out code\n         uses: actions/checkout@v4\n+        with:\n+          token: ${{ secrets.ACTION_PUSH_TOKEN }}  # Added: Use same token as other workflows\n+          fetch-depth: 0\n \n       - name: Set up Python\n         uses: actions/setup-python@v5\n@@ -18,26 +21,23 @@ jobs:\n           \n       # STEP 1: Run the backend script from the repo root\n       - name: Run VDR Production Alignment Script (Backend)\n-        # REMOVED: working-directory key. The default is correct.\n         run: python3 rfc-0012/vdr-production-alignment.py\n \n       # STEP 2: Run the dashboard script from the repo root\n       - name: Run VDR Dashboard Alignment Script (Frontend)\n-        # REMOVED: working-directory key. The default is correct.\n         run: python3 rfc-0012/vdr_dashboard_aligner.py\n \n       # STEP 3: Run the pipeline update script from the repo root\n       - name: Run VDR Pipeline Configuration Update\n-        # REMOVED: working-directory key. The default is correct.\n         run: |\n           chmod +x rfc-0012/update_pipeline_vdr.sh\n           rfc-0012/update_pipeline_vdr.sh\n       \n-      # STEP 4: Commit all changes\n+      # STEP 4: Commit all changes with proper authentication\n       - name: Commit and push changes\n         run: |\n           git config --global user.name \"GitHub Actions Bot\"\n           git config --global user.email \"actions@github.com\"\n           git add .\n           git commit -m \"chore: Apply VDR alignment to backend, frontend, and pipeline\" || echo \"No changes to commit\"\n-          git push\n+          git push  # Will use the ACTION_PUSH_TOKEN from checkout\n"
-    }
-  ],
-  "file_level_classifications": [
-    {
-      "file": ".github/workflows/run-vdr-script.yml",
-      "classification": "routine_recurring",
-      "reasoning": "Regular operational maintenance pattern",
-      "production_override": false,
-      "terraform_category": null,
-      "change_context": "unknown"
-    }
-  ],
-  "local_commits_summary": [
-    {
-      "sha": "80561f95",
-      "message": "Update run-vdr-script.yml",
-      "author": "Kwahf33",
-      "date": "2025-09-11 01:24:04 -0600",
-      "repository": "fedramp-20x-submission-final",
-      "commit_reference": "fedramp-20x-submission-final@80561f95",
-      "verification_method": "git_log_local"
-    }
-  ],
-  "file_count": 1,
+  "changed_files_detailed": [],
+  "file_level_classifications": [],
+  "local_commits_summary": [],
+  "file_count": 0,
   "audit_trail": {
     "classifier_version": "5.0.0",
     "decision_logic": "Official FRA-SCN-03 Decision Tree with Contextual Diff Analysis",
@@ -79,8 +46,7 @@
       "FRR-SCN-03",
       "FRR-SCN-04",
       "FRR-SCN-08",
-      "FRR-SCN-09",
-      "FRR-SCN-RR-01"
+      "FRR-SCN-09"
     ],
     "machine_readable_format": true,
     "human_readable_available": true,
@@ -88,14 +54,8 @@
     "file_level_classification": true,
     "risk_escalation_applied": true
   },
-  "terraform_analysis": {
-    "transformative": [],
-    "adaptive": [],
-    "routine": []
-  },
-  "external_analysis": {
-    "changes_detected": false
-  },
+  "terraform_analysis": {},
+  "external_analysis": {},
   "required_stakeholders_to_notify": [],
   "3pao_review_required": false,
   "3pao_review_justification": "Not required",
