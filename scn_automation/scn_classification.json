@@ -1,36 +1,69 @@
 {
-  "timestamp": "2025-09-11T07:41:13.493627",
-  "scn_type": "error",
+  "timestamp": "2025-09-12T00:48:03.024934",
+  "scn_type": "routine_recurring",
   "emergency_mode": false,
   "requires_notification": false,
   "service_offering_fedramp_id": "FR2527956755",
   "3pao_name": "Fortreum, LLC",
   "related_poam": "N/A",
-  "significant_change_type": "error",
-  "explanation_of_categorization": "Classification error: 'list' object has no attribute 'get'",
-  "short_description_of_change": "File-level classified change affecting 0 files",
+  "significant_change_type": "routine_recurring",
+  "explanation_of_categorization": "All files represent routine operational maintenance",
+  "short_description_of_change": "File-level classified change affecting 1 files",
   "reason_for_change": "Continuous improvement, operational maintenance, and security enhancement",
   "summary_of_customer_impact": {
     "impact_level": "None",
-    "description": "No customer impact",
+    "description": "Regular maintenance, no customer impact",
     "customer_action_required": "No"
   },
   "plan_and_timeline_for_change": {
     "timeline_status": "No notification required for this SCN type"
   },
   "copy_of_business_or_security_impact_analysis": {
-    "security_risk_assessment": "Unknown - Classification failed; risk cannot be determined",
-    "availability_impact_assessment": "No expected impact"
+    "security_risk_assessment": "Low - Standard, low-risk maintenance with mature processes",
+    "availability_impact_assessment": "No expected availability impact"
   },
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-11T07:41:13.493627"
+    "approval_date": "2025-09-12T00:48:03.024934"
   },
-  "changed_files_detailed": [],
-  "file_level_classifications": [],
-  "local_commits_summary": [],
-  "file_count": 0,
+  "changed_files_detailed": [
+    {
+      "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
+      "commit": {
+        "sha": "a1653bbc",
+        "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
+        "author": "Kwahf33",
+        "date": "2025-09-11 18:41:52 -0600",
+        "repository": "fedramp-20x-submission-final",
+        "commit_reference": "fedramp-20x-submission-final@a1653bbc",
+        "verification_method": "git_log_local"
+      },
+      "diff": "diff --git a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\nindex 48a1f7e..20e753b 100644\n--- a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n+++ b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n@@ -1,4 +1,4 @@\n-name: FedRAMP 20x CLI Validation Pipeline + Enhanced SCN Automation + Master Validator\n+name: \ud83d\ude80 FedRAMP 20x CLI Validation Pipeline + Enhanced SCN Automation + Master Validator\n \n on:\n   workflow_dispatch:\n@@ -1571,3 +1571,4 @@ jobs:\n \n \n \n+\n"
+    }
+  ],
+  "file_level_classifications": [
+    {
+      "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
+      "classification": "routine_recurring",
+      "reasoning": "Regular operational maintenance pattern",
+      "production_override": false,
+      "terraform_category": null,
+      "change_context": "unknown"
+    }
+  ],
+  "local_commits_summary": [
+    {
+      "sha": "a1653bbc",
+      "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
+      "author": "Kwahf33",
+      "date": "2025-09-11 18:41:52 -0600",
+      "repository": "fedramp-20x-submission-final",
+      "commit_reference": "fedramp-20x-submission-final@a1653bbc",
+      "verification_method": "git_log_local"
+    }
+  ],
+  "file_count": 1,
   "audit_trail": {
     "classifier_version": "5.0.0",
     "decision_logic": "Official FRA-SCN-03 Decision Tree with Contextual Diff Analysis",
@@ -46,7 +79,8 @@
       "FRR-SCN-03",
       "FRR-SCN-04",
       "FRR-SCN-08",
-      "FRR-SCN-09"
+      "FRR-SCN-09",
+      "FRR-SCN-RR-01"
     ],
     "machine_readable_format": true,
     "human_readable_available": true,
@@ -54,8 +88,134 @@
     "file_level_classification": true,
     "risk_escalation_applied": true
   },
-  "terraform_analysis": {},
-  "external_analysis": {},
+  "terraform_analysis": {
+    "transformative": [],
+    "adaptive": [],
+    "routine": []
+  },
+  "external_analysis": {
+    "changes_detected": true,
+    "infrastructure_impact": "low",
+    "transformative_repos": [],
+    "adaptive_repos": [],
+    "routine_repos": [
+      {
+        "repository": "meridian-aws-resources",
+        "has_changes": true,
+        "commit_count": 2,
+        "total_files_changed": 2,
+        "production_files_changed": 2,
+        "service_impact_category": "routine",
+        "service_impact_reason": "General infrastructure maintenance - routine operational tasks",
+        "contextual_analysis": {
+          "transformative_contexts": 0,
+          "adaptive_contexts": 0,
+          "routine_contexts": 2,
+          "unknown_contexts": 0
+        },
+        "contextual_reasoning": "Routine: 1 files (maintenance); Routine: 1 files (maintenance)",
+        "commits": [
+          {
+            "sha": "6d9d513d",
+            "message": "Merge pull request #21 from Meridian-Knowledge-Solutions/feature/codecommit_deploy",
+            "author": "samuelnjei",
+            "date": "2025-09-11T14:26:56Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/main.tf",
+                "status": "modified",
+                "additions": 7,
+                "deletions": 0,
+                "changes": 7,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "13726917",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/6d9d513d6f4561f3c9f4534b88e17d35041b6e8b/Infrastructure%2FLMS-Production%2Fmain.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/6d9d513d6f4561f3c9f4534b88e17d35041b6e8b/Infrastructure%2FLMS-Production%2Fmain.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fmain.tf?ref=6d9d513d6f4561f3c9f4534b88e17d35041b6e8b"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "8e8158a7",
+            "message": "deploy the security governance repo",
+            "author": "sam",
+            "date": "2025-09-11T14:08:57Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/main.tf",
+                "status": "modified",
+                "additions": 7,
+                "deletions": 0,
+                "changes": 7,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "13726917",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/8e8158a70bc06ea7e99e61273d2f95cdd80b8e77/Infrastructure%2FLMS-Production%2Fmain.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/8e8158a70bc06ea7e99e61273d2f95cdd80b8e77/Infrastructure%2FLMS-Production%2Fmain.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fmain.tf?ref=8e8158a70bc06ea7e99e61273d2f95cdd80b8e77"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          }
+        ],
+        "production_paths": [
+          {
+            "file": "Infrastructure/LMS-Production/main.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "6d9d513d",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/main.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "8e8158a7",
+            "change_type": "modified",
+            "context": "routine"
+          }
+        ],
+        "terraform_files": [
+          {
+            "file": "Infrastructure/LMS-Production/main.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "6d9d513d",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/main.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "8e8158a7",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          }
+        ],
+        "configuration_files": [],
+        "file_summary": {
+          "total_files": 2,
+          "production_files": 2,
+          "terraform_files": 2,
+          "configuration_files": 0
+        }
+      }
+    ]
+  },
   "required_stakeholders_to_notify": [],
   "3pao_review_required": false,
   "3pao_review_justification": "Not required",
