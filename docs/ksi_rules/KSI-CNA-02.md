@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-09-12 06:09
+**Last Check:** 2025-09-13 04:08
 
 **What it validates:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 
@@ -54,8 +54,8 @@ PASS Excellent attack surface minimization and lateral movement prevention (85%)
 - PASS Minimal compute exposure: 5/5 instances in private subnets
 - PASS Database isolation: All 1 RDS instances private
 - PASS Controlled service exposure: Single internet-facing load balancer with private backend services
-- PASS Lambda isolation: 2/7 functions in VPC
+- PASS Lambda isolation: 2/8 functions in VPC
 - PASS Advanced segmentation barriers: 1/1 Network ACLs with custom isolation rules
 
 ---
-*Generated 2025-09-12 06:09 UTC*
+*Generated 2025-09-13 04:08 UTC*

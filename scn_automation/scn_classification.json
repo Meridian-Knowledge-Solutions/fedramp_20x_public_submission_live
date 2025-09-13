@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-12T06:09:45.174170",
+  "timestamp": "2025-09-13T04:09:44.711688",
   "scn_type": "routine_recurring",
   "emergency_mode": false,
   "requires_notification": false,
@@ -25,26 +25,26 @@
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-12T06:09:45.174170"
+    "approval_date": "2025-09-13T04:09:44.711688"
   },
   "changed_files_detailed": [
     {
-      "file": ".github/workflows/fedramp-vdr-pipeline.yaml",
+      "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
       "commit": {
-        "sha": "beef7a35",
-        "message": "Update fedramp-vdr-pipeline.yaml",
+        "sha": "67f118ce",
+        "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
         "author": "Kwahf33",
-        "date": "2025-09-12 00:04:18 -0600",
+        "date": "2025-09-12 22:04:01 -0600",
         "repository": "fedramp-20x-submission-final",
-        "commit_reference": "fedramp-20x-submission-final@beef7a35",
+        "commit_reference": "fedramp-20x-submission-final@67f118ce",
         "verification_method": "git_log_local"
       },
-      "diff": "diff --git a/.github/workflows/fedramp-vdr-pipeline.yaml b/.github/workflows/fedramp-vdr-pipeline.yaml\nindex 80d3829..d50ba72 100644\n--- a/.github/workflows/fedramp-vdr-pipeline.yaml\n+++ b/.github/workflows/fedramp-vdr-pipeline.yaml\n@@ -305,60 +305,71 @@ jobs:\n       - name: \ud83d\udd27 Fix VDR Parser Syntax Error\n         run: |\n           cd fedramp-cvm\n-          echo \"\ud83d\udd27 Fixing VDR parser syntax errors (targeting evaluation_completed_time issue)...\"\n+          echo \"\ud83d\udd27 Fixing VDR parser structural syntax error...\"\n           \n-          # Create targeted fix for the specific syntax error\n+          # Create precise fix for the structural issue\n           cat > fix_parser.py << 'EOF'\n           import re\n           \n-          def fix_evaluation_completed_time_syntax(content):\n-              \"\"\"Fix the specific syntax error with evaluation_completed_time\"\"\"\n+          def fix_structural_syntax_error(content):\n+              \"\"\"Fix the structural syntax error around evaluation_completed_time\"\"\"\n               lines = content.split('\\n')\n               \n+              # Find the problematic line\n               for i, line in enumerate(lines):\n                   if '\"evaluation_completed_time\": None,' in line:\n                       print(f\"Found evaluation_completed_time at line {i+1}\")\n                       \n-                      # Check the previous few lines for missing opening brace\n-                      context_start = max(0, i-5)\n-                      context = '\\n'.join(lines[context_start:i+1])\n-                      \n-                      # Count braces in the context\n-                      open_braces = context.count('{')\n-                      close_braces = context.count('}')\n-                      \n-                      print(f\"Context has {open_braces} opening braces, {close_braces} closing braces\")\n-                      \n-                      # If we're missing an opening brace, add it\n-                      if open_braces <= close_braces:\n-                          # Find the right place to add the opening brace\n-                          # Look for a line that ends with a field assignment or similar\n-                          for j in range(i-1, max(0, i-4), -1):\n-                              if any(pattern in lines[j] for pattern in [\n-                                  '\"vdr_status\":',\n-                                  '\"vdr_tracking\":',\n-                                  '# VDR Required Fields',\n-                                  'VDR tracking',\n-                                  'vdr_'\n-                              ]):\n-                                  # Add opening brace after this line\n-                                  indent = len(lines[j]) - len(lines[j].lstrip())\n-                                  lines[j] = lines[j] + ' {'\n-                                  print(f\"Added opening brace after line {j+1}\")\n-                                  break\n-                          else:\n-                              # Fallback: add brace on the line before evaluation_completed_time\n+                      # Look at the context\n+                      if i > 0:\n+                          prev_line = lines[i-1].strip()\n+                          print(f\"Previous line: {repr(prev_line)}\")\n+                          \n+                          # If previous line is a comment with a brace, fix it\n+                          if prev_line.startswith('# VDR Required Fields') and prev_line.endswith(' {'):\n+                              print(\"Found comment with opening brace - fixing structure\")\n+                              # Remove the brace from the comment line\n+                              lines[i-1] = lines[i-1].replace(' {', '')\n+                              # Add proper dictionary structure\n                               indent = len(lines[i]) - len(lines[i].lstrip())\n-                              if indent >= 4:\n-                                  lines[i-1] = lines[i-1] + ' {' if not lines[i-1].strip().endswith('{') else lines[i-1]\n-                                  print(f\"Added fallback opening brace before line {i+1}\")\n+                              lines[i-1] = lines[i-1] + '\\n' + ' ' * (indent - 4) + '\"vdr_fields\": {'\n+                              print(\"Fixed structural issue\")\n+                              \n+                              # Find the end of VDR fields and add closing brace\n+                              for j in range(i, min(len(lines), i + 20)):\n+                                  if 'days_since_evaluation' in lines[j] and lines[j].strip().endswith(','):\n+                                      lines[j] = lines[j].rstrip(',') + '\\n' + ' ' * (indent - 4) + '},'\n+                                      print(f\"Added closing brace after line {j+1}\")\n+                                      break\n+                              break\n+                          \n+                          # Alternative fix: if the previous line looks like it needs a brace\n+                          elif '\"timeline\":' in lines[i-2] if i > 1 else False:\n+                              print(\"Found timeline field - adding proper structure\")\n+                              # The timeline line probably needs to close, then start VDR\n+                              timeline_line_idx = i-2\n+                              if not lines[timeline_line_idx].rstrip().endswith('),'):\n+                                  lines[timeline_line_idx] = lines[timeline_line_idx].rstrip() + '),'\n+                              \n+                              # Remove comment line brace if exists\n+                              lines[i-1] = lines[i-1].replace(' {', '')\n+                              # Add proper VDR dictionary\n+                              indent = len(lines[i]) - len(lines[i].lstrip())\n+                              lines[i-1] = lines[i-1] + '\\n' + ' ' * (indent - 4) + '\"vdr_fields\": {'\n+                              \n+                              # Add closing brace for VDR section\n+                              for j in range(i, min(len(lines), i + 20)):\n+                                  if 'days_since_evaluation' in lines[j]:\n+                                      lines[j] = lines[j].rstrip() + '\\n' + ' ' * (indent - 4) + '},'\n+                                      break\n+                              break\n                       break\n               \n               return '\\n'.join(lines)\n           \n           def remove_duplicate_vdr_sections(content):\n               \"\"\"Remove duplicate VDR sections\"\"\"\n-              vdr_pattern = r'# VDR Required Fields \\(FRR-VDR-RP-05\\).*?\"days_since_evaluation\": 0,?\\s*'\n+              vdr_pattern = r'# VDR Required Fields \\(FRR-VDR-RP-05\\).*?\"days_since_evaluation\": 0'\n               matches = list(re.finditer(vdr_pattern, content, re.DOTALL))\n               \n               if len(matches) > 1:\n@@ -374,29 +385,26 @@ jobs:\n           with open('vulnerability_parser.py', 'r') as f:\n               content = f.read()\n           \n-          print(\"\ud83d\udd27 Starting targeted syntax repair...\")\n+          print(\"\ud83d\udd27 Starting precise structural repair...\")\n           \n           # First remove duplicates\n           content = remove_duplicate_vdr_sections(content)\n           \n-          # Then fix the evaluation_completed_time syntax error\n-          content = fix_evaluation_completed_time_syntax(content)\n-          \n-          # Clean up formatting\n-          content = re.sub(r'\\n\\s*\\n\\s*\\n+', '\\n\\n', content)\n+          # Then fix the structural syntax error\n+          content = fix_structural_syntax_error(content)\n           \n           # Write the fixed content\n           with open('vulnerability_parser.py', 'w') as f:\n               f.write(content)\n           \n-          print(\"\u2705 Targeted syntax repairs completed\")\n+          print(\"\u2705 Structural syntax repairs completed\")\n           \n           EOF\n           \n           # Run the fix script\n           python3 fix_parser.py\n           \n-          # Validate syntax with detailed error context\n+          # Validate syntax\n           echo \"\ud83d\udd0d Validating Python syntax...\"\n           python3 -c \"\n           with open('vulnerability_parser.py', 'r') as f:\n@@ -407,18 +415,15 @@ jobs:\n           except SyntaxError as e:\n               print(f'\u274c Syntax error at line {e.lineno}: {e.msg}')\n               print(f'   Problem text: {repr(e.text.strip() if e.text else \\\"N/A\\\")}')\n-              # Show detailed context\n+              # Show context\n               lines = content.split('\\n')\n-              start = max(0, e.lineno - 5)\n+              start = max(0, e.lineno - 3)\n               end = min(len(lines), e.lineno + 3)\n-              print('   Context around error:')\n+              print('   Context:')\n               for i in range(start, end):\n                   marker = ' >>> ' if i == e.lineno - 1 else '     '\n                   print(f'{marker}{i+1:4d}: {repr(lines[i])}')\n               exit(1)\n-          except Exception as e:\n-              print(f'\u274c Compilation error: {e}')\n-              exit(1)\n           \"\n           \n           echo \"\u2705 vulnerability_parser.py syntax fixed and validated\"\n"
+      "diff": "diff --git a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\nindex 081576d..e78546c 100644\n--- a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n+++ b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n@@ -303,15 +303,15 @@ jobs:\n           files_with_secrets=$(find evidence_v2/ -name \"*.json\" -exec grep -l \"AKIA\\|ASIA\" {} \\; 2>/dev/null)\n           \n           # Check if the variable is non-empty\n-          if [-n $files_with_secrets\"]; then\n+          if [ -n \"$files_with_secrets\" ]; then\n             echo \"\u274c Redaction failed - AWS credentials still present in evidence files\"\n             echo \"Files with remaining credentials:\"\n             echo \"$files_with_secrets\"\n-            exit 1          \n-          else \n-            echo \"\u2705 Redaction validation passed - no secrets detected in evidence files\"\n+            exit 1\n+          else\n+          echo \"\u2705 Redaction validation passed - no secrets detected in evidence files\"\n           fi\n-\n+          \n       - name: \ud83d\udcca Generate Continuous KSI Results\n         run: |\n           echo \"\ud83d\udcca Generating enhanced continuous results with multi-account data...\"\n@@ -1628,3 +1628,4 @@ jobs:\n \n \n \n+\n"
     }
   ],
   "file_level_classifications": [
     {
-      "file": ".github/workflows/fedramp-vdr-pipeline.yaml",
+      "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
       "classification": "routine_recurring",
       "reasoning": "Regular operational maintenance pattern",
       "production_override": false,
@@ -54,12 +54,12 @@
   ],
   "local_commits_summary": [
     {
-      "sha": "beef7a35",
-      "message": "Update fedramp-vdr-pipeline.yaml",
+      "sha": "67f118ce",
+      "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
       "author": "Kwahf33",
-      "date": "2025-09-12 00:04:18 -0600",
+      "date": "2025-09-12 22:04:01 -0600",
       "repository": "fedramp-20x-submission-final",
-      "commit_reference": "fedramp-20x-submission-final@beef7a35",
+      "commit_reference": "fedramp-20x-submission-final@67f118ce",
       "verification_method": "git_log_local"
     }
   ],
@@ -102,19 +102,183 @@
       {
         "repository": "meridian-aws-resources",
         "has_changes": true,
-        "commit_count": 2,
-        "total_files_changed": 2,
-        "production_files_changed": 2,
+        "commit_count": 6,
+        "total_files_changed": 10,
+        "production_files_changed": 10,
         "service_impact_category": "routine",
         "service_impact_reason": "General infrastructure maintenance - routine operational tasks",
         "contextual_analysis": {
           "transformative_contexts": 0,
           "adaptive_contexts": 0,
-          "routine_contexts": 2,
-          "unknown_contexts": 0
+          "routine_contexts": 8,
+          "unknown_contexts": 2
         },
-        "contextual_reasoning": "Routine: 1 files (maintenance); Routine: 1 files (maintenance)",
+        "contextual_reasoning": "Routine: 1 files (maintenance); Routine: 2 files (maintenance); Routine: 1 files (maintenance)",
         "commits": [
+          {
+            "sha": "b4058cba",
+            "message": "Update aws-inventory.tf",
+            "author": "samuelnjei",
+            "date": "2025-09-12T17:49:07Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "e99d3be4",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=b4058cba8db872b857d2c7c14d366bc7147717b8"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "e2c12678",
+            "message": "Merge pull request #22 from Meridian-Knowledge-Solutions/Deploy-AWS-Inventory",
+            "author": "samuelnjei",
+            "date": "2025-09-12T17:42:33Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "added",
+                "additions": 102,
+                "deletions": 0,
+                "changes": 102,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "4fc7e264",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=e2c12678e1267f008130dc7a7811889262ae43e1"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/inventory.zip",
+                "status": "added",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "9cb8e75b",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip?ref=e2c12678e1267f008130dc7a7811889262ae43e1"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/main.tf",
+                "status": "modified",
+                "additions": 0,
+                "deletions": 5,
+                "changes": 5,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "22faebcb",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Fmain.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Fmain.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fmain.tf?ref=e2c12678e1267f008130dc7a7811889262ae43e1"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 2,
+              "unknown_count": 1,
+              "reasoning": "Routine: 2 files (maintenance)"
+            }
+          },
+          {
+            "sha": "cd974373",
+            "message": "update teh code",
+            "author": "sam",
+            "date": "2025-09-12T17:39:13Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "4fc7e264",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/cd97437369e41bb7afa2cb609f10bd769b46254b/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/cd97437369e41bb7afa2cb609f10bd769b46254b/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=cd97437369e41bb7afa2cb609f10bd769b46254b"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "ff7590f8",
+            "message": "update teh code",
+            "author": "sam",
+            "date": "2025-09-12T17:34:51Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "added",
+                "additions": 102,
+                "deletions": 0,
+                "changes": 102,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "4a03f12b",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=ff7590f824ea8d16c32e238eeff5afc30ce7fa19"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/inventory.zip",
+                "status": "added",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "9cb8e75b",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip?ref=ff7590f824ea8d16c32e238eeff5afc30ce7fa19"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/main.tf",
+                "status": "modified",
+                "additions": 0,
+                "deletions": 5,
+                "changes": 5,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "22faebcb",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Fmain.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Fmain.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fmain.tf?ref=ff7590f824ea8d16c32e238eeff5afc30ce7fa19"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 2,
+              "unknown_count": 1,
+              "reasoning": "Routine: 2 files (maintenance)"
+            }
+          },
           {
             "sha": "6d9d513d",
             "message": "Merge pull request #21 from Meridian-Knowledge-Solutions/feature/codecommit_deploy",
@@ -174,6 +338,62 @@
         ],
         "production_paths": [
           {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b4058cba",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "e2c12678",
+            "change_type": "added",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/inventory.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "e2c12678",
+            "change_type": "added",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/main.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "e2c12678",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "cd974373",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "ff7590f8",
+            "change_type": "added",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/inventory.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "ff7590f8",
+            "change_type": "added",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/main.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "ff7590f8",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
             "file": "Infrastructure/LMS-Production/main.tf",
             "repository": "meridian-aws-resources",
             "commit": "6d9d513d",
@@ -189,6 +409,54 @@
           }
         ],
         "terraform_files": [
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b4058cba",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "e2c12678",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/main.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "e2c12678",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "cd974373",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "ff7590f8",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/main.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "ff7590f8",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
           {
             "file": "Infrastructure/LMS-Production/main.tf",
             "repository": "meridian-aws-resources",
@@ -208,9 +476,9 @@
         ],
         "configuration_files": [],
         "file_summary": {
-          "total_files": 2,
-          "production_files": 2,
-          "terraform_files": 2,
+          "total_files": 10,
+          "production_files": 10,
+          "terraform_files": 8,
           "configuration_files": 0
         }
       }

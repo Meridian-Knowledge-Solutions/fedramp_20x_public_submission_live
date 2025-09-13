@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-09-12 06:09
+**Last Check:** 2025-09-13 04:08
 
 **What it validates:** Perform authenticated vulnerability scanning on information resources
 
@@ -43,15 +43,15 @@ PASS Enterprise-grade authenticated vulnerability scanning with comprehensive co
 - PASS Multi-service authenticated scanning: Inspector EC2, ECR scanning enabled
 - PASS Comprehensive service scanning: Both EC2 and ECR authenticated vulnerability assessment enabled
 - PASS System-level scanning capability: 5/5 SSM-managed instances for authenticated system assessment
-- PASS Serverless code analysis: 7 Lambda functions available for authenticated code vulnerability scanning
-- PASS Active Lambda scanning: 7 functions actively scanned by Inspector
+- PASS Serverless code analysis: 8 Lambda functions available for authenticated code vulnerability scanning
+- PASS Active Lambda scanning: 8 functions actively scanned by Inspector
 - PASS Comprehensive workload coverage: 3 service types available for authenticated scanning (EC2, Lambda, SSM)
-- PASS Active vulnerability intelligence: 20 authenticated scan findings (0 critical, 5 high, 14 medium, 1 low)
+- PASS Active vulnerability intelligence: 20 authenticated scan findings (0 critical, 9 high, 11 medium, 0 low)
 - PASS Comprehensive vulnerability discovery: High-volume scanning indicates thorough authenticated assessment
 - PASS Automated discovery: Inspector service can automatically detect and scan new resources
 - PASS Enterprise scanning governance: AWS Organizations enables centralized multi-account vulnerability scanning
 - PASS Enterprise scanning integration: Multi-service Inspector configuration for comprehensive authenticated assessment
-- PASS Enterprise-scale scanning: 12 total resources requiring authenticated vulnerability assessment
+- PASS Enterprise-scale scanning: 13 total resources requiring authenticated vulnerability assessment
 
 ---
-*Generated 2025-09-12 06:09 UTC*
+*Generated 2025-09-13 04:08 UTC*
