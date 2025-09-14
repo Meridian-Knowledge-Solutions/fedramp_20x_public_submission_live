@@ -1,29 +1,25 @@
-# FedRAMP 20x SCN Summary: ROUTINE_RECURRING
+# FedRAMP 20x SCN Summary: ERROR
 
-**Classification Date:** `2025-09-14T09:34:26.960618`
+**Classification Date:** `2025-09-14T10:16:42.386712`
 **FedRAMP ID:** `FR2527956755`
 **Method:** File-Level Classification with Contextual Diff Analysis
 
 ## 1. Classification Details
 
-- **SCN Type:** `ROUTINE_RECURRING`
-- **Reasoning:** All files represent routine operational maintenance
+- **SCN Type:** `ERROR`
+- **Reasoning:** Classification error: 'list' object has no attribute 'get'
 - **Notification Required:** `False`
 - **Production Overrides Applied:** 0
 
 ## 2. File-Level Analysis
 
-- **Total Files:** 1
-- **File Classifications:**
-  - `.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml`: **routine_recurring**
-- **Commit Details (Private-Safe):**
-  - `fedramp-20x-submission-final@14711f27` by *Kwahf33*: Update FedRAMP 20x CLI Validation Pipeline.yaml
+- **Total Files:** 0
 
 ## 3. Impact Analysis (FRR-SCN-09)
 
-- **Security Risk:** Low - Standard, low-risk maintenance with mature processes
-- **Availability Impact:** No expected availability impact
-- **Customer Impact:** Regular maintenance, no customer impact
+- **Security Risk:** Unknown - Classification failed; risk cannot be determined
+- **Availability Impact:** No expected impact
+- **Customer Impact:** No customer impact
 - **Customer Action Required:** `No`
 
 ## 5. Compliance
