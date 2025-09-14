@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-09-13 04:08
+**Last Check:** 2025-09-14 09:33
 
 **What it validates:** Rapidly detect and remediate or mitigate vulnerabilities
 
@@ -47,4 +47,4 @@ PASS Production-ready vulnerability detection with good automation (61%): FAIL S
 - PASS Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection
 
 ---
-*Generated 2025-09-13 04:08 UTC*
+*Generated 2025-09-14 09:33 UTC*

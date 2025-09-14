@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-13T04:09:44.711688",
+  "timestamp": "2025-09-14T09:34:26.960618",
   "scn_type": "routine_recurring",
   "emergency_mode": false,
   "requires_notification": false,
@@ -25,21 +25,21 @@
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-13T04:09:44.711688"
+    "approval_date": "2025-09-14T09:34:26.960618"
   },
   "changed_files_detailed": [
     {
       "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
       "commit": {
-        "sha": "67f118ce",
+        "sha": "14711f27",
         "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
         "author": "Kwahf33",
-        "date": "2025-09-12 22:04:01 -0600",
+        "date": "2025-09-14 03:28:09 -0600",
         "repository": "fedramp-20x-submission-final",
-        "commit_reference": "fedramp-20x-submission-final@67f118ce",
+        "commit_reference": "fedramp-20x-submission-final@14711f27",
         "verification_method": "git_log_local"
       },
-      "diff": "diff --git a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\nindex 081576d..e78546c 100644\n--- a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n+++ b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n@@ -303,15 +303,15 @@ jobs:\n           files_with_secrets=$(find evidence_v2/ -name \"*.json\" -exec grep -l \"AKIA\\|ASIA\" {} \\; 2>/dev/null)\n           \n           # Check if the variable is non-empty\n-          if [-n $files_with_secrets\"]; then\n+          if [ -n \"$files_with_secrets\" ]; then\n             echo \"\u274c Redaction failed - AWS credentials still present in evidence files\"\n             echo \"Files with remaining credentials:\"\n             echo \"$files_with_secrets\"\n-            exit 1          \n-          else \n-            echo \"\u2705 Redaction validation passed - no secrets detected in evidence files\"\n+            exit 1\n+          else\n+          echo \"\u2705 Redaction validation passed - no secrets detected in evidence files\"\n           fi\n-\n+          \n       - name: \ud83d\udcca Generate Continuous KSI Results\n         run: |\n           echo \"\ud83d\udcca Generating enhanced continuous results with multi-account data...\"\n@@ -1628,3 +1628,4 @@ jobs:\n \n \n \n+\n"
+      "diff": "diff --git a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\nindex e78546c..571a43b 100644\n--- a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n+++ b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n@@ -68,7 +68,7 @@ jobs:\n         uses: trufflesecurity/trufflehog@v3.77.0\n         with:\n           path: ./\n-          extra_args: --exclude-paths=.trufflehog-ignore.patterns\n+          extra_args:  --exclude-paths=.trufflehog-ignore.patterns --only-verified\n           \n       - name: \u2699\ufe0f Install AWS CLI and Tools\n         run: |\n@@ -1629,3 +1629,4 @@ jobs:\n \n \n \n+\n"
     }
   ],
   "file_level_classifications": [
@@ -54,12 +54,12 @@
   ],
   "local_commits_summary": [
     {
-      "sha": "67f118ce",
+      "sha": "14711f27",
       "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
       "author": "Kwahf33",
-      "date": "2025-09-12 22:04:01 -0600",
+      "date": "2025-09-14 03:28:09 -0600",
       "repository": "fedramp-20x-submission-final",
-      "commit_reference": "fedramp-20x-submission-final@67f118ce",
+      "commit_reference": "fedramp-20x-submission-final@14711f27",
       "verification_method": "git_log_local"
     }
   ],

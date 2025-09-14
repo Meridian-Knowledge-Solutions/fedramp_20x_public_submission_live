@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-09-13 04:08
+**Last Check:** 2025-09-14 09:33
 
 **What it validates:** Maintain a vulnerability disclosure program
 
@@ -19,4 +19,4 @@
 - PASS Vulnerability disclosure program maintained: PASS Vulnerability disclosure documentation: vulnerability_disclosure_program_final.pdf
 
 ---
-*Generated 2025-09-13 04:08 UTC*
+*Generated 2025-09-14 09:33 UTC*
