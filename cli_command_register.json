@@ -1,4 +1,12 @@
 {
+  "_comment": [
+    "============================================================================",
+    "RETIRED KSIs - No CLI commands needed (handled by superseding KSIs)",
+    "KSI-MLA-04: Superseded by KSI-MLA-03",
+    "KSI-MLA-06: Superseded by KSI-MLA-03",
+    "KSI-TPR-02: Superseded by KSI-TPR-01",
+    "============================================================================"
+  ],
   "KSI-CNA-01": {
     "description": "Configure ALL information resources to limit inbound and outbound traffic",
     "justification": "Validates comprehensive traffic controls across all AWS resources through multi-layered network security including ingress/egress controls, application-layer protection, and traffic monitoring",
@@ -38,54 +46,54 @@
     ]
   },
   "KSI-CNA-02": {
-  "description": "Design systems to minimize the attack surface and minimize lateral movement if compromised",
-  "justification": "Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures",
-  "cli_commands": [
-    {
-      "command": "aws ec2 describe-subnets --output json",
-      "note": "Analyze subnet segmentation for attack surface isolation (public vs private)"
-    },
-    {
-      "command": "aws ec2 describe-security-groups --output json",
-      "note": "Evaluate micro-segmentation and lateral movement prevention through security group rules"
-    },
-    {
-      "command": "aws ec2 describe-instances --output json",
-      "note": "Assess compute workload exposure and placement for attack surface minimization"
-    },
-    {
-      "command": "aws ec2 describe-network-acls --output json",
-      "note": "Check Network ACLs for subnet-level isolation and lateral movement barriers"
-    },
-    {
-      "command": "aws elbv2 describe-load-balancers --output json",
-      "note": "Analyze load balancer exposure patterns (internal vs internet-facing)"
-    },
-    {
-      "command": "aws lambda list-functions --output json",
-      "note": "Assess Lambda function isolation and VPC configuration for attack surface reduction"
-    },
-    {
-      "command": "aws rds describe-db-instances --output json",
-      "note": "Check database placement and exposure (should be in private subnets)"
-    },
-    {
-      "command": "aws ecs describe-services --output json",
-      "note": "Check containerized services for attack surface minimization"
-    },
-    {
-      "command": "aws ec2 describe-network-interfaces --output json",
-      "note": "Analyze network interfaces for micro-segmentation and controlled communications"
-    },
-    {
-      "command": "aws iam list-roles --output json",
-      "note": "Check IAM roles for least privilege and attack surface reduction"
-    },
-    {
-      "command": "aws ssm describe-instance-information --output json",
-      "note": "Validate managed instances for centralized security posture and reduced attack surface"
-    }
-  ]
+    "description": "Design systems to minimize the attack surface and minimize lateral movement if compromised",
+    "justification": "Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures",
+    "cli_commands": [
+      {
+        "command": "aws ec2 describe-subnets --output json",
+        "note": "Analyze subnet segmentation for attack surface isolation (public vs private)"
+      },
+      {
+        "command": "aws ec2 describe-security-groups --output json",
+        "note": "Evaluate micro-segmentation and lateral movement prevention through security group rules"
+      },
+      {
+        "command": "aws ec2 describe-instances --output json",
+        "note": "Assess compute workload exposure and placement for attack surface minimization"
+      },
+      {
+        "command": "aws ec2 describe-network-acls --output json",
+        "note": "Check Network ACLs for subnet-level isolation and lateral movement barriers"
+      },
+      {
+        "command": "aws elbv2 describe-load-balancers --output json",
+        "note": "Analyze load balancer exposure patterns (internal vs internet-facing)"
+      },
+      {
+        "command": "aws lambda list-functions --output json",
+        "note": "Assess Lambda function isolation and VPC configuration for attack surface reduction"
+      },
+      {
+        "command": "aws rds describe-db-instances --output json",
+        "note": "Check database placement and exposure (should be in private subnets)"
+      },
+      {
+        "command": "aws ecs describe-services --output json",
+        "note": "Check containerized services for attack surface minimization"
+      },
+      {
+        "command": "aws ec2 describe-network-interfaces --output json",
+        "note": "Analyze network interfaces for micro-segmentation and controlled communications"
+      },
+      {
+        "command": "aws iam list-roles --output json",
+        "note": "Check IAM roles for least privilege and attack surface reduction"
+      },
+      {
+        "command": "aws ssm describe-instance-information --output json",
+        "note": "Validate managed instances for centralized security posture and reduced attack surface"
+      }
+    ]
   },
   "KSI-CNA-03": {
     "description": "Use logical networking and related capabilities to enforce traffic flow controls",
@@ -603,6 +611,100 @@
       }
     ]
   },
+  "KSI-SVC-08": {
+    "description": "Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability",
+    "justification": "Validates comprehensive change residual element management through Infrastructure as Code, automated cleanup processes, resource lifecycle management, and change impact tracking covering CloudFormation deployment, automated resource management, and residual element detection",
+    "cli_commands": [
+      {
+        "command": "aws cloudformation list-stacks --output json",
+        "note": "Validate Infrastructure as Code for residual element management and clean deployments"
+      },
+      {
+        "command": "aws lambda list-functions --output json",
+        "note": "Check automated cleanup and residual element management functions"
+      },
+      {
+        "command": "aws config describe-configuration-recorders --output json",
+        "note": "Validate change impact tracking and configuration management"
+      },
+      {
+        "command": "aws events list-rules --output json",
+        "note": "Check EventBridge rules for automated lifecycle and cleanup workflows"
+      },
+      {
+        "command": "evidence_check",
+        "note": "Change management procedures, cleanup processes, and residual element detection documentation"
+      }
+    ]
+  },
+  "KSI-SVC-09": {
+    "description": "Use mechanisms that continuously validate the authenticity and integrity of communications between information resources",
+    "justification": "Validates continuous communication integrity through comprehensive certificate management, encryption validation, inter-service security, and automated integrity checking covering ACM certificates, TLS configuration, VPC security, and cryptographic validation mechanisms",
+    "cli_commands": [
+      {
+        "command": "aws acm list-certificates --output json",
+        "note": "Validate TLS certificate management for communication authenticity and integrity"
+      },
+      {
+        "command": "aws elbv2 describe-ssl-policies --output json",
+        "note": "Check SSL/TLS policies for secure communication configuration"
+      },
+      {
+        "command": "aws elbv2 describe-listeners --output json",
+        "note": "Validate load balancer listeners for encrypted communication enforcement"
+      },
+      {
+        "command": "aws ec2 describe-vpc-endpoints --output json",
+        "note": "Check VPC endpoints for private and secure inter-service communication"
+      },
+      {
+        "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,StorageEncrypted]' --output json",
+        "note": "Validate database encryption for data communication integrity"
+      },
+      {
+        "command": "aws kms list-keys --output json",
+        "note": "Check cryptographic infrastructure for communication integrity validation"
+      },
+      {
+        "command": "aws cloudwatch describe-alarms --output json",
+        "note": "Validate continuous monitoring of certificate and communication integrity"
+      }
+    ]
+  },
+  "KSI-SVC-10": {
+    "description": "Remove unwanted information promptly, including from backups if appropriate",
+    "justification": "Validates automated data lifecycle management through comprehensive retention policies, backup purging automation, storage lifecycle management, and compliance-driven deletion covering AWS Backup lifecycle, S3 policies, automated purging, and data retention compliance",
+    "cli_commands": [
+      {
+        "command": "aws backup list-backup-plans --output json",
+        "note": "Validate backup lifecycle management and automated retention policies"
+      },
+      {
+        "command": "aws s3api list-buckets --output json",
+        "note": "Check S3 storage lifecycle automation and data retention management"
+      },
+      {
+        "command": "aws lambda list-functions --output json",
+        "note": "Check automated data purging and lifecycle management functions"
+      },
+      {
+        "command": "aws events list-rules --output json",
+        "note": "Validate scheduled data lifecycle and automated cleanup workflows"
+      },
+      {
+        "command": "aws logs describe-log-groups --output json",
+        "note": "Check log retention policies for compliance-driven data deletion"
+      },
+      {
+        "command": "aws ec2 describe-snapshots --owner-ids self --output json",
+        "note": "Validate EBS snapshot lifecycle management and automated cleanup"
+      },
+      {
+        "command": "evidence_check",
+        "note": "Data lifecycle management policies, retention schedules, and purging procedures documentation"
+      }
+    ]
+  },
   "KSI-IAM-01": {
     "description": "Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication",
     "justification": "Validates MFA enforcement through Identity Center configuration evidence showing always-on MFA requirements, combined with traditional IAM user analysis",
@@ -784,6 +886,28 @@
       {
         "command": "aws cloudwatch describe-alarms --output json",
         "note": "Check CloudWatch alarms for suspicious privileged account activity monitoring"
+      }
+    ]
+  },
+  "KSI-IAM-07": {
+    "description": "Securely manage the lifecycle and privileges of all accounts, roles, and groups",
+    "justification": "Validates comprehensive account lifecycle management through automated IAM analysis covering service-oriented architecture, active lifecycle management, privilege automation, provisioning processes, and access review mechanisms with enterprise identity management integration",
+    "cli_commands": [
+      {
+        "command": "aws iam list-roles --output json",
+        "note": "Analyze IAM roles for service-oriented architecture and lifecycle management patterns"
+      },
+      {
+        "command": "aws iam list-users --output json",
+        "note": "Analyze user accounts for lifecycle management and privilege patterns"
+      },
+      {
+        "command": "aws iam list-policies --scope Local --output json",
+        "note": "Check custom policies for privilege management and access control automation"
+      },
+      {
+        "command": "aws sso list-accounts --output json",
+        "note": "Validate AWS SSO/Identity Center for advanced account lifecycle management"
       }
     ]
   },
@@ -1035,6 +1159,54 @@
       }
     ]
   },
+  "KSI-MLA-07": {
+    "description": "Maintain a list of information resources and event types that will be monitored, logged, and audited",
+    "justification": "Validates comprehensive monitoring inventory management through automated resource discovery, event categorization, audit trail coverage, and documentation maintenance covering log infrastructure, monitoring scope, and automated inventory systems",
+    "cli_commands": [
+      {
+        "command": "aws logs describe-log-groups --output json",
+        "note": "Inventory logging resources and analyze event categorization across AWS services"
+      },
+      {
+        "command": "aws cloudtrail describe-trails --output json",
+        "note": "Validate audit trail coverage and event monitoring scope"
+      },
+      {
+        "command": "aws config describe-configuration-recorders --output json",
+        "note": "Check automated discovery and continuous monitoring of information resources"
+      },
+      {
+        "command": "aws cloudwatch describe-alarms --output json",
+        "note": "Validate active monitoring and alerting for tracked resources and events"
+      },
+      {
+        "command": "evidence_check",
+        "note": "Monitoring inventory documentation, resource lists, and event type categorization"
+      }
+    ]
+  },
+  "KSI-MLA-08": {
+    "description": "Use a least-privileged, role and attribute-based, and just-in-time access authorization model for access to log data",
+    "justification": "Validates advanced RBAC with JIT capabilities for log access through specialized role analysis, privilege management automation, attribute-based access control, and just-in-time access mechanisms covering log-specific permissions and granular access control",
+    "cli_commands": [
+      {
+        "command": "aws iam list-roles --output json",
+        "note": "Analyze roles for log-specific RBAC and least privilege access patterns"
+      },
+      {
+        "command": "aws iam list-policies --scope Local --output json",
+        "note": "Check custom policies for log-specific permissions and attribute-based access"
+      },
+      {
+        "command": "aws logs describe-log-groups --output json",
+        "note": "Analyze log resources for attribute-based access control patterns"
+      },
+      {
+        "command": "aws sts assume-role --role-arn arn:aws:iam::ACCOUNT:role/LogAccessRole --role-session-name JITTest --output json",
+        "note": "Test just-in-time access capability for log data access (replace ACCOUNT and role as needed)"
+      }
+    ]
+  },
   "KSI-CMT-01": {
     "description": "Log and monitor system modifications",
     "justification": "Validates comprehensive system modification logging from basic change detection to enterprise-grade change tracking, covering CloudTrail audit, configuration monitoring, event automation, and organizational change governance with real-time alerting and compliance tracking",
@@ -1194,7 +1366,7 @@
         "note": "EC2 compute instance inventory with state and configuration details"
       },
       {
-        "command": "aws rds describe-db-instances --output json", 
+        "command": "aws rds describe-db-instances --output json",
         "note": "RDS database instance inventory with configuration and backup settings"
       },
       {
@@ -1291,8 +1463,8 @@
       }
     ]
   },
-   "KSI-TPR-01": {
-    "description": "Identify all third-party information resources", 
+  "KSI-TPR-01": {
+    "description": "Identify all third-party information resources",
     "justification": "AWS API discovery of external integrations, identity providers, and cross-account relationships provides comprehensive third-party resource identification",
     "cli_commands": [
       {
@@ -1320,7 +1492,7 @@
         "note": "API Gateway endpoints that may expose services to third parties"
       }
     ]
-   },
+  },
   "KSI-TPR-02": {
     "description": "Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured",
     "justification": "Validates FedRAMP authorization verification through service assessment, compliance monitoring, and authorization status tracking",
@@ -1362,7 +1534,7 @@
         "note": "NPM package vulnerabilities in third-party JavaScript dependencies"
       },
       {
-        "command": "aws inspector2 list-findings --filter-criteria '{\"componentType\":[{\"value\":\"PYTHON_PKG\",\"comparison\":\"EQUALS\"}]}' --max-results 20 --output json", 
+        "command": "aws inspector2 list-findings --filter-criteria '{\"componentType\":[{\"value\":\"PYTHON_PKG\",\"comparison\":\"EQUALS\"}]}' --max-results 20 --output json",
         "note": "Python package vulnerabilities in third-party Python dependencies"
       },
       {
@@ -1392,6 +1564,20 @@
       {
         "command": "evidence_check",
         "note": "Check evidence_v2/KSI-CED-02/ for role_specific_training_matrix.xlsx, privileged_access_training_program.pdf, high_risk_role_training_requirements.pdf, and specialized_security_training_records.xlsx"
+      }
+    ]
+  },
+  "KSI-CED-03": {
+    "description": "Require role-specific training for development and engineering staff covering best practices for delivering secure software",
+    "justification": "Validates developer security training programs through automated tracking systems and evidence documentation, covering secure coding practices, SDLC security integration, training completion records, and role-specific curricula with automated compliance tracking",
+    "cli_commands": [
+      {
+        "command": "aws lambda list-functions --output json",
+        "note": "Check for training-related automation and developer security functions"
+      },
+      {
+        "command": "evidence_check",
+        "note": "Developer training documentation, secure coding curricula, SDLC security training materials, and completion records"
       }
     ]
   },
@@ -1506,5 +1692,4 @@
     ]
   }
 }
-
 
