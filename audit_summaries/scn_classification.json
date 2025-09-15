@@ -1,31 +1,31 @@
 {
-  "timestamp": "2025-09-15T03:12:30.490544",
-  "scn_type": "routine_recurring",
+  "timestamp": "2025-09-15T04:13:57.120712",
+  "scn_type": "error",
   "emergency_mode": false,
   "requires_notification": false,
   "service_offering_fedramp_id": "FR2527956755",
   "3pao_name": "Fortreum, LLC",
   "related_poam": "N/A",
-  "significant_change_type": "routine_recurring",
-  "explanation_of_categorization": "No files changed",
+  "significant_change_type": "error",
+  "explanation_of_categorization": "Classification error: 'list' object has no attribute 'get'",
   "short_description_of_change": "File-level classified change affecting 0 files",
   "reason_for_change": "Continuous improvement, operational maintenance, and security enhancement",
   "summary_of_customer_impact": {
     "impact_level": "None",
-    "description": "Regular maintenance, no customer impact",
+    "description": "No customer impact",
     "customer_action_required": "No"
   },
   "plan_and_timeline_for_change": {
     "timeline_status": "No notification required for this SCN type"
   },
   "copy_of_business_or_security_impact_analysis": {
-    "security_risk_assessment": "Low - Standard, low-risk maintenance with mature processes",
-    "availability_impact_assessment": "No expected availability impact"
+    "security_risk_assessment": "Unknown - Classification failed; risk cannot be determined",
+    "availability_impact_assessment": "No expected impact"
   },
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-15T03:12:30.490544"
+    "approval_date": "2025-09-15T04:13:57.120712"
   },
   "changed_files_detailed": [],
   "file_level_classifications": [],
@@ -46,8 +46,7 @@
       "FRR-SCN-03",
       "FRR-SCN-04",
       "FRR-SCN-08",
-      "FRR-SCN-09",
-      "FRR-SCN-RR-01"
+      "FRR-SCN-09"
     ],
     "machine_readable_format": true,
     "human_readable_available": true,

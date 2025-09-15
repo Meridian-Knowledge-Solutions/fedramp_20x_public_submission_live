@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-15 03:11
+**Last Check:** 2025-09-15 04:13
 
 **What it validates:** Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 
@@ -42,4 +42,4 @@ PASS Excellent modern authorization model (95%): PASS IAM Identity Center config
 - PASS Role-based session: Using temporary credentials (just-in-time access)
 
 ---
-*Generated 2025-09-15 03:11 UTC*
+*Generated 2025-09-15 04:13 UTC*
