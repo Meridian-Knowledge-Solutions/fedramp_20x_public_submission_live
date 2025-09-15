@@ -34,7 +34,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-IAM-04](KSI-IAM-04.md): Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 - [PASS] [KSI-IAM-05](KSI-IAM-05.md): Apply zero trust design principles
 - [PASS] [KSI-IAM-06](KSI-IAM-06.md): Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
-- [FAIL] [KSI-IAM-07](KSI-IAM-07.md): Securely manage the lifecycle and privileges of all accounts, roles, and groups
+- [PASS] [KSI-IAM-07](KSI-IAM-07.md): Securely manage the lifecycle and privileges of all accounts, roles, and groups
 
 ## Incident Reporting
 
@@ -55,7 +55,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Policy and Inventory
 
-- [PASS] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
+- [FAIL] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
 - [PASS] [KSI-PIY-02](KSI-PIY-02.md): Establish and maintain organization-wide information security and technology policies
 - [PASS] [KSI-PIY-03](KSI-PIY-03.md): Maintain a vulnerability disclosure program
 - [PASS] [KSI-PIY-04](KSI-PIY-04.md): Build security considerations into SDLC and align with CISA Secure By Design principles
@@ -80,7 +80,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-SVC-06](KSI-SVC-06.md): Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 - [PASS] [KSI-SVC-07](KSI-SVC-07.md): Use a consistent, risk-informed approach for applying security patches
 - [PASS] [KSI-SVC-08](KSI-SVC-08.md): Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
-- [FAIL] [KSI-SVC-09](KSI-SVC-09.md): Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
+- [PASS] [KSI-SVC-09](KSI-SVC-09.md): Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
 - [PASS] [KSI-SVC-10](KSI-SVC-10.md): Remove unwanted information promptly, including from backups if appropriate
 
 ## Third-Party Information Resources
@@ -93,9 +93,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 58
-- **Passing:** 55
-- **Failing:** 3
+- **Passing:** 56
+- **Failing:** 2
 - **Not Tested:** 0
 
 ---
-*Generated 2025-09-15 00:44 UTC*
+*Generated 2025-09-15 01:58 UTC*

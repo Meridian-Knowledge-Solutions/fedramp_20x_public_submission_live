@@ -4,7 +4,7 @@
 
 **Category:** Cybersecurity Education
 **Status:** FAIL
-**Last Check:** 2025-09-15 00:44
+**Last Check:** 2025-09-15 01:58
 
 **What it validates:** Require role-specific training for development and engineering staff covering best practices for delivering secure software
 
@@ -22,4 +22,4 @@
 - FAIL No developer security training program found: No evidence found
 
 ---
-*Generated 2025-09-15 00:44 UTC*
+*Generated 2025-09-15 01:58 UTC*

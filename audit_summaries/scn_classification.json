@@ -1,69 +1,36 @@
 {
-  "timestamp": "2025-09-15T00:45:35.168822",
-  "scn_type": "routine_recurring",
+  "timestamp": "2025-09-15T01:59:24.065341",
+  "scn_type": "error",
   "emergency_mode": false,
   "requires_notification": false,
   "service_offering_fedramp_id": "FR2527956755",
   "3pao_name": "Fortreum, LLC",
   "related_poam": "N/A",
-  "significant_change_type": "routine_recurring",
-  "explanation_of_categorization": "All files represent routine operational maintenance",
-  "short_description_of_change": "File-level classified change affecting 1 files",
+  "significant_change_type": "error",
+  "explanation_of_categorization": "Classification error: 'list' object has no attribute 'get'",
+  "short_description_of_change": "File-level classified change affecting 0 files",
   "reason_for_change": "Continuous improvement, operational maintenance, and security enhancement",
   "summary_of_customer_impact": {
     "impact_level": "None",
-    "description": "Regular maintenance, no customer impact",
+    "description": "No customer impact",
     "customer_action_required": "No"
   },
   "plan_and_timeline_for_change": {
     "timeline_status": "No notification required for this SCN type"
   },
   "copy_of_business_or_security_impact_analysis": {
-    "security_risk_assessment": "Low - Standard, low-risk maintenance with mature processes",
-    "availability_impact_assessment": "No expected availability impact"
+    "security_risk_assessment": "Unknown - Classification failed; risk cannot be determined",
+    "availability_impact_assessment": "No expected impact"
   },
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-15T00:45:35.168822"
+    "approval_date": "2025-09-15T01:59:24.065341"
   },
-  "changed_files_detailed": [
-    {
-      "file": "generate_ksi_rule_docs.py",
-      "commit": {
-        "sha": "f5668dbb",
-        "message": "Update generate_ksi_rule_docs.py",
-        "author": "Kwahf33",
-        "date": "2025-09-14 18:39:07 -0600",
-        "repository": "fedramp-20x-submission-final",
-        "commit_reference": "fedramp-20x-submission-final@f5668dbb",
-        "verification_method": "git_log_local"
-      },
-      "diff": "diff --git a/generate_ksi_rule_docs.py b/generate_ksi_rule_docs.py\nindex ff48fee..f4ecd03 100644\n--- a/generate_ksi_rule_docs.py\n+++ b/generate_ksi_rule_docs.py\n@@ -26,14 +26,14 @@ def load_json_safe(path, description):\n def get_validation_summary(ksi_id, validation_data):\n     \"\"\"Get a clean validation summary\"\"\"\n     if not validation_data:\n-        return \"Not validated\", \"\"\n-    \n+        return \"Not validated\", \"\", \"\"\n+\n     assertion = validation_data.get(\"assertion\", False)\n     timestamp = validation_data.get(\"timestamp\", \"Unknown\")\n     reason = validation_data.get(\"assertion_reason\", \"\")\n-    \n+\n     status = \"PASS\" if assertion else \"FAIL\"\n-    \n+\n     # Clean up the timestamp\n     if timestamp != \"Unknown\":\n         try:\n@@ -41,14 +41,14 @@ def get_validation_summary(ksi_id, validation_data):\n             timestamp = dt.strftime('%Y-%m-%d %H:%M')\n         except:\n             pass\n-    \n+\n     return status, timestamp, reason\n \n def format_commands_simple(commands):\n     \"\"\"Format commands in a simple, clean way\"\"\"\n     if not commands:\n         return \"No validation commands configured.\"\n-    \n+\n     lines = []\n     for i, cmd_info in enumerate(commands, 1):\n         if isinstance(cmd_info, dict):\n@@ -57,7 +57,7 @@ def format_commands_simple(commands):\n         else:\n             command = cmd_info\n             note = \"\"\n-        \n+\n         if command == \"evidence_check\":\n             lines.append(f\"{i}. **Manual Review:** {note}\")\n         else:\n@@ -65,14 +65,14 @@ def format_commands_simple(commands):\n             if note:\n                 lines.append(f\"   *{note}*\")\n         lines.append(\"\")\n-    \n+\n     return \"\\n\".join(lines).rstrip()\n \n def get_category_from_ksi_id(ksi_id):\n     \"\"\"Map KSI ID to category\"\"\"\n     category_map = {\n         \"KSI-CNA\": \"Cloud Native Architecture\",\n-        \"KSI-SVC\": \"Service Configuration\", \n+        \"KSI-SVC\": \"Service Configuration\",\n         \"KSI-IAM\": \"Identity and Access Management\",\n         \"KSI-MLA\": \"Monitoring, Logging, and Auditing\",\n         \"KSI-CMT\": \"Change Management\",\n@@ -82,7 +82,7 @@ def get_category_from_ksi_id(ksi_id):\n         \"KSI-RPL\": \"Recovery Planning\",\n         \"KSI-INR\": \"Incident Reporting\"\n     }\n-    \n+\n     prefix = \"-\".join(ksi_id.split(\"-\")[:2])\n     return category_map.get(prefix, \"Other\")\n \n@@ -93,41 +93,44 @@ def create_index_file(command_data, validation_index):\n     lines.append(\"\")\n     lines.append(\"This directory contains documentation for all Key Security Indicators (KSIs).\")\n     lines.append(\"\")\n-    \n+\n     # Group by category\n     categories = {}\n     for ksi_id, ksi_config in command_data.items():\n+        # ADDED: Skip metadata keys\n+        if ksi_id.startswith(\"_\") or ksi_id.startswith(\"//\"):\n+            continue\n         category = get_category_from_ksi_id(ksi_id)\n         if category not in categories:\n             categories[category] = []\n-        \n+\n         validation = validation_index.get(ksi_id, {})\n         status, _, _ = get_validation_summary(ksi_id, validation)\n         description = ksi_config.get(\"description\", ksi_id)\n-        \n+\n         categories[category].append({\n             'id': ksi_id,\n             'description': description,\n             'status': status\n         })\n-    \n+\n     # Write categorized index\n     for category in sorted(categories.keys()):\n         lines.append(f\"## {category}\")\n         lines.append(\"\")\n-        \n+\n         for ksi in sorted(categories[category], key=lambda x: x['id']):\n             status_text = f\"[{ksi['status']}]\" if ksi['status'] != \"Not validated\" else \"[PENDING]\"\n             lines.append(f\"- {status_text} [{ksi['id']}]({ksi['id']}.md): {ksi['description']}\")\n-        \n+\n         lines.append(\"\")\n-    \n+\n     # Summary stats\n-    total = len(command_data)\n+    total = sum(1 for k in command_data if not (k.startswith(\"_\") or k.startswith(\"//\")))\n     passed = sum(1 for v in validation_index.values() if v.get(\"assertion\", False))\n     failed = sum(1 for v in validation_index.values() if not v.get(\"assertion\", False) and \"assertion\" in v)\n     not_tested = total - passed - failed\n-    \n+\n     lines.append(\"## Summary\")\n     lines.append(\"\")\n     lines.append(f\"- **Total KSIs:** {total}\")\n@@ -137,28 +140,28 @@ def create_index_file(command_data, validation_index):\n     lines.append(\"\")\n     lines.append(\"---\")\n     lines.append(f\"*Generated {datetime.utcnow().strftime('%Y-%m-%d %H:%M')} UTC*\")\n-    \n+\n     # Write index file\n     index_file = OUTPUT_DIR / \"README.md\"\n     with open(index_file, \"w\", encoding=\"utf-8\") as f:\n         f.write(\"\\n\".join(lines))\n-    \n+\n     print(f\"  \u2713 Created index: README.md\")\n \n def generate_clean_documentation(ksi_id, ksi_config, validation_data):\n     \"\"\"Generate clean, simple documentation for a KSI\"\"\"\n-    \n+\n     lines = []\n-    \n+\n     # Header\n     description = ksi_config.get(\"description\", ksi_id)\n     lines.append(f\"# {ksi_id}: {description}\")\n     lines.append(\"\")\n-    \n+\n     # Basic info in a simple table\n     category = get_category_from_ksi_id(ksi_id)\n     status, timestamp, reason = get_validation_summary(ksi_id, validation_data)\n-    \n+\n     lines.append(\"## Overview\")\n     lines.append(\"\")\n     lines.append(f\"**Category:** {category}\")\n@@ -166,17 +169,17 @@ def generate_clean_documentation(ksi_id, ksi_config, validation_data):\n     if timestamp:\n         lines.append(f\"**Last Check:** {timestamp}\")\n     lines.append(\"\")\n-    \n+\n     # Description and justification\n     if description:\n         lines.append(f\"**What it validates:** {description}\")\n         lines.append(\"\")\n-    \n+\n     justification = ksi_config.get(\"justification\", \"\")\n     if justification:\n         lines.append(f\"**Why it matters:** {justification}\")\n         lines.append(\"\")\n-    \n+\n     # Commands/Evidence\n     commands = ksi_config.get(\"cli_commands\", [])\n     if commands:\n@@ -184,7 +187,7 @@ def generate_clean_documentation(ksi_id, ksi_config, validation_data):\n         lines.append(\"\")\n         lines.append(format_commands_simple(commands))\n         lines.append(\"\")\n-    \n+\n     # Recent results (only if interesting)\n     if validation_data and reason:\n         lines.append(\"## Latest Results\")\n@@ -192,73 +195,77 @@ def generate_clean_documentation(ksi_id, ksi_config, validation_data):\n         # Clean up the reason text - convert emojis to readable text\n         clean_reason = (reason\n                        .replace(\"\u2705\", \"PASS\")\n-                       .replace(\"\u274c\", \"FAIL\") \n+                       .replace(\"\u274c\", \"FAIL\")\n                        .replace(\"\u26a0\ufe0f\", \"WARNING\")\n                        .replace(\"\u2139\ufe0f\", \"INFO\")\n                        .replace(\": \", \": \")  # Ensure consistent spacing\n                        .replace(\";\", \"\\n-\")  # Convert semicolons to bullet points\n                        )\n-        \n+\n         # Format as a clean list\n         if \"\\n-\" in clean_reason:\n             lines.append(clean_reason)\n         else:\n             lines.append(f\"- {clean_reason}\")\n         lines.append(\"\")\n-    \n+\n     # Footer\n     lines.append(\"---\")\n     lines.append(f\"*Generated {datetime.utcnow().strftime('%Y-%m-%d %H:%M')} UTC*\")\n-    \n+\n     return \"\\n\".join(lines)\n \n def main():\n     \"\"\"Main function to generate clean KSI documentation\"\"\"\n     print(\"KSI Documentation Generator\")\n     print(\"=\" * 40)\n-    \n+\n     # Load data sources\n     command_data = load_json_safe(JSON_COMMANDS_PATH, \"CLI command register\")\n     validation_data = load_json_safe(JSON_VALIDATIONS_PATH, \"Unified validations\")\n-    \n+\n     if not command_data:\n         print(\"ERROR: No command data available - cannot generate documentation\")\n         return\n-    \n+\n     # Build validation index\n     validation_index = {}\n     if validation_data:\n         validations = validation_data.get(\"validations\", [])\n         validation_index = {entry[\"ksi_id\"]: entry for entry in validations}\n         print(f\"Loaded {len(validation_index)} validation results\")\n-    \n+\n     print(f\"Processing {len(command_data)} KSIs...\")\n     print()\n-    \n+\n     generated_count = 0\n     failed_count = 0\n-    \n+\n     # Generate documentation for each KSI\n     for ksi_id, ksi_config in command_data.items():\n+        # FIXED: Add this check to skip comments and metadata keys\n+        if ksi_id.startswith(\"_\") or ksi_id.startswith(\"//\"):\n+            continue\n+            \n         try:\n             validation = validation_index.get(ksi_id, {})\n-            \n+\n             # Generate clean documentation\n             doc_content = generate_clean_documentation(ksi_id, ksi_config, validation)\n-            \n+\n             # Write to file\n             output_file = OUTPUT_DIR / f\"{ksi_id}.md\"\n             with open(output_file, \"w\", encoding=\"utf-8\") as f:\n                 f.write(doc_content)\n-            \n+\n             generated_count += 1\n             print(f\"  \u2713 {ksi_id}\")\n-            \n+\n         except Exception as e:\n             print(f\"  \u2717 {ksi_id}: {e}\")\n             failed_count += 1\n             continue\n-    \n+\n     print()\n     print(\"Results:\")\n     print(f\"  Generated: {generated_count} files\")\n@@ -266,10 +273,10 @@ def main():\n         print(f\"  Failed: {failed_count} files\")\n     print(f\"  Location: {OUTPUT_DIR}\")\n     print()\n-    \n+\n     # Create index file\n     create_index_file(command_data, validation_index)\n-    \n+\n     print(\"Documentation generation complete!\")\n     print(f\"View the index at: {OUTPUT_DIR}/README.md\")\n \n"
-    }
-  ],
-  "file_level_classifications": [
-    {
-      "file": "generate_ksi_rule_docs.py",
-      "classification": "routine_recurring",
-      "reasoning": "Regular operational maintenance pattern",
-      "production_override": false,
-      "terraform_category": null,
-      "change_context": "unknown"
-    }
-  ],
-  "local_commits_summary": [
-    {
-      "sha": "f5668dbb",
-      "message": "Update generate_ksi_rule_docs.py",
-      "author": "Kwahf33",
-      "date": "2025-09-14 18:39:07 -0600",
-      "repository": "fedramp-20x-submission-final",
-      "commit_reference": "fedramp-20x-submission-final@f5668dbb",
-      "verification_method": "git_log_local"
-    }
-  ],
-  "file_count": 1,
+  "changed_files_detailed": [],
+  "file_level_classifications": [],
+  "local_commits_summary": [],
+  "file_count": 0,
   "audit_trail": {
     "classifier_version": "5.0.0",
     "decision_logic": "Official FRA-SCN-03 Decision Tree with Contextual Diff Analysis",
@@ -79,8 +46,7 @@
       "FRR-SCN-03",
       "FRR-SCN-04",
       "FRR-SCN-08",
-      "FRR-SCN-09",
-      "FRR-SCN-RR-01"
+      "FRR-SCN-09"
     ],
     "machine_readable_format": true,
     "human_readable_available": true,
@@ -88,402 +54,8 @@
     "file_level_classification": true,
     "risk_escalation_applied": true
   },
-  "terraform_analysis": {
-    "transformative": [],
-    "adaptive": [],
-    "routine": []
-  },
-  "external_analysis": {
-    "changes_detected": true,
-    "infrastructure_impact": "low",
-    "transformative_repos": [],
-    "adaptive_repos": [],
-    "routine_repos": [
-      {
-        "repository": "meridian-aws-resources",
-        "has_changes": true,
-        "commit_count": 6,
-        "total_files_changed": 10,
-        "production_files_changed": 10,
-        "service_impact_category": "routine",
-        "service_impact_reason": "General infrastructure maintenance - routine operational tasks",
-        "contextual_analysis": {
-          "transformative_contexts": 0,
-          "adaptive_contexts": 0,
-          "routine_contexts": 8,
-          "unknown_contexts": 2
-        },
-        "contextual_reasoning": "Routine: 1 files (maintenance); Routine: 2 files (maintenance); Routine: 1 files (maintenance)",
-        "commits": [
-          {
-            "sha": "b4058cba",
-            "message": "Update aws-inventory.tf",
-            "author": "samuelnjei",
-            "date": "2025-09-12T17:49:07Z",
-            "files": [
-              {
-                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
-                "status": "modified",
-                "additions": 1,
-                "deletions": 1,
-                "changes": 2,
-                "change_context": "routine",
-                "context_reason": "Name tag updates (administrative)",
-                "sha": "e99d3be4",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=b4058cba8db872b857d2c7c14d366bc7147717b8"
-              }
-            ],
-            "contextual_analysis": {
-              "transformative_count": 0,
-              "adaptive_count": 0,
-              "routine_count": 1,
-              "unknown_count": 0,
-              "reasoning": "Routine: 1 files (maintenance)"
-            }
-          },
-          {
-            "sha": "e2c12678",
-            "message": "Merge pull request #22 from Meridian-Knowledge-Solutions/Deploy-AWS-Inventory",
-            "author": "samuelnjei",
-            "date": "2025-09-12T17:42:33Z",
-            "files": [
-              {
-                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
-                "status": "added",
-                "additions": 102,
-                "deletions": 0,
-                "changes": 102,
-                "change_context": "routine",
-                "context_reason": "Name tag updates (administrative)",
-                "sha": "4fc7e264",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=e2c12678e1267f008130dc7a7811889262ae43e1"
-              },
-              {
-                "filename": "Infrastructure/LMS-Production/lambda/inventory.zip",
-                "status": "added",
-                "additions": 0,
-                "deletions": 0,
-                "changes": 0,
-                "change_context": "unknown",
-                "context_reason": "No patch content available",
-                "sha": "9cb8e75b",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip?ref=e2c12678e1267f008130dc7a7811889262ae43e1"
-              },
-              {
-                "filename": "Infrastructure/LMS-Production/main.tf",
-                "status": "modified",
-                "additions": 0,
-                "deletions": 5,
-                "changes": 5,
-                "change_context": "routine",
-                "context_reason": "Name tag updates (administrative)",
-                "sha": "22faebcb",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Fmain.tf",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e2c12678e1267f008130dc7a7811889262ae43e1/Infrastructure%2FLMS-Production%2Fmain.tf",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fmain.tf?ref=e2c12678e1267f008130dc7a7811889262ae43e1"
-              }
-            ],
-            "contextual_analysis": {
-              "transformative_count": 0,
-              "adaptive_count": 0,
-              "routine_count": 2,
-              "unknown_count": 1,
-              "reasoning": "Routine: 2 files (maintenance)"
-            }
-          },
-          {
-            "sha": "cd974373",
-            "message": "update teh code",
-            "author": "sam",
-            "date": "2025-09-12T17:39:13Z",
-            "files": [
-              {
-                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
-                "status": "modified",
-                "additions": 1,
-                "deletions": 1,
-                "changes": 2,
-                "change_context": "routine",
-                "context_reason": "Name tag updates (administrative)",
-                "sha": "4fc7e264",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/cd97437369e41bb7afa2cb609f10bd769b46254b/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/cd97437369e41bb7afa2cb609f10bd769b46254b/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=cd97437369e41bb7afa2cb609f10bd769b46254b"
-              }
-            ],
-            "contextual_analysis": {
-              "transformative_count": 0,
-              "adaptive_count": 0,
-              "routine_count": 1,
-              "unknown_count": 0,
-              "reasoning": "Routine: 1 files (maintenance)"
-            }
-          },
-          {
-            "sha": "ff7590f8",
-            "message": "update teh code",
-            "author": "sam",
-            "date": "2025-09-12T17:34:51Z",
-            "files": [
-              {
-                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
-                "status": "added",
-                "additions": 102,
-                "deletions": 0,
-                "changes": 102,
-                "change_context": "routine",
-                "context_reason": "Name tag updates (administrative)",
-                "sha": "4a03f12b",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=ff7590f824ea8d16c32e238eeff5afc30ce7fa19"
-              },
-              {
-                "filename": "Infrastructure/LMS-Production/lambda/inventory.zip",
-                "status": "added",
-                "additions": 0,
-                "deletions": 0,
-                "changes": 0,
-                "change_context": "unknown",
-                "context_reason": "No patch content available",
-                "sha": "9cb8e75b",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip?ref=ff7590f824ea8d16c32e238eeff5afc30ce7fa19"
-              },
-              {
-                "filename": "Infrastructure/LMS-Production/main.tf",
-                "status": "modified",
-                "additions": 0,
-                "deletions": 5,
-                "changes": 5,
-                "change_context": "routine",
-                "context_reason": "Name tag updates (administrative)",
-                "sha": "22faebcb",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Fmain.tf",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/ff7590f824ea8d16c32e238eeff5afc30ce7fa19/Infrastructure%2FLMS-Production%2Fmain.tf",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fmain.tf?ref=ff7590f824ea8d16c32e238eeff5afc30ce7fa19"
-              }
-            ],
-            "contextual_analysis": {
-              "transformative_count": 0,
-              "adaptive_count": 0,
-              "routine_count": 2,
-              "unknown_count": 1,
-              "reasoning": "Routine: 2 files (maintenance)"
-            }
-          },
-          {
-            "sha": "6d9d513d",
-            "message": "Merge pull request #21 from Meridian-Knowledge-Solutions/feature/codecommit_deploy",
-            "author": "samuelnjei",
-            "date": "2025-09-11T14:26:56Z",
-            "files": [
-              {
-                "filename": "Infrastructure/LMS-Production/main.tf",
-                "status": "modified",
-                "additions": 7,
-                "deletions": 0,
-                "changes": 7,
-                "change_context": "routine",
-                "context_reason": "Name tag updates (administrative)",
-                "sha": "13726917",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/6d9d513d6f4561f3c9f4534b88e17d35041b6e8b/Infrastructure%2FLMS-Production%2Fmain.tf",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/6d9d513d6f4561f3c9f4534b88e17d35041b6e8b/Infrastructure%2FLMS-Production%2Fmain.tf",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fmain.tf?ref=6d9d513d6f4561f3c9f4534b88e17d35041b6e8b"
-              }
-            ],
-            "contextual_analysis": {
-              "transformative_count": 0,
-              "adaptive_count": 0,
-              "routine_count": 1,
-              "unknown_count": 0,
-              "reasoning": "Routine: 1 files (maintenance)"
-            }
-          },
-          {
-            "sha": "8e8158a7",
-            "message": "deploy the security governance repo",
-            "author": "sam",
-            "date": "2025-09-11T14:08:57Z",
-            "files": [
-              {
-                "filename": "Infrastructure/LMS-Production/main.tf",
-                "status": "modified",
-                "additions": 7,
-                "deletions": 0,
-                "changes": 7,
-                "change_context": "routine",
-                "context_reason": "Name tag updates (administrative)",
-                "sha": "13726917",
-                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/8e8158a70bc06ea7e99e61273d2f95cdd80b8e77/Infrastructure%2FLMS-Production%2Fmain.tf",
-                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/8e8158a70bc06ea7e99e61273d2f95cdd80b8e77/Infrastructure%2FLMS-Production%2Fmain.tf",
-                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fmain.tf?ref=8e8158a70bc06ea7e99e61273d2f95cdd80b8e77"
-              }
-            ],
-            "contextual_analysis": {
-              "transformative_count": 0,
-              "adaptive_count": 0,
-              "routine_count": 1,
-              "unknown_count": 0,
-              "reasoning": "Routine: 1 files (maintenance)"
-            }
-          }
-        ],
-        "production_paths": [
-          {
-            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "b4058cba",
-            "change_type": "modified",
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "e2c12678",
-            "change_type": "added",
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/lambda/inventory.zip",
-            "repository": "meridian-aws-resources",
-            "commit": "e2c12678",
-            "change_type": "added",
-            "context": "unknown"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/main.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "e2c12678",
-            "change_type": "modified",
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "cd974373",
-            "change_type": "modified",
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "ff7590f8",
-            "change_type": "added",
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/lambda/inventory.zip",
-            "repository": "meridian-aws-resources",
-            "commit": "ff7590f8",
-            "change_type": "added",
-            "context": "unknown"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/main.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "ff7590f8",
-            "change_type": "modified",
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/main.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "6d9d513d",
-            "change_type": "modified",
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/main.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "8e8158a7",
-            "change_type": "modified",
-            "context": "routine"
-          }
-        ],
-        "terraform_files": [
-          {
-            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "b4058cba",
-            "terraform_type": "general_infrastructure",
-            "production_path": true,
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "e2c12678",
-            "terraform_type": "general_infrastructure",
-            "production_path": true,
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/main.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "e2c12678",
-            "terraform_type": "general_infrastructure",
-            "production_path": true,
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "cd974373",
-            "terraform_type": "general_infrastructure",
-            "production_path": true,
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "ff7590f8",
-            "terraform_type": "general_infrastructure",
-            "production_path": true,
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/main.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "ff7590f8",
-            "terraform_type": "general_infrastructure",
-            "production_path": true,
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/main.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "6d9d513d",
-            "terraform_type": "general_infrastructure",
-            "production_path": true,
-            "context": "routine"
-          },
-          {
-            "file": "Infrastructure/LMS-Production/main.tf",
-            "repository": "meridian-aws-resources",
-            "commit": "8e8158a7",
-            "terraform_type": "general_infrastructure",
-            "production_path": true,
-            "context": "routine"
-          }
-        ],
-        "configuration_files": [],
-        "file_summary": {
-          "total_files": 10,
-          "production_files": 10,
-          "terraform_files": 8,
-          "configuration_files": 0
-        }
-      }
-    ]
-  },
+  "terraform_analysis": {},
+  "external_analysis": {},
   "required_stakeholders_to_notify": [],
   "3pao_review_required": false,
   "3pao_review_justification": "Not required",

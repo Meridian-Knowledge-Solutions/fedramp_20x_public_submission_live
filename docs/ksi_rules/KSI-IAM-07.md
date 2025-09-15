@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Identity and Access Management
-**Status:** FAIL
-**Last Check:** 2025-09-15 00:44
+**Status:** PASS
+**Last Check:** 2025-09-15 01:58
 
 **What it validates:** Securely manage the lifecycle and privileges of all accounts, roles, and groups
 
@@ -26,7 +26,11 @@
 
 ## Latest Results
 
-- Exception during evaluation: name 'timezone' is not defined
+PASS Advanced automated account lifecycle management (80%): PASS Service Oriented Architecture
+- PASS Active Lifecycle Management
+- FAIL Privilege Automation
+- PASS Automated Provisioning
+- PASS Regular Access Reviews
 
 ---
-*Generated 2025-09-15 00:44 UTC*
+*Generated 2025-09-15 01:58 UTC*
