@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Third-Party Information Resources
-**Status:** PASS
-**Last Check:** 2025-09-15 04:13
+**Status:** FAIL
+**Last Check:** 2025-09-15 21:53
 
 **What it validates:** Monitor third party software for upstream vulnerabilities
 
@@ -32,8 +32,7 @@
 
 ## Latest Results
 
-PASS Vulnerability monitoring capability available: PASS Inspector vulnerability monitoring operational (no current vulnerabilities)
-- WARNING No contractual vulnerability notification agreements documented
+- FAIL No automated third-party vulnerability monitoring infrastructure: No monitoring capabilities detected
 
 ---
-*Generated 2025-09-15 04:13 UTC*
+*Generated 2025-09-15 21:53 UTC*

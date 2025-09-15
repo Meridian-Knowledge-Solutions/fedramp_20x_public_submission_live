@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Policy and Inventory
-**Status:** PASS
-**Last Check:** 2025-09-15 04:13
+**Status:** FAIL
+**Last Check:** 2025-09-15 21:53
 
 **What it validates:** Build security considerations into SDLC and align with CISA Secure By Design principles
 
@@ -25,7 +25,7 @@
 
 ## Latest Results
 
-- WARNING Basic secure development practices (expand documentation): PASS Secure SDLC documentation: Secure Software Development Lifecycle (SDLC) Policy.pdf
+- FAIL No SDLC security integration infrastructure: No development security automation detected
 
 ---
-*Generated 2025-09-15 04:13 UTC*
+*Generated 2025-09-15 21:53 UTC*

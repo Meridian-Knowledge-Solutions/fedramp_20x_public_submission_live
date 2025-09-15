@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-09-15 04:13
+**Last Check:** 2025-09-15 21:53
 
 **What it validates:** Maintain a list of information resources and event types that will be monitored, logged, and audited
 
@@ -28,9 +28,8 @@
 
 ## Latest Results
 
-PASS Good monitoring inventory - enhance documentation (60%): PASS Comprehensive log inventory: 14 log groups
-- PASS Event categorization: 11 AWS service logs, 3 application logs
-- PASS Comprehensive audit coverage: 1 global trails, 1 multi-region
+WARNING Basic automated monitoring inventory - expand automation (50%): PASS Comprehensive log infrastructure: 14 log groups
+- PASS Comprehensive audit coverage: 1 trails with multi-region
 
 ---
-*Generated 2025-09-15 04:13 UTC*
+*Generated 2025-09-15 21:53 UTC*

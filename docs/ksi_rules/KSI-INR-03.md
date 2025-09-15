@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Incident Reporting
-**Status:** PASS
-**Last Check:** 2025-09-15 04:13
+**Status:** FAIL
+**Last Check:** 2025-09-15 21:53
 
 **What it validates:** Generate after action reports and regularly incorporate lessons learned into operations
 
@@ -16,9 +16,7 @@
 
 ## Latest Results
 
-WARNING Basic after action reporting (increase lessons learned implementation): PASS Core after action documentation: Sample After Action Reports and Implementation Examples.pdf
-- PASS Recent after action reports: 2 AARs within last year
-- WARNING Limited evidence of lessons learned implementation into operations
+- FAIL No automated after action reporting infrastructure: No automated analysis capabilities detected
 
 ---
-*Generated 2025-09-15 04:13 UTC*
+*Generated 2025-09-15 21:53 UTC*

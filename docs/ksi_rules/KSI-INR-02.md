@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Incident Reporting
-**Status:** PASS
-**Last Check:** 2025-09-15 04:13
+**Status:** FAIL
+**Last Check:** 2025-09-15 21:53
 
 **What it validates:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 
@@ -22,9 +22,7 @@
 
 ## Latest Results
 
-WARNING Good incident logging (increase analysis frequency): WARNING No dedicated security log groups found (may use general logging)
-- PASS Incident tracking and analysis: Incident Tracking and Analysis Template (KSI-INR-02).pdf
-- PASS Recent reviews: 1 incident analysis documents updated within 6 months
+- FAIL No automated incident tracking infrastructure: No incident tracking capabilities detected
 
 ---
-*Generated 2025-09-15 04:13 UTC*
+*Generated 2025-09-15 21:53 UTC*
