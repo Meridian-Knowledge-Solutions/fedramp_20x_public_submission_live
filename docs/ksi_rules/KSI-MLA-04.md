@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-09-15 22:44
+**Last Check:** 2025-09-15 23:47
 
 **What it validates:** Perform authenticated vulnerability scanning on information resources
 
@@ -41,4 +41,4 @@
 - PASS KSI retired in Phase Two - superseded by KSI-MLA-03 (FedRAMP Vulnerability Response and Detection standard)
 
 ---
-*Generated 2025-09-15 22:44 UTC*
+*Generated 2025-09-15 23:47 UTC*
