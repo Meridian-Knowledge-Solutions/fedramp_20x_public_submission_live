@@ -55,7 +55,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Policy and Inventory
 
-- [FAIL] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
+- [PASS] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
 - [PASS] [KSI-PIY-02](KSI-PIY-02.md): Establish and maintain organization-wide information security and technology policies
 - [PASS] [KSI-PIY-03](KSI-PIY-03.md): Maintain a vulnerability disclosure program
 - [PASS] [KSI-PIY-04](KSI-PIY-04.md): Build security considerations into SDLC and align with CISA Secure By Design principles
@@ -93,9 +93,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 58
-- **Passing:** 56
-- **Failing:** 2
+- **Passing:** 57
+- **Failing:** 1
 - **Not Tested:** 0
 
 ---
-*Generated 2025-09-15 02:50 UTC*
+*Generated 2025-09-15 03:11 UTC*
