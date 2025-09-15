@@ -4158,10 +4158,8 @@ async function getSCNStatus() {
                 mainMessage = mainMessage.substring(0, 100) + '...';
             }
             
-            const statusIcon = assertion_reason.includes('✅') ? '✅' : 
-                              assertion_reason.includes('❌') ? '❌' : 
-                              assertion_reason.includes('⚠️') ? '⚠️' :
-                              assertion_reason.includes('ℹ️') ? 'ℹ️' : '';
+            // FIXED: Use the reliable status to get the correct icon from the helper function
+            const statusIcon = getStatusIcon(status);
             
             return statusIcon + ' ' + mainMessage;
         }
