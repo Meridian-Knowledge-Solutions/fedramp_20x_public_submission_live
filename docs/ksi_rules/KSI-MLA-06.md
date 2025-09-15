@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-09-14 10:15
+**Last Check:** 2025-09-15 00:44
 
 **What it validates:** Centrally track and prioritize the mitigation and/or remediation of identified vulnerabilities
 
@@ -44,11 +44,7 @@
 
 ## Latest Results
 
-PASS Production-ready automated vulnerability tracking and remediation workflows: PASS Centralized tracking: 100 Security Hub findings (0 critical, 51 high, 100 active)
-- PASS Vulnerability prioritization: 50 Inspector findings (0 critical, 32 high)
-- PASS Vulnerability analytics: 1 Security Hub insights for trend analysis
-- PASS Stakeholder communication: 2 SNS topics for vulnerability notifications
-- PASS Enterprise governance: Organization-wide vulnerability tracking policies and remediation standards
+- PASS KSI retired in Phase Two - superseded by KSI-MLA-03 (FedRAMP Vulnerability Response and Detection standard)
 
 ---
-*Generated 2025-09-14 10:15 UTC*
+*Generated 2025-09-15 00:44 UTC*

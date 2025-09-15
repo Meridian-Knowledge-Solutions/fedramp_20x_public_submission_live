@@ -24,6 +24,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-CED-01](KSI-CED-01.md): Ensure all employees receive security awareness training
 - [PASS] [KSI-CED-02](KSI-CED-02.md): Require role-specific training for high risk roles, including at least roles with privileged access
+- [FAIL] [KSI-CED-03](KSI-CED-03.md): Require role-specific training for development and engineering staff covering best practices for delivering secure software
 
 ## Identity and Access Management
 
@@ -33,6 +34,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-IAM-04](KSI-IAM-04.md): Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 - [PASS] [KSI-IAM-05](KSI-IAM-05.md): Apply zero trust design principles
 - [PASS] [KSI-IAM-06](KSI-IAM-06.md): Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
+- [FAIL] [KSI-IAM-07](KSI-IAM-07.md): Securely manage the lifecycle and privileges of all accounts, roles, and groups
 
 ## Incident Reporting
 
@@ -48,6 +50,8 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-MLA-04](KSI-MLA-04.md): Perform authenticated vulnerability scanning on information resources
 - [PASS] [KSI-MLA-05](KSI-MLA-05.md): Perform Infrastructure as Code and configuration evaluation and testing
 - [PASS] [KSI-MLA-06](KSI-MLA-06.md): Centrally track and prioritize the mitigation and/or remediation of identified vulnerabilities
+- [PASS] [KSI-MLA-07](KSI-MLA-07.md): Maintain a list of information resources and event types that will be monitored, logged, and audited
+- [PASS] [KSI-MLA-08](KSI-MLA-08.md): Use a least-privileged, role and attribute-based, and just-in-time access authorization model for access to log data
 
 ## Policy and Inventory
 
@@ -75,6 +79,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-SVC-05](KSI-SVC-05.md): Continuously verify information resource integrity
 - [PASS] [KSI-SVC-06](KSI-SVC-06.md): Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 - [PASS] [KSI-SVC-07](KSI-SVC-07.md): Use a consistent, risk-informed approach for applying security patches
+- [PASS] [KSI-SVC-08](KSI-SVC-08.md): Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
+- [FAIL] [KSI-SVC-09](KSI-SVC-09.md): Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
+- [PASS] [KSI-SVC-10](KSI-SVC-10.md): Remove unwanted information promptly, including from backups if appropriate
 
 ## Third-Party Information Resources
 
@@ -85,10 +92,10 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Summary
 
-- **Total KSIs:** 51
-- **Passing:** 51
-- **Failing:** 0
+- **Total KSIs:** 58
+- **Passing:** 55
+- **Failing:** 3
 - **Not Tested:** 0
 
 ---
-*Generated 2025-09-14 10:15 UTC*
+*Generated 2025-09-15 00:44 UTC*

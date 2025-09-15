@@ -7,7 +7,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754772",
+    "timestamp": "2025-09-15T00:44:50.099820",
     "validation_method": "multi-command"
   },
   {
@@ -18,7 +18,18 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754783",
+    "timestamp": "2025-09-15T00:44:50.099832",
+    "validation_method": "multi-command"
+  },
+  {
+    "ksi_id": "KSI-CED-03",
+    "validation_id": "KSI-CED-03",
+    "assertion": false,
+    "assertion_reason": "\u274c No developer security training program found: No evidence found",
+    "cli_command": "2 commands executed",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-09-15T00:44:50.099835",
     "validation_method": "multi-command"
   },
   {
@@ -29,7 +40,7 @@
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754786",
+    "timestamp": "2025-09-15T00:44:50.099838",
     "validation_method": "multi-command"
   },
   {
@@ -40,7 +51,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754789",
+    "timestamp": "2025-09-15T00:44:50.099840",
     "validation_method": "multi-command"
   },
   {
@@ -51,7 +62,7 @@
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754792",
+    "timestamp": "2025-09-15T00:44:50.099843",
     "validation_method": "multi-command"
   },
   {
@@ -62,7 +73,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754794",
+    "timestamp": "2025-09-15T00:44:50.099850",
     "validation_method": "multi-command"
   },
   {
@@ -73,7 +84,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754797",
+    "timestamp": "2025-09-15T00:44:50.099852",
     "validation_method": "multi-command"
   },
   {
@@ -84,7 +95,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754799",
+    "timestamp": "2025-09-15T00:44:50.099854",
     "validation_method": "multi-command"
   },
   {
@@ -95,7 +106,7 @@
     "cli_command": "11 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754801",
+    "timestamp": "2025-09-15T00:44:50.099857",
     "validation_method": "multi-command"
   },
   {
@@ -106,7 +117,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754804",
+    "timestamp": "2025-09-15T00:44:50.099859",
     "validation_method": "multi-command"
   },
   {
@@ -117,7 +128,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754806",
+    "timestamp": "2025-09-15T00:44:50.099862",
     "validation_method": "multi-command"
   },
   {
@@ -128,18 +139,18 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754808",
+    "timestamp": "2025-09-15T00:44:50.099864",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-CNA-06",
     "validation_id": "KSI-CNA-06",
     "assertion": true,
-    "assertion_reason": "\u2705 Excellent high availability design for pilot environment (100%): \u2705 Strong network HA: 8 subnets across 2 AZs; \u2705 Balanced subnet distribution across availability zones; \u2705 Application HA: 1 multi-AZ load balancer(s) providing traffic distribution; \u2705 Active backup strategy: 2 AWS Backup plan(s) with recent execution; \u2705 Storage redundancy: 4 S3 bucket(s) with built-in 11-9s durability; \u2705 Database HA-ready: 1 RDS instance(s) with multi-AZ subnet groups (easily convertible); \u2139\ufe0f Compute HA via Infrastructure as Code (Terraform-managed instances acceptable for pilot); \u2705 Bonus: Storage recovery via 434 EBS snapshot(s); \u2705 DNS infrastructure: 1 Route 53 hosted zone(s)",
+    "assertion_reason": "\u2705 Excellent high availability design for pilot environment (100%): \u2705 Strong network HA: 8 subnets across 2 AZs; \u2705 Balanced subnet distribution across availability zones; \u2705 Application HA: 1 multi-AZ load balancer(s) providing traffic distribution; \u2705 Active backup strategy: 2 AWS Backup plan(s) with recent execution; \u2705 Storage redundancy: 4 S3 bucket(s) with built-in 11-9s durability; \u2705 Database HA-ready: 1 RDS instance(s) with multi-AZ subnet groups (easily convertible); \u2139\ufe0f Compute HA via Infrastructure as Code (Terraform-managed instances acceptable for pilot); \u2705 Bonus: Storage recovery via 442 EBS snapshot(s); \u2705 DNS infrastructure: 1 Route 53 hosted zone(s)",
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754811",
+    "timestamp": "2025-09-15T00:44:50.099866",
     "validation_method": "multi-command"
   },
   {
@@ -150,7 +161,7 @@
     "cli_command": "12 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754813",
+    "timestamp": "2025-09-15T00:44:50.099869",
     "validation_method": "multi-command"
   },
   {
@@ -161,7 +172,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754816",
+    "timestamp": "2025-09-15T00:44:50.099871",
     "validation_method": "multi-command"
   },
   {
@@ -172,7 +183,7 @@
     "cli_command": "5 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754818",
+    "timestamp": "2025-09-15T00:44:50.099873",
     "validation_method": "multi-command"
   },
   {
@@ -183,7 +194,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754820",
+    "timestamp": "2025-09-15T00:44:50.099875",
     "validation_method": "multi-command"
   },
   {
@@ -194,7 +205,7 @@
     "cli_command": "6 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754823",
+    "timestamp": "2025-09-15T00:44:50.099878",
     "validation_method": "multi-command"
   },
   {
@@ -205,7 +216,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754827",
+    "timestamp": "2025-09-15T00:44:50.099880",
     "validation_method": "multi-command"
   },
   {
@@ -216,7 +227,18 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754830",
+    "timestamp": "2025-09-15T00:44:50.099883",
+    "validation_method": "multi-command"
+  },
+  {
+    "ksi_id": "KSI-IAM-07",
+    "validation_id": "KSI-IAM-07",
+    "assertion": false,
+    "assertion_reason": "Exception during evaluation: name 'timezone' is not defined",
+    "cli_command": "4 commands executed",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-09-15T00:44:50.099885",
     "validation_method": "multi-command"
   },
   {
@@ -227,7 +249,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754834",
+    "timestamp": "2025-09-15T00:44:50.099887",
     "validation_method": "multi-command"
   },
   {
@@ -238,7 +260,7 @@
     "cli_command": "3 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754837",
+    "timestamp": "2025-09-15T00:44:50.099890",
     "validation_method": "multi-command"
   },
   {
@@ -249,7 +271,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754839",
+    "timestamp": "2025-09-15T00:44:50.099892",
     "validation_method": "multi-command"
   },
   {
@@ -260,7 +282,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754842",
+    "timestamp": "2025-09-15T00:44:50.099894",
     "validation_method": "multi-command"
   },
   {
@@ -271,29 +293,29 @@
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754844",
+    "timestamp": "2025-09-15T00:44:50.099899",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-MLA-03",
     "validation_id": "KSI-MLA-03",
     "assertion": true,
-    "assertion_reason": "\u2705 Production-ready vulnerability detection with good automation (61%): \u274c Security Hub not configured for vulnerability detection; \u2705 Automated vulnerability scanning: Inspector EC2, ECR scanning enabled; \u2705 Multi-service vulnerability coverage: Both EC2 and ECR scanning for comprehensive assessment; \u2705 Automated patch management: 17 patch baselines (15 default, 2 custom); \u2705 Tailored remediation: 2 custom patch baselines for targeted vulnerability response; \u2705 Active threat analysis: 50 active security findings (0 critical, 27 high); \u2705 Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection",
+    "assertion_reason": "\u2705 Production-ready vulnerability detection with good automation (61%): \u274c Security Hub not configured for vulnerability detection; \u2705 Automated vulnerability scanning: Inspector EC2, ECR scanning enabled; \u2705 Multi-service vulnerability coverage: Both EC2 and ECR scanning for comprehensive assessment; \u2705 Automated patch management: 17 patch baselines (15 default, 2 custom); \u2705 Tailored remediation: 2 custom patch baselines for targeted vulnerability response; \u2705 Active threat analysis: 50 active security findings (0 critical, 40 high); \u2705 Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection",
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754846",
+    "timestamp": "2025-09-15T00:44:50.099902",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-MLA-04",
     "validation_id": "KSI-MLA-04",
     "assertion": true,
-    "assertion_reason": "\u2705 Enterprise-grade authenticated vulnerability scanning with comprehensive coverage (100%): \u2705 Inspector service operational: Responds to coverage queries and scanning requests; \u2705 Comprehensive scanning coverage: 5/5 instances under authenticated scanning; \u2705 Multi-service authenticated scanning: Inspector EC2, ECR scanning enabled; \u2705 Comprehensive service scanning: Both EC2 and ECR authenticated vulnerability assessment enabled; \u2705 System-level scanning capability: 5/5 SSM-managed instances for authenticated system assessment; \u2705 Serverless code analysis: 8 Lambda functions available for authenticated code vulnerability scanning; \u2705 Active Lambda scanning: 8 functions actively scanned by Inspector; \u2705 Comprehensive workload coverage: 3 service types available for authenticated scanning (EC2, Lambda, SSM); \u2705 Active vulnerability intelligence: 20 authenticated scan findings (0 critical, 9 high, 11 medium, 0 low); \u2705 Comprehensive vulnerability discovery: High-volume scanning indicates thorough authenticated assessment; \u2705 Automated discovery: Inspector service can automatically detect and scan new resources; \u2705 Enterprise scanning governance: AWS Organizations enables centralized multi-account vulnerability scanning; \u2705 Enterprise scanning integration: Multi-service Inspector configuration for comprehensive authenticated assessment; \u2705 Enterprise-scale scanning: 13 total resources requiring authenticated vulnerability assessment",
+    "assertion_reason": "\u2705 KSI retired in Phase Two - superseded by KSI-MLA-03 (FedRAMP Vulnerability Response and Detection standard)",
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754849",
+    "timestamp": "2025-09-15T00:44:50.099904",
     "validation_method": "multi-command"
   },
   {
@@ -304,18 +326,40 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754851",
+    "timestamp": "2025-09-15T00:44:50.099906",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-MLA-06",
     "validation_id": "KSI-MLA-06",
     "assertion": true,
-    "assertion_reason": "\u2705 Production-ready automated vulnerability tracking and remediation workflows: \u2705 Centralized tracking: 100 Security Hub findings (0 critical, 51 high, 100 active); \u2705 Vulnerability prioritization: 50 Inspector findings (0 critical, 32 high); \u2705 Vulnerability analytics: 1 Security Hub insights for trend analysis; \u2705 Stakeholder communication: 2 SNS topics for vulnerability notifications; \u2705 Enterprise governance: Organization-wide vulnerability tracking policies and remediation standards",
+    "assertion_reason": "\u2705 KSI retired in Phase Two - superseded by KSI-MLA-03 (FedRAMP Vulnerability Response and Detection standard)",
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754853",
+    "timestamp": "2025-09-15T00:44:50.099909",
+    "validation_method": "multi-command"
+  },
+  {
+    "ksi_id": "KSI-MLA-07",
+    "validation_id": "KSI-MLA-07",
+    "assertion": true,
+    "assertion_reason": "\u2705 Good monitoring inventory - enhance documentation (60%): \u2705 Comprehensive log inventory: 14 log groups; \u2705 Event categorization: 11 AWS service logs, 3 application logs; \u2705 Comprehensive audit coverage: 1 global trails, 1 multi-region",
+    "cli_command": "5 commands executed",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-09-15T00:44:50.099911",
+    "validation_method": "multi-command"
+  },
+  {
+    "ksi_id": "KSI-MLA-08",
+    "validation_id": "KSI-MLA-08",
+    "assertion": true,
+    "assertion_reason": "\u2705 Good log access control - enhance JIT capabilities (60%): \u2705 Role-based log access: 3 log-specific roles; \u2705 Least privilege design: Multiple specialized log access roles; \u2705 Attribute-based access: 4 different retention policies suggest granular access control",
+    "cli_command": "4 commands executed",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-09-15T00:44:50.099913",
     "validation_method": "multi-command"
   },
   {
@@ -326,7 +370,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754856",
+    "timestamp": "2025-09-15T00:44:50.099916",
     "validation_method": "multi-command"
   },
   {
@@ -337,7 +381,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754858",
+    "timestamp": "2025-09-15T00:44:50.099918",
     "validation_method": "multi-command"
   },
   {
@@ -348,7 +392,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754860",
+    "timestamp": "2025-09-15T00:44:50.099921",
     "validation_method": "multi-command"
   },
   {
@@ -359,7 +403,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754863",
+    "timestamp": "2025-09-15T00:44:50.099923",
     "validation_method": "multi-command"
   },
   {
@@ -370,7 +414,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754865",
+    "timestamp": "2025-09-15T00:44:50.099925",
     "validation_method": "multi-command"
   },
   {
@@ -381,7 +425,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754867",
+    "timestamp": "2025-09-15T00:44:50.099928",
     "validation_method": "multi-command"
   },
   {
@@ -392,7 +436,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754870",
+    "timestamp": "2025-09-15T00:44:50.099930",
     "validation_method": "multi-command"
   },
   {
@@ -403,7 +447,7 @@
     "cli_command": "3 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754872",
+    "timestamp": "2025-09-15T00:44:50.099932",
     "validation_method": "multi-command"
   },
   {
@@ -414,29 +458,29 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754874",
+    "timestamp": "2025-09-15T00:44:50.099935",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-RPL-03",
     "validation_id": "KSI-RPL-03",
     "assertion": true,
-    "assertion_reason": "\u2705 System backups with compliant retention aligned with recovery objectives: \u2705 Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan); \u26a0\ufe0f Backup plan details not available - cannot validate retention policies; \u2705 Backup operations validated: 50 successful backup jobs prove backups are functioning; \u2705 RDS backup configuration: 1/1 databases with automated backups; \u2705 Additional backup coverage: 434 EBS snapshots",
+    "assertion_reason": "\u2705 System backups with compliant retention aligned with recovery objectives: \u2705 Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan); \u26a0\ufe0f Backup plan details not available - cannot validate retention policies; \u2705 Backup operations validated: 50 successful backup jobs prove backups are functioning; \u2705 RDS backup configuration: 1/1 databases with automated backups; \u2705 Additional backup coverage: 442 EBS snapshots",
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754884",
+    "timestamp": "2025-09-15T00:44:50.099937",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-RPL-04",
     "validation_id": "KSI-RPL-04",
     "assertion": true,
-    "assertion_reason": "\u2705 Regular recovery testing capability validated with operational proof: \u2705 Core testing documentation: combined_tabletop_test_report_template.pdf; \u2705 Recent testing: 2 test documents updated within last year; \u2705 Recovery capability demonstrated through working backup infrastructure and documented procedures; \u2705 Backup infrastructure validation: 193 recent backup operations prove recovery foundation; \u2705 Point-in-time recovery testing capability: 1/1 databases ready for RPO validation",
+    "assertion_reason": "\u2705 Regular recovery testing capability validated with operational proof: \u2705 Core testing documentation: combined_tabletop_test_report_template.pdf; \u2705 Recent testing: 2 test documents updated within last year; \u2705 Recovery capability demonstrated through working backup infrastructure and documented procedures; \u2705 Backup infrastructure validation: 194 recent backup operations prove recovery foundation; \u2705 Point-in-time recovery testing capability: 1/1 databases ready for RPO validation",
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754886",
+    "timestamp": "2025-09-15T00:44:50.099939",
     "validation_method": "multi-command"
   },
   {
@@ -447,7 +491,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754888",
+    "timestamp": "2025-09-15T00:44:50.099942",
     "validation_method": "multi-command"
   },
   {
@@ -458,7 +502,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754891",
+    "timestamp": "2025-09-15T00:44:50.099946",
     "validation_method": "multi-command"
   },
   {
@@ -469,7 +513,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754893",
+    "timestamp": "2025-09-15T00:44:50.099948",
     "validation_method": "multi-command"
   },
   {
@@ -480,7 +524,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754896",
+    "timestamp": "2025-09-15T00:44:50.099951",
     "validation_method": "multi-command"
   },
   {
@@ -491,7 +535,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754898",
+    "timestamp": "2025-09-15T00:44:50.099953",
     "validation_method": "multi-command"
   },
   {
@@ -502,7 +546,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754900",
+    "timestamp": "2025-09-15T00:44:50.099955",
     "validation_method": "multi-command"
   },
   {
@@ -513,7 +557,40 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754904",
+    "timestamp": "2025-09-15T00:44:50.099958",
+    "validation_method": "multi-command"
+  },
+  {
+    "ksi_id": "KSI-SVC-08",
+    "validation_id": "KSI-SVC-08",
+    "assertion": true,
+    "assertion_reason": "\u2705 Advanced change residual element management (80%): \u2705 Infrastructure As Code; \u2705 Automated Cleanup; \u2705 Resource Lifecycle Management; \u2705 Residual Element Detection; \u274c Change Impact Tracking",
+    "cli_command": "5 commands executed",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-09-15T00:44:50.099960",
+    "validation_method": "multi-command"
+  },
+  {
+    "ksi_id": "KSI-SVC-09",
+    "validation_id": "KSI-SVC-09",
+    "assertion": false,
+    "assertion_reason": "Exception during evaluation: 'list' object has no attribute 'get'",
+    "cli_command": "7 commands executed",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-09-15T00:44:50.099962",
+    "validation_method": "multi-command"
+  },
+  {
+    "ksi_id": "KSI-SVC-10",
+    "validation_id": "KSI-SVC-10",
+    "assertion": true,
+    "assertion_reason": "\u2705 Advanced automated data lifecycle management (80%): \u2705 Backup Lifecycle Management; \u2705 Automated Retention Policies; \u2705 Storage Lifecycle Automation; \u2705 Data Purging Mechanisms; \u274c Compliance Driven Deletion",
+    "cli_command": "7 commands executed",
+    "cli_output_digest": "",
+    "cli_output_interpretation": "",
+    "timestamp": "2025-09-15T00:44:50.099967",
     "validation_method": "multi-command"
   },
   {
@@ -524,18 +601,18 @@
     "cli_command": "6 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754907",
+    "timestamp": "2025-09-15T00:44:50.099969",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-TPR-02",
     "validation_id": "KSI-TPR-02",
     "assertion": true,
-    "assertion_reason": "\u2705 Comprehensive FedRAMP service verification with integrated documentation (100%): \u2139\ufe0f Evidence validation triggered via CLI; \u2705 Comprehensive federal information mapping: Federal Information Mapping - Meridian LMS.pdf; \u2705 FedRAMP authorization verification included in comprehensive mapping; \u2705 Security configuration compliance included in comprehensive mapping; \u2705 Regular verification process included in comprehensive mapping",
+    "assertion_reason": "\u2705 KSI retired in Phase Two - superseded by KSI-TPR-01 (FedRAMP Minimum Assessment Standard)",
     "cli_command": "2 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754909",
+    "timestamp": "2025-09-15T00:44:50.099971",
     "validation_method": "multi-command"
   },
   {
@@ -546,18 +623,18 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754911",
+    "timestamp": "2025-09-15T00:44:50.099974",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-TPR-04",
     "validation_id": "KSI-TPR-04",
     "assertion": true,
-    "assertion_reason": "\u26a0\ufe0f  Basic vulnerability monitoring established: \u26a0\ufe0f  AWS Inspector status: DISABLED; \u2705 Inspector vulnerability findings: 50 total (22 high, 26 medium, 2 low); Consider expanding monitoring coverage",
+    "assertion_reason": "\u26a0\ufe0f  Basic vulnerability monitoring established: \u26a0\ufe0f  AWS Inspector status: DISABLED; \u2705 Inspector vulnerability findings: 50 total (25 high, 24 medium, 1 low); Consider expanding monitoring coverage",
     "cli_command": "6 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-14T10:15:48.754914",
+    "timestamp": "2025-09-15T00:44:50.099976",
     "validation_method": "multi-command"
   }
 ]
