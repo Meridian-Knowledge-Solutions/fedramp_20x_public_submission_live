@@ -1,9 +1,11 @@
 {
-  "timestamp": "2025-09-15T21:53:15.221177",
+  "timestamp": "2025-09-15T22:44:06.783667",
   "total_ksis_validated": 58,
-  "technical_issues_found": 1,
+  "technical_issues_found": 3,
   "issues": [
-    "KSI-CED-03: Evidence check failed - may indicate missing documentation"
+    "KSI-INR-02: Evidence check failed - may indicate missing documentation",
+    "KSI-INR-03: Evidence check failed - may indicate missing documentation",
+    "KSI-INR-03: Evidence-only validation failed - documentation may be missing"
   ],
   "status": "warning",
   "categories_checked": [

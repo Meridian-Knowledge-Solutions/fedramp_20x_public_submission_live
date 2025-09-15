@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** FAIL
-**Last Check:** 2025-09-15 21:53
+**Status:** PASS
+**Last Check:** 2025-09-15 22:44
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -32,7 +32,14 @@
 
 ## Latest Results
 
-- Exception during evaluation: 'list' object has no attribute 'get'
+PASS Enterprise-grade comprehensive recovery objectives with technical capability (75%): PASS Database Backup Capability
+- FAIL Point In Time Recovery
+- PASS Backup Plan Alignment
+- PASS Recovery Infrastructure
+- PASS Defined Rto Objectives
+- PASS Defined Rpo Objectives
+- PASS Backup Vault Configuration
+- FAIL Backup Selection Coverage
 
 ---
-*Generated 2025-09-15 21:53 UTC*
+*Generated 2025-09-15 22:44 UTC*
