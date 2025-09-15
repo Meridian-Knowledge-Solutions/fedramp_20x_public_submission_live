@@ -3532,24 +3532,24 @@ async function getSCNStatus() {
         function determineKsiStatus(validation) {
             const assertion = validation.assertion;
             const reason = (validation.assertion_reason || '').toLowerCase();
-            
-            // Check for explicit status indicators in assertion_reason
-            if (reason.includes('warning') || reason.includes('⚠️')) {
-                return 'warning'; // Low Risk Findings
-            }
-            if (reason.includes('info') || reason.includes('ℹ️') || reason.includes('informational')) {
-                return 'info'; // Improvement Opportunities
-            }
-            
-            // Default assertion-based logic
-            if (assertion === true || assertion === "true") {
-                return 'passed';
-            } else if (assertion === false || assertion === "false") {
-                return 'failed';
-            }
-            
-            return 'unknown';
+
+    // ⭐️ FIXED LOGIC: Prioritize the assertion (pass/fail) status first.
+    if (assertion === false || assertion === "false") {
+        return 'failed';
+    }
+    if (assertion === true || assertion === "true") {
+        // Now check for lower-priority statuses ONLY if it passed.
+        if (reason.includes('warning') || reason.includes('⚠️')) {
+            return 'warning'; // Low Risk Findings
         }
+        if (reason.includes('info') || reason.includes('ℹ️') || reason.includes('informational')) {
+            return 'info'; // Improvement Opportunities
+        }
+        return 'passed';
+    }
+
+    return 'unknown';
+}
 
         // ✅ ENHANCED: Load comprehensive command register
         async function loadCommandRegister() {
