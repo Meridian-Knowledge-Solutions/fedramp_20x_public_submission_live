@@ -4,7 +4,11 @@
 
 **Category:** Policy and Inventory
 **Status:** FAIL
+<<<<<<< Updated upstream
 **Last Check:** 2025-09-16 07:31
+=======
+**Last Check:** 2025-09-16 07:32
+>>>>>>> Stashed changes
 
 **What it validates:** Build security considerations into SDLC and align with CISA Secure By Design principles
 
@@ -28,4 +32,8 @@
 - FAIL No SDLC security integration infrastructure: No development security automation detected
 
 ---
+<<<<<<< Updated upstream
 *Generated 2025-09-16 07:31 UTC*
+=======
+*Generated 2025-09-16 07:32 UTC*
+>>>>>>> Stashed changes

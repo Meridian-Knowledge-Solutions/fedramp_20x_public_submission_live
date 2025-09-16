@@ -4,7 +4,11 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
+<<<<<<< Updated upstream
 **Last Check:** 2025-09-16 07:31
+=======
+**Last Check:** 2025-09-16 07:32
+>>>>>>> Stashed changes
 
 **What it validates:** Securely manage the lifecycle and privileges of all accounts, roles, and groups
 
@@ -33,4 +37,8 @@ PASS Advanced automated account lifecycle management (80%): PASS Service Oriente
 - PASS Regular Access Reviews
 
 ---
+<<<<<<< Updated upstream
 *Generated 2025-09-16 07:31 UTC*
+=======
+*Generated 2025-09-16 07:32 UTC*
+>>>>>>> Stashed changes

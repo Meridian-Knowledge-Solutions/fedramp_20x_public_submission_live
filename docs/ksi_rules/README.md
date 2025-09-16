@@ -47,9 +47,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-MLA-01](KSI-MLA-01.md): Operate a Security Information and Event Management (SIEM) or similar system(s) for centralized, tamper-resistant logging of events, activities, and changes
 - [PASS] [KSI-MLA-02](KSI-MLA-02.md): Regularly review and audit logs
 - [PASS] [KSI-MLA-03](KSI-MLA-03.md): Rapidly detect and remediate or mitigate vulnerabilities
-- [PASS] [KSI-MLA-04](KSI-MLA-04.md): Perform authenticated vulnerability scanning on information resources
 - [PASS] [KSI-MLA-05](KSI-MLA-05.md): Perform Infrastructure as Code and configuration evaluation and testing
-- [PASS] [KSI-MLA-06](KSI-MLA-06.md): Centrally track and prioritize the mitigation and/or remediation of identified vulnerabilities
 - [PASS] [KSI-MLA-07](KSI-MLA-07.md): Maintain a list of information resources and event types that will be monitored, logged, and audited
 - [PASS] [KSI-MLA-08](KSI-MLA-08.md): Use a least-privileged, role and attribute-based, and just-in-time access authorization model for access to log data
 
@@ -86,16 +84,19 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Third-Party Information Resources
 
 - [PASS] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
-- [PASS] [KSI-TPR-02](KSI-TPR-02.md): Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured
 - [PASS] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
 - [FAIL] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
 
 ## Summary
 
-- **Total KSIs:** 58
+- **Total KSIs:** 55
 - **Passing:** 54
 - **Failing:** 4
-- **Not Tested:** 0
+- **Not Tested:** -3
 
 ---
+<<<<<<< Updated upstream
 *Generated 2025-09-16 07:31 UTC*
+=======
+*Generated 2025-09-16 07:32 UTC*
+>>>>>>> Stashed changes

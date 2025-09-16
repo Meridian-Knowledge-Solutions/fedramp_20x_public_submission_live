@@ -4,7 +4,11 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
+<<<<<<< Updated upstream
 **Last Check:** 2025-09-16 07:31
+=======
+**Last Check:** 2025-09-16 07:32
+>>>>>>> Stashed changes
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -42,4 +46,8 @@ PASS Enterprise-grade comprehensive recovery objectives with technical capabilit
 - FAIL Backup Selection Coverage
 
 ---
+<<<<<<< Updated upstream
 *Generated 2025-09-16 07:31 UTC*
+=======
+*Generated 2025-09-16 07:32 UTC*
+>>>>>>> Stashed changes

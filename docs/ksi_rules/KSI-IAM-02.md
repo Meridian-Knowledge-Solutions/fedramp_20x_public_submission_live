@@ -4,7 +4,11 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
+<<<<<<< Updated upstream
 **Last Check:** 2025-09-16 07:31
+=======
+**Last Check:** 2025-09-16 07:32
+>>>>>>> Stashed changes
 
 **What it validates:** Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 
@@ -35,4 +39,8 @@ PASS Excellent authentication security (passwordless methods): PASS 1 SAML provi
 - PASS No password policy needed (passwordless authentication in use)
 
 ---
+<<<<<<< Updated upstream
 *Generated 2025-09-16 07:31 UTC*
+=======
+*Generated 2025-09-16 07:32 UTC*
+>>>>>>> Stashed changes

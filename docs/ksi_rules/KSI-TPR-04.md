@@ -4,7 +4,11 @@
 
 **Category:** Third-Party Information Resources
 **Status:** FAIL
+<<<<<<< Updated upstream
 **Last Check:** 2025-09-16 07:31
+=======
+**Last Check:** 2025-09-16 07:32
+>>>>>>> Stashed changes
 
 **What it validates:** Monitor third party software for upstream vulnerabilities
 
@@ -35,4 +39,8 @@
 - FAIL No automated third-party vulnerability monitoring infrastructure: No monitoring capabilities detected
 
 ---
+<<<<<<< Updated upstream
 *Generated 2025-09-16 07:31 UTC*
+=======
+*Generated 2025-09-16 07:32 UTC*
+>>>>>>> Stashed changes

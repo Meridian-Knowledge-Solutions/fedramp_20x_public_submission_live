@@ -4,7 +4,11 @@
 
 **Category:** Cybersecurity Education
 **Status:** PASS
+<<<<<<< Updated upstream
 **Last Check:** 2025-09-16 07:31
+=======
+**Last Check:** 2025-09-16 07:32
+>>>>>>> Stashed changes
 
 **What it validates:** Require role-specific training for development and engineering staff covering best practices for delivering secure software
 
@@ -22,4 +26,8 @@
 - WARNING Basic developer training automation - enhance integration (25%): PASS Development security automation: 1 security functions
 
 ---
+<<<<<<< Updated upstream
 *Generated 2025-09-16 07:31 UTC*
+=======
+*Generated 2025-09-16 07:32 UTC*
+>>>>>>> Stashed changes

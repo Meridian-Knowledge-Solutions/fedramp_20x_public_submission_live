@@ -4,7 +4,11 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
+<<<<<<< Updated upstream
 **Last Check:** 2025-09-16 07:31
+=======
+**Last Check:** 2025-09-16 07:32
+>>>>>>> Stashed changes
 
 **What it validates:** Develop and maintain a recovery plan that aligns with defined recovery objectives
 
@@ -20,4 +24,8 @@ WARNING Good recovery planning (enhance technical alignment): PASS Core recovery
 - PASS Plan maintenance: 3 files updated within last year
 
 ---
+<<<<<<< Updated upstream
 *Generated 2025-09-16 07:31 UTC*
+=======
+*Generated 2025-09-16 07:32 UTC*
+>>>>>>> Stashed changes

@@ -4,7 +4,11 @@
 
 **Category:** Incident Reporting
 **Status:** FAIL
+<<<<<<< Updated upstream
 **Last Check:** 2025-09-16 07:31
+=======
+**Last Check:** 2025-09-16 07:32
+>>>>>>> Stashed changes
 
 **What it validates:** Generate after action reports and regularly incorporate lessons learned into operations
 
@@ -19,4 +23,8 @@
 - FAIL No automated after action reporting infrastructure: No automated analysis capabilities detected
 
 ---
+<<<<<<< Updated upstream
 *Generated 2025-09-16 07:31 UTC*
+=======
+*Generated 2025-09-16 07:32 UTC*
+>>>>>>> Stashed changes
