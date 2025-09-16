@@ -4,7 +4,7 @@
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-09-15 23:47
+**Last Check:** 2025-09-16 00:12
 
 **What it validates:** Identify and prioritize mitigation of potential supply chain risks
 
@@ -19,4 +19,4 @@
 - WARNING Basic supply chain risk assessment (expand mitigation planning): PASS Core risk assessment: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
 
 ---
-*Generated 2025-09-15 23:47 UTC*
+*Generated 2025-09-16 00:12 UTC*
