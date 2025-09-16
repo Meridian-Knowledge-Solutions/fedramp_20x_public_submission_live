@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-16 00:54
+**Last Check:** 2025-09-16 03:14
 
 **What it validates:** Securely manage the lifecycle and privileges of all accounts, roles, and groups
 
@@ -33,4 +33,4 @@ PASS Advanced automated account lifecycle management (80%): PASS Service Oriente
 - PASS Regular Access Reviews
 
 ---
-*Generated 2025-09-16 00:54 UTC*
+*Generated 2025-09-16 03:14 UTC*

@@ -1,51 +1,60 @@
 {
-  "last_updated": "2025-09-16T00:55:24Z",
-  "organization": "Meridian Knowledge Solutions",
-  "service": "FedRAMP 20x Compliance Monitoring",
-  "phase_2_ready": true,
-  "security_scanning": "trufflehog_integrated",
-  "security_note": "evidence_v2 directory excluded from public repository for security",
-  "root_files": {
-    "unified_ksi_validations.json": "Latest KSI validation results",
-    "results/": "KSI validation result files",
-    "docs/": "KSI documentation", 
-    "validation/": "KSI validation engine results"
-  },
-  "excluded_directories": {
-    "evidence_v2": "Raw evidence files excluded for security - available in private repository only"
-  },
-  "organized_directories": {
+  "structure_type": "secure_hybrid_fedramp_20x_organized",
+  "generated": "2025-09-16T03:15:20Z",
+  "security_model": "evidence_v2_excluded_from_public",
+  "phase_2_compliance": "master_validator_active",
+  "directories": {
+    "root": {
+      "description": "KSI validation results and core compliance files",
+      "key_files": [
+        "unified_ksi_validations.json",
+        "failed_ksi_report_readable.md",
+        "evidence_commit_metadata.json"
+      ],
+      "structure": "validation results in root for direct access"
+    },
     "scn_automation": {
-      "description": "Enhanced SCN automation results",
+      "description": "Enhanced SCN automation and change notification results",
+      "purpose": "FedRAMP 20x Combined Requirements SCN transparency",
       "key_files": [
         "scn_classification.json",
-        "scn_issues/",
-        "external_repo_changes.json",
-        "enhanced_scn_status.json"
+        "external_repo_changes.json (sanitized)",
+        "scn_issues/"
       ]
     },
     "compliance_evidence": {
       "description": "Complete SCN compliance evidence packages",
-      "key_files": [
-        "enhanced_scn_compliance/",
-        "package_metadata.json"
-      ]
+      "purpose": "Enhanced FedRAMP 20x compliance documentation",
+      "contents": "evidence packages with full audit trails"
     },
     "audit_summaries": {
       "description": "SCN audit summaries and metadata",
-      "key_files": [
-        "scn_classification.json",
-        "evidence_commit_metadata.json"
-      ]
+      "purpose": "Complete audit trail for compliance verification"
     },
     "phase2_compliance": {
-      "description": "Phase 2 3PAO compliance validation results",
+      "description": "Phase 2 3PAO validation compliance files",
+      "purpose": "Master validator results and consistency tracking",
       "key_files": [
-        "validation_consistency_log.json",
-        "technical_validation_log.json", 
         "3pao_audit_report.json",
-        "fingerprint_cache.json"
+        "validation_consistency_log.json",
+        "technical_validation_log.json"
       ]
     }
+  },
+  "excluded_for_security": [
+    "evidence_v2/ (contains sensitive AWS infrastructure details)"
+  ],
+  "compliance_features": {
+    "ksi_validation": "automated_machine_readable_assessment",
+    "scn_management": "enhanced_combined_requirements_compliance",
+    "phase_2_readiness": "master_validator_consistency_tracking",
+    "security_scanning": "trufflehog_validated",
+    "public_transparency": "organized_structure_with_security_exclusions",
+    "external_repo_monitoring": "sanitized_infrastructure_impact_analysis",
+    "master_validator_active": true,
+    "consistency_tracking": true,
+    "technical_validation": true,
+    "3pao_audit_ready": true,
+    "compliance_status": "ready_for_phase_2_assessment"
   }
 }
