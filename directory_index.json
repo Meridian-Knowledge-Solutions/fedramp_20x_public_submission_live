@@ -1,6 +1,6 @@
 {
   "structure_type": "secure_hybrid_fedramp_20x_organized",
-  "generated": "2025-09-16T07:53:13Z",
+  "generated": "2025-09-16T08:28:20Z",
   "security_model": "evidence_v2_excluded_from_public",
   "phase_2_compliance": "master_validator_active",
   "directories": {
@@ -18,7 +18,7 @@
       "purpose": "FedRAMP 20x Combined Requirements SCN transparency",
       "key_files": [
         "scn_classification.json",
-        "external_repo_changes.json (sanitized)",
+        "external_repo_changes_public.json (sanitized)",
         "scn_issues/"
       ]
     },
@@ -42,7 +42,8 @@
     }
   },
   "excluded_for_security": [
-    "evidence_v2/ (contains sensitive AWS infrastructure details)"
+    "evidence_v2/ (contains sensitive AWS infrastructure details)",
+    "external_repo_changes.json (contains repository names, commit SHAs, file paths, URLs)"
   ],
   "compliance_features": {
     "ksi_validation": "automated_machine_readable_assessment",

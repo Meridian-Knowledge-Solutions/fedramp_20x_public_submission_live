@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-16T07:52:46.581618",
+  "timestamp": "2025-09-16T08:27:53.903283",
   "scn_type": "routine_recurring",
   "emergency_mode": false,
   "requires_notification": false,
@@ -7,8 +7,8 @@
   "3pao_name": "Fortreum, LLC",
   "related_poam": "N/A",
   "significant_change_type": "routine_recurring",
-  "explanation_of_categorization": "No files changed",
-  "short_description_of_change": "File-level classified change affecting 0 files",
+  "explanation_of_categorization": "All files represent routine operational maintenance",
+  "short_description_of_change": "File-level classified change affecting 1 files",
   "reason_for_change": "Continuous improvement, operational maintenance, and security enhancement",
   "summary_of_customer_impact": {
     "impact_level": "None",
@@ -25,12 +25,45 @@
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-16T07:52:46.581618"
+    "approval_date": "2025-09-16T08:27:53.903283"
   },
-  "changed_files_detailed": [],
-  "file_level_classifications": [],
-  "local_commits_summary": [],
-  "file_count": 0,
+  "changed_files_detailed": [
+    {
+      "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
+      "commit": {
+        "sha": "7f82ca7e",
+        "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
+        "author": "Kwahf33",
+        "date": "2025-09-16 02:17:44 -0600",
+        "repository": "fedramp-20x-submission-final",
+        "commit_reference": "fedramp-20x-submission-final@7f82ca7e",
+        "verification_method": "git_log_local"
+      },
+      "diff": "diff --git a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\nindex 410e146..922add1 100644\n--- a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n+++ b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n@@ -249,7 +249,7 @@ jobs:\n           export AWS_SESSION_TOKEN=$MEMBER_SESSION_TOKEN\n           \n           CURRENT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text 2>/dev/null || echo \"unknown\")\n-          echo \"\ud83d\udcc4 Restored member account credentials: $CURRENT_ACCOUNT\"\n+          echo \"\ud83d\udd04 Restored member account credentials: $CURRENT_ACCOUNT\"\n           \n           echo \"\u2705 Centralized resource collection complete\"\n \n@@ -427,7 +427,7 @@ jobs:\n           # Show category breakdown\n           categories = meta.get('category_summary', {})\n           if categories:\n-            print('   \ud83d\udcc1 Category breakdown:')\n+            print('   \ud83d\udd0d Category breakdown:')\n             for cat, stats in categories.items():\n               total_cat = stats.get('total', 0)\n               passed_cat = stats.get('passed', 0)\n@@ -1299,7 +1299,7 @@ jobs:\n           fi\n \n   sync-to-public:\n-    name: \ud83c\udf10 Sync to Public Repository + Organized SCN Artifacts\n+    name: \ud83c\udf0d Sync to Public Repository + Organized SCN Artifacts\n     runs-on: ubuntu-latest\n     needs: [validate-cli, enhanced-scn-automation]\n     if: always() && (needs.validate-cli.outputs.validation-status == 'success' || needs.validate-cli.result == 'success')\n@@ -1352,13 +1352,35 @@ jobs:\n             # Create output directory if it doesn't exist\n             mkdir -p \"$(dirname \"$EXTERNAL_REPO_FILE\")\"\n             \n-            # Create sanitized version with proper null handling\n+            # Create sanitized version with proper null handling - FIXED VERSION\n             jq --argjson timestamp \"$(date +%s)\" '{\n               terraform_changes_detected: (.terraform_changes_detected // false),\n               total_commits: (.total_commits // 0),\n               infrastructure_impact: (.infrastructure_impact // \"none\"),\n               scn_classification: (.scn_classification // \"routine_recurring\"),\n-              service_impact_analysis: (.service_impact_analysis // {}),\n+              service_impact_analysis: {\n+                transformative: (\n+                  if (.service_impact_analysis.transformative != null and (.service_impact_analysis.transformative | type) == \"array\") then\n+                    (.service_impact_analysis.transformative | length)\n+                  else\n+                    0\n+                  end\n+                ),\n+                adaptive: (\n+                  if (.service_impact_analysis.adaptive != null and (.service_impact_analysis.adaptive | type) == \"array\") then\n+                    (.service_impact_analysis.adaptive | length)\n+                  else\n+                    0\n+                  end\n+                ),\n+                routine: (\n+                  if (.service_impact_analysis.routine != null and (.service_impact_analysis.routine | type) == \"array\") then\n+                    (.service_impact_analysis.routine | length)\n+                  else\n+                    0\n+                  end\n+                )\n+              },\n               repositories_with_changes: (\n                 if (.repositories_with_changes != null and (.repositories_with_changes | type) == \"array\") then \n                   (.repositories_with_changes | length)\n@@ -1366,32 +1388,19 @@ jobs:\n                   0\n                 end\n               ),\n-              change_summary: (\n-                if (.change_summary != null and (.change_summary | type) == \"array\") then\n-                  (.change_summary | map(\n-                    if (. != null and (. | type) == \"object\") then\n-                      {\n-                        impact_level: (.impact_level // \"unknown\"),\n-                        change_type: (.change_type // \"unknown\"),\n-                        files_changed: (\n-                          if (.files_changed != null and (.files_changed | type) == \"array\") then \n-                            (.files_changed | length)\n-                          else \n-                            0\n-                          end\n-                        )\n-                      }\n-                    else\n-                      \"sanitized_entry\"\n-                    end\n-                  ))\n-                else\n-                  []\n-                end\n-              ),\n-              public_summary: \"External repository monitoring data sanitized for public transparency\",\n+              change_summary: [\n+                {\n+                  summary_type: \"aggregate_statistics\",\n+                  total_repositories_monitored: \"multiple_terraform_modules\",\n+                  impact_classification: (.scn_classification // \"routine_recurring\"),\n+                  infrastructure_scope: (.infrastructure_impact // \"none\"),\n+                  change_detection_method: \"automated_github_api_monitoring\"\n+                }\n+              ],\n+              public_summary: \"External repository monitoring data sanitized for public transparency - all sensitive repository details, commit information, file paths, and URLs removed\",\n               timestamp: ($timestamp | todate),\n-              sanitization_note: \"Sensitive repository details and commit information removed for security\"\n+              sanitization_note: \"This public version contains only high-level statistics. Repository names, commit SHAs, file paths, URLs, and all other sensitive infrastructure details have been excluded for security.\",\n+              data_retention_policy: \"Original detailed monitoring data retained privately for internal compliance and security analysis\"\n             }' \"$EXTERNAL_REPO_FILE\" > \"${EXTERNAL_REPO_FILE%.*}_public.json\"\n             \n             if [ $? -eq 0 ] && [ -f \"${EXTERNAL_REPO_FILE%.*}_public.json\" ]; then\n@@ -1418,22 +1427,35 @@ jobs:\n             \"total_commits\": 0,\n             \"infrastructure_impact\": \"none\",\n             \"scn_classification\": \"routine_recurring\",\n-            \"service_impact_analysis\": {},\n+            \"service_impact_analysis\": {\n+              \"transformative\": 0,\n+              \"adaptive\": 0,\n+              \"routine\": 0\n+            },\n             \"repositories_with_changes\": 0,\n-            \"change_summary\": [],\n+            \"change_summary\": [\n+              {\n+                \"summary_type\": \"aggregate_statistics\",\n+                \"total_repositories_monitored\": \"multiple_terraform_modules\",\n+                \"impact_classification\": \"routine_recurring\",\n+                \"infrastructure_scope\": \"none\",\n+                \"change_detection_method\": \"automated_github_api_monitoring\"\n+              }\n+            ],\n             \"public_summary\": \"No external repository changes detected\",\n             \"timestamp\": \"$(date --iso-8601=seconds)\",\n-            \"sanitization_note\": \"No source data available for sanitization\"\n+            \"sanitization_note\": \"No source data available for sanitization - this represents a clean state with no infrastructure changes detected\",\n+            \"data_retention_policy\": \"No detailed monitoring data to retain for this execution cycle\"\n           }\n           EOF\n             echo \"\u2705 Created empty sanitized external_repo_changes_public.json\"\n           fi\n           \n-      - name: \ud83c\udf10 Sync to Public Repository with Organized Directory Structure + Master Validator Results\n+      - name: \ud83c\udf0d Sync to Public Repository with Organized Directory Structure + Master Validator Results\n         env:\n           TOKEN: ${{ secrets.ACTION_PUSH_TOKEN }}\n         run: |\n-          echo \"\ud83c\udf10 Syncing to public repository with organized directory structure + master validator results...\"\n+          echo \"\ud83c\udf0d Syncing to public repository with organized directory structure + master validator results...\"\n           echo \"\ud83d\udd12 EXCLUDING evidence_v2 directory from public sync\"\n           \n           git clone https://x-access-token:${TOKEN}@github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live.git public-repo\n@@ -1523,7 +1545,7 @@ jobs:\n                 \"purpose\": \"FedRAMP 20x Combined Requirements SCN transparency\",\n                 \"key_files\": [\n                   \"scn_classification.json\",\n-                  \"external_repo_changes.json (sanitized)\",\n+                  \"external_repo_changes_public.json (sanitized)\",\n                   \"scn_issues/\"\n                 ]\n               },\n@@ -1547,7 +1569,8 @@ jobs:\n               }\n             },\n             \"excluded_for_security\": [\n-              \"evidence_v2/ (contains sensitive AWS infrastructure details)\"\n+              \"evidence_v2/ (contains sensitive AWS infrastructure details)\",\n+              \"external_repo_changes.json (contains repository names, commit SHAs, file paths, URLs)\"\n             ],\n             \"compliance_features\": {\n               \"ksi_validation\": \"automated_machine_readable_assessment\",\n@@ -1632,7 +1655,7 @@ jobs:\n           echo \"\ud83d\udd12 Security: Raw evidence files (evidence_v2/) kept private\"\n           echo \"\ud83d\udccb Phase 2: Master validator compliance files organized for 3PAO review\"\n           echo \"\ud83d\udee1\ufe0f Security Scanning: TruffleHog industry-standard secret detection\"\n-          echo \"\ud83d\udd12 External Repo Data: Sanitized infrastructure monitoring (sensitive details excluded)\"\n+          echo \"\ud83d\udd12 External Repo Data: Fully sanitized infrastructure monitoring (all sensitive details excluded)\"\n \n   enhanced-workflow-summary:\n     name: \ud83d\udcca Enhanced Workflow Summary\n@@ -1690,7 +1713,7 @@ jobs:\n             echo \"\ud83d\udea8 **Emergency Mode:** ${{ needs.enhanced-scn-automation.outputs.emergency-mode }}\" >> $GITHUB_STEP_SUMMARY\n             echo \"\ud83d\uddc2\ufe0f **Terraform Changes:** ${{ needs.enhanced-scn-automation.outputs.terraform-changes }}\" >> $GITHUB_STEP_SUMMARY\n             echo \"\ud83c\udfaf **Infrastructure Impact:** ${{ needs.enhanced-scn-automation.outputs.infrastructure-impact }}\" >> $GITHUB_STEP_SUMMARY\n-            echo \"\ud83c\udf10 **Approach:** Enhanced FedRAMP 20x Combined Requirements compliant\" >> $GITHUB_STEP_SUMMARY\n+            echo \"\ud83c\udf0d **Approach:** Enhanced FedRAMP 20x Combined Requirements compliant\" >> $GITHUB_STEP_SUMMARY\n             \n             if [ \"${{ needs.enhanced-scn-automation.outputs.scn-required }}\" = \"true\" ]; then\n               if [ \"${{ needs.enhanced-scn-automation.outputs.emergency-mode }}\" = \"true\" ]; then\n@@ -1698,7 +1721,7 @@ jobs:\n               elif [ \"${{ needs.enhanced-scn-automation.outputs.scn-type }}\" = \"impact_categorization\" ]; then\n                 echo \"\ud83d\udea8 **CRITICAL Action Required:** Legacy SCR process coordination\" >> $GITHUB_STEP_SUMMARY\n               else\n-                echo \"\ud83d\udd27 **Manual Action Required:** Send email notifications using enhanced template\" >> $GITHUB_STEP_SUMMARY\n+                echo \"\ud83d\udce7 **Manual Action Required:** Send email notifications using enhanced template\" >> $GITHUB_STEP_SUMMARY\n               fi\n             fi\n           elif [ \"${{ needs.enhanced-scn-automation.result }}\" = \"skipped\" ]; then\n@@ -1709,13 +1732,13 @@ jobs:\n           \n           echo \"\" >> $GITHUB_STEP_SUMMARY\n           \n-          echo \"### \ud83c\udf10 Public Repository Sync\" >> $GITHUB_STEP_SUMMARY\n+          echo \"### \ud83c\udf0d Public Repository Sync\" >> $GITHUB_STEP_SUMMARY\n           if [ \"${{ needs.sync-to-public.result }}\" = \"success\" ]; then\n             echo \"\u2705 **Status:** Synced successfully with secure organized structure + Phase 2 compliance\" >> $GITHUB_STEP_SUMMARY\n             echo \"\ud83d\udccb **Structure:** KSI files in root, SCN organized in directories, Phase 2 compliance files\" >> $GITHUB_STEP_SUMMARY\n             echo \"\ud83d\udd12 **Security:** evidence_v2 directory excluded from public sync\" >> $GITHUB_STEP_SUMMARY\n             echo \"\ud83d\udcc2 **Directories:** scn_automation/, compliance_evidence/, audit_summaries/, phase2_compliance/\" >> $GITHUB_STEP_SUMMARY\n-            echo \"\ud83d\udd12 **External Repo Data:** Sanitized infrastructure monitoring (sensitive details excluded)\" >> $GITHUB_STEP_SUMMARY\n+            echo \"\ud83d\udd12 **External Repo Data:** Fully sanitized infrastructure monitoring (all sensitive details excluded)\" >> $GITHUB_STEP_SUMMARY\n           else\n             echo \"\u274c **Status:** Sync failed\" >> $GITHUB_STEP_SUMMARY\n           fi\n@@ -1737,7 +1760,7 @@ jobs:\n           echo \"\u2705 **Secure Public Access:** Clean directory structure with evidence_v2 properly excluded\" >> $GITHUB_STEP_SUMMARY\n           echo \"\u2705 **Automation Reliability:** Consistency tracking and technical validation for Phase 2\" >> $GITHUB_STEP_SUMMARY\n           echo \"\u2705 **Industry-Standard Security:** TruffleHog fail-fast scanning with redaction validation\" >> $GITHUB_STEP_SUMMARY\n-          echo \"\u2705 **Sanitized External Monitoring:** Infrastructure impact analysis with sensitive details excluded\" >> $GITHUB_STEP_SUMMARY\n+          echo \"\u2705 **Fully Sanitized External Monitoring:** Infrastructure impact analysis with all sensitive details excluded\" >> $GITHUB_STEP_SUMMARY\n           \n           echo \"\" >> $GITHUB_STEP_SUMMARY\n           echo \"---\" >> $GITHUB_STEP_SUMMARY\n@@ -1746,4 +1769,4 @@ jobs:\n           echo \"*Secure structure: KSI files in root, SCN organized, evidence_v2 kept private, Phase 2 compliance tracked*\" >> $GITHUB_STEP_SUMMARY\n           echo \"*Master Validator ensures automation consistency and technical correctness for 3PAO assessment*\" >> $GITHUB_STEP_SUMMARY\n           echo \"*TruffleHog provides enterprise-grade secret detection with fail-fast security and redaction validation*\" >> $GITHUB_STEP_SUMMARY\n-          echo \"*External repo monitoring provides infrastructure impact analysis while protecting sensitive infrastructure details*\" >> $GITHUB_STEP_SUMMARY\n+          echo \"*External repo monitoring provides fully sanitized infrastructure impact analysis protecting all sensitive details*\" >> $GITHUB_STEP_SUMMARY\n"
+    }
+  ],
+  "file_level_classifications": [
+    {
+      "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
+      "classification": "routine_recurring",
+      "reasoning": "Regular operational maintenance pattern",
+      "production_override": false,
+      "terraform_category": null,
+      "change_context": "unknown"
+    }
+  ],
+  "local_commits_summary": [
+    {
+      "sha": "7f82ca7e",
+      "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
+      "author": "Kwahf33",
+      "date": "2025-09-16 02:17:44 -0600",
+      "repository": "fedramp-20x-submission-final",
+      "commit_reference": "fedramp-20x-submission-final@7f82ca7e",
+      "verification_method": "git_log_local"
+    }
+  ],
+  "file_count": 1,
   "audit_trail": {
     "classifier_version": "5.0.0",
     "decision_logic": "Official FRA-SCN-03 Decision Tree with Contextual Diff Analysis",
@@ -55,8 +88,626 @@
     "file_level_classification": true,
     "risk_escalation_applied": true
   },
-  "terraform_analysis": {},
-  "external_analysis": {},
+  "terraform_analysis": {
+    "transformative": [],
+    "adaptive": [],
+    "routine": []
+  },
+  "external_analysis": {
+    "changes_detected": true,
+    "infrastructure_impact": "medium",
+    "transformative_repos": [],
+    "adaptive_repos": [
+      {
+        "repository": "meridian-aws-resources",
+        "has_changes": true,
+        "commit_count": 15,
+        "total_files_changed": 17,
+        "production_files_changed": 17,
+        "service_impact_category": "adaptive",
+        "service_impact_reason": "Infrastructure component classified as adaptive based on contextual analysis",
+        "contextual_analysis": {
+          "transformative_contexts": 0,
+          "adaptive_contexts": 3,
+          "routine_contexts": 10,
+          "unknown_contexts": 4
+        },
+        "contextual_reasoning": "Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance); Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance); Routine: 1 files (maintenance)",
+        "commits": [
+          {
+            "sha": "e5ad9ed1",
+            "message": "Merge pull request #25 from Meridian-Knowledge-Solutions/Deploy-AWS-Inventory",
+            "author": "samuelnjei",
+            "date": "2025-09-15T14:52:08Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "adaptive",
+                "context_reason": "Production infrastructure file - defaulting to adaptive",
+                "sha": "84778cce",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e5ad9ed1992965bf736898c8da55fe1c786f5111/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e5ad9ed1992965bf736898c8da55fe1c786f5111/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=e5ad9ed1992965bf736898c8da55fe1c786f5111"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+                "status": "modified",
+                "additions": 8,
+                "deletions": 8,
+                "changes": 16,
+                "change_context": "routine",
+                "context_reason": "Description updates (documentation)",
+                "sha": "b5facf81",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e5ad9ed1992965bf736898c8da55fe1c786f5111/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e5ad9ed1992965bf736898c8da55fe1c786f5111/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars?ref=e5ad9ed1992965bf736898c8da55fe1c786f5111"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 1,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "681e038f",
+            "message": "added timnout to 10 minutes",
+            "author": "sam",
+            "date": "2025-09-15T14:51:10Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "adaptive",
+                "context_reason": "Production infrastructure file - defaulting to adaptive",
+                "sha": "84778cce",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/681e038fc8912960d1173a83f5d16d24f8fb437f/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/681e038fc8912960d1173a83f5d16d24f8fb437f/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=681e038fc8912960d1173a83f5d16d24f8fb437f"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+                "status": "modified",
+                "additions": 8,
+                "deletions": 8,
+                "changes": 16,
+                "change_context": "routine",
+                "context_reason": "Description updates (documentation)",
+                "sha": "b5facf81",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/681e038fc8912960d1173a83f5d16d24f8fb437f/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/681e038fc8912960d1173a83f5d16d24f8fb437f/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars?ref=681e038fc8912960d1173a83f5d16d24f8fb437f"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 1,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "47c19c1c",
+            "message": "Merge pull request #24 from Meridian-Knowledge-Solutions/Deploy-AWS-Inventory",
+            "author": "samuelnjei",
+            "date": "2025-09-15T14:44:11Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 3,
+                "deletions": 0,
+                "changes": 3,
+                "change_context": "routine",
+                "context_reason": "Tag updates (administrative maintenance)",
+                "sha": "62a55e91",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/47c19c1cf80a2c07788fb66ea7917221cee7d35a/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/47c19c1cf80a2c07788fb66ea7917221cee7d35a/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=47c19c1cf80a2c07788fb66ea7917221cee7d35a"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "b8581621",
+            "message": "added tags to lambda",
+            "author": "sam",
+            "date": "2025-09-15T14:42:03Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 4,
+                "deletions": 1,
+                "changes": 5,
+                "change_context": "routine",
+                "context_reason": "Tag updates (administrative maintenance)",
+                "sha": "62a55e91",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b85816218bf94cc829022dc7f7909a56c0706ecb/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b85816218bf94cc829022dc7f7909a56c0706ecb/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=b85816218bf94cc829022dc7f7909a56c0706ecb"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "9980209f",
+            "message": "Update aws-inventory.tf",
+            "author": "samuelnjei",
+            "date": "2025-09-15T13:22:59Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "90a9992e",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/9980209f5f05354f4c2d1c0c82db9b4bf8cfe86e/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/9980209f5f05354f4c2d1c0c82db9b4bf8cfe86e/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=9980209f5f05354f4c2d1c0c82db9b4bf8cfe86e"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "861cd167",
+            "message": "Merge pull request #23 from Meridian-Knowledge-Solutions/Deploy-AWS-Inventory",
+            "author": "samuelnjei",
+            "date": "2025-09-15T13:20:01Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "adaptive",
+                "context_reason": "Production infrastructure file - defaulting to adaptive",
+                "sha": "1795356a",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=861cd1679f9c1a3a9a923873361a3840153cc15d"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/inventory.zip",
+                "status": "removed",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "9cb8e75b",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip?ref=b4058cba8db872b857d2c7c14d366bc7147717b8"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/lambda_function.py",
+                "status": "added",
+                "additions": 280,
+                "deletions": 0,
+                "changes": 280,
+                "change_context": "routine",
+                "context_reason": "Non-infrastructure file - defaulting to routine",
+                "sha": "1c2c30d1",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py?ref=861cd1679f9c1a3a9a923873361a3840153cc15d"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/lambda_function.zip",
+                "status": "added",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "e79e6e14",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip?ref=861cd1679f9c1a3a9a923873361a3840153cc15d"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 1,
+              "routine_count": 1,
+              "unknown_count": 2,
+              "reasoning": "Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "fa302c2d",
+            "message": "update the lambda code",
+            "author": "sam",
+            "date": "2025-09-15T13:17:18Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "1795356a",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/fa302c2d3688298459cc68d730c08029b2360c8f/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/fa302c2d3688298459cc68d730c08029b2360c8f/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=fa302c2d3688298459cc68d730c08029b2360c8f"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "8b4045e7",
+            "message": "update the lambda code",
+            "author": "sam",
+            "date": "2025-09-15T13:17:03Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 2,
+                "deletions": 2,
+                "changes": 4,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "cea221d2",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/8b4045e76abf638afeeb182226f7d1412f78303a/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/8b4045e76abf638afeeb182226f7d1412f78303a/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=8b4045e76abf638afeeb182226f7d1412f78303a"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "fd061ffd",
+            "message": "update the lambda code",
+            "author": "sam",
+            "date": "2025-09-15T13:13:46Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/inventory.zip",
+                "status": "removed",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "9cb8e75b",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip?ref=b4058cba8db872b857d2c7c14d366bc7147717b8"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/lambda_function.py",
+                "status": "added",
+                "additions": 280,
+                "deletions": 0,
+                "changes": 280,
+                "change_context": "routine",
+                "context_reason": "Non-infrastructure file - defaulting to routine",
+                "sha": "1c2c30d1",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/fd061ffd6a22890261dc71c3eed6e6a34ca59e3c/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/fd061ffd6a22890261dc71c3eed6e6a34ca59e3c/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py?ref=fd061ffd6a22890261dc71c3eed6e6a34ca59e3c"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/lambda_function.zip",
+                "status": "added",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "e79e6e14",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/fd061ffd6a22890261dc71c3eed6e6a34ca59e3c/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/fd061ffd6a22890261dc71c3eed6e6a34ca59e3c/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip?ref=fd061ffd6a22890261dc71c3eed6e6a34ca59e3c"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 2,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "b4058cba",
+            "message": "Update aws-inventory.tf",
+            "author": "samuelnjei",
+            "date": "2025-09-12T17:49:07Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "e99d3be4",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=b4058cba8db872b857d2c7c14d366bc7147717b8"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          }
+        ],
+        "production_paths": [
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "e5ad9ed1",
+            "change_type": "modified",
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+            "repository": "meridian-aws-resources",
+            "commit": "e5ad9ed1",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "681e038f",
+            "change_type": "modified",
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+            "repository": "meridian-aws-resources",
+            "commit": "681e038f",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "47c19c1c",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b8581621",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "9980209f",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "change_type": "modified",
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/inventory.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "change_type": "removed",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/lambda_function.py",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "change_type": "added",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/lambda_function.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "change_type": "added",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "fa302c2d",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "8b4045e7",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/inventory.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "fd061ffd",
+            "change_type": "removed",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/lambda_function.py",
+            "repository": "meridian-aws-resources",
+            "commit": "fd061ffd",
+            "change_type": "added",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/lambda_function.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "fd061ffd",
+            "change_type": "added",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b4058cba",
+            "change_type": "modified",
+            "context": "routine"
+          }
+        ],
+        "terraform_files": [
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "e5ad9ed1",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+            "repository": "meridian-aws-resources",
+            "commit": "e5ad9ed1",
+            "terraform_type": "variables",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "681e038f",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+            "repository": "meridian-aws-resources",
+            "commit": "681e038f",
+            "terraform_type": "variables",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "47c19c1c",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b8581621",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "9980209f",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "fa302c2d",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "8b4045e7",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b4058cba",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          }
+        ],
+        "configuration_files": [],
+        "file_summary": {
+          "total_files": 17,
+          "production_files": 17,
+          "terraform_files": 11,
+          "configuration_files": 0
+        }
+      }
+    ],
+    "routine_repos": []
+  },
   "required_stakeholders_to_notify": [],
   "3pao_review_required": false,
   "3pao_review_justification": "Not required",
