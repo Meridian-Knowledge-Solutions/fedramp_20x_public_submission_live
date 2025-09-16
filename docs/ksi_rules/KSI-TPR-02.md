@@ -4,7 +4,7 @@
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-09-16 03:42
+**Last Check:** 2025-09-16 04:08
 
 **What it validates:** Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured
 
@@ -22,4 +22,4 @@
 - PASS KSI retired in Phase Two - superseded by KSI-TPR-01 (FedRAMP Minimum Assessment Standard)
 
 ---
-*Generated 2025-09-16 03:42 UTC*
+*Generated 2025-09-16 04:08 UTC*
