@@ -4,11 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-<<<<<<< Updated upstream
-**Last Check:** 2025-09-16 07:31
-=======
-**Last Check:** 2025-09-16 07:32
->>>>>>> Stashed changes
+**Last Check:** 2025-09-16 07:52
 
 **What it validates:** Regularly test the capability to recover from incidents and contingencies
 
@@ -43,8 +39,4 @@ PASS Basic recovery testing infrastructure available (29%): PASS Backup infrastr
 - PASS Point-in-time recovery testing capability: 1/1 databases ready for RPO validation
 
 ---
-<<<<<<< Updated upstream
-*Generated 2025-09-16 07:31 UTC*
-=======
-*Generated 2025-09-16 07:32 UTC*
->>>>>>> Stashed changes
+*Generated 2025-09-16 07:52 UTC*

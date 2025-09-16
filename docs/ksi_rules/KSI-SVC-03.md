@@ -4,11 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-<<<<<<< Updated upstream
-**Last Check:** 2025-09-16 07:31
-=======
-**Last Check:** 2025-09-16 07:32
->>>>>>> Stashed changes
+**Last Check:** 2025-09-16 07:52
 
 **What it validates:** Encrypt all federal and sensitive information at rest
 
@@ -47,8 +43,4 @@ PASS Advanced at-rest encryption across multiple storage services (45%): PASS Ob
 - INFO Single-account deployment (appropriate for pilot/development)
 
 ---
-<<<<<<< Updated upstream
-*Generated 2025-09-16 07:31 UTC*
-=======
-*Generated 2025-09-16 07:32 UTC*
->>>>>>> Stashed changes
+*Generated 2025-09-16 07:52 UTC*

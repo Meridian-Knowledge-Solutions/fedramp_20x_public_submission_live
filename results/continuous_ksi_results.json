@@ -7,20 +7,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.971458",
-=======
-    "timestamp": "2025-09-16T07:32:43.290230",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.389500",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037932",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186531",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704129",
     "synced_from_validation_engine": true
   },
   {
@@ -31,20 +23,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.971528",
-=======
-    "timestamp": "2025-09-16T07:32:43.290306",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.389573",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037941",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186540",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704137",
     "synced_from_validation_engine": true
   },
   {
@@ -55,20 +39,12 @@
     "cli_command": "2 commands (2 successful): aws lambda list-functions --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.971657",
-=======
-    "timestamp": "2025-09-16T07:32:43.290438",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.389705",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037944",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186543",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704140",
     "synced_from_validation_engine": true
   },
   {
@@ -79,20 +55,12 @@
     "cli_command": "9 commands (8 successful): aws cloudtrail describe-trails --output json; aws config describe-configuration-recorders --output json (+7 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.971906",
-=======
-    "timestamp": "2025-09-16T07:32:43.290691",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.389952",
     "validation_method": "validation-engine-sync",
     "commands_executed": 9,
     "successful_commands": 8,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037947",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186545",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704142",
     "synced_from_validation_engine": true
   },
   {
@@ -103,20 +71,12 @@
     "cli_command": "10 commands (8 successful): aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json; aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,LaunchTime,ImageId,InstanceType]' --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.972102",
-=======
-    "timestamp": "2025-09-16T07:32:43.290927",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.390148",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 8,
     "failed_commands": 2,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037949",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186548",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704145",
     "synced_from_validation_engine": true
   },
   {
@@ -127,20 +87,12 @@
     "cli_command": "13 commands (12 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json (+11 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.972317",
-=======
-    "timestamp": "2025-09-16T07:32:43.291109",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.390364",
     "validation_method": "validation-engine-sync",
     "commands_executed": 13,
     "successful_commands": 12,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037952",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186551",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704147",
     "synced_from_validation_engine": true
   },
   {
@@ -151,20 +103,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.972403",
-=======
-    "timestamp": "2025-09-16T07:32:43.291182",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.390447",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037954",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186557",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704150",
     "synced_from_validation_engine": true
   },
   {
@@ -175,20 +119,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.972468",
-=======
-    "timestamp": "2025-09-16T07:32:43.291245",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.390510",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037956",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186560",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704152",
     "synced_from_validation_engine": true
   },
   {
@@ -199,20 +135,12 @@
     "cli_command": "8 commands (8 successful): aws ec2 describe-security-groups --output json; aws ec2 describe-network-acls --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.972863",
-=======
-    "timestamp": "2025-09-16T07:32:43.291640",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.390894",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 8,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037963",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186564",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704159",
     "synced_from_validation_engine": true
   },
   {
@@ -223,20 +151,12 @@
     "cli_command": "11 commands (10 successful): aws ec2 describe-subnets --output json; aws ec2 describe-security-groups --output json (+9 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.974203",
-=======
-    "timestamp": "2025-09-16T07:32:43.293083",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.392230",
     "validation_method": "validation-engine-sync",
     "commands_executed": 11,
     "successful_commands": 10,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037965",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186567",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704162",
     "synced_from_validation_engine": true
   },
   {
@@ -247,20 +167,12 @@
     "cli_command": "8 commands (8 successful): aws ec2 describe-vpcs --output json; aws ec2 describe-subnets --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.974513",
-=======
-    "timestamp": "2025-09-16T07:32:43.293420",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.392538",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 8,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037967",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186569",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704166",
     "synced_from_validation_engine": true
   },
   {
@@ -271,20 +183,12 @@
     "cli_command": "7 commands (6 successful): aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json; aws ec2 describe-launch-templates --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.980960",
-=======
-    "timestamp": "2025-09-16T07:32:43.300906",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.399011",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 6,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037970",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186571",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704169",
     "synced_from_validation_engine": true
   },
   {
@@ -295,20 +199,12 @@
     "cli_command": "8 commands (7 successful): aws shield describe-subscription --output json; aws cloudfront list-distributions --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.981494",
-=======
-    "timestamp": "2025-09-16T07:32:43.301652",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.399532",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 7,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037972",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186574",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704171",
     "synced_from_validation_engine": true
   },
   {
@@ -319,20 +215,12 @@
     "cli_command": "9 commands (9 successful): aws ec2 describe-subnets --output json; aws ec2 describe-availability-zones --output json (+7 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.983198",
-=======
-    "timestamp": "2025-09-16T07:32:43.303474",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.401266",
     "validation_method": "validation-engine-sync",
     "commands_executed": 9,
     "successful_commands": 9,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037974",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186576",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704173",
     "synced_from_validation_engine": true
   },
   {
@@ -343,20 +231,12 @@
     "cli_command": "12 commands (11 successful): aws configservice describe-config-rules --output json; aws cloudtrail describe-trails --output json (+10 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.983476",
-=======
-    "timestamp": "2025-09-16T07:32:43.303782",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.401538",
     "validation_method": "validation-engine-sync",
     "commands_executed": 12,
     "successful_commands": 11,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037977",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186578",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704175",
     "synced_from_validation_engine": true
   },
   {
@@ -367,20 +247,12 @@
     "cli_command": "4 commands (3 successful): aws iam list-users --output json; aws iam list-mfa-devices --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.983638",
-=======
-    "timestamp": "2025-09-16T07:32:43.305636",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.401708",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 3,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037979",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186581",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704178",
     "synced_from_validation_engine": true
   },
   {
@@ -391,20 +263,12 @@
     "cli_command": "5 commands (4 successful): aws iam list-saml-providers --output json; aws iam list-virtual-mfa-devices --output json (+3 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.983757",
-=======
-    "timestamp": "2025-09-16T07:32:43.305799",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.401828",
     "validation_method": "validation-engine-sync",
     "commands_executed": 5,
     "successful_commands": 4,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037981",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186583",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704180",
     "synced_from_validation_engine": true
   },
   {
@@ -415,20 +279,12 @@
     "cli_command": "4 commands (3 successful): aws iam list-roles --output json; aws iam list-users --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.984189",
-=======
-    "timestamp": "2025-09-16T07:32:43.306229",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.402270",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 3,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037984",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186585",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704183",
     "synced_from_validation_engine": true
   },
   {
@@ -439,20 +295,12 @@
     "cli_command": "6 commands (6 successful): aws sso-admin list-instances --output json; INSTANCE_ARN=$(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text 2>/dev/null) && aws sso-admin list-permission-sets --instance-arn \"$INSTANCE_ARN\" --output json 2>/dev/null || echo '{\"PermissionSets\":[]}' (+4 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.984711",
-=======
-    "timestamp": "2025-09-16T07:32:43.306717",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.402795",
     "validation_method": "validation-engine-sync",
     "commands_executed": 6,
     "successful_commands": 6,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037986",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186588",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704185",
     "synced_from_validation_engine": true
   },
   {
@@ -463,20 +311,12 @@
     "cli_command": "8 commands (8 successful): aws sso-admin list-instances --output json; aws identitystore list-users --identity-store-id $(aws sso-admin list-instances --query 'Instances[0].IdentityStoreId' --output text) --output json 2>/dev/null || echo '{\"Users\":[]}' (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.985277",
-=======
-    "timestamp": "2025-09-16T07:32:43.307264",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.403365",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 8,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037988",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186590",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704188",
     "synced_from_validation_engine": true
   },
   {
@@ -487,20 +327,12 @@
     "cli_command": "10 commands (10 successful): aws events list-rules --output json; aws guardduty list-detectors --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.985624",
-=======
-    "timestamp": "2025-09-16T07:32:43.307619",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.403737",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 10,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037990",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186592",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704190",
     "synced_from_validation_engine": true
   },
   {
@@ -511,20 +343,12 @@
     "cli_command": "4 commands (3 successful): aws iam list-roles --output json; aws iam list-users --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.986060",
-=======
-    "timestamp": "2025-09-16T07:32:43.308102",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.404321",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 3,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037993",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186594",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704193",
     "synced_from_validation_engine": true
   },
   {
@@ -535,20 +359,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.986169",
-=======
-    "timestamp": "2025-09-16T07:32:43.308214",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.404436",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037995",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186597",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704195",
     "synced_from_validation_engine": true
   },
   {
@@ -559,20 +375,12 @@
     "cli_command": "3 commands (3 successful): aws events list-rules --output json; aws logs describe-log-groups --log-group-name-prefix '/aws/events/' --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.986313",
-=======
-    "timestamp": "2025-09-16T07:32:43.308324",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.404549",
     "validation_method": "validation-engine-sync",
     "commands_executed": 3,
     "successful_commands": 3,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037997",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186599",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704197",
     "synced_from_validation_engine": true
   },
   {
@@ -583,20 +391,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.986393",
-=======
-    "timestamp": "2025-09-16T07:32:43.308397",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.404622",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.037999",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186601",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704199",
     "synced_from_validation_engine": true
   },
   {
@@ -607,20 +407,12 @@
     "cli_command": "8 commands (7 successful): aws cloudtrail describe-trails --output json; aws logs describe-log-groups --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.987124",
-=======
-    "timestamp": "2025-09-16T07:32:43.309184",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.405391",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 7,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038002",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186604",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704202",
     "synced_from_validation_engine": true
   },
   {
@@ -631,20 +423,12 @@
     "cli_command": "9 commands (8 successful): aws cloudwatch describe-alarms --output json; aws logs describe-metric-filters --output json (+7 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.987474",
-=======
-    "timestamp": "2025-09-16T07:32:43.309525",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.405730",
     "validation_method": "validation-engine-sync",
     "commands_executed": 9,
     "successful_commands": 8,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038004",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186606",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704204",
     "synced_from_validation_engine": true
   },
   {
@@ -655,20 +439,12 @@
     "cli_command": "8 commands (7 successful): aws securityhub get-enabled-standards --region us-east-1 --output json; aws inspector2 get-configuration --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.989220",
-=======
-    "timestamp": "2025-09-16T07:32:43.311361",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.407567",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 7,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038006",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186608",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704207",
     "synced_from_validation_engine": true
   },
   {
@@ -679,20 +455,12 @@
     "cli_command": "8 commands (8 successful): aws inspector2 list-coverage --output json; aws inspector2 get-configuration --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.990597",
-=======
-    "timestamp": "2025-09-16T07:32:43.312744",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.409251",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 8,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038011",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186613",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704211",
     "synced_from_validation_engine": true
   },
   {
@@ -703,20 +471,12 @@
     "cli_command": "10 commands (9 successful): aws config describe-config-rules --output json; aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.991060",
-=======
-    "timestamp": "2025-09-16T07:32:43.313222",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.409739",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038013",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186615",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704213",
     "synced_from_validation_engine": true
   },
   {
@@ -727,20 +487,12 @@
     "cli_command": "10 commands (8 successful): aws securityhub get-findings --max-results 100 --output json; aws inspector2 list-findings --max-results 50 --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.995603",
-=======
-    "timestamp": "2025-09-16T07:32:43.317102",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.414946",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 8,
     "failed_commands": 2,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038016",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186618",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704216",
     "synced_from_validation_engine": true
   },
   {
@@ -751,20 +503,12 @@
     "cli_command": "5 commands (4 successful): aws logs describe-log-groups --output json; aws cloudtrail describe-trails --output json (+3 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.995936",
-=======
-    "timestamp": "2025-09-16T07:32:43.317546",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.415295",
     "validation_method": "validation-engine-sync",
     "commands_executed": 5,
     "successful_commands": 4,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038018",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186620",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704218",
     "synced_from_validation_engine": true
   },
   {
@@ -775,20 +519,12 @@
     "cli_command": "4 commands (3 successful): aws iam list-roles --output json; aws iam list-policies --scope Local --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.996439",
-=======
-    "timestamp": "2025-09-16T07:32:43.318073",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.415777",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 3,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038020",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186622",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704220",
     "synced_from_validation_engine": true
   },
   {
@@ -799,20 +535,12 @@
     "cli_command": "9 commands (9 successful): aws ec2 describe-instances --output json; aws rds describe-db-instances --output json (+7 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.996981",
-=======
-    "timestamp": "2025-09-16T07:32:43.318622",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.416346",
     "validation_method": "validation-engine-sync",
     "commands_executed": 9,
     "successful_commands": 9,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038023",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186624",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704223",
     "synced_from_validation_engine": true
   },
   {
@@ -823,20 +551,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.997100",
-=======
-    "timestamp": "2025-09-16T07:32:43.318764",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.416468",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038025",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186627",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704225",
     "synced_from_validation_engine": true
   },
   {
@@ -847,20 +567,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.997172",
-=======
-    "timestamp": "2025-09-16T07:32:43.318841",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.416538",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038028",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186629",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704227",
     "synced_from_validation_engine": true
   },
   {
@@ -871,20 +583,12 @@
     "cli_command": "4 commands (4 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.997276",
-=======
-    "timestamp": "2025-09-16T07:32:43.318926",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.416620",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 4,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038030",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186631",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704230",
     "synced_from_validation_engine": true
   },
   {
@@ -895,20 +599,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.997350",
-=======
-    "timestamp": "2025-09-16T07:32:43.318994",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.416687",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038032",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186634",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704232",
     "synced_from_validation_engine": true
   },
   {
@@ -919,20 +615,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.997435",
-=======
-    "timestamp": "2025-09-16T07:32:43.319074",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.416759",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038034",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186636",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704234",
     "synced_from_validation_engine": true
   },
   {
@@ -943,20 +631,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.997525",
-=======
-    "timestamp": "2025-09-16T07:32:43.323093",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.416835",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038037",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186638",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704236",
     "synced_from_validation_engine": true
   },
   {
@@ -967,20 +647,12 @@
     "cli_command": "6 commands (6 successful): aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,PreferredBackupWindow]' --output json; aws backup list-backup-plans --output json (+4 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.997638",
-=======
-    "timestamp": "2025-09-16T07:32:43.323245",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.416950",
     "validation_method": "validation-engine-sync",
     "commands_executed": 6,
     "successful_commands": 6,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038039",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186641",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704239",
     "synced_from_validation_engine": true
   },
   {
@@ -991,20 +663,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:56.997710",
-=======
-    "timestamp": "2025-09-16T07:32:43.323325",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.417030",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038041",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186643",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704241",
     "synced_from_validation_engine": true
   },
   {
@@ -1015,20 +679,12 @@
     "cli_command": "4 commands (4 successful): aws backup list-backup-plans --output json; aws backup list-backup-jobs --by-state COMPLETED --max-results 50 --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.000568",
-=======
-    "timestamp": "2025-09-16T07:32:43.329040",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.419927",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 4,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038043",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186645",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704243",
     "synced_from_validation_engine": true
   },
   {
@@ -1039,20 +695,12 @@
     "cli_command": "7 commands (7 successful): aws backup list-restore-jobs --max-results 20 --output json; aws backup list-backup-jobs --by-state COMPLETED --by-created-after 2024-05-01 --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.002293",
-=======
-    "timestamp": "2025-09-16T07:32:43.330453",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.421694",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 7,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038046",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186648",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704246",
     "synced_from_validation_engine": true
   },
   {
@@ -1063,20 +711,12 @@
     "cli_command": "10 commands (10 successful): aws ec2 describe-security-groups --output json; aws ec2 describe-instances --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.003033",
-=======
-    "timestamp": "2025-09-16T07:32:43.330969",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.422460",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 10,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038048",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186650",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704248",
     "synced_from_validation_engine": true
   },
   {
@@ -1087,20 +727,12 @@
     "cli_command": "10 commands (9 successful): aws acm list-certificates --output json; aws ec2 describe-vpc-endpoints --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.003384",
-=======
-    "timestamp": "2025-09-16T07:32:43.331200",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.422805",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038051",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186652",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704250",
     "synced_from_validation_engine": true
   },
   {
@@ -1111,20 +743,12 @@
     "cli_command": "7 commands (6 successful): aws s3api list-buckets --output json; aws ec2 describe-volumes --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.003628",
-=======
-    "timestamp": "2025-09-16T07:32:43.331363",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.423057",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 6,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038053",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186655",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704252",
     "synced_from_validation_engine": true
   },
   {
@@ -1135,20 +759,12 @@
     "cli_command": "10 commands (8 successful): aws ssm describe-parameters --output json; aws config describe-configuration-recorders --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.004223",
-=======
-    "timestamp": "2025-09-16T07:32:43.331692",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.423672",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 8,
     "failed_commands": 2,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038058",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186659",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704257",
     "synced_from_validation_engine": true
   },
   {
@@ -1159,20 +775,12 @@
     "cli_command": "10 commands (9 successful): aws cloudtrail describe-trails --output json; REDACTED_FOR_SECURITY (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.004490",
-=======
-    "timestamp": "2025-09-16T07:32:43.331889",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.423939",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038060",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186661",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704259",
     "synced_from_validation_engine": true
   },
   {
@@ -1183,20 +791,12 @@
     "cli_command": "10 commands (9 successful): REDACTED_FOR_SECURITY; aws acm list-certificates --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.004797",
-=======
-    "timestamp": "2025-09-16T07:32:43.332068",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.424249",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038062",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186664",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704261",
     "synced_from_validation_engine": true
   },
   {
@@ -1207,20 +807,12 @@
     "cli_command": "10 commands (9 successful): aws ssm describe-patch-baselines --output json; aws ssm describe-instance-information --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.005353",
-=======
-    "timestamp": "2025-09-16T07:32:43.333074",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.424911",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038064",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186666",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704264",
     "synced_from_validation_engine": true
   },
   {
@@ -1231,20 +823,12 @@
     "cli_command": "5 commands (4 successful): aws cloudformation list-stacks --output json; aws lambda list-functions --output json (+3 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.005627",
-=======
-    "timestamp": "2025-09-16T07:32:43.333371",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.425197",
     "validation_method": "validation-engine-sync",
     "commands_executed": 5,
     "successful_commands": 4,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038069",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186669",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704266",
     "synced_from_validation_engine": true
   },
   {
@@ -1255,20 +839,12 @@
     "cli_command": "7 commands (6 successful): aws acm list-certificates --output json; aws elbv2 describe-ssl-policies --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.006141",
-=======
-    "timestamp": "2025-09-16T07:32:43.333923",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.425727",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 6,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038071",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186671",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704269",
     "synced_from_validation_engine": true
   },
   {
@@ -1279,20 +855,12 @@
     "cli_command": "7 commands (7 successful): aws backup list-backup-plans --output json; aws s3api list-buckets --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.008833",
-=======
-    "timestamp": "2025-09-16T07:32:43.336964",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.428532",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 7,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038074",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186674",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704271",
     "synced_from_validation_engine": true
   },
   {
@@ -1303,20 +871,12 @@
     "cli_command": "6 commands (4 successful): aws iam list-saml-providers --output json; aws iam list-open-id-connect-providers --output json (+4 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.009130",
-=======
-    "timestamp": "2025-09-16T07:32:43.337333",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.428836",
     "validation_method": "validation-engine-sync",
     "commands_executed": 6,
     "successful_commands": 4,
     "failed_commands": 2,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038076",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186677",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704292",
     "synced_from_validation_engine": true
   },
   {
@@ -1327,20 +887,12 @@
     "cli_command": "2 commands (1 successful): aws organizations list-accounts --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.009241",
-=======
-    "timestamp": "2025-09-16T07:32:43.337424",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.428923",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038078",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186679",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704295",
     "synced_from_validation_engine": true
   },
   {
@@ -1351,20 +903,12 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.009322",
-=======
-    "timestamp": "2025-09-16T07:32:43.337494",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.429003",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038081",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186681",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704297",
     "synced_from_validation_engine": true
   },
   {
@@ -1375,20 +919,12 @@
     "cli_command": "6 commands (6 successful): aws inspector2 get-configuration --output json; aws inspector2 list-findings --filter-criteria '{\"findingStatus\":[{\"value\":\"ACTIVE\",\"comparison\":\"EQUALS\"}]}' --max-results 50 --output json (+4 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-<<<<<<< Updated upstream
-    "timestamp": "2025-09-16T07:31:57.010587",
-=======
-    "timestamp": "2025-09-16T07:32:43.338760",
->>>>>>> Stashed changes
+    "timestamp": "2025-09-16T07:52:10.430249",
     "validation_method": "validation-engine-sync",
     "commands_executed": 6,
     "successful_commands": 6,
     "failed_commands": 0,
-<<<<<<< Updated upstream
-    "original_timestamp": "2025-09-16T07:31:52.038085",
-=======
-    "original_timestamp": "2025-09-16T07:32:38.186684",
->>>>>>> Stashed changes
+    "original_timestamp": "2025-09-16T07:52:06.704300",
     "synced_from_validation_engine": true
   }
 ]
