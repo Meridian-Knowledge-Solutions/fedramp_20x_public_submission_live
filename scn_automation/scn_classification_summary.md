@@ -1,6 +1,6 @@
 # FedRAMP 20x SCN Summary: ROUTINE_RECURRING
 
-**Classification Date:** `2025-09-16T17:23:09.987483`
+**Classification Date:** `2025-09-16T20:51:11.380262`
 **FedRAMP ID:** `FR2527956755`
 **Method:** File-Level Classification with Contextual Diff Analysis
 
@@ -13,11 +13,16 @@
 
 ## 2. File-Level Analysis
 
-- **Total Files:** 1
+- **Total Files:** 6
 - **File Classifications:**
-  - `.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml`: **routine_recurring**
+  - `evidence_v2/KSI-CMT-02/ci_cd_integration.json`: **routine_recurring**
+  - `evidence_v2/KSI-CMT-02/external_iac_management.json`: **routine_recurring**
+  - `evidence_v2/KSI-CMT-02/terraform_iac_evidence.json`: **routine_recurring**
+  - `evidence_v2/KSI-CMT-03/automated_testing_proof.json`: **routine_recurring**
+  - `evidence_v2/KSI-CMT-03/checkov_scan_summary.json`: **routine_recurring**
+  - `evidence_v2/KSI-CMT-03/sarif_metadata.json`: **routine_recurring**
 - **Commit Details (Private-Safe):**
-  - `fedramp-20x-submission-final@2c0d1cc8` by *Kwahf33*: Update FedRAMP 20x CLI Validation Pipeline.yaml
+  - `fedramp-20x-submission-final@9f13a240` by *Kwahf33*: 🤖 Batch FedRAMP evidence update - 2025-09-16 20:38:13 UTC
 
 ## 3. Impact Analysis (FRR-SCN-09)
 

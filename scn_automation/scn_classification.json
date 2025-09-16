@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-16T17:23:09.987483",
+  "timestamp": "2025-09-16T20:51:11.380262",
   "scn_type": "routine_recurring",
   "emergency_mode": false,
   "requires_notification": false,
@@ -8,7 +8,7 @@
   "related_poam": "N/A",
   "significant_change_type": "routine_recurring",
   "explanation_of_categorization": "All files represent routine operational maintenance",
-  "short_description_of_change": "File-level classified change affecting 1 files",
+  "short_description_of_change": "File-level classified change affecting 6 files",
   "reason_for_change": "Continuous improvement, operational maintenance, and security enhancement",
   "summary_of_customer_impact": {
     "impact_level": "None",
@@ -25,26 +25,131 @@
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-16T17:23:09.987483"
+    "approval_date": "2025-09-16T20:51:11.380262"
   },
   "changed_files_detailed": [
     {
-      "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
+      "file": "evidence_v2/KSI-CMT-02/ci_cd_integration.json",
       "commit": {
-        "sha": "2c0d1cc8",
-        "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
+        "sha": "9f13a240",
+        "message": "\ud83e\udd16 Batch FedRAMP evidence update - 2025-09-16 20:38:13 UTC",
         "author": "Kwahf33",
-        "date": "2025-09-16 11:12:28 -0600",
+        "date": "2025-09-16 14:38:13 -0600",
         "repository": "fedramp-20x-submission-final",
-        "commit_reference": "fedramp-20x-submission-final@2c0d1cc8",
+        "commit_reference": "fedramp-20x-submission-final@9f13a240",
         "verification_method": "git_log_local"
       },
-      "diff": "diff --git a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\nindex 922add1..e88052e 100644\n--- a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n+++ b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n@@ -572,6 +572,7 @@ jobs:\n             technical_validation_log.json\n             3pao_audit_report.json\n             fingerprint_cache.json\n+            failed_ksi_report_readable.md\n           retention-days: 30\n           if-no-files-found: warn\n \n@@ -1770,3 +1771,4 @@ jobs:\n           echo \"*Master Validator ensures automation consistency and technical correctness for 3PAO assessment*\" >> $GITHUB_STEP_SUMMARY\n           echo \"*TruffleHog provides enterprise-grade secret detection with fail-fast security and redaction validation*\" >> $GITHUB_STEP_SUMMARY\n           echo \"*External repo monitoring provides fully sanitized infrastructure impact analysis protecting all sensitive details*\" >> $GITHUB_STEP_SUMMARY\n+\n"
+      "diff": "diff --git a/evidence_v2/KSI-CMT-02/ci_cd_integration.json b/evidence_v2/KSI-CMT-02/ci_cd_integration.json\nindex a8c5c0e..eaff1ae 100644\n--- a/evidence_v2/KSI-CMT-02/ci_cd_integration.json\n+++ b/evidence_v2/KSI-CMT-02/ci_cd_integration.json\n@@ -20,7 +20,7 @@\n   ],\n   \"change_management\": \"Pull request workflow with automated validation\",\n   \"deployment_method\": \"Infrastructure replacement via Terraform\",\n-  \"evidence_timestamp\": \"2025-07-01T16:18:21Z\",\n-  \"git_commit\": \"fcac974d453c0bc6bff26ee64b541572a1f95200\",\n+  \"evidence_timestamp\": \"2025-09-16T20:38:11Z\",\n+  \"git_commit\": \"e5ad9ed1992965bf736898c8da55fe1c786f5111\",\n   \"ksi_alignment\": \"KSI-CMT-02: Immutable resource deployment\"\n }\n"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-02/external_iac_management.json",
+      "commit": {
+        "sha": "9f13a240",
+        "message": "\ud83e\udd16 Batch FedRAMP evidence update - 2025-09-16 20:38:13 UTC",
+        "author": "Kwahf33",
+        "date": "2025-09-16 14:38:13 -0600",
+        "repository": "fedramp-20x-submission-final",
+        "commit_reference": "fedramp-20x-submission-final@9f13a240",
+        "verification_method": "git_log_local"
+      },
+      "diff": "diff --git a/evidence_v2/KSI-CMT-02/external_iac_management.json b/evidence_v2/KSI-CMT-02/external_iac_management.json\nindex acf50ed..4948bc3 100644\n--- a/evidence_v2/KSI-CMT-02/external_iac_management.json\n+++ b/evidence_v2/KSI-CMT-02/external_iac_management.json\n@@ -1,10 +1,10 @@\n {\n   \"iac_management_approach\": \"External Terraform with GitHub Actions\",\n-  \"evidence_timestamp\": \"2025-07-01T16:18:21Z\",\n+  \"evidence_timestamp\": \"2025-09-16T20:38:11Z\",\n   \"deployment_architecture\": \"Serverless-first with managed services\",\n   \"why_no_ec2_instances\": \"Architecture uses Lambda functions, managed databases, and cloud-native services instead of EC2 instances\",\n   \"terraform_evidence\": {\n-    \"terraform_files_count\": 17,\n+    \"terraform_files_count\": 6,\n     \"infrastructure_components\": \"AWS managed services via Terraform\",\n     \"deployment_method\": \"Automated pipeline deployment\",\n     \"state_management\": \"Remote backend configuration\"\n@@ -16,7 +16,7 @@\n     \"no_manual_infrastructure_changes\": true\n   },\n   \"git_metadata\": {\n-    \"commit_sha\": \"fcac974d453c0bc6bff26ee64b541572a1f95200\",\n+    \"commit_sha\": \"e5ad9ed1992965bf736898c8da55fe1c786f5111\",\n     \"evidence_generated_from_commit\": true\n   },\n   \"compliance_note\": \"This evidence addresses the compute instances assessment by documenting external IaC practices\",\n"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-02/terraform_iac_evidence.json",
+      "commit": {
+        "sha": "9f13a240",
+        "message": "\ud83e\udd16 Batch FedRAMP evidence update - 2025-09-16 20:38:13 UTC",
+        "author": "Kwahf33",
+        "date": "2025-09-16 14:38:13 -0600",
+        "repository": "fedramp-20x-submission-final",
+        "commit_reference": "fedramp-20x-submission-final@9f13a240",
+        "verification_method": "git_log_local"
+      },
+      "diff": "diff --git a/evidence_v2/KSI-CMT-02/terraform_iac_evidence.json b/evidence_v2/KSI-CMT-02/terraform_iac_evidence.json\nindex 85f6383..472b7ea 100644\n--- a/evidence_v2/KSI-CMT-02/terraform_iac_evidence.json\n+++ b/evidence_v2/KSI-CMT-02/terraform_iac_evidence.json\n@@ -1,7 +1,7 @@\n {\n   \"iac_deployment_method\": \"Terraform Infrastructure as Code\",\n-  \"deployment_timestamp\": \"2025-07-01T16:18:21Z\",\n-  \"terraform_files_managed\": 17,\n+  \"deployment_timestamp\": \"2025-09-16T20:38:11Z\",\n+  \"terraform_files_managed\": 6,\n   \"immutable_deployment_approach\": \"Version-controlled infrastructure with automated deployment\",\n   \"infrastructure_components\": [\n     \"AWS VPC and networking\",\n@@ -24,9 +24,9 @@\n     \"Consistent environment reproduction\"\n   ],\n   \"git_metadata\": {\n-    \"commit_sha\": \"fcac974d453c0bc6bff26ee64b541572a1f95200\",\n-    \"git_ref\": \"refs/pull/11/merge\",\n-    \"workflow_run\": \"4\"\n+    \"commit_sha\": \"e5ad9ed1992965bf736898c8da55fe1c786f5111\",\n+    \"git_ref\": \"refs/heads/main\",\n+    \"workflow_run\": \"21\"\n   },\n   \"ksi_requirement\": \"KSI-CMT-02: Execute changes through redeployment of immutable resources\"\n }\n"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-03/automated_testing_proof.json",
+      "commit": {
+        "sha": "9f13a240",
+        "message": "\ud83e\udd16 Batch FedRAMP evidence update - 2025-09-16 20:38:13 UTC",
+        "author": "Kwahf33",
+        "date": "2025-09-16 14:38:13 -0600",
+        "repository": "fedramp-20x-submission-final",
+        "commit_reference": "fedramp-20x-submission-final@9f13a240",
+        "verification_method": "git_log_local"
+      },
+      "diff": "diff --git a/evidence_v2/KSI-CMT-03/automated_testing_proof.json b/evidence_v2/KSI-CMT-03/automated_testing_proof.json\nindex 92c18db..6505235 100644\n--- a/evidence_v2/KSI-CMT-03/automated_testing_proof.json\n+++ b/evidence_v2/KSI-CMT-03/automated_testing_proof.json\n@@ -1,12 +1,12 @@\n {\n-  \"automated_testing_completed\": \"2025-07-01T16:18:21Z\",\n+  \"automated_testing_completed\": \"2025-09-16T20:38:11Z\",\n   \"testing_method\": \"Infrastructure as Code Security Scanning\",\n   \"scan_tool\": \"Checkov by Bridgecrew\",\n-  \"files_scanned\": 17,\n+  \"files_scanned\": 6,\n   \"scan_scope\": \"All Terraform infrastructure code\",\n-  \"workflow_trigger\": \"pull_request\",\n-  \"git_sha\": \"fcac974d453c0bc6bff26ee64b541572a1f95200\",\n-  \"git_ref\": \"refs/pull/11/merge\",\n+  \"workflow_trigger\": \"workflow_dispatch\",\n+  \"git_sha\": \"e5ad9ed1992965bf736898c8da55fe1c786f5111\",\n+  \"git_ref\": \"refs/heads/main\",\n   \"compliance_frameworks\": [\n     \"CIS\",\n     \"NIST\",\n"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-03/checkov_scan_summary.json",
+      "commit": {
+        "sha": "9f13a240",
+        "message": "\ud83e\udd16 Batch FedRAMP evidence update - 2025-09-16 20:38:13 UTC",
+        "author": "Kwahf33",
+        "date": "2025-09-16 14:38:13 -0600",
+        "repository": "fedramp-20x-submission-final",
+        "commit_reference": "fedramp-20x-submission-final@9f13a240",
+        "verification_method": "git_log_local"
+      },
+      "diff": "diff --git a/evidence_v2/KSI-CMT-03/checkov_scan_summary.json b/evidence_v2/KSI-CMT-03/checkov_scan_summary.json\nindex 22e8b23..d8b0119 100644\n--- a/evidence_v2/KSI-CMT-03/checkov_scan_summary.json\n+++ b/evidence_v2/KSI-CMT-03/checkov_scan_summary.json\n@@ -1,8 +1,8 @@\n {\n-  \"scan_timestamp\": \"2025-07-01T16:18:21Z\",\n+  \"scan_timestamp\": \"2025-09-16T20:38:11Z\",\n   \"infrastructure_scanned\": true,\n   \"checkov_framework\": \"terraform\",\n-  \"files_analyzed\": 17,\n+  \"files_analyzed\": 6,\n   \"checks_run\": 150,\n   \"automated_validation\": \"Infrastructure as Code security scanning\",\n   \"compliance_baseline\": \"FedRAMP Low Impact\",\n"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-03/sarif_metadata.json",
+      "commit": {
+        "sha": "9f13a240",
+        "message": "\ud83e\udd16 Batch FedRAMP evidence update - 2025-09-16 20:38:13 UTC",
+        "author": "Kwahf33",
+        "date": "2025-09-16 14:38:13 -0600",
+        "repository": "fedramp-20x-submission-final",
+        "commit_reference": "fedramp-20x-submission-final@9f13a240",
+        "verification_method": "git_log_local"
+      },
+      "diff": "diff --git a/evidence_v2/KSI-CMT-03/sarif_metadata.json b/evidence_v2/KSI-CMT-03/sarif_metadata.json\nindex 6be2cd5..53d75af 100644\n--- a/evidence_v2/KSI-CMT-03/sarif_metadata.json\n+++ b/evidence_v2/KSI-CMT-03/sarif_metadata.json\n@@ -1,5 +1,5 @@\n {\n-  \"sarif_report_generated\": \"2025-07-01T16:18:21Z\",\n+  \"sarif_report_generated\": \"2025-09-16T20:38:11Z\",\n   \"sarif_format_version\": \"2.1.0\",\n   \"scan_tool\": \"checkov\",\n   \"scan_completed\": true,\n"
     }
   ],
   "file_level_classifications": [
     {
-      "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
+      "file": "evidence_v2/KSI-CMT-02/ci_cd_integration.json",
+      "classification": "routine_recurring",
+      "reasoning": "Regular operational maintenance pattern",
+      "production_override": false,
+      "terraform_category": null,
+      "change_context": "unknown"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-02/external_iac_management.json",
+      "classification": "routine_recurring",
+      "reasoning": "Regular operational maintenance pattern",
+      "production_override": false,
+      "terraform_category": null,
+      "change_context": "unknown"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-02/terraform_iac_evidence.json",
+      "classification": "routine_recurring",
+      "reasoning": "Regular operational maintenance pattern",
+      "production_override": false,
+      "terraform_category": null,
+      "change_context": "unknown"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-03/automated_testing_proof.json",
+      "classification": "routine_recurring",
+      "reasoning": "Regular operational maintenance pattern",
+      "production_override": false,
+      "terraform_category": null,
+      "change_context": "unknown"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-03/checkov_scan_summary.json",
+      "classification": "routine_recurring",
+      "reasoning": "Regular operational maintenance pattern",
+      "production_override": false,
+      "terraform_category": null,
+      "change_context": "unknown"
+    },
+    {
+      "file": "evidence_v2/KSI-CMT-03/sarif_metadata.json",
       "classification": "routine_recurring",
       "reasoning": "Regular operational maintenance pattern",
       "production_override": false,
@@ -54,16 +159,16 @@
   ],
   "local_commits_summary": [
     {
-      "sha": "2c0d1cc8",
-      "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
+      "sha": "9f13a240",
+      "message": "\ud83e\udd16 Batch FedRAMP evidence update - 2025-09-16 20:38:13 UTC",
       "author": "Kwahf33",
-      "date": "2025-09-16 11:12:28 -0600",
+      "date": "2025-09-16 14:38:13 -0600",
       "repository": "fedramp-20x-submission-final",
-      "commit_reference": "fedramp-20x-submission-final@2c0d1cc8",
+      "commit_reference": "fedramp-20x-submission-final@9f13a240",
       "verification_method": "git_log_local"
     }
   ],
-  "file_count": 1,
+  "file_count": 6,
   "audit_trail": {
     "classifier_version": "5.0.0",
     "decision_logic": "Official FRA-SCN-03 Decision Tree with Contextual Diff Analysis",
