@@ -1375,7 +1375,7 @@
   },
   "KSI-PIY-01": {
     "description": "Establish and maintain complete inventories of all information resources",
-    "justification": "Comprehensive AWS resource discovery through native APIs provides real-time automated inventory validation",
+    "justification": "Comprehensive AWS resource discovery through native APIs provides real-time automated inventory validation PLUS automated inventory management through Lambda-based daily scanning and auditable S3 storage",
     "cli_commands": [
       {
         "command": "aws ec2 describe-instances --output json",
@@ -1404,6 +1404,42 @@
       {
         "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
         "note": "Infrastructure as Code stack inventory for managed resource collections"
+      },
+      {
+        "command": "aws s3 ls s3://mksfr-sftp-bucket/inventory/",
+        "note": "Validate automated inventory file generation frequency and availability via daily Lambda scanning"
+      },
+      {
+        "command": "aws lambda get-function --function-name aws_inventory --output json 2>/dev/null || aws lambda list-functions --query 'Functions[?contains(FunctionName, `inventory`) || contains(FunctionName, `scanner`)]' --output json",
+        "note": "Verify automated inventory scanning Lambda function configuration and automation capability"
+      },
+      {
+        "command": "LATEST_FILE=$(aws s3 ls s3://mksfr-sftp-bucket/inventory/ --recursive | grep 'inventory_.*\\.csv' | sort -k1,2 | tail -n1 | awk '{print $4}'); if [ -n \"$LATEST_FILE\" ]; then aws s3 cp s3://mksfr-sftp-bucket/$LATEST_FILE /tmp/current_inventory.csv --only-show-errors && echo '{\"inventory_download\": \"success\", \"file\": \"'$(basename $LATEST_FILE)'\"}' || echo '{\"inventory_download\": \"failed\", \"reason\": \"download_error\"}'; else echo '{\"inventory_download\": \"failed\", \"reason\": \"no_inventory_files\"}'; fi",
+        "note": "Download most recent automated inventory CSV file from daily Lambda automation with proper fallback handling"
+      },
+      {
+        "command": "aws config describe-configuration-recorders --output json 2>/dev/null || echo '{\"ConfigurationRecorders\": []}'",
+        "note": "Check if Config service is enabled before attempting resource discovery"
+      },
+      {
+        "command": "if aws config describe-configuration-recorders --output json 2>/dev/null | grep -q '\"Name\"'; then aws config list-discovered-resources --resource-type AWS::S3::Bucket --query 'resourceIdentifiers[*].[resourceType,resourceId,resourceName]' --output json; else echo '{\"resourceIdentifiers\": [], \"note\": \"Config service not enabled\"}'; fi",
+        "note": "Config service comprehensive S3 bucket discovery for cross-validation (if Config enabled)"
+      },
+      {
+        "command": "if aws config describe-configuration-recorders --output json 2>/dev/null | grep -q '\"Name\"'; then aws config list-discovered-resources --resource-type AWS::Lambda::Function --query 'resourceIdentifiers[*].[resourceType,resourceId,resourceName]' --output json; else echo '{\"resourceIdentifiers\": [], \"note\": \"Config service not enabled\"}'; fi",
+        "note": "Config service comprehensive Lambda function discovery for automated inventory validation (if Config enabled)"
+      },
+      {
+        "command": "aws s3api list-objects-v2 --bucket mksfr-sftp-bucket --prefix inventory/ --query 'sort_by(Contents[?ends_with(Key, `.csv`)], &LastModified)[-1]' --output json",
+        "note": "Get metadata of most recent inventory CSV file to validate daily automation freshness"
+      },
+      {
+        "command": "aws events list-rules --output json",
+        "note": "List all EventBridge rules to identify automation scheduling (may use different naming patterns)"
+      },
+      {
+        "command": "aws logs filter-log-events --log-group-name '/aws/lambda/aws_inventory' --start-time $(date -d '7 days ago' +%s)000 --filter-pattern 'SUCCESS' --max-items 5 --output json 2>/dev/null || echo '{\"events\": [], \"note\": \"Log group not found or no recent events\"}'",
+        "note": "Validate recent successful inventory automation executions via Lambda logs"
       }
     ]
   },
@@ -1733,4 +1769,8 @@
     ]
   }
 }
+
+
+
+
 
