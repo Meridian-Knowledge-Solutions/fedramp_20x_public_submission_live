@@ -1029,44 +1029,6 @@
       }
     ]
   },
-  "KSI-MLA-04": {
-    "description": "Perform authenticated vulnerability scanning on information resources",
-    "justification": "Validates comprehensive authenticated vulnerability scanning from basic service availability to enterprise-grade multi-service scanning, container security, and cloud-native vulnerability management",
-    "cli_commands": [
-      {
-        "command": "aws inspector2 list-coverage --output json",
-        "note": "Check Inspector coverage for authenticated vulnerability scanning of EC2 and container resources"
-      },
-      {
-        "command": "aws inspector2 get-configuration --output json",
-        "note": "Validate Inspector service enablement and scanning configuration status"
-      },
-      {
-        "command": "aws ec2 describe-instances --output json",
-        "note": "Analyze EC2 instances available for authenticated vulnerability scanning assessment"
-      },
-      {
-        "command": "aws ecr describe-repositories --output json",
-        "note": "Check container registries for authenticated container image vulnerability scanning"
-      },
-      {
-        "command": "aws lambda list-functions --output json",
-        "note": "Validate serverless functions for code vulnerability analysis and dependency scanning"
-      },
-      {
-        "command": "aws ssm describe-instance-information --output json",
-        "note": "Check Systems Manager agent coverage for authenticated system-level scanning"
-      },
-      {
-        "command": "aws securityhub get-findings --filters '{\"ProductName\":[{\"Value\":\"Inspector\",\"Comparison\":\"EQUALS\"}]}' --max-results 20 --output json",
-        "note": "Analyze authenticated scanning results and vulnerability findings integration"
-      },
-      {
-        "command": "aws organizations describe-organization --output json",
-        "note": "Check enterprise-wide authenticated vulnerability scanning and cross-account coverage"
-      }
-    ]
-  },
   "KSI-MLA-05": {
     "description": "Perform Infrastructure as Code and configuration evaluation and testing",
     "justification": "Validates comprehensive Infrastructure as Code security evaluation from basic CloudFormation deployment to enterprise-grade multi-account governance, automated testing, and configuration compliance management",
@@ -1110,52 +1072,6 @@
       {
         "command": "aws servicecatalog search-products --output json",
         "note": "Check standardized Infrastructure as Code templates and governance through Service Catalog"
-      }
-    ]
-  },
-  "KSI-MLA-06": {
-    "description": "Centrally track and prioritize the mitigation and/or remediation of identified vulnerabilities",
-    "justification": "Validates comprehensive centralized vulnerability tracking from basic findings collection to enterprise-grade vulnerability lifecycle management, covering automated prioritization, remediation workflows, compliance tracking, and cross-account vulnerability coordination with metrics and reporting",
-    "cli_commands": [
-      {
-        "command": "aws securityhub get-findings --max-results 100 --output json",
-        "note": "Check Security Hub for centralized vulnerability tracking and finding aggregation from multiple sources"
-      },
-      {
-        "command": "aws inspector2 list-findings --max-results 50 --output json",
-        "note": "Validate Inspector findings for vulnerability prioritization and severity-based tracking"
-      },
-      {
-        "command": "aws ssm describe-patch-group-compliance --output json",
-        "note": "Check patch compliance tracking for systematic vulnerability remediation and patch management"
-      },
-      {
-        "command": "aws config get-compliance-summary-by-config-rule --output json",
-        "note": "Validate Config rule compliance for configuration vulnerability tracking and governance"
-      },
-      {
-        "command": "aws securityhub get-insights --output json",
-        "note": "Check Security Hub insights for advanced vulnerability analytics and trend analysis"
-      },
-      {
-        "command": "aws cloudwatch describe-alarms --output json",
-        "note": "Validate vulnerability alerting and automated response triggers for priority vulnerabilities"
-      },
-      {
-        "command": "aws lambda list-functions --output json",
-        "note": "Check automated vulnerability management functions for remediation workflow automation"
-      },
-      {
-        "command": "aws events list-rules --output json",
-        "note": "Validate EventBridge rules for vulnerability lifecycle automation and workflow integration"
-      },
-      {
-        "command": "aws sns list-topics --output json",
-        "note": "Check SNS topics for vulnerability notification workflows and stakeholder communication"
-      },
-      {
-        "command": "aws organizations describe-organization --output json",
-        "note": "Validate enterprise-wide vulnerability tracking and cross-account centralized management"
       }
     ]
   },
@@ -1375,7 +1291,7 @@
   },
   "KSI-PIY-01": {
     "description": "Establish and maintain complete inventories of all information resources",
-    "justification": "Comprehensive AWS resource discovery through native APIs provides real-time automated inventory validation PLUS automated inventory management through Lambda-based daily scanning and auditable S3 storage",
+    "justification": "Comprehensive AWS resource discovery through native APIs provides real-time automated inventory validation with automated maintenance through Lambda-based daily scanning",
     "cli_commands": [
       {
         "command": "aws ec2 describe-instances --output json",
@@ -1407,39 +1323,11 @@
       },
       {
         "command": "aws s3 ls s3://mksfr-sftp-bucket/inventory/",
-        "note": "Validate automated inventory file generation frequency and availability via daily Lambda scanning"
+        "note": "Validate automated inventory maintenance through daily Lambda-generated files"
       },
       {
-        "command": "aws lambda get-function --function-name aws_inventory --output json 2>/dev/null || aws lambda list-functions --query 'Functions[?contains(FunctionName, `inventory`) || contains(FunctionName, `scanner`)]' --output json",
-        "note": "Verify automated inventory scanning Lambda function configuration and automation capability"
-      },
-      {
-        "command": "LATEST_FILE=$(aws s3 ls s3://mksfr-sftp-bucket/inventory/ --recursive | grep 'inventory_.*\\.csv' | sort -k1,2 | tail -n1 | awk '{print $4}'); if [ -n \"$LATEST_FILE\" ]; then aws s3 cp s3://mksfr-sftp-bucket/$LATEST_FILE /tmp/current_inventory.csv --only-show-errors && echo '{\"inventory_download\": \"success\", \"file\": \"'$(basename $LATEST_FILE)'\"}' || echo '{\"inventory_download\": \"failed\", \"reason\": \"download_error\"}'; else echo '{\"inventory_download\": \"failed\", \"reason\": \"no_inventory_files\"}'; fi",
-        "note": "Download most recent automated inventory CSV file from daily Lambda automation with proper fallback handling"
-      },
-      {
-        "command": "aws config describe-configuration-recorders --output json 2>/dev/null || echo '{\"ConfigurationRecorders\": []}'",
-        "note": "Check if Config service is enabled before attempting resource discovery"
-      },
-      {
-        "command": "if aws config describe-configuration-recorders --output json 2>/dev/null | grep -q '\"Name\"'; then aws config list-discovered-resources --resource-type AWS::S3::Bucket --query 'resourceIdentifiers[*].[resourceType,resourceId,resourceName]' --output json; else echo '{\"resourceIdentifiers\": [], \"note\": \"Config service not enabled\"}'; fi",
-        "note": "Config service comprehensive S3 bucket discovery for cross-validation (if Config enabled)"
-      },
-      {
-        "command": "if aws config describe-configuration-recorders --output json 2>/dev/null | grep -q '\"Name\"'; then aws config list-discovered-resources --resource-type AWS::Lambda::Function --query 'resourceIdentifiers[*].[resourceType,resourceId,resourceName]' --output json; else echo '{\"resourceIdentifiers\": [], \"note\": \"Config service not enabled\"}'; fi",
-        "note": "Config service comprehensive Lambda function discovery for automated inventory validation (if Config enabled)"
-      },
-      {
-        "command": "aws s3api list-objects-v2 --bucket mksfr-sftp-bucket --prefix inventory/ --query 'sort_by(Contents[?ends_with(Key, `.csv`)], &LastModified)[-1]' --output json",
-        "note": "Get metadata of most recent inventory CSV file to validate daily automation freshness"
-      },
-      {
-        "command": "aws events list-rules --output json",
-        "note": "List all EventBridge rules to identify automation scheduling (may use different naming patterns)"
-      },
-      {
-        "command": "aws logs filter-log-events --log-group-name '/aws/lambda/aws_inventory' --start-time $(date -d '7 days ago' +%s)000 --filter-pattern 'SUCCESS' --max-items 5 --output json 2>/dev/null || echo '{\"events\": [], \"note\": \"Log group not found or no recent events\"}'",
-        "note": "Validate recent successful inventory automation executions via Lambda logs"
+        "command": "aws lambda get-function --function-name aws_inventory --output json",
+        "note": "Verify automated inventory maintenance mechanism through Lambda function"
       }
     ]
   },
@@ -1542,20 +1430,6 @@
       {
         "command": "aws apigateway get-rest-apis --output json",
         "note": "API Gateway endpoints that may expose services to third parties"
-      }
-    ]
-  },
-  "KSI-TPR-02": {
-    "description": "Regularly confirm that services handling federal information or are likely to impact the confidentiality, integrity, or availability of federal information are FedRAMP authorized and securely configured",
-    "justification": "Validates FedRAMP authorization verification through service assessment, compliance monitoring, and authorization status tracking",
-    "cli_commands": [
-      {
-        "command": "aws organizations list-accounts --output json",
-        "note": "Check organizational structure for FedRAMP authorized service boundaries"
-      },
-      {
-        "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-TPR-02/ for fedramp_authorization_verification.xlsx, service_authorization_status.pdf, compliance_monitoring_procedures.pdf, and federal_data_handling_matrix.pdf"
       }
     ]
   },
@@ -1769,6 +1643,8 @@
     ]
   }
 }
+
+
 
 
 
