@@ -1,13 +1,13 @@
-# FedRAMP 20x SCN Summary: ERROR
+# FedRAMP 20x SCN Summary: ROUTINE_RECURRING
 
-**Classification Date:** `2025-09-17T06:44:34.670307`
+**Classification Date:** `2025-09-17T07:11:44.100030`
 **FedRAMP ID:** `FR2527956755`
 **Method:** File-Level Classification with Contextual Diff Analysis
 
 ## 1. Classification Details
 
-- **SCN Type:** `ERROR`
-- **Reasoning:** Classification error: 'list' object has no attribute 'get'
+- **SCN Type:** `ROUTINE_RECURRING`
+- **Reasoning:** No files changed
 - **Notification Required:** `False`
 - **Production Overrides Applied:** 0
 
@@ -17,9 +17,9 @@
 
 ## 3. Impact Analysis (FRR-SCN-09)
 
-- **Security Risk:** Unknown - Classification failed; risk cannot be determined
-- **Availability Impact:** No expected impact
-- **Customer Impact:** No customer impact
+- **Security Risk:** Low - Standard, low-risk maintenance with mature processes
+- **Availability Impact:** No expected availability impact
+- **Customer Impact:** Regular maintenance, no customer impact
 - **Customer Action Required:** `No`
 
 ## 5. Compliance

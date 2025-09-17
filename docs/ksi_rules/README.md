@@ -85,14 +85,14 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
 - [PASS] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
-- [FAIL] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
+- [PASS] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
 
 ## Summary
 
 - **Total KSIs:** 55
-- **Passing:** 54
-- **Failing:** 4
+- **Passing:** 55
+- **Failing:** 3
 - **Not Tested:** -3
 
 ---
-*Generated 2025-09-17 06:43 UTC*
+*Generated 2025-09-17 07:11 UTC*
