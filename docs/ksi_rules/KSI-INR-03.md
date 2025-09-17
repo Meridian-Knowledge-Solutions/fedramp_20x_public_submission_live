@@ -4,7 +4,7 @@
 
 **Category:** Incident Reporting
 **Status:** FAIL
-**Last Check:** 2025-09-16 23:57
+**Last Check:** 2025-09-17 01:13
 
 **What it validates:** Generate after action reports and regularly incorporate lessons learned into operations
 
@@ -19,4 +19,4 @@
 - FAIL No automated after action reporting infrastructure: No automated analysis capabilities detected
 
 ---
-*Generated 2025-09-16 23:57 UTC*
+*Generated 2025-09-17 01:13 UTC*
