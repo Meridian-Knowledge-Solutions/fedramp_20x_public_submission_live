@@ -1,14 +1,14 @@
 {
-  "timestamp": "2025-09-17T07:11:44.100030",
+  "timestamp": "2025-09-17T10:33:33.974556",
   "scn_type": "routine_recurring",
-  "emergency_mode": false,
+  "emergency_mode": true,
   "requires_notification": false,
   "service_offering_fedramp_id": "FR2527956755",
   "3pao_name": "Fortreum, LLC",
   "related_poam": "N/A",
   "significant_change_type": "routine_recurring",
-  "explanation_of_categorization": "No files changed",
-  "short_description_of_change": "File-level classified change affecting 0 files",
+  "explanation_of_categorization": "All files represent routine operational maintenance",
+  "short_description_of_change": "File-level classified change affecting 1 files",
   "reason_for_change": "Continuous improvement, operational maintenance, and security enhancement",
   "summary_of_customer_impact": {
     "impact_level": "None",
@@ -16,7 +16,7 @@
     "customer_action_required": "No"
   },
   "plan_and_timeline_for_change": {
-    "timeline_status": "No notification required for this SCN type"
+    "timeline_status": "Retroactive notification required post-incident"
   },
   "copy_of_business_or_security_impact_analysis": {
     "security_risk_assessment": "Low - Standard, low-risk maintenance with mature processes",
@@ -25,12 +25,45 @@
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-17T07:11:44.100030"
+    "approval_date": "2025-09-17T10:33:33.974556"
   },
-  "changed_files_detailed": [],
-  "file_level_classifications": [],
-  "local_commits_summary": [],
-  "file_count": 0,
+  "changed_files_detailed": [
+    {
+      "file": ".github/workflows/incident_logging.yaml",
+      "commit": {
+        "sha": "2b2b4dbd",
+        "message": "Create incident_logging.yaml",
+        "author": "Kwahf33",
+        "date": "2025-09-17 04:22:52 -0600",
+        "repository": "fedramp-20x-submission-final",
+        "commit_reference": "fedramp-20x-submission-final@2b2b4dbd",
+        "verification_method": "git_log_local"
+      },
+      "diff": "diff --git a/.github/workflows/incident_logging.yaml b/.github/workflows/incident_logging.yaml\nnew file mode 100644\nindex 0000000..3b30ab3\n--- /dev/null\n+++ b/.github/workflows/incident_logging.yaml\n@@ -0,0 +1,829 @@\n+name: KSI-INR-02 Automated Incident Logging\n+\n+on:\n+  schedule:\n+    # Run every Sunday at 2 AM UTC (weekly automation)\n+    - cron: '0 2 * * 0'\n+  \n+  workflow_dispatch:\n+    # Allow manual triggering\n+    inputs:\n+      days_back:\n+        description: 'Days to look back for incidents'\n+        required: false\n+        default: '7'\n+        type: string\n+      force_full_analysis:\n+        description: 'Force full 90-day analysis instead of incremental'\n+        required: false\n+        default: false\n+        type: boolean\n+\n+jobs:\n+  incident-logging:\n+    name: Automated Security Incident Logging\n+    runs-on: ubuntu-latest\n+    \n+    permissions:\n+      id-token: write      # For OIDC authentication\n+      contents: write      # To commit evidence files back to repo\n+      actions: read        # For workflow access\n+    \n+    outputs:\n+      incidents-detected: ${{ steps.incident-analysis.outputs.incidents_count }}\n+      critical-incidents: ${{ steps.incident-analysis.outputs.critical_count }}\n+      evidence-updated: ${{ steps.incident-analysis.outputs.evidence_updated }}\n+\n+    steps:\n+      - name: \ud83d\ude80 Checkout Repository\n+        uses: actions/checkout@v4\n+        with:\n+          token: ${{ secrets.ACTION_PUSH_TOKEN }}\n+          fetch-depth: 1\n+\n+      - name: \ud83d\udc0d Setup Python Environment\n+        uses: actions/setup-python@v5\n+        with:\n+          python-version: '3.11'\n+          cache: 'pip'\n+\n+      - name: \ud83d\udce6 Install Dependencies\n+        run: |\n+          echo \"\ud83d\udce6 Installing Python dependencies for incident logging...\"\n+          pip install --quiet boto3 pandas openpyxl python-dateutil\n+          echo \"\u2705 Dependencies installed\"\n+\n+      - name: \ud83d\udd10 Configure AWS Credentials\n+        uses: aws-actions/configure-aws-credentials@v4\n+        with:\n+          role-to-assume: arn:aws:iam::893894210484:role/githubactions_role\n+          role-session-name: KSI-INR-02-IncidentLogging\n+          aws-region: us-east-1\n+\n+      - name: \ud83d\udd0d Verify AWS Access\n+        run: |\n+          echo \"\ud83d\udd0d Verifying AWS service access...\"\n+          \n+          # Test GuardDuty access\n+          if aws guardduty list-detectors --output text --query 'DetectorIds[0]' 2>/dev/null; then\n+            echo \"\u2705 GuardDuty access confirmed\"\n+          else\n+            echo \"\u26a0\ufe0f GuardDuty access limited or not enabled\"\n+          fi\n+          \n+          # Test Security Hub access  \n+          if aws securityhub describe-hub --output text --query 'HubArn' 2>/dev/null; then\n+            echo \"\u2705 Security Hub access confirmed\"\n+          else\n+            echo \"\u26a0\ufe0f Security Hub access limited\"\n+          fi\n+          \n+          # Test CloudTrail access\n+          if aws cloudtrail lookup-events --max-items 1 --query 'Events[0].EventTime' --output text 2>/dev/null; then\n+            echo \"\u2705 CloudTrail access confirmed\"  \n+          else\n+            echo \"\u26a0\ufe0f CloudTrail access limited\"\n+          fi\n+\n+      - name: \ud83d\udcdd Create Incident Detection Script\n+        run: |\n+          echo \"\ud83d\udcdd Creating enhanced incident detection script...\"\n+          cat > ksi_inr_02_github_automation.py << 'EOF'\n+          #!/usr/bin/env python3\n+          \"\"\"\n+          KSI-INR-02 GitHub Actions Automation\n+          True security incident detection and logging\n+          \"\"\"\n+          \n+          import boto3\n+          import json\n+          import pandas as pd\n+          import os\n+          import sys\n+          from datetime import datetime, timedelta\n+          from collections import defaultdict, Counter\n+          from pathlib import Path\n+          \n+          class GitHubIncidentLogger:\n+              def __init__(self):\n+                  self.guardduty = boto3.client('guardduty')\n+                  self.securityhub = boto3.client('securityhub')\n+                  self.cloudtrail = boto3.client('cloudtrail')\n+                  \n+                  # GitHub Actions environment\n+                  self.github_workspace = os.environ.get('GITHUB_WORKSPACE', '.')\n+                  self.evidence_dir = Path(self.github_workspace) / \"evidence_v2\" / \"KSI-INR-02\"\n+                  self.evidence_dir.mkdir(parents=True, exist_ok=True)\n+                  \n+                  # GitHub Actions outputs\n+                  self.github_output = os.environ.get('GITHUB_OUTPUT')\n+          \n+              def set_github_output(self, name, value):\n+                  \"\"\"Set GitHub Actions output variable\"\"\"\n+                  if self.github_output:\n+                      with open(self.github_output, 'a') as f:\n+                          f.write(f\"{name}={value}\\n\")\n+                  print(f\"Output: {name}={value}\")\n+          \n+              def collect_guardduty_incidents(self, days_back=7):\n+                  \"\"\"Collect GuardDuty findings (actual threats)\"\"\"\n+                  incidents = []\n+                  \n+                  try:\n+                      print(\"\ud83d\udd0d Collecting GuardDuty threat detections...\")\n+                      detectors = self.guardduty.list_detectors()\n+                      \n+                      for detector_id in detectors.get('DetectorIds', []):\n+                          findings_response = self.guardduty.list_findings(\n+                              DetectorId=detector_id,\n+                              FindingCriteria={\n+                                  'Criterion': {\n+                                      'severity': {'Gte': 4.0},  # Medium and above\n+                                      'updatedAt': {\n+                                          'Gte': int((datetime.utcnow() - timedelta(days=days_back)).timestamp() * 1000)\n+                                      }\n+                                  }\n+                              }\n+                          )\n+                          \n+                          if findings_response.get('FindingIds'):\n+                              finding_details = self.guardduty.get_findings(\n+                                  DetectorId=detector_id,\n+                                  FindingIds=findings_response['FindingIds'][:20]  # Limit for GitHub Actions\n+                              )\n+                              \n+                              for finding in finding_details.get('Findings', []):\n+                                  incidents.append({\n+                                      'incident_id': finding['Id'][:50],  # Truncate for Excel\n+                                      'date_detected': finding['UpdatedAt'].strftime('%Y-%m-%d %H:%M:%S'),\n+                                      'severity': self.map_severity(finding['Severity']),\n+                                      'title': finding['Title'][:100],\n+                                      'description': finding['Description'][:200],\n+                                      'source': 'GuardDuty',\n+                                      'resource_id': finding.get('Resource', {}).get('InstanceDetails', {}).get('InstanceId', 'N/A'),\n+                                      'status': 'ACTIVE',\n+                                      'category': self.categorize_guardduty(finding['Type']),\n+                                      'confidence': finding.get('Confidence', 0)\n+                                  })\n+                      \n+                      print(f\"\u2705 GuardDuty: {len(incidents)} threat detections found\")\n+                  except Exception as e:\n+                      print(f\"\u26a0\ufe0f GuardDuty error: {e}\")\n+                  \n+                  return incidents\n+          \n+              def collect_brute_force_incidents(self, days_back=7):\n+                  \"\"\"Detect brute force attack patterns in CloudTrail\"\"\"\n+                  incidents = []\n+                  \n+                  try:\n+                      print(\"\ud83d\udd0d Analyzing CloudTrail for brute force patterns...\")\n+                      \n+                      end_time = datetime.utcnow()\n+                      start_time = end_time - timedelta(days=days_back)\n+                      \n+                      # Look for failed login patterns\n+                      events = self.cloudtrail.lookup_events(\n+                          LookupAttributes=[\n+                              {'AttributeKey': 'EventName', 'AttributeValue': 'ConsoleLogin'}\n+                          ],\n+                          StartTime=start_time,\n+                          EndTime=end_time,\n+                          MaxItems=100  # Limit for GitHub Actions performance\n+                      )\n+                      \n+                      failed_logins = defaultdict(list)\n+                      \n+                      for event in events.get('Events', []):\n+                          try:\n+                              event_detail = json.loads(event.get('CloudTrailEvent', '{}'))\n+                              if event_detail.get('errorCode'):  # Failed login\n+                                  source_ip = event_detail.get('sourceIPAddress', 'unknown')\n+                                  failed_logins[source_ip].append({\n+                                      'timestamp': event['EventTime'],\n+                                      'error': event_detail.get('errorMessage', 'Unknown')\n+                                  })\n+                          except json.JSONDecodeError:\n+                              continue\n+                      \n+                      # Identify brute force patterns (5+ attempts from same IP)\n+                      for source_ip, attempts in failed_logins.items():\n+                          if len(attempts) >= 5:\n+                              first_attempt = min(attempts, key=lambda x: x['timestamp'])\n+                              last_attempt = max(attempts, key=lambda x: x['timestamp'])\n+                              duration = (last_attempt['timestamp'] - first_attempt['timestamp']).total_seconds() / 60\n+                              \n+                              if duration <= 60:  # Within 1 hour\n+                                  incidents.append({\n+                                      'incident_id': f\"BRUTE_FORCE_{source_ip}_{first_attempt['timestamp'].strftime('%Y%m%d_%H%M')}\",\n+                                      'date_detected': first_attempt['timestamp'].strftime('%Y-%m-%d %H:%M:%S'),\n+                                      'severity': 'HIGH',\n+                                      'title': f'Brute Force Attack from {source_ip}',\n+                                      'description': f'{len(attempts)} failed attempts in {duration:.1f} minutes',\n+                                      'source': 'CloudTrail Pattern Analysis',\n+                                      'resource_id': source_ip,\n+                                      'status': 'DETECTED',\n+                                      'category': 'Brute Force Attack',\n+                                      'attempt_count': len(attempts)\n+                                  })\n+                      \n+                      print(f\"\u2705 CloudTrail: {len(incidents)} brute force patterns detected\")\n+                  except Exception as e:\n+                      print(f\"\u26a0\ufe0f CloudTrail analysis error: {e}\")\n+                  \n+                  return incidents\n+          \n+              def collect_threat_intelligence(self, days_back=7):\n+                  \"\"\"Collect Security Hub threat intelligence findings\"\"\"\n+                  incidents = []\n+                  \n+                  try:\n+                      print(\"\ud83d\udd0d Collecting Security Hub threat intelligence...\")\n+                      \n+                      # Only threat intelligence types (actual attacks)\n+                      paginator = self.securityhub.get_paginator('get_findings')\n+                      pages_processed = 0\n+                      \n+                      for page in paginator.paginate(\n+                          Filters={\n+                              'SeverityLabel': [\n+                                  {'Value': 'HIGH', 'Comparison': 'EQUALS'},\n+                                  {'Value': 'CRITICAL', 'Comparison': 'EQUALS'}\n+                              ],\n+                              'CreatedAt': [{\n+                                  'Start': datetime.utcnow() - timedelta(days=days_back),\n+                                  'End': datetime.utcnow()\n+                              }]\n+                          }\n+                      ):\n+                          for finding in page['Findings']:\n+                              # Filter for threat intelligence only\n+                              finding_types = finding.get('Types', [])\n+                              is_threat_intel = any(\n+                                  threat_type in str(finding_types)\n+                                  for threat_type in ['TTPs', 'Unusual Behaviors', 'Effects']\n+                              )\n+                              \n+                              if is_threat_intel:\n+                                  incidents.append({\n+                                      'incident_id': finding['Id'][:50],\n+                                      'date_detected': finding['CreatedAt'].strftime('%Y-%m-%d %H:%M:%S'),\n+                                      'severity': finding.get('Severity', {}).get('Label', 'MEDIUM'),\n+                                      'title': finding['Title'][:100],\n+                                      'description': finding.get('Description', 'N/A')[:200],\n+                                      'source': 'Security Hub - Threat Intel',\n+                                      'resource_id': finding.get('Resources', [{}])[0].get('Id', 'N/A')[:50],\n+                                      'status': finding.get('Workflow', {}).get('Status', 'NEW'),\n+                                      'category': 'Threat Intelligence',\n+                                      'finding_types': str(finding_types)[:100]\n+                                  })\n+                          \n+                          pages_processed += 1\n+                          if pages_processed >= 3:  # Limit for GitHub Actions\n+                              break\n+                      \n+                      print(f\"\u2705 Security Hub: {len(incidents)} threat intelligence findings\")\n+                  except Exception as e:\n+                      print(f\"\u26a0\ufe0f Security Hub error: {e}\")\n+                  \n+                  return incidents\n+          \n+              def map_severity(self, severity_score):\n+                  \"\"\"Map numeric severity to labels\"\"\"\n+                  if severity_score >= 7.0:\n+                      return 'CRITICAL'\n+                  elif severity_score >= 4.0:\n+                      return 'HIGH'\n+                  elif severity_score >= 1.0:\n+                      return 'MEDIUM'\n+                  else:\n+                      return 'LOW'\n+          \n+              def categorize_guardduty(self, finding_type):\n+                  \"\"\"Categorize GuardDuty finding types\"\"\"\n+                  if 'Backdoor' in finding_type:\n+                      return 'Backdoor/Malware'\n+                  elif 'Cryptocurrency' in finding_type or 'CryptoCurrency' in finding_type:\n+                      return 'Cryptocurrency Mining'\n+                  elif 'Trojan' in finding_type:\n+                      return 'Trojan/Malware'\n+                  elif 'Recon' in finding_type:\n+                      return 'Reconnaissance'\n+                  elif 'UnauthorizedAPICall' in finding_type:\n+                      return 'Unauthorized API Access'\n+                  else:\n+                      return 'Threat Activity'\n+          \n+              def update_incident_database(self, incidents):\n+                  \"\"\"Update Excel incident database\"\"\"\n+                  print(\"\ud83d\udcca Updating incident database...\")\n+                  \n+                  db_file = self.evidence_dir / \"incident_database.xlsx\"\n+                  \n+                  # Load existing incidents\n+                  existing_incidents = []\n+                  if db_file.exists():\n+                      try:\n+                          df_existing = pd.read_excel(db_file, sheet_name='True_Incidents')\n+                          existing_incidents = df_existing.to_dict('records')\n+                          print(f\"\ud83d\udccb Loaded {len(existing_incidents)} existing incidents\")\n+                      except Exception as e:\n+                          print(f\"\u26a0\ufe0f Could not load existing database: {e}\")\n+                  \n+                  # Merge without duplicates\n+                  existing_ids = {str(inc.get('incident_id', '')) for inc in existing_incidents}\n+                  new_incidents = [inc for inc in incidents if str(inc['incident_id']) not in existing_ids]\n+                  \n+                  all_incidents = existing_incidents + new_incidents\n+                  \n+                  if all_incidents:\n+                      try:\n+                          df = pd.DataFrame(all_incidents)\n+                          \n+                          with pd.ExcelWriter(db_file, engine='openpyxl') as writer:\n+                              df.to_excel(writer, sheet_name='True_Incidents', index=False)\n+                              \n+                              # Summary sheet\n+                              critical_count = len([i for i in all_incidents if i['severity'] == 'CRITICAL'])\n+                              high_count = len([i for i in all_incidents if i['severity'] == 'HIGH'])\n+                              recent_count = len([i for i in new_incidents])\n+                              \n+                              summary_data = {\n+                                  'Metric': [\n+                                      'Total Security Incidents',\n+                                      'New This Period', \n+                                      'Critical Severity',\n+                                      'High Severity',\n+                                      'Most Common Category',\n+                                      'Primary Detection Source',\n+                                      'Last Updated'\n+                                  ],\n+                                  'Value': [\n+                                      len(all_incidents),\n+                                      recent_count,\n+                                      critical_count,\n+                                      high_count,\n+                                      Counter(i['category'] for i in all_incidents).most_common(1)[0][0] if all_incidents else 'N/A',\n+                                      Counter(i['source'] for i in all_incidents).most_common(1)[0][0] if all_incidents else 'N/A',\n+                                      datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')\n+                                  ]\n+                              }\n+                              \n+                              pd.DataFrame(summary_data).to_excel(writer, sheet_name='Executive_Summary', index=False)\n+                          \n+                          print(f\"\u2705 Database updated: {len(new_incidents)} new incidents, {len(all_incidents)} total\")\n+                          return len(new_incidents), critical_count, len(all_incidents)\n+                          \n+                      except Exception as e:\n+                          print(f\"\u274c Database update failed: {e}\")\n+                          return 0, 0, 0\n+                  else:\n+                      print(\"\ud83d\udcca No incidents to update database\")\n+                      return 0, 0, 0\n+          \n+              def generate_reports(self, incidents, total_incidents):\n+                  \"\"\"Generate compliance reports\"\"\"\n+                  print(\"\ud83d\udccb Generating KSI-INR-02 compliance reports...\")\n+                  \n+                  # Pattern analysis report\n+                  if incidents:\n+                      categories = Counter(inc['category'] for inc in incidents)\n+                      severities = Counter(inc['severity'] for inc in incidents)\n+                      sources = Counter(inc['source'] for inc in incidents)\n+                      \n+                      report_content = f\"\"\"# Security Incident Pattern Analysis Report\n+          \n+          **Generated:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}  \n+          **Analysis Period:** Last 7 days  \n+          **New Incidents:** {len(incidents)}  \n+          **Total Incidents (Database):** {total_incidents}\n+          \n+          ## Weekly Incident Summary\n+          \n+          ### New Incidents by Category\n+          {chr(10).join([f\"- **{cat}:** {count}\" for cat, count in categories.most_common()])}\n+          \n+          ### Severity Distribution  \n+          {chr(10).join([f\"- **{sev}:** {count}\" for sev, count in severities.most_common()])}\n+          \n+          ### Detection Sources\n+          {chr(10).join([f\"- **{src}:** {count}\" for src, count in sources.most_common()])}\n+          \n+          ## Pattern Analysis\n+          \n+          ### Key Findings\n+          - **Most Common Attack:** {categories.most_common(1)[0][0] if categories else 'No incidents'}\n+          - **Primary Detection:** {sources.most_common(1)[0][0] if sources else 'No incidents'}  \n+          - **Severity Profile:** {severities.get('CRITICAL', 0)} critical, {severities.get('HIGH', 0)} high severity\n+          \n+          ### Security Recommendations\n+          {self.generate_recommendations(categories)}\n+          \n+          ## Compliance Status\n+          \u2705 **KSI-INR-02 Requirements Met:**\n+          - \u2705 Security incident log maintained (automated collection)\n+          - \u2705 Weekly pattern analysis completed  \n+          - \u2705 True incidents distinguished from routine findings\n+          - \u2705 Evidence files updated in repository\n+          \n+          ---\n+          *Automated report generated by GitHub Actions workflow*  \n+          *Next analysis: {(datetime.utcnow() + timedelta(days=7)).strftime('%Y-%m-%d')}*\n+          \"\"\"\n+                  else:\n+                      report_content = f\"\"\"# Security Incident Pattern Analysis Report\n+          \n+          **Generated:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}  \n+          **Analysis Period:** Last 7 days  \n+          **New Incidents:** 0  \n+          **Total Incidents (Database):** {total_incidents}\n+          \n+          ## Weekly Summary\n+          \n+          \u2705 **No new security incidents detected**\n+          - GuardDuty: No threat detections\n+          - CloudTrail: No brute force patterns  \n+          - Security Hub: No threat intelligence alerts\n+          \n+          This indicates effective security controls and good security posture.\n+          \n+          ## Recommendations\n+          1. **Maintain Current Security Posture:** Continue existing monitoring\n+          2. **Regular Testing:** Consider penetration testing to validate controls\n+          3. **Detection Validation:** Ensure monitoring systems remain effective\n+          \n+          ## Compliance Status  \n+          \u2705 **KSI-INR-02 Requirements Met:**\n+          - \u2705 Automated incident monitoring active\n+          - \u2705 Weekly analysis completed (no incidents found)\n+          - \u2705 Pattern analysis methodology maintained\n+          - \u2705 Evidence collection and reporting automated\n+          \n+          ---\n+          *Automated report generated by GitHub Actions workflow*\n+          \"\"\"\n+                  \n+                  # Save pattern analysis report\n+                  with open(self.evidence_dir / \"incident_pattern_analysis_report.pdf\", 'w') as f:\n+                      f.write(report_content)\n+                  \n+                  # Generate quarterly review if it's time\n+                  self.generate_quarterly_review_if_needed()\n+                  \n+                  print(\"\u2705 Compliance reports generated\")\n+          \n+              def generate_recommendations(self, categories):\n+                  \"\"\"Generate security recommendations based on incident patterns\"\"\"\n+                  if not categories:\n+                      return \"\"\"\n+          1. **Continue Monitoring:** Maintain current detection capabilities\n+          2. **Proactive Testing:** Consider security testing to validate controls  \n+          3. **Review Quarterly:** Maintain incident analysis schedule\n+          \"\"\"\n+                  \n+                  top_category = categories.most_common(1)[0][0]\n+                  \n+                  recommendations = {\n+                      'Cryptocurrency Mining': \"\"\"\n+          1. **EC2 Security:** Review security groups and outbound traffic controls\n+          2. **Endpoint Protection:** Consider advanced malware protection\n+          3. **Network Monitoring:** Enhance monitoring for crypto mining traffic\n+          \"\"\",\n+                      'Brute Force Attack': \"\"\"\n+          1. **Authentication:** Implement MFA and account lockout policies\n+          2. **Network Controls:** Consider IP-based access restrictions\n+          3. **Monitoring:** Enhance failed login alert thresholds\n+          \"\"\",\n+                      'Backdoor/Malware': \"\"\"\n+          1. **Incident Response:** Immediate containment and forensics required\n+          2. **System Integrity:** Full system scan and integrity verification\n+          3. **Network Isolation:** Consider network segmentation improvements\n+          \"\"\"\n+                  }\n+                  \n+                  return recommendations.get(top_category, f\"\"\"\n+          1. **Category Focus:** Address {top_category} security controls\n+          2. **Detection Enhancement:** Improve monitoring for this attack type\n+          3. **Response Planning:** Review incident response procedures\n+          \"\"\")\n+          \n+              def generate_quarterly_review_if_needed(self):\n+                  \"\"\"Generate quarterly review if it's end of quarter\"\"\"\n+                  current_date = datetime.utcnow()\n+                  is_end_of_quarter = current_date.month % 3 == 0 and current_date.day >= 28\n+                  \n+                  if is_end_of_quarter or not (self.evidence_dir / \"quarterly_incident_review_minutes.pdf\").exists():\n+                      quarter = f\"Q{((current_date.month - 1) // 3) + 1} {current_date.year}\"\n+                      \n+                      minutes_content = f\"\"\"# Quarterly Security Incident Review - {quarter}\n+          \n+          **Date:** {current_date.strftime('%Y-%m-%d')}  \n+          **Review Type:** Automated Quarterly Analysis  \n+          **Period:** {quarter}\n+          \n+          ## Review Summary\n+          \n+          This quarterly review analyzes security incidents to identify patterns and vulnerabilities \n+          as required by KSI-INR-02. The analysis is performed through automated GitHub Actions \n+          workflows with weekly incident collection and pattern analysis.\n+          \n+          ## Methodology\n+          \n+          - **Data Sources:** GuardDuty, CloudTrail pattern analysis, Security Hub threat intelligence\n+          - **Incident Definition:** Actual security events requiring response (not routine findings)\n+          - **Analysis Frequency:** Weekly collection with quarterly pattern review\n+          - **Automation:** Fully automated through GitHub Actions workflows\n+          \n+          ## Key Patterns Identified\n+          \n+          The automated system identifies the following types of security incidents:\n+          1. **Cryptocurrency Mining:** GuardDuty detection of mining activity\n+          2. **Brute Force Attacks:** Pattern analysis of failed login attempts  \n+          3. **Threat Intelligence:** Security Hub advanced threat detections\n+          4. **Manual Reports:** Human-verified security incidents\n+          \n+          ## Compliance Status\n+          \n+          \u2705 **KSI-INR-02 Requirements Fully Met:**\n+          - \u2705 Security incident log maintained with persistent Excel database\n+          - \u2705 Periodic review conducted (weekly automation + quarterly analysis)\n+          - \u2705 Pattern analysis performed using statistical and behavioral methods\n+          - \u2705 Vulnerabilities identified from incident trend analysis\n+          - \u2705 Evidence files maintained in version-controlled repository\n+          \n+          ## Action Items for Next Quarter\n+          \n+          1. **Continue Automated Monitoring:** Maintain weekly GitHub Actions execution\n+          2. **Review Detection Coverage:** Ensure all AWS security services integrated  \n+          3. **Pattern Analysis Enhancement:** Evaluate additional data sources\n+          4. **Incident Response:** Address any recurring incident categories\n+          \n+          ---\n+          **Next Quarterly Review:** {(current_date + timedelta(days=90)).strftime('%Y-%m-%d')}  \n+          **Automation Status:** Active (GitHub Actions weekly schedule)\n+          \"\"\"\n+                      \n+                      with open(self.evidence_dir / \"quarterly_incident_review_minutes.pdf\", 'w') as f:\n+                          f.write(minutes_content)\n+                      \n+                      print(\"\ud83d\udcc5 Quarterly review minutes generated\")\n+          \n+              def run_github_automation(self):\n+                  \"\"\"Run complete incident logging automation for GitHub Actions\"\"\"\n+                  print(\"\ud83d\ude80 Starting KSI-INR-02 GitHub Actions Automation\")\n+                  print(\"=\" * 60)\n+                  \n+                  try:\n+                      # Get configuration from GitHub inputs\n+                      days_back = int(os.environ.get('DAYS_BACK', '7'))\n+                      force_full = os.environ.get('FORCE_FULL_ANALYSIS', 'false').lower() == 'true'\n+                      \n+                      if force_full:\n+                          days_back = 90\n+                          print(f\"\ud83d\udd0d Full analysis mode: Looking back {days_back} days\")\n+                      else:\n+                          print(f\"\ud83d\udd0d Incremental analysis: Looking back {days_back} days\")\n+                      \n+                      # Collect incidents from all sources\n+                      all_incidents = []\n+                      \n+                      all_incidents.extend(self.collect_guardduty_incidents(days_back))\n+                      all_incidents.extend(self.collect_brute_force_incidents(days_back))\n+                      all_incidents.extend(self.collect_threat_intelligence(days_back))\n+                      \n+                      print(f\"\ud83d\udcca Total new incidents collected: {len(all_incidents)}\")\n+                      \n+                      # Update database  \n+                      new_count, critical_count, total_count = self.update_incident_database(all_incidents)\n+                      \n+                      # Generate reports\n+                      self.generate_reports(all_incidents, total_count)\n+                      \n+                      # Set GitHub Actions outputs\n+                      self.set_github_output('incidents_count', len(all_incidents))\n+                      self.set_github_output('critical_count', critical_count)\n+                      self.set_github_output('evidence_updated', 'true' if new_count > 0 else 'false')\n+                      \n+                      print(\"=\" * 60)\n+                      print(\"\u2705 KSI-INR-02 GitHub Actions Automation Complete!\")\n+                      print(f\"\ud83d\udcca New incidents: {len(all_incidents)}\")\n+                      print(f\"\ud83d\udea8 Critical incidents: {critical_count}\")  \n+                      print(f\"\ud83d\udcc1 Evidence directory: {self.evidence_dir}\")\n+                      print(f\"\ud83d\udccb Total incidents in database: {total_count}\")\n+                      \n+                      if len(all_incidents) > 0:\n+                          categories = Counter(inc['category'] for inc in all_incidents)\n+                          print(f\"\ud83d\udd0d Top incident categories: {dict(categories.most_common(3))}\")\n+                      \n+                      return True\n+                      \n+                  except Exception as e:\n+                      print(f\"\u274c GitHub Actions automation failed: {e}\")\n+                      self.set_github_output('incidents_count', '0')\n+                      self.set_github_output('critical_count', '0')\n+                      self.set_github_output('evidence_updated', 'false')\n+                      return False\n+          \n+          if __name__ == \"__main__\":\n+              # Get GitHub inputs\n+              days_back = os.environ.get('INPUT_DAYS_BACK', '7')\n+              force_full = os.environ.get('INPUT_FORCE_FULL_ANALYSIS', 'false')\n+              \n+              # Set environment variables for the script\n+              os.environ['DAYS_BACK'] = days_back\n+              os.environ['FORCE_FULL_ANALYSIS'] = force_full\n+              \n+              # Run automation\n+              logger = GitHubIncidentLogger()\n+              success = logger.run_github_automation()\n+              \n+              # Exit with appropriate code\n+              sys.exit(0 if success else 1)\n+          EOF\n+          \n+          echo \"\u2705 Incident detection script created\"\n+\n+      - name: \ud83d\udd0d Run KSI-INR-02 Incident Analysis\n+        id: incident-analysis\n+        env:\n+          INPUT_DAYS_BACK: ${{ github.event.inputs.days_back || '7' }}\n+          INPUT_FORCE_FULL_ANALYSIS: ${{ github.event.inputs.force_full_analysis || 'false' }}\n+        run: |\n+          echo \"\ud83d\udd0d Starting automated security incident analysis...\"\n+          python ksi_inr_02_github_automation.py\n+\n+      - name: \ud83d\udcc1 Verify Evidence Files Created\n+        run: |\n+          echo \"\ud83d\udcc1 Verifying evidence files...\"\n+          \n+          if [ -f \"evidence_v2/KSI-INR-02/incident_database.xlsx\" ]; then\n+            echo \"\u2705 incident_database.xlsx created/updated\"\n+            \n+            # Show database stats using Python\n+            python -c \"\n+          import pandas as pd\n+          try:\n+              df = pd.read_excel('evidence_v2/KSI-INR-02/incident_database.xlsx', sheet_name='True_Incidents')\n+              print(f'   \ud83d\udcca Total incidents in database: {len(df)}')\n+              \n+              if len(df) > 0:\n+                  severity_counts = df['severity'].value_counts()\n+                  print(f'   \ud83d\udea8 Severity breakdown: {severity_counts.to_dict()}')\n+                  \n+                  recent_incidents = df[pd.to_datetime(df['date_detected']) > pd.Timestamp.now() - pd.Timedelta(days=7)]\n+                  print(f'   \ud83d\udcc5 New incidents this week: {len(recent_incidents)}')\n+          except Exception as e:\n+              print(f'   \u26a0\ufe0f Could not analyze database: {e}')\n+          \"\n+          else\n+            echo \"\u26a0\ufe0f incident_database.xlsx not found\"\n+          fi\n+          \n+          if [ -f \"evidence_v2/KSI-INR-02/incident_pattern_analysis_report.pdf\" ]; then\n+            echo \"\u2705 incident_pattern_analysis_report.pdf created\"\n+            echo \"   \ud83d\udcc4 $(wc -l < evidence_v2/KSI-INR-02/incident_pattern_analysis_report.pdf) lines in report\"\n+          else\n+            echo \"\u26a0\ufe0f Pattern analysis report not found\"\n+          fi\n+          \n+          if [ -f \"evidence_v2/KSI-INR-02/quarterly_incident_review_minutes.pdf\" ]; then\n+            echo \"\u2705 quarterly_incident_review_minutes.pdf available\"\n+          else\n+            echo \"\u26a0\ufe0f Quarterly review minutes not found (may not be quarter-end)\"\n+          fi\n+\n+      - name: \ud83d\udea8 Critical Incident Alert\n+        if: steps.incident-analysis.outputs.critical_count > 0\n+        run: |\n+          echo \"\ud83d\udea8 CRITICAL SECURITY INCIDENTS DETECTED\"\n+          echo \"======================================\"\n+          echo \"Critical incidents found: ${{ steps.incident-analysis.outputs.critical_count }}\"\n+          echo \"Total incidents: ${{ steps.incident-analysis.outputs.incidents_count }}\"\n+          echo \"\"\n+          echo \"\u26a0\ufe0f IMMEDIATE ACTION REQUIRED:\"\n+          echo \"1. Review incident_database.xlsx for critical incidents\"\n+          echo \"2. Follow incident response procedures\"\n+          echo \"3. Investigate and contain threats immediately\"\n+          echo \"\"\n+          echo \"Evidence location: evidence_v2/KSI-INR-02/\"\n+\n+      - name: \ud83d\udce4 Commit Evidence Files to Repository\n+        if: steps.incident-analysis.outputs.evidence_updated == 'true'\n+        run: |\n+          echo \"\ud83d\udce4 Committing updated evidence files...\"\n+          \n+          git config --local user.email \"action@github.com\"\n+          git config --local user.name \"KSI-INR-02 Automation\"\n+          \n+          # Add evidence files\n+          git add evidence_v2/KSI-INR-02/\n+          \n+          # Create commit message with incident summary\n+          INCIDENTS_COUNT=\"${{ steps.incident-analysis.outputs.incidents_count }}\"\n+          CRITICAL_COUNT=\"${{ steps.incident-analysis.outputs.critical_count }}\"\n+          \n+          if [ \"$CRITICAL_COUNT\" -gt 0 ]; then\n+            COMMIT_MSG=\"\ud83d\udea8 KSI-INR-02: $INCIDENTS_COUNT incidents ($CRITICAL_COUNT critical) - $(date '+%Y-%m-%d')\"\n+          elif [ \"$INCIDENTS_COUNT\" -gt 0 ]; then\n+            COMMIT_MSG=\"\ud83d\udcca KSI-INR-02: $INCIDENTS_COUNT security incidents detected - $(date '+%Y-%m-%d')\"\n+          else\n+            COMMIT_MSG=\"\u2705 KSI-INR-02: Weekly analysis complete (no incidents) - $(date '+%Y-%m-%d')\"\n+          fi\n+          \n+          git commit -m \"$COMMIT_MSG\" || echo \"No changes to commit\"\n+          git push\n+\n+      - name: \ud83d\udcc8 Update GitHub Step Summary\n+        run: |\n+          echo \"# \ud83d\udee1\ufe0f KSI-INR-02 Automated Security Incident Analysis\" >> $GITHUB_STEP_SUMMARY\n+          echo \"\" >> $GITHUB_STEP_SUMMARY\n+          echo \"**Analysis Date:** $(date '+%Y-%m-%d %H:%M:%S UTC')\" >> $GITHUB_STEP_SUMMARY\n+          echo \"**Analysis Period:** Last ${{ github.event.inputs.days_back || '7' }} days\" >> $GITHUB_STEP_SUMMARY\n+          echo \"\" >> $GITHUB_STEP_SUMMARY\n+          \n+          echo \"## \ud83d\udcca Incident Summary\" >> $GITHUB_STEP_SUMMARY\n+          echo \"- **New Incidents Detected:** ${{ steps.incident-analysis.outputs.incidents_count }}\" >> $GITHUB_STEP_SUMMARY\n+          echo \"- **Critical Severity:** ${{ steps.incident-analysis.outputs.critical_count }}\" >> $GITHUB_STEP_SUMMARY\n+          echo \"- **Evidence Updated:** ${{ steps.incident-analysis.outputs.evidence_updated }}\" >> $GITHUB_STEP_SUMMARY\n+          echo \"\" >> $GITHUB_STEP_SUMMARY\n+          \n+          if [ \"${{ steps.incident-analysis.outputs.incidents_count }}\" -gt 0 ]; then\n+            echo \"## \u26a0\ufe0f Security Alert\" >> $GITHUB_STEP_SUMMARY\n+            echo \"Security incidents detected and logged. Review evidence files:\" >> $GITHUB_STEP_SUMMARY\n+            echo \"- \\`evidence_v2/KSI-INR-02/incident_database.xlsx\\`\" >> $GITHUB_STEP_SUMMARY\n+            echo \"- \\`evidence_v2/KSI-INR-02/incident_pattern_analysis_report.pdf\\`\" >> $GITHUB_STEP_SUMMARY\n+          else\n+            echo \"## \u2705 Security Status\" >> $GITHUB_STEP_SUMMARY\n+            echo \"No security incidents detected - good security posture maintained.\" >> $GITHUB_STEP_SUMMARY\n+          fi\n+          \n+          echo \"\" >> $GITHUB_STEP_SUMMARY\n+          echo \"## \ud83d\udcc1 Evidence Files\" >> $GITHUB_STEP_SUMMARY\n+          echo \"- \u2705 \\`incident_database.xlsx\\` - Persistent incident tracking\" >> $GITHUB_STEP_SUMMARY\n+          echo \"- \u2705 \\`incident_pattern_analysis_report.pdf\\` - Weekly analysis\" >> $GITHUB_STEP_SUMMARY\n+          echo \"- \u2705 \\`quarterly_incident_review_minutes.pdf\\` - Periodic review\" >> $GITHUB_STEP_SUMMARY\n+          echo \"\" >> $GITHUB_STEP_SUMMARY\n+          echo \"## \ud83d\udd04 Automation Status\" >> $GITHUB_STEP_SUMMARY\n+          echo \"- **Next Scheduled Run:** Next Sunday at 2 AM UTC\" >> $GITHUB_STEP_SUMMARY\n+          echo \"- **Manual Trigger:** Available via workflow_dispatch\" >> $GITHUB_STEP_SUMMARY\n+          echo \"- **KSI-INR-02 Compliance:** \u2705 Fully Automated\" >> $GITHUB_STEP_SUMMARY\n+\n+  notification:\n+    name: Send Critical Incident Notifications\n+    runs-on: ubuntu-latest\n+    needs: incident-logging\n+    if: needs.incident-logging.outputs.critical-incidents > 0\n+    \n+    steps:\n+      - name: \ud83d\udea8 Send Slack Notification (if configured)\n+        run: |\n+          echo \"\ud83d\udea8 Critical security incidents detected!\"\n+          echo \"Incidents: ${{ needs.incident-logging.outputs.incidents-detected }}\"\n+          echo \"Critical: ${{ needs.incident-logging.outputs.critical-incidents }}\"\n+          echo \"\"\n+          echo \"Configure SLACK_WEBHOOK_URL secret to enable Slack notifications\"\n+          \n+          # Uncomment if you have Slack webhook configured:\n+          # curl -X POST -H 'Content-type: application/json' \\\n+          #   --data '{\"text\":\"\ud83d\udea8 Critical Security Incidents Detected\\n- Total: ${{ needs.incident-logging.outputs.incidents-detected }}\\n- Critical: ${{ needs.incident-logging.outputs.critical-incidents }}\\n- Repository: ${{ github.repository }}\"}' \\\n+          #   ${{ secrets.SLACK_WEBHOOK_URL }}\n+\n+      - name: \ud83d\udce7 Create GitHub Issue for Critical Incidents  \n+        uses: actions/github-script@v7\n+        with:\n+          script: |\n+            const incidentCount = '${{ needs.incident-logging.outputs.incidents-detected }}';\n+            const criticalCount = '${{ needs.incident-logging.outputs.critical-incidents }}';\n+            \n+            await github.rest.issues.create({\n+              owner: context.repo.owner,\n+              repo: context.repo.repo,\n+              title: `\ud83d\udea8 Critical Security Incidents Detected - ${new Date().toISOString().split('T')[0]}`,\n+              body: `# Critical Security Incident Alert\n+              \n+              **Detection Date:** ${new Date().toISOString()}\n+              **Total Incidents:** ${incidentCount}\n+              **Critical Severity:** ${criticalCount}\n+              \n+              ## Immediate Actions Required\n+              \n+              1. **Review Incident Database:** Check \\`evidence_v2/KSI-INR-02/incident_database.xlsx\\`\n+              2. **Follow Incident Response Plan:** Activate emergency procedures\n+              3. **Investigate and Contain:** Immediate threat analysis required\n+              4. **Document Response:** Update incident status in database\n+              \n+              ## Evidence Files\n+              \n+              - \ud83d\udcca Incident Database: \\`evidence_v2/KSI-INR-02/incident_database.xlsx\\`\n+              - \ud83d\udccb Analysis Report: \\`evidence_v2/KSI-INR-02/incident_pattern_analysis_report.pdf\\`\n+              \n+              ## Auto-Detection Sources\n+              \n+              - Amazon GuardDuty threat detections\n+              - CloudTrail attack pattern analysis  \n+              - Security Hub threat intelligence\n+              \n+              **This issue was automatically created by the KSI-INR-02 incident logging workflow.**\n+              `,\n+              labels: ['security', 'critical', 'incident-response']\n+            });\n"
+    }
+  ],
+  "file_level_classifications": [
+    {
+      "file": ".github/workflows/incident_logging.yaml",
+      "classification": "routine_recurring",
+      "reasoning": "Regular operational maintenance pattern",
+      "production_override": false,
+      "terraform_category": null,
+      "change_context": "unknown"
+    }
+  ],
+  "local_commits_summary": [
+    {
+      "sha": "2b2b4dbd",
+      "message": "Create incident_logging.yaml",
+      "author": "Kwahf33",
+      "date": "2025-09-17 04:22:52 -0600",
+      "repository": "fedramp-20x-submission-final",
+      "commit_reference": "fedramp-20x-submission-final@2b2b4dbd",
+      "verification_method": "git_log_local"
+    }
+  ],
+  "file_count": 1,
   "audit_trail": {
     "classifier_version": "5.0.0",
     "decision_logic": "Official FRA-SCN-03 Decision Tree with Contextual Diff Analysis",
@@ -55,10 +88,633 @@
     "file_level_classification": true,
     "risk_escalation_applied": true
   },
-  "terraform_analysis": {},
-  "external_analysis": {},
+  "terraform_analysis": {
+    "transformative": [],
+    "adaptive": [],
+    "routine": []
+  },
+  "external_analysis": {
+    "changes_detected": true,
+    "infrastructure_impact": "medium",
+    "transformative_repos": [],
+    "adaptive_repos": [
+      {
+        "repository": "meridian-aws-resources",
+        "has_changes": true,
+        "commit_count": 15,
+        "total_files_changed": 17,
+        "production_files_changed": 17,
+        "service_impact_category": "adaptive",
+        "service_impact_reason": "Infrastructure component classified as adaptive based on contextual analysis",
+        "contextual_analysis": {
+          "transformative_contexts": 0,
+          "adaptive_contexts": 3,
+          "routine_contexts": 10,
+          "unknown_contexts": 4
+        },
+        "contextual_reasoning": "Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance); Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance); Routine: 1 files (maintenance)",
+        "commits": [
+          {
+            "sha": "e5ad9ed1",
+            "message": "Merge pull request #25 from Meridian-Knowledge-Solutions/Deploy-AWS-Inventory",
+            "author": "samuelnjei",
+            "date": "2025-09-15T14:52:08Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "adaptive",
+                "context_reason": "Production infrastructure file - defaulting to adaptive",
+                "sha": "84778cce",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e5ad9ed1992965bf736898c8da55fe1c786f5111/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e5ad9ed1992965bf736898c8da55fe1c786f5111/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=e5ad9ed1992965bf736898c8da55fe1c786f5111"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+                "status": "modified",
+                "additions": 8,
+                "deletions": 8,
+                "changes": 16,
+                "change_context": "routine",
+                "context_reason": "Description updates (documentation)",
+                "sha": "b5facf81",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/e5ad9ed1992965bf736898c8da55fe1c786f5111/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/e5ad9ed1992965bf736898c8da55fe1c786f5111/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars?ref=e5ad9ed1992965bf736898c8da55fe1c786f5111"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 1,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "681e038f",
+            "message": "added timnout to 10 minutes",
+            "author": "sam",
+            "date": "2025-09-15T14:51:10Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "adaptive",
+                "context_reason": "Production infrastructure file - defaulting to adaptive",
+                "sha": "84778cce",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/681e038fc8912960d1173a83f5d16d24f8fb437f/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/681e038fc8912960d1173a83f5d16d24f8fb437f/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=681e038fc8912960d1173a83f5d16d24f8fb437f"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+                "status": "modified",
+                "additions": 8,
+                "deletions": 8,
+                "changes": 16,
+                "change_context": "routine",
+                "context_reason": "Description updates (documentation)",
+                "sha": "b5facf81",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/681e038fc8912960d1173a83f5d16d24f8fb437f/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/681e038fc8912960d1173a83f5d16d24f8fb437f/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Fconfiguration%2Faws_resources.tfvars?ref=681e038fc8912960d1173a83f5d16d24f8fb437f"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 1,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "47c19c1c",
+            "message": "Merge pull request #24 from Meridian-Knowledge-Solutions/Deploy-AWS-Inventory",
+            "author": "samuelnjei",
+            "date": "2025-09-15T14:44:11Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 3,
+                "deletions": 0,
+                "changes": 3,
+                "change_context": "routine",
+                "context_reason": "Tag updates (administrative maintenance)",
+                "sha": "62a55e91",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/47c19c1cf80a2c07788fb66ea7917221cee7d35a/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/47c19c1cf80a2c07788fb66ea7917221cee7d35a/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=47c19c1cf80a2c07788fb66ea7917221cee7d35a"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "b8581621",
+            "message": "added tags to lambda",
+            "author": "sam",
+            "date": "2025-09-15T14:42:03Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 4,
+                "deletions": 1,
+                "changes": 5,
+                "change_context": "routine",
+                "context_reason": "Tag updates (administrative maintenance)",
+                "sha": "62a55e91",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b85816218bf94cc829022dc7f7909a56c0706ecb/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b85816218bf94cc829022dc7f7909a56c0706ecb/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=b85816218bf94cc829022dc7f7909a56c0706ecb"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "9980209f",
+            "message": "Update aws-inventory.tf",
+            "author": "samuelnjei",
+            "date": "2025-09-15T13:22:59Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "90a9992e",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/9980209f5f05354f4c2d1c0c82db9b4bf8cfe86e/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/9980209f5f05354f4c2d1c0c82db9b4bf8cfe86e/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=9980209f5f05354f4c2d1c0c82db9b4bf8cfe86e"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "861cd167",
+            "message": "Merge pull request #23 from Meridian-Knowledge-Solutions/Deploy-AWS-Inventory",
+            "author": "samuelnjei",
+            "date": "2025-09-15T13:20:01Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "adaptive",
+                "context_reason": "Production infrastructure file - defaulting to adaptive",
+                "sha": "1795356a",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=861cd1679f9c1a3a9a923873361a3840153cc15d"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/inventory.zip",
+                "status": "removed",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "9cb8e75b",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip?ref=b4058cba8db872b857d2c7c14d366bc7147717b8"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/lambda_function.py",
+                "status": "added",
+                "additions": 280,
+                "deletions": 0,
+                "changes": 280,
+                "change_context": "routine",
+                "context_reason": "Non-infrastructure file - defaulting to routine",
+                "sha": "1c2c30d1",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py?ref=861cd1679f9c1a3a9a923873361a3840153cc15d"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/lambda_function.zip",
+                "status": "added",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "e79e6e14",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/861cd1679f9c1a3a9a923873361a3840153cc15d/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip?ref=861cd1679f9c1a3a9a923873361a3840153cc15d"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 1,
+              "routine_count": 1,
+              "unknown_count": 2,
+              "reasoning": "Adaptive: 1 files (infrastructure improvements); Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "fa302c2d",
+            "message": "update the lambda code",
+            "author": "sam",
+            "date": "2025-09-15T13:17:18Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "1795356a",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/fa302c2d3688298459cc68d730c08029b2360c8f/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/fa302c2d3688298459cc68d730c08029b2360c8f/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=fa302c2d3688298459cc68d730c08029b2360c8f"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "8b4045e7",
+            "message": "update the lambda code",
+            "author": "sam",
+            "date": "2025-09-15T13:17:03Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 2,
+                "deletions": 2,
+                "changes": 4,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "cea221d2",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/8b4045e76abf638afeeb182226f7d1412f78303a/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/8b4045e76abf638afeeb182226f7d1412f78303a/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=8b4045e76abf638afeeb182226f7d1412f78303a"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "fd061ffd",
+            "message": "update the lambda code",
+            "author": "sam",
+            "date": "2025-09-15T13:13:46Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/inventory.zip",
+                "status": "removed",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "9cb8e75b",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Finventory.zip?ref=b4058cba8db872b857d2c7c14d366bc7147717b8"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/lambda_function.py",
+                "status": "added",
+                "additions": 280,
+                "deletions": 0,
+                "changes": 280,
+                "change_context": "routine",
+                "context_reason": "Non-infrastructure file - defaulting to routine",
+                "sha": "1c2c30d1",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/fd061ffd6a22890261dc71c3eed6e6a34ca59e3c/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/fd061ffd6a22890261dc71c3eed6e6a34ca59e3c/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.py?ref=fd061ffd6a22890261dc71c3eed6e6a34ca59e3c"
+              },
+              {
+                "filename": "Infrastructure/LMS-Production/lambda/lambda_function.zip",
+                "status": "added",
+                "additions": 0,
+                "deletions": 0,
+                "changes": 0,
+                "change_context": "unknown",
+                "context_reason": "No patch content available",
+                "sha": "e79e6e14",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/fd061ffd6a22890261dc71c3eed6e6a34ca59e3c/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/fd061ffd6a22890261dc71c3eed6e6a34ca59e3c/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Flambda%2Flambda_function.zip?ref=fd061ffd6a22890261dc71c3eed6e6a34ca59e3c"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 2,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          },
+          {
+            "sha": "b4058cba",
+            "message": "Update aws-inventory.tf",
+            "author": "samuelnjei",
+            "date": "2025-09-12T17:49:07Z",
+            "files": [
+              {
+                "filename": "Infrastructure/LMS-Production/aws-inventory.tf",
+                "status": "modified",
+                "additions": 1,
+                "deletions": 1,
+                "changes": 2,
+                "change_context": "routine",
+                "context_reason": "Name tag updates (administrative)",
+                "sha": "e99d3be4",
+                "blob_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/blob/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "raw_url": "https://github.com/Meridian-Knowledge-Solutions/meridian-aws-resources/raw/b4058cba8db872b857d2c7c14d366bc7147717b8/Infrastructure%2FLMS-Production%2Faws-inventory.tf",
+                "contents_url": "https://api.github.com/repos/Meridian-Knowledge-Solutions/meridian-aws-resources/contents/Infrastructure%2FLMS-Production%2Faws-inventory.tf?ref=b4058cba8db872b857d2c7c14d366bc7147717b8"
+              }
+            ],
+            "contextual_analysis": {
+              "transformative_count": 0,
+              "adaptive_count": 0,
+              "routine_count": 1,
+              "unknown_count": 0,
+              "reasoning": "Routine: 1 files (maintenance)"
+            }
+          }
+        ],
+        "production_paths": [
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "e5ad9ed1",
+            "change_type": "modified",
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+            "repository": "meridian-aws-resources",
+            "commit": "e5ad9ed1",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "681e038f",
+            "change_type": "modified",
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+            "repository": "meridian-aws-resources",
+            "commit": "681e038f",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "47c19c1c",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b8581621",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "9980209f",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "change_type": "modified",
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/inventory.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "change_type": "removed",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/lambda_function.py",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "change_type": "added",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/lambda_function.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "change_type": "added",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "fa302c2d",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "8b4045e7",
+            "change_type": "modified",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/inventory.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "fd061ffd",
+            "change_type": "removed",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/lambda_function.py",
+            "repository": "meridian-aws-resources",
+            "commit": "fd061ffd",
+            "change_type": "added",
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/lambda/lambda_function.zip",
+            "repository": "meridian-aws-resources",
+            "commit": "fd061ffd",
+            "change_type": "added",
+            "context": "unknown"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b4058cba",
+            "change_type": "modified",
+            "context": "routine"
+          }
+        ],
+        "terraform_files": [
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "e5ad9ed1",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+            "repository": "meridian-aws-resources",
+            "commit": "e5ad9ed1",
+            "terraform_type": "variables",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "681e038f",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/configuration/aws_resources.tfvars",
+            "repository": "meridian-aws-resources",
+            "commit": "681e038f",
+            "terraform_type": "variables",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "47c19c1c",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b8581621",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "9980209f",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "861cd167",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "adaptive"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "fa302c2d",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "8b4045e7",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          },
+          {
+            "file": "Infrastructure/LMS-Production/aws-inventory.tf",
+            "repository": "meridian-aws-resources",
+            "commit": "b4058cba",
+            "terraform_type": "general_infrastructure",
+            "production_path": true,
+            "context": "routine"
+          }
+        ],
+        "configuration_files": [],
+        "file_summary": {
+          "total_files": 17,
+          "production_files": 17,
+          "terraform_files": 11,
+          "configuration_files": 0
+        }
+      }
+    ],
+    "routine_repos": []
+  },
   "required_stakeholders_to_notify": [],
   "3pao_review_required": false,
   "3pao_review_justification": "Not required",
-  "customer_opt_out_feasible": false
+  "customer_opt_out_feasible": false,
+  "emergency_handling": {
+    "retroactive_notification_required": true,
+    "emergency_justification": "Change executed during emergency per FRR-SCN-EX-02",
+    "post_incident_assessment_plan": "Full retroactive assessment will be completed after incident resolution"
+  }
 }
