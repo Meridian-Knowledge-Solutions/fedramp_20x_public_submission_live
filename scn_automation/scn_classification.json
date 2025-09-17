@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-17T01:14:08.865472",
+  "timestamp": "2025-09-17T05:04:42.741425",
   "scn_type": "routine_recurring",
   "emergency_mode": false,
   "requires_notification": false,
@@ -25,21 +25,21 @@
   "name_and_title_of_approver": {
     "name": "Meridian Security Team (Automated)",
     "title": "Chief Security Officer",
-    "approval_date": "2025-09-17T01:14:08.865472"
+    "approval_date": "2025-09-17T05:04:42.741425"
   },
   "changed_files_detailed": [
     {
       "file": ".github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml",
       "commit": {
-        "sha": "10a31e2c",
+        "sha": "afb9be32",
         "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
         "author": "Kwahf33",
-        "date": "2025-09-16 19:03:48 -0600",
+        "date": "2025-09-16 22:53:15 -0600",
         "repository": "fedramp-20x-submission-final",
-        "commit_reference": "fedramp-20x-submission-final@10a31e2c",
+        "commit_reference": "fedramp-20x-submission-final@afb9be32",
         "verification_method": "git_log_local"
       },
-      "diff": "diff --git a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\nindex a32d0ad..865e62d 100644\n--- a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n+++ b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n@@ -115,6 +115,8 @@ jobs:\n           # sha256sum -c checksums.txt\n \n       - name: \ud83d\udee1\ufe0f Security Scan Python Scripts\n+        env:\n+          SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}\n         run: |\n           pip install bandit safety\n           # Fail on high-severity issues only\n@@ -1822,3 +1824,4 @@ jobs:\n \n \n \n+\n"
+      "diff": "diff --git a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\nindex ea9f1be..33e1c60 100644\n--- a/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n+++ b/.github/workflows/FedRAMP 20x CLI Validation Pipeline.yaml\t\n@@ -121,12 +121,31 @@ jobs:\n           # 1. Install all project + security dependencies from pyproject.toml\n           pip install \".[security]\"\n \n-          # 2. Run bandit against your source code\n-          bandit -r . -lll -iii\n+          # ---Start of Two-Pass Bandit Scan ---\n \n-          # 3. Run safety to scan the now-installed project dependencies\n+          # 2. REPORTING PASS: Scan for all high-severity issues and save the report.\n+          #    The '|| true' ensures this step never fails the build. \n+          echo \"Running Bandit for reporting...\"\n+          bandit -r . -lll -iii -f json -o bandit-report.json || true \n+\n+          # 3. BLOCKING PASS: Scan ONLY for command injection vulnerabilities.\n+          #    This step will fail the build if B602 or B603 are found.\n+          echo \"Running Bandit to block on critical vulnerabilities...\"\n+          bandit -r . -t B602,B603 -lll -iii\n+\n+          # ---End of Two-Pass Bandit Scan ---\n+\n+          # 4. Run safety to scan the installed project dependencies\n+          echo \"Running Safety for dependency scanning...\"\n           safety scan .\n \n+      - name: \ud83d\udce4 Upload Bandit Scan Report\n+        if: always() # Run this step even if the previous one fails\n+        uses: actions/upload-artifact@v4\n+        with:\n+           name: bandit-scan-report\n+           path: bandit-report.json\n+           \n       - name: \ud83d\udd0d Initialize Security Monitoring\n         run: |\n           # Log execution context for audit\n@@ -1830,3 +1849,4 @@ jobs:\n \n \n \n+\n"
     }
   ],
   "file_level_classifications": [
@@ -54,12 +54,12 @@
   ],
   "local_commits_summary": [
     {
-      "sha": "10a31e2c",
+      "sha": "afb9be32",
       "message": "Update FedRAMP 20x CLI Validation Pipeline.yaml",
       "author": "Kwahf33",
-      "date": "2025-09-16 19:03:48 -0600",
+      "date": "2025-09-16 22:53:15 -0600",
       "repository": "fedramp-20x-submission-final",
-      "commit_reference": "fedramp-20x-submission-final@10a31e2c",
+      "commit_reference": "fedramp-20x-submission-final@afb9be32",
       "verification_method": "git_log_local"
     }
   ],
