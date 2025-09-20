@@ -1,27 +1,27 @@
 {
   "report_metadata": {
-    "generated_timestamp": "2025-09-20T00:51:59.208977",
+    "generated_timestamp": "2025-09-20T01:37:19.982720",
     "report_version": "2.1-fixed",
     "assessment_period": "continuous",
     "validator_version": "ruleset_master_v2_logical_consistency_fixed"
   },
   "validation_summary": {
     "total_ksis": 58,
-    "passing_ksis": 42,
-    "failing_ksis": 16,
-    "overall_pass_rate": "72.4%",
+    "passing_ksis": 50,
+    "failing_ksis": 8,
+    "overall_pass_rate": "86.2%",
     "assessment_scope": "FedRAMP 20xP1 KSI Framework",
     "validation_approach": "Automated CLI + Evidence-based Hybrid"
   },
   "consistency_analysis": {
-    "historical_consistency_checks": 43,
-    "average_consistency_score": "93.1%",
+    "historical_consistency_checks": 44,
+    "average_consistency_score": "91.7%",
     "consistency_status": "good"
   },
   "technical_validation": {
-    "latest_technical_check": "2025-09-20T00:51:59.201110",
-    "technical_issues_found": 21,
-    "technical_status": "fail",
+    "latest_technical_check": "2025-09-20T01:37:19.974996",
+    "technical_issues_found": 6,
+    "technical_status": "warning",
     "validation_categories": [
       "logical_consistency",
       "scoring_mathematics",
