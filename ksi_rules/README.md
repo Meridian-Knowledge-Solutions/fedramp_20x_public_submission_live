@@ -40,6 +40,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-INR-01](KSI-INR-01.md): Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
 - [PASS] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
+- [PASS] [KSI-INR-03](KSI-INR-03.md): Generate after action reports and regularly incorporate lessons learned into operations
 
 ## Monitoring, Logging, and Auditing
 
@@ -88,10 +89,10 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Summary
 
-- **Total KSIs:** 54
-- **Passing:** 56
-- **Failing:** 2
-- **Not Tested:** -4
+- **Total KSIs:** 55
+- **Passing:** 57
+- **Failing:** 1
+- **Not Tested:** -3
 
 ---
-*Generated 2025-09-20 05:19 UTC*
+*Generated 2025-09-20 07:54 UTC*
