@@ -4,9 +4,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Change Management
 
-- [FAIL] [KSI-CMT-01](KSI-CMT-01.md): Log and monitor system modifications
+- [PASS] [KSI-CMT-01](KSI-CMT-01.md): Log and monitor system modifications
 - [PASS] [KSI-CMT-02](KSI-CMT-02.md): Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
-- [FAIL] [KSI-CMT-03](KSI-CMT-03.md): Implement automated testing and validation of changes prior to deployment
+- [PASS] [KSI-CMT-03](KSI-CMT-03.md): Implement automated testing and validation of changes prior to deployment
 - [PASS] [KSI-CMT-04](KSI-CMT-04.md): Have a documented change management procedure
 - [PASS] [KSI-CMT-05](KSI-CMT-05.md): Evaluate the risk and potential impact of any change
 
@@ -24,7 +24,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-CED-01](KSI-CED-01.md): Ensure all employees receive security awareness training
 - [PASS] [KSI-CED-02](KSI-CED-02.md): Require role-specific training for high risk roles, including at least roles with privileged access
-- [FAIL] [KSI-CED-03](KSI-CED-03.md): Require role-specific training for development and engineering staff covering best practices for delivering secure software
+- [PASS] [KSI-CED-03](KSI-CED-03.md): Require role-specific training for development and engineering staff covering best practices for delivering secure software
 
 ## Identity and Access Management
 
@@ -34,26 +34,25 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-IAM-04](KSI-IAM-04.md): Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 - [PASS] [KSI-IAM-05](KSI-IAM-05.md): Apply zero trust design principles
 - [PASS] [KSI-IAM-06](KSI-IAM-06.md): Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
-- [FAIL] [KSI-IAM-07](KSI-IAM-07.md): Securely manage the lifecycle and privileges of all accounts, roles, and groups
+- [PASS] [KSI-IAM-07](KSI-IAM-07.md): Securely manage the lifecycle and privileges of all accounts, roles, and groups
 
 ## Incident Reporting
 
 - [PASS] [KSI-INR-01](KSI-INR-01.md): Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
-- [FAIL] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
-- [FAIL] [KSI-INR-03](KSI-INR-03.md): Generate after action reports and regularly incorporate lessons learned into operations
+- [PASS] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 
 ## Monitoring, Logging, and Auditing
 
-- [FAIL] [KSI-MLA-01](KSI-MLA-01.md): Operate a Security Information and Event Management (SIEM) or similar system(s) for centralized, tamper-resistant logging of events, activities, and changes
+- [PASS] [KSI-MLA-01](KSI-MLA-01.md): Operate a Security Information and Event Management (SIEM) or similar system(s) for centralized, tamper-resistant logging of events, activities, and changes
 - [PASS] [KSI-MLA-02](KSI-MLA-02.md): Regularly review and audit logs
 - [PASS] [KSI-MLA-03](KSI-MLA-03.md): Rapidly detect and remediate or mitigate vulnerabilities
-- [FAIL] [KSI-MLA-05](KSI-MLA-05.md): Perform Infrastructure as Code and configuration evaluation and testing
-- [FAIL] [KSI-MLA-07](KSI-MLA-07.md): Maintain a list of information resources and event types that will be monitored, logged, and audited
-- [FAIL] [KSI-MLA-08](KSI-MLA-08.md): Use a least-privileged, role and attribute-based, and just-in-time access authorization model for access to log data
+- [PASS] [KSI-MLA-05](KSI-MLA-05.md): Perform Infrastructure as Code and configuration evaluation and testing
+- [PASS] [KSI-MLA-07](KSI-MLA-07.md): Maintain a list of information resources and event types that will be monitored, logged, and audited
+- [PASS] [KSI-MLA-08](KSI-MLA-08.md): Use a least-privileged, role and attribute-based, and just-in-time access authorization model for access to log data
 
 ## Policy and Inventory
 
-- [FAIL] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
+- [PASS] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
 - [PASS] [KSI-PIY-02](KSI-PIY-02.md): Establish and maintain organization-wide information security and technology policies
 - [PASS] [KSI-PIY-03](KSI-PIY-03.md): Maintain a vulnerability disclosure program
 - [FAIL] [KSI-PIY-04](KSI-PIY-04.md): Build security considerations into SDLC and align with CISA Secure By Design principles
@@ -63,10 +62,10 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Recovery Planning
 
-- [FAIL] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+- [PASS] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 - [PASS] [KSI-RPL-02](KSI-RPL-02.md): Develop and maintain a recovery plan that aligns with defined recovery objectives
-- [FAIL] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
-- [FAIL] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
+- [PASS] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
+- [PASS] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
 
 ## Service Configuration
 
@@ -85,14 +84,14 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
 - [PASS] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
-- [FAIL] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
+- [PASS] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
 
 ## Summary
 
-- **Total KSIs:** 55
-- **Passing:** 42
-- **Failing:** 16
-- **Not Tested:** -3
+- **Total KSIs:** 54
+- **Passing:** 56
+- **Failing:** 2
+- **Not Tested:** -4
 
 ---
-*Generated 2025-09-20 02:58 UTC*
+*Generated 2025-09-20 05:19 UTC*
