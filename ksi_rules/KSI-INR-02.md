@@ -4,7 +4,7 @@
 
 **Category:** Incident Reporting
 **Status:** FAIL
-**Last Check:** 2025-09-20 01:37
+**Last Check:** 2025-09-20 02:58
 
 **What it validates:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 
@@ -44,4 +44,4 @@
 - FAIL KSI-INR-02 NOT MET (score: 0): Missing - need 2 more EventBridge rules, need 4 more log groups, enable GuardDuty or Security Hub, no automation evidence. Found: No components detected
 
 ---
-*Generated 2025-09-20 01:37 UTC*
+*Generated 2025-09-20 02:58 UTC*

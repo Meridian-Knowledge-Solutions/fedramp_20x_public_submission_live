@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Identity and Access Management
-**Status:** PASS
-**Last Check:** 2025-09-20 01:37
+**Status:** FAIL
+**Last Check:** 2025-09-20 02:58
 
 **What it validates:** Securely manage the lifecycle and privileges of all accounts, roles, and groups
 
@@ -26,11 +26,8 @@
 
 ## Latest Results
 
-PASS Advanced automated account lifecycle management (80%): PASS Service Oriented Architecture
-- PASS Active Lifecycle Management
-- FAIL Privilege Automation
-- PASS Automated Provisioning
-- PASS Regular Access Reviews
+FAIL Insufficient account lifecycle management (0%): WARNING User-heavy architecture: 0 roles vs 0 users
+- INFO No recent role modifications detected
 
 ---
-*Generated 2025-09-20 01:37 UTC*
+*Generated 2025-09-20 02:58 UTC*
