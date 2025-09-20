@@ -24,7 +24,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-CED-01](KSI-CED-01.md): Ensure all employees receive security awareness training
 - [PASS] [KSI-CED-02](KSI-CED-02.md): Require role-specific training for high risk roles, including at least roles with privileged access
-- [PASS] [KSI-CED-03](KSI-CED-03.md): Require role-specific training for development and engineering staff covering best practices for delivering secure software
+- [FAIL] [KSI-CED-03](KSI-CED-03.md): Require role-specific training for development and engineering staff covering best practices for delivering secure software
 
 ## Identity and Access Management
 
@@ -39,7 +39,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Incident Reporting
 
 - [PASS] [KSI-INR-01](KSI-INR-01.md): Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
-- [PASS] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
+- [FAIL] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 - [FAIL] [KSI-INR-03](KSI-INR-03.md): Generate after action reports and regularly incorporate lessons learned into operations
 
 ## Monitoring, Logging, and Auditing
@@ -63,10 +63,10 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Recovery Planning
 
-- [PASS] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+- [FAIL] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 - [PASS] [KSI-RPL-02](KSI-RPL-02.md): Develop and maintain a recovery plan that aligns with defined recovery objectives
-- [PASS] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
-- [PASS] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
+- [FAIL] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
+- [FAIL] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
 
 ## Service Configuration
 
@@ -85,14 +85,14 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
 - [PASS] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
-- [PASS] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
+- [FAIL] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
 
 ## Summary
 
 - **Total KSIs:** 55
-- **Passing:** 56
-- **Failing:** 2
+- **Passing:** 50
+- **Failing:** 8
 - **Not Tested:** -3
 
 ---
-*Generated 2025-09-19 18:41 UTC*
+*Generated 2025-09-20 00:52 UTC*

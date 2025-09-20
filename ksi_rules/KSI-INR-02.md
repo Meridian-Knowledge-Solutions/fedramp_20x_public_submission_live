@@ -3,49 +3,45 @@
 ## Overview
 
 **Category:** Incident Reporting
-**Status:** PASS
-**Last Check:** 2025-09-19 18:41
+**Status:** FAIL
+**Last Check:** 2025-09-20 00:52
 
 **What it validates:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 
-**Why it matters:** Compliance is demonstrated by the 'corrected_incident_automation.py' script, which serves as the primary evidence. The associated CLI commands provide a pure, automated audit of this script's operational effectiveness. They verify that the script is integrated with live AWS data sources (GuardDuty, Security Hub) for incident logging and is executed by scheduling services (EventBridge, Lambda) for periodic pattern analysis, meeting all requirements without manual evidence.
+**Why it matters:** Comprehensive incident tracking via automated infrastructure (EventBridge/CloudWatch) and incident_automation.py script that collects, logs, and analyzes security incidents from GuardDuty, Security Hub, and CloudTrail for pattern identification
 
 ## Validation Method
 
-1. `aws guardduty list-detectors --output json`
-   *Verifies the script's primary data source for real-time threats (GuardDuty) is active.*
+1. `aws events list-rules --output json`
+   *Verify EventBridge rules for incident automation (need 2+ with incident keywords)*
 
-2. `aws guardduty list-findings --detector-id $(aws guardduty list-detectors --query 'DetectorIds[0]' --output text) --finding-criteria '{"Criterion":{"severity":{"Gte":4.0},"updatedAt":{"Gte":$(date -d '90 days ago' +%s)000}}}' --max-results 50 --output json 2>/dev/null || echo '{"FindingIds":[]}'`
-   *Audits the historical threat data available for the script's logging and pattern analysis functions.*
+2. `aws logs describe-log-groups --output json`
+   *Verify CloudWatch log groups for incident logging (need 4+ with security keywords)*
 
-3. `aws securityhub get-findings --filters '{"SeverityLabel":[{"Value":"HIGH","Comparison":"EQUALS"},{"Value":"CRITICAL","Comparison":"EQUALS"}],"CreatedAt":[{"Start":"$(date -d '90 days ago' --iso-8601)","End":"$(date --iso-8601)"}]}' --max-results 30 --output json`
-   *Confirms the script's threat intelligence data source (Security Hub) is providing findings for analysis.*
+3. `aws guardduty list-detectors --output json`
+   *Verify GuardDuty is active as primary threat detection source*
 
-4. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=ConsoleLogin --start-time $(date -d '30 days ago' --iso-8601) --max-items 20 --output json`
-   *Checks the behavioral data source the script uses for pattern-based incident detection (e.g., brute force).*
+4. `aws guardduty list-findings --detector-id $(aws guardduty list-detectors --query 'DetectorIds[0]' --output text 2>/dev/null || echo 'none') --max-results 5 --output json 2>/dev/null || echo '{"FindingIds":[]}'`
+   *Validate GuardDuty is providing incident data for script analysis*
 
-5. `aws events list-rules --output json`
-   *Verifies the scheduling mechanism (EventBridge) used to periodically trigger the incident script.*
+5. `aws securityhub get-findings --max-results 5 --output json 2>/dev/null || echo '{"Findings":[]}'`
+   *Verify Security Hub for pattern analysis capability*
 
-6. `aws lambda list-functions --output json`
-   *Confirms the serverless execution environment (Lambda) for running the incident script's analysis.*
+6. `aws cloudtrail lookup-events --max-items 5 --output json 2>/dev/null || echo '{"Events":[]}'`
+   *Verify CloudTrail behavioral data availability*
 
-7. `aws logs describe-log-groups --output json`
-   *Audits the execution logs, providing a trail of the script's periodic runs and operational history.*
+7. `aws lambda list-functions --query "Functions[?contains(FunctionName, 'incident') || contains(FunctionName, 'inr') || contains(FunctionName, 'security')]" --output json 2>/dev/null || echo '{"Functions":[]}'`
+   *Check if incident_automation.py is deployed as Lambda function*
 
 8. `aws s3api list-buckets --output json`
-   *Verifies a persistent storage location exists for the script to archive its generated reports and incident logs.*
+   *Verify S3 storage for incident reports and evidence*
 
-9. `aws cloudwatch describe-alarms --output json`
-   *Checks for alarms that monitor the script's execution health or alert on high-severity incidents it processes.*
+9. `aws cloudwatch describe-alarms --output json 2>/dev/null || echo '{"MetricAlarms":[]}'`
+   *Check monitoring alarms for incident detection/script health*
 
 ## Latest Results
 
-PASS Solid, script-driven incident management capability verified (52%): PASS Script Data Source Active: 1 GuardDuty detectors provide a live threat feed to the incident script.
-- PASS Script Scheduling Verified: 3 EventBridge rules are in place to trigger the incident script periodically.
-- PASS Script Execution Verified: 2 Lambda functions are configured to run the incident script's logic.
-- PASS Script Audit Trail: 15 CloudWatch log groups capture the script's execution history.
-- PASS Script Artifact Storage: 4 S3 buckets are available to archive the script's generated reports and incident database.
+- FAIL KSI-INR-02 NOT MET (score: 0): Missing - need 2 more EventBridge rules, need 4 more log groups, enable GuardDuty or Security Hub, no automation evidence. Found: No components detected
 
 ---
-*Generated 2025-09-19 18:41 UTC*
+*Generated 2025-09-20 00:52 UTC*
