@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-21 03:39
+**Last Check:** 2025-09-21 08:11
 
 **What it validates:** Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 
@@ -31,9 +31,9 @@ PASS Comprehensive federated MFA enforcement (100%): PASS AWS Identity Center: 1
 - PASS External IdP provisioning: 9/9 users via SCIM
 - PASS Okta identity provider: 9/9 users with Okta IDs
 - PASS Complete federation: 100% of users from external IdP
-- PASS Minimal traditional IAM: 3 users (appropriate for federated architecture)
+- PASS Minimal traditional IAM: 2 users (appropriate for federated architecture)
 - PASS Traditional IAM users: Service accounts with federated MFA coverage upstream
 - PASS Federated MFA enforcement: External IdP (Okta) enforces MFA upstream of AWS
 
 ---
-*Generated 2025-09-21 03:39 UTC*
+*Generated 2025-09-21 08:11 UTC*

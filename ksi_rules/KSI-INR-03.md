@@ -4,7 +4,7 @@
 
 **Category:** Incident Reporting
 **Status:** PASS
-**Last Check:** 2025-09-21 03:39
+**Last Check:** 2025-09-21 08:11
 
 **What it validates:** Generate after action reports and regularly incorporate lessons learned into operations
 
@@ -26,7 +26,9 @@
 
 ## Latest Results
 
-- WARNING KSI-INR-03 CONDITIONALLY PASSED - Infrastructure likely exists but IAM permissions prevent verification
+PASS FULL after-action automation verified (score: 8): PASS Incident analysis: 50 findings available
+- PASS 4 Lambda reporting functions deployed
+- PASS 9 security standard definitions available
 
 ---
-*Generated 2025-09-21 03:39 UTC*
+*Generated 2025-09-21 08:11 UTC*
