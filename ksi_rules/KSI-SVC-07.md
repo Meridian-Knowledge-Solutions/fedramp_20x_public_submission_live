@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-21 03:05
+**Last Check:** 2025-09-21 03:39
 
 **What it validates:** Use a consistent, risk-informed approach for applying security patches
 
@@ -44,16 +44,17 @@
 
 ## Latest Results
 
-PASS Multi-platform patch management capability established (20%): PASS Consistent patch management: 17 patch baselines configured for standardized patching
+PASS Advanced risk-informed patching with controlled deployment and compliance (55%): PASS Consistent patch management: 17 patch baselines configured for standardized patching
 - PASS Automated patch deployment capability: 6/6 instances with SSM agent online (100%)
 - INFO No patch groups configured for risk-based segmentation
 - INFO No maintenance windows for controlled patch deployment
-- INFO No SSM documents for patch automation
+- PASS Patch automation framework: 14/123 documents for automated patching (11%)
 - INFO No Inspector configuration for vulnerability-driven patching
 - INFO No ECR repositories for container image patching
-- INFO No Lambda layers for serverless runtime patching
+- PASS Serverless patch management: 1 Lambda layers for runtime dependency management
 - INFO No Config rules for patch compliance monitoring
-- INFO Single-account deployment (appropriate for pilot/development)
+- PASS Enterprise-wide patch governance: AWS Organizations enables centralized risk-informed patch policies
+- PASS Advanced organization features: SCPs for patch management policy enforcement enabled
 
 ---
-*Generated 2025-09-21 03:05 UTC*
+*Generated 2025-09-21 03:39 UTC*
