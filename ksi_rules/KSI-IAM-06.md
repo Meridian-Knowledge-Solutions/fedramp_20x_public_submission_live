@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-20 22:38
+**Last Check:** 2025-09-21 03:05
 
 **What it validates:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
@@ -44,15 +44,14 @@
 
 ## Latest Results
 
-PASS Enterprise-grade automated response capabilities (91%): PASS Advanced threat detection: GuardDuty enabled (1 detector(s))
-- PASS Centralized security management: Security Hub enabled
-- PASS Automated security triggers: 10 active EventBridge rules
-- PASS Modern identity automation: Identity Center configured (1 instance(s))
-- PASS Built-in automated identity controls: Session management, conditional access, risk-based authentication
+WARNING Minimal automated response (28%): FAIL No GuardDuty detectors found (critical for threat detection)
+- WARNING Security Hub not active (recommended for response coordination)
+- FAIL No EventBridge rules found for automated triggers
+- WARNING No Identity Center found (missing modern automated identity controls)
 - PASS Enterprise governance: Config rules managed centrally (multi-account architecture)
-- PASS Automated response functions: 5 security automation functions
+- WARNING No Lambda functions found for automated response
 - PASS Enterprise governance: CloudWatch alarms managed centrally (multi-account architecture)
 - INFO Multi-account architecture detected (governance centralized)
 
 ---
-*Generated 2025-09-20 22:38 UTC*
+*Generated 2025-09-21 03:05 UTC*

@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Policy and Inventory
-**Status:** PASS
-**Last Check:** 2025-09-20 22:38
+**Status:** FAIL
+**Last Check:** 2025-09-21 03:05
 
 **What it validates:** Establish and maintain complete inventories of all information resources
 
@@ -41,15 +41,7 @@
 
 ## Latest Results
 
-PASS Enterprise-grade comprehensive inventory with automated maintenance (100%): PASS Compute Resources
-- PASS Database Resources
-- PASS Serverless Resources
-- PASS Storage Resources
-- PASS Network Resources
-- PASS Dns Resources
-- PASS Infrastructure Code
-- PASS Automated Maintenance
-- PASS Maintenance Mechanism
+- FAIL Insufficient comprehensive inventory of information resources (0%): No comprehensive resource discovery detected
 
 ---
-*Generated 2025-09-20 22:38 UTC*
+*Generated 2025-09-21 03:05 UTC*

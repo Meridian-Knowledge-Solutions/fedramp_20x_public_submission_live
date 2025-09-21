@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Identity and Access Management
-**Status:** PASS
-**Last Check:** 2025-09-20 22:38
+**Status:** FAIL
+**Last Check:** 2025-09-21 03:05
 
 **What it validates:** Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 
@@ -29,10 +29,9 @@
 
 ## Latest Results
 
-PASS Excellent authentication security (passwordless methods): PASS 1 SAML providers configured (passwordless authentication)
-- PASS Using temporary credentials (passwordless method)
-- INFO No traditional MFA devices (not needed with SAML authentication)
-- PASS No password policy needed (passwordless authentication in use)
+FAIL Insufficient authentication security: INFO No SAML providers found
+- FAIL No MFA devices configured
+- FAIL No password policy configured (required when using passwords)
 
 ---
-*Generated 2025-09-20 22:38 UTC*
+*Generated 2025-09-21 03:05 UTC*

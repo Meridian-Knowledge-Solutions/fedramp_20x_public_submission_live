@@ -3,37 +3,33 @@
 ## Overview
 
 **Category:** Third-Party Information Resources
-**Status:** PASS
-**Last Check:** 2025-09-20 22:38
+**Status:** FAIL
+**Last Check:** 2025-09-21 03:05
 
 **What it validates:** Identify all third-party information resources
 
-**Why it matters:** AWS API discovery of external integrations, identity providers, and cross-account relationships provides comprehensive third-party resource identification
+**Why it matters:** Automated discovery via compliance broker logs (dynamic) and Parameter Store whitelist (static)
 
 ## Validation Method
 
-1. `aws iam list-saml-providers --output json`
-   *SAML identity providers indicating external authentication integrations*
+1. `aws lambda list-functions --query 'Functions[?contains(FunctionName, `broker`) || contains(FunctionName, `compliance`)].FunctionName' --output json`
+   *Verify compliance broker is deployed*
 
-2. `aws iam list-open-id-connect-providers --output json`
-   *OIDC providers for modern OAuth2/OpenID Connect integrations*
+2. `aws logs describe-log-groups --log-group-name-prefix '/aws/lambda/' --query 'logGroups[?contains(logGroupName, `broker`)]' --output json`
+   *Confirm broker logging is active*
 
-3. `aws organizations list-accounts --output json`
-   *AWS organization accounts to identify multi-account third-party relationships*
+3. `aws logs start-query --log-group-name '/aws/lambda/lms-compliance-broker' --start-time $(date -d '30 days ago' +%s) --end-time $(date +%s) --query-string 'fields destination_url | parse destination_url /https?:\/\/(?<host>[^\/]+)/ | stats count() by host' --output json`
+   *Query unique third-party hosts from broker logs (dynamic evidence)*
 
-4. `aws iam list-roles --query 'Roles[?contains(AssumeRolePolicyDocument, `sts:AssumeRole`)]' --output json`
-   *Cross-account IAM roles indicating external account trust relationships*
+4. `aws logs get-query-results --query-id $(aws logs start-query --log-group-name '/aws/lambda/lms-compliance-broker' --start-time $(date -d '30 days ago' +%s) --end-time $(date +%s) --query-string 'fields destination_url | parse destination_url /https?:\/\/(?<host>[^\/]+)/ | stats count() by host' --output text --query 'queryId') --output json`
+   *Retrieve third-party hosts from broker logs*
 
-5. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=AssumeRole --start-time 2024-08-01 --end-time 2024-09-01 --max-items 20 --output json`
-   *Recent cross-account access events to identify active third-party integrations*
-
-6. `aws apigateway get-rest-apis --output json`
-   *API Gateway endpoints that may expose services to third parties*
+5. `aws ssm get-parameter --name "/lms-compliance/policies" --output json`
+   *Retrieve the static third-party whitelist from Parameter Store (static evidence)*
 
 ## Latest Results
 
-PASS Comprehensive third-party identification with quality evidence: INFO Single-account environment: Third-party integrations may use API keys or service endpoints
-- PASS High-quality third-party evidence including SBOM: sbom_including_elastic.json, fedramp_moderate_vendor_list.xlsx, Elasticsearch Inc._06.04.2024_Self_Attestation.pdf
+- FAIL Compliance broker not configured for third-party discovery
 
 ---
-*Generated 2025-09-20 22:38 UTC*
+*Generated 2025-09-21 03:05 UTC*

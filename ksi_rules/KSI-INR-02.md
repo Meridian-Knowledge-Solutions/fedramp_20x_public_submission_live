@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Incident Reporting
-**Status:** PASS
-**Last Check:** 2025-09-20 22:38
+**Status:** FAIL
+**Last Check:** 2025-09-21 03:05
 
 **What it validates:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 
@@ -38,12 +38,14 @@
 
 ## Latest Results
 
-PASS Partial incident tracking infrastructure (score: 8): WARNING Permission denied for events
-- PASS 5 CloudWatch groups with >= 365-day retention
+FAIL Insufficient incident tracking (score: 0). Missing: need 2 more EventBridge rules with targets, need 4 more log groups with required retention. Found: WARNING Permission denied for events
+- WARNING Permission denied for events
+- WARNING Permission denied for logs
 - WARNING Permission denied for guardduty
-- PASS Security Hub active
-- PASS 1 CloudTrail trail(s)
-- PASS 2 automation Lambda(s)
+- WARNING Permission denied for guardduty
+- WARNING Permission denied for securityhub
+- WARNING Permission denied for cloudtrail
+- WARNING Permission denied for lambda
 
 ---
-*Generated 2025-09-20 22:38 UTC*
+*Generated 2025-09-21 03:05 UTC*

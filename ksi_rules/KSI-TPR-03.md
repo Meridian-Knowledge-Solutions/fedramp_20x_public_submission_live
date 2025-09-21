@@ -3,20 +3,24 @@
 ## Overview
 
 **Category:** Third-Party Information Resources
-**Status:** PASS
-**Last Check:** 2025-09-20 22:38
+**Status:** FAIL
+**Last Check:** 2025-09-21 03:05
 
 **What it validates:** Identify and prioritize mitigation of potential supply chain risks
 
-**Why it matters:** Manual evidence required - supply chain risk identification, risk prioritization matrices, and mitigation strategy documentation
+**Why it matters:** Automated validation of risk identification and mitigation via the compliance broker's tiered policy configuration in Parameter Store.
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-TPR-03/ for supply_chain_risk_register.xlsx, risk_prioritization_matrix.pdf, mitigation_strategies.pdf, and vendor_risk_assessments.pdf
+1. `aws ssm get-parameter --name "/lms-compliance/policies" --output json`
+   *Verify the codified risk management plan (the broker's policies)*
+
+2. `aws logs get-query-results --query-id $(aws logs start-query --log-group-name '/aws/lambda/lms-compliance-broker' --start-time $(date -d '30 days ago' +%s) --end-time $(date +%s) --query-string 'fields destination_url | parse destination_url /https?:\/\/(?<host>[^\/]+)/ | stats count() by host' --output text --query 'queryId') --output json`
+   *Identify third-party services via dynamic logs*
 
 ## Latest Results
 
-- WARNING Basic supply chain risk assessment (expand mitigation planning): PASS Core risk assessment: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
+- FAIL No third-party services or mitigation policies identified via the compliance broker.
 
 ---
-*Generated 2025-09-20 22:38 UTC*
+*Generated 2025-09-21 03:05 UTC*

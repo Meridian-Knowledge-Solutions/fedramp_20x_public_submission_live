@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** PASS
-**Last Check:** 2025-09-20 22:38
+**Status:** FAIL
+**Last Check:** 2025-09-21 03:05
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -32,8 +32,7 @@
 
 ## Latest Results
 
-PASS Recovery capability established with basic objectives (38%): PASS Database backup capability: 1 RDS instances with 7-day retention
-- PASS Comprehensive backup infrastructure: 2 backup plans for recovery objectives
+- FAIL Insufficient technical recovery capability for defined RTO/RPO objectives (0%): No recovery infrastructure or objectives detected
 
 ---
-*Generated 2025-09-20 22:38 UTC*
+*Generated 2025-09-21 03:05 UTC*
