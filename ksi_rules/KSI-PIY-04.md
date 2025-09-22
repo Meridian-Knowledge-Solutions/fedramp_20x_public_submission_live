@@ -1,14 +1,14 @@
-# KSI-PIY-04: Build security considerations into SDLC and align with CISA Secure By Design principles
+# KSI-PIY-04: Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles
 
 ## Overview
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-09-22 14:25
+**Last Check:** 2025-09-22 15:57
 
-**What it validates:** Build security considerations into SDLC and align with CISA Secure By Design principles
+**What it validates:** Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles
 
-**Why it matters:** Validates secure development lifecycle through CodeBuild security testing, pipeline security gates, and alignment with CISA Secure By Design principles
+**Why it matters:** Validates secure development lifecycle through CodeBuild security testing, CodePipeline security gates, Lambda security automation, and enterprise development governance without container dependencies
 
 ## Validation Method
 
@@ -18,14 +18,17 @@
 2. `aws codepipeline list-pipelines --output json`
    *Validate CodePipeline for security gates and SDLC security integration*
 
-3. `aws ecr describe-repositories --output json`
-   *Check ECR repositories for container security scanning in development workflow*
+3. `aws lambda list-functions --output json`
+   *Check Lambda functions for security automation and SDLC integration*
 
-4. **Manual Review:** Check evidence_v2/KSI-PIY-04/ for secure_sdlc_procedures.pdf, cisa_secure_by_design_alignment.pdf, security_testing_integration.pdf, and development_security_standards.pdf
+4. `aws organizations describe-organization --output json`
+   *Validate enterprise-wide development governance and security standards*
 
 ## Latest Results
 
-- PASS Good SDLC security integration (25%): PASS Security build integration: 2 CodeBuild projects for security testing
+PASS Advanced SDLC security automation (75%): PASS Security build integration: 3 security-focused CodeBuild projects
+- PASS Security automation functions: 1 Lambda functions for SDLC security
+- PASS Enterprise development governance: Organization-wide SDLC security standards available
 
 ---
-*Generated 2025-09-22 14:25 UTC*
+*Generated 2025-09-22 15:57 UTC*

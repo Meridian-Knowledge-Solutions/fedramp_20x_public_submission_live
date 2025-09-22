@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-22 14:25
+**Last Check:** 2025-09-22 15:57
 
 **What it validates:** Enforce appropriately secure authentication methods for non-user accounts and services
 
@@ -26,10 +26,10 @@
 
 ## Latest Results
 
-WARNING Basic service authentication security (needs enhancement): PASS 78 IAM roles available (35 service-oriented)
+WARNING Basic service authentication security (needs enhancement): PASS 79 IAM roles available (37 service-oriented)
 - WARNING 1 potential service users found (should use roles instead)
 - PASS No access key information accessible
 - INFO No EC2 instance profile information available
 
 ---
-*Generated 2025-09-22 14:25 UTC*
+*Generated 2025-09-22 15:57 UTC*
