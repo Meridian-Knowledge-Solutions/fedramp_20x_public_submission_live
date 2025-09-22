@@ -7,7 +7,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009555",
+    "timestamp": "2025-09-22T14:25:49.262294",
     "validation_method": "multi-command"
   },
   {
@@ -18,7 +18,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009565",
+    "timestamp": "2025-09-22T14:25:49.262303",
     "validation_method": "multi-command"
   },
   {
@@ -29,40 +29,40 @@
     "cli_command": "2 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009569",
+    "timestamp": "2025-09-22T14:25:49.262306",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-CMT-01",
     "validation_id": "KSI-CMT-01",
     "assertion": true,
-    "assertion_reason": "\u2705 Enterprise-grade system modification logging and monitoring with automated response (90%): \u2705 System modification logging configured: 1 CloudTrail trails ready for activation; \u2705 Global service modification tracking: 1 trails monitoring global AWS services; \u2705 Multi-region modification coverage: 1 trails across all regions; \u2705 Tamper-resistant modification logs: 1 encrypted CloudTrail trails; \u2139\ufe0f AWS Config not configured (acceptable for low-impact pilot environments); \u2705 Comprehensive event logging: 23 log groups (12 application, 2 system, 9 AWS services); \u2705 Real-time modification detection: 3 EventBridge rules for change monitoring; \u2139\ufe0f No CloudWatch alarms for modification monitoring; \u2705 Modification notification infrastructure: 8 SNS topics for stakeholder alerts; \u2705 Automated modification response: 2 Lambda functions for change automation; \u2705 Instance-level modification tracking: 6 SSM-managed instances (6 online); \u2705 Enterprise-wide modification governance: AWS Organizations enables centralized change tracking; \u2705 Advanced organization features: SCPs for modification policy enforcement",
+    "assertion_reason": "\u2705 Enterprise-grade system modification logging and monitoring with automated response (90%): \u2705 System modification logging configured: 1 CloudTrail trails ready for activation; \u2705 Global service modification tracking: 1 trails monitoring global AWS services; \u2705 Multi-region modification coverage: 1 trails across all regions; \u2705 Tamper-resistant modification logs: 1 encrypted CloudTrail trails; \u2139\ufe0f AWS Config not configured (acceptable for low-impact pilot environments); \u2705 Comprehensive event logging: 25 log groups (12 application, 2 system, 11 AWS services); \u2705 Real-time modification detection: 3 EventBridge rules for change monitoring; \u2139\ufe0f No CloudWatch alarms for modification monitoring; \u2705 Modification notification infrastructure: 8 SNS topics for stakeholder alerts; \u2705 Automated modification response: 2 Lambda functions for change automation; \u2705 Instance-level modification tracking: 6 SSM-managed instances (6 online); \u2705 Enterprise-wide modification governance: AWS Organizations enables centralized change tracking; \u2705 Advanced organization features: SCPs for modification policy enforcement",
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009571",
+    "timestamp": "2025-09-22T14:25:49.262309",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-CMT-02",
     "validation_id": "KSI-CMT-02",
     "assertion": true,
-    "assertion_reason": "\u2705 Production-ready immutable deployment with Terraform Infrastructure as Code (75%): \u2705 Immutable infrastructure foundation: 10/10 successful CloudFormation deployments (100%); \u2705 External Terraform Infrastructure as Code: 8 managed files documented; \u2705 Immutable deployment method: Terraform Infrastructure as Code; \u2705 Automated immutable deployment: GitHub Actions CI/CD integration; \u2705 Infrastructure as Code validation: Automated deployment pipeline; \u2705 Serverless-first immutable architecture: No EC2 instances by design; \u2705 External Terraform management: Infrastructure as Code via external automation; \u2705 Version-controlled immutable deployments: Infrastructure changes via Git; \u2705 Serverless-first immutable architecture: 12 Lambda functions (no EC2 instances expected); \ud83c\udfaf External Infrastructure as Code excellence: Advanced immutable deployment automation; \u2705 Immutable serverless functions: 12 Lambda functions (inherently immutable); \u2705 Infrastructure as Code configuration: Terraform-managed configuration patterns detected; \u2139\ufe0f No load balancer target groups for blue/green deployment patterns; \u2705 Configuration drift detection: CloudFormation enables immutable infrastructure drift monitoring; \u2139\ufe0f No Config rules for immutable deployment compliance monitoring; \u2705 Enterprise-wide immutable deployment governance: AWS Organizations enables centralized deployment policies; \u2705 Advanced organization features: SCPs for immutable deployment policy enforcement enabled",
+    "assertion_reason": "\u2705 Production-ready immutable deployment with Terraform Infrastructure as Code (75%): \u2705 Immutable infrastructure foundation: 10/10 successful CloudFormation deployments (100%); \u2705 External Terraform Infrastructure as Code: 9 managed files documented; \u2705 Immutable deployment method: Terraform Infrastructure as Code; \u2705 Automated immutable deployment: GitHub Actions CI/CD integration; \u2705 Infrastructure as Code validation: Automated deployment pipeline; \u2705 Serverless-first immutable architecture: No EC2 instances by design; \u2705 External Terraform management: Infrastructure as Code via external automation; \u2705 Version-controlled immutable deployments: Infrastructure changes via Git; \u2705 Serverless-first immutable architecture: 12 Lambda functions (no EC2 instances expected); \ud83c\udfaf External Infrastructure as Code excellence: Advanced immutable deployment automation; \u2705 Immutable serverless functions: 12 Lambda functions (inherently immutable); \u2705 Infrastructure as Code configuration: Terraform-managed configuration patterns detected; \u2139\ufe0f No load balancer target groups for blue/green deployment patterns; \u2705 Configuration drift detection: CloudFormation enables immutable infrastructure drift monitoring; \u2139\ufe0f No Config rules for immutable deployment compliance monitoring; \u2705 Enterprise-wide immutable deployment governance: AWS Organizations enables centralized deployment policies; \u2705 Advanced organization features: SCPs for immutable deployment policy enforcement enabled",
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009574",
+    "timestamp": "2025-09-22T14:25:49.262312",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-CMT-03",
     "validation_id": "KSI-CMT-03",
     "assertion": true,
-    "assertion_reason": "\u26a0\ufe0f Basic automated testing - expand coverage and integration (25%): \u2705 Custom testing automation: 1 testing functions; \u2705 Infrastructure validation: CloudFormation template testing capability; \u2705 Enterprise testing governance: Organization-wide testing standards",
+    "assertion_reason": "\u2705 Automated testing infrastructure established (33%): \u2705 Build automation: 2 CodeBuild projects; \u2705 Custom testing automation: 1 testing functions; \u2705 Infrastructure validation: CloudFormation template testing capability; \u2705 Enterprise testing governance: Organization-wide testing standards",
     "cli_command": "13 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009576",
+    "timestamp": "2025-09-22T14:25:49.262314",
     "validation_method": "multi-command"
   },
   {
@@ -73,7 +73,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009579",
+    "timestamp": "2025-09-22T14:25:49.262316",
     "validation_method": "multi-command"
   },
   {
@@ -84,7 +84,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009582",
+    "timestamp": "2025-09-22T14:25:49.262319",
     "validation_method": "multi-command"
   },
   {
@@ -95,7 +95,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009584",
+    "timestamp": "2025-09-22T14:25:49.262321",
     "validation_method": "multi-command"
   },
   {
@@ -106,7 +106,7 @@
     "cli_command": "11 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009590",
+    "timestamp": "2025-09-22T14:25:49.262328",
     "validation_method": "multi-command"
   },
   {
@@ -117,7 +117,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009592",
+    "timestamp": "2025-09-22T14:25:49.262331",
     "validation_method": "multi-command"
   },
   {
@@ -128,7 +128,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009595",
+    "timestamp": "2025-09-22T14:25:49.262333",
     "validation_method": "multi-command"
   },
   {
@@ -139,7 +139,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009597",
+    "timestamp": "2025-09-22T14:25:49.262335",
     "validation_method": "multi-command"
   },
   {
@@ -150,18 +150,18 @@
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009600",
+    "timestamp": "2025-09-22T14:25:49.262338",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-CNA-07",
     "validation_id": "KSI-CNA-07",
     "assertion": true,
-    "assertion_reason": "\u2705 Good AWS best practices foundation (58%): \u2705 CloudTrail excellently configured: 'meridianks-Management-events' ready for activation (cost-optimized for pilot); \u2705 Multi-region audit coverage: CloudTrail spans all AWS regions; \u2705 Log integrity protection: CloudTrail log file validation enabled; \u2705 Encrypted audit logs: CloudTrail using KMS encryption; \u2705 Global service monitoring: CloudTrail capturing global AWS events; \u2705 Real-time log analysis: CloudTrail integrated with CloudWatch Logs; \u2705 Enterprise governance: Organization-wide CloudTrail; \u2705 IAM best practices: 77 roles vs 3 users (service-oriented architecture); \u2705 Managed services foundation: 4 S3 buckets (consider adding compute layer); \u2705 Storage optimization: 4 S3 buckets (cost-effective storage); \u2705 Monitoring foundation ready: CloudWatch available (alarms optional for pilot environments); \u2705 Compliance service available: AWS Config ready for rule deployment (optional for pilot); \u2705 Enterprise governance: AWS Organizations with centralized management",
+    "assertion_reason": "\u2705 Good AWS best practices foundation (58%): \u2705 CloudTrail excellently configured: 'meridianks-Management-events' ready for activation (cost-optimized for pilot); \u2705 Multi-region audit coverage: CloudTrail spans all AWS regions; \u2705 Log integrity protection: CloudTrail log file validation enabled; \u2705 Encrypted audit logs: CloudTrail using KMS encryption; \u2705 Global service monitoring: CloudTrail capturing global AWS events; \u2705 Real-time log analysis: CloudTrail integrated with CloudWatch Logs; \u2705 Enterprise governance: Organization-wide CloudTrail; \u2705 IAM best practices: 78 roles vs 3 users (service-oriented architecture); \u2705 Managed services foundation: 4 S3 buckets (consider adding compute layer); \u2705 Storage optimization: 4 S3 buckets (cost-effective storage); \u2705 Monitoring foundation ready: CloudWatch available (alarms optional for pilot environments); \u2705 Compliance service available: AWS Config ready for rule deployment (optional for pilot); \u2705 Enterprise governance: AWS Organizations with centralized management",
     "cli_command": "12 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009602",
+    "timestamp": "2025-09-22T14:25:49.262340",
     "validation_method": "multi-command"
   },
   {
@@ -172,7 +172,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009605",
+    "timestamp": "2025-09-22T14:25:49.262343",
     "validation_method": "multi-command"
   },
   {
@@ -183,29 +183,29 @@
     "cli_command": "5 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009607",
+    "timestamp": "2025-09-22T14:25:49.262345",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-IAM-03",
     "validation_id": "KSI-IAM-03",
     "assertion": true,
-    "assertion_reason": "\u26a0\ufe0f Basic service authentication security (needs enhancement): \u2705 77 IAM roles available (35 service-oriented); \u26a0\ufe0f 1 potential service users found (should use roles instead); \u2705 No access key information accessible; \u2139\ufe0f No EC2 instance profile information available",
+    "assertion_reason": "\u26a0\ufe0f Basic service authentication security (needs enhancement): \u2705 78 IAM roles available (35 service-oriented); \u26a0\ufe0f 1 potential service users found (should use roles instead); \u2705 No access key information accessible; \u2139\ufe0f No EC2 instance profile information available",
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009610",
+    "timestamp": "2025-09-22T14:25:49.262347",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-IAM-04",
     "validation_id": "KSI-IAM-04",
     "assertion": true,
-    "assertion_reason": "\u2705 Excellent modern authorization model (95%): \u2705 IAM Identity Center configured: 1 active instance(s); \u2705 Permission sets deployed: 2 sets (modern role-based access); \u2705 Modern authorization model: Permission sets provide role-based, attribute-based, and just-in-time access; \u2705 Active permission sets: AdministratorAccess, ReadOnlyAccess; \u2705 Role-based access pattern: 51 user-oriented roles vs 3 users (26 service roles); \u2705 Controlled user count: 3 users (excellent for least privilege); \u2705 Controlled policy count: 9 custom policies (good least privilege); \u2705 Role-based session: Using temporary credentials (just-in-time access)",
+    "assertion_reason": "\u2705 Excellent modern authorization model (95%): \u2705 IAM Identity Center configured: 1 active instance(s); \u2705 Permission sets deployed: 2 sets (modern role-based access); \u2705 Modern authorization model: Permission sets provide role-based, attribute-based, and just-in-time access; \u2705 Active permission sets: AdministratorAccess, ReadOnlyAccess; \u2705 Role-based access pattern: 52 user-oriented roles vs 3 users (26 service roles); \u2705 Controlled user count: 3 users (excellent for least privilege); \u2705 Controlled policy count: 9 custom policies (good least privilege); \u2705 Role-based session: Using temporary credentials (just-in-time access)",
     "cli_command": "6 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009612",
+    "timestamp": "2025-09-22T14:25:49.262350",
     "validation_method": "multi-command"
   },
   {
@@ -216,7 +216,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009615",
+    "timestamp": "2025-09-22T14:25:49.262353",
     "validation_method": "multi-command"
   },
   {
@@ -227,7 +227,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009617",
+    "timestamp": "2025-09-22T14:25:49.262355",
     "validation_method": "multi-command"
   },
   {
@@ -238,7 +238,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009619",
+    "timestamp": "2025-09-22T14:25:49.262357",
     "validation_method": "multi-command"
   },
   {
@@ -249,7 +249,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009622",
+    "timestamp": "2025-09-22T14:25:49.262359",
     "validation_method": "multi-command"
   },
   {
@@ -260,7 +260,7 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009625",
+    "timestamp": "2025-09-22T14:25:49.262362",
     "validation_method": "multi-command"
   },
   {
@@ -271,40 +271,40 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009627",
+    "timestamp": "2025-09-22T14:25:49.262364",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-MLA-01",
     "validation_id": "KSI-MLA-01",
     "assertion": true,
-    "assertion_reason": "\u2705 Production-ready SIEM with advanced monitoring capabilities (75%): \u2705 CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant); \u2705 Real-time log analysis: CloudTrail integrated with CloudWatch Logs; \u2705 Centralized log collection: 23 log groups (20 AWS services, 3 applications); \u26a0\ufe0f Partial retention management: 14/23 log groups with retention policies; \u2705 Compliance-grade retention: 9 log groups with long-term retention (365+ days); \u2705 Cryptographic infrastructure: 15 KMS keys available for log protection; \u2139\ufe0f No CloudWatch alarms found for automated log analysis; \u2705 Advanced threat detection: 20 Security Hub findings (20 active); \u2139\ufe0f No Config delivery channels found for compliance log delivery; \u2705 Log archival capability: 1 S3 buckets for long-term log storage; \u2705 Enterprise-wide logging: AWS Organizations enables centralized multi-account SIEM; \u2705 Multi-region audit coverage: 1 trails across all regions; \u2705 Global service monitoring: 1 trails capturing global AWS events; \u2705 Enterprise-wide CloudTrail: Organization-wide audit coverage",
+    "assertion_reason": "\u2705 Production-ready SIEM with advanced monitoring capabilities (75%): \u2705 CloudTrail foundation: 1 trails (0 active, 1 tamper-resistant); \u2705 Real-time log analysis: CloudTrail integrated with CloudWatch Logs; \u2705 Centralized log collection: 25 log groups (22 AWS services, 3 applications); \u26a0\ufe0f Partial retention management: 14/25 log groups with retention policies; \u2705 Compliance-grade retention: 9 log groups with long-term retention (365+ days); \u2705 Cryptographic infrastructure: 15 KMS keys available for log protection; \u2139\ufe0f No CloudWatch alarms found for automated log analysis; \u2705 Advanced threat detection: 20 Security Hub findings (16 active); \u2139\ufe0f No Config delivery channels found for compliance log delivery; \u2705 Log archival capability: 1 S3 buckets for long-term log storage; \u2705 Enterprise-wide logging: AWS Organizations enables centralized multi-account SIEM; \u2705 Multi-region audit coverage: 1 trails across all regions; \u2705 Global service monitoring: 1 trails capturing global AWS events; \u2705 Enterprise-wide CloudTrail: Organization-wide audit coverage",
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009630",
+    "timestamp": "2025-09-22T14:25:49.262367",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-MLA-02",
     "validation_id": "KSI-MLA-02",
     "assertion": true,
-    "assertion_reason": "\u2705 Production-ready log review with good automation (61%): \u2705 Log review notifications: 8 SNS topics for alert delivery; \u2705 Manual review capability: 23 log groups available for analysis; \u2705 Advanced log correlation: 1 Security Hub insights for intelligent analysis; \u2705 Audit event analysis: 10 recent CloudTrail events available for review; \u2705 Custom log processing: 1 Lambda functions for advanced log analysis; \u26a0\ufe0f Partial retention management: 14/23 log groups with retention policies; \u2705 Long-term audit capability: 9 log groups with compliance-grade retention (365+ days); \u2705 Enterprise log aggregation: AWS Organizations enables centralized multi-account log review",
+    "assertion_reason": "\u2705 Production-ready log review with good automation (61%): \u2705 Log review notifications: 8 SNS topics for alert delivery; \u2705 Manual review capability: 25 log groups available for analysis; \u2705 Advanced log correlation: 1 Security Hub insights for intelligent analysis; \u2705 Audit event analysis: 10 recent CloudTrail events available for review; \u2705 Custom log processing: 1 Lambda functions for advanced log analysis; \u26a0\ufe0f Partial retention management: 14/25 log groups with retention policies; \u2705 Long-term audit capability: 9 log groups with compliance-grade retention (365+ days); \u2705 Enterprise log aggregation: AWS Organizations enables centralized multi-account log review",
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009632",
+    "timestamp": "2025-09-22T14:25:49.262370",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-MLA-03",
     "validation_id": "KSI-MLA-03",
     "assertion": true,
-    "assertion_reason": "\u2705 Advanced vulnerability management with automated remediation (67%): \u274c Security Hub not configured for vulnerability detection; \u2705 Automated vulnerability scanning: Inspector EC2, ECR scanning enabled; \u2705 Multi-service vulnerability coverage: Both EC2 and ECR scanning for comprehensive assessment; \u2705 Automated patch management: 17 patch baselines (15 default, 2 custom); \u2705 Tailored remediation: 2 custom patch baselines for targeted vulnerability response; \u2705 Security automation: 2 Lambda functions for security operations; \u2705 Active threat analysis: 50 active security findings (0 critical, 29 high); \u2705 Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection",
+    "assertion_reason": "\u2705 Advanced vulnerability management with automated remediation (67%): \u274c Security Hub not configured for vulnerability detection; \u2705 Automated vulnerability scanning: Inspector EC2, ECR scanning enabled; \u2705 Multi-service vulnerability coverage: Both EC2 and ECR scanning for comprehensive assessment; \u2705 Automated patch management: 17 patch baselines (15 default, 2 custom); \u2705 Tailored remediation: 2 custom patch baselines for targeted vulnerability response; \u2705 Security automation: 2 Lambda functions for security operations; \u2705 Active threat analysis: 50 active security findings (0 critical, 31 high); \u2705 Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection",
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009634",
+    "timestamp": "2025-09-22T14:25:49.262372",
     "validation_method": "multi-command"
   },
   {
@@ -315,18 +315,18 @@
     "cli_command": "8 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009637",
+    "timestamp": "2025-09-22T14:25:49.262378",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-MLA-05",
     "validation_id": "KSI-MLA-05",
     "assertion": true,
-    "assertion_reason": "\u2705 Enterprise-grade Infrastructure as Code evaluation and testing (100%): \u2705 Enterprise IaC governance: 5 Control Tower baseline stacks; \u2705 Multi-account orchestration: 1 execution role stacks; \u2705 Automated configuration deployment: 4 Quick Setup stacks; \u2705 Infrastructure as Code deployment: 10/10 successful CloudFormation stacks; \u2705 Centralized configuration management: 7 SSM parameters (4 encrypted); \u2705 Configuration governance: 1 compliance parameters; \u2705 Enterprise compliance governance: Control Tower manages Config rules centrally; \u2705 Infrastructure drift monitoring: 10 stacks tracked; \u2705 Secure IAM deployment: 10 stacks with proper capabilities; \u2139\ufe0f No CI/CD automation (acceptable for Control Tower managed infrastructure); \u2705 Deployment audit trail: 3 tracked CloudFormation events; \u2705 Resource governance: 4 tagged CloudFormation resources; \u2705 Enterprise multi-account governance: AWS Organizations with ALL features enabled; \u2705 Organizational infrastructure: Centralized account management",
+    "assertion_reason": "\u2705 Enterprise-grade Infrastructure as Code evaluation and testing (100%): \u2705 Enterprise IaC governance: 5 Control Tower baseline stacks; \u2705 Multi-account orchestration: 1 execution role stacks; \u2705 Automated configuration deployment: 4 Quick Setup stacks; \u2705 Infrastructure as Code deployment: 10/10 successful CloudFormation stacks; \u2705 Centralized configuration management: 7 SSM parameters (4 encrypted); \u2705 Configuration governance: 1 compliance parameters; \u2705 Enterprise compliance governance: Control Tower manages Config rules centrally; \u2705 Infrastructure drift monitoring: 10 stacks tracked; \u2705 Secure IAM deployment: 10 stacks with proper capabilities; \u2705 Automated IaC testing: 2 CodeBuild projects; \u2705 Deployment audit trail: 3 tracked CloudFormation events; \u2705 Resource governance: 4 tagged CloudFormation resources; \u2705 Enterprise multi-account governance: AWS Organizations with ALL features enabled; \u2705 Organizational infrastructure: Centralized account management",
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009642",
+    "timestamp": "2025-09-22T14:25:49.262381",
     "validation_method": "multi-command"
   },
   {
@@ -337,18 +337,18 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009644",
+    "timestamp": "2025-09-22T14:25:49.262383",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-MLA-07",
     "validation_id": "KSI-MLA-07",
     "assertion": true,
-    "assertion_reason": "\u26a0\ufe0f Basic automated monitoring inventory - expand automation (50%): \u2705 Comprehensive log infrastructure: 23 log groups; \u2705 Comprehensive audit coverage: 1 trails with multi-region",
+    "assertion_reason": "\u26a0\ufe0f Basic automated monitoring inventory - expand automation (50%): \u2705 Comprehensive log infrastructure: 25 log groups; \u2705 Comprehensive audit coverage: 1 trails with multi-region",
     "cli_command": "5 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009647",
+    "timestamp": "2025-09-22T14:25:49.262385",
     "validation_method": "multi-command"
   },
   {
@@ -359,7 +359,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009649",
+    "timestamp": "2025-09-22T14:25:49.262388",
     "validation_method": "multi-command"
   },
   {
@@ -370,7 +370,7 @@
     "cli_command": "9 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009652",
+    "timestamp": "2025-09-22T14:25:49.262390",
     "validation_method": "multi-command"
   },
   {
@@ -381,7 +381,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009654",
+    "timestamp": "2025-09-22T14:25:49.262392",
     "validation_method": "multi-command"
   },
   {
@@ -392,18 +392,18 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009677",
+    "timestamp": "2025-09-22T14:25:49.262394",
     "validation_method": "multi-command"
   },
   {
     "ksi_id": "KSI-PIY-04",
     "validation_id": "KSI-PIY-04",
-    "assertion": false,
-    "assertion_reason": "\u274c No SDLC security integration infrastructure: No development security automation detected",
+    "assertion": true,
+    "assertion_reason": "\u2705 Good SDLC security integration (25%): \u2705 Security build integration: 2 CodeBuild projects for security testing",
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009680",
+    "timestamp": "2025-09-22T14:25:49.262397",
     "validation_method": "multi-command"
   },
   {
@@ -414,7 +414,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009683",
+    "timestamp": "2025-09-22T14:25:49.262399",
     "validation_method": "multi-command"
   },
   {
@@ -425,7 +425,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009685",
+    "timestamp": "2025-09-22T14:25:49.262401",
     "validation_method": "multi-command"
   },
   {
@@ -436,7 +436,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009687",
+    "timestamp": "2025-09-22T14:25:49.262403",
     "validation_method": "multi-command"
   },
   {
@@ -447,7 +447,7 @@
     "cli_command": "6 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009690",
+    "timestamp": "2025-09-22T14:25:49.262406",
     "validation_method": "multi-command"
   },
   {
@@ -458,7 +458,7 @@
     "cli_command": "1 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009692",
+    "timestamp": "2025-09-22T14:25:49.262408",
     "validation_method": "multi-command"
   },
   {
@@ -469,7 +469,7 @@
     "cli_command": "4 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009695",
+    "timestamp": "2025-09-22T14:25:49.262413",
     "validation_method": "multi-command"
   },
   {
@@ -480,7 +480,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009697",
+    "timestamp": "2025-09-22T14:25:49.262415",
     "validation_method": "multi-command"
   },
   {
@@ -491,7 +491,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009699",
+    "timestamp": "2025-09-22T14:25:49.262417",
     "validation_method": "multi-command"
   },
   {
@@ -502,7 +502,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009702",
+    "timestamp": "2025-09-22T14:25:49.262420",
     "validation_method": "multi-command"
   },
   {
@@ -513,7 +513,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009704",
+    "timestamp": "2025-09-22T14:25:49.262422",
     "validation_method": "multi-command"
   },
   {
@@ -524,7 +524,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009706",
+    "timestamp": "2025-09-22T14:25:49.262424",
     "validation_method": "multi-command"
   },
   {
@@ -535,7 +535,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009711",
+    "timestamp": "2025-09-22T14:25:49.262429",
     "validation_method": "multi-command"
   },
   {
@@ -546,7 +546,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009713",
+    "timestamp": "2025-09-22T14:25:49.262431",
     "validation_method": "multi-command"
   },
   {
@@ -557,7 +557,7 @@
     "cli_command": "10 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009716",
+    "timestamp": "2025-09-22T14:25:49.262433",
     "validation_method": "multi-command"
   },
   {
@@ -568,7 +568,7 @@
     "cli_command": "5 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009718",
+    "timestamp": "2025-09-22T14:25:49.262435",
     "validation_method": "multi-command"
   },
   {
@@ -579,7 +579,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009720",
+    "timestamp": "2025-09-22T14:25:49.262438",
     "validation_method": "multi-command"
   },
   {
@@ -590,7 +590,7 @@
     "cli_command": "7 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009723",
+    "timestamp": "2025-09-22T14:25:49.262440",
     "validation_method": "multi-command"
   },
   {
@@ -601,7 +601,7 @@
     "cli_command": "5 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009725",
+    "timestamp": "2025-09-22T14:25:49.262442",
     "validation_method": "multi-command"
   },
   {
@@ -612,7 +612,7 @@
     "cli_command": "2 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009727",
+    "timestamp": "2025-09-22T14:25:49.262445",
     "validation_method": "multi-command"
   },
   {
@@ -623,7 +623,7 @@
     "cli_command": "2 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009730",
+    "timestamp": "2025-09-22T14:25:49.262447",
     "validation_method": "multi-command"
   },
   {
@@ -634,7 +634,7 @@
     "cli_command": "6 commands executed",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-22T03:00:55.009732",
+    "timestamp": "2025-09-22T14:25:49.262449",
     "validation_method": "multi-command"
   }
 ]

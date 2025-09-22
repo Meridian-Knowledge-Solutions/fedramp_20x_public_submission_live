@@ -56,7 +56,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
 - [PASS] [KSI-PIY-02](KSI-PIY-02.md): Establish and maintain organization-wide information security and technology policies
 - [PASS] [KSI-PIY-03](KSI-PIY-03.md): Maintain a vulnerability disclosure program
-- [FAIL] [KSI-PIY-04](KSI-PIY-04.md): Build security considerations into SDLC and align with CISA Secure By Design principles
+- [PASS] [KSI-PIY-04](KSI-PIY-04.md): Build security considerations into SDLC and align with CISA Secure By Design principles
 - [PASS] [KSI-PIY-05](KSI-PIY-05.md): Document methods used to evaluate information resource implementations
 - [PASS] [KSI-PIY-06](KSI-PIY-06.md): Have dedicated staff and budget for security with executive support
 - [PASS] [KSI-PIY-07](KSI-PIY-07.md): Document risk management decisions for software supply chain security
@@ -90,9 +90,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 55
-- **Passing:** 57
-- **Failing:** 1
+- **Passing:** 58
+- **Failing:** 0
 - **Not Tested:** -3
 
 ---
-*Generated 2025-09-22 03:01 UTC*
+*Generated 2025-09-22 14:25 UTC*
