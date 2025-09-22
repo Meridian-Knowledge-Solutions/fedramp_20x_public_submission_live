@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-22 15:57
+**Last Check:** 2025-09-22 17:49
 
 **What it validates:** Enforce appropriately secure authentication methods for non-user accounts and services
 
@@ -32,4 +32,4 @@ WARNING Basic service authentication security (needs enhancement): PASS 79 IAM r
 - INFO No EC2 instance profile information available
 
 ---
-*Generated 2025-09-22 15:57 UTC*
+*Generated 2025-09-22 17:49 UTC*
