@@ -7,13 +7,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.305890",
+    "timestamp": "2025-09-22T03:01:02.497625",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181652",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009555",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Ensure all employees receive security and privacy awareness training, incident response training, and are familiar with all relevant policies and procedures",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CED-02",
@@ -23,13 +25,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.305965",
+    "timestamp": "2025-09-22T03:01:02.497747",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181661",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009565",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CED-03",
@@ -39,13 +43,15 @@
     "cli_command": "2 commands (2 successful): aws lambda list-functions --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.306113",
+    "timestamp": "2025-09-22T03:01:02.497990",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 2,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181664",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009569",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Require role-specific training for development and engineering staff covering best practices for delivering secure software",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CMT-01",
@@ -55,13 +61,15 @@
     "cli_command": "9 commands (8 successful): aws cloudtrail describe-trails --output json; aws config describe-configuration-recorders --output json (+7 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.306471",
+    "timestamp": "2025-09-22T03:01:02.498524",
     "validation_method": "validation-engine-sync",
     "commands_executed": 9,
     "successful_commands": 8,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181667",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009571",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Log and monitor service modifications",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CMT-02",
@@ -71,13 +79,15 @@
     "cli_command": "10 commands (8 successful): aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json; aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,LaunchTime,ImageId,InstanceType]' --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.306691",
+    "timestamp": "2025-09-22T03:01:02.498887",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 8,
     "failed_commands": 2,
-    "original_timestamp": "2025-09-21T08:11:48.181670",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009574",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CMT-03",
@@ -87,13 +97,15 @@
     "cli_command": "13 commands (7 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json (+11 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.306892",
+    "timestamp": "2025-09-22T03:01:02.499241",
     "validation_method": "validation-engine-sync",
     "commands_executed": 13,
     "successful_commands": 7,
     "failed_commands": 6,
-    "original_timestamp": "2025-09-21T08:11:48.181672",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009576",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Implement persistent automated testing and validation of changes",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CMT-04",
@@ -103,13 +115,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.306968",
+    "timestamp": "2025-09-22T03:01:02.499366",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181675",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009579",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Consistently follow a documented change management procedure",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CMT-05",
@@ -119,13 +133,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.307031",
+    "timestamp": "2025-09-22T03:01:02.499466",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181677",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009582",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CNA-01",
@@ -135,13 +151,15 @@
     "cli_command": "8 commands (8 successful): aws ec2 describe-security-groups --output json; aws ec2 describe-network-acls --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.307427",
+    "timestamp": "2025-09-22T03:01:02.500155",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 8,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181680",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009584",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Configure ALL machine-based information resources to limit inbound and outbound traffic",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CNA-02",
@@ -151,13 +169,15 @@
     "cli_command": "11 commands (10 successful): aws ec2 describe-subnets --output json; aws ec2 describe-security-groups --output json (+9 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.308930",
+    "timestamp": "2025-09-22T03:01:02.501707",
     "validation_method": "validation-engine-sync",
     "commands_executed": 11,
     "successful_commands": 10,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181687",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009590",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CNA-03",
@@ -167,13 +187,15 @@
     "cli_command": "8 commands (8 successful): aws ec2 describe-vpcs --output json; aws ec2 describe-subnets --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.309232",
+    "timestamp": "2025-09-22T03:01:02.502018",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 8,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181690",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009592",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CNA-04",
@@ -183,13 +205,15 @@
     "cli_command": "7 commands (6 successful): aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json; aws ec2 describe-launch-templates --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.316191",
+    "timestamp": "2025-09-22T03:01:02.509437",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 6,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181692",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009595",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CNA-05",
@@ -199,29 +223,33 @@
     "cli_command": "8 commands (7 successful): aws shield describe-subscription --output json; aws cloudfront list-distributions --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.316774",
+    "timestamp": "2025-09-22T03:01:02.510160",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 7,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181695",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009597",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Protect against denial of service attacks and unwanted spam",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CNA-06",
     "validation_id": "KSI-CNA-06",
     "assertion": true,
-    "assertion_reason": "\u2705 Excellent high availability design for pilot environment (100%): \u2705 Strong network HA: 8 subnets across 2 AZs; \u2705 Balanced subnet distribution across availability zones; \u2705 Application HA: 1 multi-AZ load balancer(s) providing traffic distribution; \u2705 Active backup strategy: 2 AWS Backup plan(s) with recent execution; \u2705 Storage redundancy: 4 S3 bucket(s) with built-in 11-9s durability; \u2705 Database HA-ready: 1 RDS instance(s) with multi-AZ subnet groups (easily convertible); \u2139\ufe0f Compute HA via Infrastructure as Code (Terraform-managed instances acceptable for pilot); \u2705 Bonus: Storage recovery via 490 EBS snapshot(s); \u2705 DNS infrastructure: 1 Route 53 hosted zone(s)",
+    "assertion_reason": "\u2705 Excellent high availability design for pilot environment (100%): \u2705 Strong network HA: 8 subnets across 2 AZs; \u2705 Balanced subnet distribution across availability zones; \u2705 Application HA: 1 multi-AZ load balancer(s) providing traffic distribution; \u2705 Active backup strategy: 2 AWS Backup plan(s) with recent execution; \u2705 Storage redundancy: 4 S3 bucket(s) with built-in 11-9s durability; \u2705 Database HA-ready: 1 RDS instance(s) with multi-AZ subnet groups (easily convertible); \u2139\ufe0f Compute HA via Infrastructure as Code (Terraform-managed instances acceptable for pilot); \u2705 Bonus: Storage recovery via 498 EBS snapshot(s); \u2705 DNS infrastructure: 1 Route 53 hosted zone(s)",
     "cli_command": "9 commands (9 successful): aws ec2 describe-subnets --output json; aws ec2 describe-availability-zones --output json (+7 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.318726",
+    "timestamp": "2025-09-22T03:01:02.512154",
     "validation_method": "validation-engine-sync",
     "commands_executed": 9,
     "successful_commands": 9,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181697",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009600",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-CNA-07",
@@ -231,13 +259,15 @@
     "cli_command": "12 commands (11 successful): aws configservice describe-config-rules --output json; aws cloudtrail describe-trails --output json (+10 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.319007",
+    "timestamp": "2025-09-22T03:01:02.512450",
     "validation_method": "validation-engine-sync",
     "commands_executed": 12,
     "successful_commands": 11,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181700",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009602",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-IAM-01",
@@ -247,13 +277,15 @@
     "cli_command": "4 commands (3 successful): aws iam list-users --output json; aws iam list-mfa-devices --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.319267",
+    "timestamp": "2025-09-22T03:01:02.512619",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 3,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181702",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009605",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-IAM-02",
@@ -263,13 +295,15 @@
     "cli_command": "5 commands (4 successful): aws iam list-saml-providers --output json; aws iam list-virtual-mfa-devices --output json (+3 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.319486",
+    "timestamp": "2025-09-22T03:01:02.512784",
     "validation_method": "validation-engine-sync",
     "commands_executed": 5,
     "successful_commands": 4,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181704",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009607",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-IAM-03",
@@ -279,13 +313,15 @@
     "cli_command": "4 commands (3 successful): aws iam list-roles --output json; aws iam list-users --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.319956",
+    "timestamp": "2025-09-22T03:01:02.513250",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 3,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181707",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009610",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-IAM-04",
@@ -295,13 +331,15 @@
     "cli_command": "6 commands (5 successful): aws sso-admin list-instances --output json; INSTANCE_ARN=$(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text 2>/dev/null) && aws sso-admin list-permission-sets --instance-arn \"$INSTANCE_ARN\" --output json 2>/dev/null || echo '{\"PermissionSets\":[]}' (+4 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.320661",
+    "timestamp": "2025-09-22T03:01:02.513860",
     "validation_method": "validation-engine-sync",
     "commands_executed": 6,
     "successful_commands": 5,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181709",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009612",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-IAM-05",
@@ -311,13 +349,15 @@
     "cli_command": "8 commands (7 successful): aws sso-admin list-instances --output json; aws identitystore list-users --identity-store-id $(aws sso-admin list-instances --query 'Instances[0].IdentityStoreId' --output text) --output json 2>/dev/null || echo '{\"Users\":[]}' (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.321124",
+    "timestamp": "2025-09-22T03:01:02.514320",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 7,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181712",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009615",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Design identity and access management systems that assume resources will be compromised",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-IAM-06",
@@ -327,13 +367,15 @@
     "cli_command": "10 commands (9 successful): aws events list-rules --output json; aws guardduty list-detectors --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.321567",
+    "timestamp": "2025-09-22T03:01:02.514765",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181714",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009617",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-IAM-07",
@@ -343,13 +385,15 @@
     "cli_command": "4 commands (3 successful): aws iam list-roles --output json; aws iam list-users --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.322062",
+    "timestamp": "2025-09-22T03:01:02.515276",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 3,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181717",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009619",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Securely manage the lifecycle and privileges of all accounts, roles, and groups",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-INR-01",
@@ -359,13 +403,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.322178",
+    "timestamp": "2025-09-22T03:01:02.515399",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181720",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009622",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Respond to incidents according to FedRAMP requirements and cloud service provider policies",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-INR-02",
@@ -375,13 +421,15 @@
     "cli_command": "8 commands (6 successful): aws events list-rules --output json; aws events list-targets-by-rule --rule <rule_name> --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.322709",
+    "timestamp": "2025-09-22T03:01:02.515892",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 6,
     "failed_commands": 2,
-    "original_timestamp": "2025-09-21T08:11:48.181723",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009625",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-INR-03",
@@ -391,13 +439,15 @@
     "cli_command": "4 commands (4 successful): aws securityhub get-findings --max-results 50 --output json; aws lambda list-functions --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.325124",
+    "timestamp": "2025-09-22T03:01:02.518388",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 4,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181725",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009627",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-MLA-01",
@@ -407,13 +457,15 @@
     "cli_command": "8 commands (7 successful): aws cloudtrail describe-trails --output json; aws logs describe-log-groups --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.326096",
+    "timestamp": "2025-09-22T03:01:02.519380",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 7,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181729",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009630",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-MLA-02",
@@ -423,29 +475,33 @@
     "cli_command": "9 commands (8 successful): aws cloudwatch describe-alarms --output json; aws logs describe-metric-filters --output json (+7 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.326500",
+    "timestamp": "2025-09-22T03:01:02.519817",
     "validation_method": "validation-engine-sync",
     "commands_executed": 9,
     "successful_commands": 8,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181732",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009632",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-MLA-03",
     "validation_id": "KSI-MLA-03",
     "assertion": true,
-    "assertion_reason": "\u2705 Advanced vulnerability management with automated remediation (67%): \u274c Security Hub not configured for vulnerability detection; \u2705 Automated vulnerability scanning: Inspector EC2, ECR scanning enabled; \u2705 Multi-service vulnerability coverage: Both EC2 and ECR scanning for comprehensive assessment; \u2705 Automated patch management: 17 patch baselines (15 default, 2 custom); \u2705 Tailored remediation: 2 custom patch baselines for targeted vulnerability response; \u2705 Security automation: 2 Lambda functions for security operations; \u2705 Active threat analysis: 50 active security findings (0 critical, 31 high); \u2705 Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection",
+    "assertion_reason": "\u2705 Advanced vulnerability management with automated remediation (67%): \u274c Security Hub not configured for vulnerability detection; \u2705 Automated vulnerability scanning: Inspector EC2, ECR scanning enabled; \u2705 Multi-service vulnerability coverage: Both EC2 and ECR scanning for comprehensive assessment; \u2705 Automated patch management: 17 patch baselines (15 default, 2 custom); \u2705 Tailored remediation: 2 custom patch baselines for targeted vulnerability response; \u2705 Security automation: 2 Lambda functions for security operations; \u2705 Active threat analysis: 50 active security findings (0 critical, 29 high); \u2705 Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection",
     "cli_command": "8 commands (7 successful): aws securityhub get-enabled-standards --region us-east-1 --output json; aws inspector2 get-configuration --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.328258",
+    "timestamp": "2025-09-22T03:01:02.521722",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 7,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181735",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009634",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Rapidly detect and respond to vulnerabilities following requirements and recommendations in the FedRAMP Vulnerability Response and Detection standard",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-MLA-04",
@@ -455,13 +511,15 @@
     "cli_command": "8 commands (8 successful): aws inspector2 list-coverage --output json; aws inspector2 get-configuration --output json (+6 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.329492",
+    "timestamp": "2025-09-22T03:01:02.522870",
     "validation_method": "validation-engine-sync",
     "commands_executed": 8,
     "successful_commands": 8,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181778",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009637",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "RETIRED: Superseded by KSI-MLA-03",
+    "ksi_status": "RETIRED"
   },
   {
     "ksi_id": "KSI-MLA-05",
@@ -471,13 +529,15 @@
     "cli_command": "10 commands (9 successful): aws config describe-config-rules --output json; aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.329788",
+    "timestamp": "2025-09-22T03:01:02.523201",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181787",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009642",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-MLA-06",
@@ -487,13 +547,15 @@
     "cli_command": "10 commands (8 successful): aws securityhub get-findings --max-results 100 --output json; aws inspector2 list-findings --max-results 50 --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.335644",
+    "timestamp": "2025-09-22T03:01:02.528927",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 8,
     "failed_commands": 2,
-    "original_timestamp": "2025-09-21T08:11:48.181791",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009644",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "RETIRED: Superseded by KSI-MLA-03",
+    "ksi_status": "RETIRED"
   },
   {
     "ksi_id": "KSI-MLA-07",
@@ -503,13 +565,15 @@
     "cli_command": "5 commands (4 successful): aws logs describe-log-groups --output json; aws cloudtrail describe-trails --output json (+3 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.336153",
+    "timestamp": "2025-09-22T03:01:02.529588",
     "validation_method": "validation-engine-sync",
     "commands_executed": 5,
     "successful_commands": 4,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181793",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009647",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Maintain a list of information resources and event types that will be monitored, logged, and audited",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-MLA-08",
@@ -519,13 +583,15 @@
     "cli_command": "4 commands (3 successful): aws iam list-roles --output json; aws iam list-policies --scope Local --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.336717",
+    "timestamp": "2025-09-22T03:01:02.530168",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 3,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181796",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009649",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Use a least-privileged, role and attribute-based, and just-in-time access authorization model for access to log data",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-PIY-01",
@@ -535,13 +601,15 @@
     "cli_command": "9 commands (9 successful): aws ec2 describe-instances --output json; aws rds describe-db-instances --output json (+7 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.337370",
+    "timestamp": "2025-09-22T03:01:02.530880",
     "validation_method": "validation-engine-sync",
     "commands_executed": 9,
     "successful_commands": 9,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181799",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009652",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Generate inventories of information resources from authoritative sources",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-PIY-02",
@@ -551,13 +619,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.337520",
+    "timestamp": "2025-09-22T03:01:02.531016",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181801",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009654",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Document the security objectives and requirements for each information resource",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-PIY-03",
@@ -567,13 +637,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.337599",
+    "timestamp": "2025-09-22T03:01:02.531091",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181804",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009677",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-PIY-04",
@@ -583,13 +655,15 @@
     "cli_command": "4 commands (4 successful): aws codebuild list-projects --output json; aws codepipeline list-pipelines --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.337682",
+    "timestamp": "2025-09-22T03:01:02.531187",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 4,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181806",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009680",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-PIY-05",
@@ -599,13 +673,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.337747",
+    "timestamp": "2025-09-22T03:01:02.531256",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181808",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009683",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-PIY-06",
@@ -615,13 +691,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.337810",
+    "timestamp": "2025-09-22T03:01:02.531322",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181811",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009685",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Have staff and budget for security commensurate with the size, complexity, scope, executive priorities, and risk of the service offering that demonstrates commitment to delivering a secure service",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-PIY-07",
@@ -631,13 +709,15 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.337874",
+    "timestamp": "2025-09-22T03:01:02.531389",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181813",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009687",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-RPL-01",
@@ -647,13 +727,15 @@
     "cli_command": "6 commands (2 successful): aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,PreferredBackupWindow]' --output json; aws backup list-backup-plans --output json (+4 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.337977",
+    "timestamp": "2025-09-22T03:01:02.531511",
     "validation_method": "validation-engine-sync",
     "commands_executed": 6,
     "successful_commands": 2,
     "failed_commands": 4,
-    "original_timestamp": "2025-09-21T08:11:48.181816",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009690",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-RPL-02",
@@ -663,45 +745,51 @@
     "cli_command": "1 commands (1 successful): evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.338044",
+    "timestamp": "2025-09-22T03:01:02.531586",
     "validation_method": "validation-engine-sync",
     "commands_executed": 1,
     "successful_commands": 1,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181818",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009692",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-RPL-03",
     "validation_id": "KSI-RPL-03",
     "assertion": true,
-    "assertion_reason": "\u2705 System backups with compliant retention aligned with recovery objectives: \u2705 Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan); \u26a0\ufe0f Backup plan details not available - cannot validate retention policies; \u2705 Backup operations validated: 50 successful backup jobs prove backups are functioning; \u2705 RDS backup configuration: 1/1 databases with automated backups; \u2705 Additional backup coverage: 490 EBS snapshots",
+    "assertion_reason": "\u2705 System backups with compliant retention aligned with recovery objectives: \u2705 Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan); \u26a0\ufe0f Backup plan details not available - cannot validate retention policies; \u2705 Backup operations validated: 50 successful backup jobs prove backups are functioning; \u2705 RDS backup configuration: 1/1 databases with automated backups; \u2705 Additional backup coverage: 498 EBS snapshots",
     "cli_command": "4 commands (4 successful): aws backup list-backup-plans --output json; aws backup list-backup-jobs --by-state COMPLETED --max-results 50 --output json (+2 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.341133",
+    "timestamp": "2025-09-22T03:01:02.534286",
     "validation_method": "validation-engine-sync",
     "commands_executed": 4,
     "successful_commands": 4,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181821",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009695",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-RPL-04",
     "validation_id": "KSI-RPL-04",
     "assertion": true,
-    "assertion_reason": "\u2705 Basic recovery testing infrastructure available (29%): \u2705 Backup infrastructure validation: 200 recent backup operations prove recovery foundation; \u2705 Point-in-time recovery testing capability: 1/1 databases ready for RPO validation",
+    "assertion_reason": "\u2705 Basic recovery testing infrastructure available (29%): \u2705 Backup infrastructure validation: 201 recent backup operations prove recovery foundation; \u2705 Point-in-time recovery testing capability: 1/1 databases ready for RPO validation",
     "cli_command": "7 commands (3 successful): aws backup list-restore-jobs --max-results 20 --output json; aws backup list-backup-jobs --by-state COMPLETED --by-created-after 2024-05-01 --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.342203",
+    "timestamp": "2025-09-22T03:01:02.535304",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 3,
     "failed_commands": 4,
-    "original_timestamp": "2025-09-21T08:11:48.181823",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009697",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-01",
@@ -711,13 +799,15 @@
     "cli_command": "10 commands (10 successful): aws ec2 describe-security-groups --output json; aws ec2 describe-instances --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.342693",
+    "timestamp": "2025-09-22T03:01:02.535811",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 10,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181826",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009699",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Continuously evaluate machine-based information resources for opportunities to improve security",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-02",
@@ -727,13 +817,15 @@
     "cli_command": "10 commands (9 successful): aws acm list-certificates --output json; aws ec2 describe-vpc-endpoints --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.342919",
+    "timestamp": "2025-09-22T03:01:02.536042",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181828",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009702",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-03",
@@ -743,13 +835,15 @@
     "cli_command": "7 commands (6 successful): aws s3api list-buckets --output json; aws ec2 describe-volumes --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.343079",
+    "timestamp": "2025-09-22T03:01:02.536209",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 6,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181831",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009704",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Encrypt information at rest by default",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-04",
@@ -759,13 +853,15 @@
     "cli_command": "10 commands (8 successful): aws ssm describe-parameters --output json; aws config describe-configuration-recorders --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.343429",
+    "timestamp": "2025-09-22T03:01:02.536544",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 8,
     "failed_commands": 2,
-    "original_timestamp": "2025-09-21T08:11:48.181833",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009706",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Manage configuration of machine-based information resources using automation",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-05",
@@ -775,13 +871,15 @@
     "cli_command": "10 commands (9 successful): aws cloudtrail describe-trails --output json; aws kms list-keys --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.343597",
+    "timestamp": "2025-09-22T03:01:02.536732",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181839",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009711",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Use cryptographic methods to validate the integrity of machine-based information resources",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-06",
@@ -791,13 +889,15 @@
     "cli_command": "10 commands (9 successful): aws kms list-keys --output json; aws acm list-certificates --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.343763",
+    "timestamp": "2025-09-22T03:01:02.536922",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181841",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009713",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-07",
@@ -807,13 +907,15 @@
     "cli_command": "10 commands (9 successful): aws ssm describe-patch-baselines --output json; aws ssm describe-instance-information --output json (+8 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.344322",
+    "timestamp": "2025-09-22T03:01:02.537466",
     "validation_method": "validation-engine-sync",
     "commands_executed": 10,
     "successful_commands": 9,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181844",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009716",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-08",
@@ -823,13 +925,15 @@
     "cli_command": "5 commands (4 successful): aws cloudformation list-stacks --output json; aws lambda list-functions --output json (+3 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.344672",
+    "timestamp": "2025-09-22T03:01:02.537810",
     "validation_method": "validation-engine-sync",
     "commands_executed": 5,
     "successful_commands": 4,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181846",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009718",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability of information resources",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-09",
@@ -839,13 +943,15 @@
     "cli_command": "7 commands (6 successful): aws acm list-certificates --output json; aws elbv2 describe-ssl-policies --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.345197",
+    "timestamp": "2025-09-22T03:01:02.538342",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 6,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181851",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009720",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Use mechanisms that continuously validate the authenticity and integrity of communications between information resources",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-SVC-10",
@@ -855,13 +961,15 @@
     "cli_command": "7 commands (7 successful): aws backup list-backup-plans --output json; aws s3api list-buckets --output json (+5 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.348358",
+    "timestamp": "2025-09-22T03:01:02.541717",
     "validation_method": "validation-engine-sync",
     "commands_executed": 7,
     "successful_commands": 7,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181853",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009723",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Remove unwanted information promptly, including from backups if appropriate",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-TPR-01",
@@ -871,13 +979,15 @@
     "cli_command": "5 commands (3 successful): aws lambda list-functions --query 'Functions[?contains(FunctionName, `broker`) || contains(FunctionName, `compliance`)].FunctionName' --output json; aws logs describe-log-groups --log-group-name-prefix '/aws/lambda/' --query 'logGroups[?contains(logGroupName, `broker`)]' --output json (+3 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.348687",
+    "timestamp": "2025-09-22T03:01:02.542112",
     "validation_method": "validation-engine-sync",
     "commands_executed": 5,
     "successful_commands": 3,
     "failed_commands": 2,
-    "original_timestamp": "2025-09-21T08:11:48.181856",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009725",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "Follow the requirements and recommendations in the FedRAMP Minimum Assessment Standard regarding third-party information resources",
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-TPR-02",
@@ -887,13 +997,15 @@
     "cli_command": "2 commands (1 successful): aws organizations list-accounts --output json; evidence_check",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.348774",
+    "timestamp": "2025-09-22T03:01:02.542209",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181858",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009727",
+    "synced_from_validation_engine": true,
+    "updated_requirement": "RETIRED: Superseded by KSI-TPR-01",
+    "ksi_status": "RETIRED"
   },
   {
     "ksi_id": "KSI-TPR-03",
@@ -903,13 +1015,15 @@
     "cli_command": "2 commands (1 successful): aws ssm get-parameter --name \"/lms-compliance/policies\" --output json; aws logs get-query-results --query-id $(aws logs start-query --log-group-name '/aws/lambda/lms-compliance-broker' --start-time $(date -d '30 days ago' +%s) --end-time $(date +%s) --query-string 'fields destination_url | parse destination_url /https?:\\/\\/(?<host>[^\\/]+)/ | stats count() by host' --output text --query 'queryId') --output json",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.348860",
+    "timestamp": "2025-09-22T03:01:02.542301",
     "validation_method": "validation-engine-sync",
     "commands_executed": 2,
     "successful_commands": 1,
     "failed_commands": 1,
-    "original_timestamp": "2025-09-21T08:11:48.181860",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009730",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   },
   {
     "ksi_id": "KSI-TPR-04",
@@ -919,12 +1033,14 @@
     "cli_command": "6 commands (6 successful): aws inspector2 get-configuration --output json; aws inspector2 list-findings --filter-criteria '{\"componentType\":[{\"value\":\"PYTHON_PKG\",\"comparison\":\"EQUALS\"}]}' --max-results 20 --output json (+4 more)",
     "cli_output_digest": "",
     "cli_output_interpretation": "",
-    "timestamp": "2025-09-21T08:11:55.349668",
+    "timestamp": "2025-09-22T03:01:02.543134",
     "validation_method": "validation-engine-sync",
     "commands_executed": 6,
     "successful_commands": 6,
     "failed_commands": 0,
-    "original_timestamp": "2025-09-21T08:11:48.181863",
-    "synced_from_validation_engine": true
+    "original_timestamp": "2025-09-22T03:00:55.009732",
+    "synced_from_validation_engine": true,
+    "updated_requirement": null,
+    "ksi_status": "ACTIVE"
   }
 ]

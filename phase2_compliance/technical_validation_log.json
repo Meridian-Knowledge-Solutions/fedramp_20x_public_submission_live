@@ -1,13 +1,10 @@
 {
-  "timestamp": "2025-09-21T08:11:49.702850",
+  "timestamp": "2025-09-22T03:00:56.819146",
   "total_ksis_validated": 58,
-  "technical_issues_found": 5,
+  "technical_issues_found": 2,
   "issues": [
-    "KSI-INR-02: All 8 CLI commands failed execution",
-    "KSI-INR-03: All 4 CLI commands failed execution",
     "KSI-RPL-01: High CLI failure rate (67%): 4/6 failed",
-    "KSI-RPL-03: All 4 CLI commands failed execution",
-    "KSI-RPL-04: All 7 CLI commands failed execution"
+    "KSI-RPL-04: High CLI failure rate (57%): 4/7 failed"
   ],
   "status": "warning",
   "categories_checked": [
