@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-09-23 20:55
+**Last Check:** 2025-09-23 21:16
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -32,10 +32,14 @@
 
 ## Latest Results
 
-PASS Good technical capability for recovery objectives (50%): PASS Database backup capability: Retention up to 7 days.
-- PASS Point-in-time recovery: Enabled for 1/1 databases.
-- PASS Defined RTO objectives: 4 hours
-- PASS Backup vault configured.
+PASS Enterprise-grade comprehensive recovery objectives with technical capability (88%): PASS Database Backup Capability
+- PASS Point In Time Recovery
+- PASS Backup Plan Alignment
+- PASS Recovery Infrastructure
+- PASS Defined Rto Objectives
+- FAIL Defined Rpo Objectives
+- PASS Backup Vault Configuration
+- PASS Backup Selection Coverage
 
 ---
-*Generated 2025-09-23 20:55 UTC*
+*Generated 2025-09-23 21:16 UTC*
