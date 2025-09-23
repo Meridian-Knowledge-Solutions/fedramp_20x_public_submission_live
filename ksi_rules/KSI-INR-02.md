@@ -4,7 +4,7 @@
 
 **Category:** Incident Reporting
 **Status:** PASS
-**Last Check:** 2025-09-22 17:49
+**Last Check:** 2025-09-23 03:05
 
 **What it validates:** Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 
@@ -29,8 +29,8 @@
 ## Latest Results
 
 WARNING Partial compliance: Infrastructure is configured, but operational artifacts are missing or incomplete. PASS Incident response infrastructure is well-configured (Score: 4/4).
-- FAIL Operational log (incident_database.xlsx) is corrupt or unreadable.
+- FAIL Operational log (incident_database.csv) is corrupt or unreadable.
 - PASS Periodic review report found and appears valid.
 
 ---
-*Generated 2025-09-22 17:49 UTC*
+*Generated 2025-09-23 03:05 UTC*

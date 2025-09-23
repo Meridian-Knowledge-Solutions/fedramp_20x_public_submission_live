@@ -4,7 +4,7 @@
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-09-22 17:49
+**Last Check:** 2025-09-23 03:05
 
 **What it validates:** Identify and prioritize mitigation of potential supply chain risks
 
@@ -24,4 +24,4 @@ PASS Supply chain risks identified and mitigation prioritized via broker policie
 - PASS Prioritization & Mitigation: Tiered policies for high and low-impact tenants are configured.
 
 ---
-*Generated 2025-09-22 17:49 UTC*
+*Generated 2025-09-23 03:05 UTC*
