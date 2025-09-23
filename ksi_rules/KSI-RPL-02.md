@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** FAIL
-**Last Check:** 2025-09-23 17:56
+**Last Check:** 2025-09-23 18:57
 
 **What it validates:** Develop and maintain a recovery plan that aligns with defined recovery objectives
 
@@ -19,4 +19,4 @@
 - No rule function found: evaluate_KSI_RPL_02
 
 ---
-*Generated 2025-09-23 17:56 UTC*
+*Generated 2025-09-23 18:57 UTC*
