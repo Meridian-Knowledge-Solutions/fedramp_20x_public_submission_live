@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-09-23 07:50
+**Last Check:** 2025-09-23 13:26
 
 **What it validates:** Document methods used to evaluate information resource implementations
 
@@ -19,4 +19,4 @@
 - WARNING Basic evaluation procedures (expand coverage): PASS Core evaluation methods: Information Resource Evaluation Methodology (KSI-PIY-05).pdf
 
 ---
-*Generated 2025-09-23 07:50 UTC*
+*Generated 2025-09-23 13:26 UTC*

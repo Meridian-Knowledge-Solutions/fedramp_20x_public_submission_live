@@ -1,9 +1,12 @@
 {
-  "timestamp": "2025-09-23T07:50:11.354716",
+  "timestamp": "2025-09-23T13:26:32.973605",
   "total_ksis_validated": 58,
-  "technical_issues_found": 0,
-  "issues": [],
-  "status": "pass",
+  "technical_issues_found": 2,
+  "issues": [
+    "KSI-INR-02: High CLI failure rate (80%): 4/5 failed",
+    "KSI-INR-03: All 4 CLI commands failed execution"
+  ],
+  "status": "warning",
   "categories_checked": [
     "logical_consistency",
     "scoring_mathematics",

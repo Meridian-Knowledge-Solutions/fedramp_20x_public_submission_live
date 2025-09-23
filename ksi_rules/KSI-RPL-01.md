@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** FAIL
-**Last Check:** 2025-09-23 07:50
+**Last Check:** 2025-09-23 13:26
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -35,4 +35,4 @@
 - Exception during evaluation: 'list' object has no attribute 'get'
 
 ---
-*Generated 2025-09-23 07:50 UTC*
+*Generated 2025-09-23 13:26 UTC*
