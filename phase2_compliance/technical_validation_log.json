@@ -1,10 +1,11 @@
 {
-  "timestamp": "2025-09-23T18:57:34.043011",
+  "timestamp": "2025-09-23T20:55:09.052112",
   "total_ksis_validated": 58,
-  "technical_issues_found": 2,
+  "technical_issues_found": 3,
   "issues": [
     "KSI-RPL-02: Evidence check failed - may indicate missing documentation",
-    "KSI-RPL-02: Evidence-only validation failed - documentation may be missing"
+    "KSI-RPL-02: Evidence-only validation failed - documentation may be missing",
+    "KSI-INR-03: All 4 CLI commands failed execution"
   ],
   "status": "warning",
   "categories_checked": [

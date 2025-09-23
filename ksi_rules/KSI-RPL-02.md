@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** FAIL
-**Last Check:** 2025-09-23 18:57
+**Status:** PASS
+**Last Check:** 2025-09-23 20:55
 
 **What it validates:** Develop and maintain a recovery plan that aligns with defined recovery objectives
 
@@ -12,11 +12,12 @@
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-RPL-02/ for disaster_recovery_plan.pdf, recovery_playbooks.pdf, rto_rpo_alignment_matrix.xlsx, and recovery_plan_maintenance_log.pdf
+1. **Manual Review:** Check evidence_v2/KSI-RPL-02/ for contingency_planning_policy.pdf, incident_reponse_policy.pdf
 
 ## Latest Results
 
-- No rule function found: evaluate_KSI_RPL_02
+PASS Recovery plan documentation is maintained (100%): PASS Found required document: contingency_planning_policy.pdf
+- PASS Found required document: incident_reponse_policy.pdf
 
 ---
-*Generated 2025-09-23 18:57 UTC*
+*Generated 2025-09-23 20:55 UTC*

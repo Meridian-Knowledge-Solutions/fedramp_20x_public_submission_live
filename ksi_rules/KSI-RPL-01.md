@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** FAIL
-**Last Check:** 2025-09-23 18:57
+**Status:** PASS
+**Last Check:** 2025-09-23 20:55
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -32,7 +32,10 @@
 
 ## Latest Results
 
-- Exception during evaluation: 'list' object has no attribute 'get'
+PASS Good technical capability for recovery objectives (50%): PASS Database backup capability: Retention up to 7 days.
+- PASS Point-in-time recovery: Enabled for 1/1 databases.
+- PASS Defined RTO objectives: 4 hours
+- PASS Backup vault configured.
 
 ---
-*Generated 2025-09-23 18:57 UTC*
+*Generated 2025-09-23 20:55 UTC*
