@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 
@@ -44,17 +44,16 @@
 
 ## Latest Results
 
-PASS Enterprise-grade comprehensive automated key management governance with rotation (90%): PASS Automated key management infrastructure: 15 KMS keys (0 customer-managed, 15 AWS-managed)
-- PASS Automated certificate management: 2 ACM certificates (2 issued, 0 pending)
-- PASS Key governance structure: 6/24 customer-managed aliases (25%)
-- PASS Automated encryption integration: 4 KMS-encrypted SecureString parameters
-- PASS Automated credential rotation: 1/1 secrets with automatic rotation (100%)
-- PASS Modern certificate management: No legacy IAM certificates
-- PASS Infrastructure as Code key management: 10/10 successful CloudFormation stacks (100%)
-- INFO No Config rules for key management compliance monitoring
-- PASS Key management audit trail: 2 recent key management events tracked
-- PASS Enterprise-wide key management governance: AWS Organizations enables centralized key policies
-- PASS Advanced organization features: SCPs for key management policy enforcement enabled
+PASS Enterprise-grade comprehensive automated key management governance with rotation (90%): PASS Automated key management infrastructure: 15 KMS keys (0 customer-managed, 15 AWS-managed).
+- PASS Automated certificate management: 2/2 ACM certificates are active.
+- PASS Key governance structure: 6 customer-managed KMS aliases.
+- PASS Automated encryption integration: 4 KMS-encrypted SecureString parameters.
+- PASS Automated credential rotation: 1/1 secrets with automatic rotation (100%).
+- PASS Modern certificate management: No legacy IAM certificates.
+- PASS Infrastructure as Code key management: 10/10 successful CloudFormation stacks.
+- PASS Key management audit trail: 2 recent key management events tracked.
+- PASS Enterprise-wide key management governance: AWS Organizations enables centralized key policies.
+- PASS Advanced organization features: SCPs for key management policy enforcement enabled.
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Enforce appropriately secure authentication methods for non-user accounts and services
 
@@ -16,20 +16,17 @@
    *Check IAM roles for service authentication (primary secure method)*
 
 2. `aws iam list-users --output json`
-   *Identify potential service users who should be using roles instead*
+   *Identify users to check for insecure patterns (service user names, long-term keys)*
 
-3. `aws iam list-access-keys --output json`
-   *Detect long-term access keys that may indicate insecure service authentication*
-
-4. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].IamInstanceProfile' --output json`
+3. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].IamInstanceProfile' --output json`
    *Validate EC2 instances use instance profiles for secure service authentication*
 
 ## Latest Results
 
-WARNING Basic service authentication security (needs enhancement): PASS 79 IAM roles available (37 service-oriented)
-- WARNING 1 potential service users found (should use roles instead)
-- PASS No access key information accessible
-- INFO No EC2 instance profile information available
+WARNING Basic service authentication security (75%): PASS Secure foundation: 79 IAM roles available for service authentication (34 are service-linked).
+- WARNING High Risk: 1 IAM user(s) found that appear to be service accounts (change_template_approver). These should be converted to IAM Roles.
+- PASS Identity Best Practice: No human IAM users with console passwords detected.
+- PASS EC2 Best Practice: All 6 instance(s) are correctly using IAM Instance Profiles.
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

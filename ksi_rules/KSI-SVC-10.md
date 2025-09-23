@@ -3,41 +3,36 @@
 ## Overview
 
 **Category:** Service Configuration
-**Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Status:** FAIL
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Remove unwanted information promptly, including from backups if appropriate
 
-**Why it matters:** Validates automated data lifecycle management through comprehensive retention policies, backup purging automation, storage lifecycle management, and compliance-driven deletion covering AWS Backup lifecycle, S3 policies, automated purging, and data retention compliance
+**Why it matters:** Validates automated data lifecycle management through comprehensive retention policies...
 
 ## Validation Method
 
 1. `aws backup list-backup-plans --output json`
-   *Validate backup lifecycle management and automated retention policies*
+   *Verify backup plans are configured.*
 
-2. `aws s3api list-buckets --output json`
-   *Check S3 storage lifecycle automation and data retention management*
+2. `aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"BackupPlan":{}}'`
+   *ADDED: Retrieve details of the primary backup plan to validate retention rules.*
 
-3. `aws lambda list-functions --output json`
-   *Check automated data purging and lifecycle management functions*
+3. `aws s3api list-inventory-configurations --bucket $(aws s3api list-buckets --query 'Buckets[0].Name' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"InventoryConfigurationList":[]}'`
+   *ADDED: Check for S3 Inventory configs as a proxy for lifecycle management.*
 
-4. `aws events list-rules --output json`
-   *Validate scheduled data lifecycle and automated cleanup workflows*
+4. `aws lambda list-functions --output json`
+   *Check automated data purging and lifecycle management functions.*
 
 5. `aws logs describe-log-groups --output json`
-   *Check log retention policies for compliance-driven data deletion*
-
-6. `aws ec2 describe-snapshots --owner-ids self --output json`
-   *Validate EBS snapshot lifecycle management and automated cleanup*
-
-7. **Manual Review:** Data lifecycle management policies, retention schedules, and purging procedures documentation
+   *Check log retention policies for compliance-driven data deletion.*
 
 ## Latest Results
 
-PASS Advanced automated data lifecycle management (100%): PASS S3 Lifecycle Policies
+FAIL Insufficient automated data lifecycle management (50%): FAIL S3 Lifecycle Management
 - PASS Backup Retention Management
-- PASS Log Retention Policies
+- FAIL Log Retention Policies
 - PASS Automated Cleanup Functions
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

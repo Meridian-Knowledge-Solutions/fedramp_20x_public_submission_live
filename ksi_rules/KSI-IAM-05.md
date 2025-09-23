@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Apply zero trust design principles
 
@@ -38,15 +38,12 @@
 
 ## Latest Results
 
-PASS Strong zero trust foundation (83%): PASS Modern identity platform: IAM Identity Center configured (1 instance(s))
+PASS Comprehensive zero trust implementation (83%): PASS Modern identity platform: IAM Identity Center configured (1 instance(s))
 - PASS Federated MFA enforcement: External IdP (Okta) enforces MFA upstream of AWS
-- PASS External IdP provisioning: 9/9 users via SCIM (100%)
-- PASS Okta identity provider: 9/9 users with Okta IDs (100%)
-- PASS Complete federation coverage: 100% of users from external IdP
-- PASS Good network micro-segmentation: 13 restrictive vs 3 permissive security groups (81% restrictive)
+- PASS Good network micro-segmentation: 13/16 restrictive security groups (81%)
 - PASS Role-based credentials: Using assumed role session
-- PASS Comprehensive secure communications: 7 VPC endpoints configured (4 interface, 1 gateway, 2 gateway-lb)
+- PASS Comprehensive secure communications: 7 VPC endpoints configured
 - PASS Active continuous monitoring: CloudTrail 'meridianks-Management-events' actively logging
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

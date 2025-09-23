@@ -15,7 +15,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-CNA-01](KSI-CNA-01.md): Configure ALL information resources to limit inbound and outbound traffic
 - [PASS] [KSI-CNA-02](KSI-CNA-02.md): Design systems to minimize the attack surface and minimize lateral movement if compromised
 - [PASS] [KSI-CNA-03](KSI-CNA-03.md): Use logical networking and related capabilities to enforce traffic flow controls
-- [PASS] [KSI-CNA-04](KSI-CNA-04.md): Use immutable infrastructure with strictly defined functionality and privileges by default
+- [FAIL] [KSI-CNA-04](KSI-CNA-04.md): Use immutable infrastructure with strictly defined functionality and privileges by default
 - [PASS] [KSI-CNA-05](KSI-CNA-05.md): Have denial of service protection
 - [PASS] [KSI-CNA-06](KSI-CNA-06.md): Design systems for high availability and rapid recovery
 - [PASS] [KSI-CNA-07](KSI-CNA-07.md): Ensure cloud-native information resources are implemented based on host provider's best practices and documented guidance
@@ -39,7 +39,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Incident Reporting
 
 - [PASS] [KSI-INR-01](KSI-INR-01.md): Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
-- [PASS] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
+- [FAIL] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 - [PASS] [KSI-INR-03](KSI-INR-03.md): Generate after action reports and regularly incorporate lessons learned into operations
 
 ## Monitoring, Logging, and Auditing
@@ -63,7 +63,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Recovery Planning
 
-- [PASS] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+- [FAIL] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 - [PASS] [KSI-RPL-02](KSI-RPL-02.md): Develop and maintain a recovery plan that aligns with defined recovery objectives
 - [PASS] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
 - [PASS] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
@@ -79,7 +79,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-SVC-07](KSI-SVC-07.md): Use a consistent, risk-informed approach for applying security patches
 - [PASS] [KSI-SVC-08](KSI-SVC-08.md): Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
 - [PASS] [KSI-SVC-09](KSI-SVC-09.md): Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
-- [PASS] [KSI-SVC-10](KSI-SVC-10.md): Remove unwanted information promptly, including from backups if appropriate
+- [FAIL] [KSI-SVC-10](KSI-SVC-10.md): Remove unwanted information promptly, including from backups if appropriate
 
 ## Third-Party Information Resources
 
@@ -90,9 +90,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 55
-- **Passing:** 58
-- **Failing:** 0
+- **Passing:** 54
+- **Failing:** 4
 - **Not Tested:** -3
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

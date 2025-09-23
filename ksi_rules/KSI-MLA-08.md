@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Use a least-privileged, role and attribute-based, and just-in-time access authorization model for access to log data
 
@@ -26,9 +26,10 @@
 
 ## Latest Results
 
-PASS Good log access control - enhance JIT capabilities (60%): PASS Role-based log access: 3 log-specific roles
-- PASS Least privilege design: Multiple specialized log access roles
-- PASS Attribute-based access: 5 different retention policies suggest granular access control
+PASS Good log access control foundation (50%): PASS Rbac Log Roles Found
+- PASS Least Privilege Design Indicated
+- FAIL Jit Access Capability Proven
+- FAIL Log Specific Permissions Exist
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

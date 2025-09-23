@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Design systems to minimize the attack surface and minimize lateral movement if compromised
 
@@ -33,18 +33,6 @@
 7. `aws rds describe-db-instances --output json`
    *Check database placement and exposure (should be in private subnets)*
 
-8. `aws ecs describe-services --output json`
-   *Check containerized services for attack surface minimization*
-
-9. `aws ec2 describe-network-interfaces --output json`
-   *Analyze network interfaces for micro-segmentation and controlled communications*
-
-10. `aws iam list-roles --output json`
-   *Check IAM roles for least privilege and attack surface reduction*
-
-11. `aws ssm describe-instance-information --output json`
-   *Validate managed instances for centralized security posture and reduced attack surface*
-
 ## Latest Results
 
 PASS Excellent attack surface minimization and lateral movement prevention (85%): PASS Strong attack surface minimization: 6/8 private subnets (75%)
@@ -58,4 +46,4 @@ PASS Excellent attack surface minimization and lateral movement prevention (85%)
 - PASS Advanced segmentation barriers: 1/1 Network ACLs with custom isolation rules
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

@@ -3,17 +3,17 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Status:** FAIL
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
-**Why it matters:** Validates documented RTO/RPO definitions with technical infrastructure capability verification through RDS backup retention, point-in-time recovery settings, and backup plan frequency alignment with recovery objectives
+**Why it matters:** Validates documented RTO/RPO definitions with technical infrastructure capability verification...
 
 ## Validation Method
 
-1. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,PreferredBackupWindow]' --output json`
-   *Check RDS backup retention periods alignment with defined RPO requirements*
+1. `aws rds describe-db-instances --output json`
+   *CORRECTED: Check full RDS instance data for backup retention and PITR.*
 
 2. `aws backup list-backup-plans --output json`
    *Validate backup plan frequency and retention alignment with RTO/RPO definitions*
@@ -27,19 +27,12 @@
 5. `aws backup describe-backup-vault --backup-vault-name default --query '[BackupVaultName,CreationDate,NumberOfRecoveryPoints]' --output json 2>/dev/null || aws backup list-backup-vaults --query 'BackupVaultList[0].[BackupVaultName,CreationDate,NumberOfRecoveryPoints]' --output json`
    *Validate backup vault configuration for RTO/RPO compliance*
 
-6. `aws backup list-backup-selections --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --query 'BackupSelectionsList[*].[SelectionName,IamRoleArn,CreationDate]' --output json 2>/dev/null || echo '{"BackupSelections": []}'`
+6. `aws backup list-backup-selections --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --query 'BackupSelectionsList[*].[SelectionName,IamRoleArn,CreationDate]' --output json 2>/dev/null || echo '{"BackupSelectionsList": []}'`
    *Check backup selection configuration for comprehensive recovery coverage*
 
 ## Latest Results
 
-PASS Enterprise-grade comprehensive recovery objectives with technical capability (75%): PASS Database Backup Capability
-- FAIL Point In Time Recovery
-- PASS Backup Plan Alignment
-- PASS Recovery Infrastructure
-- PASS Defined Rto Objectives
-- PASS Defined Rpo Objectives
-- PASS Backup Vault Configuration
-- FAIL Backup Selection Coverage
+- Exception during evaluation: 'list' object has no attribute 'get'
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

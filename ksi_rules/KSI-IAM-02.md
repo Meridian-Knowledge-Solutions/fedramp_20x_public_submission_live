@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 
@@ -31,8 +31,8 @@
 
 PASS Excellent authentication security (passwordless methods): PASS 1 SAML providers configured (passwordless authentication)
 - PASS Using temporary credentials (passwordless method)
-- INFO No traditional MFA devices (not needed with SAML authentication)
+- PASS Centralized MFA via SAML/IdP (traditional MFA not required)
 - PASS No password policy needed (passwordless authentication in use)
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

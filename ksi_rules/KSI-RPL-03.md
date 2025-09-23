@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Perform system backups aligned with recovery objectives
 
@@ -15,22 +15,27 @@
 1. `aws backup list-backup-plans --output json`
    *Verify comprehensive backup plans are configured for system recovery*
 
-2. `aws backup list-backup-jobs --by-state COMPLETED --max-results 50 --output json`
+2. `aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"BackupPlan":{}}'`
+   *ADDED: Retrieve details of the primary backup plan to validate retention rules.*
+
+3. `aws backup list-backup-jobs --by-state COMPLETED --max-results 50 --output json`
    *Check recent backup job completions and success rates*
 
-3. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,DeletionProtection]' --output json`
+4. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,DeletionProtection]' --output json`
    *Confirm RDS automated backup configuration and data protection settings*
 
-4. `aws ec2 describe-snapshots --owner-ids self --output json`
+5. `aws ec2 describe-snapshots --owner-ids self --output json`
    *Validate EBS snapshots for system backup coverage*
 
 ## Latest Results
 
-PASS System backups with compliant retention aligned with recovery objectives: PASS Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan)
-- WARNING Backup plan details not available - cannot validate retention policies
+PASS Comprehensive system backups with validated operations aligned with recovery objectives: PASS Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan)
+- PASS Excellent retention: 90 days (rule: daily-backup)
+- PASS Regular backup schedule: cron(0 23 * * ? *) (rule: daily-backup)
+- PASS Full retention compliance: 1/1 rules meet requirements
 - PASS Backup operations validated: 50 successful backup jobs prove backups are functioning
 - PASS RDS backup configuration: 1/1 databases with automated backups
 - PASS Additional backup coverage: 506 EBS snapshots
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*

@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-09-23 03:47
+**Last Check:** 2025-09-23 07:50
 
 **What it validates:** Ensure cloud-native information resources are implemented based on host provider's best practices and documented guidance
 
@@ -13,56 +13,69 @@
 ## Validation Method
 
 1. `aws configservice describe-config-rules --output json`
-   *Check Config rules for best practice compliance and continuous governance*
+   *Check Config rules for compliance and governance.*
 
 2. `aws cloudtrail describe-trails --output json`
-   *Validate CloudTrail configuration following AWS security best practices*
+   *Validate CloudTrail configuration.*
 
-3. `aws iam get-account-summary --output json`
-   *Check IAM configuration against AWS security best practices*
+3. `aws cloudtrail get-trail-status --name meridianks-Management-events --output json`
+   *Check the logging status of the primary CloudTrail trail.*
 
-4. `aws s3api list-buckets --output json`
-   *Validate S3 configurations following AWS best practices for data protection*
+4. `aws kms list-keys --output json`
+   *Check for KMS keys for data protection.*
 
-5. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceType,State.Name]' --output json`
-   *Check instance types and configurations against AWS best practices*
+5. `aws iam get-account-summary --output json`
+   *Check IAM role vs. user ratio.*
 
-6. `aws cloudwatch describe-alarms --output json`
-   *Validate monitoring and alerting following AWS operational best practices*
+6. `aws ec2 describe-instances --output json`
+   *Assess full instance data for IaC patterns and performance.*
 
-7. `aws support describe-trusted-advisor-checks --language en --output json`
-   *Check Trusted Advisor recommendations for AWS best practice adherence*
+7. `aws elbv2 describe-load-balancers --output json`
+   *Check for multi-AZ load balancers.*
 
-8. `aws wellarchitected list-workloads --output json`
-   *Validate Well-Architected Framework implementation and best practice reviews*
+8. `aws autoscaling describe-auto-scaling-groups --output json`
+   *Check for Auto Scaling Groups for traditional reliability.*
 
-9. `aws servicecatalog list-portfolios --output json`
-   *Check Service Catalog for standardized best practice deployments*
+9. `aws s3api list-buckets --output json`
+   *Validate S3 usage for cost-effective storage.*
 
-10. `aws ssm describe-instance-information --output json`
-   *Validate Systems Manager configuration for operational best practices*
+10. `aws cloudwatch describe-alarms --output json`
+   *Validate monitoring foundation.*
 
-11. `aws inspector2 get-configuration --output json`
-   *Check Inspector configuration for security best practice scanning*
+11. `aws backup list-backup-plans --output json`
+   *Check for backup strategies.*
 
 12. `aws organizations describe-organization --output json`
-   *Check enterprise-wide best practice governance and organizational standards*
+   *Check for enterprise governance with AWS Organizations.*
+
+13. `aws lambda list-functions --output json`
+   *Detect serverless-first architectures.*
+
+14. `aws rds describe-db-instances --output json`
+   *Detect managed database services.*
+
+15. `aws apigateway get-rest-apis --output json`
+   *Detect managed API services.*
 
 ## Latest Results
 
-PASS Good AWS best practices foundation (58%): PASS CloudTrail excellently configured: 'meridianks-Management-events' ready for activation (cost-optimized for pilot)
+PASS Excellent AWS best practices implementation (92%): PASS CloudTrail excellently configured: 'meridianks-Management-events' ready for activation (cost-optimized for pilot)
 - PASS Multi-region audit coverage: CloudTrail spans all AWS regions
 - PASS Log integrity protection: CloudTrail log file validation enabled
 - PASS Encrypted audit logs: CloudTrail using KMS encryption
 - PASS Global service monitoring: CloudTrail capturing global AWS events
 - PASS Real-time log analysis: CloudTrail integrated with CloudWatch Logs
 - PASS Enterprise governance: Organization-wide CloudTrail
+- PASS Encryption key management: 15 KMS keys for data protection
 - PASS IAM best practices: 79 roles vs 3 users (service-oriented architecture)
-- PASS Managed services foundation: 6 S3 buckets (consider adding compute layer)
+- PASS Excellent reliability architecture: 1/1 load balancers multi-AZ
+- PASS Infrastructure as Code scaling: 5/6 Terraform-managed instances (superior to ASGs for pilot)
+- PASS Active data protection: 2 backup plan(s) with recent execution
+- PASS Good performance: 5/6 instances using modern types
 - PASS Storage optimization: 6 S3 buckets (cost-effective storage)
 - PASS Monitoring foundation ready: CloudWatch available (alarms optional for pilot environments)
 - PASS Compliance service available: AWS Config ready for rule deployment (optional for pilot)
 - PASS Enterprise governance: AWS Organizations with centralized management
 
 ---
-*Generated 2025-09-23 03:47 UTC*
+*Generated 2025-09-23 07:50 UTC*
