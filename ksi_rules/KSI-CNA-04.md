@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** FAIL
-**Last Check:** 2025-09-23 13:26
+**Last Check:** 2025-09-23 17:56
 
 **What it validates:** Use immutable infrastructure with strictly defined functionality and privileges by default
 
@@ -39,7 +39,7 @@
 ## Latest Results
 
 FAIL CRITICAL least privilege violation detected: CRITICAL: The AdministratorAccess policy is attached to role(s): githubactions_role, OrganizationAccountAccessRole, AWSControlTowerExecution, stacksets-exec-d5e511141f10f5aa9846491550c31da6, SSM-CR-Execution-Role, aws-controltower-AdministratorExecutionRole, AWSReservedSSO_AdministratorAccess_500b4ab3fed23646, CodePipelineServiceRoles, CodeBuildServiceRoles.
-- CRITICAL: Security Group(s) expose sensitive ports to 0.0.0.0/0: launch-wizard-1 (Port: 22), launch-wizard-2 (Port: 22).
+- CRITICAL: Security Group(s) expose sensitive ports to 0.0.0.0/0: launch-wizard-2 (Port: 22), launch-wizard-1 (Port: 22).
 
 ---
-*Generated 2025-09-23 13:26 UTC*
+*Generated 2025-09-23 17:56 UTC*

@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-23 13:26
+**Last Check:** 2025-09-23 17:56
 
 **What it validates:** Enforce appropriately secure authentication methods for non-user accounts and services
 
@@ -23,10 +23,10 @@
 
 ## Latest Results
 
-WARNING Basic service authentication security (75%): PASS Secure foundation: 79 IAM roles available for service authentication (34 are service-linked).
+WARNING Basic service authentication security (75%): PASS Secure foundation: 81 IAM roles available for service authentication (36 are service-linked).
 - WARNING High Risk: 1 IAM user(s) found that appear to be service accounts (change_template_approver). These should be converted to IAM Roles.
 - PASS Identity Best Practice: No human IAM users with console passwords detected.
 - PASS EC2 Best Practice: All 6 instance(s) are correctly using IAM Instance Profiles.
 
 ---
-*Generated 2025-09-23 13:26 UTC*
+*Generated 2025-09-23 17:56 UTC*

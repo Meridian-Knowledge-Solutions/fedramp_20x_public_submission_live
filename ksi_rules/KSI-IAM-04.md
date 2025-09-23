@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-23 13:26
+**Last Check:** 2025-09-23 17:56
 
 **What it validates:** Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
 
@@ -32,14 +32,14 @@
 
 ## Latest Results
 
-PASS Excellent modern authorization model (95%): PASS IAM Identity Center configured: 1 active instance(s)
+PASS Excellent modern authorization model (90%): PASS IAM Identity Center configured: 1 active instance(s)
 - PASS Permission sets deployed: 2 sets (modern role-based access)
 - PASS Modern authorization model: Permission sets provide role-based, attribute-based, and just-in-time access
 - PASS Active permission sets: AdministratorAccess, ReadOnlyAccess
-- PASS Role-based access pattern: 53 user-oriented roles vs 3 users (26 service roles)
+- PASS Role-based access pattern: 55 user-oriented roles vs 3 users (26 service roles)
 - PASS Controlled user count: 3 users (excellent for least privilege)
-- PASS Controlled policy count: 9 custom policies (good least privilege)
+- PASS Moderate policy count: 13 custom policies
 - PASS Role-based session: Using temporary credentials (just-in-time access)
 
 ---
-*Generated 2025-09-23 13:26 UTC*
+*Generated 2025-09-23 17:56 UTC*

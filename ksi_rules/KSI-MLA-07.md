@@ -4,7 +4,7 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-09-23 13:26
+**Last Check:** 2025-09-23 17:56
 
 **What it validates:** Maintain a list of information resources and event types that will be monitored, logged, and audited
 
@@ -30,4 +30,4 @@ WARNING Basic automated monitoring inventory - expand automation (50%): PASS Com
 - PASS Comprehensive audit coverage: 1 trails with multi-region
 
 ---
-*Generated 2025-09-23 13:26 UTC*
+*Generated 2025-09-23 17:56 UTC*

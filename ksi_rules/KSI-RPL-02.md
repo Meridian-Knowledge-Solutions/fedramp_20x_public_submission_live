@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** PASS
-**Last Check:** 2025-09-23 13:26
+**Status:** FAIL
+**Last Check:** 2025-09-23 17:56
 
 **What it validates:** Develop and maintain a recovery plan that aligns with defined recovery objectives
 
@@ -16,8 +16,7 @@
 
 ## Latest Results
 
-WARNING Good recovery planning (enhance technical alignment): PASS Core recovery plans: incident_reponse_policy.pdf, contingency_planning_policy.pdf
-- PASS Plan maintenance: 3 files updated within last year
+- No rule function found: evaluate_KSI_RPL_02
 
 ---
-*Generated 2025-09-23 13:26 UTC*
+*Generated 2025-09-23 17:56 UTC*
