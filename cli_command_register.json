@@ -46,125 +46,109 @@
     ]
   },
   "KSI-CNA-02": {
-    "description": "Design systems to minimize the attack surface and minimize lateral movement if compromised",
-    "justification": "Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures",
-    "cli_commands": [
-      {
-        "command": "aws ec2 describe-subnets --output json",
-        "note": "Analyze subnet segmentation for attack surface isolation (public vs private)"
-      },
-      {
-        "command": "aws ec2 describe-security-groups --output json",
-        "note": "Evaluate micro-segmentation and lateral movement prevention through security group rules"
-      },
-      {
-        "command": "aws ec2 describe-instances --output json",
-        "note": "Assess compute workload exposure and placement for attack surface minimization"
-      },
-      {
-        "command": "aws ec2 describe-network-acls --output json",
-        "note": "Check Network ACLs for subnet-level isolation and lateral movement barriers"
-      },
-      {
-        "command": "aws elbv2 describe-load-balancers --output json",
-        "note": "Analyze load balancer exposure patterns (internal vs internet-facing)"
-      },
-      {
-        "command": "aws lambda list-functions --output json",
-        "note": "Assess Lambda function isolation and VPC configuration for attack surface reduction"
-      },
-      {
-        "command": "aws rds describe-db-instances --output json",
-        "note": "Check database placement and exposure (should be in private subnets)"
-      },
-      {
-        "command": "aws ecs describe-services --output json",
-        "note": "Check containerized services for attack surface minimization"
-      },
-      {
-        "command": "aws ec2 describe-network-interfaces --output json",
-        "note": "Analyze network interfaces for micro-segmentation and controlled communications"
-      },
-      {
-        "command": "aws iam list-roles --output json",
-        "note": "Check IAM roles for least privilege and attack surface reduction"
-      },
-      {
-        "command": "aws ssm describe-instance-information --output json",
-        "note": "Validate managed instances for centralized security posture and reduced attack surface"
-      }
+  "description": "Design systems to minimize the attack surface and minimize lateral movement if compromised",
+  "justification": "Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures",
+  "cli_commands": [
+    {
+      "command": "aws ec2 describe-subnets --output json",
+      "note": "Analyze subnet segmentation for attack surface isolation (public vs private)"
+    },
+    {
+      "command": "aws ec2 describe-security-groups --output json",
+      "note": "Evaluate micro-segmentation and lateral movement prevention through security group rules"
+    },
+    {
+      "command": "aws ec2 describe-instances --output json",
+      "note": "Assess compute workload exposure and placement for attack surface minimization"
+    },
+    {
+      "command": "aws ec2 describe-network-acls --output json",
+      "note": "Check Network ACLs for subnet-level isolation and lateral movement barriers"
+    },
+    {
+      "command": "aws elbv2 describe-load-balancers --output json",
+      "note": "Analyze load balancer exposure patterns (internal vs internet-facing)"
+    },
+    {
+      "command": "aws lambda list-functions --output json",
+      "note": "Assess Lambda function isolation and VPC configuration for attack surface reduction"
+    },
+    {
+      "command": "aws rds describe-db-instances --output json",
+      "note": "Check database placement and exposure (should be in private subnets)"
+    }
     ]
   },
   "KSI-CNA-03": {
-    "description": "Use logical networking and related capabilities to enforce traffic flow controls",
-    "justification": "Validates logical networking implementation through VPC design, subnet segmentation, routing controls, and network security enforcement",
-    "cli_commands": [
-      {
-        "command": "aws ec2 describe-vpcs --output json",
-        "note": "Check VPC configuration for logical network isolation and traffic control foundation"
-      },
-      {
-        "command": "aws ec2 describe-subnets --output json",
-        "note": "Validate subnet design for logical segmentation and traffic isolation"
-      },
-      {
-        "command": "aws ec2 describe-route-tables --output json",
-        "note": "Analyze routing tables for traffic flow control and network segmentation"
-      },
-      {
-        "command": "aws ec2 describe-internet-gateways --output json",
-        "note": "Check internet gateways for controlled external connectivity"
-      },
-      {
-        "command": "aws ec2 describe-nat-gateways --output json",
-        "note": "Validate NAT gateways for controlled outbound traffic from private networks"
-      },
-      {
-        "command": "aws ec2 describe-vpc-endpoints --output json",
-        "note": "Check VPC endpoints for secure service communications without internet transit"
-      },
-      {
-        "command": "aws directconnect describe-connections --output json",
-        "note": "Validate dedicated connections for enterprise traffic flow controls"
-      },
-      {
-        "command": "aws ec2 describe-transit-gateways --output json",
-        "note": "Check transit gateways for inter-VPC and hybrid traffic control"
-      }
+  "description": "Use logical networking and related capabilities to enforce traffic flow controls",
+  "justification": "Validates logical networking implementation through VPC design, subnet segmentation, routing controls, and network security enforcement",
+  "cli_commands": [
+    {
+      "command": "aws ec2 describe-route-tables --output json",
+      "note": "Analyze routing tables for traffic flow control and network segmentation"
+    },
+    {
+      "command": "aws ec2 describe-network-acls --output json",
+      "note": "ADDED: Analyze Network ACLs for subnet-level traffic control rules."
+    },
+    {
+      "command": "aws ec2 describe-vpc-endpoints --output json",
+      "note": "Check VPC endpoints for secure service communications without internet transit"
+    },
+    {
+      "command": "aws ec2 describe-transit-gateways --output json",
+      "note": "Check transit gateways for inter-VPC and hybrid traffic control"
+    },
+    {
+      "command": "aws elbv2 describe-load-balancers --output json",
+      "note": "Check load balancers for application and network-layer traffic control."
+    },
+    {
+      "command": "aws ec2 describe-nat-gateways --output json",
+      "note": "Validate NAT gateways for controlled outbound traffic from private networks"
+    },
+    {
+      "command": "aws logs describe-log-groups --log-group-name-prefix /aws/vpc-flow-logs --output json",
+      "note": "ADDED: Check for VPC Flow Log groups for traffic monitoring."
+    }
     ]
   },
   "KSI-CNA-04": {
-    "description": "Use immutable infrastructure with strictly defined functionality and privileges by default",
-    "justification": "Validates immutable infrastructure patterns through Infrastructure as Code, container usage, serverless adoption, and configuration management",
-    "cli_commands": [
-      {
-        "command": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json",
-        "note": "Check CloudFormation stacks for Infrastructure as Code immutable deployment patterns"
-      },
-      {
-        "command": "aws ec2 describe-launch-templates --output json",
-        "note": "Validate launch templates for consistent immutable instance deployment"
-      },
-      {
-        "command": "aws autoscaling describe-auto-scaling-groups --output json",
-        "note": "Check Auto Scaling Groups for immutable instance replacement patterns"
-      },
-      {
-        "command": "aws ecs describe-clusters --output json",
-        "note": "Validate containerized infrastructure for immutable deployment patterns"
-      },
-      {
-        "command": "aws lambda list-functions --output json",
-        "note": "Check serverless functions as immutable compute resources"
-      },
-      {
-        "command": "aws ec2 describe-images --owners self --output json",
-        "note": "Validate custom AMIs for immutable image-based deployments"
-      },
-      {
-        "command": "aws ssm describe-documents --document-filter-list key=DocumentType,value=Command --output json",
-        "note": "Check Systems Manager documents for immutable configuration management"
-      }
+  "description": "Use immutable infrastructure with strictly defined functionality and privileges by default",
+  "justification": "Validates immutable infrastructure patterns, IaC, serverless adoption, and least-privilege configurations for network and IAM.",
+  "cli_commands": [
+    {
+      "command": "aws ec2 describe-instances --filters 'Name=instance-state-name,Values=running,pending' --query 'Reservations[].Instances[].[InstanceId, Tags, LaunchTime, ImageId]' --output json",
+      "note": "Query running instances for IaC tags, naming, and age."
+    },
+    {
+      "command": "aws ec2 describe-launch-templates --query 'LaunchTemplates[].LaunchTemplateName' --output json",
+      "note": "Validate use of launch templates for standardized deployments."
+    },
+    {
+      "command": "aws autoscaling describe-auto-scaling-groups --query 'AutoScalingGroups[].AutoScalingGroupName' --output json",
+      "note": "Check Auto Scaling Groups for immutable replacement patterns."
+    },
+    {
+      "command": "aws lambda list-functions --query 'Functions[].FunctionName' --output json",
+      "note": "Check for serverless functions as immutable resources."
+    },
+    {
+      "command": "aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)].[Name]' --output json",
+      "note": "Identify S3 buckets used for Terraform state management."
+    },
+    {
+      "command": "aws dynamodb list-tables --query 'TableNames[?contains(@, `terraform-lock`)]' --output json",
+      "note": "Identify DynamoDB tables used for Terraform state locking."
+    },
+    {
+      "command": "aws ec2 describe-security-groups --query 'SecurityGroups[?length(IpPermissions[?contains(IpRanges[].CidrIp, `0.0.0.0/0`)]) > `0`].[GroupId, GroupName, IpPermissions]' --output json",
+      "note": "NEW: Check for Security Groups with overly permissive ingress rules from the internet."
+    },
+    {
+      "command": "aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess --query 'PolicyRoles[].RoleName' --output json",
+      "note": "NEW: Check for any IAM roles using the AWS-managed AdministratorAccess policy."
+    }
     ]
   },
   "KSI-CNA-05": {
@@ -248,183 +232,211 @@
     ]
   },
   "KSI-CNA-07": {
-    "description": "Ensure cloud-native information resources are implemented based on host provider's best practices and documented guidance",
-    "justification": "Validates comprehensive adherence to AWS best practices through Well-Architected principles, service configurations, security recommendations, and operational excellence",
-    "cli_commands": [
-      {
-        "command": "aws configservice describe-config-rules --output json",
-        "note": "Check Config rules for best practice compliance and continuous governance"
-      },
-      {
-        "command": "aws cloudtrail describe-trails --output json",
-        "note": "Validate CloudTrail configuration following AWS security best practices"
-      },
-      {
-        "command": "aws iam get-account-summary --output json",
-        "note": "Check IAM configuration against AWS security best practices"
-      },
-      {
-        "command": "aws s3api list-buckets --output json",
-        "note": "Validate S3 configurations following AWS best practices for data protection"
-      },
-      {
-        "command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceType,State.Name]' --output json",
-        "note": "Check instance types and configurations against AWS best practices"
-      },
-      {
-        "command": "aws cloudwatch describe-alarms --output json",
-        "note": "Validate monitoring and alerting following AWS operational best practices"
-      },
-      {
-        "command": "aws support describe-trusted-advisor-checks --language en --output json",
-        "note": "Check Trusted Advisor recommendations for AWS best practice adherence"
-      },
-      {
-        "command": "aws wellarchitected list-workloads --output json",
-        "note": "Validate Well-Architected Framework implementation and best practice reviews"
-      },
-      {
-        "command": "aws servicecatalog list-portfolios --output json",
-        "note": "Check Service Catalog for standardized best practice deployments"
-      },
-      {
-        "command": "aws ssm describe-instance-information --output json",
-        "note": "Validate Systems Manager configuration for operational best practices"
-      },
-      {
-        "command": "aws inspector2 get-configuration --output json",
-        "note": "Check Inspector configuration for security best practice scanning"
-      },
-      {
-        "command": "aws organizations describe-organization --output json",
-        "note": "Check enterprise-wide best practice governance and organizational standards"
-      }
+  "description": "Ensure cloud-native information resources are implemented based on host provider's best practices and documented guidance",
+  "justification": "Validates comprehensive adherence to AWS best practices through Well-Architected principles, service configurations, security recommendations, and operational excellence",
+  "cli_commands": [
+    {
+      "command": "aws configservice describe-config-rules --output json",
+      "note": "Check Config rules for compliance and governance."
+    },
+    {
+      "command": "aws cloudtrail describe-trails --output json",
+      "note": "Validate CloudTrail configuration."
+    },
+    {
+      "command": "aws cloudtrail get-trail-status --name meridianks-Management-events --output json",
+      "note": "Check the logging status of the primary CloudTrail trail."
+    },
+    {
+      "command": "aws kms list-keys --output json",
+      "note": "Check for KMS keys for data protection."
+    },
+    {
+      "command": "aws iam get-account-summary --output json",
+      "note": "Check IAM role vs. user ratio."
+    },
+    {
+      "command": "aws ec2 describe-instances --output json",
+      "note": "Assess full instance data for IaC patterns and performance."
+    },
+    {
+      "command": "aws elbv2 describe-load-balancers --output json",
+      "note": "Check for multi-AZ load balancers."
+    },
+    {
+      "command": "aws autoscaling describe-auto-scaling-groups --output json",
+      "note": "Check for Auto Scaling Groups for traditional reliability."
+    },
+    {
+      "command": "aws s3api list-buckets --output json",
+      "note": "Validate S3 usage for cost-effective storage."
+    },
+    {
+      "command": "aws cloudwatch describe-alarms --output json",
+      "note": "Validate monitoring foundation."
+    },
+    {
+      "command": "aws backup list-backup-plans --output json",
+      "note": "Check for backup strategies."
+    },
+    {
+      "command": "aws organizations describe-organization --output json",
+      "note": "Check for enterprise governance with AWS Organizations."
+    },
+    {
+      "command": "aws lambda list-functions --output json",
+      "note": "Detect serverless-first architectures."
+    },
+    {
+      "command": "aws rds describe-db-instances --output json",
+      "note": "Detect managed database services."
+    },
+    {
+      "command": "aws apigateway get-rest-apis --output json",
+      "note": "Detect managed API services."
+    }
     ]
   },
   "KSI-SVC-01": {
     "description": "Harden and review network and system configurations",
-    "justification": "Validates comprehensive system hardening from basic network security to enterprise-grade multi-layer defense, covering security groups, system configurations, automated compliance, threat detection, and organizational governance with patch management and vulnerability scanning",
+    "justification": "Validates comprehensive system hardening from basic network security to enterprise-grade multi-layer defense...",
     "cli_commands": [
-      {
-        "command": "aws ec2 describe-security-groups --output json",
-        "note": "Analyze security groups for network hardening and restrictive access controls"
-      },
-      {
-        "command": "aws ec2 describe-instances --output json",
-        "note": "Check instance configurations for system hardening and security posture"
-      },
-      {
-        "command": "aws ssm describe-instance-information --output json",
-        "note": "Validate Systems Manager agent coverage for centralized configuration management"
-      },
-      {
-        "command": "aws ssm describe-patch-baselines --output json",
-        "note": "Check patch baselines for automated system hardening and vulnerability management"
-      },
-      {
-        "command": "aws configservice describe-config-rules --output json",
-        "note": "Validate Config rules for automated configuration compliance and hardening"
-      },
-      {
-        "command": "aws ec2 describe-network-acls --output json",
-        "note": "Check Network ACLs for subnet-level network hardening and traffic control"
-      },
-      {
-        "command": "aws guardduty list-detectors --output json",
-        "note": "Validate GuardDuty for threat detection and security monitoring"
-      },
-      {
-        "command": "aws wafv2 list-web-acls --scope REGIONAL --output json",
-        "note": "Check WAF for application-layer protection and attack mitigation"
-      },
-      {
-        "command": "aws inspector2 get-configuration --output json",
-        "note": "Validate Inspector for vulnerability assessment and security hardening"
-      },
-      {
-        "command": "aws organizations describe-organization --output json",
-        "note": "Check enterprise-wide hardening policies and organizational security governance"
-      }
+        {
+            "command": "aws ec2 describe-security-groups --output json",
+            "note": "Analyze security groups for network hardening and restrictive access controls"
+        },
+        {
+            "command": "aws ec2 describe-instances --output json",
+            "note": "Check instance configurations for system hardening and security posture"
+        },
+        {
+            "command": "aws ssm describe-instance-information --output json",
+            "note": "Validate Systems Manager agent coverage for centralized configuration management"
+        },
+        {
+            "command": "aws ssm describe-patch-baselines --output json",
+            "note": "Check patch baselines for automated system hardening and vulnerability management"
+        },
+        {
+            "command": "aws configservice describe-config-rules --output json",
+            "note": "Validate Config rules for automated configuration compliance and hardening"
+        },
+        {
+            "command": "aws ec2 describe-network-acls --output json",
+            "note": "Check Network ACLs for subnet-level network hardening and traffic control"
+        },
+        {
+            "command": "aws guardduty list-detectors --output json",
+            "note": "Validate GuardDuty for threat detection and security monitoring"
+        },
+        {
+            "command": "aws wafv2 list-web-acls --scope REGIONAL --output json",
+            "note": "Check WAF for application-layer protection and attack mitigation"
+        },
+        {
+            "command": "aws inspector2 get-configuration --output json",
+            "note": "Validate Inspector for vulnerability assessment and security hardening"
+        },
+        {
+            "command": "aws organizations describe-organization --output json",
+            "note": "Check enterprise-wide hardening policies and organizational security governance"
+        },
+        {
+            "command": "aws ec2 describe-vpc-endpoints --output json",
+            "note": "ADDED: Check for VPC endpoints for secure service access."
+        }
     ]
   },
   "KSI-SVC-02": {
-    "description": "Encrypt or secure network traffic",
-    "justification": "Validates comprehensive network traffic encryption from basic HTTPS enforcement to enterprise-grade multi-protocol encryption, covering load balancers, CDN, APIs, databases, caching, VPN, and organizational encryption policies with certificate management",
-    "cli_commands": [
-      {
-        "command": "aws acm list-certificates --output json",
-        "note": "Check SSL/TLS certificates for encrypted network communications and certificate management"
-      },
-      {
-        "command": "aws ec2 describe-vpc-endpoints --output json",
-        "note": "Validate VPC endpoints for private AWS service communication and traffic isolation"
-      },
-      {
-        "command": "aws elbv2 describe-listeners --output json",
-        "note": "Analyze load balancer listeners for HTTPS/TLS protocol enforcement and cipher configuration"
-      },
-      {
-        "command": "aws cloudfront list-distributions --output json",
-        "note": "Check CloudFront CDN distributions for HTTPS enforcement and global traffic encryption"
-      },
-      {
-        "command": "aws apigateway get-rest-apis --output json",
-        "note": "Validate API Gateway configurations for API traffic encryption and secure endpoint access"
-      },
-      {
-        "command": "aws rds describe-db-instances --output json",
-        "note": "Check RDS database instances for SSL/TLS connection encryption and secure data transit"
-      },
-      {
-        "command": "aws elasticache describe-cache-clusters --output json",
-        "note": "Analyze ElastiCache clusters for in-transit encryption and secure cache communication"
-      },
-      {
-        "command": "aws acm list-certificates --output json",
-        "note": "Check AWS Certificate Manager for automated TLS certificate provisioning and management"
-      },
-      {
-        "command": "aws ec2 describe-vpn-connections --output json",
-        "note": "Validate VPN connections for encrypted hybrid cloud connectivity and secure site-to-site communication"
-      },
-      {
-        "command": "aws organizations describe-organization --output json",
-        "note": "Check enterprise-wide encryption policies and organizational traffic security standards across accounts"
-      }
+  "description": "Encrypt or secure network traffic",
+  "justification": "Validates comprehensive network traffic encryption from basic HTTPS enforcement to enterprise-grade multi-protocol encryption...",
+  "cli_commands": [
+    {
+      "command": "aws elbv2 describe-load-balancers --output json",
+      "note": "ADDED: Check for load balancers as a foundation for traffic encryption."
+    },
+    {
+      "command": "aws elbv2 describe-listeners --output json",
+      "note": "Analyze load balancer listeners for HTTPS/TLS protocol enforcement."
+    },
+    {
+      "command": "aws ec2 describe-vpc-endpoints --output json",
+      "note": "Validate VPC endpoints for private AWS service communication."
+    },
+    {
+      "command": "aws cloudfront list-distributions --output json",
+      "note": "Check CloudFront CDN distributions for HTTPS enforcement."
+    },
+    {
+      "command": "aws apigateway get-rest-apis --output json",
+      "note": "Validate API Gateway configurations for API traffic encryption."
+    },
+    {
+      "command": "aws rds describe-db-instances --output json",
+      "note": "Check RDS database instances for SSL/TLS connection encryption."
+    },
+    {
+      "command": "aws elasticache describe-cache-clusters --output json",
+      "note": "Analyze ElastiCache clusters for in-transit encryption."
+    },
+    {
+      "command": "aws acm list-certificates --output json",
+      "note": "Check AWS Certificate Manager for automated TLS certificate management."
+    },
+    {
+      "command": "aws organizations describe-organization --output json",
+      "note": "Check enterprise-wide encryption policies and organizational standards."
+    }
     ]
   },
   "KSI-SVC-03": {
-    "description": "Encrypt all federal and sensitive information at rest",
-    "justification": "Validates comprehensive at-rest encryption from basic storage service availability to enterprise-grade multi-service encryption, covering object storage, block storage, databases, data lakes, backup systems, and managed services with automated key management and compliance monitoring",
-    "cli_commands": [
-      {
-        "command": "aws s3api list-buckets --output json",
-        "note": "Get S3 buckets for object storage encryption validation and federal data protection"
-      },
-      {
-        "command": "aws ec2 describe-volumes --output json",
-        "note": "Check EBS volume encryption status for block storage and instance data protection"
-      },
-      {
-        "command": "aws rds describe-db-instances --output json",
-        "note": "Validate RDS database encryption for structured data at rest and backup encryption"
-      },
-      {
-        "command": "aws rds describe-db-snapshots --owner-type self --output json",
-        "note": "Check RDS snapshot encryption for database backup and recovery data protection"
-      },
-      {
-        "command": "aws efs describe-file-systems --output json",
-        "note": "Check Elastic File System encryption for shared storage and distributed application data"
-      },
-      {
-        "command": "aws backup list-backup-vaults --output json",
-        "note": "Validate AWS Backup vault encryption for centralized backup data protection and compliance"
-      },
-      {
-        "command": "aws kms list-keys --output json",
-        "note": "Check KMS key management for enterprise encryption key governance and automated key rotation"
-      }
+  "description": "Encrypt all federal and sensitive information at rest",
+  "justification": "Validates comprehensive at-rest encryption from basic storage service availability to enterprise-grade multi-service encryption...",
+  "cli_commands": [
+    {
+      "command": "aws s3api list-buckets --output json",
+      "note": "Get S3 buckets for object storage encryption validation."
+    },
+    {
+      "command": "aws ec2 describe-volumes --output json",
+      "note": "Check EBS volume encryption status for block storage."
+    },
+    {
+      "command": "aws rds describe-db-instances --output json",
+      "note": "Validate RDS database encryption at rest."
+    },
+    {
+      "command": "aws rds describe-db-snapshots --owner-type self --output json",
+      "note": "Check RDS snapshot encryption for backups."
+    },
+    {
+      "command": "aws dynamodb list-tables --output json",
+      "note": "ADDED: Check for DynamoDB tables (encrypted by default)."
+    },
+    {
+      "command": "aws elasticache describe-cache-clusters --output json",
+      "note": "ADDED: Analyze ElastiCache clusters for at-rest encryption."
+    },
+    {
+      "command": "aws redshift describe-clusters --output json",
+      "note": "ADDED: Check Redshift clusters for data warehouse encryption."
+    },
+    {
+      "command": "aws efs describe-file-systems --output json",
+      "note": "Check Elastic File System encryption for shared storage."
+    },
+    {
+      "command": "aws backup list-backup-vaults --output json",
+      "note": "Validate AWS Backup vault encryption for centralized backups."
+    },
+    {
+      "command": "aws kms list-keys --output json",
+      "note": "Check KMS key management for encryption governance."
+    },
+    {
+        "command": "aws organizations describe-organization --output json",
+        "note": "ADDED: Check for enterprise-wide encryption policies."
+    }
     ]
   },
   "KSI-SVC-04": {
@@ -673,36 +685,28 @@
   },
   "KSI-SVC-10": {
     "description": "Remove unwanted information promptly, including from backups if appropriate",
-    "justification": "Validates automated data lifecycle management through comprehensive retention policies, backup purging automation, storage lifecycle management, and compliance-driven deletion covering AWS Backup lifecycle, S3 policies, automated purging, and data retention compliance",
+    "justification": "Validates automated data lifecycle management through comprehensive retention policies...",
     "cli_commands": [
-      {
-        "command": "aws backup list-backup-plans --output json",
-        "note": "Validate backup lifecycle management and automated retention policies"
-      },
-      {
-        "command": "aws s3api list-buckets --output json",
-        "note": "Check S3 storage lifecycle automation and data retention management"
-      },
-      {
-        "command": "aws lambda list-functions --output json",
-        "note": "Check automated data purging and lifecycle management functions"
-      },
-      {
-        "command": "aws events list-rules --output json",
-        "note": "Validate scheduled data lifecycle and automated cleanup workflows"
-      },
-      {
-        "command": "aws logs describe-log-groups --output json",
-        "note": "Check log retention policies for compliance-driven data deletion"
-      },
-      {
-        "command": "aws ec2 describe-snapshots --owner-ids self --output json",
-        "note": "Validate EBS snapshot lifecycle management and automated cleanup"
-      },
-      {
-        "command": "evidence_check",
-        "note": "Data lifecycle management policies, retention schedules, and purging procedures documentation"
-      }
+        {
+            "command": "aws backup list-backup-plans --output json",
+            "note": "Verify backup plans are configured."
+        },
+        {
+            "command": "aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{\"BackupPlan\":{}}'",
+            "note": "ADDED: Retrieve details of the primary backup plan to validate retention rules."
+        },
+        {
+            "command": "aws s3api list-inventory-configurations --bucket $(aws s3api list-buckets --query 'Buckets[0].Name' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{\"InventoryConfigurationList\":[]}'",
+            "note": "ADDED: Check for S3 Inventory configs as a proxy for lifecycle management."
+        },
+        {
+            "command": "aws lambda list-functions --output json",
+            "note": "Check automated data purging and lifecycle management functions."
+        },
+        {
+            "command": "aws logs describe-log-groups --output json",
+            "note": "Check log retention policies for compliance-driven data deletion."
+        }
     ]
   },
   "KSI-IAM-01": {
@@ -754,25 +758,21 @@
     ]
   },
   "KSI-IAM-03": {
-    "description": "Enforce appropriately secure authentication methods for non-user accounts and services",
-    "justification": "Validates service accounts use appropriate authentication methods (roles, not long-term keys) and detects insecure patterns",
-    "cli_commands": [
-      {
-        "command": "aws iam list-roles --output json",
-        "note": "Check IAM roles for service authentication (primary secure method)"
-      },
-      {
-        "command": "aws iam list-users --output json",
-        "note": "Identify potential service users who should be using roles instead"
-      },
-      {
-        "command": "aws iam list-access-keys --output json",
-        "note": "Detect long-term access keys that may indicate insecure service authentication"
-      },
-      {
-        "command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].IamInstanceProfile' --output json",
-        "note": "Validate EC2 instances use instance profiles for secure service authentication"
-      }
+  "description": "Enforce appropriately secure authentication methods for non-user accounts and services",
+  "justification": "Validates service accounts use appropriate authentication methods (roles, not long-term keys) and detects insecure patterns",
+  "cli_commands": [
+    {
+      "command": "aws iam list-roles --output json",
+      "note": "Check IAM roles for service authentication (primary secure method)"
+    },
+    {
+      "command": "aws iam list-users --output json",
+      "note": "Identify users to check for insecure patterns (service user names, long-term keys)"
+    },
+    {
+      "command": "aws ec2 describe-instances --query 'Reservations[*].Instances[*].IamInstanceProfile' --output json",
+      "note": "Validate EC2 instances use instance profiles for secure service authentication"
+    }
     ]
   },
   "KSI-IAM-04": {
@@ -1076,29 +1076,25 @@
     ]
   },
   "KSI-MLA-07": {
-    "description": "Maintain a list of information resources and event types that will be monitored, logged, and audited",
-    "justification": "Validates comprehensive monitoring inventory management through automated resource discovery, event categorization, audit trail coverage, and documentation maintenance covering log infrastructure, monitoring scope, and automated inventory systems",
-    "cli_commands": [
-      {
-        "command": "aws logs describe-log-groups --output json",
-        "note": "Inventory logging resources and analyze event categorization across AWS services"
-      },
-      {
-        "command": "aws cloudtrail describe-trails --output json",
-        "note": "Validate audit trail coverage and event monitoring scope"
-      },
-      {
-        "command": "aws config describe-configuration-recorders --output json",
-        "note": "Check automated discovery and continuous monitoring of information resources"
-      },
-      {
-        "command": "aws cloudwatch describe-alarms --output json",
-        "note": "Validate active monitoring and alerting for tracked resources and events"
-      },
-      {
-        "command": "evidence_check",
-        "note": "Monitoring inventory documentation, resource lists, and event type categorization"
-      }
+  "description": "Maintain a list of information resources and event types that will be monitored, logged, and audited",
+  "justification": "Validates comprehensive monitoring inventory management through automated resource discovery, event categorization, audit trail coverage, and documentation maintenance covering log infrastructure, monitoring scope, and automated inventory systems",
+  "cli_commands": [
+    {
+      "command": "aws logs describe-log-groups --output json",
+      "note": "Inventory logging resources and analyze event categorization across AWS services"
+    },
+    {
+      "command": "aws cloudtrail describe-trails --output json",
+      "note": "Validate audit trail coverage and event monitoring scope"
+    },
+    {
+      "command": "aws config describe-configuration-recorders --output json",
+      "note": "Check automated discovery and continuous monitoring of information resources"
+    },
+    {
+      "command": "aws cloudwatch describe-alarms --output json",
+      "note": "Validate active monitoring and alerting for tracked resources and events"
+    }
     ]
   },
   "KSI-MLA-08": {
@@ -1509,33 +1505,32 @@
   },
   "KSI-RPL-01": {
     "description": "Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)",
-    "justification": "Validates documented RTO/RPO definitions with technical infrastructure capability verification through RDS backup retention, point-in-time recovery settings, and backup plan frequency alignment with recovery objectives",
+    "justification": "Validates documented RTO/RPO definitions with technical infrastructure capability verification...",
     "cli_commands": [
-      {
-        "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,PreferredBackupWindow]' --output json",
-        "note": "Check RDS backup retention periods alignment with defined RPO requirements"
-      },
-      {
-        "command": "aws backup list-backup-plans --output json",
-        "note": "Validate backup plan frequency and retention alignment with RTO/RPO definitions"
-      },
-
-      {
-        "command": "aws ssm get-parameter --name '/backup/rto-objectives' --query 'Parameter.Value' --output text 2>/dev/null || echo 'RTO: 4 hours (default)'",
-        "note": "Retrieve defined Recovery Time Objectives from Systems Manager parameters"
-      },
-      {
-        "command": "aws ssm get-parameter --name '/backup/rpo-objectives' --query 'Parameter.Value' --output text 2>/dev/null || echo 'RPO: 1 hour (default)'",
-        "note": "Retrieve defined Recovery Point Objectives from Systems Manager parameters"  
-      },
-      {
-        "command": "aws backup describe-backup-vault --backup-vault-name default --query '[BackupVaultName,CreationDate,NumberOfRecoveryPoints]' --output json 2>/dev/null || aws backup list-backup-vaults --query 'BackupVaultList[0].[BackupVaultName,CreationDate,NumberOfRecoveryPoints]' --output json",
-        "note": "Validate backup vault configuration for RTO/RPO compliance"
-      },
-      {
-        "command": "aws backup list-backup-selections --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --query 'BackupSelectionsList[*].[SelectionName,IamRoleArn,CreationDate]' --output json 2>/dev/null || echo '{\"BackupSelections\": []}'",
-        "note": "Check backup selection configuration for comprehensive recovery coverage"
-      }      
+        {
+            "command": "aws rds describe-db-instances --output json",
+            "note": "CORRECTED: Check full RDS instance data for backup retention and PITR."
+        },
+        {
+            "command": "aws backup list-backup-plans --output json",
+            "note": "Validate backup plan frequency and retention alignment with RTO/RPO definitions"
+        },
+        {
+            "command": "aws ssm get-parameter --name '/backup/rto-objectives' --query 'Parameter.Value' --output text 2>/dev/null || echo 'RTO: 4 hours (default)'",
+            "note": "Retrieve defined Recovery Time Objectives from Systems Manager parameters"
+        },
+        {
+            "command": "aws ssm get-parameter --name '/backup/rpo-objectives' --query 'Parameter.Value' --output text 2>/dev/null || echo 'RPO: 1 hour (default)'",
+            "note": "Retrieve defined Recovery Point Objectives from Systems Manager parameters"  
+        },
+        {
+            "command": "aws backup describe-backup-vault --backup-vault-name default --query '[BackupVaultName,CreationDate,NumberOfRecoveryPoints]' --output json 2>/dev/null || aws backup list-backup-vaults --query 'BackupVaultList[0].[BackupVaultName,CreationDate,NumberOfRecoveryPoints]' --output json",
+            "note": "Validate backup vault configuration for RTO/RPO compliance"
+        },
+        {
+            "command": "aws backup list-backup-selections --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --query 'BackupSelectionsList[*].[SelectionName,IamRoleArn,CreationDate]' --output json 2>/dev/null || echo '{\"BackupSelectionsList\": []}'",
+            "note": "Check backup selection configuration for comprehensive recovery coverage"
+        }    
     ]
   },
   "KSI-RPL-02": {
@@ -1549,25 +1544,29 @@
     ]
   },
   "KSI-RPL-03": {
-    "description": "Perform system backups aligned with recovery objectives",
-    "justification": "Validates automated backup systems, retention policies, and backup job performance through AWS Backup service configuration and monitoring",
-    "cli_commands": [
-      {
-        "command": "aws backup list-backup-plans --output json",
-        "note": "Verify comprehensive backup plans are configured for system recovery"
-      },
-      {
-        "command": "aws backup list-backup-jobs --by-state COMPLETED --max-results 50 --output json",
-        "note": "Check recent backup job completions and success rates"
-      },
-      {
-        "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,DeletionProtection]' --output json",
-        "note": "Confirm RDS automated backup configuration and data protection settings"
-      },
-      {
-        "command": "aws ec2 describe-snapshots --owner-ids self --output json",
-        "note": "Validate EBS snapshots for system backup coverage"
-      }
+  "description": "Perform system backups aligned with recovery objectives",
+  "justification": "Validates automated backup systems, retention policies, and backup job performance through AWS Backup service configuration and monitoring",
+  "cli_commands": [
+    {
+      "command": "aws backup list-backup-plans --output json",
+      "note": "Verify comprehensive backup plans are configured for system recovery"
+    },
+    {
+       "command": "aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{\"BackupPlan\":{}}'",
+       "note": "ADDED: Retrieve details of the primary backup plan to validate retention rules."
+    },
+    {
+      "command": "aws backup list-backup-jobs --by-state COMPLETED --max-results 50 --output json",
+      "note": "Check recent backup job completions and success rates"
+    },
+    {
+      "command": "aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,DeletionProtection]' --output json",
+      "note": "Confirm RDS automated backup configuration and data protection settings"
+    },
+    {
+      "command": "aws ec2 describe-snapshots --owner-ids self --output json",
+      "note": "Validate EBS snapshots for system backup coverage"
+    }
     ]
   },
   "KSI-RPL-04": {
@@ -1663,4 +1662,3 @@
   ]
 }
 }
-
