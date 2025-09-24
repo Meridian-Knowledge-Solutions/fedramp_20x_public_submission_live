@@ -24,7 +24,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-CED-01](KSI-CED-01.md): Ensure all employees receive security awareness training
 - [PASS] [KSI-CED-02](KSI-CED-02.md): Require role-specific training for high risk roles, including at least roles with privileged access
-- [PASS] [KSI-CED-03](KSI-CED-03.md): Require role-specific training for development and engineering staff covering best practices for delivering secure software
+- [FAIL] [KSI-CED-03](KSI-CED-03.md): Require role-specific training for development and engineering staff covering best practices for delivering secure software
 
 ## Identity and Access Management
 
@@ -39,7 +39,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Incident Reporting
 
 - [PASS] [KSI-INR-01](KSI-INR-01.md): Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
-- [PASS] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
+- [FAIL] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 - [PASS] [KSI-INR-03](KSI-INR-03.md): Generate after action reports and regularly incorporate lessons learned into operations
 
 ## Monitoring, Logging, and Auditing
@@ -53,20 +53,20 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Policy and Inventory
 
-- [PASS] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
+- [FAIL] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
 - [PASS] [KSI-PIY-02](KSI-PIY-02.md): Establish and maintain organization-wide information security and technology policies
 - [PASS] [KSI-PIY-03](KSI-PIY-03.md): Maintain a vulnerability disclosure program
-- [PASS] [KSI-PIY-04](KSI-PIY-04.md): Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles
+- [FAIL] [KSI-PIY-04](KSI-PIY-04.md): Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles
 - [PASS] [KSI-PIY-05](KSI-PIY-05.md): Document methods used to evaluate information resource implementations
 - [PASS] [KSI-PIY-06](KSI-PIY-06.md): Have dedicated staff and budget for security with executive support
 - [PASS] [KSI-PIY-07](KSI-PIY-07.md): Document risk management decisions for software supply chain security
 
 ## Recovery Planning
 
-- [PASS] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+- [FAIL] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 - [PASS] [KSI-RPL-02](KSI-RPL-02.md): Develop and maintain a recovery plan that aligns with defined recovery objectives
-- [PASS] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
-- [PASS] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
+- [FAIL] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
+- [FAIL] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
 
 ## Service Configuration
 
@@ -83,16 +83,16 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Third-Party Information Resources
 
-- [PASS] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
-- [PASS] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
-- [PASS] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
+- [FAIL] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
+- [FAIL] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
+- [FAIL] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
 
 ## Summary
 
 - **Total KSIs:** 55
-- **Passing:** 56
-- **Failing:** 2
+- **Passing:** 46
+- **Failing:** 12
 - **Not Tested:** -3
 
 ---
-*Generated 2025-09-23 21:16 UTC*
+*Generated 2025-09-24 02:48 UTC*

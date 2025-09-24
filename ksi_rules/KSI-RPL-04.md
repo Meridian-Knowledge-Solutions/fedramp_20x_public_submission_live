@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** PASS
-**Last Check:** 2025-09-23 21:16
+**Status:** FAIL
+**Last Check:** 2025-09-24 02:48
 
 **What it validates:** Regularly test the capability to recover from incidents and contingencies
 
@@ -35,8 +35,7 @@
 
 ## Latest Results
 
-PASS Basic recovery testing infrastructure available (29%): PASS Backup infrastructure validation: 202 recent backup operations prove recovery foundation
-- PASS Point-in-time recovery testing capability: 1/1 databases ready for RPO validation
+- FAIL Insufficient recovery testing capability detected (0%): No recovery testing infrastructure found
 
 ---
-*Generated 2025-09-23 21:16 UTC*
+*Generated 2025-09-24 02:48 UTC*

@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Policy and Inventory
-**Status:** PASS
-**Last Check:** 2025-09-23 21:16
+**Status:** FAIL
+**Last Check:** 2025-09-24 02:48
 
 **What it validates:** Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles
 
@@ -26,10 +26,7 @@
 
 ## Latest Results
 
-PASS Comprehensive SDLC security integration with enterprise automation (100%): PASS Build Security Integration
-- PASS Pipeline Security Gates
-- PASS Security Automation Functions
-- PASS Development Governance
+- FAIL No SDLC security integration infrastructure: No development security automation detected
 
 ---
-*Generated 2025-09-23 21:16 UTC*
+*Generated 2025-09-24 02:48 UTC*

@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** PASS
-**Last Check:** 2025-09-23 21:16
+**Status:** FAIL
+**Last Check:** 2025-09-24 02:48
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -32,14 +32,7 @@
 
 ## Latest Results
 
-PASS Enterprise-grade comprehensive recovery objectives with technical capability (88%): PASS Database Backup Capability
-- PASS Point In Time Recovery
-- PASS Backup Plan Alignment
-- PASS Recovery Infrastructure
-- PASS Defined Rto Objectives
-- FAIL Defined Rpo Objectives
-- PASS Backup Vault Configuration
-- PASS Backup Selection Coverage
+- FAIL Insufficient technical recovery capability (12%): PASS Backup vault configured.
 
 ---
-*Generated 2025-09-23 21:16 UTC*
+*Generated 2025-09-24 02:48 UTC*
