@@ -2854,7 +2854,7 @@ td {
 
             <div class="header-info">
                 <div class="header-info-content">
-                    <div class="header-info-title">Enhanced FedRAMP 20x POA&M System</div>
+                    <div class="header-info-title">FedRAMP 20x Authorization Data Sharing System</div>
                     <div class="header-info-subtitle">✅ Compliance Tracking | 🟡 Low Risk Findings | 📈 Improvement Opportunities | 🕒 Evidence Currency</div>
                     <div class="header-info-meta">
                         <div class="header-info-item">
@@ -2924,7 +2924,7 @@ td {
                 <div class="update-card">
                     <div class="update-icon">📊</div>
                     <div class="update-content">
-                        <div class="update-label">Enhanced POA&M System</div>
+                        <div class="update-label">Enhanced Authorization Data Sharing System</div>
                         <div class="update-time" style="cursor: pointer; color: var(--enhancement-500); text-decoration: underline;">
                             <button onclick="window.showPOAMModal()" style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer; font-size: inherit; font-weight: inherit;">View Analysis</button>
                         </div>
@@ -2995,29 +2995,29 @@ td {
                         </div>
                     </div>
 
-                    <!-- Enhanced POA&M System -->
+                    
                     <div class="trust-card enhancement-indicator">
                         <div class="trust-card-header" style="background: var(--gradient-enhancement);">
-                            <h3 class="trust-card-title">🚀 Risk-Based POA&M System</h3>
+                            <h3 class="trust-card-title">🚀 Risk-Based Validation System</h3>
                         </div>
                         <div class="trust-card-content">
                             <div class="trust-item">
-                                <strong>🚨 Tier 1: Compliance POA&M</strong> - Traditional remediation for failed validations (30-day SLAs)
+                                <strong>🚨 Tier 1: KSI Compliance Failure</strong> - Immediate remediation for failed validations (<24 hrs)
                             </div>
                             <div class="trust-item">
-                                <strong>🟡 Low Risk Findings</strong> - Minor findings requiring attention (90-day SLAs)
+                                <strong>🟡 Low Risk Findings</strong> - Minor risk findings requiring attention (30 days)
                             </div>
                             <div class="trust-item">
-                                <strong>📈 Improvement Opportunities</strong> - Enhancement suggestions for continuous improvement (180-day SLAs)
+                                <strong>📈 Improvement Opportunities</strong> - Enhancement suggestions for continuous improvement (180 days)
                             </div>
                             <div class="trust-item">
                                 <strong>🕒 Tier 3: Staleness Tracking</strong> - Evidence currency management (7-day refresh windows)
                             </div>
                             <div class="trust-item">
-                                <strong>Innovation:</strong> We implement risk-based POA&M tracking beyond traditional binary compliance. Warning indicators map to low risk findings (90-day tracking), info indicators map to improvement opportunities (180-day tracking).
+                                <strong>Innovation:</strong> We implement risk-based tracking beyond traditional binary compliance. Warning indicators map to low risk findings (90-day tracking), info indicators map to improvement opportunities (180-day tracking).
                             </div>
                             <div class="trust-item">
-                                <button onclick="window.showPOAMModal()" class="action-btn enhancement">📊 View Risk-Based POA&M Analysis</button>
+                                <button onclick="window.showPOAMModal()" class="action-btn enhancement">📊 View Risk-Based Analysis</button>
                             </div>
                         </div>
                     </div>
@@ -3082,7 +3082,7 @@ td {
                 <h1>🛡️ RFC-0011 Compliant Trust Center</h1>
                 <p class="trust-center-subtitle">Federal agency access to authorization data</p>
                 <div class="compliance-badge-large">
-                    API Access • Enhanced POA&M • Incident Reporting • Agency Workflow
+                    API Access • Incident Reporting • Agency Workflow
                 </div>
             </div>
 
@@ -3104,9 +3104,9 @@ td {
                 
                 <div class="access-card enhancement-indicator">
                     <div class="card-icon">📊</div>
-                    <h3>Risk-Based POA&M</h3>
+                    <h3>Risk-Based Tracking</h3>
                     <p>Multi-level risk tracking</p>
-                    <button onclick="window.showPOAMModal()" class="access-btn">View POA&M</button>
+                    <button onclick="window.showPOAMModal()" class="access-btn">View Validation Risks</button>
                 </div>
                 
                 <div class="access-card">
@@ -3178,7 +3178,7 @@ async function getAuthorizationSummary() {
                             <option value="full_package">Complete Authorization Package</option>
                             <option value="api_credentials">API Access Credentials</option>
                             <option value="monitoring_data">Continuous Monitoring Reports</option>
-                            <option value="poam_access">Enhanced POA&M Analysis</option>
+                            <option value="poam_access">Enhanced Validation Analysis</option>
                         </select>
                     </div>
                     
@@ -3494,7 +3494,7 @@ async function getSCNStatus() {
     <div class="poam-modal" id="poam-modal">
         <div class="poam-modal-content">
             <div class="poam-modal-header">
-                <h3 class="poam-modal-title" id="poam-modal-title">🚀 Risk-Based POA&M Analysis</h3>
+                <h3 class="poam-modal-title" id="poam-modal-title">🚀 Risk-Based Analysis</h3>
                 <button class="close-btn" onclick="closePOAMModal()">&times;</button>
             </div>
             <div class="poam-modal-body" id="poam-modal-body">
@@ -4226,7 +4226,7 @@ async function getSCNStatus() {
             document.getElementById('warning-count').textContent = warningCount; // Low Risk Findings
             document.getElementById('info-count').textContent = infoCount; // Improvement Opportunities
             
-            console.log(`📊 FIXED metrics: ${compliantKsis}/${totalKsis} compliant (${complianceScore}%) | POA&M tracking: ${warningCount} Low Risk/${infoCount} Improvements/${enhancementCount} Additional`);
+            console.log(`📊 FIXED metrics: ${compliantKsis}/${totalKsis} compliant (${complianceScore}%) | Validation tracking: ${warningCount} Low Risk/${infoCount} Improvements/${enhancementCount} Additional`);
         }
 
         function populateCategoryFilter() {
@@ -4562,12 +4562,12 @@ async function getSCNStatus() {
             };
 
             const issueTitle = encodeURIComponent(`[${ksi.status.toUpperCase()} KSI] ${ksi.id}: ${ksi.description.substring(0, 60)}...`);
-            const issueBody = encodeURIComponent(`## Risk-Based POA&M Entry Report
+            const issueBody = encodeURIComponent(`## Risk-Based Report
 
 **KSI ID:** ${ksi.id}
 **Category:** ${ksi.category}
 **Status:** ${ksi.status.toUpperCase()}
-**POA&M Priority:** ${ksi.status === 'failed' ? 'High (30 days)' : ksi.status === 'warning' ? 'Low Risk (90 days)' : 'Improvement Opportunity (180 days)'}
+**Priority:** ${ksi.status === 'failed' ? 'High (<24 hrs)' : ksi.status === 'warning' ? 'Low Risk (90 days)' : 'Improvement Opportunity (180 days)'}
 
 ### Description
 ${ksi.description}
@@ -4579,11 +4579,11 @@ ${ksi.description}
 ### Assessment Result
 ${ksi.assertion_reason || 'No detailed reason provided'}
 
-### POA&M Classification
-- **Tier:** ${ksi.status === 'failed' ? 'Compliance POA&M' : ksi.status === 'warning' ? 'Low Risk Tracking' : 'Improvement Opportunity Tracking'}
+### Validation Classification
+- **Tier:** ${ksi.status === 'failed' ? 'Compliance' : ksi.status === 'warning' ? 'Low Risk Tracking' : 'Improvement Opportunity Tracking'}
 - **Risk Level:** ${ksi.status === 'failed' ? 'High' : ksi.status === 'warning' ? 'Low' : 'Enhancement'}
 - **Tracking Period:** ${ksi.status === 'failed' ? '30' : ksi.status === 'warning' ? '90' : '180'} days
-- **Impact:** ${ksi.status === 'failed' ? 'Compliance' : ksi.status === 'warning' ? 'Low Risk Finding' : 'Improvement Opportunity'} - requires attention per risk-based POA&M system
+- **Impact:** ${ksi.status === 'failed' ? 'Compliance' : ksi.status === 'warning' ? 'Low Risk Finding' : 'Improvement Opportunity'} - requires attention per risk-based validation system
 
 ### Expected Resolution
 Please provide guidance on how to address this ${ksi.status === 'failed' ? 'compliance failure' : ksi.status === 'warning' ? 'low risk finding' : 'improvement opportunity'}.`);
@@ -4701,8 +4701,8 @@ function showPOAMModal() {
                                 </div>
                                 <div class="finding-description">${ksi.description}</div>
                                 <div class="finding-meta">
-                                    <span class="deadline">⏰ 30-day deadline</span>
-                                    <span class="action-required">📋 POA&M Required</span>
+                                    <span class="deadline">⏰ <24 hrs deadline</span>
+                                    <span class="action-required">📋 Fix Required</span>
                                 </div>
                             </div>
                         `).join('')}
@@ -4768,7 +4768,7 @@ function showPOAMModal() {
                     📄 Export Findings Report
                 </button>
                 <button onclick="generatePOAMTemplate()" class="action-btn template">
-                    📋 Generate POA&M Template
+                    📋 Generate Template
                 </button>
                 ${failedKsis.length > 0 ? `
                     <button onclick="prioritizeRemediation()" class="action-btn priority">
@@ -4839,7 +4839,7 @@ function exportFindings() {
 
 function generatePOAMTemplate() {
     // Integration point for POA&M template generation
-    console.log('Generating POA&M template...');
+    console.log('Generating template...');
     // Could integrate with existing POA&M generation logic
 }
 
@@ -5047,7 +5047,7 @@ function prioritizeRemediation() {
 
 
         function initializeDashboard() {
-            console.log('🔄 Initializing enhanced POA&M dashboard with updated risk-based terminology...');
+            console.log('🔄 Initializing enhanced dashboard with updated risk-based terminology...');
             populateCategoryFilter();
             setupEventListeners();
             updateTimestamps();
