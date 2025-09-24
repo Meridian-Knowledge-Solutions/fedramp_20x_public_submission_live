@@ -79,7 +79,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-SVC-07](KSI-SVC-07.md): Use a consistent, risk-informed approach for applying security patches
 - [PASS] [KSI-SVC-08](KSI-SVC-08.md): Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
 - [PASS] [KSI-SVC-09](KSI-SVC-09.md): Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
-- [FAIL] [KSI-SVC-10](KSI-SVC-10.md): Remove unwanted information promptly, including from backups if appropriate
+- [PASS] [KSI-SVC-10](KSI-SVC-10.md): Remove unwanted information promptly, including from backups if appropriate
 
 ## Third-Party Information Resources
 
@@ -90,9 +90,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 55
-- **Passing:** 56
-- **Failing:** 2
+- **Passing:** 57
+- **Failing:** 1
 - **Not Tested:** -3
 
 ---
-*Generated 2025-09-24 04:35 UTC*
+*Generated 2025-09-24 23:49 UTC*
