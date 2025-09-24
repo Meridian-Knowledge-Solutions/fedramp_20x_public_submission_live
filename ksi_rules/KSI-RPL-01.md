@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** FAIL
-**Last Check:** 2025-09-24 02:48
+**Last Check:** 2025-09-24 03:26
 
 **What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 
@@ -35,4 +35,4 @@
 - FAIL Insufficient technical recovery capability (12%): PASS Backup vault configured.
 
 ---
-*Generated 2025-09-24 02:48 UTC*
+*Generated 2025-09-24 03:26 UTC*

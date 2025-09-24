@@ -1,9 +1,19 @@
 {
-  "timestamp": "2025-09-24T02:48:31.955957",
+  "timestamp": "2025-09-24T03:26:08.458015",
   "total_ksis_validated": 58,
-  "technical_issues_found": 0,
-  "issues": [],
-  "status": "pass",
+  "technical_issues_found": 9,
+  "issues": [
+    "KSI-CED-03: Evidence check failed - may indicate missing documentation",
+    "KSI-INR-02: High CLI failure rate (80%): 4/5 failed",
+    "KSI-INR-03: All 4 CLI commands failed execution",
+    "KSI-PIY-01: All 9 CLI commands failed execution",
+    "KSI-PIY-04: All 4 CLI commands failed execution",
+    "KSI-RPL-03: High CLI failure rate (80%): 4/5 failed",
+    "KSI-TPR-01: All 5 CLI commands failed execution",
+    "KSI-TPR-03: All 2 CLI commands failed execution",
+    "KSI-TPR-04: All 6 CLI commands failed execution"
+  ],
+  "status": "warning",
   "categories_checked": [
     "logical_consistency",
     "scoring_mathematics",

@@ -4,7 +4,7 @@
 
 **Category:** Cybersecurity Education
 **Status:** FAIL
-**Last Check:** 2025-09-24 02:48
+**Last Check:** 2025-09-24 03:26
 
 **What it validates:** Require role-specific training for development and engineering staff covering best practices for delivering secure software
 
@@ -22,4 +22,4 @@
 - FAIL No automated developer training infrastructure found: No training automation detected
 
 ---
-*Generated 2025-09-24 02:48 UTC*
+*Generated 2025-09-24 03:26 UTC*
