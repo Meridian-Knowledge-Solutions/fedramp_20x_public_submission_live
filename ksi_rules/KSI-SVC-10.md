@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Service Configuration
-**Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Status:** FAIL
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Remove unwanted information promptly, including from backups if appropriate
 
@@ -29,10 +29,10 @@
 
 ## Latest Results
 
-PASS Good automated data lifecycle (75%): FAIL S3 Lifecycle Management
-- PASS Backup Retention Management
+FAIL Insufficient automated data lifecycle management (50%): FAIL S3 Lifecycle Management
+- FAIL Backup Retention Management
 - PASS Log Retention Policies
 - PASS Automated Cleanup Functions
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

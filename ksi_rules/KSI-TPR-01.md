@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Third-Party Information Resources
-**Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Status:** FAIL
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Identify all third-party information resources
 
@@ -29,7 +29,7 @@
 
 ## Latest Results
 
-- PASS Third-party resources identified via static configuration: PASS Static discovery: 5 third-party services identified from whitelist
+- FAIL Compliance broker not configured for third-party discovery
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

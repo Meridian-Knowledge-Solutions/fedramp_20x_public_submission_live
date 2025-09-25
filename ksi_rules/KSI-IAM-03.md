@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Enforce appropriately secure authentication methods for non-user accounts and services
 
@@ -29,4 +29,4 @@ WARNING Basic service authentication security (75%): PASS Secure foundation: 81 
 - PASS EC2 Best Practice: All 6 instance(s) are correctly using IAM Instance Profiles.
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

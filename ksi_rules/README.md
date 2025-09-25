@@ -6,7 +6,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-CMT-01](KSI-CMT-01.md): Log and monitor system modifications
 - [PASS] [KSI-CMT-02](KSI-CMT-02.md): Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
-- [PASS] [KSI-CMT-03](KSI-CMT-03.md): Implement automated testing and validation of changes prior to deployment
+- [FAIL] [KSI-CMT-03](KSI-CMT-03.md): Implement automated testing and validation of changes prior to deployment
 - [PASS] [KSI-CMT-04](KSI-CMT-04.md): Have a documented change management procedure
 - [PASS] [KSI-CMT-05](KSI-CMT-05.md): Evaluate the risk and potential impact of any change
 
@@ -15,7 +15,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-CNA-01](KSI-CNA-01.md): Configure ALL information resources to limit inbound and outbound traffic
 - [PASS] [KSI-CNA-02](KSI-CNA-02.md): Design systems to minimize the attack surface and minimize lateral movement if compromised
 - [PASS] [KSI-CNA-03](KSI-CNA-03.md): Use logical networking and related capabilities to enforce traffic flow controls
-- [FAIL] [KSI-CNA-04](KSI-CNA-04.md): Use immutable infrastructure with strictly defined functionality and privileges by default
+- [PASS] [KSI-CNA-04](KSI-CNA-04.md): Use immutable infrastructure with strictly defined functionality and privileges by default.
 - [PASS] [KSI-CNA-05](KSI-CNA-05.md): Have denial of service protection
 - [PASS] [KSI-CNA-06](KSI-CNA-06.md): Design systems for high availability and rapid recovery
 - [PASS] [KSI-CNA-07](KSI-CNA-07.md): Ensure cloud-native information resources are implemented based on host provider's best practices and documented guidance
@@ -28,7 +28,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Identity and Access Management
 
-- [PASS] [KSI-IAM-01](KSI-IAM-01.md): Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
+- [FAIL] [KSI-IAM-01](KSI-IAM-01.md): Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 - [PASS] [KSI-IAM-02](KSI-IAM-02.md): Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 - [PASS] [KSI-IAM-03](KSI-IAM-03.md): Enforce appropriately secure authentication methods for non-user accounts and services
 - [PASS] [KSI-IAM-04](KSI-IAM-04.md): Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
@@ -39,7 +39,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Incident Reporting
 
 - [PASS] [KSI-INR-01](KSI-INR-01.md): Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
-- [PASS] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
+- [FAIL] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
 - [PASS] [KSI-INR-03](KSI-INR-03.md): Generate after action reports and regularly incorporate lessons learned into operations
 
 ## Monitoring, Logging, and Auditing
@@ -63,7 +63,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Recovery Planning
 
-- [PASS] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+- [FAIL] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 - [PASS] [KSI-RPL-02](KSI-RPL-02.md): Develop and maintain a recovery plan that aligns with defined recovery objectives
 - [PASS] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
 - [PASS] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
@@ -77,22 +77,22 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-SVC-05](KSI-SVC-05.md): Continuously verify information resource integrity
 - [PASS] [KSI-SVC-06](KSI-SVC-06.md): Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 - [PASS] [KSI-SVC-07](KSI-SVC-07.md): Use a consistent, risk-informed approach for applying security patches
-- [PASS] [KSI-SVC-08](KSI-SVC-08.md): Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
-- [PASS] [KSI-SVC-09](KSI-SVC-09.md): Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
-- [PASS] [KSI-SVC-10](KSI-SVC-10.md): Remove unwanted information promptly, including from backups if appropriate
+- [FAIL] [KSI-SVC-08](KSI-SVC-08.md): Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
+- [FAIL] [KSI-SVC-09](KSI-SVC-09.md): Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
+- [FAIL] [KSI-SVC-10](KSI-SVC-10.md): Remove unwanted information promptly, including from backups if appropriate
 
 ## Third-Party Information Resources
 
-- [PASS] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
-- [PASS] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
-- [PASS] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
+- [FAIL] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
+- [FAIL] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
+- [FAIL] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
 
 ## Summary
 
 - **Total KSIs:** 55
-- **Passing:** 54
-- **Failing:** 1
+- **Passing:** 45
+- **Failing:** 10
 - **Not Tested:** 0
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

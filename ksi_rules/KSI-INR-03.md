@@ -4,7 +4,7 @@
 
 **Category:** Incident Reporting
 **Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Generate after action reports and regularly incorporate lessons learned into operations
 
@@ -26,9 +26,10 @@
 
 ## Latest Results
 
-PASS FULL after-action automation verified (score: 8): PASS Incident analysis: 50 findings available
+PASS Basic after-action infrastructure (score: 4): WARNING Permission issue: securityhub
 - PASS 4 Lambda reporting functions deployed
-- PASS 9 security standard definitions available
+- WARNING Permission issue: securityhub
+- WARNING Permission issue: securityhub
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

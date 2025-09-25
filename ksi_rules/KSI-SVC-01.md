@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Harden and review network and system configurations
 
@@ -47,17 +47,17 @@
 
 ## Latest Results
 
-PASS Enterprise-grade network and system hardening with comprehensive governance (82%): PASS Network hardening foundation: 15 security groups (15 hardened, 0 require review)
+PASS Advanced hardening with automated security controls (48%): PASS Network hardening foundation: 15 security groups (15 hardened, 0 require review)
 - PASS System configuration management: 6 instances configured
-- PASS Comprehensive system management: 6/6 instances under SSM (100% coverage)
-- PASS Automated patch management: 17 patch baselines configured
+- WARNING No instances under Systems Manager management
+- INFO No patch baselines configured
 - INFO Config service available but no rules configured
 - INFO 1 default Network ACLs (consider custom rules for enhanced security)
-- PASS Threat detection enabled: 1 GuardDuty detectors monitoring for threats
-- PASS Application layer protection: 1 Web ACLs configured
+- INFO GuardDuty not enabled (recommended for production)
+- INFO No Web Application Firewall configured
 - PASS Secure service access: 7 VPC endpoints (4 interface, 1 gateway)
 - PASS Enterprise-wide security governance: AWS Organizations enables centralized hardening policies
 - PASS Advanced organization features: SCPs and advanced governance capabilities enabled
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

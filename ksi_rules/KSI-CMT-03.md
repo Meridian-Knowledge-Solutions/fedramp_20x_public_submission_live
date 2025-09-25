@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Change Management
-**Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Status:** FAIL
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Implement automated testing and validation of changes prior to deployment
 
@@ -44,10 +44,8 @@
 
 ## Latest Results
 
-PASS Good automated testing prior to deployment (33%): PASS Build automation: 3 CodeBuild projects found.
-- PASS Pipeline testing automation: 1 CodePipeline workflows found.
-- PASS IaC scan results artifact found (checkov_scan_summary.json).
+FAIL No automated testing and validation infrastructure detected (0%): PASS IaC scan results artifact found (checkov_scan_summary.json).
 - PASS Automated testing proof artifact found (automated_testing_proof.json).
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

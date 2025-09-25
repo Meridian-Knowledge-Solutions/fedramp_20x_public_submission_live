@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Service Configuration
-**Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Status:** FAIL
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
 
@@ -35,11 +35,11 @@
 
 ## Latest Results
 
-PASS Good communication integrity (60%): PASS Tls Certificate Management
+FAIL Insufficient communication integrity validation (40%): FAIL Tls Certificate Management
 - FAIL Continuous Certificate Monitoring
 - PASS Inter Service Encryption
 - PASS Integrity Validation Mechanisms
 - FAIL Automated Certificate Lifecycle
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

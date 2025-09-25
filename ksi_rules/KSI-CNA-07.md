@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Ensure cloud-native information resources are implemented based on host provider's best practices and documented guidance
 
@@ -59,7 +59,7 @@
 
 ## Latest Results
 
-PASS Excellent AWS best practices implementation (95%): PASS CloudTrail excellently configured: 'meridianks-Management-events' ready for activation (cost-optimized for pilot)
+PASS Excellent AWS best practices implementation (88%): PASS CloudTrail excellently configured: 'meridianks-Management-events' ready for activation (cost-optimized for pilot)
 - PASS Multi-region audit coverage: CloudTrail spans all AWS regions
 - PASS Log integrity protection: CloudTrail log file validation enabled
 - PASS Encrypted audit logs: CloudTrail using KMS encryption
@@ -70,7 +70,6 @@ PASS Excellent AWS best practices implementation (95%): PASS CloudTrail excellen
 - PASS IAM best practices: 81 roles vs 3 users (service-oriented architecture)
 - PASS Excellent reliability architecture: 1/1 load balancers multi-AZ
 - PASS Infrastructure as Code scaling: 5/6 Terraform-managed instances (superior to ASGs for pilot)
-- PASS Active data protection: 2 backup plan(s) with recent execution
 - PASS Good performance: 5/6 instances using modern types
 - PASS Storage optimization: 7 S3 buckets (cost-effective storage)
 - PASS Proactive monitoring: 13 CloudWatch alarms
@@ -78,4 +77,4 @@ PASS Excellent AWS best practices implementation (95%): PASS CloudTrail excellen
 - PASS Enterprise governance: AWS Organizations with centralized management
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

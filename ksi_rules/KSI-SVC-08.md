@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Service Configuration
-**Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Status:** FAIL
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
 
@@ -28,11 +28,11 @@
 
 ## Latest Results
 
-PASS Good change cleanup processes (60%): PASS Infrastructure As Code
+FAIL Insufficient change residual element management (20%): FAIL Infrastructure As Code
 - PASS Automated Cleanup
-- PASS Resource Lifecycle Management
+- FAIL Resource Lifecycle Management
 - FAIL Residual Element Detection
 - FAIL Change Impact Tracking
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*

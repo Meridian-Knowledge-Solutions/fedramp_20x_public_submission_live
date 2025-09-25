@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-09-25 03:50
+**Last Check:** 2025-09-25 19:26
 
 **What it validates:** Perform system backups aligned with recovery objectives
 
@@ -29,13 +29,10 @@
 
 ## Latest Results
 
-PASS Comprehensive system backups with validated operations aligned with recovery objectives: PASS Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan)
-- PASS Excellent retention: 90 days (rule: daily-backup)
-- PASS Regular backup schedule: cron(0 23 * * ? *) (rule: daily-backup)
-- PASS Full retention compliance: 1/1 rules meet requirements
-- PASS Backup operations validated: 50 successful backup jobs prove backups are functioning
+PASS Adequate backup implementation with retention validation: FAIL No AWS Backup plans found
+- WARNING No backup execution data available for validation
 - PASS RDS backup configuration: 1/1 databases with automated backups
 - PASS Additional backup coverage: 522 EBS snapshots
 
 ---
-*Generated 2025-09-25 03:50 UTC*
+*Generated 2025-09-25 19:26 UTC*
