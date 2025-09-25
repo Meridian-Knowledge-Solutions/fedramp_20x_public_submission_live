@@ -90,9 +90,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 55
-- **Passing:** 57
+- **Passing:** 54
 - **Failing:** 1
-- **Not Tested:** -3
+- **Not Tested:** 0
 
 ---
-*Generated 2025-09-24 23:49 UTC*
+*Generated 2025-09-25 00:40 UTC*
