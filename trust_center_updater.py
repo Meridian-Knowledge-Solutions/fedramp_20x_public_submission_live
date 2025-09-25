@@ -18,23 +18,23 @@ def backup_file(filepath):
 
 def update_trust_center_html():
     """Update index.html with RFC-0016 Quarterly Reports integration"""
-    
+
     html_file = Path("index.html")
-    
+
     if not html_file.exists():
         print("❌ index.html not found in current directory")
         print("   Please run this script from the directory containing index.html")
         return False
-    
+
     print("🔄 Updating Trust Center with RFC-0016 Quarterly Reports...")
-    
+
     # Backup original file
     backup_file(html_file)
-    
+
     # Read the current HTML content
     with open(html_file, 'r', encoding='utf-8') as f:
         html_content = f.read()
-    
+
     # Define the replacement card HTML
     new_quarterly_card = '''                <div class="access-card">
                     <div class="card-icon">📋</div>
@@ -42,32 +42,23 @@ def update_trust_center_html():
                     <p>RFC-0016 Ongoing Authorization Reports</p>
                     <button onclick="scrollToTrustSection('quarterly-reports-section')" class="access-btn">View Reports</button>
                 </div>'''
-    
-    # Pattern to find and replace the Incident Reports card
-    incident_card_pattern = r'<div class="access-card">\s*<div class="card-icon">🚨</div>\s*<h3>Incident Reports</h3>\s*<p>Security incident templates</p>\s*<button onclick="scrollToTrustSection\(\'incident-section\'\)" class="access-btn">Get Templates</button>\s*</div>'
-    
-    # Replace the incident reports card
-    if re.search(incident_card_pattern, html_content):
-        html_content = re.sub(incident_card_pattern, new_quarterly_card, html_content)
+
+    # --- FIX 1: Use a more flexible regex for the card replacement to avoid failures on minor whitespace changes. ---
+    incident_card_pattern = re.compile(r'<div class="access-card"[^>]*>.*?<h3>Incident Reports</h3>.*?</div>', re.DOTALL)
+
+    if incident_card_pattern.search(html_content):
+        html_content = incident_card_pattern.sub(new_quarterly_card, html_content, count=1)
         print("✅ Replaced Incident Reports card with Quarterly Authorization Reports card")
     else:
-        print("⚠️ Could not find exact Incident Reports card pattern, trying alternative...")
-        # Try a more flexible pattern
-        flexible_pattern = r'<div class="access-card"[^>]*>.*?<h3>Incident Reports</h3>.*?</div>'
-        if re.search(flexible_pattern, html_content, re.DOTALL):
-            html_content = re.sub(flexible_pattern, new_quarterly_card, html_content, flags=re.DOTALL)
-            print("✅ Replaced Incident Reports card using flexible pattern")
-        else:
-            print("❌ Could not find Incident Reports card to replace")
-            return False
-    
+        print("❌ Could not find Incident Reports card to replace")
+        return False
+
     # Define the new quarterly reports section
     quarterly_section = '''
-            <!-- Quarterly Authorization Reports Section (RFC-0016) -->
             <div id="quarterly-reports-section" class="trust-section">
                 <h2>📋 Quarterly Authorization Reports (RFC-0016)</h2>
                 <p>Ongoing Authorization Reports per FRR-CCM-01 providing regular summaries of changes, accepted weaknesses, and authorization data</p>
-                
+
                 <div class="trust-card">
                     <div class="trust-card-header">
                         <h3 class="trust-card-title">🗓️ Report Schedule & Access</h3>
@@ -82,7 +73,7 @@ def update_trust_center_html():
                                 </div>
                                 <button onclick="downloadCurrentReport()" class="schedule-btn">Download Report</button>
                             </div>
-                            
+
                             <div class="schedule-item">
                                 <div class="schedule-icon">⏰</div>
                                 <div class="schedule-content">
@@ -91,7 +82,7 @@ def update_trust_center_html():
                                 </div>
                                 <div class="schedule-status">On Schedule</div>
                             </div>
-                            
+
                             <div class="schedule-item">
                                 <div class="schedule-icon">🎯</div>
                                 <div class="schedule-content">
@@ -118,7 +109,7 @@ def update_trust_center_html():
                                     <li>Significant change notifications (SCN) summary</li>
                                 </ul>
                             </div>
-                            
+
                             <div class="content-section">
                                 <h4>⚠️ Accepted Weaknesses (VDR)</h4>
                                 <ul class="content-list">
@@ -127,7 +118,7 @@ def update_trust_center_html():
                                     <li>Agency action requirements</li>
                                 </ul>
                             </div>
-                            
+
                             <div class="content-section">
                                 <h4>🔮 Planned Changes (Next 3 Months)</h4>
                                 <ul class="content-list">
@@ -157,7 +148,7 @@ def update_trust_center_html():
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="access-method">
                                 <div class="method-icon">💬</div>
                                 <div class="method-content">
@@ -167,7 +158,7 @@ def update_trust_center_html():
                                     <small>Note: Feedback shared with FedRAMP, not published publicly per FRR-CCM-05</small>
                                 </div>
                             </div>
-                            
+
                             <div class="access-method">
                                 <div class="method-icon">🎪</div>
                                 <div class="method-content">
@@ -185,22 +176,17 @@ def update_trust_center_html():
                 </div>
             </div>
 '''
-    
-    # Find the best location to insert the new section
-    # Look for the end of an existing trust-section
-    trust_section_pattern = r'(</div>\s*<!-- (?:Tab 2|Trust Center|API|POA&M).*?-->)'
-    if re.search(trust_section_pattern, html_content):
-        html_content = re.sub(trust_section_pattern, r'\1' + quarterly_section, html_content, count=1)
-        print("✅ Added Quarterly Reports section after existing trust section")
+
+    # --- FIX 2: Correct the HTML insertion point to place the new section inside the Trust Center tab, not between tabs. ---
+    insertion_hook_pattern = re.compile(r'(<div class="quick-access-grid">.*?</div>)', re.DOTALL)
+    if insertion_hook_pattern.search(html_content):
+        # Insert the new section immediately after the quick access grid
+        html_content = insertion_hook_pattern.sub(r'\1' + quarterly_section, html_content, count=1)
+        print("✅ Added Quarterly Reports section to the Trust Center tab")
     else:
-        # Fallback: Add before the closing of trust-center-tab
-        tab_end_pattern = r'(</div>\s*<!-- Tab 3|</div>\s*</div>\s*<!-- Tab 3|</div>\s*<!-- Tab 3)'
-        if re.search(tab_end_pattern, html_content):
-            html_content = re.sub(tab_end_pattern, quarterly_section + r'\n\1', html_content, count=1)
-            print("✅ Added Quarterly Reports section before tab end")
-        else:
-            print("⚠️ Could not find ideal location, adding section manually required")
-    
+        print("⚠️ Could not find the quick-access-grid to insert the new section. Manual placement may be required.")
+
+
     # Add the CSS styles if not already present
     css_styles = '''
 /* Quarterly Reports Section Styles */
@@ -354,33 +340,32 @@ def update_trust_center_html():
         align-items: flex-start;
         text-align: left;
     }
-    
+
     .access-method {
         flex-direction: column;
     }
-    
+
     .method-icon {
         width: auto;
         text-align: left;
     }
-    
+
     .method-links {
         flex-direction: column;
         gap: 0.5rem;
     }
 }
 '''
-    
+
     # Check if styles need to be added
     if 'quarterly-schedule' not in html_content:
-        # Find the end of the existing <style> section
-        style_end_pattern = r'(</style>)'
-        if re.search(style_end_pattern, html_content):
-            html_content = re.sub(style_end_pattern, css_styles + r'\n\1', html_content)
+        style_end_pattern = re.compile(r'(</style>)')
+        if style_end_pattern.search(html_content):
+            html_content = style_end_pattern.sub(css_styles + r'\n\1', html_content)
             print("✅ Added quarterly reports CSS styles")
         else:
             print("⚠️ Could not find <style> section to add CSS")
-    
+
     # Add the JavaScript functions
     js_functions = '''
 // Quarterly Reports JavaScript Functions
@@ -389,26 +374,26 @@ async function loadQuarterlyReportData() {
         // Load the next report dates from trust center data
         const response = await fetch('./trust_center/next_report_date.json');
         const data = await response.json();
-        
+
         // Update the display elements
         if (data.next_ongoing_report) {
-            document.getElementById('next-report-date').textContent = 
+            document.getElementById('next-report-date').textContent =
                 new Date(data.next_ongoing_report).toLocaleDateString('en-US', {
                     year: 'numeric', month: 'long', day: 'numeric'
                 });
         }
-        
+
         if (data.next_quarterly_review) {
             document.getElementById('next-quarterly-review').textContent = data.next_quarterly_review + ' at 2:00 PM ET';
         }
-        
+
         // Update current quarter
         const now = new Date();
         const quarter = Math.floor((now.getMonth() + 3) / 3);
         const year = now.getFullYear();
-        document.getElementById('current-quarter-report').textContent = 
+        document.getElementById('current-quarter-report').textContent =
             `Q${quarter} ${year} - Available`;
-            
+
     } catch (error) {
         console.log('Could not load quarterly report schedule:', error);
         document.getElementById('next-report-date').textContent = 'Check back for updates';
@@ -421,17 +406,17 @@ function downloadCurrentReport() {
     const quarter = Math.floor((now.getMonth() + 3) / 3);
     const year = now.getFullYear();
     const filename = `ongoing_authorization_report_Q${quarter}_${year}.md`;
-    
+
     // Try to download from quarterly_reports directory
     const link = document.createElement('a');
     link.href = `./quarterly_reports/${filename}`;
     link.download = filename;
     link.click();
-    
+
     // Provide feedback to user
     setTimeout(() => {
         if (!document.hasFocus()) return; // User might have downloaded
-        
+
         alert(`Download initiated for ${filename}.\\n\\nIf download doesn't start automatically, the report may not be available yet. Reports are generated automatically every quarter.`);
     }, 1000);
 }
@@ -439,7 +424,7 @@ function downloadCurrentReport() {
 function registerForReview() {
     // Open a modal or redirect to registration
     const message = `Quarterly Review Registration
-    
+
 Federal agencies can register for upcoming quarterly reviews.
 
 Registration Requirements:
@@ -464,7 +449,7 @@ Email: [Contact Email]
 Authorization: [Current ATO/FedRAMP Details]
 
 Please register us for the upcoming quarterly review.`);
-        
+
         window.location.href = `mailto:security@meridianks.com?subject=${subject}&body=${body}`;
     }
 }
@@ -494,46 +479,46 @@ Contact Methods:
     }
 }
 '''
-    
-    # Add JavaScript functions if not already present
+
+    # --- FIX 3: Correct the JS insertion regex to use a stable anchor and avoid corruption. ---
     if 'loadQuarterlyReportData' not in html_content:
-        # Find existing script section or add before </body>
-        if '<script>' in html_content:
-            # Add to existing script section
-            script_pattern = r'(// Load data when the page loads|document\.addEventListener\(\'DOMContentLoaded\')'
-            if re.search(script_pattern, html_content):
-                html_content = re.sub(script_pattern, js_functions + r'\n\n// Load quarterly report data when page loads\n' + r'\1', html_content)
-                print("✅ Added quarterly reports JavaScript functions")
-            else:
-                html_content = html_content.replace('<script>', '<script>\n' + js_functions)
-                print("✅ Added quarterly reports JavaScript functions to existing script")
+        # Use a robust pattern targeting the comment right before the event listener.
+        js_insertion_pattern = re.compile(r"(\s*// Initialize on page load)")
+        
+        if js_insertion_pattern.search(html_content):
+            # Insert the new JS functions and a call within DOMContentLoaded.
+            replacement_js_block = js_functions + r'\n\n\1'
+            html_content = js_insertion_pattern.sub(replacement_js_block, html_content, count=1)
+            
+            # Also, add the function call inside the DOMContentLoaded listener.
+            dom_content_pattern = re.compile(r"(initializeDashboard\(\);)")
+            html_content = dom_content_pattern.sub(r'\1\n            setTimeout(loadQuarterlyReportData, 500);', html_content, count=1)
+            
+            print("✅ Added quarterly reports JavaScript functions and call")
         else:
-            # Add script section before </body>
-            script_section = f'<script>\n{js_functions}\n// Load data when the page loads\ndocument.addEventListener(\'DOMContentLoaded\', function() {{\n    setTimeout(loadQuarterlyReportData, 500);\n}});\n</script>'
-            html_content = html_content.replace('</body>', script_section + '\n</body>')
-            print("✅ Added new script section with quarterly reports functions")
-    
+            print("⚠️ Could not find JS insertion point. Manual integration may be required.")
+
     # Write the updated content back to file
     with open(html_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
-    
+
     print(f"✅ Successfully updated {html_file}")
     print("🔧 Changes made:")
-    print("   • Replaced Incident Reports card with Quarterly Authorization Reports")  
-    print("   • Added RFC-0016 compliant quarterly reports section")
+    print("   • Replaced Incident Reports card with Quarterly Authorization Reports")
+    print("   • Added RFC-0016 compliant quarterly reports section in the correct tab")
     print("   • Added CSS styles for quarterly reports")
-    print("   • Added JavaScript functions for report interaction")
+    print("   • Correctly inserted JavaScript functions to prevent page errors")
     print("   • Maintained backup file for safety")
-    
+
     return True
 
 if __name__ == "__main__":
     print("🚀 RFC-0016 Trust Center Integration Script")
     print("   Updating index.html for Quarterly Authorization Reports...")
     print("")
-    
+
     success = update_trust_center_html()
-    
+
     if success:
         print("")
         print("🎉 Trust Center successfully updated!")
