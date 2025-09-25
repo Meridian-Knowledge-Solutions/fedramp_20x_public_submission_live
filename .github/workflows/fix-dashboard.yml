@@ -65,7 +65,7 @@ jobs:
         if: ${{ github.event.inputs.fix_type == 'diagnostic' || github.event.inputs.fix_type == 'both' }}
         run: |
           echo "🔧 Running comprehensive diagnostic fix..."
-          python fix_dashboard.py
+          python fix_dashboard_js.py
           
       - name: 🚑 Run Quick Minimal Fix  
         if: ${{ github.event.inputs.fix_type == 'quick_fix' || github.event.inputs.fix_type == 'both' }}
