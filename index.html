@@ -5261,9 +5261,7 @@ Please include:
 • Primary security contact
 • Current authorization details`;
 
-    if (confirm(message + '
-
-Open email client to register?')) {
+    if (confirm(message + '\n\nOpen email client to register?')) {
         const subject = encodeURIComponent('Quarterly Review Registration');
         const body = encodeURIComponent(`Agency: [Your Agency]
 Component: [Your Component/Bureau]
@@ -5296,9 +5294,7 @@ Contact Methods:
 • Secure Portal: [Agency Access Only]
 • Phone: [Agency Hotline]`;
 
-    if (confirm(message + '
-
-Open secure feedback channel?')) {
+    if (confirm(message + '\n\nOpen secure feedback channel?')) {
         const subject = encodeURIComponent('Agency Feedback - Ongoing Authorization Report');
         window.location.href = `mailto:agency-feedback@meridianks.com?subject=${subject}`;
     }
@@ -5313,7 +5309,7 @@ Open secure feedback channel?')) {
             initializeTheme();
             initializeDashboard();
             setTimeout(loadQuarterlyReportData, 500);
-            
+
             console.log('🔧 ENHANCED Dashboard initialized with modern Commands Modal');
             console.log('   - Removed redundant "Complete Assessment Details" section');
             console.log('   - Modern gradient styling and improved visual hierarchy');
@@ -5321,16 +5317,16 @@ Open secure feedback channel?')) {
             console.log('   - Better organized summary sections');
             console.log('   - Improved command details expansion');
             console.log('   - Added SCN Transparency tab and functionality');
-            
+
             // Federal access form handler
             const form = document.getElementById('federal-access-form');
             if (form) {
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
-                    
+
                     const formData = new FormData(e.target);
                     const requestId = `REQ-${Date.now()}`;
-                    
+
                     document.getElementById('form-response').innerHTML = `
                         <div style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 20px; border-radius: 10px;">
                             <h4>✅ Request Submitted Successfully</h4>
@@ -5340,11 +5336,11 @@ Open secure feedback channel?')) {
                             <p><strong>Questions?</strong> Contact security@meridianks.com</p>
                         </div>
                     `;
-                    
+
                     form.reset();
                 });
             }
-            
+
         });
 
         // Keyboard shortcuts
