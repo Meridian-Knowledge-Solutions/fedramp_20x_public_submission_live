@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** FAIL
-**Last Check:** 2025-09-25 02:58
+**Last Check:** 2025-09-25 03:50
 
 **What it validates:** Use immutable infrastructure with strictly defined functionality and privileges by default
 
@@ -41,4 +41,4 @@
 - FAIL CRITICAL least privilege violation detected: CRITICAL: The AdministratorAccess policy is attached to role(s): githubactions_role, OrganizationAccountAccessRole, AWSControlTowerExecution, stacksets-exec-d5e511141f10f5aa9846491550c31da6, aws-controltower-AdministratorExecutionRole, AWSReservedSSO_AdministratorAccess_500b4ab3fed23646.
 
 ---
-*Generated 2025-09-25 02:58 UTC*
+*Generated 2025-09-25 03:50 UTC*
