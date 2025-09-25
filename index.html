@@ -3296,7 +3296,7 @@ td {
                 <div class="stat-card">
                     <div class="stat-value warning" id="warning-count">-</div>
                     <div class="stat-label">Low Risk Findings</div>
-                    <div class="stat-change positive">🟡 90-Day Tracking</div>
+                    <div class="stat-change positive">🟡 60-Day Tracking</div>
                 </div>
                 <div class="stat-card enhancement">
                     <div class="stat-value info" id="info-count">-</div>
@@ -3405,7 +3405,7 @@ td {
                                 <strong>🚨 Tier 1: KSI Compliance Failure</strong> - Immediate remediation for failed validations (<24 hrs)
                             </div>
                             <div class="trust-item">
-                                <strong>🟡 Low Risk Findings</strong> - Minor risk findings requiring attention (30 days)
+                                <strong>🟡 Low Risk Findings</strong> - Minor risk findings requiring attention (60 days)
                             </div>
                             <div class="trust-item">
                                 <strong>📈 Improvement Opportunities</strong> - Enhancement suggestions for continuous improvement (180 days)
@@ -3414,7 +3414,7 @@ td {
                                 <strong>🕒 Tier 3: Staleness Tracking</strong> - Evidence currency management (7-day refresh windows)
                             </div>
                             <div class="trust-item">
-                                <strong>Innovation:</strong> We implement risk-based tracking beyond traditional binary compliance. Warning indicators map to low risk findings (90-day tracking), info indicators map to improvement opportunities (180-day tracking).
+                                <strong>Innovation:</strong> We implement risk-based tracking beyond traditional binary compliance. Warning indicators map to low risk findings (60-day tracking), info indicators map to improvement opportunities (180-day tracking).
                             </div>
                             <div class="trust-item">
                                 <button onclick="window.showPOAMModal()" class="action-btn enhancement">📊 View Risk-Based Analysis</button>
@@ -5113,7 +5113,7 @@ async function getSCNStatus() {
 **KSI ID:** ${ksi.id}
 **Category:** ${ksi.category}
 **Status:** ${ksi.status.toUpperCase()}
-**Priority:** ${ksi.status === 'failed' ? 'High (<24 hrs)' : ksi.status === 'warning' ? 'Low Risk (90 days)' : 'Improvement Opportunity (180 days)'}
+**Priority:** ${ksi.status === 'failed' ? 'High (<24 hrs)' : ksi.status === 'warning' ? 'Low Risk (60 days)' : 'Improvement Opportunity (180 days)'}
 
 ### Description
 ${ksi.description}
@@ -5213,7 +5213,7 @@ function showPOAMModal() {
                 <div class="summary-card warning">
                     <div class="summary-number">${warningKsis.length}</div>
                     <div class="summary-label">Low Risk</div>
-                    <div class="summary-timeframe">90-day tracking</div>
+                    <div class="summary-timeframe">60-day tracking</div>
                 </div>
                 <div class="summary-card info">
                     <div class="summary-number">${infoKsis.length}</div>
@@ -5273,7 +5273,7 @@ function showPOAMModal() {
                                 </div>
                                 <div class="finding-description">${ksi.description}</div>
                                 <div class="finding-meta">
-                                    <span class="deadline">⏰ 90-day tracking</span>
+                                    <span class="deadline">⏰ 60-day tracking</span>
                                     <span class="risk-level">📊 Low Risk</span>
                                 </div>
                             </div>
@@ -5361,14 +5361,14 @@ function exportFindings() {
                 category: ksi.category,
                 description: ksi.description,
                 priority: 'HIGH',
-                deadline: '30 days'
+                deadline: '60 days'
             })),
             low_risk: warningKsis.map(ksi => ({
                 id: ksi.id,
                 category: ksi.category,
                 description: ksi.description,
                 priority: 'MEDIUM',
-                deadline: '90 days'
+                deadline: '60 days'
             })),
             improvements: infoKsis.map(ksi => ({
                 id: ksi.id,
