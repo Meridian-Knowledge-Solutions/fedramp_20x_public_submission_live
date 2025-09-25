@@ -3513,6 +3513,29 @@ td {
                     <button onclick="scrollToTrustSection('quarterly-reports-section')" class="access-btn">View Reports</button>
                 </div>
             </div>
+                    <h3>API Access</h3>
+                    <p>Machine-readable authorization data</p>
+                    <button onclick="scrollToTrustSection('api-section')" class="access-btn">View API Docs</button>
+                </div>
+                <div class="access-card">
+                    <div class="card-icon">📋</div>
+                    <h3>Request Access</h3>
+                    <p>Federal agency request workflow</p>
+                    <button onclick="scrollToTrustSection('agency-form-section')" class="access-btn">Submit Request</button>
+                </div>
+                <div class="access-card enhancement-indicator">
+                    <div class="card-icon">📊</div>
+                    <h3>Risk-Based POA&M</h3>
+                    <p>Multi-level risk tracking</p>
+                    <button onclick="window.showPOAMModal()" class="access-btn">View POA&M</button>
+                </div>
+                <div class="access-card">
+                    <div class="card-icon">📋</div>
+                    <h3>Quarterly Authorization Reports</h3>
+                    <p>RFC-0016 Ongoing Authorization Reports</p>
+                    <button onclick="scrollToTrustSection('quarterly-reports-section')" class="access-btn">View Reports</button>
+                </div>
+            </div>
             <div id="quarterly-reports-section" class="trust-section">
                 <h2>📋 Quarterly Authorization Reports (RFC-0016)</h2>
                 <p>Ongoing Authorization Reports per FRR-CCM-01 providing regular summaries of changes, accepted weaknesses, and authorization data</p>
@@ -5584,15 +5607,9 @@ function prioritizeRemediation() {
         }
 
         // --- Injected Functions for Custom Modals ---
-function registerForReview() {
-    document.getElementById('registration-modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
 
-function openAgencyFeedback() {
-    document.getElementById('feedback-modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+
+
 
 function closeCustomModal(modalId) {
     document.getElementById(modalId).classList.remove('active');
