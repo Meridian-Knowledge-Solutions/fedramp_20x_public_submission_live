@@ -113,14 +113,14 @@ def finalize_trust_center():
         # --- 3. Inject Modals HTML, CSS, and supporting JavaScript ---
         print("✨ Injecting custom modals to replace browser alerts...")
 
-        # HTML for custom modals
+        # HTML for custom modals - Using the actual '×' character instead of '&times;'
         modals_html = r'''
 <!-- Custom Registration Modal -->
 <div class="custom-modal" id="registration-modal">
     <div class="custom-modal-content">
         <div class="custom-modal-header">
             <h3>📅 Quarterly Review Registration</h3>
-            <button class="modal-close-btn" onclick="closeCustomModal('registration-modal')">&times;</button>
+            <button class="modal-close-btn" onclick="closeCustomModal('registration-modal')">×</button>
         </div>
         <div class="custom-modal-body">
             <div class="registration-info">
@@ -160,7 +160,7 @@ def finalize_trust_center():
     <div class="custom-modal-content">
         <div class="custom-modal-header">
             <h3>💬 Agency Feedback</h3>
-            <button class="modal-close-btn" onclick="closeCustomModal('feedback-modal')">&times;</button>
+            <button class="modal-close-btn" onclick="closeCustomModal('feedback-modal')">×</button>
         </div>
         <div class="custom-modal-body">
             <div class="feedback-info">
@@ -196,141 +196,35 @@ def finalize_trust_center():
 </div>
 '''
         # Inject modal HTML before the closing body tag
-        html_content = html_content.replace('</body>', modals_html + '\n</body>')
-        print("✅ Custom modal HTML has been injected.")
+        if 'id="registration-modal"' not in html_content:
+            html_content = html_content.replace('</body>', modals_html + '\n</body>')
+            print("✅ Custom modal HTML has been injected.")
+        else:
+            print("✅ Custom modal HTML already present.")
+
 
         # CSS for modals and layout enhancements
         visual_enhancement_css = r'''
 /* --- Injected QoL Visual Styles for Trust Center --- */
-.trust-section form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-.trust-section .form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.25rem;
-}
-.trust-section .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-.trust-section label {
-    font-weight: 600;
-    color: var(--text-primary);
-    font-size: 0.875rem;
-}
-.trust-section input[type="text"],
-.trust-section input[type="email"],
-.trust-section select,
-.trust-section textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 2px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
-    font-size: 1rem;
-    transition: all 0.2s ease-in-out;
-    box-shadow: var(--shadow-sm);
-}
-.trust-section input[type="text"]:focus,
-.trust-section input[type="email"]:focus,
-.trust-section select:focus,
-.trust-section textarea:focus {
-    outline: none;
-    border-color: var(--primary-500);
-    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
-}
-.trust-section .checkbox-field {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.875rem;
-}
-.trust-section input[type="checkbox"] {
-    width: 1.25em;
-    height: 1.25em;
-    accent-color: var(--primary-500);
-}
-.trust-section .form-submit-btn {
-    background: var(--gradient-enhancement);
-    color: white;
-    font-weight: 700;
-    font-size: 1rem;
-    border: none;
-    padding: 0.875rem 1.5rem;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    box-shadow: var(--shadow);
-    align-self: flex-start;
-}
-.trust-section .form-submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-.schedule-btn, .method-button {
-    background: var(--gradient-enhancement);
-    color: white;
-    font-weight: 600;
-    font-size: 0.875rem;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    box-shadow: var(--shadow);
-    text-decoration: none;
-    display: inline-block;
-}
-.schedule-btn:hover, .method-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-.schedule-item {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    transition: all 0.2s ease;
-}
-.schedule-item:hover {
-    border-color: var(--primary-500);
-    transform: scale(1.01);
-}
-.schedule-status {
-    background: rgba(16, 185, 129, 0.1);
-    color: var(--success-600);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-    font-weight: 700;
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-lg);
-}
-.access-method {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    padding: 1.5rem;
-    transition: all 0.2s ease;
-    border-radius: var(--radius-lg);
-}
-.access-method:hover {
-    border-color: var(--primary-500);
-    box-shadow: var(--shadow-lg);
-}
-.method-link {
-    color: var(--primary-500);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--radius-sm);
-}
-.method-link:hover {
-    color: var(--primary-600);
-    background-color: var(--bg-accent);
-    text-decoration: underline;
-}
+.trust-section form { display: flex; flex-direction: column; gap: 1.25rem; }
+.trust-section .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; }
+.trust-section .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+.trust-section label { font-weight: 600; color: var(--text-primary); font-size: 0.875rem; }
+.trust-section input[type="text"], .trust-section input[type="email"], .trust-section select, .trust-section textarea { width: 100%; padding: 0.75rem 1rem; border: 2px solid var(--border-color); border-radius: var(--radius-sm); background-color: var(--bg-secondary); color: var(--text-primary); font-size: 1rem; transition: all 0.2s ease-in-out; box-shadow: var(--shadow-sm); }
+.trust-section input[type="text"]:focus, .trust-section input[type="email"]:focus, .trust-section select:focus, .trust-section textarea:focus { outline: none; border-color: var(--primary-500); box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2); }
+.trust-section .checkbox-field { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; }
+.trust-section input[type="checkbox"] { width: 1.25em; height: 1.25em; accent-color: var(--primary-500); }
+.trust-section .form-submit-btn { background: var(--gradient-enhancement); color: white; font-weight: 700; font-size: 1rem; border: none; padding: 0.875rem 1.5rem; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s ease-in-out; box-shadow: var(--shadow); align-self: flex-start; }
+.trust-section .form-submit-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.schedule-btn, .method-button { background: var(--gradient-enhancement); color: white; font-weight: 600; font-size: 0.875rem; border: none; padding: 0.5rem 1rem; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s ease-in-out; box-shadow: var(--shadow); text-decoration: none; display: inline-block; }
+.schedule-btn:hover, .method-button:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.schedule-item { background: var(--bg-secondary); border: 1px solid var(--border-color); transition: all 0.2s ease; }
+.schedule-item:hover { border-color: var(--primary-500); transform: scale(1.01); }
+.schedule-status { background: rgba(16, 185, 129, 0.1); color: var(--success-600); border: 1px solid rgba(16, 185, 129, 0.2); font-weight: 700; padding: 0.25rem 0.75rem; border-radius: var(--radius-lg); }
+.access-method { background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem; transition: all 0.2s ease; border-radius: var(--radius-lg); }
+.access-method:hover { border-color: var(--primary-500); box-shadow: var(--shadow-lg); }
+.method-link { color: var(--primary-500); text-decoration: none; font-weight: 600; transition: all 0.2s ease; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); }
+.method-link:hover { color: var(--primary-600); background-color: var(--bg-accent); text-decoration: underline; }
 [data-theme="dark"] .method-link { color: #60a5fa; }
 [data-theme="dark"] .method-link:hover { color: #93c5fd; }
 
@@ -339,8 +233,8 @@ def finalize_trust_center():
 .custom-modal.active { display: flex; align-items: center; justify-content: center; padding: 2rem; }
 .custom-modal-content { background: var(--bg-primary); border-radius: var(--radius-lg); width: 100%; max-width: 600px; max-height: 80vh; overflow: hidden; box-shadow: var(--shadow-xl); border: 1px solid var(--border-color); display: flex; flex-direction: column; }
 .custom-modal-header { background: var(--gradient-accent); color: white; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-.custom-modal-header h3 { margin: 0; font-size: 1.25rem; font-weight: 700; }
-.modal-close-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0.25rem; opacity: 0.8; transition: opacity 0.3s ease; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.custom-modal-header h3 { margin: 0; font-size: 1.25rem; font-weight: 700; color: white !important; }
+.modal-close-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0.25rem; opacity: 0.8; transition: opacity 0.3s ease; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1; }
 .modal-close-btn:hover { opacity: 1; background: rgba(255, 255, 255, 0.1); }
 .custom-modal-body { padding: 2rem; overflow-y: auto; flex: 1; }
 .custom-modal-footer { padding: 1.5rem 2rem; border-top: 1px solid var(--border-color); display: flex; gap: 1rem; justify-content: flex-end; }
@@ -350,26 +244,31 @@ def finalize_trust_center():
 .modal-btn.secondary { background: var(--bg-accent); color: var(--text-primary); border: 1px solid var(--border-color); }
 .modal-btn.secondary:hover { background: var(--border-color); }
 .requirements-box, .contact-info, .template-box, .feedback-types, .privacy-notice, .contact-methods { background: var(--bg-accent); padding: 1.5rem; border-radius: var(--radius-sm); margin: 1rem 0; border: 1px solid var(--border-color); }
-.requirements-box h4, .contact-info h4, .template-box h4, .feedback-types h4, .privacy-notice h4, .contact-methods h4 { margin: 0 0 0.75rem 0; color: var(--text-primary); font-size: 1rem; }
+.requirements-box h4, .contact-info h4, .template-box h4, .feedback-types h4, .privacy-notice h4, .contact-methods h4 { margin: 0 0 0.75rem 0; color: var(--text-primary) !important; font-size: 1rem; }
 .requirements-box ul, .template-box ul, .feedback-types ul, .contact-methods ul { margin: 0; padding-left: 1.25rem; color: var(--text-secondary); }
-.requirements-box li, .template-box li, .feedback-types li, .contact-methods li { margin: 0.5rem 0; }
+.requirements-box li, .template-box li, .feedback-types li, .contact-methods li { margin: 0.5rem 0; color: var(--text-secondary) !important; }
 .privacy-notice { background: rgba(245, 158, 11, 0.1); border-color: var(--warning-500); }
-.privacy-notice h4 { color: var(--warning-600); }
+.privacy-notice h4 { color: var(--warning-600) !important; }
 .access-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-accent); }
 .access-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); border-color: var(--primary-500); }
 .access-card .card-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
-.access-card h3 { color: var(--text-primary); margin: 0 0 0.75rem 0; font-size: 1.25rem; }
+.access-card h3 { color: var(--text-primary) !important; margin: 0 0 0.75rem 0; font-size: 1.25rem; }
 .access-card p { color: var(--text-secondary); margin: 0 0 1.5rem 0; font-size: 0.9rem; line-height: 1.5; }
 .access-btn { background: var(--gradient-accent); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; transition: all 0.2s ease; box-shadow: var(--shadow-sm); font-size: 0.9rem; }
 .access-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 @media (max-width: 768px) { .quick-access-grid { grid-template-columns: 1fr; gap: 1rem; } .custom-modal-content { margin: 1rem; max-width: none; } .custom-modal-footer { flex-direction: column; } .modal-btn { width: 100%; } }
 '''
-        css_injection_pattern = re.compile(r"(\s*</style>)", re.DOTALL)
-        if css_injection_pattern.search(html_content):
-            html_content = css_injection_pattern.sub(visual_enhancement_css + r'\1', html_content)
-            print("✅ New CSS for modals and layouts has been successfully injected.")
+        # Inject CSS if it's not already there
+        if '/* Custom Modal Styles */' not in html_content:
+            css_injection_pattern = re.compile(r"(\s*</style>)", re.DOTALL)
+            if css_injection_pattern.search(html_content):
+                html_content = css_injection_pattern.sub(visual_enhancement_css + r'\1', html_content)
+                print("✅ New CSS for modals and layouts has been successfully injected.")
+            else:
+                print("⚠️ Warning: Could not find closing </style> tag to inject CSS.")
         else:
-            print("⚠️ Warning: Could not find closing </style> tag to inject CSS.")
+            print("✅ Modal and layout CSS already present.")
+
 
         # JavaScript functions for new modals
         new_js_functions = r'''// --- Injected Functions for Custom Modals ---
@@ -384,8 +283,14 @@ function openAgencyFeedback() {
 }
 
 function closeCustomModal(modalId) {
-    document.getElementById(modalId).classList.remove('active');
-    document.body.style.overflow = '';
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+    }
+    // Only restore body scroll if no other modals are active
+    if (!document.querySelector('.custom-modal.active')) {
+        document.body.style.overflow = '';
+    }
 }
 
 function openEmailClient(type) {
@@ -412,14 +317,27 @@ document.addEventListener('click', function(e) {
 });
 '''
         # Replace old JS functions that used confirm()
-        old_js_pattern = re.compile(r"function registerForReview\(\) \{.*?\}", re.DOTALL)
+        old_js_pattern = re.compile(r"function registerForReview\(\) \{.*?\n\}", re.DOTALL)
         html_content = old_js_pattern.sub("", html_content)
-        old_js_pattern_2 = re.compile(r"function openAgencyFeedback\(\) \{.*?\}", re.DOTALL)
+        old_js_pattern_2 = re.compile(r"function openAgencyFeedback\(\) \{.*?\n\}", re.DOTALL)
         html_content = old_js_pattern_2.sub("", html_content)
 
-        # Add new functions and listeners to the main script block
-        html_content = html_content.replace('// Global functions', new_js_functions + '\n// Global functions')
-        print("✅ JavaScript functions updated to use custom modals.")
+        # Add new functions if they don't exist
+        if 'function closeCustomModal(modalId)' not in html_content:
+            html_content = html_content.replace('// Global functions', new_js_functions + '\n// Global functions')
+            print("✅ JavaScript functions updated to use custom modals.")
+        else:
+            print("✅ Custom modal JavaScript functions already present.")
+        
+        # Add Escape key listener to keydown event
+        if "closeCustomModal('registration-modal');" not in html_content:
+            keydown_listener_pattern = re.compile(r"(if \(e.key === 'Escape'\) \{)", re.DOTALL)
+            escape_logic = r"\1\n                closeCustomModal('registration-modal');\n                closeCustomModal('feedback-modal');"
+            html_content = keydown_listener_pattern.sub(escape_logic, html_content)
+            print("✅ Added Escape key listener for custom modals.")
+        else:
+            print("✅ Escape key listener for custom modals already present.")
+
 
         # --- 4. Write all changes back to the file ---
         with open(html_file, 'w', encoding='utf-8') as f:
