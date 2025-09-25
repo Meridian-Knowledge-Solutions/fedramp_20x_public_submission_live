@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-25 20:16
+**Last Check:** 2025-09-25 20:43
 
 **What it validates:** Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
 
@@ -52,4 +52,4 @@ PASS Advanced automated key management with rotation and governance controls (50
 - PASS Advanced organization features: SCPs for key management policy enforcement enabled.
 
 ---
-*Generated 2025-09-25 20:16 UTC*
+*Generated 2025-09-25 20:43 UTC*
