@@ -163,12 +163,89 @@ def finalize_trust_center():
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
+
+/* --- Injected QoL Visual Styles for Quarterly Reports Section --- */
+.schedule-btn, .method-button {
+    background: var(--gradient-enhancement);
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.schedule-btn:hover, .method-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.schedule-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.schedule-item:hover {
+    border-color: var(--primary-500);
+    transform: scale(1.01);
+}
+
+.schedule-status {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-600);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-lg);
+}
+
+.access-method {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    border-radius: var(--radius-lg);
+}
+
+.access-method:hover {
+    border-color: var(--primary-500);
+    box-shadow: var(--shadow-lg);
+}
+
+.method-link {
+    color: var(--primary-500);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+}
+
+.method-link:hover {
+    color: var(--primary-600);
+    background-color: var(--bg-accent);
+    text-decoration: underline;
+}
+
+[data-theme="dark"] .method-link {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .method-link:hover {
+    color: #93c5fd;
+}
 '''
         # Find the closing style tag and inject the CSS before it
         css_injection_pattern = re.compile(r"(\s*</style>)", re.DOTALL)
         if css_injection_pattern.search(html_content):
             html_content = css_injection_pattern.sub(visual_enhancement_css + r'\1', html_content)
-            print("✅ New CSS for form styling has been successfully injected.")
+            print("✅ New CSS for form and reports styling has been successfully injected.")
         else:
             print("⚠️ Warning: Could not find closing </style> tag to inject CSS.")
 
