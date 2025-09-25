@@ -2899,6 +2899,163 @@ td {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
+/* --- Injected QoL Visual Styles for Trust Center --- */
+.trust-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.trust-section .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+}
+
+.trust-section .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.trust-section label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+.trust-section input[type="text"],
+.trust-section input[type="email"],
+.trust-section select,
+.trust-section textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--shadow-sm);
+}
+
+.trust-section input[type="text"]:focus,
+.trust-section input[type="email"]:focus,
+.trust-section select:focus,
+.trust-section textarea:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+}
+
+.trust-section .checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+}
+.trust-section input[type="checkbox"] {
+    width: 1.25em;
+    height: 1.25em;
+    accent-color: var(--primary-500);
+}
+
+.trust-section .form-submit-btn {
+    background: var(--gradient-enhancement);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--shadow);
+    align-self: flex-start; /* Prevent button from stretching full-width */
+}
+
+.trust-section .form-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* --- Injected QoL Visual Styles for Quarterly Reports Section --- */
+.schedule-btn, .method-button {
+    background: var(--gradient-enhancement);
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.schedule-btn:hover, .method-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.schedule-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.schedule-item:hover {
+    border-color: var(--primary-500);
+    transform: scale(1.01);
+}
+
+.schedule-status {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-600);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-lg);
+}
+
+.access-method {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    border-radius: var(--radius-lg);
+}
+
+.access-method:hover {
+    border-color: var(--primary-500);
+    box-shadow: var(--shadow-lg);
+}
+
+.method-link {
+    color: var(--primary-500);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+}
+
+.method-link:hover {
+    color: var(--primary-600);
+    background-color: var(--bg-accent);
+    text-decoration: underline;
+}
+
+[data-theme="dark"] .method-link {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .method-link:hover {
+    color: #93c5fd;
+}
+
 
     </style>
 </head>
