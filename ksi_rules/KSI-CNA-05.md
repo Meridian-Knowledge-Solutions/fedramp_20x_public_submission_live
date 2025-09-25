@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-09-25 22:01
+**Last Check:** 2025-09-25 23:08
 
 **What it validates:** Have denial of service protection
 
@@ -38,11 +38,11 @@
 
 ## Latest Results
 
-PASS Basic DoS protection configured (62%) - consider enhancements: PASS Network-layer protection: AWS Shield Standard (automatic DDoS protection)
-- WARNING Limited application protection: No Regional WAF detected
+PASS Comprehensive DoS protection established (100%): PASS Network-layer protection: AWS Shield Standard (automatic DDoS protection)
+- PASS Application-layer protection: 1 Regional WAF Web ACL(s) - meridian-waf-acl
 - PASS Service resilience: 1 multi-AZ load balancer(s) providing traffic distribution
-- WARNING No Route 53 hosted zones - DNS may lack managed protection
+- PASS Internal DNS resilience: 1 private Route 53 hosted zone(s)
 - PASS Bonus: DDoS monitoring via 1 relevant CloudWatch alarm(s)
 
 ---
-*Generated 2025-09-25 22:01 UTC*
+*Generated 2025-09-25 23:08 UTC*

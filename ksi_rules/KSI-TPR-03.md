@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Third-Party Information Resources
-**Status:** FAIL
-**Last Check:** 2025-09-25 22:01
+**Status:** PASS
+**Last Check:** 2025-09-25 23:08
 
 **What it validates:** Identify and prioritize mitigation of potential supply chain risks
 
@@ -20,7 +20,8 @@
 
 ## Latest Results
 
-- FAIL No third-party services or mitigation policies identified via the compliance broker.
+PASS Supply chain risks identified and mitigation prioritized via broker policies: PASS Identification: 5 third-party services identified.
+- PASS Prioritization & Mitigation: Tiered policies for high and low-impact tenants are configured.
 
 ---
-*Generated 2025-09-25 22:01 UTC*
+*Generated 2025-09-25 23:08 UTC*
