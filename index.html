@@ -3088,32 +3088,132 @@ td {
 
             <!-- Quick Access Cards -->
             <div class="quick-access-grid">
-                <div class="access-card">
-                    <div class="card-icon">🔧</div>
-                    <h3>API Access</h3>
-                    <p>Machine-readable authorization data</p>
-                    <button onclick="scrollToTrustSection('api-section')" class="access-btn">View API Docs</button>
-                </div>
-                
-                <div class="access-card">
+                                <div class="access-card">
                     <div class="card-icon">📋</div>
-                    <h3>Request Access</h3>
-                    <p>Federal agency request workflow</p>
-                    <button onclick="scrollToTrustSection('agency-form-section')" class="access-btn">Submit Request</button>
+            <div id="quarterly-reports-section" class="trust-section">
+                <h2>📋 Quarterly Authorization Reports (RFC-0016)</h2>
+                <p>Ongoing Authorization Reports per FRR-CCM-01 providing regular summaries of changes, accepted weaknesses, and authorization data</p>
+
+                <div class="trust-card">
+                    <div class="trust-card-header">
+                        <h3 class="trust-card-title">🗓️ Report Schedule & Access</h3>
+                    </div>
+                    <div class="trust-card-content">
+                        <div class="quarterly-schedule">
+                            <div class="schedule-item">
+                                <div class="schedule-icon">📅</div>
+                                <div class="schedule-content">
+                                    <strong>Current Quarter Report:</strong>
+                                    <div id="current-quarter-report">Q3 2025 - Available</div>
+                                </div>
+                                <button onclick="downloadCurrentReport()" class="schedule-btn">Download Report</button>
+                            </div>
+
+                            <div class="schedule-item">
+                                <div class="schedule-icon">⏰</div>
+                                <div class="schedule-content">
+                                    <strong>Next Report Due:</strong>
+                                    <div id="next-report-date">Loading...</div>
+                                </div>
+                                <div class="schedule-status">On Schedule</div>
+                            </div>
+
+                            <div class="schedule-item">
+                                <div class="schedule-icon">🎯</div>
+                                <div class="schedule-content">
+                                    <strong>Next Quarterly Review:</strong>
+                                    <div id="next-quarterly-review">Loading...</div>
+                                </div>
+                                <button onclick="registerForReview()" class="schedule-btn">Agency Registration</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="access-card enhancement-indicator">
-                    <div class="card-icon">📊</div>
-                    <h3>Risk-Based Tracking</h3>
-                    <p>Multi-level risk tracking</p>
-                    <button onclick="window.showPOAMModal()" class="access-btn">View Validation Risks</button>
+
+                <div class="trust-card">
+                    <div class="trust-card-header">
+                        <h3 class="trust-card-title">📊 Report Contents (FRR-CCM-01)</h3>
+                    </div>
+                    <div class="trust-card-content">
+                        <div class="report-contents">
+                            <div class="content-section">
+                                <h4>🔄 Changes to Authorization Data</h4>
+                                <ul class="content-list">
+                                    <li>Key Security Indicators (KSI) performance updates</li>
+                                    <li>Automation health and validation consistency</li>
+                                    <li>Significant change notifications (SCN) summary</li>
+                                </ul>
+                            </div>
+
+                            <div class="content-section">
+                                <h4>⚠️ Accepted Weaknesses (VDR)</h4>
+                                <ul class="content-list">
+                                    <li>Active vulnerability counts by N-rating</li>
+                                    <li>LEV+IRV critical indicators</li>
+                                    <li>Agency action requirements</li>
+                                </ul>
+                            </div>
+
+                            <div class="content-section">
+                                <h4>🔮 Planned Changes (Next 3 Months)</h4>
+                                <ul class="content-list">
+                                    <li>Planned infrastructure updates</li>
+                                    <li>Security control enhancements</li>
+                                    <li>Compliance milestone tracking</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="access-card">
-                    <div class="card-icon">🚨</div>
-                    <h3>Incident Reports</h3>
-                    <p>Security incident templates</p>
-                    <button onclick="scrollToTrustSection('incident-section')" class="access-btn">Get Templates</button>
+
+                <div class="trust-card">
+                    <div class="trust-card-header">
+                        <h3 class="trust-card-title">🏛️ Federal Agency Access</h3>
+                    </div>
+                    <div class="trust-card-content">
+                        <div class="agency-access">
+                            <div class="access-method">
+                                <div class="method-icon">🔗</div>
+                                <div class="method-content">
+                                    <strong>Direct Download:</strong>
+                                    <p>Reports available in machine-readable and human-readable formats</p>
+                                    <div class="method-links">
+                                        <a href="./quarterly_reports/" target="_blank" class="method-link">📁 Report Archive</a>
+                                        <a href="./trust_center/next_report_date.json" target="_blank" class="method-link">⏰ Schedule API</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="access-method">
+                                <div class="method-icon">💬</div>
+                                <div class="method-content">
+                                    <strong>Agency Feedback (FRR-CCM-04):</strong>
+                                    <p>Asynchronous mechanism for questions and feedback</p>
+                                    <button onclick="openAgencyFeedback()" class="method-button">Submit Agency Feedback</button>
+                                    <small>Note: Feedback shared with FedRAMP, not published publicly per FRR-CCM-05</small>
+                                </div>
+                            </div>
+
+                            <div class="access-method">
+                                <div class="method-icon">🎪</div>
+                                <div class="method-content">
+                                    <strong>Quarterly Review Meetings (FRR-CCM-QR):</strong>
+                                    <p>Synchronous quarterly reviews for all agency customers</p>
+                                    <div class="review-details">
+                                        <div>📅 Schedule: Within 2 weeks of report release</div>
+                                        <div>🎯 Audience: Federal agencies only</div>
+                                        <div>📝 Recording: Available to authorized parties</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                    <h3>Quarterly Authorization Reports</h3>
+                    <p>RFC-0016 Ongoing Authorization Reports</p>
+                    <button onclick="scrollToTrustSection('quarterly-reports-section')" class="access-btn">View Reports</button>
                 </div>
             </div>
 
@@ -5087,12 +5187,132 @@ function prioritizeRemediation() {
             updateTimestamps();
             loadRealData();
         }, 300000);
+// Quarterly Reports JavaScript Functions
+async function loadQuarterlyReportData() {
+    try {
+        // Load the next report dates from trust center data
+        const response = await fetch('./trust_center/next_report_date.json');
+        const data = await response.json();
+
+        // Update the display elements
+        if (data.next_ongoing_report) {
+            document.getElementById('next-report-date').textContent =
+                new Date(data.next_ongoing_report).toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                });
+        }
+
+        if (data.next_quarterly_review) {
+            document.getElementById('next-quarterly-review').textContent = data.next_quarterly_review + ' at 2:00 PM ET';
+        }
+
+        // Update current quarter
+        const now = new Date();
+        const quarter = Math.floor((now.getMonth() + 3) / 3);
+        const year = now.getFullYear();
+        document.getElementById('current-quarter-report').textContent =
+            `Q${quarter} ${year} - Available`;
+
+    } catch (error) {
+        console.log('Could not load quarterly report schedule:', error);
+        document.getElementById('next-report-date').textContent = 'Check back for updates';
+        document.getElementById('next-quarterly-review').textContent = 'Check back for updates';
+    }
+}
+
+function downloadCurrentReport() {
+    const now = new Date();
+    const quarter = Math.floor((now.getMonth() + 3) / 3);
+    const year = now.getFullYear();
+    const filename = `ongoing_authorization_report_Q${quarter}_${year}.md`;
+
+    // Try to download from quarterly_reports directory
+    const link = document.createElement('a');
+    link.href = `./quarterly_reports/${filename}`;
+    link.download = filename;
+    link.click();
+
+    // Provide feedback to user
+    setTimeout(() => {
+        if (!document.hasFocus()) return; // User might have downloaded
+
+        alert(`Download initiated for ${filename}.
+
+If download doesn't start automatically, the report may not be available yet. Reports are generated automatically every quarter.`);
+    }, 1000);
+}
+
+function registerForReview() {
+    // Open a modal or redirect to registration
+    const message = `Quarterly Review Registration
+
+Federal agencies can register for upcoming quarterly reviews.
+
+Registration Requirements:
+• Valid .gov or .mil email address
+• Agency security representative
+• Current FedRAMP authorization
+
+Contact: security@meridianks.com
+Subject: "Quarterly Review Registration"
+
+Please include:
+• Agency name and component
+• Primary security contact
+• Current authorization details`;
+
+    if (confirm(message + '
+
+Open email client to register?')) {
+        const subject = encodeURIComponent('Quarterly Review Registration');
+        const body = encodeURIComponent(`Agency: [Your Agency]
+Component: [Your Component/Bureau]
+Primary Contact: [Name and Title]
+Email: [Contact Email]
+Authorization: [Current ATO/FedRAMP Details]
+
+Please register us for the upcoming quarterly review.`);
+
+        window.location.href = `mailto:security@meridianks.com?subject=${subject}&body=${body}`;
+    }
+}
+
+function openAgencyFeedback() {
+    // Private feedback mechanism per FRR-CCM-04/05
+    const message = `Agency Feedback on Ongoing Authorization Reports
+
+Per RFC-0016 FRR-CCM-04, we maintain an asynchronous mechanism for agency feedback.
+
+Federal agencies may submit:
+• Questions about authorization reports
+• Concerns about reported data
+• Requests for clarification
+• Risk tolerance implications
+
+Note: Per FRR-CCM-05, agency feedback is shared only with FedRAMP and the submitting agency. Responses are not published publicly.
+
+Contact Methods:
+• Email: agency-feedback@meridianks.com
+• Secure Portal: [Agency Access Only]
+• Phone: [Agency Hotline]`;
+
+    if (confirm(message + '
+
+Open secure feedback channel?')) {
+        const subject = encodeURIComponent('Agency Feedback - Ongoing Authorization Report');
+        window.location.href = `mailto:agency-feedback@meridianks.com?subject=${subject}`;
+    }
+}
+
+
+
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🚀 Enhanced FedRAMP 20x Trust Center Loading...');
             initializeTheme();
             initializeDashboard();
+            setTimeout(loadQuarterlyReportData, 500);
             
             console.log('🔧 ENHANCED Dashboard initialized with modern Commands Modal');
             console.log('   - Removed redundant "Complete Assessment Details" section');
