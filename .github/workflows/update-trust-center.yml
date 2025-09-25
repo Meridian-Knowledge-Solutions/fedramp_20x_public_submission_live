@@ -44,7 +44,7 @@ jobs:
         if: steps.check-update.outputs.need_update == 'true'
         run: |
           echo "🚀 Running Trust Center RFC-0016 integration..."
-          python update_trust_center.py
+          python trust_center_updater.py
           
       - name: 📋 Verify Integration
         if: steps.check-update.outputs.need_update == 'true'
