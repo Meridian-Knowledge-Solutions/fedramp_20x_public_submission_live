@@ -1,9 +1,12 @@
 {
-  "timestamp": "2025-09-26T17:30:48.121020",
+  "timestamp": "2025-09-26T17:55:34.524291",
   "total_ksis_validated": 55,
-  "technical_issues_found": 0,
-  "issues": [],
-  "status": "pass",
+  "technical_issues_found": 2,
+  "issues": [
+    "KSI-PIY-06: Evidence check failed - may indicate missing documentation",
+    "KSI-PIY-06: Evidence-only validation failed - documentation may be missing"
+  ],
+  "status": "warning",
   "categories_checked": [
     "logical_consistency",
     "scoring_mathematics",
