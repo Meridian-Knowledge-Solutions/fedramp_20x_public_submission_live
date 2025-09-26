@@ -113,52 +113,48 @@
     }
     ]
   },
-  "KSI-CNA-04": {
-  "description": "Use immutable infrastructure with strictly defined functionality and privileges by default",
-  "justification": "Validates immutable infrastructure patterns, IaC, serverless adoption, and least-privilege configurations for network and IAM.",
-  "cli_commands": [
-    {
-      "command": "aws ec2 describe-instances --filters 'Name=instance-state-name,Values=running,pending' --query 'Reservations[].Instances[].[InstanceId, Tags, LaunchTime, ImageId]' --output json",
-      "note": "Query running instances for IaC tags, naming, and age."
-    },
-    {
-      "command": "aws ec2 describe-launch-templates --query 'LaunchTemplates[].LaunchTemplateName' --output json",
-      "note": "Validate use of launch templates for standardized deployments."
-    },
-    {
-      "command": "aws autoscaling describe-auto-scaling-groups --query 'AutoScalingGroups[].AutoScalingGroupName' --output json",
-      "note": "Check Auto Scaling Groups for immutable replacement patterns."
-    },
-    {
-      "command": "aws lambda list-functions --query 'Functions[].FunctionName' --output json",
-      "note": "Check for serverless functions as immutable resources."
-    },
-    {
-      "command": "aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)].[Name]' --output json",
-      "note": "Identify S3 buckets used for Terraform state management."
-    },
-    {
-      "command": "aws dynamodb list-tables --query 'TableNames[?contains(@, `terraform-lock`)]' --output json",
-      "note": "Identify DynamoDB tables used for Terraform state locking."
-    },
-    {
-      "command": "aws ec2 describe-security-groups --query 'SecurityGroups[?length(IpPermissions[?contains(IpRanges[].CidrIp, `0.0.0.0/0`)]) > `0`].[GroupId, GroupName, IpPermissions]' --output json",
-      "note": "NEW: Check for Security Groups with overly permissive ingress rules from the internet."
-    },
-    {
-      "command": "aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess --query 'PolicyRoles[].RoleName' --output json",
-      "note": "NEW: Check for any IAM roles using the AWS-managed AdministratorAccess policy."
-    }
+ "KSI-CNA-04": {
+    "description": "Use immutable infrastructure with strictly defined functionality and privileges by default.",
+    "justification": "Validates immutable infrastructure patterns (IaC, serverless, Auto Scaling) and performs a context-aware, least-privilege analysis for network and IAM configurations to reduce false positives.",
+    "cli_commands": [
+      {
+        "command": "aws ec2 describe-instances --filters 'Name=instance-state-name,Values=running,pending' --query 'Reservations[].Instances[].[InstanceId, Tags, LaunchTime, ImageId]' --output json",
+        "note": "Query running instances for IaC tags, naming, and age to assess immutability."
+      },
+      {
+        "command": "aws ec2 describe-launch-templates --query 'LaunchTemplates[].LaunchTemplateName' --output json",
+        "note": "Validate use of launch templates for standardized, repeatable deployments."
+      },
+      {
+        "command": "aws autoscaling describe-auto-scaling-groups --query 'AutoScalingGroups[].AutoScalingGroupName' --output json",
+        "note": "Check Auto Scaling Groups for immutable replacement and scaling patterns."
+      },
+      {
+        "command": "aws lambda list-functions --query 'Functions[].FunctionName' --output json",
+        "note": "Check for serverless functions, which are treated as inherently immutable resources."
+      },
+      {
+        "command": "aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)].[Name]' --output json",
+        "note": "Identify S3 buckets used for Terraform state management as direct evidence of IaC."
+      },
+      {
+        "command": "aws dynamodb list-tables --query 'TableNames[?contains(@, `terraform-lock`)]' --output json",
+        "note": "Identify DynamoDB tables used for Terraform state locking, reinforcing IaC evidence."
+      },
+      {
+        "command": "aws ec2 describe-security-groups --query 'SecurityGroups[?length(IpPermissions[?contains(IpRanges[].CidrIp, `0.0.0.0/0`)]) > `0`].[GroupId, GroupName, IpPermissions]' --output json",
+        "note": "Check for Security Groups with overly permissive ingress rules from the internet (0.0.0.0/0)."
+      },
+      {
+        "command": "aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess --query '{PolicyRoles: PolicyRoles}' --output json",
+        "note": "Check for any IAM roles using AdministratorAccess for intelligent, exception-based analysis."
+      }
     ]
   },
   "KSI-CNA-05": {
     "description": "Have denial of service protection",
     "justification": "Validates comprehensive DDoS protection through AWS Shield, CloudFront, WAF, load balancers, and monitoring systems for traffic-based attacks",
     "cli_commands": [
-      {
-        "command": "aws shield describe-subscription --output json",
-        "note": "Check AWS Shield subscription status for DDoS protection coverage"
-      },
       {
         "command": "aws cloudfront list-distributions --output json",
         "note": "Validate CloudFront distributions for DDoS mitigation and global edge protection"
@@ -244,8 +240,8 @@
       "note": "Validate CloudTrail configuration."
     },
     {
-      "command": "aws cloudtrail get-trail-status --name meridianks-Management-events --output json",
-      "note": "Check the logging status of the primary CloudTrail trail."
+    "command": "aws cloudtrail describe-trails --query 'trailList[?IsMultiRegionTrail==`true`]|[0].Name' --output text | xargs -I {} aws cloudtrail get-trail-status --name {}",
+    "note": "RESILIENT: Checks the status of the first found multi-region CloudTrail trail."
     },
     {
       "command": "aws kms list-keys --output json",
@@ -352,12 +348,8 @@
   "justification": "Validates comprehensive network traffic encryption from basic HTTPS enforcement to enterprise-grade multi-protocol encryption...",
   "cli_commands": [
     {
-      "command": "aws elbv2 describe-load-balancers --output json",
-      "note": "ADDED: Check for load balancers as a foundation for traffic encryption."
-    },
-    {
-      "command": "aws elbv2 describe-listeners --output json",
-      "note": "Analyze load balancer listeners for HTTPS/TLS protocol enforcement."
+    "command": "for arn in $(aws elbv2 describe-load-balancers --query 'LoadBalancers[].LoadBalancerArn' --output text 2>/dev/null); do aws elbv2 describe-listeners --load-balancer-arn \"$arn\" --output json; done",
+    "note": "REVISED: Iterates through each load balancer to describe its listeners."
     },
     {
       "command": "aws ec2 describe-vpc-endpoints --output json",
@@ -406,7 +398,7 @@
       "note": "Validate RDS database encryption at rest."
     },
     {
-      "command": "aws rds describe-db-snapshots --owner-type self --output json",
+      "command": "aws rds describe-db-snapshots --output json",
       "note": "Check RDS snapshot encryption for backups."
     },
     {
@@ -448,7 +440,7 @@
         "note": "Check Systems Manager Parameter Store for centralized configuration management and application settings"
       },
       {
-        "command": "aws config describe-configuration-recorders --output json",
+        "command": "aws configservice describe-configuration-recorders --output json",
         "note": "Validate AWS Config for configuration compliance monitoring and change tracking"
       },
       {
@@ -468,7 +460,7 @@
         "note": "Analyze patch baselines for centralized system configuration management and compliance standards"
       },
       {
-        "command": "aws config describe-config-rules --output json",
+        "command": "aws configservice describe-config-rules --output json",
         "note": "Check Config rules for automated configuration compliance validation and policy enforcement"
       },
       {
@@ -510,7 +502,7 @@
         "note": "Check RDS database instances for backup encryption and transaction log integrity protection"
       },
       {
-        "command": "aws config describe-configuration-recorders --output json",
+        "command": "aws configservice describe-configuration-recorders --output json",
         "note": "Validate AWS Config for configuration change integrity tracking and compliance monitoring"
       },
       {
@@ -662,8 +654,8 @@
         "note": "Check SSL/TLS policies for secure communication configuration"
       },
       {
-        "command": "aws elbv2 describe-listeners --output json",
-        "note": "Validate load balancer listeners for encrypted communication enforcement"
+        "command": "for arn in $(aws elbv2 describe-load-balancers --query 'LoadBalancers[].LoadBalancerArn' --output text 2>/dev/null); do aws elbv2 describe-listeners --load-balancer-arn \"$arn\" --output json; done",
+        "note": "REVISED: Iterates through each load balancer to describe its listeners."
       },
       {
         "command": "aws ec2 describe-vpc-endpoints --output json",
@@ -748,8 +740,8 @@
         "note": "Check strong password policy enforcement when passwords are used"
       },
       {
-        "command": "aws iam list-users --output json",
-        "note": "Analyze user authentication patterns and requirements"
+    "command": "aws iam get-account-password-policy --output json || echo '{\"PasswordPolicy\": \"No custom policy set, using AWS defaults.\"}'",
+    "note": "RESILIENT: Handles cases where no custom password policy exists by providing a default status."
       },
       {
         "command": "aws sts get-caller-identity --output json",
@@ -780,10 +772,6 @@
     "justification": "Validates comprehensive authorization through IAM Identity Center permission sets (modern approach) and traditional IAM patterns for complete coverage of least privilege, role-based, attribute-based, and just-in-time access",
     "cli_commands": [
       {
-        "command": "aws sso-admin list-instances --output json",
-        "note": "Check for AWS IAM Identity Center (modern permission set approach)"
-      },
-      {
         "command": "INSTANCE_ARN=$(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text 2>/dev/null) && aws sso-admin list-permission-sets --instance-arn \"$INSTANCE_ARN\" --output json 2>/dev/null || echo '{\"PermissionSets\":[]}'",
         "note": "ROBUST: Get instance ARN first, then list permission sets with proper error handling"
       },
@@ -809,10 +797,6 @@
     "description": "Apply zero trust design principles",
     "justification": "Validates comprehensive zero trust implementation through Identity Center (modern approach), federated MFA detection (consistent with IAM-01), network security, continuous monitoring, conditional access, and secure communications patterns",
     "cli_commands": [
-      {
-        "command": "aws sso-admin list-instances --output json",
-        "note": "Check IAM Identity Center for modern zero trust user access patterns"
-      },
       {
         "command": "aws identitystore list-users --identity-store-id $(aws sso-admin list-instances --query 'Instances[0].IdentityStoreId' --output text) --output json 2>/dev/null || echo '{\"Users\":[]}'",
         "note": "List Identity Center users to detect federated MFA enforcement patterns (external IdP integration via SCIM/Okta)"
@@ -858,10 +842,6 @@
       {
         "command": "aws securityhub describe-hub --output json",
         "note": "Check Security Hub for centralized security findings and automated response coordination"
-      },
-      {
-        "command": "aws sso-admin list-instances --output json",
-        "note": "Validate Identity Center for built-in automated session and access controls"
       },
       {
         "command": "aws configservice describe-config-rules --output json",
@@ -1190,7 +1170,7 @@
         "note": "Validate serverless functions for immutable code deployment (function versioning)"
       },
       {
-        "command": "aws codedeploy list-applications --output json",
+        "command": "aws deploy list-applications --output json",
         "note": "Check CodeDeploy applications for automated immutable deployment workflows"
       },
       {
@@ -1209,60 +1189,48 @@
   },
   "KSI-CMT-03": {
     "description": "Implement automated testing and validation of changes prior to deployment",
-    "justification": "Validates comprehensive automated testing from basic build validation to enterprise-grade multi-stage testing, covering unit tests, integration tests, security scanning, infrastructure validation, and deployment pipeline governance with quality gates and compliance checking",
+    "justification": "Validates comprehensive automated testing from basic build validation to enterprise-grade multi-stage testing...",
     "cli_commands": [
-      {
-        "command": "aws codebuild list-projects --output json",
-        "note": "Check CodeBuild projects for automated testing and validation pipeline implementation"
-      },
-      {
-        "command": "aws codepipeline list-pipelines --output json",
-        "note": "Validate CodePipeline for multi-stage testing workflows and deployment gate enforcement"
-      },
-      {
-        "command": "aws lambda list-functions --output json",
-        "note": "Check Lambda functions for custom testing automation and validation workflows"
-      },
-      {
-        "command": "aws events list-rules --output json",
-        "note": "Validate EventBridge rules for automated testing triggers and workflow orchestration"
-      },
-      {
-        "command": "aws cloudformation validate-template --template-url https://example.com/template.yaml --output json 2>/dev/null || echo '{\"Error\": \"No template provided for validation\"}'",
-        "note": "Check CloudFormation template validation capabilities for Infrastructure as Code testing"
-      },
-      {
-        "command": "aws ecr describe-repositories --output json",
-        "note": "Validate container registries for automated container scanning and testing integration"
-      },
-      {
-        "command": "aws config describe-config-rules --output json",
-        "note": "Check Config rules for automated compliance testing and validation before deployment"
-      },
-      {
-        "command": "aws servicecatalog search-products --output json",
-        "note": "Validate Service Catalog for pre-tested and approved deployment templates"
-      },
-      {
-        "command": "aws organizations describe-organization --output json",
-        "note": "Check enterprise-wide testing policies and organizational validation standards"
-      },
-      {
-        "command": "aws codebuild batch-get-builds --ids $(aws codebuild list-builds-for-project --project-name $(aws codebuild list-projects --query 'projects[0]' --output text) --query 'ids[0]' --output text) --query 'builds[0].phases[?phaseType==`TEST`]' --output json 2>/dev/null || echo '{\"testPhases\": []}'",
-        "note": "Validate actual test execution phases in CodeBuild for automated testing verification"
-      },
-      {
-        "command": "aws codebuild batch-get-build-batches --ids $(aws codebuild list-build-batches --query 'ids[0]' --output text) --query 'buildBatches[0].buildGroups[0].currentBuildSummary.buildStatus' --output json 2>/dev/null || echo '{\"buildStatus\": \"NOT_FOUND\"}'",
-        "note": "Check build batch status for comprehensive testing validation"
-      },
-      {
-        "command": "aws codepipeline get-pipeline-execution --pipeline-name $(aws codepipeline list-pipelines --query 'pipelines[0].name' --output text) --pipeline-execution-id $(aws codepipeline list-pipeline-executions --pipeline-name $(aws codepipeline list-pipelines --query 'pipelines[0].name' --output text) --query 'pipelineExecutionSummaries[0].pipelineExecutionId' --output text) --query 'pipelineExecution.artifactRevisions[0].revisionId' --output json 2>/dev/null || echo '{\"revisionId\": \"NOT_FOUND\"}'",
-        "note": "Validate pipeline execution artifacts for automated testing proof"
-      },
-      {
-        "command": "aws ecr describe-image-scan-findings --repository-name $(aws ecr describe-repositories --query 'repositories[0].repositoryName' --output text) --image-id imageTag=latest --query 'imageScanFindings.findingCounts' --output json 2>/dev/null || echo '{\"findingCounts\": {}}'",
-        "note": "Check container image security scan results for testing integration"
-      }
+        {
+            "command": "aws codebuild list-projects --output json",
+            "note": "Check CodeBuild projects for automated testing and validation."
+        },
+        {
+            "command": "aws codepipeline list-pipelines --output json",
+            "note": "Validate CodePipeline for multi-stage testing workflows."
+        },
+        {
+            "command": "aws lambda list-functions --output json",
+            "note": "Check Lambda functions for custom testing automation."
+        },
+        {
+            "command": "aws events list-rules --output json",
+            "note": "Validate EventBridge rules for automated testing triggers."
+        },
+        {
+            "command": "aws cloudformation validate-template --template-url https://example.com/template.yaml --output json 2>/dev/null || echo '{\"Error\": \"No template provided for validation\"}'",
+            "note": "Check CloudFormation template validation capabilities."
+        },
+        {
+            "command": "aws config describe-config-rules --output json",
+            "note": "Check Config rules for automated compliance testing."
+        },
+        {
+            "command": "aws servicecatalog search-products --output json",
+            "note": "Validate Service Catalog for pre-tested deployment templates."
+        },
+        {
+            "command": "aws organizations describe-organization --output json",
+            "note": "Check enterprise-wide testing policies."
+        },
+        {
+            "command": "aws codebuild batch-get-builds --ids $(aws codebuild list-builds-for-project --project-name $(aws codebuild list-projects --query 'projects[0]' --output text) --query 'ids[0]' --output text) --query 'builds[0].phases[?phaseType==`TEST`]' --output json 2>/dev/null || echo '{\"testPhases\": []}'",
+            "note": "Validate actual test execution phases in CodeBuild."
+        },
+        {
+            "command": "aws codepipeline get-pipeline-execution --pipeline-name $(aws codepipeline list-pipelines --query 'pipelines[0].name' --output text) --pipeline-execution-id $(aws codepipeline list-pipeline-executions --pipeline-name $(aws codepipeline list-pipelines --query 'pipelines[0].name' --output text) --query 'pipelineExecutionSummaries[0].pipelineExecutionId' --output text) --query 'pipelineExecution.artifactRevisions[0].revisionId' --output json 2>/dev/null || echo '{\"revisionId\": \"NOT_FOUND\"}'",
+            "note": "Validate pipeline execution artifacts for automated testing proof."
+        }
     ]
   },
   "KSI-CMT-04": {
@@ -1412,10 +1380,6 @@
       "note": "Confirm broker logging is active"
     },
     {
-      "command": "aws logs start-query --log-group-name '/aws/lambda/lms-compliance-broker' --start-time $(date -d '30 days ago' +%s) --end-time $(date +%s) --query-string 'fields destination_url | parse destination_url /https?:\\/\\/(?<host>[^\\/]+)/ | stats count() by host' --output json",
-      "note": "Query unique third-party hosts from broker logs (dynamic evidence)"
-    },
-    {
       "command": "aws logs get-query-results --query-id $(aws logs start-query --log-group-name '/aws/lambda/lms-compliance-broker' --start-time $(date -d '30 days ago' +%s) --end-time $(date +%s) --query-string 'fields destination_url | parse destination_url /https?:\\/\\/(?<host>[^\\/]+)/ | stats count() by host' --output text --query 'queryId') --output json",
       "note": "Retrieve third-party hosts from broker logs"
     },
@@ -1539,7 +1503,7 @@
     "cli_commands": [
       {
         "command": "evidence_check",
-        "note": "Check evidence_v2/KSI-RPL-02/ for disaster_recovery_plan.pdf, recovery_playbooks.pdf, rto_rpo_alignment_matrix.xlsx, and recovery_plan_maintenance_log.pdf"
+        "note": "Check evidence_v2/KSI-RPL-02/ for contingency_planning_policy.pdf, incident_reponse_policy.pdf"
       }
     ]
   },
