@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-25 23:08
+**Last Check:** 2025-09-26 00:29
 
 **What it validates:** Manage configuration centrally
 
@@ -15,7 +15,7 @@
 1. `aws ssm describe-parameters --output json`
    *Check Systems Manager Parameter Store for centralized configuration management and application settings*
 
-2. `aws config describe-configuration-recorders --output json`
+2. `aws configservice describe-configuration-recorders --output json`
    *Validate AWS Config for configuration compliance monitoring and change tracking*
 
 3. `aws ssm list-documents --document-filter-list key=DocumentType,value=Command --output json`
@@ -30,7 +30,7 @@
 6. `aws ssm describe-patch-baselines --output json`
    *Analyze patch baselines for centralized system configuration management and compliance standards*
 
-7. `aws config describe-config-rules --output json`
+7. `aws configservice describe-config-rules --output json`
    *Check Config rules for automated configuration compliance validation and policy enforcement*
 
 8. `aws ssm describe-instance-information --output json`
@@ -44,7 +44,8 @@
 
 ## Latest Results
 
-PASS Production-ready comprehensive configuration management with advanced automation (75%): PASS Parameter management: 7 SSM parameters for centralized configuration.
+PASS Enterprise-grade centralized configuration governance with comprehensive automation (85%): PASS Parameter management: 7 SSM parameters for centralized configuration.
+- PASS Configuration recording: 1 Config recorders configured.
 - PASS Configuration automation: 123 SSM documents (0 custom).
 - PASS Infrastructure as Code: 10/10 successful CloudFormation stacks (100%).
 - PASS Secure configuration management: 1 centrally managed secrets.
@@ -54,4 +55,4 @@ PASS Production-ready comprehensive configuration management with advanced autom
 - PASS Advanced organization features: SCPs for configuration policy enforcement enabled.
 
 ---
-*Generated 2025-09-25 23:08 UTC*
+*Generated 2025-09-26 00:29 UTC*

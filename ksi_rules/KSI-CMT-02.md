@@ -4,7 +4,7 @@
 
 **Category:** Change Management
 **Status:** PASS
-**Last Check:** 2025-09-25 23:08
+**Last Check:** 2025-09-26 00:29
 
 **What it validates:** Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
 
@@ -30,7 +30,7 @@
 6. `aws lambda list-functions --output json`
    *Validate serverless functions for immutable code deployment (function versioning)*
 
-7. `aws codedeploy list-applications --output json`
+7. `aws deploy list-applications --output json`
    *Check CodeDeploy applications for automated immutable deployment workflows*
 
 8. `aws ecr describe-repositories --output json`
@@ -63,4 +63,4 @@ PASS Production-ready immutable deployment with Terraform Infrastructure as Code
 - PASS Advanced organization features: SCPs for immutable deployment policy enforcement enabled
 
 ---
-*Generated 2025-09-25 23:08 UTC*
+*Generated 2025-09-26 00:29 UTC*

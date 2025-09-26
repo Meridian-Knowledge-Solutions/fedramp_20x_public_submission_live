@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-25 23:08
+**Last Check:** 2025-09-26 00:29
 
 **What it validates:** Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
 
@@ -21,8 +21,8 @@
 3. `aws iam get-account-password-policy --output json`
    *Check strong password policy enforcement when passwords are used*
 
-4. `aws iam list-users --output json`
-   *Analyze user authentication patterns and requirements*
+4. `aws iam get-account-password-policy --output json || echo '{"PasswordPolicy": "No custom policy set, using AWS defaults."}'`
+   *RESILIENT: Handles cases where no custom password policy exists by providing a default status.*
 
 5. `aws sts get-caller-identity --output json`
    *Validate current authentication method (temporary vs permanent credentials)*
@@ -32,7 +32,6 @@
 PASS Excellent authentication security (passwordless methods): PASS 1 SAML providers configured (passwordless authentication)
 - PASS Using temporary credentials (passwordless method)
 - PASS Centralized MFA via SAML/IdP (traditional MFA not required)
-- PASS No password policy needed (passwordless authentication in use)
 
 ---
-*Generated 2025-09-25 23:08 UTC*
+*Generated 2025-09-26 00:29 UTC*

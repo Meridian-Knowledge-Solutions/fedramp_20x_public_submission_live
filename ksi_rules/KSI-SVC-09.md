@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-25 23:08
+**Last Check:** 2025-09-26 00:29
 
 **What it validates:** Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
 
@@ -18,8 +18,8 @@
 2. `aws elbv2 describe-ssl-policies --output json`
    *Check SSL/TLS policies for secure communication configuration*
 
-3. `aws elbv2 describe-listeners --output json`
-   *Validate load balancer listeners for encrypted communication enforcement*
+3. `for arn in $(aws elbv2 describe-load-balancers --query 'LoadBalancers[].LoadBalancerArn' --output text 2>/dev/null); do aws elbv2 describe-listeners --load-balancer-arn "$arn" --output json; done`
+   *REVISED: Iterates through each load balancer to describe its listeners.*
 
 4. `aws ec2 describe-vpc-endpoints --output json`
    *Check VPC endpoints for private and secure inter-service communication*
@@ -42,4 +42,4 @@ PASS Good communication integrity (60%): PASS Tls Certificate Management
 - FAIL Automated Certificate Lifecycle
 
 ---
-*Generated 2025-09-25 23:08 UTC*
+*Generated 2025-09-26 00:29 UTC*

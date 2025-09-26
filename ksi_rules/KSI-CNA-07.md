@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-09-25 23:08
+**Last Check:** 2025-09-26 00:29
 
 **What it validates:** Ensure cloud-native information resources are implemented based on host provider's best practices and documented guidance
 
@@ -18,8 +18,8 @@
 2. `aws cloudtrail describe-trails --output json`
    *Validate CloudTrail configuration.*
 
-3. `aws cloudtrail get-trail-status --name meridianks-Management-events --output json`
-   *Check the logging status of the primary CloudTrail trail.*
+3. `aws cloudtrail describe-trails --query 'trailList[?IsMultiRegionTrail==`true`]|[0].Name' --output text | xargs -I {} aws cloudtrail get-trail-status --name {}`
+   *RESILIENT: Checks the status of the first found multi-region CloudTrail trail.*
 
 4. `aws kms list-keys --output json`
    *Check for KMS keys for data protection.*
@@ -59,13 +59,7 @@
 
 ## Latest Results
 
-PASS Excellent AWS best practices implementation (95%): PASS CloudTrail excellently configured: 'meridianks-Management-events' ready for activation (cost-optimized for pilot)
-- PASS Multi-region audit coverage: CloudTrail spans all AWS regions
-- PASS Log integrity protection: CloudTrail log file validation enabled
-- PASS Encrypted audit logs: CloudTrail using KMS encryption
-- PASS Global service monitoring: CloudTrail capturing global AWS events
-- PASS Real-time log analysis: CloudTrail integrated with CloudWatch Logs
-- PASS Enterprise governance: Organization-wide CloudTrail
+PASS Strong AWS best practices adoption (70%): FAIL No CloudTrail configured (critical security best practice violation)
 - PASS Encryption key management: 17 KMS keys for data protection
 - PASS IAM best practices: 81 roles vs 3 users (service-oriented architecture)
 - PASS Excellent reliability architecture: 1/1 load balancers multi-AZ
@@ -78,4 +72,4 @@ PASS Excellent AWS best practices implementation (95%): PASS CloudTrail excellen
 - PASS Enterprise governance: AWS Organizations with centralized management
 
 ---
-*Generated 2025-09-25 23:08 UTC*
+*Generated 2025-09-26 00:29 UTC*

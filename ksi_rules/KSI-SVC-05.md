@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-25 23:08
+**Last Check:** 2025-09-26 00:29
 
 **What it validates:** Continuously verify information resource integrity
 
@@ -27,7 +27,7 @@
 5. `aws rds describe-db-instances --output json`
    *Check RDS database instances for backup encryption and transaction log integrity protection*
 
-6. `aws config describe-configuration-recorders --output json`
+6. `aws configservice describe-configuration-recorders --output json`
    *Validate AWS Config for configuration change integrity tracking and compliance monitoring*
 
 7. `aws cloudwatch describe-alarms --output json`
@@ -44,11 +44,12 @@
 
 ## Latest Results
 
-PASS Enterprise-grade comprehensive cryptographic integrity governance with monitoring (85%): PASS Audit integrity foundation: 1/1 CloudTrail trails with log file validation.
+PASS Enterprise-grade comprehensive cryptographic integrity governance with monitoring (95%): PASS Audit integrity foundation: 1/1 CloudTrail trails with log file validation.
 - PASS Cryptographic infrastructure: 17 KMS keys available.
 - PASS Key management governance: 6 customer-managed KMS aliases.
 - PASS Object integrity capability: 7 S3 buckets available for versioning and integrity protection.
 - PASS Database integrity: 1/1 RDS instances with encrypted storage.
+- PASS Configuration integrity: 1 active Config recorders.
 - PASS Backup integrity: 3/3 encrypted backup vaults.
 - PASS Integrity monitoring: 1 CloudWatch alarms for integrity violations.
 - PASS Integrity notification infrastructure: 8 SNS topics for event communication.
@@ -56,4 +57,4 @@ PASS Enterprise-grade comprehensive cryptographic integrity governance with moni
 - PASS Advanced organization features: SCPs for integrity policy enforcement enabled.
 
 ---
-*Generated 2025-09-25 23:08 UTC*
+*Generated 2025-09-26 00:29 UTC*

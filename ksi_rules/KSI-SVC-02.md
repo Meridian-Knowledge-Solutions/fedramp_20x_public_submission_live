@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-25 23:08
+**Last Check:** 2025-09-26 00:29
 
 **What it validates:** Encrypt or secure network traffic
 
@@ -12,37 +12,33 @@
 
 ## Validation Method
 
-1. `aws elbv2 describe-load-balancers --output json`
-   *ADDED: Check for load balancers as a foundation for traffic encryption.*
+1. `for arn in $(aws elbv2 describe-load-balancers --query 'LoadBalancers[].LoadBalancerArn' --output text 2>/dev/null); do aws elbv2 describe-listeners --load-balancer-arn "$arn" --output json; done`
+   *REVISED: Iterates through each load balancer to describe its listeners.*
 
-2. `aws elbv2 describe-listeners --output json`
-   *Analyze load balancer listeners for HTTPS/TLS protocol enforcement.*
-
-3. `aws ec2 describe-vpc-endpoints --output json`
+2. `aws ec2 describe-vpc-endpoints --output json`
    *Validate VPC endpoints for private AWS service communication.*
 
-4. `aws cloudfront list-distributions --output json`
+3. `aws cloudfront list-distributions --output json`
    *Check CloudFront CDN distributions for HTTPS enforcement.*
 
-5. `aws apigateway get-rest-apis --output json`
+4. `aws apigateway get-rest-apis --output json`
    *Validate API Gateway configurations for API traffic encryption.*
 
-6. `aws rds describe-db-instances --output json`
+5. `aws rds describe-db-instances --output json`
    *Check RDS database instances for SSL/TLS connection encryption.*
 
-7. `aws elasticache describe-cache-clusters --output json`
+6. `aws elasticache describe-cache-clusters --output json`
    *Analyze ElastiCache clusters for in-transit encryption.*
 
-8. `aws acm list-certificates --output json`
+7. `aws acm list-certificates --output json`
    *Check AWS Certificate Manager for automated TLS certificate management.*
 
-9. `aws organizations describe-organization --output json`
+8. `aws organizations describe-organization --output json`
    *Check enterprise-wide encryption policies and organizational standards.*
 
 ## Latest Results
 
-PASS Production-ready multi-layer traffic encryption and certificate management (67%): PASS Load balancer encryption capability: 1 load balancers configured.
-- PASS Private service communication: 7 VPC endpoints configured.
+PASS Network traffic encryption established across multiple services (56%): PASS Private service communication: 7 VPC endpoints configured.
 - PASS API encryption capability: 2 API Gateway endpoints (HTTPS by default).
 - PASS Database encryption capability: 1 RDS instances (1 encrypted).
 - PASS Automated certificate management: 1/2 active ACM certificates (50%).
@@ -50,4 +46,4 @@ PASS Production-ready multi-layer traffic encryption and certificate management 
 - PASS Advanced organization features: SCPs for encryption policy enforcement enabled.
 
 ---
-*Generated 2025-09-25 23:08 UTC*
+*Generated 2025-09-26 00:29 UTC*

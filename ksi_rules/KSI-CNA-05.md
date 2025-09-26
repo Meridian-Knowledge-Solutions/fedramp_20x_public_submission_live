@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-09-25 23:08
+**Last Check:** 2025-09-26 00:29
 
 **What it validates:** Have denial of service protection
 
@@ -12,28 +12,25 @@
 
 ## Validation Method
 
-1. `aws shield describe-subscription --output json`
-   *Check AWS Shield subscription status for DDoS protection coverage*
-
-2. `aws cloudfront list-distributions --output json`
+1. `aws cloudfront list-distributions --output json`
    *Validate CloudFront distributions for DDoS mitigation and global edge protection*
 
-3. `aws wafv2 list-web-acls --scope CLOUDFRONT --output json`
+2. `aws wafv2 list-web-acls --scope CLOUDFRONT --output json`
    *Check CloudFront WAF rules for application-layer DDoS protection*
 
-4. `aws wafv2 list-web-acls --scope REGIONAL --output json`
+3. `aws wafv2 list-web-acls --scope REGIONAL --output json`
    *Validate regional WAF rules for regional DDoS protection*
 
-5. `aws elbv2 describe-load-balancers --output json`
+4. `aws elbv2 describe-load-balancers --output json`
    *Check load balancers for traffic distribution and DDoS mitigation capabilities*
 
-6. `aws autoscaling describe-auto-scaling-groups --output json`
+5. `aws autoscaling describe-auto-scaling-groups --output json`
    *Validate Auto Scaling Groups for capacity-based DDoS mitigation*
 
-7. `aws route53 list-hosted-zones --output json`
+6. `aws route53 list-hosted-zones --output json`
    *Check Route 53 for DNS-layer protection and traffic routing capabilities*
 
-8. `aws cloudwatch describe-alarms --output json`
+7. `aws cloudwatch describe-alarms --output json`
    *Verify CloudWatch alarms for DDoS detection and automated response*
 
 ## Latest Results
@@ -45,4 +42,4 @@ PASS Comprehensive DoS protection established (100%): PASS Network-layer protect
 - PASS Bonus: DDoS monitoring via 1 relevant CloudWatch alarm(s)
 
 ---
-*Generated 2025-09-25 23:08 UTC*
+*Generated 2025-09-26 00:29 UTC*

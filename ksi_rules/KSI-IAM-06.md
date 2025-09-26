@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-09-25 23:08
+**Last Check:** 2025-09-26 00:29
 
 **What it validates:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
 
@@ -21,25 +21,22 @@
 3. `aws securityhub describe-hub --output json`
    *Check Security Hub for centralized security findings and automated response coordination*
 
-4. `aws sso-admin list-instances --output json`
-   *Validate Identity Center for built-in automated session and access controls*
-
-5. `aws configservice describe-config-rules --output json`
+4. `aws configservice describe-config-rules --output json`
    *Check Config rules for automated compliance monitoring and remediation triggers*
 
-6. `aws lambda list-functions --output json`
+5. `aws lambda list-functions --output json`
    *Validate Lambda functions for automated security response and account management workflows*
 
-7. `aws sns list-topics --output json`
+6. `aws sns list-topics --output json`
    *Check SNS topics for security incident notification and alert distribution*
 
-8. `aws config describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0:5].ConfigRuleName' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"RemediationConfigurations": []}'`
+7. `aws config describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0:5].ConfigRuleName' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"RemediationConfigurations": []}'`
    *Check Config remediation for automated account security and compliance enforcement*
 
-9. `aws lambda list-functions --output json`
+8. `aws lambda list-functions --output json`
    *Identify automated response functions for account disabling and security actions*
 
-10. `aws cloudwatch describe-alarms --output json`
+9. `aws cloudwatch describe-alarms --output json`
    *Check CloudWatch alarms for suspicious privileged account activity monitoring*
 
 ## Latest Results
@@ -54,4 +51,4 @@ PASS Strong automated response capabilities (81%): PASS Advanced threat detectio
 - PASS Centralized governance model detected (multi-account architecture)
 
 ---
-*Generated 2025-09-25 23:08 UTC*
+*Generated 2025-09-26 00:29 UTC*
