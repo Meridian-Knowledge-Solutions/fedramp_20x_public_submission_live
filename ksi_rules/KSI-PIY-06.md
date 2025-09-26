@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Policy and Inventory
-**Status:** PASS
-**Last Check:** 2025-09-26 05:07
+**Status:** FAIL
+**Last Check:** 2025-09-26 17:30
 
 **What it validates:** Have dedicated staff and budget for security with executive support
 
@@ -16,7 +16,7 @@
 
 ## Latest Results
 
-- WARNING Basic security organization (expand documentation): PASS Security organization documentation: security_budget_allocation_and_roles.pdf
+- No rule function found: evaluate_KSI_PIY_06
 
 ---
-*Generated 2025-09-26 05:07 UTC*
+*Generated 2025-09-26 17:30 UTC*

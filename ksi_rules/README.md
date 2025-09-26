@@ -58,7 +58,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-PIY-03](KSI-PIY-03.md): Maintain a vulnerability disclosure program
 - [PASS] [KSI-PIY-04](KSI-PIY-04.md): Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles
 - [PASS] [KSI-PIY-05](KSI-PIY-05.md): Document methods used to evaluate information resource implementations
-- [PASS] [KSI-PIY-06](KSI-PIY-06.md): Have dedicated staff and budget for security with executive support
+- [FAIL] [KSI-PIY-06](KSI-PIY-06.md): Have dedicated staff and budget for security with executive support
 - [PASS] [KSI-PIY-07](KSI-PIY-07.md): Document risk management decisions for software supply chain security
 
 ## Recovery Planning
@@ -90,9 +90,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 55
-- **Passing:** 54
-- **Failing:** 1
+- **Passing:** 53
+- **Failing:** 2
 - **Not Tested:** 0
 
 ---
-*Generated 2025-09-26 05:07 UTC*
+*Generated 2025-09-26 17:30 UTC*
