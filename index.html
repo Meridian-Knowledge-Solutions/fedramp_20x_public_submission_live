@@ -6012,5 +6012,397 @@ async function loadQuarterlyReportData() {
     </div>
 </div>
 
+<!-- ==================================================================== -->
+<!-- FEDRAMP TWO-TIER IMPLEMENTATION SCRIPT & MODALS V2.0               -->
+<!-- This block contains all necessary HTML, CSS, and JavaScript.       -->
+<!-- Paste this entire block before the closing </body> tag.            -->
+<!-- ==================================================================== -->
+
+<!-- MODAL HTML: All custom modals are defined here. -->
+<!-- Custom Registration Modal -->
+<div class="custom-modal" id="registration-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <h3>🏛️ Federal Agency Registration</h3>
+            <button class="modal-close-btn" onclick="closeCustomModal('registration-modal')">×</button>
+        </div>
+        <div class="custom-modal-body">
+            <h4>Get Full Technical Access</h4>
+            <p>Register with your .gov or .mil email to view detailed security assessments, evidence, and remediation plans.</p>
+            <form id="agency-registration-form" class="registration-form">
+                <div class="form-group">
+                    <label for="reg-agency">Federal Agency *</label>
+                    <input id="reg-agency" type="text" name="agency" required placeholder="e.g., Department of Defense">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Official Email *</label>
+                    <input id="reg-email" type="email" name="email" required pattern=".*\.(gov|mil)$" placeholder="e.g., name@agency.gov">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Simulate Registration</button>
+                    <button type="button" onclick="closeCustomModal('registration-modal')" class="btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Access Required Modal -->
+<div class="custom-modal" id="access-required-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <h3>🔒 Federal Agency Access Required</h3>
+            <button class="modal-close-btn" onclick="closeCustomModal('access-required-modal')">×</button>
+        </div>
+        <div class="custom-modal-body">
+            <h4 class="feature-name">Technical Feature Access</h4>
+            <p>This feature requires federal agency registration to access detailed technical information.</p>
+            <h5>What you'll get with registration:</h5>
+            <ul class="benefits-list">
+                <!-- Benefits are populated dynamically by JavaScript -->
+            </ul>
+            <div class="access-actions">
+                <button onclick="showRegistrationModal(); closeCustomModal('access-required-modal');" class="btn-primary">
+                    Register for Access
+                </button>
+                <button onclick="closeCustomModal('access-required-modal')" class="btn-secondary">
+                    Continue with Public View
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+// ====================================================================
+// SCRIPT START
+// ====================================================================
+(function() {
+    'use strict';
+
+    // ====================================================================
+    // PHASE 1: AUTHENTICATION STATE MANAGEMENT
+    // ====================================================================
+    class FedRAMPAuth {
+        constructor() {
+            this.token = localStorage.getItem('fedRAMPAccessToken');
+            this.isAuthenticated = this.validateToken();
+        }
+        validateToken() {
+            if (!this.token) return false;
+            try {
+                const payload = JSON.parse(atob(this.token.split('.')[1]));
+                return payload.exp > Date.now() / 1000;
+            } catch {
+                localStorage.removeItem('fedRAMPAccessToken');
+                return false;
+            }
+        }
+        getAgencyInfo() {
+            if (!this.isAuthenticated) return null;
+            try {
+                const payload = JSON.parse(atob(this.token.split('.')[1]));
+                return { agency: payload.agency, email: payload.email, accessLevel: payload.access_level || 'standard' };
+            } catch { return null; }
+        }
+        logout() {
+            localStorage.removeItem('fedRAMPAccessToken');
+            window.location.reload();
+        }
+    }
+
+    // ====================================================================
+    // PHASE 2: DATA SANITIZATION LAYER
+    // ====================================================================
+    class KSIDataSanitizer {
+        static sanitizeForPublic(ksi) {
+            const rawStatus = ksi.assertion !== undefined ? ksi.assertion : ksi.status;
+            const publicStatus = this.mapStatusForPublic(rawStatus);
+            return {
+                id: ksi.ksi_id || ksi.id,
+                category: this.sanitizeCategory(ksi.category),
+                status: publicStatus.status,
+                description: this.sanitizeDescription(ksi.requirement || ksi.description),
+            };
+        }
+        static sanitizeCategory(category) {
+            const map = { 'Identity and Access Management': 'Authentication & Access' };
+            return map[category] || category || 'General Security';
+        }
+        static sanitizeDescription(req) {
+            if (!req) return "Security control validation";
+            const map = { 'mfa': "Multi-factor authentication controls", 'network': "Network security controls", 'encrypt': "Data encryption controls", 'monitor': "Security monitoring controls", 'incident': "Incident response management" };
+            for (const [key, val] of Object.entries(map)) {
+                if (req.toLowerCase().includes(key)) return val;
+            }
+            return "General security control validation";
+        }
+        static sanitizeAssertionReason(reason) {
+            if (!reason) return "Assessment completed per FedRAMP requirements.";
+            let sanitized = reason.replace(/subnet [\d\.]+\/\d+/gi, "network environments").replace(/aws [\w-]+ [\w-]+[^\s]*/gi, "validation commands");
+            return sanitized.split('.')[0] + '.';
+        }
+        static mapStatusForPublic(assertion) {
+            const key = String(assertion).toLowerCase();
+            const map = {
+                'true': { status: 'compliant', text: 'Compliant', risk: 'Low' },
+                'passed': { status: 'compliant', text: 'Compliant', risk: 'Low' },
+                'false': { status: 'enhancement', text: 'Enhancement Required', risk: 'Medium' },
+                'failed': { status: 'enhancement', text: 'Enhancement Required', risk: 'Medium' },
+                'warning': { status: 'monitoring', text: 'Low Risk - Monitoring', risk: 'Low' },
+                'info': { status: 'improvement', text: 'Improvement Opportunity', risk: 'Very Low' }
+            };
+            return map[key] || map.false;
+        }
+    }
+
+    // ====================================================================
+    // PHASE 3: DYNAMIC UI RENDERING
+    // ====================================================================
+    function renderKSICardTwoTier(ksi) {
+        const isAuthenticated = window.fedRAMPAuth.isAuthenticated;
+        const publicData = KSIDataSanitizer.sanitizeForPublic(ksi);
+        const statusInfo = KSIDataSanitizer.mapStatusForPublic(ksi.status || ksi.assertion);
+        const ksiId = ksi.ksi_id || ksi.id;
+
+        return `
+            <div class="ksi-card ${statusInfo.status} ${isAuthenticated ? 'authenticated-view' : 'public-view'}" data-ksi-id="${ksiId}">
+                <div class="ksi-card-header">
+                    <div class="ksi-info">
+                        <div class="ksi-id">${ksiId}</div>
+                        <div class="ksi-category">${isAuthenticated ? (ksi.category || 'General') : publicData.category}</div>
+                    </div>
+                    ${isAuthenticated ? `<div class="auth-indicator" title="Authenticated Federal Access">🏛️</div>` : `<div class="access-indicator" title="Full details require federal access">🔒</div>`}
+                </div>
+                <div class="ksi-status-bar ${statusInfo.status}">${statusInfo.text}</div>
+                <div class="ksi-description-public">${publicData.description}</div>
+                <div class="ksi-actions">
+                    <button onclick="showWhyTwoTier('${ksiId}')" class="action-btn primary">${isAuthenticated ? '🔍 Technical Details' : '📋 View Summary'}</button>
+                    ${isAuthenticated ? `<button onclick="showCLITwoTier('${ksiId}')" class="action-btn">⚡ CLI</button>` : `<button onclick="showRegistrationModal()" class="action-btn secondary">🔓 Get Full Access</button>`}
+                </div>
+            </div>
+        `;
+    }
+
+    // ====================================================================
+    // PHASE 4: TWO-TIER MODAL IMPLEMENTATION
+    // ====================================================================
+    function showWhyTwoTier(ksiId) {
+        const ksi = window.allKsis.find(k => (k.id || k.ksi_id) === ksiId);
+        if (!ksi) return;
+        if (window.fedRAMPAuth.isAuthenticated) {
+            window.originalShowWhyModal(ksiId); // Call the original detailed modal
+        } else {
+            const publicData = KSIDataSanitizer.sanitizeForPublic(ksi);
+            const statusInfo = KSIDataSanitizer.mapStatusForPublic(ksi.status || ksi.assertion);
+            const modal = document.getElementById('why-modal');
+            modal.querySelector('.why-modal-title').innerHTML = `📋 Public Summary: ${publicData.id}`;
+            modal.querySelector('.why-modal-body').innerHTML = `
+                <div class="public-assessment-summary">
+                    <div class="summary-header">
+                        <div class="status-indicator ${statusInfo.status}">${statusInfo.text}</div>
+                        <div class="risk-badge ${statusInfo.risk.toLowerCase()}">${statusInfo.risk} Risk</div>
+                    </div>
+                    <div class="assessment-details">
+                        <h4>Control Assessment</h4>
+                        <p><strong>Control Area:</strong> ${publicData.description}</p>
+                        <p><strong>Assessment Finding:</strong> ${KSIDataSanitizer.sanitizeAssertionReason(ksi.assertion_reason)}</p>
+                    </div>
+                    <div class="agency-access-upgrade">
+                        <h4>🔒 Federal Agency Access Required</h4>
+                        <p>Register to view detailed technical findings, CLI commands, and remediation evidence.</p>
+                        <button onclick="showRegistrationModal(); closeWhyModal();" class="btn-primary">Register for Technical Access</button>
+                    </div>
+                </div>`;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function showCLITwoTier(ksiId) {
+        if (!window.fedRAMPAuth.isAuthenticated) {
+            showAccessRequiredModal('CLI Command Details', ['View exact AWS CLI commands executed', 'See command output and execution results']);
+        } else {
+            window.originalShowCommandsModal(ksiId);
+        }
+    }
+
+    // RFC-0017 COMPLIANT POA&M MODAL
+    function showPOAMModalTwoTier() {
+        if (!window.fedRAMPAuth.isAuthenticated) {
+            showAccessRequiredModal('VDR-Integrated Risk Analysis', ['View KSI failures as VDR vulnerabilities', 'See N-ratings and remediation timelines']);
+            return;
+        }
+        const modalTitle = document.getElementById('poam-modal-title');
+        const modalBody = document.getElementById('poam-modal-body');
+        modalTitle.innerHTML = '📊 KSI Risk-Based Tracking System (VDR Integrated)';
+        const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
+        const criticalKsis = failedKsis.filter(ksi => ksi.id.startsWith('KSI-IAM'));
+        const seriousKsis = failedKsis.filter(ksi => ksi.id.startsWith('KSI-CNA') || ksi.id.startsWith('KSI-SVC'));
+        modalBody.innerHTML = `
+            <div class="findings-summary">
+                <div class="summary-card failed">
+                    <div class="summary-number">${failedKsis.length}</div>
+                    <div class="summary-label">VDR Vulnerabilities</div>
+                    <div class="summary-timeframe">2-192 days (N-rated)</div>
+                </div>
+            </div>
+            ${criticalKsis.length > 0 ? `
+                <div class="findings-section">
+                    <h3 class="findings-header failed">Critical Security Controls (${criticalKsis.length}) <span class="priority-badge critical">N4/N5</span></h3>
+                    <div class="findings-list">
+                        ${criticalKsis.map(ksi => `<div class="finding-item critical">${ksi.id}: ${ksi.description}</div>`).join('')}
+                    </div>
+                </div>
+            ` : ''}
+            ${seriousKsis.length > 0 ? `
+                 <div class="findings-section">
+                    <h3 class="findings-header failed">Infrastructure Controls (${seriousKsis.length}) <span class="priority-badge high">N3/N4</span></h3>
+                     <div class="findings-list">
+                        ${seriousKsis.map(ksi => `<div class="finding-item failed">${ksi.id}: ${ksi.description}</div>`).join('')}
+                    </div>
+                </div>
+            ` : ''}
+            <!-- Other categories would follow the same pattern -->
+        `;
+        document.getElementById('poam-modal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // ====================================================================
+    // PHASE 5: REGISTRATION & ACCESS MODALS
+    // ====================================================================
+    function showRegistrationModal() {
+        document.getElementById('registration-modal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCustomModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) modal.classList.remove('active');
+        if (!document.querySelector('.custom-modal.active')) {
+            document.body.style.overflow = '';
+        }
+    }
+
+    function showAccessRequiredModal(feature, benefits) {
+        const modal = document.getElementById('access-required-modal');
+        modal.querySelector('.feature-name').textContent = feature;
+        modal.querySelector('.benefits-list').innerHTML = benefits.map(b => `<li>✅ ${b}</li>`).join('');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    async function handleRegistration(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData);
+        if (!data.email.match(/\.(gov|mil)$/i)) {
+            showErrorMessage('A valid .gov or .mil email address is required.');
+            return;
+        }
+        const tokenData = { agency: data.agency, email: data.email, exp: Math.floor(Date.now() / 1000) + (8*60*60) };
+        localStorage.setItem('fedRAMPAccessToken', 'header.' + btoa(JSON.stringify(tokenData)) + '.sig');
+        window.fedRAMPAuth = new FedRAMPAuth();
+        closeCustomModal('registration-modal');
+        showSuccessMessage('Registration successful! Refreshing with authenticated access.');
+        setTimeout(() => window.location.reload(), 2000);
+    }
+
+    // ====================================================================
+    // UTILITIES & INITIALIZATION
+    // ====================================================================
+    function showSuccessMessage(message) { createNotification(message, 'success'); }
+    function showErrorMessage(message) { createNotification(message, 'error'); }
+    function createNotification(message, type) {
+        const el = document.createElement('div');
+        el.className = `notification ${type}`;
+        el.innerHTML = `<div>${message}</div><button onclick="this.parentElement.remove()">&times;</button>`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 5000);
+    }
+    
+    function addTwoTierStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            .ksi-card-header { justify-content: space-between; }
+            .ksi-status-bar { padding: 0.25rem 0.75rem; border-radius: 16px; font-size: 0.75rem; font-weight: 700; text-align: center; margin-bottom: 0.75rem; }
+            .ksi-status-bar.compliant { background: rgba(34, 197, 94, 0.1); color: #166534; }
+            .ksi-status-bar.enhancement, .ksi-status-bar.monitoring { background: rgba(245, 158, 11, 0.1); color: #92400e; }
+            .ksi-description-public { font-size: 0.875rem; color: var(--text-secondary); flex-grow: 1; margin-bottom: 1rem; }
+            .auth-indicator, .access-indicator { font-size: 1.25rem; }
+            .public-assessment-summary .summary-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+            .public-assessment-summary .status-indicator { font-weight: 700; padding: 0.5rem 1rem; border-radius: 8px; font-size: 1rem; }
+            .public-assessment-summary .risk-badge { font-weight: 700; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; text-transform: uppercase; }
+            .agency-access-upgrade { background: var(--bg-accent); padding: 1.5rem; border-radius: var(--radius); text-align: center; margin-top: 1rem; }
+            .btn-primary { background: var(--primary-500); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; }
+            .btn-secondary { background: var(--bg-accent); color: var(--text-primary); border: 1px solid var(--border-color); padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; }
+            .notification { position: fixed; top: 20px; right: 20px; z-index: 10001; padding: 1rem; border-radius: 8px; color: white; box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: space-between; }
+            .notification.success { background: #16a34a; }
+            .notification.error { background: #dc2626; }
+            /* VDR Modal Styles */
+            .findings-header .priority-badge { font-size: 0.7rem; font-weight: 700; padding: 4px 8px; border-radius: 4px; color: white; margin-left: auto; text-transform: uppercase; }
+            .priority-badge.critical { background: #7f1d1d; } .priority-badge.high { background: #b91c1c; } .priority-badge.medium { background: #b45309; }
+            .finding-item { padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 0.5rem; }
+            .finding-item.critical { border-left: 4px solid #7f1d1d; } .finding-item.failed { border-left: 4px solid #b91c1c; }
+            .custom-modal { display: none; /* Other styles */ } .custom-modal.active { display: flex; }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    function addAuthenticationIndicator() {
+        const headerRight = document.querySelector('.header-right');
+        if (headerRight && window.fedRAMPAuth.isAuthenticated) {
+            const agencyInfo = window.fedRAMPAuth.getAgencyInfo();
+            const indicator = document.createElement('div');
+            indicator.className = 'auth-status-indicator';
+            indicator.innerHTML = `<div style="display: flex; align-items: center; gap: 0.5rem; color: var(--success-600); font-weight: 600;"><span>🏛️ Authenticated</span><button onclick="window.fedRAMPAuth.logout()" title="Logout" style="background:none;border:none;color:inherit;cursor:pointer;opacity:0.7;">(Logout)</button></div>`;
+            headerRight.prepend(indicator);
+        }
+    }
+
+    function initializeTwoTierSystem() {
+        window.fedRAMPAuth = new FedRAMPAuth();
+        addTwoTierStyles();
+
+        // Preserve original functions
+        window.originalRenderKsis = window.renderKsis;
+        window.originalShowWhyModal = window.showWhyModal;
+        window.originalShowCommandsModal = window.showCommandsModal;
+        window.originalShowPOAMModal = window.showPOAMModal;
+        
+        // Override rendering and modal functions
+        window.renderKsis = () => {
+            const grid = document.getElementById('ksi-grid');
+            if (grid && window.allKsis) grid.innerHTML = window.allKsis.map(renderKSICardTwoTier).join('');
+        };
+        window.showWhyModal = showWhyTwoTier;
+        window.showCommandsModal = showCLITwoTier;
+        window.showPOAMModal = showPOAMModalTwoTier;
+        
+        // Make new functions globally available
+        window.showRegistrationModal = showRegistrationModal;
+        window.closeCustomModal = closeCustomModal;
+        
+        // Add form listener
+        const regForm = document.getElementById('agency-registration-form');
+        if (regForm) regForm.addEventListener('submit', handleRegistration);
+        
+        addAuthenticationIndicator();
+        
+        // Initial render if data is already loaded
+        if (window.allKsis) window.renderKsis();
+        
+        console.log('FedRAMP Two-Tier System Initialized. Auth Status:', window.fedRAMPAuth.isAuthenticated);
+    }
+
+    // Defer initialization until the main page script has loaded
+    setTimeout(initializeTwoTierSystem, 500);
+
+})();
+</script>
+</body>
+    
 </body>
 </html>
