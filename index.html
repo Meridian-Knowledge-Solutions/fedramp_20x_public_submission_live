@@ -3680,37 +3680,7 @@ td {
                 </div>
             </div>
 
-            <!-- API Section -->
-            <div id="api-section" class="trust-section">
-                <h2>🔧 API Access (RFC-0011)</h2>
-                <p>Programmatic access to real-time authorization data for federal agencies</p>
-                
-                <h4>Available Endpoints:</h4>
-                <div style="background: var(--bg-accent); color: var(--text-primary); padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border-color);">
-                    <div style="margin-bottom: 10px;"><strong>GET</strong> ./unified_ksi_validations.json - Complete KSI validation results</div>
-                    <div style="margin-bottom: 10px;"><strong>GET</strong> ./failed_ksi_report_readable.md - Human-readable remediation guidance</div>
-                    <div><strong>GET</strong> ./evidence_commit_metadata.json - Audit trail and evidence metadata</div>
-                </div>
-                
-                <h4>Usage Example:</h4>
-                <pre style="background: var(--bg-accent); color: var(--text-primary); padding: 15px; border-radius: 5px; overflow-x: auto; border: 1px solid var(--border-color);">
-// Fetch current compliance status
-async function getAuthorizationSummary() {
-    const base = 'https://meridian-knowledge-solutions.github.io/fedramp_20x_public_submission-live';
-    const response = await fetch(`${base}/unified_ksi_validations.json`);
-    const data = await response.json();
-    
-    return {
-        total_ksis: data.length,
-        passed: data.filter(ksi => ksi.assertion === true).length,
-        failed: data.filter(ksi => ksi.assertion === false).length,
-        low_risk: data.filter(ksi => (ksi.assertion_reason || '').includes('warning')).length,
-        improvements: data.filter(ksi => (ksi.assertion_reason || '').includes('info')).length,
-        compliance_percentage: (data.filter(ksi => ksi.assertion === true).length / data.length * 100).toFixed(1)
-    };
-}
-                </pre>
-            </div>
+            
 
             <!-- Agency Form Section -->
             <div id="agency-form-section" class="trust-section">
