@@ -6074,778 +6074,1085 @@ async function loadQuarterlyReportData() {
 </div>
 
 
+<!-- ==================================================================== -->
+<!-- TRUST CENTER OVERHAUL SCRIPT V4.0 (COMPLETE)                       -->
+<!-- This block contains all necessary HTML, CSS, and JavaScript.       -->
+<!-- Paste this entire block before the closing </body> tag.            -->
+<!-- ==================================================================== -->
+
+<!-- MODAL HTML: All custom modals are defined here. -->
+<div class="modal access-required-modal" id="access-required-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>🔒 Federal Agency Access Required</h3>
+            <button class="close-btn" onclick="closeCustomModal('access-required-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h4 class="feature-name">Technical Feature Access</h4>
+            <p>This feature requires federal agency registration to access detailed technical information.</p>
+            <h5>What you'll get with registration:</h5>
+            <ul class="benefits-list">
+                <!-- Benefits are populated dynamically by JavaScript -->
+            </ul>
+            <div class="access-actions">
+                <button onclick="showRegistrationModal(); closeCustomModal('access-required-modal');" class="btn-primary">
+                    Register for Access
+                </button>
+                <button onclick="closeCustomModal('access-required-modal')" class="btn-secondary">
+                    Continue with Public View
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal registration-modal" id="registration-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>🏛️ Federal Agency Registration</h3>
+            <button class="close-btn" onclick="closeCustomModal('registration-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h4>Get Full Technical Access</h4>
+            <p>Register with your .gov or .mil email to view detailed security assessments, evidence, and remediation plans.</p>
+            <form id="agency-registration-form" class="registration-form">
+                <div class="form-group">
+                    <label for="reg-agency">Federal Agency *</label>
+                    <input id="reg-agency" type="text" name="agency" required placeholder="e.g., Department of Defense">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Official Email *</label>
+                    <input id="reg-email" type="email" name="email" required pattern=".*\.(gov|mil)$" placeholder="e.g., name@agency.gov">
+                    <small>Must be a .gov or .mil email address</small>
+                </div>
+                <div class="form-group">
+                    <label for="reg-contact">Contact Name *</label>
+                    <input id="reg-contact" type="text" name="contact" required placeholder="e.g., John Smith">
+                </div>
+                <div class="form-group">
+                    <label for="reg-system">System/Project Name</label>
+                    <input id="reg-system" type="text" name="system_name" placeholder="e.g., Agency Training Platform">
+                </div>
+                <div class="form-group">
+                    <label for="reg-purpose">Access Purpose</label>
+                    <textarea id="reg-purpose" name="purpose" placeholder="e.g., Authorization review for new system deployment"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Register for Access</button>
+                    <button type="button" onclick="closeCustomModal('registration-modal')" class="btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
-    // ✅ =================================================================
-    // ✅ GLOBAL STATE & CONFIGURATION
-    // ✅ =================================================================
-    let allKsis = [];
-    let filteredKsis = [];
-    let commandRegister = null;
-    let currentFilters = { status: '', category: '', search: '' };
+// ====================================================================
+// SCRIPT START - COMPLETE TWO-TIER IMPLEMENTATION
+// ====================================================================
+(function() {
+    'use strict';
 
-    // --- TWO-TIER SYSTEM: AUTHENTICATION STATE ---
-    // In a real application, this would be managed by a secure session.
-    // Here, we simulate it with a URL parameter `?auth=true` for demonstration.
-    let isAuthenticated = new URLSearchParams(window.location.search).get('auth') === 'true';
-
-    // Store original Trust Center content for the authenticated view
-    let authenticatedTrustCenterHTML = '';
-
-
-    // ✅ =================================================================
-    // ✅ INITIALIZATION & CORE APP LOGIC
-    // ✅ =================================================================
-
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('🚀 Enhanced FedRAMP 20x Trust Center Loading...');
-
-        // Store the original, detailed Trust Center content before altering the DOM
-        const trustCenterTab = document.getElementById('trust-center-tab');
-        if (trustCenterTab) {
-            authenticatedTrustCenterHTML = trustCenterTab.innerHTML;
-        }
-
-        initializeTheme();
-        initializeDashboard();
-        updateUIForAuthState(); // Initial UI setup based on auth state
-        setTimeout(loadQuarterlyReportData, 500);
-
-        // Add login/logout simulation button to the header
-        const headerRight = document.querySelector('.header-right');
-        if (headerRight) {
-            const authButton = document.createElement('button');
-            authButton.id = 'auth-toggle-btn';
-            authButton.className = 'access-btn'; // Re-use existing button style
-            authButton.style.padding = '0.75rem 1.25rem';
-            authButton.style.background = 'var(--gradient-enhancement)';
-            authButton.onclick = toggleAuth;
-            headerRight.appendChild(authButton);
+    // ====================================================================
+    // PHASE 1: AUTHENTICATION & DATA SANITIZATION
+    // ====================================================================
+    class FedRAMPAuth {
+        constructor() { 
+            this.token = localStorage.getItem('fedRAMPAccessToken'); 
+            this.isAuthenticated = this.validateToken(); 
         }
         
-        console.log('🔧 All-in-one script initialized successfully.');
-    });
-
-    function initializeDashboard() {
-        console.log('🔄 Initializing dashboard components...');
-        populateCategoryFilter();
-        setupEventListeners();
-        updateTimestamps();
-        loadRealData();
+        validateToken() { 
+            if (!this.token) return false; 
+            try { 
+                const payload = JSON.parse(atob(this.token.split('.')[1])); 
+                return payload.exp > Date.now() / 1000; 
+            } catch { 
+                localStorage.removeItem('fedRAMPAccessToken'); 
+                return false; 
+            } 
+        }
+        
+        getAgencyInfo() { 
+            if (!this.isAuthenticated) return null; 
+            try { 
+                const payload = JSON.parse(atob(this.token.split('.')[1])); 
+                return { 
+                    agency: payload.agency, 
+                    email: payload.email,
+                    contact: payload.contact,
+                    system_name: payload.system_name 
+                }; 
+            } catch { 
+                return null; 
+            } 
+        }
+        
+        logout() { 
+            localStorage.removeItem('fedRAMPAccessToken'); 
+            window.location.reload(); 
+        }
     }
 
+    class KSIDataSanitizer {
+        static sanitizeForPublic(ksi) { 
+            const s = this.mapStatusForPublic(ksi.status || ksi.assertion); 
+            return { 
+                id: ksi.ksi_id || ksi.id, 
+                category: this.sanitizeCategory(ksi.category), 
+                status: s.status, 
+                description: this.sanitizeDescription(ksi.requirement || ksi.description),
+                statusText: s.text,
+                commands_executed: ksi.commands_executed || 0,
+                success_rate: ksi.commands_executed > 0 ? 
+                    Math.round(((ksi.successful_commands || 0) / ksi.commands_executed) * 100) : 0
+            }; 
+        }
+        
+        static sanitizeCategory(c) { 
+            const categoryMap = {
+                'Identity and Access Management': 'Authentication & Access',
+                'Cloud Native Architecture': 'Infrastructure Security',
+                'Service Configuration': 'Configuration Management',
+                'Monitoring, Logging, Auditing': 'Security Monitoring',
+                'Recovery Planning': 'Business Continuity',
+                'Change Management': 'Change Control',
+                'Third-Party Resources': 'Third-Party Risk',
+                'Incident Reporting': 'Incident Response',
+                'Policy & Inventory': 'Governance',
+                'Cybersecurity Education': 'Security Training'
+            };
+            return categoryMap[c] || c || 'General Security'; 
+        }
+        
+        static sanitizeDescription(r) { 
+            if (!r) return "Security control validation"; 
+            const mappings = { 
+                'mfa': "Multi-factor authentication controls", 
+                'network': "Network security controls", 
+                'encrypt': "Data encryption controls", 
+                'monitor': "Security monitoring controls", 
+                'incident': "Incident response controls",
+                'access': "Access control validation",
+                'authentication': "Authentication controls",
+                'authorization': "Authorization controls"
+            }; 
+            for (const [k, v] of Object.entries(mappings)) { 
+                if (r.toLowerCase().includes(k)) return v; 
+            } 
+            return "Security control validation"; 
+        }
+        
+        static sanitizeAssertionReason(reason) {
+            if (!reason) return "Assessment completed per FedRAMP requirements";
+            
+            // Remove technical details while preserving business meaning
+            const sanitizationRules = [
+                { pattern: /ec2-user account has sudo access without MFA on \d+ instances.*/gi, replacement: "Administrative access controls require MFA enhancement" },
+                { pattern: /No.*AWS Identity Center.*MFA enforcement unclear/gi, replacement: "Centralized identity management implementation in progress" },
+                { pattern: /subnet \d+\.\d+\.\d+\.\d+\/\d+/gi, replacement: "network environments" },
+                { pattern: /aws [a-z-]+ [a-z-]+.*/gi, replacement: "validation commands" },
+                { pattern: /Security control validation identified issues/gi, replacement: "Control enhancement opportunities identified" }
+            ];
+            
+            let sanitized = reason;
+            sanitizationRules.forEach(rule => {
+                sanitized = sanitized.replace(rule.pattern, rule.replacement);
+            });
+            
+            // Remove technical indicators
+            sanitized = sanitized.replace(/[❌⚠️✅][^❌⚠️✅]*(?=[❌⚠️✅]|$)/g, '').trim();
+            
+            return sanitized || "Security enhancement in progress per FedRAMP requirements";
+        }
+        
+        static mapStatusForPublic(a) { 
+            const k = String(a).toLowerCase(); 
+            return { 
+                'true': { status: 'compliant', text: 'Compliant' }, 
+                'passed': { status: 'compliant', text: 'Compliant' }, 
+                'false': { status: 'enhancement', text: 'Enhancement Required' }, 
+                'failed': { status: 'enhancement', text: 'Enhancement Required' }, 
+                'warning': { status: 'monitoring', text: 'Low Risk' }, 
+                'info': { status: 'improvement', text: 'Improvement Opportunity' } 
+            }[k] || { status: 'enhancement', text: 'Enhancement Required' }; 
+        }
+    }
 
-    // ✅ =================================================================
-    // ✅ TWO-TIER SYSTEM: AUTHENTICATION & UI MANAGEMENT
-    // ✅ =================================================================
-
-    function toggleAuth() {
-        isAuthenticated = !isAuthenticated;
-        // Update URL for state persistence on refresh (for demonstration)
-        const url = new URL(window.location);
-        if (isAuthenticated) {
-            url.searchParams.set('auth', 'true');
+    // ====================================================================
+    // PHASE 2: DYNAMIC UI & TRUST CENTER RENDERING
+    // ====================================================================
+    function renderTrustCenterTab() {
+        const tab = document.getElementById('trust-center-tab');
+        if (!tab) return;
+        
+        if (window.fedRAMPAuth.isAuthenticated) {
+            tab.innerHTML = getAuthenticatedTrustCenterHTML(window.fedRAMPAuth.getAgencyInfo());
         } else {
-            url.searchParams.delete('auth');
-        }
-        window.history.pushState({}, '', url);
-        
-        console.log(`🔐 Authentication state changed. User is now: ${isAuthenticated ? 'Authenticated' : 'Public'}`);
-        updateUIForAuthState();
-    }
-
-    function updateUIForAuthState() {
-        const trustCenterTab = document.getElementById('trust-center-tab');
-        const authButton = document.getElementById('auth-toggle-btn');
-
-        if (authButton) {
-            authButton.textContent = isAuthenticated ? 'Logout (Simulated)' : 'Login (Simulated)';
-        }
-
-        if (trustCenterTab) {
-            if (isAuthenticated) {
-                console.log('Rendering Authenticated Trust Center view.');
-                trustCenterTab.innerHTML = authenticatedTrustCenterHTML;
-                // Re-wire event listeners for dynamically added content if necessary
-                setupAuthenticatedTrustCenterListeners();
-            } else {
-                console.log('Rendering Public Trust Center view.');
-                trustCenterTab.innerHTML = generatePublicTrustCenterHTML();
-            }
+            tab.innerHTML = getPublicTrustCenterHTML();
         }
     }
-
-    function generatePublicTrustCenterHTML() {
+    
+    function getPublicTrustCenterHTML() {
         return `
             <div class="trust-center-container">
                 <div class="trust-center-header">
-                    <h1>🛡️ Trust Center</h1>
-                    <p class="trust-center-subtitle">Public overview of our FedRAMP authorization status.</p>
+                    <h1>🛡️ Public Trust & Compliance Center</h1>
+                    <p class="trust-center-subtitle">Our commitment to transparency and federal security standards</p>
                 </div>
-
-                <div class="trust-section">
-                    <h2>Welcome to the Meridian Knowledge Solutions Trust Center</h2>
-                    <p>This public portal provides high-level information about our FedRAMP authorization. For detailed compliance data, security documentation, and API access, federal employees and sponsoring agencies must request access.</p>
-                </div>
-
-                <div class="quick-access-grid">
-                    <div class="access-card">
-                        <div class="card-icon">📋</div>
-                        <h3>Request Federal Access</h3>
-                        <p>Gain access to the complete authorization package, continuous monitoring data, and technical documentation.</p>
-                        <button onclick="showAccessRequiredModal('access-request')" class="access-btn">Request Access</button>
-                    </div>
-                    <div class="access-card">
-                        <div class="card-icon">📄</div>
-                        <h3>View Public Data</h3>
-                        <p>Explore the real-time compliance dashboard for a transparent view of our security posture.</p>
-                        <button onclick="showTab('compliance')" class="access-btn">Go to Dashboard</button>
-                    </div>
-                    <div class="access-card">
-                        <div class="card-icon">📞</div>
-                        <h3>Contact Us</h3>
-                        <p>For security inquiries or questions about our FedRAMP offering, please contact our security team.</p>
-                        <button onclick="window.location.href='mailto:security@meridianks.com'" class="access-btn">Contact Security</button>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    function setupAuthenticatedTrustCenterListeners() {
-        const form = document.getElementById('federal-access-form');
-        if (form && !form.dataset.listenerAttached) {
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const requestId = `REQ-${Date.now()}`;
                 
-                document.getElementById('form-response').innerHTML = `
-                    <div style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 20px; border-radius: 10px;">
-                        <h4>✅ Request Submitted Successfully</h4>
-                        <p><strong>Request ID:</strong> ${requestId}</p>
-                        <p>Your federal access request has been logged. Our team will respond within 24 hours.</p>
+                <div class="compliance-summary-public">
+                    <h3>📋 FedRAMP Compliance Overview</h3>
+                    <div class="compliance-metrics-public">
+                        <div class="metric-public">
+                            <span class="metric-value">FedRAMP 20x</span>
+                            <span class="metric-label">Authorization Type</span>
+                        </div>
+                        <div class="metric-public">
+                            <span class="metric-value">Low Impact</span>
+                            <span class="metric-label">Impact Level</span>
+                        </div>
+                        <div class="metric-public">
+                            <span class="metric-value">Active</span>
+                            <span class="metric-label">Authorization Status</span>
+                        </div>
                     </div>
-                `;
-                form.reset();
-            });
-            form.dataset.listenerAttached = 'true';
-        }
-    }
-
-    // --- Access-Controlled Download ---
-    function downloadJSON() {
-        if (isAuthenticated) {
-            console.log("✅ Authenticated user. Initiating download.");
-            fetch('./unified_ksi_validations.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
-                .then(data => {
-                    const jsonString = JSON.stringify(data, null, 2);
-                    const blob = new Blob([jsonString], { type: 'application/json' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'unified_ksi_validations.json';
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                })
-                .catch(error => {
-                    console.error('Error fetching or processing JSON:', error);
-                    alert('Failed to download the validation data. Please check the console for errors.');
-                });
-        } else {
-            console.log("❌ Public user. Blocking download and showing access modal.");
-            showAccessRequiredModal('data-download');
-        }
-    }
-
-
-    // ✅ =================================================================
-    // ✅ DATA FETCHING & PROCESSING
-    // ✅ =================================================================
-
-    async function loadRealData() {
-        try {
-            console.log('🔄 Starting data loading process...');
-            await loadCommandRegister();
-            
-            const response = await fetch('./unified_ksi_validations.json');
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}. File not found or inaccessible.`);
-            }
-            const data = await response.json();
-            console.log('✅ Validation data loaded successfully.');
-            
-            updateDashboardWithRealData(data);
-            
-        } catch (error) {
-            console.warn(`⚠️ Could not load real data: ${error.message}. This is expected for public users. Initializing with public view.`);
-            // For public view, we don't need to show an error, just an empty/loading state.
-            // The dashboard will show "Loading..." which is acceptable.
-            document.getElementById('ksi-grid').innerHTML = `
-                <div class="loading">
-                    <h3>🔒 Access Required for Detailed Data</h3>
-                    <p>Detailed Key Security Indicator (KSI) data is available to authorized federal agencies.</p>
-                    <button class="access-btn" style="margin-top: 1rem;" onclick="showAccessRequiredModal('access-request')">Request Access</button>
                 </div>
-            `;
-            // Clear stats for public view
-            document.getElementById('overall-score').textContent = 'N/A';
-            document.getElementById('passed-count').textContent = '-';
-            document.getElementById('failed-count').textContent = '-';
-            document.getElementById('warning-count').textContent = '-';
-            document.getElementById('info-count').textContent = '-';
-        }
-    }
-
-    async function loadCommandRegister() {
-        if (!isAuthenticated) {
-            console.log("Public user: Skipping command register load.");
-            commandRegister = null;
-            return;
-        }
-        try {
-            console.log('📋 Attempting to load comprehensive command register...');
-            const response = await fetch('./cli_command_register.json');
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            
-            commandRegister = await response.json();
-            console.log('✅ Command register loaded successfully');
-        } catch (error) {
-            console.warn('⚠️ Could not load command register:', error.message);
-            commandRegister = null;
-        }
-    }
-
-    function updateDashboardWithRealData(data) {
-        try {
-            let validations = [];
-            let dataTimestamp = data.metadata?.generated_at || data.generated_at || data.timestamp || new Date().toISOString();
-
-            if (Array.isArray(data)) {
-                validations = data;
-            } else if (data.validations && Array.isArray(data.validations)) {
-                validations = data.validations;
-            }
-
-            if (validations.length === 0) throw new Error('No validation data found');
-
-            allKsis = validations.map(validation => {
-                const commandDetails = extractCommandDetails(validation);
-                const status = determineKsiStatus(validation);
-                const enhancements = (status === 'passed') ? detectEnhancementOpportunities(validation.assertion_reason, status) : [];
-
-                return {
-                    id: validation.ksi_id || validation.validation_id || 'Unknown',
-                    status: status,
-                    category: validation.long_name || validation.category || 'Unknown',
-                    description: validation.requirement || validation.description || 'N/A',
-                    commands_executed: validation.commands_executed || 0,
-                    successful_commands: validation.successful_commands || 0,
-                    failed_commands: validation.failed_commands || 0,
-                    cli_command: validation.cli_command || 'N/A',
-                    assertion_reason: validation.assertion_reason || 'N/A',
-                    requirement: validation.requirement || 'N/A',
-                    rawData: validation,
-                    detailed_commands: commandDetails.commands || [],
-                    command_source: commandDetails.source || 'unknown',
-                    register_description: commandDetails.description || null,
-                    register_justification: commandDetails.justification || null,
-                    hasEnhancements: enhancements.length > 0,
-                    enhancements: enhancements
-                };
-            });
-
-            console.log(`📊 Processed ${allKsis.length} KSI records.`);
-            updateMetrics();
-            populateCategoryFilter();
-            filterKsis();
-            updateTimestampsWithData(new Date(dataTimestamp));
-            
-        } catch (error) {
-            console.error('❌ Error processing real data:', error);
-            document.getElementById('ksi-grid').innerHTML = `<div class="loading"><h3>Error Processing Data</h3><p>${error.message}</p></div>`;
-        }
-    }
-
-    function determineKsiStatus(validation) {
-        const { assertion, assertion_reason: reason = '' } = validation;
-        const lowerReason = reason.toLowerCase();
-
-        if (assertion === false || assertion === "false") {
-            return 'failed';
-        }
-        if (assertion === true || assertion === "true") {
-            if (lowerReason.includes('warning') || lowerReason.includes('⚠️')) return 'warning';
-            if (lowerReason.includes('info') || lowerReason.includes('ℹ️') || lowerReason.includes('informational')) return 'info';
-            return 'passed';
-        }
-        return 'unknown';
-    }
-
-
-    // ✅ =================================================================
-    // ✅ UI RENDERING & COMPONENT LOGIC
-    // ✅ =================================================================
-
-    function renderKsis() {
-        const grid = document.getElementById('ksi-grid');
-        if (!isAuthenticated) return; // Don't render if not authenticated
-
-        if (filteredKsis.length === 0) {
-            grid.innerHTML = `<div class="loading"><h3>🔍 No KSIs Found</h3><p>No KSIs match your current search criteria.</p></div>`;
-            return;
-        }
-
-        grid.innerHTML = filteredKsis.map(ksi => {
-            const cleanResult = generateKsiSummary(ksi.assertion_reason, ksi.status);
-            const hasEnhancements = ksi.hasEnhancements && ksi.enhancements.length > 0;
-            
-            return `
-            <div class="ksi-card ${ksi.status} ${ksi.status === 'info' ? 'enhancement info' : hasEnhancements ? 'enhancement' : ''}">
-                <div class="ksi-card-header">
-                    <div class="ksi-id">${ksi.id}</div>
-                    <div class="ksi-status status-${ksi.status}">${getStatusIcon(ksi.status)} ${ksi.status.toUpperCase()}</div>
+                
+                <div class="trust-section access-promo">
+                    <h3>🔒 Federal Agency Access</h3>
+                    <p>Register with your .gov or .mil email to access our complete authorization package, including detailed technical reports, evidence packages, and remediation plans as required by the FedRAMP Authorization Data Sharing Standard.</p>
+                    
+                    <div class="access-benefits">
+                        <h4>What you'll gain access to:</h4>
+                        <ul class="benefit-list">
+                            <li>🔍 Detailed technical assessment findings</li>
+                            <li>⚡ CLI command execution logs and evidence</li>
+                            <li>📋 Complete POA&M items and remediation timelines</li>
+                            <li>🎯 Risk analysis and vulnerability assessments</li>
+                            <li>📊 Raw validation data for GRC integration</li>
+                            <li>🔒 3PAO assessment reports and continuous monitoring data</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="showRegistrationModal()" class="btn-primary large">Register for Federal Agency Access</button>
                 </div>
-                <div class="ksi-category">${ksi.category}</div>
-                <div class="ksi-description">${ksi.description}</div>
-                ${hasEnhancements ? `
-                    <div class="enhancement-badge">📈 ${ksi.enhancements.length} Improvement Opportunit${ksi.enhancements.length === 1 ? 'y' : 'ies'}</div>
-                    ${ksi.enhancements.slice(0, 1).map(enh => `<div class="enhancement-opportunity"><div class="title">${enh.type}</div><div class="description">${enh.evidence}</div></div>`).join('')}
-                ` : ''}
-                <div class="ksi-result"><div class="result-summary">${cleanResult}</div></div>
-                <div class="ksi-actions">
-                    <button class="action-btn primary" onclick="showCommandsModal('${ksi.id}')">⚡ Commands</button>
-                    <button class="action-btn secondary" onclick="showWhyModal('${ksi.id}')">🤔 Why</button>
-                    ${hasEnhancements ? `<button class="action-btn enhancement" onclick="showEnhancementModal('${ksi.id}')">📈 Improve</button>` : ''}
-                    ${ksi.status !== 'passed' ? `<button class="action-btn ${ksi.status}" onclick="createGitHubIssue('${ksi.id}')">📝 Create Issue</button>` : ''}
+                
+                <div class="public-info-section">
+                    <h3>📋 Public Authorization Information</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>🏛️ Service Information</h4>
+                            <p><strong>Service Name:</strong> Meridian LMS for Government</p>
+                            <p><strong>Service Model:</strong> Software as a Service (SaaS)</p>
+                            <p><strong>Deployment Model:</strong> Public Cloud</p>
+                            <p><strong>Business Category:</strong> Learning Management</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>📞 Contact Information</h4>
+                            <p><strong>Security Team:</strong> security@meridianks.com</p>
+                            <p><strong>FedRAMP Support:</strong> fedramp@meridianks.com</p>
+                            <p><strong>General Support:</strong> support@meridianks.com</p>
+                        </div>
+                    </div>
                 </div>
             </div>`;
-        }).join('');
     }
-
-    function updateMetrics() {
-        if (!isAuthenticated) return;
-
-        const totalKsis = allKsis.length;
-        const compliantKsis = allKsis.filter(k => k.rawData.assertion === true || k.rawData.assertion === "true").length;
-        const nonCompliantKsis = totalKsis - compliantKsis;
-        const warningCount = allKsis.filter(k => k.status === 'warning').length;
-        const infoCount = allKsis.filter(k => k.status === 'info').length;
-        const complianceScore = totalKsis > 0 ? (compliantKsis / totalKsis * 100).toFixed(1) : 0;
-
-        document.getElementById('overall-score').textContent = `${complianceScore}%`;
-        document.getElementById('passed-count').textContent = compliantKsis;
-        document.getElementById('failed-count').textContent = nonCompliantKsis;
-        document.getElementById('warning-count').textContent = warningCount;
-        document.getElementById('info-count').textContent = infoCount;
-    }
-
-    function populateCategoryFilter() {
-        const categories = [...new Set(allKsis.map(ksi => ksi.category))].sort();
-        const categoryFilter = document.getElementById('category-filter');
-        categoryFilter.innerHTML = '<option value="">All Categories</option>' + categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
-    }
-
-    function filterKsis() {
-        const searchTerm = currentFilters.search.toLowerCase();
-        const statusFilter = currentFilters.status;
-        const categoryFilter = currentFilters.category;
-
-        filteredKsis = allKsis.filter(ksi => 
-            (!searchTerm || ksi.id.toLowerCase().includes(searchTerm) || ksi.description.toLowerCase().includes(searchTerm)) &&
-            (!statusFilter || ksi.status === statusFilter) &&
-            (!categoryFilter || ksi.category === categoryFilter)
-        );
-
-        renderKsis();
-        updateFilterChips();
-    }
-
-
-    // ✅ =================================================================
-    // ✅ MODAL MANAGEMENT (ALL MODALS)
-    // ✅ =================================================================
-
-    // --- RFC-0017 Compliant VDR/POA&M Modal ---
-    function showPOAMModal() {
-        const modalTitle = document.getElementById('poam-modal-title');
-        const modalBody = document.getElementById('poam-modal-body');
-        modalTitle.innerHTML = '📊 KSI Risk-Based Tracking System (VDR Integrated)';
-
-        const failedKsis = allKsis.filter(ksi => ksi.status === 'failed');
-        const warningKsis = allKsis.filter(ksi => ksi.status === 'warning');
-        const infoKsis = allKsis.filter(ksi => ksi.status === 'info');
-        const totalFindings = failedKsis.length + warningKsis.length + infoKsis.length;
-
-        // Categorize failures based on VDR mapping
-        const vdrCategories = {
-            critical: failedKsis.filter(k => k.id.startsWith('KSI-IAM')),
-            serious: failedKsis.filter(k => k.id.startsWith('KSI-CNA') || k.id.startsWith('KSI-SVC')),
-            moderate: failedKsis.filter(k => k.id.startsWith('KSI-MLA') || k.id.startsWith('KSI-CMT')),
-            minor: failedKsis.filter(k => k.id.startsWith('KSI-CED') || k.id.startsWith('KSI-PIY')),
-        };
-
-        const renderFindingSection = (title, icon, priority, NRating, timeframe, description, ksis) => {
-            if (ksis.length === 0) return '';
-            return `
-                <div class="findings-section">
-                    <h3 class="findings-header failed">
-                        <span class="findings-icon">${icon}</span> ${title} (${ksis.length})
-                        <span class="priority-badge ${priority}">${NRating}</span>
-                    </h3>
-                    <div class="findings-description">${description}</div>
-                    <div class="findings-list">
-                        ${ksis.map(ksi => `
-                            <div class="finding-item ${priority}" onclick="showWhyModal('${ksi.id}')">
-                                <div class="finding-header">
-                                    <span class="finding-id">${ksi.id}</span>
-                                    <span class="finding-category">${getKSICategory(ksi.id)}</span>
-                                </div>
-                                <div class="finding-description">${ksi.description}</div>
-                                <div class="finding-meta">
-                                    <span>⏰ VDR Timeline: ${timeframe}</span>
-                                    <span>🏷️ ${NRating}</span>
-                                </div>
-                            </div>
-                        `).join('')}
+    
+    function getAuthenticatedTrustCenterHTML(agencyInfo) {
+        return `
+            <div class="trust-center-container">
+                <div class="trust-center-header authenticated">
+                    <h1>🏛️ Federal Agency Trust Center</h1>
+                    <p class="trust-center-subtitle">Authenticated Access for: <strong>${agencyInfo.agency}</strong></p>
+                    <div class="auth-info">
+                        <span class="auth-badge">✅ Authenticated Federal Access</span>
+                        <button onclick="window.fedRAMPAuth.logout()" class="logout-btn">Logout</button>
                     </div>
                 </div>
-            `;
-        };
-
-        modalBody.innerHTML = `
-            <div class="findings-overview">
-                <div class="findings-summary">
-                    <div class="summary-card failed"><div class="summary-number">${failedKsis.length}</div><div class="summary-label">VDR Vulnerabilities</div></div>
-                    <div class="summary-card warning"><div class="summary-number">${warningKsis.length}</div><div class="summary-label">Low Risk Findings</div></div>
-                    <div class="summary-card info"><div class="summary-number">${infoKsis.length}</div><div class="summary-label">Improvements</div></div>
+                
+                <div class="authenticated-welcome">
+                    <h3>Welcome, ${agencyInfo.agency}</h3>
+                    <p>You now have full access to our complete FedRAMP authorization package and technical documentation.</p>
                 </div>
-                ${totalFindings === 0 ? `<div class="no-findings"><div class="no-findings-icon">🎉</div><h3>All KSIs Are Compliant</h3></div>` : ''}
-                ${renderFindingSection('Critical Security Controls', '🚨', 'critical', 'N4/N5 VULNS', '2-8 days', 'Identity/access failures requiring incident response.', vdrCategories.critical)}
-                ${renderFindingSection('Infrastructure Controls', '🔴', 'failed', 'N3/N4 VULNS', '8-32 days', 'Network/service configuration failures.', vdrCategories.serious)}
-                ${renderFindingSection('Operational Controls', '🟠', 'failed', 'N2/N3 VULNS', '32-128 days', 'Monitoring/change management failures.', vdrCategories.moderate)}
-                ${renderFindingSection('Procedural Controls', '🟡', 'failed', 'N1/N2 VULNS', '128-192 days', 'Documentation/policy failures.', vdrCategories.minor)}
-            </div>
-            <div class="rfc-integration-status">
-                <h4>✅ RFC-0017 VDR Integration Active</h4>
-                <div class="integration-details">
-                    <span class="integration-stat">FRR-PVA-03 Compliant</span>
-                    <span class="integration-stat">Total VDR Items: ${failedKsis.length}</span>
+                
+                <div class="trust-grid">
+                    <div class="trust-card">
+                        <h4>📦 Complete Authorization Package</h4>
+                        <p>Download the full System Security Plan (SSP), Security Assessment Report (SAR), and all supporting documentation.</p>
+                        <button class="action-btn" onclick="window.originalDownloadJSON ? window.originalDownloadJSON() : downloadAuthPackage()">Download Complete Package</button>
+                    </div>
+                    
+                    <div class="trust-card">
+                        <h4>📋 Technical Assessment Reports</h4>
+                        <p>Access detailed 3PAO assessment findings, continuous monitoring data, and technical evidence.</p>
+                        <button class="action-btn" onclick="window.originalViewFailedReport ? window.originalViewFailedReport() : viewTechnicalReports()">View Assessment Reports</button>
+                    </div>
+                    
+                    <div class="trust-card">
+                        <h4>🎯 Risk Management Dashboard</h4>
+                        <p>View real-time POA&M items, vulnerability tracking, and risk analysis integrated with VDR data.</p>
+                        <button class="action-btn" onclick="window.originalShowPOAMModal ? window.originalShowPOAMModal() : showRiskDashboard()">Access Risk Dashboard</button>
+                    </div>
+                    
+                    <div class="trust-card">
+                        <h4>📊 Raw Validation Data</h4>
+                        <p>Export machine-readable KSI validation results for integration with your agency's GRC tools.</p>
+                        <button class="action-btn" onclick="exportValidationData()">Export Validation Data</button>
+                    </div>
+                </div>
+                
+                <div class="agency-resources">
+                    <h3>🔧 Agency Resources</h3>
+                    <div class="resource-grid">
+                        <div class="resource-item">
+                            <h4>📋 Compliance Reporting</h4>
+                            <p>Generate agency-specific compliance reports and evidence packages</p>
+                            <button onclick="generateComplianceReport()" class="btn-secondary">Generate Report</button>
+                        </div>
+                        <div class="resource-item">
+                            <h4>🔍 Evidence Search</h4>
+                            <p>Search and filter technical evidence by control, timeline, or risk level</p>
+                            <button onclick="showEvidenceSearch()" class="btn-secondary">Search Evidence</button>
+                        </div>
+                        <div class="resource-item">
+                            <h4>📞 Direct Support</h4>
+                            <p>Priority support channel for federal agencies</p>
+                            <button onclick="contactFederalSupport()" class="btn-secondary">Contact Support</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+    }
+    
+    function renderKSICardTwoTier(ksi) {
+        const isAuthenticated = window.fedRAMPAuth.isAuthenticated;
+        const publicData = KSIDataSanitizer.sanitizeForPublic(ksi);
+        const statusInfo = KSIDataSanitizer.mapStatusForPublic(ksi.status || ksi.assertion);
+        const ksiId = ksi.ksi_id || ksi.id;
+
+        return `
+            <div class="ksi-card ${statusInfo.status} ${isAuthenticated ? 'authenticated-view' : 'public-view'}" data-ksi-id="${ksiId}" data-status="${statusInfo.status}">
+                <div class="ksi-card-header">
+                    <div class="ksi-info">
+                        <div class="ksi-id">${ksiId}</div>
+                        <div class="ksi-category">${isAuthenticated ? (ksi.category || 'General') : publicData.category}</div>
+                    </div>
+                    ${!isAuthenticated ? 
+                        `<div class="access-indicator" title="Full details require federal access">🔒</div>` : 
+                        `<div class="auth-indicator" title="Authenticated Federal Access">🏛️</div>`
+                    }
+                </div>
+                
+                <div class="ksi-status-bar ${statusInfo.status}">${statusInfo.text}</div>
+                
+                <div class="ksi-description-public">${publicData.description}</div>
+                
+                ${isAuthenticated ? `
+                    <div class="ksi-metrics-auth">
+                        <div class="metric-small">
+                            <span class="metric-value">${ksi.commands_executed || 0}</span>
+                            <span class="metric-label">Commands</span>
+                        </div>
+                        <div class="metric-small">
+                            <span class="metric-value">${publicData.success_rate}%</span>
+                            <span class="metric-label">Success</span>
+                        </div>
+                    </div>
+                ` : `
+                    <div class="ksi-metrics-public">
+                        <span class="public-metric">Validated via ${publicData.commands_executed} automated tests</span>
+                    </div>
+                `}
+                
+                <div class="ksi-actions">
+                    <button onclick="showWhyTwoTier('${ksiId}')" class="action-btn primary">
+                        ${isAuthenticated ? '🔍 Technical Details' : '📋 View Summary'}
+                    </button>
+                    ${isAuthenticated ? `
+                        <button onclick="showCLITwoTier('${ksiId}')" class="action-btn">⚡ CLI</button>
+                        <button onclick="createIssueTwoTier('${ksiId}')" class="action-btn">📋 Issue</button>
+                    ` : `
+                        <button onclick="showRegistrationModal()" class="action-btn secondary">🔓 Get Full Access</button>
+                    `}
                 </div>
             </div>
         `;
-        document.getElementById('poam-modal').classList.add('active');
-        document.body.style.overflow = 'hidden';
     }
 
-    // --- Other Modals (Commands, Why, etc.) ---
-    function showCommandsModal(ksiId) {
-        const ksi = allKsis.find(k => k.id === ksiId);
-        if (!ksi) return;
-        const modal = document.getElementById('commands-modal');
-        document.getElementById('commands-modal-title').innerHTML = `⚡ Commands for ${ksi.id}`;
+    // ====================================================================
+    // PHASE 3: ACCESS-CONTROLLED ACTIONS & MODALS
+    // ====================================================================
+    function downloadJSON() {
+        if (!window.fedRAMPAuth.isAuthenticated) {
+            showAccessRequiredModal('Download Full Validation Data', [
+                'Access raw JSON with all KSI validation results', 
+                'Integrate with your agency GRC tools',
+                'Export complete evidence packages',
+                'Generate compliance reports'
+            ]);
+        } else {
+            if (window.originalDownloadJSON) {
+                window.originalDownloadJSON();
+            } else {
+                downloadAuthPackage();
+            }
+        }
+    }
+    
+    async function viewFailedReport() {
+        if (!window.fedRAMPAuth.isAuthenticated) {
+            showAccessRequiredModal('View Technical Assessment Reports', [
+                'Get detailed analysis of all security controls', 
+                'Review technical remediation guidance',
+                'Access 3PAO assessment findings',
+                'Download evidence packages'
+            ]);
+        } else {
+            if (window.originalViewFailedReport) {
+                window.originalViewFailedReport();
+            } else {
+                viewTechnicalReports();
+            }
+        }
+    }
+    
+    function showWhyTwoTier(ksiId) {
+        const ksi = window.allKsis ? window.allKsis.find(k => (k.id || k.ksi_id) === ksiId) : null;
+        if (!ksi) {
+            console.error('KSI not found:', ksiId);
+            return;
+        }
         
-        const sourceBadge = {
-            comprehensive_register: '<div class="data-source-badge comprehensive">📋 Comprehensive Command Register</div>',
-            validation_summary: '<div class="data-source-badge fallback">⚠️ Parsed from Validation Summary</div>',
-            default: '<div class="data-source-badge limited">❌ Minimal Command Data</div>'
-        }[ksi.command_source] || `<div class="data-source-badge limited">❌ Minimal Command Data</div>`;
-
-        document.getElementById('commands-modal-body').innerHTML = `
-            ${sourceBadge}
-            <div class="commands-summary">
-                <div class="commands-stats">
-                    <div class="command-stat"><div class="command-stat-value">${ksi.commands_executed}</div><div class="command-stat-label">Total</div></div>
-                    <div class="command-stat"><div class="command-stat-value">${ksi.successful_commands}</div><div class="command-stat-label">Success</div></div>
-                </div>
-                ${ksi.register_description ? `<div class="description-box"><strong>📝 Description:</strong> ${ksi.register_description}</div>` : ''}
-            </div>
-            ${ksi.detailed_commands.length > 0 ? `
-                <div class="commands-list">
-                    <h4>⚡ Detailed Breakdown</h4>
-                    ${ksi.detailed_commands.map((cmd, index) => `
-                        <div class="command-item">
-                            <div class="command-header" onclick="toggleCommandDetails(${index})">
-                                <div class="command-title"><span class="command-number">#${index + 1}</span> <span>${cmd.description}</span></div>
-                                <button class="command-expand-btn" id="expand-btn-${index}">▼</button>
-                            </div>
-                            <div class="command-details" id="command-details-${index}">
-                                <div class="command-code">${cmd.command}</div>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            ` : `<div class="no-commands-message"><div class="no-commands-icon">⚠️</div><h3>No Detailed Commands Available</h3></div>`}
-        `;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        if (window.fedRAMPAuth.isAuthenticated) {
+            // Use original detailed modal if available
+            if (window.originalShowWhyModal || window.showWhy) {
+                (window.originalShowWhyModal || window.showWhy)(ksiId);
+            } else {
+                showDetailedWhyModal(ksi);
+            }
+        } else {
+            showPublicWhyModal(ksi);
+        }
     }
-
-    function showWhyModal(ksiId) {
-        const ksi = allKsis.find(k => k.id === ksiId);
-        if (!ksi) return;
-        const modal = document.getElementById('why-modal');
-        const parsedReason = parseAssertionReason(ksi.assertion_reason, ksi.status);
-        document.getElementById('why-modal-title').innerHTML = `🤔 Why ${ksi.status.charAt(0).toUpperCase() + ksi.status.slice(1)}? - ${ksi.id}`;
-        document.getElementById('why-modal-body').innerHTML = `
-            <div class="why-summary-card">
-                <div class="why-summary-header">
-                    <div class="why-summary-icon">${getStatusIcon(ksi.status)}</div>
-                    <div class="why-summary-text"><h4>${ksi.status.toUpperCase()}</h4><p>${ksi.category}</p></div>
-                </div>
-            </div>
-            <div class="why-section">
-                <div class="why-section-title">🎯 Assessment Summary</div>
-                <p><strong>Requirement:</strong> ${ksi.requirement}</p>
-                <p><strong>Key Finding:</strong> ${parsedReason.summary}</p>
-            </div>
-            ${parsedReason.validations.length > 0 ? `
-            <div class="why-section">
-                <div class="why-section-title">📋 Validation Points</div>
-                <div class="why-validation-grid">
-                    ${parsedReason.validations.map(v => `
-                        <div class="why-validation-item">
-                            <div class="why-validation-icon">${v.icon}</div>
-                            <div class="why-validation-content">
-                                <div class="why-validation-title">${v.title}</div>
-                                <div class="why-validation-description">${v.description}</div>
-                            </div>
+    
+    function showPublicWhyModal(ksi) {
+        const publicData = KSIDataSanitizer.sanitizeForPublic(ksi);
+        const statusInfo = KSIDataSanitizer.mapStatusForPublic(ksi.status || ksi.assertion);
+        
+        // Try to use existing modal or create temporary one
+        let modal = document.getElementById('why-modal');
+        let isTemporary = false;
+        
+        if (!modal) {
+            modal = createTemporaryModal('why-modal');
+            isTemporary = true;
+        }
+        
+        const titleElement = modal.querySelector('.why-modal-title') || modal.querySelector('h3');
+        const bodyElement = modal.querySelector('.why-modal-body') || modal.querySelector('.modal-body');
+        
+        if (titleElement) {
+            titleElement.innerHTML = `📋 Public Summary: ${publicData.id}`;
+        }
+        
+        if (bodyElement) {
+            bodyElement.innerHTML = `
+                <div class="public-assessment-summary">
+                    <div class="status-header">
+                        <div class="status-indicator ${statusInfo.status}">
+                            ${getStatusIcon(statusInfo.status)} ${statusInfo.text}
                         </div>
-                    `).join('')}
+                    </div>
+                    
+                    <div class="assessment-details">
+                        <h4>📋 Control Assessment</h4>
+                        <p><strong>Control Area:</strong> ${publicData.description}</p>
+                        <p><strong>Category:</strong> ${publicData.category}</p>
+                        <p><strong>Assessment Status:</strong> ${KSIDataSanitizer.sanitizeAssertionReason(ksi.assertion_reason)}</p>
+                        <p><strong>Validation Tests:</strong> ${publicData.commands_executed} automated tests executed</p>
+                    </div>
+                    
+                    <div class="enhancement-note">
+                        <h4>📈 Continuous Improvement</h4>
+                        <p>This control is part of our ongoing security enhancement program following FedRAMP requirements and industry best practices. Regular validation ensures consistent security posture.</p>
+                    </div>
                 </div>
-            </div>` : ''}
-        `;
+                
+                <div class="agency-access-upgrade">
+                    <h4>🔒 Federal Agency Access Required</h4>
+                    <p>Register to view detailed technical findings, CLI commands, and remediation evidence.</p>
+                    <div class="upgrade-benefits">
+                        <ul>
+                            <li>🔍 Detailed technical findings and root cause analysis</li>
+                            <li>⚡ Complete CLI command execution logs</li>
+                            <li>📋 Specific remediation plans and timelines</li>
+                            <li>🎯 Risk assessments and compensating controls</li>
+                            <li>📊 Integration data for your agency's GRC tools</li>
+                        </ul>
+                    </div>
+                    <button onclick="showRegistrationModal(); ${isTemporary ? 'closeTemporaryModal(\'why-modal\')' : 'closeWhyModal()'}" class="btn-primary">Register for Technical Access</button>
+                </div>
+            `;
+        }
+        
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
     
-    function showEnhancementModal(ksiId) {
-        // Implementation for showing enhancement details
-        const ksi = allKsis.find(k => k.id === ksiId);
-        if (!ksi || !ksi.hasEnhancements) return;
-        const modal = document.getElementById('enhancement-modal');
-        document.getElementById('enhancement-modal-title').textContent = `📈 Improvement Opportunities for ${ksiId}`;
-        document.getElementById('enhancement-modal-body').innerHTML = `
-            <div class="why-section">
-                <div class="why-section-title">🚀 Proactive Enhancements</div>
-                <p>The following improvement opportunities were identified for this compliant security control:</p>
-                <div class="why-validation-grid">
-                    ${ksi.enhancements.map(enh => `
-                        <div class="why-validation-item">
-                            <div class="why-validation-icon">📈</div>
-                            <div class="why-validation-content">
-                                <div class="why-validation-title">${enh.type} (Priority: ${enh.priority})</div>
-                                <div class="why-validation-description">${enh.description}. Evidence: <em>"${enh.evidence}"</em></div>
-                            </div>
-                        </div>
-                    `).join('')}
+    function showDetailedWhyModal(ksi) {
+        // Fallback detailed modal for authenticated users when original doesn't exist
+        let modal = document.getElementById('why-modal');
+        if (!modal) {
+            modal = createTemporaryModal('why-modal');
+        }
+        
+        const agencyInfo = window.fedRAMPAuth.getAgencyInfo();
+        const titleElement = modal.querySelector('.why-modal-title') || modal.querySelector('h3');
+        const bodyElement = modal.querySelector('.why-modal-body') || modal.querySelector('.modal-body');
+        
+        if (titleElement) {
+            titleElement.innerHTML = `🔍 Technical Assessment: ${ksi.ksi_id || ksi.id}`;
+        }
+        
+        if (bodyElement) {
+            bodyElement.innerHTML = `
+                <div class="authenticated-header">
+                    <span class="agency-badge">🏛️ ${agencyInfo.agency}</span>
+                    <span class="access-level">Authenticated Federal Access</span>
+                </div>
+                
+                <div class="technical-summary">
+                    <h4>🎯 Technical Assessment Details</h4>
+                    <p><strong>Requirement:</strong> ${ksi.requirement || ksi.description}</p>
+                    <p><strong>Category:</strong> ${ksi.category}</p>
+                    <p><strong>Validation Method:</strong> ${ksi.validation_method || 'Automated CLI + Evidence'}</p>
+                    <p><strong>Commands Executed:</strong> ${ksi.commands_executed || 0}</p>
+                    <p><strong>Success Rate:</strong> ${ksi.commands_executed > 0 ? Math.round(((ksi.successful_commands || 0) / ksi.commands_executed) * 100) : 0}%</p>
+                </div>
+                
+                <div class="technical-findings">
+                    <h4>📋 Assessment Findings</h4>
+                    <div class="finding-content">
+                        ${ksi.assertion_reason || 'Technical assessment completed - detailed findings available in CLI output.'}
+                    </div>
+                </div>
+                
+                <div class="technical-actions">
+                    <button onclick="showCLITwoTier('${ksi.ksi_id || ksi.id}')" class="btn-secondary">⚡ View CLI Details</button>
+                    <button onclick="createIssueTwoTier('${ksi.ksi_id || ksi.id}')" class="btn-secondary">📋 Create Issue</button>
+                    <button onclick="downloadEvidencePackage('${ksi.ksi_id || ksi.id}')" class="btn-secondary">📥 Download Evidence</button>
+                </div>
+            `;
+        }
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function showCLITwoTier(ksiId) {
+        if (!window.fedRAMPAuth.isAuthenticated) {
+            showAccessRequiredModal('CLI Command Details', [
+                'View exact AWS CLI commands executed', 
+                'See command output and execution results',
+                'Access technical validation methodology',
+                'Download command logs and evidence'
+            ]);
+        } else {
+            if (window.originalShowCommandsModal || window.showCLI) {
+                (window.originalShowCommandsModal || window.showCLI)(ksiId);
+            } else {
+                // Fallback CLI modal
+                alert(`CLI Details for ${ksiId} - Full implementation would show detailed command execution data.`);
+            }
+        }
+    }
+
+    function showPOAMModalTwoTier() {
+        if (!window.fedRAMPAuth.isAuthenticated) {
+            showAccessRequiredModal('Risk Management Dashboard', [
+                'View complete POA&M items and tracking',
+                'See VDR-integrated vulnerability analysis', 
+                'Access N-ratings and remediation timelines',
+                'Export risk data for agency reporting'
+            ]);
+        } else {
+            if (window.originalShowPOAMModal || window.showPOAMModal) {
+                (window.originalShowPOAMModal || window.showPOAMModal)();
+            } else {
+                showRiskDashboard();
+            }
+        }
+    }
+    
+    function createIssueTwoTier(ksiId) {
+        if (!window.fedRAMPAuth.isAuthenticated) {
+            showAccessRequiredModal('GitHub Issue Creation', [
+                'Create detailed technical tracking issues',
+                'Include specific findings and remediation plans',
+                'Access CLI command details and evidence',
+                'Generate compliance documentation'
+            ]);
+        } else {
+            if (window.originalCreateGitHubIssue || window.createGitHubIssue) {
+                (window.originalCreateGitHubIssue || window.createGitHubIssue)(ksiId);
+            } else {
+                // Fallback issue creation
+                const ksi = window.allKsis ? window.allKsis.find(k => (k.id || k.ksi_id) === ksiId) : null;
+                if (ksi) {
+                    const repoUrl = 'https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission_live';
+                    const issueTitle = encodeURIComponent(`[TECHNICAL] ${ksiId}: ${(ksi.description || '').substring(0, 50)}...`);
+                    const issueBody = encodeURIComponent(`## Technical Assessment Report\n\n**KSI ID:** ${ksiId}\n**Status:** ${ksi.status || 'Unknown'}\n\n### Technical Findings\n${ksi.assertion_reason || 'See detailed assessment in trust center'}\n\n### Commands Executed\n${ksi.commands_executed || 0} validation commands\n\n*Created from authenticated federal agency access*`);
+                    window.open(`${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}&labels=federal-agency,technical-assessment`, '_blank');
+                }
+            }
+        }
+    }
+    
+    // ====================================================================
+    // UTILITY FUNCTIONS & FALLBACKS
+    // ====================================================================
+    function createTemporaryModal(id) {
+        const modal = document.createElement('div');
+        modal.id = id;
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="why-modal-title">Assessment Details</h3>
+                    <button class="close-btn" onclick="closeTemporaryModal('${id}')">&times;</button>
+                </div>
+                <div class="modal-body why-modal-body">
+                    <!-- Content will be inserted here -->
                 </div>
             </div>
         `;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.appendChild(modal);
+        return modal;
     }
-
-    // --- Special Modal for Access Control ---
-    function showAccessRequiredModal(context) {
-        // This uses one of the generic custom modals defined in the HTML
-        const modal = document.getElementById('registration-modal'); // Re-using registration modal structure
-        const modalTitle = modal.querySelector('.custom-modal-header h3');
-        const modalBody = modal.querySelector('.custom-modal-body');
-        const modalFooter = modal.querySelector('.custom-modal-footer');
-
-        modalTitle.textContent = '🔒 Access Required';
-        if (context === 'data-download') {
-            modalBody.innerHTML = `<p><strong>Access to detailed authorization data, including the full validation JSON, is restricted to authorized federal personnel.</strong></p><p>Please submit an access request to view or download this content.</p>`;
-        } else {
-            modalBody.innerHTML = `<p><strong>To access the full Trust Center, including security documentation and API details, you must be an authorized federal representative.</strong></p><p>Please use the form to request access. Our security team will review your request and respond within one business day.</p>`;
-        }
-
-        modalFooter.innerHTML = `
-            <button onclick="window.location.href='mailto:security@meridianks.com?subject=FedRAMP%20Trust%20Center%20Access%20Request'" class="modal-btn primary">Request Access via Email</button>
-            <button onclick="closeCustomModal('registration-modal')" class="modal-btn secondary">Close</button>
-        `;
-
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    // --- Modal Closing Functions ---
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
+    
+    function closeTemporaryModal(id) {
+        const modal = document.getElementById(id);
+        if (modal && modal.classList.contains('temporary')) {
+            modal.remove();
+        } else if (modal) {
             modal.classList.remove('active');
         }
-        // Only restore scroll if no other modals are active
-        if (!document.querySelector('.cli-modal.active, .why-modal.active, .markdown-modal.active, .commands-modal.active, .poam-modal.active, .enhancement-modal.active, .custom-modal.active')) {
-            document.body.style.overflow = '';
-        }
+        document.body.style.overflow = '';
     }
-    const closeCliModal = () => closeModal('cli-modal');
-    const closeWhyModal = () => closeModal('why-modal');
-    const closeMarkdownModal = () => closeModal('markdown-modal');
-    const closeCommandsModal = () => closeModal('commands-modal');
-    const closePOAMModal = () => closeModal('poam-modal');
-    const closeEnhancementModal = () => closeModal('enhancement-modal');
-    const closeCustomModal = (id) => closeModal(id);
     
-
-    // ✅ =================================================================
-    // ✅ HELPERS & UTILITIES
-    // ✅ =================================================================
+    function getStatusIcon(status) {
+        const iconMap = {
+            'passed': '✅',
+            'failed': '❌', 
+            'warning': '⚠️',
+            'info': '📈',
+            'compliant': '✅',
+            'enhancement': '🔧',
+            'monitoring': '👀',
+            'improvement': '📈'
+        };
+        return iconMap[status] || '❓';
+    }
     
-    // --- Command & 'Why' Details Parsing ---
-    function extractCommandDetails(validation) {
-        const ksiId = validation.ksi_id || 'Unknown';
-        if (commandRegister && commandRegister[ksiId]) {
-            return {
-                commands: commandRegister[ksiId].cli_commands?.map((cmd, i) => ({
-                    command: cmd.command || cmd, description: cmd.note || `Command ${i+1}`, status: 'unknown', source: 'register'
-                })) || [],
-                source: 'comprehensive_register',
-                description: commandRegister[ksiId].description,
-                justification: commandRegister[ksiId].justification
+    // Federal Agency Resource Functions
+    function downloadAuthPackage() {
+        logAgencyAccess('auth_package_download');
+        alert('Downloading complete authorization package... (This would trigger actual download in production)');
+    }
+    
+    function viewTechnicalReports() {
+        logAgencyAccess('technical_reports_access');
+        alert('Accessing technical assessment reports... (This would open detailed reports in production)');
+    }
+    
+    function showRiskDashboard() {
+        logAgencyAccess('risk_dashboard_access');
+        alert('Opening risk management dashboard... (This would show detailed POA&M and risk data in production)');
+    }
+    
+    function exportValidationData() {
+        logAgencyAccess('validation_data_export');
+        if (window.allKsis) {
+            const data = {
+                export_timestamp: new Date().toISOString(),
+                agency: window.fedRAMPAuth.getAgencyInfo()?.agency,
+                ksi_validations: window.allKsis,
+                export_type: 'complete_validation_data'
             };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `fedramp_ksi_validation_data_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        } else {
+            alert('Validation data not available - please refresh the page');
         }
-        return { commands: [], source: 'no_data' };
+    }
+    
+    function generateComplianceReport() {
+        logAgencyAccess('compliance_report_generation');
+        alert('Generating agency-specific compliance report... (This would create custom reports in production)');
+    }
+    
+    function showEvidenceSearch() {
+        logAgencyAccess('evidence_search_access');
+        alert('Opening evidence search interface... (This would provide advanced search capabilities in production)');
+    }
+    
+    function contactFederalSupport() {
+        logAgencyAccess('federal_support_contact');
+        const agencyInfo = window.fedRAMPAuth.getAgencyInfo();
+        const subject = encodeURIComponent(`Federal Agency Support Request - ${agencyInfo?.agency}`);
+        const body = encodeURIComponent(`Agency: ${agencyInfo?.agency}\nContact: ${agencyInfo?.contact}\nSystem: ${agencyInfo?.system_name}\n\nRequest Details:\n\n`);
+        window.open(`mailto:fedramp@meridianks.com?subject=${subject}&body=${body}`);
+    }
+    
+    function downloadEvidencePackage(ksiId) {
+        logAgencyAccess('evidence_package_download', ksiId);
+        alert(`Downloading evidence package for ${ksiId}... (This would provide complete evidence files in production)`);
+    }
+    
+    function logAgencyAccess(action, ksiId = null) {
+        const agencyInfo = window.fedRAMPAuth.getAgencyInfo();
+        const logData = {
+            timestamp: new Date().toISOString(),
+            agency: agencyInfo?.agency,
+            action: action,
+            ksi_id: ksiId,
+            session_id: window.fedRAMPAuth.token ? window.fedRAMPAuth.token.split('.')[2] : null
+        };
+        
+        console.log('Agency Access Logged:', logData);
+        // In production, this would send to AWS API for compliance tracking
+    }
+    
+    // ====================================================================
+    // MODAL MANAGEMENT & REGISTRATION
+    // ====================================================================
+    function showRegistrationModal() { 
+        document.getElementById('registration-modal').classList.add('active'); 
+        document.body.style.overflow = 'hidden'; 
+    }
+    
+    function closeCustomModal(id) { 
+        const el = document.getElementById(id); 
+        if(el) el.classList.remove('active'); 
+        if (!document.querySelector('.modal.active')) { 
+            document.body.style.overflow = ''; 
+        } 
+    }
+    
+    function showAccessRequiredModal(feature, benefits) {
+        const modal = document.getElementById('access-required-modal');
+        modal.querySelector('.feature-name').textContent = feature;
+        modal.querySelector('.benefits-list').innerHTML = benefits.map(b => `<li>✅ ${b}</li>`).join('');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    async function handleRegistration(e) {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target));
+        
+        if (!data.email.match(/\.(gov|mil)$/i)) { 
+            showErrorMessage('A valid .gov or .mil email address is required.'); 
+            return; 
+        }
+        
+        // Create demo token
+        const tokenData = { 
+            agency: data.agency, 
+            email: data.email,
+            contact: data.contact,
+            system_name: data.system_name,
+            exp: Math.floor(Date.now() / 1000) + (8 * 60 * 60) // 8 hours
+        };
+        
+        localStorage.setItem('fedRAMPAccessToken', 'header.' + btoa(JSON.stringify(tokenData)) + '.sig');
+        window.fedRAMPAuth = new FedRAMPAuth();
+        
+        closeCustomModal('registration-modal');
+        showSuccessMessage('Registration successful! Refreshing with authenticated access.');
+        
+        setTimeout(() => window.location.reload(), 2000);
+    }
+    
+    // ====================================================================
+    // NOTIFICATION SYSTEM
+    // ====================================================================
+    function showSuccessMessage(m) { createNotification(m, 'success'); }
+    function showErrorMessage(m) { createNotification(m, 'error'); }
+    function createNotification(m, t) { 
+        const e = document.createElement('div'); 
+        e.className = `notification ${t}`; 
+        e.innerHTML = `<div>${m}</div><button onclick="this.parentElement.remove()" style="background:none;border:none;color:inherit;font-size:1.2rem;cursor:pointer;margin-left:auto;">&times;</button>`; 
+        e.style.cssText = 'display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;';
+        document.body.appendChild(e); 
+        setTimeout(() => e.remove(), 5000); 
     }
 
-    function parseAssertionReason(reason, status) {
-        if (!reason) return { summary: 'No details available.', validations: [] };
-        const segments = reason.split(/(?=✅|❌|⚠️|ℹ️)/);
-        const summary = segments[0].replace(/✅|❌|⚠️|ℹ️/g, '').trim().split('.')[0];
-        const validations = segments.map(seg => {
-            const iconMatch = seg.match(/^(✅|❌|⚠️|ℹ️)/);
-            if (!iconMatch) return null;
-            const content = seg.substring(1).trim();
-            return { icon: iconMatch[1], title: content.split(':')[0] || 'Validation Check', description: content };
-        }).filter(Boolean);
-        return { summary, validations };
+    // ====================================================================
+    // COMPREHENSIVE STYLING
+    // ====================================================================
+    function addStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            /* Modal System */
+            .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+            .modal.active { display: flex; align-items: center; justify-content: center; }
+            .modal-content { background: var(--bg-primary, #ffffff); padding: 2rem; border-radius: 12px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+            .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color, #e5e7eb); padding-bottom: 1rem; }
+            .modal-header h3 { margin: 0; color: var(--text-primary, #111827); }
+            .close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary, #6b7280); }
+            .close-btn:hover { color: var(--text-primary, #111827); }
+            
+            /* Form Styling */
+            .form-group { margin-bottom: 1rem; display: flex; flex-direction: column; }
+            .form-group label { margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary, #111827); }
+            .form-group input, .form-group textarea { padding: 0.75rem; border-radius: 8px; border: 2px solid var(--border-color, #e5e7eb); font-size: 1rem; transition: border-color 0.2s; }
+            .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-500, #3b82f6); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+            .form-group small { color: var(--text-tertiary, #9ca3af); font-size: 0.875rem; margin-top: 0.25rem; }
+            .form-actions { margin-top: 1.5rem; display: flex; gap: 1rem; }
+            .form-actions button { flex: 1; }
+            
+            /* Button System */
+            .btn-primary { background: var(--primary-500, #3b82f6); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+            .btn-primary:hover { background: var(--primary-600, #2563eb); transform: translateY(-1px); }
+            .btn-primary.large { padding: 1rem 2rem; font-size: 1.1rem; }
+            .btn-secondary { background: transparent; color: var(--primary-500, #3b82f6); border: 2px solid var(--primary-500, #3b82f6); padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+            .btn-secondary:hover { background: var(--primary-500, #3b82f6); color: white; }
+            
+            /* Notification System */
+            .notification { position: fixed; top: 20px; right: 20px; z-index: 10001; padding: 1rem 1.5rem; border-radius: 8px; color: white; min-width: 300px; animation: slideInRight 0.3s ease; }
+            .notification.success { background: linear-gradient(135deg, #10b981, #059669); }
+            .notification.error { background: linear-gradient(135deg, #ef4444, #dc2626); }
+            @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+            
+            /* Two-Tier KSI Cards */
+            .ksi-card.public-view { border-left: 4px solid var(--info-500, #3b82f6); background: linear-gradient(135deg, rgba(59,130,246,0.03) 0%, var(--bg-primary, #ffffff) 100%); }
+            .ksi-card.authenticated-view { border-left: 4px solid var(--success-500, #10b981); background: linear-gradient(135deg, rgba(16,185,129,0.03) 0%, var(--bg-primary, #ffffff) 100%); }
+            .ksi-card .access-indicator { font-size: 1.2rem; opacity: 0.6; color: var(--info-500, #3b82f6); }
+            .ksi-card .auth-indicator { font-size: 1.2rem; color: var(--success-500, #10b981); }
+            .ksi-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+            .ksi-status-bar { padding: 0.25rem 0.75rem; border-radius: 16px; font-size: 0.75rem; font-weight: 700; text-align: center; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+            .ksi-status-bar.compliant { background: rgba(16, 185, 129, 0.1); color: var(--success-600, #059669); }
+            .ksi-status-bar.enhancement { background: rgba(245, 158, 11, 0.1); color: var(--warning-600, #d97706); }
+            .ksi-status-bar.monitoring { background: rgba(59, 130, 246, 0.1); color: var(--info-600, #2563eb); }
+            .ksi-status-bar.improvement { background: rgba(139, 92, 246, 0.1); color: var(--purple-600, #7c3aed); }
+            .ksi-description-public { font-size: 0.875rem; color: var(--text-secondary, #6b7280); flex-grow: 1; margin-bottom: 1rem; line-height: 1.5; }
+            .ksi-metrics-auth { display: flex; gap: 1rem; margin-bottom: 1rem; }
+            .ksi-metrics-public { margin-bottom: 1rem; }
+            .public-metric { font-size: 0.75rem; color: var(--text-tertiary, #9ca3af); }
+            .metric-small { text-align: center; }
+            .metric-small .metric-value { display: block; font-weight: 700; font-size: 1.1rem; color: var(--text-primary, #111827); }
+            .metric-small .metric-label { font-size: 0.7rem; color: var(--text-tertiary, #9ca3af); text-transform: uppercase; }
+            
+            /* Trust Center Styles */
+            .trust-center-header.authenticated { background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0.05) 100%); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; }
+            .auth-info { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+            .auth-badge { background: var(--success-500, #10b981); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; }
+            .logout-btn { background: transparent; border: 2px solid var(--success-500, #10b981); color: var(--success-500, #10b981); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.875rem; }
+            .logout-btn:hover { background: var(--success-500, #10b981); color: white; }
+            .authenticated-welcome { background: var(--bg-accent, #f9fafb); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--border-color, #e5e7eb); }
+            .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+            .trust-card { background: var(--bg-primary, #ffffff); border: 1px solid var(--border-color, #e5e7eb); border-radius: 12px; padding: 1.5rem; }
+            .trust-card h4 { margin-bottom: 0.5rem; color: var(--text-primary, #111827); }
+            .trust-card p { margin-bottom: 1rem; color: var(--text-secondary, #6b7280); line-height: 1.6; }
+            .action-btn { background: var(--primary-500, #3b82f6); color: white; border: none; padding: 0.75rem 1.25rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+            .action-btn:hover { background: var(--primary-600, #2563eb); transform: translateY(-1px); }
+            
+            /* Public Trust Center */
+            .compliance-summary-public { background: var(--bg-accent, #f9fafb); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--border-color, #e5e7eb); }
+            .compliance-metrics-public { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem; }
+            .metric-public { text-align: center; padding: 1rem; background: var(--bg-primary, #ffffff); border-radius: 8px; border: 1px solid var(--border-color, #e5e7eb); }
+            .metric-public .metric-value { display: block; font-weight: 700; font-size: 1.2rem; color: var(--primary-500, #3b82f6); margin-bottom: 0.25rem; }
+            .metric-public .metric-label { font-size: 0.875rem; color: var(--text-secondary, #6b7280); }
+            .access-promo { background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(59,130,246,0.05) 100%); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; }
+            .access-benefits { margin: 1.5rem 0; }
+            .benefit-list { list-style: none; padding: 0; margin: 1rem 0; }
+            .benefit-list li { padding: 0.5rem 0; border-bottom: 1px solid rgba(59,130,246,0.1); }
+            .benefit-list li:last-child { border-bottom: none; }
+            .public-info-section { margin-top: 2rem; }
+            .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+            .info-card { background: var(--bg-primary, #ffffff); border: 1px solid var(--border-color, #e5e7eb); border-radius: 12px; padding: 1.5rem; }
+            .info-card h4 { margin-bottom: 1rem; color: var(--text-primary, #111827); }
+            .info-card p { margin: 0.5rem 0; color: var(--text-secondary, #6b7280); }
+            
+            /* Agency Resources */
+            .agency-resources { margin-top: 2rem; }
+            .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+            .resource-item { background: var(--bg-accent, #f9fafb); border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; padding: 1.25rem; }
+            .resource-item h4 { margin-bottom: 0.5rem; color: var(--text-primary, #111827); font-size: 1rem; }
+            .resource-item p { margin-bottom: 1rem; color: var(--text-secondary, #6b7280); font-size: 0.875rem; line-height: 1.5; }
+            
+            /* Modal Content Specific */
+            .agency-access-upgrade { background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(59,130,246,0.05) 100%); padding: 2rem; border-radius: 12px; text-align: center; margin-top: 1.5rem; border: 1px solid rgba(59,130,246,0.2); }
+            .agency-access-upgrade h4 { color: var(--primary-500, #3b82f6); margin-bottom: 1rem; }
+            .upgrade-benefits { margin: 1.5rem 0; text-align: left; }
+            .upgrade-benefits ul { list-style: none; padding: 0; }
+            .upgrade-benefits li { padding: 0.5rem 0; }
+            .authenticated-header { background: rgba(16,185,129,0.1); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; border: 1px solid rgba(16,185,129,0.2); }
+            .agency-badge { background: var(--success-500, #10b981); color: white; padding: 0.25rem 0.75rem; border-radius: 16px; font-size: 0.875rem; font-weight: 600; }
+            .access-level { color: var(--success-600, #059669); font-size: 0.875rem; font-weight: 600; }
+            .technical-summary, .technical-findings { margin: 1.5rem 0; }
+            .technical-summary h4, .technical-findings h4 { color: var(--text-primary, #111827); margin-bottom: 1rem; }
+            .finding-content { background: var(--bg-accent, #f9fafb); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--warning-500, #f59e0b); }
+            .technical-actions { display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+            .technical-actions .btn-secondary { flex: 1; min-width: 120px; }
+            .public-assessment-summary { margin-bottom: 1.5rem; }
+            .status-header { margin-bottom: 1rem; }
+            .status-indicator { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; }
+            .status-indicator.compliant { background: rgba(16,185,129,0.1); color: var(--success-600, #059669); }
+            .status-indicator.enhancement { background: rgba(245,158,11,0.1); color: var(--warning-600, #d97706); }
+            .status-indicator.monitoring { background: rgba(59,130,246,0.1); color: var(--info-600, #2563eb); }
+            .status-indicator.improvement { background: rgba(139,92,246,0.1); color: var(--purple-600, #7c3aed); }
+            .assessment-details { margin: 1.5rem 0; }
+            .assessment-details h4 { margin-bottom: 1rem; color: var(--text-primary, #111827); }
+            .assessment-details p { margin: 0.5rem 0; color: var(--text-secondary, #6b7280); }
+            .enhancement-note { background: rgba(139,92,246,0.1); border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; border: 1px solid rgba(139,92,246,0.2); }
+            .enhancement-note h4 { color: var(--purple-600, #7c3aed); margin-bottom: 0.5rem; }
+            
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .modal-content { padding: 1.5rem; margin: 1rem; }
+                .trust-grid, .info-grid, .resource-grid { grid-template-columns: 1fr; }
+                .compliance-metrics-public { grid-template-columns: 1fr; }
+                .form-actions, .technical-actions { flex-direction: column; }
+                .technical-actions .btn-secondary { flex: none; }
+                .ksi-metrics-auth { flex-direction: column; gap: 0.5rem; }
+                .auth-info { flex-direction: column; align-items: flex-start; }
+            }
+        `;
+        document.head.appendChild(style);
     }
-
-    function detectEnhancementOpportunities(reason = '', status) {
-        if (status !== 'passed') return [];
-        const opportunities = [];
-        const patterns = [
-            { p: /minimal\s/i, t: 'Minimal Configuration', d: 'Opportunity to enhance beyond minimums.' },
-            { p: /basic\s/i, t: 'Basic Implementation', d: 'Consider upgrading to advanced configuration.' },
-        ];
-        patterns.forEach(({ p, t, d }) => {
-            const match = reason.match(p);
-            if (match) opportunities.push({ type: t, description: d, evidence: match[0].trim(), priority: 'Low' });
+    
+    // ====================================================================
+    // INITIALIZATION & INTEGRATION
+    // ====================================================================
+    function initializeTwoTierSystem() {
+        window.fedRAMPAuth = new FedRAMPAuth();
+        addStyles();
+        
+        // Preserve original functions from the main HTML file
+        window.originalDownloadJSON = window.downloadJSON;
+        window.originalViewFailedReport = window.viewFailedReport;
+        window.originalRenderKsis = window.renderKsis;
+        window.originalShowWhyModal = window.showWhy || window.showWhyModal;
+        window.originalShowCommandsModal = window.showCLI || window.showCommandsModal;
+        window.originalShowPOAMModal = window.showPOAMModal;
+        window.originalCreateGitHubIssue = window.createGitHubIssue;
+        
+        // Override with two-tier logic
+        window.downloadJSON = downloadJSON;
+        window.viewFailedReport = viewFailedReport;
+        window.renderKsis = function() {
+            const grid = document.getElementById('ksi-grid');
+            if (grid && window.filteredKsis) {
+                grid.innerHTML = window.filteredKsis.map(renderKSICardTwoTier).join('');
+            }
+        };
+        window.showWhyModal = showWhyTwoTier;
+        window.showWhy = showWhyTwoTier; // Handle both naming conventions
+        window.showCommandsModal = showCLITwoTier;
+        window.showCLI = showCLITwoTier; // Handle both naming conventions
+        window.showPOAMModal = showPOAMModalTwoTier;
+        window.createGitHubIssue = createIssueTwoTier;
+        
+        // Make new functions globally available
+        window.showRegistrationModal = showRegistrationModal;
+        window.closeCustomModal = closeCustomModal;
+        window.showAccessRequiredModal = showAccessRequiredModal;
+        window.closeTemporaryModal = closeTemporaryModal;
+        window.logAgencyAccess = logAgencyAccess;
+        
+        // Add event listeners
+        const regForm = document.getElementById('agency-registration-form');
+        if (regForm) regForm.addEventListener('submit', handleRegistration);
+        
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                const modalId = e.target.id;
+                if (modalId) closeCustomModal(modalId);
+            }
         });
-        return opportunities;
-    }
+        
+        // Close modals with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    closeCustomModal(activeModal.id);
+                }
+            }
+        });
+        
+        // Add authentication indicator to header
+        addAuthenticationIndicator();
+        
+        // Render trust center with current authentication state
+        renderTrustCenterTab(); 
 
-    // --- UI & Event Listeners ---
-    function setupEventListeners() {
-        document.getElementById('search-input').addEventListener('input', e => { currentFilters.search = e.target.value; filterKsis(); });
-        document.getElementById('status-filter').addEventListener('change', e => { currentFilters.status = e.target.value; filterKsis(); });
-        document.getElementById('category-filter').addEventListener('change', e => { currentFilters.category = e.target.value; filterKsis(); });
-        document.querySelectorAll('.filter-chip').forEach(chip => chip.addEventListener('click', () => {
-            currentFilters.status = chip.dataset.status;
-            document.getElementById('status-filter').value = currentFilters.status;
-            filterKsis();
-        }));
-    }
-
-    function toggleCommandDetails(index) {
-        const details = document.getElementById(`command-details-${index}`);
-        const btn = document.getElementById(`expand-btn-${index}`);
-        details.classList.toggle('expanded');
-        btn.classList.toggle('expanded');
-        btn.textContent = details.classList.contains('expanded') ? '▲' : '▼';
-    }
-
-    // --- Misc Utilities ---
-    const getStatusIcon = (status) => ({ passed: '✅', failed: '❌', warning: '🟡', info: '📈' }[status] || '❓');
-    const getKSICategory = (id) => id.split('-')[1] || 'Unknown';
-    const generateKsiSummary = (reason, status) => getStatusIcon(status) + ' ' + (reason.split(/[.!;]/)[0] || 'Assessment complete.');
-
-    function createGitHubIssue(ksiId) {
-        const ksi = allKsis.find(k => k.id === ksiId);
-        if (!ksi) return;
-        const title = encodeURIComponent(`[${ksi.status.toUpperCase()}] ${ksi.id}: Remediation Required`);
-        const body = encodeURIComponent(`**KSI:** ${ksi.id}\n**Status:** ${ksi.status}\n**Description:** ${ksi.description}\n\n**Details:**\n${ksi.assertion_reason}`);
-        const labels = { failed: 'high-priority,bug', warning: 'low-priority', info: 'enhancement' }[ksi.status] || '';
-        window.open(`https://github.com/Meridian-Knowledge-Solutions/fedramp_20x_public_submission-live/issues/new?title=${title}&body=${body}&labels=${labels}`, '_blank');
-    }
-
-    async function viewFailedReport() {
-        if (!isAuthenticated) { showAccessRequiredModal('data-download'); return; }
-        // ... (original function logic)
-    }
-
-    const updateFilterChips = () => document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.status === currentFilters.status));
-    const updateTimestamps = () => updateTimestampsWithData(new Date());
-    function updateTimestampsWithData(date) {
-        const timeString = date.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
-        document.getElementById('last-updated').textContent = timeString;
-        document.getElementById('header-timestamp').textContent = timeString;
-    }
-    
-    function toggleTheme() {
-        const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        document.getElementById('theme-icon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
-    }
-    
-    function initializeTheme() {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-    }
-
-    function showTab(tabName) {
-        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        document.getElementById(`${tabName}-tab`).classList.add('active');
-        document.querySelector(`.tab-btn[onclick="showTab('${tabName}')"]`).classList.add('active');
-    }
-
-    const scrollToTrustSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-
-    // --- Quarterly Reports & RFC-0016 ---
-    async function loadQuarterlyReportData() {
-        try {
-            const response = await fetch('./trust_center/next_report_date.json');
-            if (!response.ok) throw new Error('Schedule not found');
-            const data = await response.json();
-            if (data.next_ongoing_report) document.getElementById('next-report-date').textContent = new Date(data.next_ongoing_report + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
-            if (data.next_quarterly_review) document.getElementById('next-quarterly-review').textContent = data.next_quarterly_review;
-        } catch (error) {
-            console.error('Could not load quarterly report schedule:', error);
+        // Initial render if data is already available
+        if (window.filteredKsis && window.renderKsis) {
+            window.renderKsis();
+        }
+        
+        console.log('🚀 Two-Tier FedRAMP System Initialized Successfully');
+        console.log('Authentication Status:', window.fedRAMPAuth.isAuthenticated);
+        if (window.fedRAMPAuth.isAuthenticated) {
+            console.log('Agency Info:', window.fedRAMPAuth.getAgencyInfo());
         }
     }
     
-    // --- Expose functions to global scope for inline event handlers ---
-    window.toggleAuth = toggleAuth;
-    window.showTab = showTab;
-    window.toggleTheme = toggleTheme;
-    window.showCommandsModal = showCommandsModal;
-    window.showWhyModal = showWhyModal;
-    window.showPOAMModal = showPOAMModal;
-    window.showEnhancementModal = showEnhancementModal;
-    window.createGitHubIssue = createGitHubIssue;
-    window.downloadJSON = downloadJSON;
-    window.viewFailedReport = viewFailedReport;
-    window.closeCliModal = closeCliModal;
-    window.closeWhyModal = closeWhyModal;
-    window.closeMarkdownModal = closeMarkdownModal;
-    window.closeCommandsModal = closeCommandsModal;
-    window.closePOAMModal = closePOAMModal;
-    window.closeEnhancementModal = closeEnhancementModal;
-    window.closeCustomModal = closeCustomModal;
-    window.toggleCommandDetails = toggleCommandDetails;
-    window.scrollToTrustSection = scrollToTrustSection;
-    window.showAccessRequiredModal = showAccessRequiredModal;
+    function addAuthenticationIndicator() {
+        if (!window.fedRAMPAuth.isAuthenticated) return;
+        
+        const header = document.querySelector('.dashboard-header') || 
+                      document.querySelector('header') || 
+                      document.querySelector('.trust-center-header') ||
+                      document.querySelector('.stats-grid')?.parentElement;
+        
+        if (header) {
+            const agencyInfo = window.fedRAMPAuth.getAgencyInfo();
+            let indicator = document.getElementById('auth-status-indicator');
+            
+            if (!indicator) {
+                indicator = document.createElement('div');
+                indicator.id = 'auth-status-indicator';
+                indicator.className = 'auth-status-indicator';
+            }
+            
+            indicator.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0.05) 100%); border-radius: 12px; border: 1px solid rgba(16,185,129,0.2); margin-bottom: 1.5rem;">
+                    <span class="agency-badge">🏛️ ${agencyInfo.agency}</span>
+                    <span style="color: var(--success-600, #059669); font-size: 0.875rem; font-weight: 600;">Authenticated Federal Access</span>
+                    <button onclick="window.fedRAMPAuth.logout()" style="background: transparent; border: 2px solid rgba(16,185,129,0.3); color: var(--success-600, #059669); padding: 0.25rem 0.75rem; border-radius: 6px; cursor: pointer; font-size: 0.75rem; margin-left: auto;">Logout</button>
+                </div>
+            `;
+            
+            if (header.firstChild) {
+                header.insertBefore(indicator, header.firstChild);
+            } else {
+                header.appendChild(indicator);
+            }
+        }
+    }
+    
+    // Defer initialization to ensure the main page script runs first
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initializeTwoTierSystem, 500);
+        });
+    } else {
+        setTimeout(initializeTwoTierSystem, 500);
+    }
 
+})();
 </script>
     
 </body>
