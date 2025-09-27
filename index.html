@@ -6146,6 +6146,78 @@ async function loadQuarterlyReportData() {
     </div>
 </div>
 
+<!-- ==================================================================== -->
+<!-- TRUST CENTER OVERHAUL SCRIPT V4.0 (CLEANED UP)                     -->
+<!-- This block contains all necessary HTML, CSS, and JavaScript.       -->
+<!-- Paste this entire block before the closing </body> tag.            -->
+<!-- ==================================================================== -->
+
+<!-- MODAL HTML: All custom modals are defined here. -->
+<div class="modal access-required-modal" id="access-required-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>🔒 Federal Agency Access Required</h3>
+            <button class="close-btn" onclick="closeCustomModal('access-required-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h4 class="feature-name">Technical Feature Access</h4>
+            <p>This feature requires federal agency registration to access detailed technical information.</p>
+            <h5>What you'll get with registration:</h5>
+            <ul class="benefits-list">
+                <!-- Benefits are populated dynamically by JavaScript -->
+            </ul>
+            <div class="access-actions">
+                <button onclick="showRegistrationModal(); closeCustomModal('access-required-modal');" class="btn-primary">
+                    Register for Access
+                </button>
+                <button onclick="closeCustomModal('access-required-modal')" class="btn-secondary">
+                    Continue with Public View
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal registration-modal" id="registration-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>🏛️ Federal Agency Registration</h3>
+            <button class="close-btn" onclick="closeCustomModal('registration-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h4>Get Full Technical Access</h4>
+            <p>Register with your .gov or .mil email to view detailed security assessments, evidence, and remediation plans.</p>
+            <form id="agency-registration-form" class="registration-form">
+                <div class="form-group">
+                    <label for="reg-agency">Federal Agency *</label>
+                    <input id="reg-agency" type="text" name="agency" required placeholder="e.g., Department of Defense">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Official Email *</label>
+                    <input id="reg-email" type="email" name="email" required pattern=".*\.(gov|mil)$" placeholder="e.g., name@agency.gov">
+                    <small>Must be a .gov or .mil email address</small>
+                </div>
+                <div class="form-group">
+                    <label for="reg-contact">Contact Name *</label>
+                    <input id="reg-contact" type="text" name="contact" required placeholder="e.g., John Smith">
+                </div>
+                <div class="form-group">
+                    <label for="reg-system">System/Project Name</label>
+                    <input id="reg-system" type="text" name="system_name" placeholder="e.g., Agency Training Platform">
+                </div>
+                <div class="form-group">
+                    <label for="reg-purpose">Access Purpose</label>
+                    <textarea id="reg-purpose" name="purpose" placeholder="e.g., Authorization review for new system deployment"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Register for Access</button>
+                    <button type="button" onclick="closeCustomModal('registration-modal')" class="btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
 // ====================================================================
 // SCRIPT START - COMPLETE TWO-TIER IMPLEMENTATION
@@ -6399,6 +6471,31 @@ async function loadQuarterlyReportData() {
                         <h4>📊 Raw Validation Data</h4>
                         <p>Export machine-readable KSI validation results for integration with your agency's GRC tools.</p>
                         <button class="action-btn" onclick="exportValidationData()">Export Validation Data</button>
+                    </div>
+                </div>
+                
+                <div class="quarterly-reports-authenticated">
+                    <h3>📋 Quarterly Authorization Reports (RFC-0016)</h3>
+                    <p>Ongoing Authorization Reports per FRR-CCM-01 providing regular summaries of changes, accepted weaknesses, and authorization data</p>
+                    
+                    <div class="reports-grid">
+                        <div class="report-card">
+                            <h4>📅 Current Quarter Report</h4>
+                            <p>Q3 2025 - Available in both machine-readable and human-readable formats</p>
+                            <div class="report-actions">
+                                <button onclick="downloadQuarterlyReport('current')" class="btn-secondary">Download Report</button>
+                                <button onclick="viewQuarterlyReport('current')" class="btn-secondary">View Online</button>
+                            </div>
+                        </div>
+                        
+                        <div class="report-card">
+                            <h4>📊 Report Archive</h4>
+                            <p>Access historical quarterly reports and compliance tracking data</p>
+                            <div class="report-actions">
+                                <button onclick="showReportArchive()" class="btn-secondary">Browse Archive</button>
+                                <button onclick="subscribeToReports()" class="btn-secondary">Subscribe to Updates</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -6710,7 +6807,7 @@ async function loadQuarterlyReportData() {
     }
     
     // ====================================================================
-    // UTILITY FUNCTIONS & FALLBACKS
+    // UTILITY FUNCTIONS & FEDERAL AGENCY RESOURCES
     // ====================================================================
     function createTemporaryModal(id) {
         const modal = document.createElement('div');
@@ -6791,6 +6888,27 @@ async function loadQuarterlyReportData() {
         } else {
             alert('Validation data not available - please refresh the page');
         }
+    }
+    
+    function downloadQuarterlyReport(period) {
+        logAgencyAccess('quarterly_report_download', period);
+        alert(`Downloading ${period} quarterly report... (This would download the actual report in production)`);
+    }
+    
+    function viewQuarterlyReport(period) {
+        logAgencyAccess('quarterly_report_view', period);
+        alert(`Opening ${period} quarterly report... (This would display the report in production)`);
+    }
+    
+    function showReportArchive() {
+        logAgencyAccess('report_archive_access');
+        alert('Opening report archive... (This would show historical reports in production)');
+    }
+    
+    function subscribeToReports() {
+        logAgencyAccess('report_subscription');
+        const agencyInfo = window.fedRAMPAuth.getAgencyInfo();
+        alert(`Setting up report subscription for ${agencyInfo?.email}... (This would configure automated delivery in production)`);
     }
     
     function generateComplianceReport() {
@@ -6982,6 +7100,15 @@ async function loadQuarterlyReportData() {
             .info-card h4 { margin-bottom: 1rem; color: var(--text-primary, #111827); }
             .info-card p { margin: 0.5rem 0; color: var(--text-secondary, #6b7280); }
             
+            /* Quarterly Reports in Trust Center */
+            .quarterly-reports-authenticated { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color, #e5e7eb); }
+            .reports-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+            .report-card { background: var(--bg-accent, #f9fafb); border: 1px solid var(--border-color, #e5e7eb); border-radius: 12px; padding: 1.5rem; }
+            .report-card h4 { margin-bottom: 0.5rem; color: var(--text-primary, #111827); }
+            .report-card p { margin-bottom: 1rem; color: var(--text-secondary, #6b7280); }
+            .report-actions { display: flex; gap: 0.5rem; }
+            .report-actions .btn-secondary { flex: 1; }
+            
             /* Agency Resources */
             .agency-resources { margin-top: 2rem; }
             .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
@@ -7019,10 +7146,10 @@ async function loadQuarterlyReportData() {
             /* Responsive Design */
             @media (max-width: 768px) {
                 .modal-content { padding: 1.5rem; margin: 1rem; }
-                .trust-grid, .info-grid, .resource-grid { grid-template-columns: 1fr; }
+                .trust-grid, .info-grid, .resource-grid, .reports-grid { grid-template-columns: 1fr; }
                 .compliance-metrics-public { grid-template-columns: 1fr; }
-                .form-actions, .technical-actions { flex-direction: column; }
-                .technical-actions .btn-secondary { flex: none; }
+                .form-actions, .technical-actions, .report-actions { flex-direction: column; }
+                .technical-actions .btn-secondary, .report-actions .btn-secondary { flex: none; }
                 .ksi-metrics-auth { flex-direction: column; gap: 0.5rem; }
                 .auth-info { flex-direction: column; align-items: flex-start; }
             }
