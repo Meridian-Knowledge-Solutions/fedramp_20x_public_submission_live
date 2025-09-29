@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-09-29 02:58
+**Last Check:** 2025-09-29 22:00
 
 **What it validates:** Manage configuration centrally
 
@@ -50,9 +50,9 @@ PASS Enterprise-grade centralized configuration governance with comprehensive au
 - PASS Infrastructure as Code: 10/10 successful CloudFormation stacks (100%).
 - PASS Secure configuration management: 1 centrally managed secrets.
 - PASS System configuration standards: 17 patch baselines for standardized management.
-- PASS Centralized instance management: 5/6 instances under SSM management (83% online).
+- PASS Centralized instance management: 6/6 instances under SSM management (100% online).
 - PASS Enterprise-wide configuration governance: AWS Organizations enables centralized policies.
 - PASS Advanced organization features: SCPs for configuration policy enforcement enabled.
 
 ---
-*Generated 2025-09-29 02:58 UTC*
+*Generated 2025-09-29 22:00 UTC*

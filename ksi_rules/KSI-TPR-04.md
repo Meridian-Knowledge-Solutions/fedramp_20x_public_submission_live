@@ -4,7 +4,7 @@
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-09-29 02:58
+**Last Check:** 2025-09-29 22:00
 
 **What it validates:** Monitor third party software for upstream vulnerabilities
 
@@ -33,7 +33,7 @@
 ## Latest Results
 
 WARNING Basic monitoring infrastructure - deploy third-party packages for full coverage (40%): PASS Inspector coverage service active - verify instances enrolled for package scanning
-- PASS Package inventory capability: 5 instances with SSM agent for dependency tracking
+- PASS Package inventory capability: 6 instances with SSM agent for dependency tracking
 
 ---
-*Generated 2025-09-29 02:58 UTC*
+*Generated 2025-09-29 22:00 UTC*

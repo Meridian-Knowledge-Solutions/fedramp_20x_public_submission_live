@@ -1,22 +1,26 @@
-# KSI-CMT-04: Have a documented change management procedure
+# KSI-CMT-04: Have a documented and implemented change management procedure
 
 ## Overview
 
 **Category:** Change Management
-**Status:** PASS
-**Last Check:** 2025-09-29 02:58
+**Status:** FAIL
+**Last Check:** 2025-09-29 22:00
 
-**What it validates:** Have a documented change management procedure
+**What it validates:** Have a documented and implemented change management procedure
 
-**Why it matters:** Manual evidence required - comprehensive change management procedures, approval workflows, and governance documentation
+**Why it matters:** Validates that the change management procedure is codified and enforced using AWS Systems Manager Change Manager templates with approval workflows, providing live, auditable evidence of an implemented control.
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-CMT-04/ for change_management_policy.pdf, approval_workflow_documentation.pdf, change_control_procedures.pdf, and governance_framework.pdf
+1. `aws ssm list-documents --document-filter-list 'key=DocumentType,value=ChangeTemplate' --query 'DocumentIdentifiers[*].{Name:Name}'`
+   *Lists all active SSM Change Manager templates in the account. This is the primary evidence of a codified change procedure.*
+
+2. `aws ssm get-document --name TEMPLATE_NAME`
+   *Retrieves the content of a specific Change Template. The evaluation logic will call this for each template found to inspect its approval configuration. TEMPLATE_NAME is a placeholder.*
 
 ## Latest Results
 
-- PASS Documented change management procedure - expand process controls (10%): PASS Change management documentation found: configuration_management_policy_and_procedures.pdf, weekly_change_management_meeting_final.png
+- No rule function found: evaluate_KSI_CMT_04
 
 ---
-*Generated 2025-09-29 02:58 UTC*
+*Generated 2025-09-29 22:00 UTC*
