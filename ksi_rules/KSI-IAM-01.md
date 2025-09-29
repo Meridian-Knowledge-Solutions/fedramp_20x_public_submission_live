@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** FAIL
-**Last Check:** 2025-09-28 03:01
+**Last Check:** 2025-09-29 02:58
 
 **What it validates:** Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 
@@ -29,4 +29,4 @@
 - FAIL No centralized identity management detected: FAIL No active AWS Identity Center - MFA enforcement unclear
 
 ---
-*Generated 2025-09-28 03:01 UTC*
+*Generated 2025-09-29 02:58 UTC*
