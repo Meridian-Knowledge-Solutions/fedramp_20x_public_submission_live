@@ -5638,12 +5638,12 @@ function closeCustomModal(modalId) {
 function openEmailClient(type) {
     let subject, body, email;
     if (type === 'registration') {
-        email = 'security@meridianks.com';
-        subject = encodeURIComponent('Quarterly Review Registration');
+        email = 'fedramp_20x@meridianks.com';
+        subject = encodeURIComponent('Access request to authorization data');
         body = encodeURIComponent(`Agency: [Your Agency]\nComponent: [Your Component/Bureau]\nPrimary Contact: [Name and Title]\nEmail: [Contact Email]\nAuthorization: [Current ATO/FedRAMP Details]\n\nPlease register us for the upcoming quarterly review.`);
         closeCustomModal('registration-modal');
     } else if (type === 'feedback') {
-        email = 'agency-feedback@meridianks.com';
+        email = 'fedramp_20x@meridianks.com';
         subject = encodeURIComponent('Agency Feedback - Ongoing Authorization Report');
         body = encodeURIComponent('Please provide your feedback on the ongoing authorization reports.');
         closeCustomModal('feedback-modal');
@@ -5796,7 +5796,7 @@ async function loadQuarterlyReportData() {
         function openEmailClient(type) {
             let subject, body, email;
             if (type === 'registration') {
-                email = 'security@meridianks.com';
+                email = 'fedramp_20x@meridianks.com';
                 subject = encodeURIComponent('Quarterly Review Registration');
                 body = encodeURIComponent(`Agency: [Your Agency]\nComponent: [Your Component/Bureau]\nPrimary Contact: [Name and Title]\nEmail: [Contact Email]\nAuthorization: [Current ATO/FedRAMP Details]\n\nPlease register us for the upcoming quarterly review.`);
                 closeCustomModal('registration-modal');
@@ -5908,11 +5908,11 @@ async function loadQuarterlyReportData() {
 <div class="custom-modal" id="registration-modal">
     <div class="custom-modal-content">
         <div class="custom-modal-header">
-            <h3>📅 Quarterly Review Registration</h3>
+            <h3>📅 Authorization Data Access</h3>
             <button class="modal-close-btn" onclick="closeCustomModal('registration-modal')">×</button>
         </div>
         <div class="custom-modal-body">
-            <p><strong>Federal agencies can register for upcoming quarterly reviews.</strong></p>
+            <p><strong>Federal agencies can register for access to authorization data.</strong></p>
             <div class="requirements-box">
                 <h4>Registration Requirements:</h4>
                 <ul>
