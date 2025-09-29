@@ -4,7 +4,7 @@
 
 **Category:** Change Management
 **Status:** FAIL
-**Last Check:** 2025-09-29 22:00
+**Last Check:** 2025-09-29 22:56
 
 **What it validates:** Have a documented and implemented change management procedure
 
@@ -20,7 +20,7 @@
 
 ## Latest Results
 
-- No rule function found: evaluate_KSI_CMT_04
+- FAIL No AWS SSM Change Manager templates were found. The procedure is not implemented as a technical control.
 
 ---
-*Generated 2025-09-29 22:00 UTC*
+*Generated 2025-09-29 22:56 UTC*
