@@ -4,7 +4,7 @@
 
 **Category:** Change Management
 **Status:** FAIL
-**Last Check:** 2025-09-30 01:03
+**Last Check:** 2025-09-30 03:00
 
 **What it validates:** Have a documented and implemented change management procedure
 
@@ -23,4 +23,4 @@
 - FAIL No AWS SSM Change Manager templates were found. The procedure is not implemented as a technical control.
 
 ---
-*Generated 2025-09-30 01:03 UTC*
+*Generated 2025-09-30 03:00 UTC*
