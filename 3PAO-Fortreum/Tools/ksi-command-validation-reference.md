@@ -1,3 +1,55 @@
+# SYSTEM SECURITY VALIDATION METHODOLOGY
+
+**Document Version**: 3.0
+**Date**: 2025-09-30
+**Status**: Official Technical Reference for FedRAMP 20x Phase Two (Moderate)
+
+---
+
+## 1.0 Document Purpose
+
+This document provides the definitive technical methodology for the automated validation of all applicable Key Security Indicators (KSIs) for the FedRAMP 20x Phase Two Moderate pilot. It serves as the sole, authoritative reference that details:
+
+1.  The specific CLI commands used to gather evidence directly from the production environment for each KSI.
+2.  The sophisticated, automated validation logic applied to the collected data to determine compliance.
+3.  The technical justification for why each validation approach is sufficient to meet the security objectives of a Moderate impact system.
+
+This document replaces and supersedes previous versions of the `ksi-command-validation-reference.md` by integrating the precise implementation details from the `cli_command_register.json` and `cli_assertion_rules_full.py` files.
+
+---
+
+## 2.0 Methodology Framework
+
+### 2.1 Coverage Classification System
+Each KSI validation is classified based on the number of automated commands and the depth of the validation logic. This system quantifies the level of automation and sophistication applied to each indicator.
+
+| Coverage Level | Command Count | Validation Approach |
+| :--- | :--- | :--- |
+| **High Coverage** | 6+ commands | Multi-command, defense-in-depth validation directly measuring live system properties. |
+| **Medium Coverage** | 3-5 commands | Hybrid validation using multiple CLI commands, often supplemented by operational artifacts. |
+| **Low Coverage** | 1-2 commands | Validation relies primarily on the presence of procedural documentation or simple configuration checks. |
+
+### 2.2 Category Achievement Summary
+The following table summarizes the automation coverage across all KSI categories, reflecting the implementation for the Moderate baseline.
+
+| Category | High Coverage | Medium Coverage | Low Coverage | Total KSIs |
+| :--- | :--- | :--- | :--- | :--- |
+| **Cloud Native Architecture** | 8 | 0 | 0 | 8 |
+| **Service Configuration** | 10 | 0 | 0 | 10 |
+| **Monitoring, Logging, & Auditing** | 4 | 0 | 0 | 4 |
+| **Identity & Access Management** | 5 | 2 | 0 | 7 |
+| **Change Management** | 2 | 3 | 0 | 5 |
+| **Third-Party Resources** | 0 | 2 | 0 | 2 |
+| **Recovery Planning** | 1 | 2 | 1 | 4 |
+| **Incident Reporting** | 1 | 1 | 1 | 3 |
+| **Policy & Inventory** | 1 | 2 | 4 | 7 |
+| **Cybersecurity Education** | 0 | 0 | 3 | 3 |
+| **Total** | **32** | **12** | **9** | **53** |
+
+---
+
+## 3.0 Detailed KSI Validation Methodology
+
 # KSI Command Validation Technical Methodology
 
 **Official Technical Reference for FedRAMP 20x Phase One Assessment**
@@ -93,7 +145,7 @@ This official technical methodology document provides the **complete technical j
 
 **Technical Coverage Assessment**: **HIGH COVERAGE**
 - ✅ Multi-tier architecture validation
-- ✅ Network segmentation analysis  
+- ✅ Network segmentation analysis 
 - ✅ Workload placement verification
 - ✅ Database isolation assessment
 
@@ -383,7 +435,7 @@ This official technical methodology document provides the **complete technical j
 
 ---
 
-## 📊 **Monitoring, Logging & Auditing (6/6 KSIs - Complete Category Coverage)**
+## 📊 **Monitoring, Logging & Auditing (4/4 KSIs - Complete Category Coverage)**
 
 ### **KSI-MLA-01: Operate a SIEM or similar system for centralized, tamper-resistant logging**
 
@@ -432,7 +484,7 @@ This official technical methodology document provides the **complete technical j
 
 ### **KSI-MLA-03: Rapidly detect and remediate or mitigate vulnerabilities**
 
-**Security Objective**: Comprehensive vulnerability detection and response with enterprise-grade automated remediation
+**Security Objective**: Comprehensive vulnerability detection and response with enterprise-grade automated remediation. This KSI supersedes KSI-MLA-04 and KSI-MLA-06 by providing a holistic validation of the entire vulnerability management lifecycle from detection through remediation.
 
 | Command | Technical Justification | Coverage Area |
 |---------|------------------------|---------------|
@@ -449,28 +501,6 @@ This official technical methodology document provides the **complete technical j
 - ✅ Rapid detection capabilities
 - ✅ Automated remediation workflows
 - ✅ Enterprise vulnerability management
-
----
-
-### **KSI-MLA-04: Perform authenticated vulnerability scanning**
-
-**Security Objective**: Comprehensive authenticated vulnerability scanning with enterprise-grade multi-service coverage
-
-| Command | Technical Justification | Coverage Area |
-|---------|------------------------|---------------|
-| `aws inspector2 list-coverage` | **Scanning coverage**: Validates Inspector coverage for authenticated vulnerability scanning | Coverage Validation |
-| `aws inspector2 get-configuration` | **Service configuration**: Confirms Inspector service enablement and scanning configuration | Service Status |
-| `aws ec2 describe-instances` | **Instance scanning**: Analyzes EC2 instances available for authenticated scanning assessment | Instance Coverage |
-| `aws ecr describe-repositories` | **Container scanning**: Validates container registries for authenticated image vulnerability scanning | Container Security |
-| `aws lambda list-functions` | **Code analysis**: Confirms serverless functions for code vulnerability and dependency scanning | Code Security |
-| `aws ssm describe-instance-information` | **Agent coverage**: Validates Systems Manager agent coverage for system-level scanning | Agent Validation |
-| `aws securityhub get-findings --filters '{"ProductName":[{"Value":"Inspector","Comparison":"EQUALS"}]}' --max-results 20` | **Results integration**: Analyzes authenticated scanning results and findings integration | Results Analysis |
-| `aws organizations describe-organization` | **Enterprise scanning**: Confirms organization-wide authenticated vulnerability scanning coverage | Enterprise Coverage |
-
-**Technical Coverage Assessment**: **HIGH COVERAGE**
-- ✅ Multi-service scanning validation
-- ✅ Authenticated assessment capabilities
-- ✅ Enterprise-wide coverage
 
 ---
 
@@ -495,30 +525,6 @@ This official technical methodology document provides the **complete technical j
 - ✅ Complete IaC lifecycle validation
 - ✅ Automated testing verification
 - ✅ Enterprise governance assessment
-
----
-
-### **KSI-MLA-06: Centrally track and prioritize mitigation/remediation of identified vulnerabilities**
-
-**Security Objective**: Comprehensive centralized vulnerability tracking with enterprise-grade lifecycle management
-
-| Command | Technical Justification | Coverage Area |
-|---------|------------------------|---------------|
-| `aws securityhub get-findings --max-results 100` | **Centralized findings**: Validates Security Hub findings for centralized vulnerability tracking | Central Tracking |
-| `aws inspector2 list-findings --max-results 100` | **Vulnerability prioritization**: Confirms Inspector findings for automated assessment and prioritization | Priority Management |
-| `aws securityhub get-insights --max-results 50` | **Trend analysis**: Analyzes Security Hub insights for vulnerability trend and pattern analysis | Trend Analytics |
-| `aws ssm describe-patch-groups` | **Remediation tracking**: Validates Systems Manager patch groups for vulnerability remediation automation | Remediation Automation |
-| `aws ssm describe-patch-baselines` | **Remediation workflows**: Confirms patch baseline configurations for systematic remediation | Workflow Management |
-| `aws config get-compliance-summary-by-config-rule` | **Compliance tracking**: Validates Config rule compliance for configuration vulnerability tracking | Compliance Tracking |
-| `aws cloudwatch describe-alarms --alarm-name-prefix SecurityHub` | **Automated alerting**: Confirms CloudWatch alarms for vulnerability notification workflows | Alert Automation |
-| `aws sns list-topics` | **Stakeholder communication**: Validates SNS topics for vulnerability notification and communication | Communication |
-| `aws events list-rules --name-prefix SecurityHub` | **Response orchestration**: Analyzes EventBridge rules for automated vulnerability response workflows | Response Automation |
-| `aws organizations describe-organization` | **Enterprise tracking**: Confirms organization-wide vulnerability tracking policies and governance | Enterprise Governance |
-
-**Technical Coverage Assessment**: **HIGH COVERAGE**
-- ✅ Comprehensive vulnerability lifecycle management
-- ✅ Automated prioritization and response
-- ✅ Enterprise governance integration
 
 ---
 
@@ -579,6 +585,40 @@ This official technical methodology document provides the **complete technical j
 - ✅ Role-based authentication validation
 - ✅ Insecure pattern detection
 - ✅ Instance profile verification
+
+---
+
+### **Change Management (2/5 KSIs)**
+
+### **KSI-CMT-04: Have documented change management procedure**
+**Security Objective**: Codified change management procedure with an enforced, auditable approval workflow.
+
+| Command | Technical Justification | Coverage Area |
+|---------|------------------------|---------------|
+| `aws ssm list-documents --document-filter-list 'key=DocumentType,value=ChangeTemplate'` | **Procedure Codification**: Validates that change procedures are codified as executable SSM Change Templates. | Process Automation |
+| `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=StartChangeRequestExecution` | **Approval Enforcement**: Confirms that the approval workflow is consistently initiated for changes, providing an audit trail. | Governance & Audit |
+| `aws ssm get-document` | **Workflow Inspection**: Allows inspection of individual templates to verify specific approvers and runbooks. | Workflow Validation |
+
+**Technical Coverage Assessment**: **MEDIUM COVERAGE**
+- ✅ Verifies the procedure is technically implemented, not just documented.
+- ✅ Provides auditable proof that the approval process is followed.
+- ✅ Aligns with automated change management goals.
+
+---
+
+### **KSI-CMT-05: Evaluate risk and potential impact of any change**
+**Security Objective**: Technical risk and impact assessment through automated, event-driven deployment workflows.
+
+| Command | Technical Justification | Coverage Area |
+|---------|------------------------|---------------|
+| `aws stepfunctions list-executions` | **Workflow Activity**: Lists recent executions of the deployment state machine, proving the process is active. | Operational Status |
+| `aws stepfunctions describe-execution` | **Impact Assessment Validation**: Retrieves the final output of each execution to confirm that the `impactAssessment.status` field is 'GENERATED'. | Risk Assessment |
+| `aws s3 cp` | **Artifact Retrieval**: (Conceptual) Allows retrieval of the generated `manifest.json` for detailed audit of the assessed impact. | Audit & Forensics |
+
+**Technical Coverage Assessment**: **MEDIUM COVERAGE**
+- ✅ Validates impact assessment as an automated step within a workflow.
+- ✅ Provides direct, machine-readable evidence of assessment completion.
+- ✅ Eliminates reliance on manual documentation.
 
 ---
 
@@ -694,6 +734,39 @@ This official technical methodology document provides the **complete technical j
 
 ---
 
+### **Third-Party Resources (2/2 KSIs)**
+
+### **KSI-TPR-01: Identify all third-party information resources**
+**Security Objective**: Automated discovery of external integrations and third-party software components. This KSI supersedes KSI-TPR-02.
+
+| Command | Technical Justification | Coverage Area |
+|---------|------------------------|---------------|
+| `aws iam list-roles` | **Cross-Account Trust**: Identifies IAM roles with trust policies allowing access from external AWS accounts, a primary indicator of third-party integration. | Identity Integration |
+| `aws ec2 describe-vpc-peering-connections` | **Network Integration**: Discovers VPC peering connections to external networks, indicating third-party infrastructure dependencies. | Network Integration |
+| `aws inspector2 list-findings` | **Software Components**: Analyzes AWS Inspector findings to inventory third-party software packages and libraries in use on compute resources. | Software Inventory |
+
+**Technical Coverage Assessment**: **MEDIUM COVERAGE**
+- ✅ Automated discovery of AWS-level integrations.
+- ✅ Identifies third-party software dependencies via vulnerability scans.
+- ✅ Provides technical evidence of third-party connections.
+
+---
+
+### **KSI-TPR-03: Identify and prioritize mitigation of potential supply chain risks**
+**Security Objective**: Proactive identification and risk-based prioritization of supply chain vulnerabilities in third-party software.
+
+| Command | Technical Justification | Coverage Area |
+|---------|------------------------|---------------|
+| `aws inspector2 list-findings --filter-criteria '{"findingStatus": [{"comparison": "EQUALS", "value": "ACTIVE"}]}'` | **Vulnerability Detection**: Leverages AWS Inspector to automatically scan and identify vulnerabilities within third-party software components. | Vulnerability Scanning |
+| `aws securityhub get-findings` | **Risk Prioritization**: Uses Security Hub to aggregate Inspector findings, which are automatically prioritized by severity, providing a risk-based view. | Risk Management |
+
+**Technical Coverage Assessment**: **MEDIUM COVERAGE**
+- ✅ Automates the detection of software supply chain vulnerabilities.
+- ✅ Provides a risk-informed basis for prioritization through severity ratings.
+- ✅ Directly measures a key aspect of supply chain risk management.
+
+---
+
 ### **KSI-PIY-04: Build security considerations into SDLC and align with CISA Secure By Design principles**
 
 **Security Objective**: Secure development lifecycle validation through code repositories and documentation
@@ -710,31 +783,16 @@ This official technical methodology document provides the **complete technical j
 
 ---
 
-## 📄 **Low Coverage KSIs: Evidence-Based Validation (12 KSIs)**
+## 📄 **Low Coverage KSIs: Evidence-Based Validation (9 KSIs)**
 
-### **Change Management Process Documentation (3/5 KSIs)**
+### **Change Management (1/5 KSIs)**
 
 ### **KSI-CMT-03: Implement automated testing and validation of changes prior to deployment**
 **Validation Approach**: Comprehensive Infrastructure as Code testing evidence through tiered documentation requirements covering automated testing proof, Checkov scanning, SARIF reporting, CI/CD integration, and enterprise governance standards.
 
-### **KSI-CMT-04: Have documented change management procedure**
-**Validation Approach**: Comprehensive change management documentation through foundation procedures, process management workflows, governance frameworks, automation integration, and enterprise standards with graduated scoring methodology.
-
-### **KSI-CMT-05: Evaluate risk and potential impact of any change**
-**Validation Approach**: Comprehensive risk and impact evaluation documentation through foundation assessment procedures, advanced risk management methodologies, governance frameworks, automation integration, and enterprise risk management standards.
-
 ---
 
-### **Third-Party Resources (4/4 KSIs - Complete Low Coverage)**
-
-### **KSI-TPR-01: Identify all third-party information resources**
-**Validation Approach**: Basic cross-account role detection combined with comprehensive third-party inventory documentation including SaaS services, vendor registries, and integration mapping.
-
-### **KSI-TPR-02: Regularly confirm services handling federal information are FedRAMP authorized**
-**Validation Approach**: Comprehensive federal information service mapping documentation with FedRAMP authorization verification, security configuration compliance, and regular verification processes.
-
-### **KSI-TPR-03: Identify and prioritize mitigation of potential supply chain risks**
-**Validation Approach**: Supply chain risk assessment documentation including risk identification, mitigation planning, vendor risk matrices, and supply chain security frameworks.
+### **Third-Party Resources (0/2 KSIs)**
 
 ### **KSI-TPR-04: Monitor third party software for upstream vulnerabilities**
 **Validation Approach**: Inspector vulnerability findings for third-party components combined with contractual monitoring requirements, upstream vulnerability procedures, and notification agreements.
