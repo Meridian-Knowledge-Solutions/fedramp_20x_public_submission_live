@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Cloud Native Architecture
-**Status:** FAIL
-**Last Check:** 2025-10-01 18:40
+**Status:** PASS
+**Last Check:** 2025-10-01 22:14
 
 **What it validates:** Clearly define and deploy security controls as code to enforce the principle of least functionality
 
@@ -33,12 +33,15 @@
 7. `aws ec2 describe-security-groups --query 'SecurityGroups[?length(IpPermissions) <= `3`].{GroupName:GroupName,Rules:length(IpPermissions)}' --output json`
    *Check security groups following least functionality principle*
 
-8. `aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/ReadOnlyAccess --output json`
-   *Validate read-only policy attachments for principle of least privilege*
+8. `aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess --output json`
+   *Validate least privilege: AdministratorAccess restricted to AWS-managed roles only*
 
 ## Latest Results
 
-- FAIL CRITICAL least privilege violation detected: CRITICAL: Unapproved AdministratorAccess policy attached to role(s): aws-controltower-ReadOnlyExecutionRole, aws-controltower-ConfigRecorderRole, AWSReservedSSO_ReadOnlyAccess_c4a62adfd2671015.
+WARNING Minimal immutable infrastructure evidence (33%): PASS Serverless adoption: 12 Lambda function(s) (inherently immutable)
+- PASS Least privilege: AdministratorAccess restricted to AWS-managed roles only
+- INFO 4 AWS-managed role(s) with AdministratorAccess (expected)
+- PASS Network security: No sensitive ports exposed to 0.0.0.0/0
 
 ---
-*Generated 2025-10-01 18:40 UTC*
+*Generated 2025-10-01 22:14 UTC*

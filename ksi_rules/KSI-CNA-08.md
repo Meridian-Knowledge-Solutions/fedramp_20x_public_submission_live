@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** FAIL
-**Last Check:** 2025-10-01 18:40
+**Last Check:** 2025-10-01 22:14
 
 **What it validates:** Use native security capabilities including agent-based security
 
@@ -32,11 +32,11 @@
 
 ## Latest Results
 
-FAIL Insufficient automated enforcement for Moderate baseline (12%): Config remediation required. FAIL Security Hub not enabled - required for centralized security monitoring
+FAIL Insufficient automated enforcement for Moderate baseline (31%): Config remediation required. PASS Security Hub: 1 standard(s) enabled - 1.0.0
 - FAIL No AWS Config rules detected - required for compliance automation
 - FAIL No Config remediations - automated enforcement not proven
 -   ↳ Moderate baseline requires automated response to non-compliance
 - PASS Custom automation: 2 security Lambda function(s)
 
 ---
-*Generated 2025-10-01 18:40 UTC*
+*Generated 2025-10-01 22:14 UTC*

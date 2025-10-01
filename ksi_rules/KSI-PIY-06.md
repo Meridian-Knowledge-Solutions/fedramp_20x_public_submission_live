@@ -1,38 +1,43 @@
-# KSI-PIY-06: Maintain policies for incident response and reporting
+# KSI-PIY-06: Have dedicated security staff and budget with executive support
 
 ## Overview
 
 **Category:** Policy and Inventory
-**Status:** FAIL
-**Last Check:** 2025-10-01 18:40
+**Status:** PASS
+**Last Check:** 2025-10-01 22:14
 
-**What it validates:** Maintain policies for incident response and reporting
+**What it validates:** Have dedicated security staff and budget with executive support
 
-**Why it matters:** Validates comprehensive incident management from basic response procedures to enterprise-grade automated detection and forensics
+**Why it matters:** Validates organizational commitment to security through active personnel engagement, tooling investment, monitoring capabilities, and governance structure appropriate to organization size
 
 ## Validation Method
 
-1. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=ConsoleLogin --max-items 50 --output json`
-   *Check CloudTrail for authentication incident detection*
+1. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=ConsoleLogin --start-time $(date -u -d '30 days ago' '+%Y-%m-%dT%H:%M:%S') --max-items 50 --output json`
+   *Measure active security team engagement*
 
-2. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateAccessKey --max-items 50 --output json`
-   *Validate CloudTrail for access key creation monitoring*
+2. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=PutConfigRule --start-time $(date -u -d '90 days ago' '+%Y-%m-%dT%H:%M:%S') --max-items 50 --output json`
+   *Evidence of Config rule deployment activity*
 
-3. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=DeleteBucket --max-items 50 --output json`
-   *Check CloudTrail for destructive action monitoring*
+3. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=PutMetricAlarm --start-time $(date -u -d '90 days ago' '+%Y-%m-%dT%H:%M:%S') --max-items 50 --output json`
+   *Evidence of CloudWatch alarm deployment activity*
 
-4. `aws lambda list-functions --query 'Functions[?Tags.Purpose==`IncidentResponse`]' --output json || echo '{"Functions": []}'`
-   *Validate Lambda functions for automated incident response*
+4. `aws configservice describe-config-rules --output json`
+   *Count deployed Config rules*
 
-5. `aws configservice describe-config-rules --query 'ConfigRules[?contains(ConfigRuleName, `incident`) || contains(ConfigRuleName, `security`)].ConfigRuleName' --output json`
-   *Check Config rules for incident detection automation*
+5. `aws cloudwatch describe-alarms --query 'MetricAlarms[?contains(AlarmName, `Security`) || contains(AlarmName, `Unauthorized`) || contains(AlarmName, `IAM`) || contains(AlarmName, `Root`)]' --output json`
+   *Count security monitoring alarms*
 
-6. `aws iam list-roles --query 'Roles[*].RoleName' --output json`
-   *Validate IAM roles for incident response team access*
+6. `aws lambda list-functions --query 'Functions[?contains(FunctionName, `security`) || contains(FunctionName, `incident`) || contains(FunctionName, `compliance`)]' --output json`
+   *Count security automation functions*
 
 ## Latest Results
 
-- FAIL: Insufficient security commitment (0/4). Lacking evidence in: Active Principals Identified, Recent Iam Management, Security Monitoring Active, Security Automation Present.
+PASS Adequate security commitment (6/10 = 60%): PASS Active engagement: 45 logins, 2 principal(s)
+- PASS Config deployment activity: 50 rule deployment(s)
+- PASS Alarm deployment activity: 13 alarm deployment(s)
+- PASS Config rules deployed: 327 rules
+- FAIL No security alarms configured
+- FAIL No security Lambda functions
 
 ---
-*Generated 2025-10-01 18:40 UTC*
+*Generated 2025-10-01 22:14 UTC*

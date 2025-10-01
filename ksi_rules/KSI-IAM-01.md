@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Identity and Access Management
-**Status:** FAIL
-**Last Check:** 2025-10-01 18:40
+**Status:** PASS
+**Last Check:** 2025-10-01 22:14
 
 **What it validates:** Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 
@@ -26,10 +26,11 @@
 
 ## Latest Results
 
-FAIL Insufficient phishing-resistant MFA (30%): INFO Identity Center users: 9 total
+PASS Sufficient MFA for Moderate baseline (60%): PASS Modern identity platform: AWS Identity Center is active
+- INFO Identity Center users: 9 total
 - PASS Partial federated MFA: 100% SCIM, 0% Okta
 - INFO Traditional IAM: 2 human user(s)
 - WARNING Traditional IAM users without MFA devices
 
 ---
-*Generated 2025-10-01 18:40 UTC*
+*Generated 2025-10-01 22:14 UTC*

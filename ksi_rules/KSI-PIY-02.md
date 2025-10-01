@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-10-01 18:40
+**Last Check:** 2025-10-01 22:14
 
 **What it validates:** Maintain an inventory of all software installed on systems
 
@@ -19,4 +19,4 @@
 - PASS Security policies outlining objectives: PASS Core security policies: personnel_security_policy.pdf, data_classification_handling_policy.pdf, security_policy_collection_repository.zip
 
 ---
-*Generated 2025-10-01 18:40 UTC*
+*Generated 2025-10-01 22:14 UTC*

@@ -15,8 +15,8 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-CNA-01](KSI-CNA-01.md): Implement DDoS protection and defense-in-depth network security
 - [PASS] [KSI-CNA-02](KSI-CNA-02.md): Segment network and compute resources into security zones
 - [PASS] [KSI-CNA-03](KSI-CNA-03.md): Restrict public network accessibility except through a limited number of managed access points
-- [FAIL] [KSI-CNA-04](KSI-CNA-04.md): Clearly define and deploy security controls as code to enforce the principle of least functionality
-- [FAIL] [KSI-CNA-05](KSI-CNA-05.md): Use fully qualified domain names and encrypt information in transit
+- [PASS] [KSI-CNA-04](KSI-CNA-04.md): Clearly define and deploy security controls as code to enforce the principle of least functionality
+- [PASS] [KSI-CNA-05](KSI-CNA-05.md): Protect against denial of service attacks and unwanted spam
 - [PASS] [KSI-CNA-06](KSI-CNA-06.md): Deploy highly available components and services
 - [PASS] [KSI-CNA-07](KSI-CNA-07.md): Maximize use of managed services and cloud resources
 - [FAIL] [KSI-CNA-08](KSI-CNA-08.md): Use native security capabilities including agent-based security
@@ -29,7 +29,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Identity and Access Management
 
-- [FAIL] [KSI-IAM-01](KSI-IAM-01.md): Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
+- [PASS] [KSI-IAM-01](KSI-IAM-01.md): Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 - [PASS] [KSI-IAM-02](KSI-IAM-02.md): Implement enterprise-wide identity federation
 - [PASS] [KSI-IAM-03](KSI-IAM-03.md): Implement least privilege access via role-based access control policies
 - [PASS] [KSI-IAM-04](KSI-IAM-04.md): Clearly define user roles and implement user-to-role mapping
@@ -59,7 +59,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-PIY-03](KSI-PIY-03.md): Define baselines for approved hardware, software, and firmware components
 - [PASS] [KSI-PIY-04](KSI-PIY-04.md): Maintain an inventory of authorized software
 - [PASS] [KSI-PIY-05](KSI-PIY-05.md): Maintain a data protection policy that addresses data retention requirements
-- [FAIL] [KSI-PIY-06](KSI-PIY-06.md): Maintain policies for incident response and reporting
+- [PASS] [KSI-PIY-06](KSI-PIY-06.md): Have dedicated security staff and budget with executive support
 - [PASS] [KSI-PIY-07](KSI-PIY-07.md): Document the system security policy
 
 ## Recovery Planning
@@ -91,9 +91,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 56
-- **Passing:** 49
-- **Failing:** 7
+- **Passing:** 53
+- **Failing:** 3
 - **Not Tested:** 0
 
 ---
-*Generated 2025-10-01 18:40 UTC*
+*Generated 2025-10-01 22:14 UTC*

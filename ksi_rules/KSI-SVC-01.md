@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 18:40
+**Last Check:** 2025-10-01 22:14
 
 **What it validates:** Maintain hardened system images and configurations
 
@@ -47,11 +47,11 @@
 
 ## Latest Results
 
-PASS Strong multi-layer defense and automated compliance (82%): PASS Network hardening foundation: 15 security groups (15 hardened, 0 require review)
+PASS Excellent network and system hardening with comprehensive governance (92%): PASS Network hardening foundation: 15 security groups (15 hardened, 0 require review)
 - PASS System configuration management: 6 instances configured
 - PASS Comprehensive system management: 6/6 instances under SSM (100% coverage)
 - PASS Automated patch management: 17 patch baselines configured
-- INFO Config service available but no rules configured
+- PASS Configuration compliance: 327 active Config rules (327 security-focused)
 - INFO 1 default Network ACLs (consider custom rules for enhanced security)
 - PASS Threat detection enabled: 1 GuardDuty detectors monitoring for threats
 - PASS Application layer protection: 1 Web ACLs configured
@@ -60,4 +60,4 @@ PASS Strong multi-layer defense and automated compliance (82%): PASS Network har
 - PASS Advanced organization features: SCPs and advanced governance capabilities enabled
 
 ---
-*Generated 2025-10-01 18:40 UTC*
+*Generated 2025-10-01 22:14 UTC*

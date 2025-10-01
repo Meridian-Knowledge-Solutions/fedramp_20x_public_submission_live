@@ -4,7 +4,7 @@
 
 **Category:** Change Management
 **Status:** FAIL
-**Last Check:** 2025-10-01 18:40
+**Last Check:** 2025-10-01 22:14
 
 **What it validates:** Use codified change templates with approval rules
 
@@ -12,15 +12,15 @@
 
 ## Validation Method
 
-1. `aws ssm list-documents --document-filter-list 'key=DocumentType,value=Automation' --query 'DocumentIdentifiers[?contains(Name, `Change`) || contains(Name, `Template`)].{Name:Name}' --output json`
-   *Check SSM change management templates with approval workflows*
+1. `aws ssm list-documents --document-filter-list 'key=DocumentType,value=Automation' --query 'DocumentIdentifiers[?contains(Name, `Change`) || contains(Name, `Template`) || contains(Name, `Approval`)]' --output json`
+   *List SSM Automation documents for change management*
 
-2. `DOC_NAME=$(aws ssm list-documents --document-filter-list 'key=DocumentType,value=Automation' --query 'DocumentIdentifiers[0].Name' --output text 2>/dev/null || echo 'none'); if [ "$DOC_NAME" != "none" ]; then aws ssm get-document --name "$DOC_NAME" --output json; else echo '{"Content": null}'; fi`
-   *Validate change template content and approval configuration*
+2. `FIRST_DOC=$(aws ssm list-documents --document-filter-list 'key=DocumentType,value=Automation' --query 'DocumentIdentifiers[0].Name' --output text 2>/dev/null); if [ -n "$FIRST_DOC" ] && [ "$FIRST_DOC" != "None" ]; then aws ssm get-document --name "$FIRST_DOC" --document-format JSON --output json 2>/dev/null || echo '{"Content": null, "Name": "'$FIRST_DOC'", "Status": "RetrievalFailed"}'; else echo '{"Content": null, "Status": "NoDocuments"}'; fi`
+   *Retrieve first automation document content to validate approval workflow configuration*
 
 ## Latest Results
 
 - FAIL No SSM Change Manager templates found - change procedure not codified
 
 ---
-*Generated 2025-10-01 18:40 UTC*
+*Generated 2025-10-01 22:14 UTC*
