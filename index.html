@@ -5640,7 +5640,7 @@ function openEmailClient(type) {
     if (type === 'registration') {
         email = 'fedramp_20x@meridianks.com';
         subject = encodeURIComponent('Access request to authorization data');
-        body = encodeURIComponent(`Agency: [Your Agency]\nComponent: [Your Component/Bureau]\nPrimary Contact: [Name and Title]\nEmail: [Contact Email]\nAuthorization: [Current ATO/FedRAMP Details]\n\nPlease register us for the upcoming quarterly review.`);
+        body = encodeURIComponent(`Agency: [Your Agency]\nComponent: [Your Component/Bureau]\nPrimary Contact: [Name and Title]\nEmail: [Contact Email]\nAuthorization: [Current ATO/FedRAMP Details]\n\nPlease register us for the upcoming  review.`);
         closeCustomModal('registration-modal');
     } else if (type === 'feedback') {
         email = 'fedramp_20x@meridianks.com';
@@ -5924,7 +5924,7 @@ async function loadQuarterlyReportData() {
             <div class="contact-info">
                 <h4>Contact Information:</h4>
                 <p><strong>Email:</strong> security@meridianks.com</p>
-                <p><strong>Subject:</strong> "Quarterly Review Registration"</p>
+                <p><strong>Subject:</strong> "Agency Registration"</p>
             </div>
         </div>
         <div class="custom-modal-footer">
