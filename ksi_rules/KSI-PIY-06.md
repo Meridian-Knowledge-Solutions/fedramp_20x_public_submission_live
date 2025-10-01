@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** FAIL
-**Last Check:** 2025-09-30 03:00
+**Last Check:** 2025-10-01 03:22
 
 **What it validates:** Have staff and budget for security commensurate with the size, complexity, scope, executive priorities, and risk of the service offering that demonstrates commitment to delivering a secure service
 
@@ -38,4 +38,4 @@
 - FAIL: Insufficient security commitment (0/4). Lacking evidence in: Active Principals Identified, Recent Iam Management, Security Monitoring Active, Security Automation Present.
 
 ---
-*Generated 2025-09-30 03:00 UTC*
+*Generated 2025-10-01 03:22 UTC*

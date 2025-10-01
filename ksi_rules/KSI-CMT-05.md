@@ -1,22 +1,26 @@
-# KSI-CMT-05: Evaluate the risk and potential impact of any change
+# KSI-CMT-05: Evaluate the risk and potential impact of any change using a generated deployment manifest
 
 ## Overview
 
 **Category:** Change Management
-**Status:** PASS
-**Last Check:** 2025-09-30 03:00
+**Status:** FAIL
+**Last Check:** 2025-10-01 03:22
 
-**What it validates:** Evaluate the risk and potential impact of any change
+**What it validates:** Evaluate the risk and potential impact of any change using a generated deployment manifest
 
-**Why it matters:** Manual evidence required - risk assessment procedures, impact analysis documentation, and change evaluation frameworks
+**Why it matters:** Validates impact assessment by querying the final output of successful Step Function executions to confirm an impact manifest was generated.
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-CMT-05/ for risk_assessment_procedures.pdf, change_impact_analysis_template.xlsx, risk_evaluation_framework.pdf, and change_approval_matrix.pdf
+1. `aws stepfunctions list-executions --state-machine-arn <YOUR_STATE_MACHINE_ARN> --status-filter SUCCEEDED`
+   *Lists recent successful executions of the deployment workflow.*
+
+2. `aws stepfunctions describe-execution --execution-arn <EXECUTION_ARN_PLACEHOLDER>`
+   *Retrieves the detailed output of a specific execution. Your 'run_all_cli_commands.py' script will need to run this for each execution found by the first command.*
 
 ## Latest Results
 
-- PASS Risk and impact evaluation procedures - expand analysis methods (10%): PASS Risk evaluation documentation found: Risk Assessment Procedure for Change Management (KSI-CMT-05).pdf, Change Impact Analysis Template (KSI-CMT-05).pdf
+- FAIL: No recent successful deployment workflow executions were found.
 
 ---
-*Generated 2025-09-30 03:00 UTC*
+*Generated 2025-10-01 03:22 UTC*

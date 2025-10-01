@@ -8,7 +8,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-CMT-02](KSI-CMT-02.md): Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
 - [PASS] [KSI-CMT-03](KSI-CMT-03.md): Implement automated testing and validation of changes prior to deployment
 - [FAIL] [KSI-CMT-04](KSI-CMT-04.md): Have a documented and implemented change management procedure
-- [PASS] [KSI-CMT-05](KSI-CMT-05.md): Evaluate the risk and potential impact of any change
+- [FAIL] [KSI-CMT-05](KSI-CMT-05.md): Evaluate the risk and potential impact of any change using a generated deployment manifest
 
 ## Cloud Native Architecture
 
@@ -16,9 +16,10 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-CNA-02](KSI-CNA-02.md): Design systems to minimize the attack surface and minimize lateral movement if compromised
 - [PASS] [KSI-CNA-03](KSI-CNA-03.md): Use logical networking and related capabilities to enforce traffic flow controls
 - [PASS] [KSI-CNA-04](KSI-CNA-04.md): Use immutable infrastructure with strictly defined functionality and privileges by default.
-- [PASS] [KSI-CNA-05](KSI-CNA-05.md): Have denial of service protection
-- [PASS] [KSI-CNA-06](KSI-CNA-06.md): Design systems for high availability and rapid recovery
+- [FAIL] [KSI-CNA-05](KSI-CNA-05.md): Protect against denial of service attacks and unwanted spam
+- [FAIL] [KSI-CNA-06](KSI-CNA-06.md): Design systems for high availability and rapid recovery
 - [PASS] [KSI-CNA-07](KSI-CNA-07.md): Ensure cloud-native information resources are implemented based on host provider's best practices and documented guidance
+- [FAIL] [KSI-CNA-08](KSI-CNA-08.md): Use automated services to persistently assess the security posture of all services and automatically enforce secure operations.
 
 ## Cybersecurity Education
 
@@ -63,7 +64,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Recovery Planning
 
-- [PASS] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+- [FAIL] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
 - [PASS] [KSI-RPL-02](KSI-RPL-02.md): Develop and maintain a recovery plan that aligns with defined recovery objectives
 - [PASS] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
 - [PASS] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
@@ -89,10 +90,10 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Summary
 
-- **Total KSIs:** 55
-- **Passing:** 52
-- **Failing:** 3
+- **Total KSIs:** 56
+- **Passing:** 48
+- **Failing:** 8
 - **Not Tested:** 0
 
 ---
-*Generated 2025-09-30 03:00 UTC*
+*Generated 2025-10-01 03:22 UTC*

@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Cloud Native Architecture
-**Status:** PASS
-**Last Check:** 2025-09-30 03:00
+**Status:** FAIL
+**Last Check:** 2025-10-01 03:22
 
 **What it validates:** Design systems for high availability and rapid recovery
 
@@ -41,15 +41,7 @@
 
 ## Latest Results
 
-PASS Excellent high availability design for pilot environment (100%): PASS Strong network HA: 8 subnets across 2 AZs
-- PASS Balanced subnet distribution across availability zones
-- PASS Application HA: 1 multi-AZ load balancer(s) providing traffic distribution
-- PASS Active backup strategy: 2 AWS Backup plan(s) with recent execution
-- PASS Storage redundancy: 7 S3 bucket(s) with built-in 11-9s durability
-- PASS Database HA-ready: 1 RDS instance(s) with multi-AZ subnet groups (easily convertible)
-- INFO Compute HA via Infrastructure as Code (Terraform-managed instances acceptable for pilot)
-- PASS Bonus: Storage recovery via 562 EBS snapshot(s)
-- PASS DNS infrastructure: 1 Route 53 hosted zone(s)
+- Exception during evaluation: name 'compliance_percentage' is not defined
 
 ---
-*Generated 2025-09-30 03:00 UTC*
+*Generated 2025-10-01 03:22 UTC*
