@@ -46,6 +46,50 @@ The following table summarizes the automation coverage across all KSI categories
 | **Cybersecurity Education** | 0 | 0 | 3 | 3 |
 | **Total** | **32** | **12** | **9** | **53** |
 
+### 2.3 Hard Fail Methodology
+
+Our KSI validation ruleset employs two distinct evaluation models: **graduated scoring** for measuring security maturity and **hard fails** for enforcing non-negotiable security baselines. While most KSIs use a graduated scoring model, a small, strategic subset of six KSIs are designed to fail immediately if a foundational requirement is not met, regardless of other positive findings.
+
+This dual approach ensures that while we can measure and reward progressive maturity in areas like defense-in-depth, we maintain an uncompromising stance on a few critical, foundational security principles where any deficiency constitutes an unacceptable risk.
+
+## KSIs with Hard Fail Conditions
+
+A hard fail is reserved for controls where the absence of a single, specific component represents a complete failure of the control's intent. The following six KSIs have hard fail conditions:
+
+* **KSI-CNA-04** (Immutability & Least Privilege): Fails if the `AdministratorAccess` policy is found on unapproved roles or if sensitive ports (e.g., SSH port 22) are exposed to `0.0.0.0/0`. This enforces a strict, non-negotiable least-privilege stance.
+
+* **KSI-CNA-08** (Automated Security Posture): Fails if there is no direct proof of automated enforcement, such as AWS Config remediation actions or SSM State Manager associations. The control explicitly requires enforcement, making its absence a total failure.
+
+* **KSI-CMT-01** (Log System Modifications): Fails if no CloudTrail trails are configured. Without this foundational service, there is no authoritative log of system modifications, rendering the control completely unmet.
+
+* **KSI-IAM-02** (Passwordless & MFA): Fails if the environment has neither a passwordless authentication method (like SAML/SSO) nor a strong traditional security posture (MFA + strong password policy). This ensures a minimum baseline for user authentication security.
+
+* **KSI-IAM-03** (Service Account Security): Fails if the account lacks a foundational role-based architecture, indicating that insecure practices like using IAM users for services are likely prevalent.
+
+* **KSI-RPL-02** (Recovery Plan): Fails if the required PDF documents outlining the recovery plan are not found in the evidence directory. The control is specifically about maintaining documentation, so its absence is a complete failure.
+
+## The Graduated Scoring Model for Maturity
+
+The majority of KSIs use a graduated scoring model. This is appropriate for controls where security is achieved through multiple layers and a "defense-in-depth" approach. A perfect example is **KSI-CNA-01** (Configure ALL information resources to limit inbound and outbound traffic).
+
+The evaluation for this KSI assesses multiple components, including Security Groups, Network ACLs, WAF, and VPC Endpoints. An environment could have strong Security Group rules but lack a WAF. A hard fail would be inappropriate here, as some effective controls are still in place. The graduated score correctly identifies this as a "Moderate" or "Basic" implementation, reflecting its security maturity without declaring a total failure.
+
+This approach allows us to measure progress and reward incremental improvements, which is more effective for complex, multi-faceted security domains.
+
+## Rationale for CNA-08's Hard Fail Requirement
+
+**KSI-CNA-08** deserves special attention as a new Phase 2 Moderate KSI. Its hard fail requirement represents alignment with Phase 2's philosophy shift:
+
+1. **Explicit Control Text Mandate**: The RFC states "automatically **enforce** secure operations" - an explicit action requirement, not an assessment-only control.
+
+2. **Control Mapping Justification**: Maps to CA-2.1 (Independent Assessors) and CA-7.1 (Continuous Monitoring), both of which emphasize actionable assessment, not passive observation.
+
+3. **Phase 2 Philosophy**: RFC-0014 emphasizes "truly automated and opinionated validation" and "demonstrating participation and involvement" - requiring proof of actual enforcement operations, not just infrastructure presence.
+
+4. **Addresses Structural Criticism**: This implementation directly responds to identified weaknesses where KSIs validated "infrastructure presence rather than actual security posture validation."
+
+_The enforcement requirement is philosophically more aligned with Phase 2's stated objectives than some existing Moderate KSIs (SVC-08/09/10), which may warrant future tightening._
+
 ---
 
 ## 3.0 Detailed KSI Validation Methodology
