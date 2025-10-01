@@ -4,7 +4,7 @@
 
 **Category:** Change Management
 **Status:** FAIL
-**Last Check:** 2025-10-01 08:13
+**Last Check:** 2025-10-01 18:40
 
 **What it validates:** Use codified change templates with approval rules
 
@@ -23,4 +23,4 @@
 - FAIL No SSM Change Manager templates found - change procedure not codified
 
 ---
-*Generated 2025-10-01 08:13 UTC*
+*Generated 2025-10-01 18:40 UTC*

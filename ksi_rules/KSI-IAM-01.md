@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** FAIL
-**Last Check:** 2025-10-01 08:13
+**Last Check:** 2025-10-01 18:40
 
 **What it validates:** Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 
@@ -32,4 +32,4 @@ FAIL Insufficient phishing-resistant MFA (30%): INFO Identity Center users: 9 to
 - WARNING Traditional IAM users without MFA devices
 
 ---
-*Generated 2025-10-01 08:13 UTC*
+*Generated 2025-10-01 18:40 UTC*

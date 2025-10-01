@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** FAIL
-**Last Check:** 2025-10-01 08:13
+**Last Check:** 2025-10-01 18:40
 
 **What it validates:** Clearly define and deploy security controls as code to enforce the principle of least functionality
 
@@ -41,4 +41,4 @@
 - FAIL CRITICAL least privilege violation detected: CRITICAL: Unapproved AdministratorAccess policy attached to role(s): aws-controltower-ReadOnlyExecutionRole, aws-controltower-ConfigRecorderRole, AWSReservedSSO_ReadOnlyAccess_c4a62adfd2671015.
 
 ---
-*Generated 2025-10-01 08:13 UTC*
+*Generated 2025-10-01 18:40 UTC*
