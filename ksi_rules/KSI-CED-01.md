@@ -1,22 +1,22 @@
-# KSI-CED-01: Ensure all employees receive security awareness training
+# KSI-CED-01: Provide role-based security training for personnel
 
 ## Overview
 
 **Category:** Cybersecurity Education
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Ensure all employees receive security awareness training
+**What it validates:** Provide role-based security training for personnel
 
-**Why it matters:** Manual evidence required - security awareness training programs, completion tracking, and employee training documentation
+**Why it matters:** Validates role-based security training from basic awareness to enterprise-grade continuous education and compliance tracking
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-CED-01/ for security_awareness_training_program.pdf, employee_training_completion_tracking.xlsx, training_materials.pdf, and annual_security_training_plan.pdf
+1. **Manual Review:** Manual review of training records, completion certificates, and role-based security education documentation
 
 ## Latest Results
 
 - PASS Security awareness training evidence: cyber_security_training.png, security_training_roster.png, fedramp_role_based.png
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

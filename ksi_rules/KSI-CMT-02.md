@@ -1,46 +1,43 @@
-# KSI-CMT-02: Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
+# KSI-CMT-02: Use self-service templates and image repositories for provisioning
 
 ## Overview
 
 **Category:** Change Management
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
+**What it validates:** Use self-service templates and image repositories for provisioning
 
-**Why it matters:** Validates comprehensive immutable deployment capabilities from pilot to enterprise maturity levels through CloudFormation, Launch Templates, containers, serverless, and governance
+**Why it matters:** Validates comprehensive self-service provisioning from basic AMIs to enterprise-grade service catalogs and automated deployment templates
 
 ## Validation Method
 
-1. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --output json`
-   *Check CloudFormation stacks for AWS-managed immutable infrastructure foundation*
+1. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
+   *Check CloudFormation stacks for infrastructure templates*
 
-2. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,LaunchTime,ImageId,InstanceType]' --output json`
-   *Validate EC2 instances for immutable deployment patterns (Image-based vs direct modification)*
+2. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,ImageId,LaunchTime]' --output json`
+   *Validate EC2 instances using standardized AMIs*
 
 3. `aws ec2 describe-launch-templates --output json`
-   *Check launch templates for standardized immutable instance deployment*
+   *Check launch templates for self-service provisioning*
 
 4. `aws autoscaling describe-auto-scaling-groups --output json`
-   *Validate Auto Scaling Groups for immutable scaling and instance replacement patterns*
+   *Validate auto-scaling using standardized templates*
 
-5. `aws ecs describe-services --output json`
-   *Check containerized services for immutable container deployment and rolling update patterns*
+5. `aws lambda list-functions --output json`
+   *Check Lambda functions for serverless self-service deployment*
 
-6. `aws lambda list-functions --output json`
-   *Validate serverless functions for immutable code deployment (function versioning)*
+6. `aws deploy list-applications --output json`
+   *Validate CodeDeploy applications for automated deployment*
 
-7. `aws deploy list-applications --output json`
-   *Check CodeDeploy applications for automated immutable deployment workflows*
+7. `aws ecr describe-repositories --output json`
+   *Check ECR repositories for container image templates*
 
-8. `aws ecr describe-repositories --output json`
-   *Validate container registries for immutable container image management*
+8. `aws servicecatalog search-products --output json`
+   *Validate Service Catalog for self-service product templates*
 
-9. `aws servicecatalog search-products --output json`
-   *Check Service Catalog for standardized immutable resource templates and governance*
-
-10. `aws organizations describe-organization --output json`
-   *Validate enterprise-wide immutable deployment policies and organizational governance standards*
+9. `aws organizations describe-organization --output json`
+   *Check organization-wide standardized provisioning policies*
 
 ## Latest Results
 
@@ -63,4 +60,4 @@ PASS Production-ready immutable deployment with Terraform Infrastructure as Code
 - PASS Advanced organization features: SCPs for immutable deployment policy enforcement enabled
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

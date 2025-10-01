@@ -4,37 +4,34 @@
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
 **What it validates:** Rapidly detect and remediate or mitigate vulnerabilities
 
-**Why it matters:** Validates comprehensive vulnerability detection and response from basic security monitoring to enterprise-grade automated remediation, threat intelligence, and cross-account vulnerability management
+**Why it matters:** Validates comprehensive vulnerability detection from basic security monitoring to enterprise-grade automated remediation and threat intelligence
 
 ## Validation Method
 
 1. `aws securityhub get-enabled-standards --region us-east-1 --output json`
-   *Check Security Hub standards for foundational vulnerability detection and compliance monitoring*
+   *Check Security Hub enabled standards for vulnerability detection*
 
 2. `aws inspector2 get-configuration --output json`
-   *Validate Inspector automated scanning for EC2, container, and application vulnerabilities*
+   *Validate Inspector for continuous vulnerability scanning*
 
-3. `aws securityhub get-findings --filters '{"RecordState":[{"Value":"ACTIVE","Comparison":"EQUALS"}]}' --max-results 50 --output json`
-   *Analyze active security findings for rapid vulnerability detection and response assessment*
+3. `aws securityhub get-findings --filters '{"RecordState":[{"Value":"ACTIVE","Comparison":"EQUALS"}],"WorkflowStatus":[{"Value":"NEW","Comparison":"EQUALS"}]}' --max-results 50 --output json`
+   *Check active Security Hub findings for rapid detection*
 
 4. `aws ssm describe-patch-baselines --output json`
-   *Check automated patch management for rapid vulnerability remediation*
+   *Validate patch baselines for automated vulnerability remediation*
 
 5. `aws lambda list-functions --output json`
-   *Validate automated response functions for vulnerability remediation and incident handling*
+   *Check Lambda functions for automated remediation workflows*
 
 6. `aws cloudwatch describe-alarms --output json`
-   *Check real-time alerting for rapid vulnerability detection and notification*
+   *Validate CloudWatch alarms for vulnerability detection alerts*
 
-7. `aws config describe-config-rules --output json`
-   *Validate continuous compliance monitoring for configuration vulnerability detection*
-
-8. `aws organizations describe-organization --output json`
-   *Check enterprise-wide vulnerability management and cross-account detection capabilities*
+7. `aws organizations describe-organization --output json`
+   *Check organization-wide vulnerability management policies*
 
 ## Latest Results
 
@@ -49,4 +46,4 @@ PASS Strong vulnerability management with automated remediation (78%): FAIL Secu
 - PASS Enterprise vulnerability management: AWS Organizations enables centralized multi-account detection
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

@@ -1,45 +1,45 @@
-# KSI-IAM-05: Apply zero trust design principles
+# KSI-IAM-05: Separate duties between users
 
 ## Overview
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Apply zero trust design principles
+**What it validates:** Separate duties between users
 
-**Why it matters:** Validates comprehensive zero trust implementation through Identity Center (modern approach), federated MFA detection (consistent with IAM-01), network security, continuous monitoring, conditional access, and secure communications patterns
+**Why it matters:** Validates comprehensive separation of duties from basic IAM policy separation to enterprise-grade audit trails and conflict detection
 
 ## Validation Method
 
-1. `aws identitystore list-users --identity-store-id $(aws sso-admin list-instances --query 'Instances[0].IdentityStoreId' --output text) --output json 2>/dev/null || echo '{"Users":[]}'`
-   *List Identity Center users to detect federated MFA enforcement patterns (external IdP integration via SCIM/Okta)*
+1. `aws identitystore list-users --identity-store-id $(aws sso-admin list-instances --query 'Instances[0].IdentityStoreId' --output text 2>/dev/null || echo 'd-9067ccc0fb') --output json || echo '{"Users": []}'`
+   *Check user accounts for separation of duties enforcement*
 
 2. `aws cloudtrail describe-trails --output json`
-   *Validate continuous monitoring and verification logging (must be active)*
+   *Validate CloudTrail for audit logging of privileged actions*
 
-3. `aws cloudtrail get-trail-status --name arn:aws:cloudtrail:us-east-1:155765116562:trail/meridianks-Management-events --output json`
-   *Verify CloudTrail is actively logging (zero trust requires continuous monitoring)*
+3. `aws cloudtrail get-trail-status --name arn:aws:cloudtrail:us-east-1:893894210484:trail/management-events --output json`
+   *Check active CloudTrail monitoring for separation of duties violations*
 
 4. `aws ec2 describe-security-groups --output json`
-   *Analyze network micro-segmentation and least privilege network access*
+   *Validate network security separation and access controls*
 
 5. `aws ec2 describe-vpc-endpoints --output json`
-   *Validate secure private communications (VPC endpoints for AWS services)*
+   *Check VPC endpoints for private service access separation*
 
 6. `aws iam list-virtual-mfa-devices --output json`
-   *Check traditional IAM MFA devices (fallback for non-federated scenarios)*
+   *Validate MFA enforcement for privileged user separation*
 
 7. `aws sts get-caller-identity --output json`
-   *Validate current session type (temporary credentials indicate zero trust access)*
+   *Check current identity role and separation context*
 
 ## Latest Results
 
-PASS Good zero trust implementation (62%): WARNING No IAM Identity Center - missing modern zero trust identity platform
+PASS Good zero trust implementation (58%): WARNING No IAM Identity Center - missing modern zero trust identity platform
 - PASS Excellent network micro-segmentation: 14/15 restrictive security groups (93%)
 - PASS Role-based credentials: Using assumed role session
 - PASS Comprehensive secure communications: 7 VPC endpoints configured
-- PASS Active continuous monitoring: CloudTrail 'meridianks-Management-events' actively logging
+- WARNING CloudTrail 'meridianks-Management-events' excellently configured but not actively logging
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

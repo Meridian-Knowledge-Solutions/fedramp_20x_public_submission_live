@@ -1,49 +1,49 @@
-# KSI-SVC-01: Harden and review network and system configurations
+# KSI-SVC-01: Maintain hardened system images and configurations
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Harden and review network and system configurations
+**What it validates:** Maintain hardened system images and configurations
 
-**Why it matters:** Validates comprehensive system hardening from basic network security to enterprise-grade multi-layer defense...
+**Why it matters:** Validates comprehensive system hardening from basic security groups to enterprise-grade patch management and automated configuration enforcement
 
 ## Validation Method
 
 1. `aws ec2 describe-security-groups --output json`
-   *Analyze security groups for network hardening and restrictive access controls*
+   *Check security group configurations for system hardening*
 
 2. `aws ec2 describe-instances --output json`
-   *Check instance configurations for system hardening and security posture*
+   *Validate EC2 instances using hardened AMIs and configurations*
 
 3. `aws ssm describe-instance-information --output json`
-   *Validate Systems Manager agent coverage for centralized configuration management*
+   *Check SSM agent deployment for configuration management*
 
 4. `aws ssm describe-patch-baselines --output json`
-   *Check patch baselines for automated system hardening and vulnerability management*
+   *Validate patch baselines for automated security updates*
 
 5. `aws configservice describe-config-rules --output json`
-   *Validate Config rules for automated configuration compliance and hardening*
+   *Check Config rules for continuous hardening compliance*
 
 6. `aws ec2 describe-network-acls --output json`
-   *Check Network ACLs for subnet-level network hardening and traffic control*
+   *Validate network ACLs for defense-in-depth hardening*
 
 7. `aws guardduty list-detectors --output json`
-   *Validate GuardDuty for threat detection and security monitoring*
+   *Check GuardDuty for threat detection on hardened systems*
 
 8. `aws wafv2 list-web-acls --scope REGIONAL --output json`
-   *Check WAF for application-layer protection and attack mitigation*
+   *Validate WAF rules for application-layer hardening*
 
 9. `aws inspector2 get-configuration --output json`
-   *Validate Inspector for vulnerability assessment and security hardening*
+   *Check Inspector for vulnerability scanning of system images*
 
 10. `aws organizations describe-organization --output json`
-   *Check enterprise-wide hardening policies and organizational security governance*
+   *Validate organization-wide hardening policies and SCPs*
 
 11. `aws ec2 describe-vpc-endpoints --output json`
-   *ADDED: Check for VPC endpoints for secure service access.*
+   *Check VPC endpoints for private connectivity and reduced attack surface*
 
 ## Latest Results
 
@@ -60,4 +60,4 @@ PASS Strong multi-layer defense and automated compliance (82%): PASS Network har
 - PASS Advanced organization features: SCPs and advanced governance capabilities enabled
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

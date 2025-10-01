@@ -1,46 +1,46 @@
-# KSI-SVC-05: Continuously verify information resource integrity
+# KSI-SVC-05: Use logging and monitoring to detect abnormal changes to configuration
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Continuously verify information resource integrity
+**What it validates:** Use logging and monitoring to detect abnormal changes to configuration
 
-**Why it matters:** Validates comprehensive cryptographic integrity enforcement from basic audit trail validation to enterprise-grade multi-layer integrity protection, covering log validation, key management, code signing, database integrity, backup verification, and organizational integrity governance with automated monitoring and compliance
+**Why it matters:** Validates comprehensive configuration monitoring from basic CloudTrail to enterprise-grade automated detection and response
 
 ## Validation Method
 
 1. `aws cloudtrail describe-trails --output json`
-   *Check CloudTrail log file validation for audit trail integrity and tamper-evident logging*
+   *Check CloudTrail for configuration change audit logging*
 
 2. `aws kms list-keys --output json`
-   *Validate KMS keys available for cryptographic integrity protection and key-based verification*
+   *Validate KMS encryption for secure log storage*
 
 3. `aws kms list-aliases --output json`
-   *Check KMS key aliases and management for cryptographic key governance and integrity protection*
+   *Check KMS key aliases for log encryption management*
 
 4. `aws s3api list-buckets --output json`
-   *Analyze S3 bucket configurations for object integrity verification and versioning protection*
+   *Validate S3 buckets for CloudTrail log storage*
 
 5. `aws rds describe-db-instances --output json`
-   *Check RDS database instances for backup encryption and transaction log integrity protection*
+   *Check RDS configuration change logging*
 
 6. `aws configservice describe-configuration-recorders --output json`
-   *Validate AWS Config for configuration change integrity tracking and compliance monitoring*
+   *Validate Config recorders for continuous configuration monitoring*
 
 7. `aws cloudwatch describe-alarms --output json`
-   *Check CloudWatch alarms for integrity violation detection and automated response triggers*
+   *Check CloudWatch alarms for configuration change alerts*
 
 8. `aws sns list-topics --output json`
-   *Validate SNS topics for integrity event notification and stakeholder alerting workflows*
+   *Validate SNS topics for configuration change notifications*
 
 9. `aws backup list-backup-vaults --output json`
-   *Check AWS Backup vaults for backup integrity verification and cryptographic protection*
+   *Check backup configurations for disaster recovery*
 
 10. `aws organizations describe-organization --output json`
-   *Validate enterprise-wide integrity policies and organizational cryptographic governance standards across accounts*
+   *Validate organization-wide configuration monitoring policies*
 
 ## Latest Results
 
@@ -57,4 +57,4 @@ PASS Enterprise-grade comprehensive cryptographic integrity governance with moni
 - PASS Advanced organization features: SCPs for integrity policy enforcement enabled.
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

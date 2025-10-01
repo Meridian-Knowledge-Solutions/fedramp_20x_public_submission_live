@@ -1,52 +1,52 @@
-# KSI-SVC-04: Manage configuration centrally
+# KSI-SVC-04: Use configuration management systems to manage cloud services and apply configuration as code to CSO-provided cloud services
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Manage configuration centrally
+**What it validates:** Use configuration management systems to manage cloud services and apply configuration as code to CSO-provided cloud services
 
-**Why it matters:** Validates comprehensive centralized configuration management from basic service availability to enterprise-grade configuration governance, covering parameter management, configuration compliance, automation, templates, secrets management, and organizational policy enforcement with version control and audit capabilities
+**Why it matters:** Validates comprehensive configuration management from basic CloudFormation to enterprise-grade GitOps, policy enforcement, and automated compliance
 
 ## Validation Method
 
 1. `aws ssm describe-parameters --output json`
-   *Check Systems Manager Parameter Store for centralized configuration management and application settings*
+   *Check SSM Parameter Store for centralized configuration management*
 
 2. `aws configservice describe-configuration-recorders --output json`
-   *Validate AWS Config for configuration compliance monitoring and change tracking*
+   *Validate AWS Config for configuration tracking and compliance*
 
-3. `aws ssm list-documents --document-filter-list key=DocumentType,value=Command --output json`
-   *Check Systems Manager documents for configuration management workflows and deployment automation*
+3. `aws ssm list-documents --document-filter-list key=DocumentType,value=Automation --output json`
+   *Check SSM automation documents for configuration as code*
 
 4. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
-   *Validate CloudFormation for Infrastructure as Code configuration management and template-based deployment*
+   *Validate CloudFormation stacks for infrastructure as code*
 
 5. `aws secretsmanager list-secrets --output json`
-   *Check Secrets Manager for centralized secrets and sensitive configuration management*
+   *Check Secrets Manager for secure configuration storage*
 
 6. `aws ssm describe-patch-baselines --output json`
-   *Analyze patch baselines for centralized system configuration management and compliance standards*
+   *Validate patch baselines for configuration standardization*
 
 7. `aws configservice describe-config-rules --output json`
-   *Check Config rules for automated configuration compliance validation and policy enforcement*
+   *Check Config rules for automated configuration compliance*
 
 8. `aws ssm describe-instance-information --output json`
-   *Validate Systems Manager agent coverage for centralized instance configuration management*
+   *Validate SSM agent deployment for configuration management*
 
 9. `aws servicecatalog search-products --output json`
-   *Check Service Catalog for standardized configuration templates and governed deployment patterns*
+   *Check Service Catalog for standardized service configurations*
 
 10. `aws organizations describe-organization --output json`
-   *Validate enterprise-wide configuration policies and organizational governance standards across accounts*
+   *Validate organization-wide configuration management policies*
 
 ## Latest Results
 
-PASS Enterprise-grade centralized configuration governance with comprehensive automation (85%): PASS Parameter management: 7 SSM parameters for centralized configuration.
+PASS Enterprise-grade centralized configuration governance with comprehensive automation (90%): PASS Parameter management: 7 SSM parameters for centralized configuration.
 - PASS Configuration recording: 1 Config recorders configured.
-- PASS Configuration automation: 123 SSM documents (0 custom).
+- PASS Configuration automation: 464 SSM documents (6 custom).
 - PASS Infrastructure as Code: 12/12 successful CloudFormation stacks (100%).
 - PASS Secure configuration management: 1 centrally managed secrets.
 - PASS System configuration standards: 17 patch baselines for standardized management.
@@ -55,4 +55,4 @@ PASS Enterprise-grade centralized configuration governance with comprehensive au
 - PASS Advanced organization features: SCPs for configuration policy enforcement enabled.
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

@@ -1,37 +1,37 @@
-# KSI-CNA-02: Design systems to minimize the attack surface and minimize lateral movement if compromised
+# KSI-CNA-02: Segment network and compute resources into security zones
 
 ## Overview
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Design systems to minimize the attack surface and minimize lateral movement if compromised
+**What it validates:** Segment network and compute resources into security zones
 
-**Why it matters:** Validates comprehensive attack surface reduction through network segmentation, workload isolation, service minimization, and lateral movement prevention across traditional and modern cloud-native architectures
+**Why it matters:** Validates comprehensive network segmentation from basic VPC subnets to enterprise-grade multi-tier architecture with strict isolation
 
 ## Validation Method
 
 1. `aws ec2 describe-subnets --output json`
-   *Analyze subnet segmentation for attack surface isolation (public vs private)*
+   *Check subnet configurations for network segmentation and security zones*
 
 2. `aws ec2 describe-security-groups --output json`
-   *Evaluate micro-segmentation and lateral movement prevention through security group rules*
+   *Validate security group rules for zone-based access control*
 
 3. `aws ec2 describe-instances --output json`
-   *Assess compute workload exposure and placement for attack surface minimization*
+   *Check EC2 instance placements across security zones*
 
 4. `aws ec2 describe-network-acls --output json`
-   *Check Network ACLs for subnet-level isolation and lateral movement barriers*
+   *Validate network ACLs for zone-level traffic control*
 
 5. `aws elbv2 describe-load-balancers --output json`
-   *Analyze load balancer exposure patterns (internal vs internet-facing)*
+   *Check load balancer configurations for zone-aware traffic distribution*
 
 6. `aws lambda list-functions --output json`
-   *Assess Lambda function isolation and VPC configuration for attack surface reduction*
+   *Validate Lambda function network configurations and VPC integration*
 
 7. `aws rds describe-db-instances --output json`
-   *Check database placement and exposure (should be in private subnets)*
+   *Check RDS instance placements in private subnets and security zones*
 
 ## Latest Results
 
@@ -46,4 +46,4 @@ PASS Strong attack surface minimization (85%): PASS Strong attack surface minimi
 - PASS Advanced segmentation barriers: 1/1 Network ACLs with custom isolation rules
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

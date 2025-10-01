@@ -1,22 +1,22 @@
-# KSI-PIY-03: Maintain a vulnerability disclosure program
+# KSI-PIY-03: Define baselines for approved hardware, software, and firmware components
 
 ## Overview
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Maintain a vulnerability disclosure program
+**What it validates:** Define baselines for approved hardware, software, and firmware components
 
-**Why it matters:** Manual evidence required - vulnerability disclosure policy, reporting procedures, and responsible disclosure documentation
+**Why it matters:** Validates comprehensive baseline management from basic AMI standards to enterprise-grade immutable infrastructure and compliance validation
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-PIY-03/ for vulnerability_disclosure_policy.pdf, responsible_disclosure_procedures.pdf, security_contact_information.pdf, and vulnerability_reporting_guidelines.pdf
+1. **Manual Review:** Manual review of approved AMI baselines, launch templates, and hardware/software standards documentation
 
 ## Latest Results
 
 - PASS Vulnerability disclosure program maintained: PASS Vulnerability disclosure documentation: vulnerability_disclosure_program_final.pdf
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

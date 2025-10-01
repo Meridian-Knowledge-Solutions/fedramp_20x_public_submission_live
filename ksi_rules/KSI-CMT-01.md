@@ -1,43 +1,40 @@
-# KSI-CMT-01: Log and monitor system modifications
+# KSI-CMT-01: Document a change management policy for all system modifications
 
 ## Overview
 
 **Category:** Change Management
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Log and monitor system modifications
+**What it validates:** Document a change management policy for all system modifications
 
-**Why it matters:** Validates comprehensive system modification logging from basic change detection to enterprise-grade change tracking, covering CloudTrail audit, configuration monitoring, event automation, and organizational change governance with real-time alerting and compliance tracking
+**Why it matters:** Validates comprehensive change management documentation from basic policies to enterprise-grade automated change workflows and compliance tracking
 
 ## Validation Method
 
 1. `aws cloudtrail describe-trails --output json`
-   *Check CloudTrail configuration for comprehensive system modification logging and audit trail*
+   *Check CloudTrail for change audit logging and compliance*
 
-2. `aws config describe-configuration-recorders --output json`
-   *Validate Config for configuration change recording and system modification tracking*
+2. `aws logs describe-log-groups --output json`
+   *Validate CloudWatch Logs for change management event tracking*
 
-3. `aws logs describe-log-groups --output json`
-   *Check CloudWatch log groups for application and system change logging*
+3. `aws events list-rules --output json`
+   *Check EventBridge rules for automated change workflows*
 
-4. `aws events list-rules --output json`
-   *Validate EventBridge rules for real-time change monitoring and automated alerting*
+4. `aws cloudwatch describe-alarms --output json`
+   *Validate CloudWatch alarms for change monitoring*
 
-5. `aws cloudwatch describe-alarms --output json`
-   *Check CloudWatch alarms for change detection and system modification alerting*
+5. `aws sns list-topics --output json`
+   *Check SNS topics for change notification workflows*
 
-6. `aws sns list-topics --output json`
-   *Validate SNS topics for change notification workflows and stakeholder communication*
+6. `aws lambda list-functions --output json`
+   *Validate Lambda functions for automated change management*
 
-7. `aws lambda list-functions --output json`
-   *Check Lambda functions for automated change response and modification tracking workflows*
+7. `aws ssm describe-instance-information --output json`
+   *Check SSM for configuration management and change tracking*
 
-8. `aws ssm describe-instance-information --output json`
-   *Validate Systems Manager for instance-level change tracking and centralized modification monitoring*
-
-9. `aws organizations describe-organization --output json`
-   *Check enterprise-wide change logging policies and organizational modification governance*
+8. `aws organizations describe-organization --output json`
+   *Validate organization-wide change management policies*
 
 ## Latest Results
 
@@ -56,4 +53,4 @@ PASS Enterprise-grade system modification logging and monitoring with automated 
 - PASS Advanced organization features: SCPs for modification policy enforcement
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

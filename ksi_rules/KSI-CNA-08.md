@@ -1,44 +1,42 @@
-# KSI-CNA-08: Use automated services to persistently assess the security posture of all services and automatically enforce secure operations.
+# KSI-CNA-08: Use native security capabilities including agent-based security
 
 ## Overview
 
 **Category:** Cloud Native Architecture
 **Status:** FAIL
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Use automated services to persistently assess the security posture of all services and automatically enforce secure operations.
+**What it validates:** Use native security capabilities including agent-based security
 
-**Why it matters:** Validates persistent security posture assessment with mandatory proof of automated enforcement. Requires either AWS Config remediation configurations or SSM State Manager associations as direct evidence of enforcement. Assesses active Config recording, comprehensive Security Hub standards, and sufficient compliance rules. Enterprise capabilities (Organization-level Security Hub and Config aggregators) provide additional scoring but are not required for base compliance.
+**Why it matters:** Validates comprehensive native security from basic Security Hub to enterprise-grade automated remediation and agent-based protection
 
 ## Validation Method
 
 1. `aws securityhub get-enabled-standards --output json`
-   *Verify Security Hub standards are enabled, prioritizing AWS Foundational Security Best Practices for comprehensive coverage.*
+   *Check Security Hub enabled standards for native security monitoring*
 
-2. `aws configservice describe-configuration-recorder-status --output json`
-   *Confirm AWS Config recorder is actively recording configurations with SUCCESS status.*
+2. `aws configservice describe-config-rules --output json`
+   *Validate AWS Config rules for native compliance automation*
 
-3. `aws configservice describe-config-rules --output json`
-   *Inventory Config rules for persistent compliance checking. Moderate baseline requires minimum 8 rules for reasonable service coverage.*
+3. `aws configservice describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0].ConfigRuleName' --output text) --output json || echo '{"RemediationConfigurations": []}'`
+   *Check automated remediation configurations for Config rules*
 
-4. `aws configservice describe-remediation-configurations --output json`
-   *ENFORCEMENT PROOF: Validate Config rules have automated remediation actions attached. Required for passing grade.*
+4. `aws lambda list-functions --output json`
+   *Validate custom security automation and remediation functions*
 
-5. `aws ssm list-associations --output json`
-   *ENFORCEMENT PROOF: Verify SSM State Manager associations provide persistent configuration enforcement. Required for passing grade if Config remediation absent.*
+5. `aws securityhub describe-organization-configuration --output json`
+   *Check Security Hub organization-wide configuration*
 
-6. `aws lambda list-functions --output json`
-   *Identify Lambda functions for custom remediation logic. Provides supporting evidence but not sufficient alone.*
-
-7. `aws securityhub list-organization-configuration --output json`
-   *ENTERPRISE: Detect centralized Security Hub management across AWS Organization. Requires delegated admin permissions.*
-
-8. `aws configservice describe-configuration-aggregators --output json`
-   *ENTERPRISE: Detect multi-account compliance monitoring via Config aggregators.*
+6. `aws configservice describe-configuration-aggregators --output json || echo '{"ConfigurationAggregators": []}'`
+   *Validate Config aggregators for centralized compliance monitoring*
 
 ## Latest Results
 
-- FAIL Insufficient continuous security assessment for Moderate baseline (33%): PASS Automated remediation: 2 security automation functions
+FAIL Insufficient automated enforcement for Moderate baseline (12%): Config remediation required. FAIL Security Hub not enabled - required for centralized security monitoring
+- FAIL No AWS Config rules detected - required for compliance automation
+- FAIL No Config remediations - automated enforcement not proven
+-   ↳ Moderate baseline requires automated response to non-compliance
+- PASS Custom automation: 2 security Lambda function(s)
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

@@ -1,46 +1,43 @@
-# KSI-SVC-06: Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
+# KSI-SVC-06: Use centralized key management services
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
+**What it validates:** Use centralized key management services
 
-**Why it matters:** Validates comprehensive automated key management from basic KMS availability to enterprise-grade key lifecycle management, covering encryption keys, certificates, rotation policies, access controls, hardware security modules, and organizational key governance with automated provisioning and compliance monitoring
+**Why it matters:** Validates comprehensive key management from basic KMS to enterprise-grade certificate lifecycle, rotation, and cryptographic compliance
 
 ## Validation Method
 
 1. `aws kms list-keys --output json`
-   *Check KMS keys for automated key management and cryptographic service availability*
+   *Check KMS keys for centralized encryption key management*
 
 2. `aws acm list-certificates --output json`
-   *Validate ACM certificates for automated certificate lifecycle management and SSL/TLS provisioning*
+   *Validate ACM certificates for centralized certificate management*
 
 3. `aws kms list-aliases --output json`
-   *Analyze KMS key aliases for key management governance and organizational naming standards*
+   *Check KMS key aliases for key organization and management*
 
 4. `aws ssm describe-parameters --parameter-filters Key=Type,Values=SecureString --output json`
-   *Check Systems Manager SecureString parameters for KMS-encrypted configuration management*
+   *Validate SSM SecureString parameters using KMS encryption*
 
 5. `aws secretsmanager list-secrets --output json`
-   *Validate Secrets Manager for automated secrets rotation and centralized credential management*
+   *Check Secrets Manager for KMS-encrypted secret storage*
 
 6. `aws iam list-server-certificates --output json`
-   *Check IAM server certificates for legacy certificate management and migration tracking*
+   *Validate IAM server certificates and migration to ACM*
 
 7. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
-   *Analyze CloudFormation stacks for Infrastructure as Code key management and automated provisioning*
+   *Check CloudFormation for infrastructure as code key management*
 
-8. `aws config describe-config-rules --output json`
-   *Check Config rules for key management compliance monitoring and policy enforcement*
+8. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=ResourceType,AttributeValue=AWS::KMS::Key --max-items 20 --output json`
+   *Validate CloudTrail audit logs for key usage and management*
 
-9. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateKey --start-time 2025-05-01 --output json`
-   *Validate key management audit trail for creation, rotation, and access tracking*
-
-10. `aws organizations describe-organization --output json`
-   *Check enterprise-wide key management policies and organizational governance standards across accounts*
+9. `aws organizations describe-organization --output json`
+   *Check organization-wide centralized key management policies*
 
 ## Latest Results
 
@@ -51,9 +48,9 @@ PASS Enterprise-grade comprehensive automated key management governance with rot
 - PASS Automated credential rotation: 1/1 secrets with automatic rotation (100%).
 - PASS Modern certificate management: No legacy IAM certificates.
 - PASS Infrastructure as Code key management: 12/12 successful CloudFormation stacks.
-- PASS Key management audit trail: 1 recent key management events tracked.
+- PASS Key management audit trail: 20 recent key management events tracked.
 - PASS Enterprise-wide key management governance: AWS Organizations enables centralized key policies.
 - PASS Advanced organization features: SCPs for key management policy enforcement enabled.
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

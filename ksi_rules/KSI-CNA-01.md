@@ -1,40 +1,40 @@
-# KSI-CNA-01: Configure ALL information resources to limit inbound and outbound traffic
+# KSI-CNA-01: Implement DDoS protection and defense-in-depth network security
 
 ## Overview
 
 **Category:** Cloud Native Architecture
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Configure ALL information resources to limit inbound and outbound traffic
+**What it validates:** Implement DDoS protection and defense-in-depth network security
 
-**Why it matters:** Validates comprehensive traffic controls across all AWS resources through multi-layered network security including ingress/egress controls, application-layer protection, and traffic monitoring
+**Why it matters:** Validates comprehensive DDoS protection and network security from basic security groups to enterprise-grade WAF, CloudFront, and defense-in-depth architecture
 
 ## Validation Method
 
 1. `aws ec2 describe-security-groups --output json`
-   *Analyze security groups for comprehensive ingress AND egress traffic controls*
+   *Check security group configurations for defense-in-depth network controls*
 
 2. `aws ec2 describe-network-acls --output json`
-   *Check Network ACLs for subnet-level traffic filtering (defense in depth)*
+   *Validate network ACLs for additional layer of network security*
 
 3. `aws ec2 describe-route-tables --output json`
-   *Validate route tables for controlled traffic routing and egress paths*
+   *Check routing configurations for network segmentation and isolation*
 
 4. `aws ec2 describe-nat-gateways --output json`
-   *Check NAT Gateways for controlled egress traffic from private subnets*
+   *Validate NAT gateway configurations for secure outbound connectivity*
 
 5. `aws ec2 describe-vpc-endpoints --output json`
-   *Validate VPC endpoints for private service access (avoiding internet routing)*
+   *Check VPC endpoints for private AWS service connectivity*
 
 6. `aws wafv2 list-web-acls --scope REGIONAL --output json`
-   *Check WAF for application-layer traffic filtering and protection*
+   *Validate WAF configurations for application-layer DDoS protection*
 
 7. `aws elbv2 describe-load-balancers --output json`
-   *Analyze load balancers for traffic distribution and control capabilities*
+   *Check load balancer configurations for traffic distribution and DDoS resilience*
 
-8. `aws logs describe-log-groups --log-group-name-prefix '/aws/vpc/flowlogs' --output json`
-   *Check VPC Flow Logs for traffic monitoring and analysis capabilities*
+8. `aws logs describe-log-groups --log-group-name-prefix '/aws/vpc/' --output json`
+   *Validate VPC Flow Logs for network traffic monitoring and DDoS detection*
 
 ## Latest Results
 
@@ -48,7 +48,7 @@ PASS Excellent multi-layered traffic controls (97%): PASS VPC infrastructure: 1 
 - PASS Private service access: 7 VPC endpoints reduce internet-bound traffic
 - PASS Application-layer protection: 1 WAF Web ACLs configured
 - PASS Traffic distribution: 1 load balancers (1 public, 0 internal)
-- PASS Traffic visibility: 1 VPC Flow Log groups for traffic monitoring
+- PASS Traffic visibility: 2 VPC Flow Log groups for traffic monitoring
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

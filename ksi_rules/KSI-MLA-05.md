@@ -1,46 +1,43 @@
-# KSI-MLA-05: Perform Infrastructure as Code and configuration evaluation and testing
+# KSI-MLA-05: Use change management tools to enforce, track and report configuration changes
 
 ## Overview
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Perform Infrastructure as Code and configuration evaluation and testing
+**What it validates:** Use change management tools to enforce, track and report configuration changes
 
-**Why it matters:** Validates comprehensive Infrastructure as Code security evaluation from basic CloudFormation deployment to enterprise-grade multi-account governance, automated testing, and configuration compliance management
+**Why it matters:** Validates comprehensive change tracking from basic CloudTrail to enterprise-grade automated governance and compliance reporting
 
 ## Validation Method
 
-1. `aws config describe-config-rules --output json`
-   *Check Config rules for Infrastructure as Code evaluation and configuration compliance monitoring*
+1. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
+   *Check CloudFormation stacks for infrastructure change management*
 
-2. `aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --output json`
-   *Validate CloudFormation stacks for Infrastructure as Code configuration testing and deployment*
+2. `aws cloudformation describe-stacks --output json`
+   *Validate stack details for change tracking and history*
 
-3. `aws cloudformation describe-stacks --output json`
-   *Analyze detailed stack configuration for drift detection and infrastructure validation*
+3. `aws ssm describe-parameters --max-results 50 --output json`
+   *Check SSM parameters for configuration change management*
 
-4. `aws ssm describe-parameters --max-results 50 --output json`
-   *Check Systems Manager Parameter Store for centralized configuration management*
+4. `aws codebuild list-projects --output json`
+   *Validate CodeBuild for automated change deployment pipelines*
 
-5. `aws codebuild list-projects --output json`
-   *Validate automated Infrastructure as Code testing through build projects and validation pipelines*
+5. `aws codepipeline list-pipelines --output json`
+   *Check CodePipeline for change management automation*
 
-6. `aws codepipeline list-pipelines --output json`
-   *Check for automated Infrastructure as Code deployment pipelines and change validation*
+6. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=ResourceType,AttributeValue=AWS::CloudFormation::Stack --max-items 20 --output json`
+   *Validate CloudTrail audit logs for configuration changes*
 
-7. `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=CreateStack --start-time 2025-05-01 --output json`
-   *Analyze deployment audit trail for Infrastructure as Code change tracking and compliance*
+7. `aws resourcegroupstaggingapi get-resources --resource-type-filters cloudformation --output json`
+   *Check resource tagging for change management governance*
 
-8. `aws resourcegroupstaggingapi get-resources --resource-type-filters cloudformation --output json`
-   *Check resource inventory and tag-based governance for Infrastructure as Code assets*
+8. `aws organizations describe-organization --output json`
+   *Validate organization-wide change management policies*
 
-9. `aws organizations describe-organization --output json`
-   *Validate enterprise-level multi-account governance for Infrastructure as Code standardization*
-
-10. `aws servicecatalog search-products --output json`
-   *Check standardized Infrastructure as Code templates and governance through Service Catalog*
+9. `aws servicecatalog search-products --output json`
+   *Check Service Catalog for standardized change templates*
 
 ## Latest Results
 
@@ -54,10 +51,10 @@ PASS Enterprise-grade Infrastructure as Code evaluation and testing (100%): PASS
 - PASS Infrastructure drift monitoring: 12 stacks tracked
 - PASS Secure IAM deployment: 12 stacks with proper capabilities
 - PASS Automated IaC testing: 3 CodeBuild projects
-- PASS Deployment audit trail: 7 tracked CloudFormation events
+- PASS Deployment audit trail: 11 tracked CloudFormation events
 - PASS Resource governance: 6 tagged CloudFormation resources
 - PASS Enterprise multi-account governance: AWS Organizations with ALL features enabled
 - PASS Organizational infrastructure: Centralized account management
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

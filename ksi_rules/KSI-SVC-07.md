@@ -1,55 +1,52 @@
-# KSI-SVC-07: Use a consistent, risk-informed approach for applying security patches
+# KSI-SVC-07: Perform regularly scheduled scans for vulnerabilities and apply patches promptly
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Use a consistent, risk-informed approach for applying security patches
+**What it validates:** Perform regularly scheduled scans for vulnerabilities and apply patches promptly
 
-**Why it matters:** Validates comprehensive risk-informed patch management from basic patch baseline configuration to enterprise-grade vulnerability-driven patching, covering automated deployment, compliance monitoring, container patching, lambda layer management, and organizational patch governance with risk assessment and testing workflows
+**Why it matters:** Validates comprehensive vulnerability management from basic patch baselines to enterprise-grade automated scanning, remediation, and compliance
 
 ## Validation Method
 
 1. `aws ssm describe-patch-baselines --output json`
-   *Check patch baselines for consistent patching approach and vulnerability management standards*
+   *Check SSM patch baselines for vulnerability management*
 
 2. `aws ssm describe-instance-information --output json`
-   *Validate SSM agent coverage for automated patching and centralized system management*
+   *Validate SSM managed instances for patch compliance*
 
 3. `aws ssm describe-patch-groups --output json`
-   *Analyze patch groups for risk-informed patching segmentation and deployment scheduling*
+   *Check patch groups for organized vulnerability remediation*
 
-4. `aws ssm list-documents --document-filter-list key=DocumentType,value=Command --output json`
-   *Check SSM documents for patch automation workflows and risk-informed deployment procedures*
+4. `aws ssm list-documents --document-filter-list key=DocumentType,value=Automation --output json`
+   *Validate SSM automation for scheduled patch deployment*
 
 5. `aws ssm describe-maintenance-windows --output json`
-   *Validate maintenance windows for controlled patch deployment and risk mitigation scheduling*
+   *Check maintenance windows for scheduled patching operations*
 
 6. `aws inspector2 get-configuration --output json`
-   *Check Inspector for vulnerability-driven patch prioritization and risk assessment automation*
+   *Validate Inspector for continuous vulnerability scanning*
 
 7. `aws ecr describe-repositories --output json`
-   *Analyze container registries for container image patching and vulnerability scanning integration*
+   *Check ECR repositories for container image vulnerability scanning*
 
 8. `aws lambda list-layers --output json`
-   *Check Lambda layers for serverless runtime patching and dependency management*
+   *Validate Lambda layers for serverless vulnerability management*
 
-9. `aws config describe-config-rules --output json`
-   *Validate Config rules for patch compliance monitoring and governance automation*
-
-10. `aws organizations describe-organization --output json`
-   *Check enterprise-wide patch management policies and organizational risk-informed patching standards across accounts*
+9. `aws organizations describe-organization --output json`
+   *Check organization-wide vulnerability management policies*
 
 ## Latest Results
 
 PASS Advanced risk-informed patching with controlled deployment and compliance (55%): PASS Consistent patch management: 17 patch baselines configured.
 - PASS Automated patch deployment capability: 6/6 instances with SSM agent online (100%).
-- PASS Patch automation framework: 14 documents for automated patching.
+- PASS Patch automation framework: 27 documents for automated patching.
 - PASS Serverless patch management: 1 Lambda layers for runtime dependency management.
 - PASS Enterprise-wide patch governance: AWS Organizations enables centralized policies.
 - PASS Advanced organization features: SCPs for patch management policy enforcement enabled.
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

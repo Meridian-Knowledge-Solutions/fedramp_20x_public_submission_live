@@ -1,31 +1,31 @@
-# KSI-IAM-04: Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
+# KSI-IAM-04: Clearly define user roles and implement user-to-role mapping
 
 ## Overview
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
+**What it validates:** Clearly define user roles and implement user-to-role mapping
 
-**Why it matters:** Validates comprehensive authorization through IAM Identity Center permission sets (modern approach) and traditional IAM patterns for complete coverage of least privilege, role-based, attribute-based, and just-in-time access
+**Why it matters:** Validates comprehensive user role mapping from basic IAM groups to enterprise-grade permission sets and centralized access management
 
 ## Validation Method
 
-1. `INSTANCE_ARN=$(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text 2>/dev/null) && aws sso-admin list-permission-sets --instance-arn "$INSTANCE_ARN" --output json 2>/dev/null || echo '{"PermissionSets":[]}'`
-   *ROBUST: Get instance ARN first, then list permission sets with proper error handling*
+1. `INSTANCE_ARN=$(aws sso-admin list-instances --query 'Instances[0].InstanceArn' --output text 2>/dev/null || echo 'none'); if [ "$INSTANCE_ARN" != "none" ]; then aws sso-admin list-permission-sets --instance-arn "$INSTANCE_ARN" --output json; else echo '{"PermissionSets": []}'; fi`
+   *Check SSO permission sets for role-based access mapping*
 
 2. `aws iam list-roles --output json`
-   *Analyze traditional IAM roles for service accounts and legacy access patterns*
+   *Validate IAM roles with clear purpose and user mapping*
 
 3. `aws iam list-users --output json`
-   *Check if users have direct policy attachments (anti-pattern for least privilege)*
+   *Check IAM users and their role assignments*
 
 4. `aws sts get-caller-identity --output json`
-   *Validate current session type (permission set session vs traditional credentials)*
+   *Validate current identity and role assumption*
 
 5. `aws iam get-account-summary --output json`
-   *Get account-wide IAM usage patterns for authorization model assessment*
+   *Check account-level role and user statistics*
 
 ## Latest Results
 
@@ -36,4 +36,4 @@ WARNING Partial traditional authorization model (50%): INFO IAM Identity Center 
 - PASS Role-based session: Using temporary credentials (just-in-time access)
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

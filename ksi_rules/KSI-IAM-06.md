@@ -1,43 +1,43 @@
-# KSI-IAM-06: Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
+# KSI-IAM-06: Implement fine-grained automated actions on security events related to authentication and access control
 
 ## Overview
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
+**What it validates:** Implement fine-grained automated actions on security events related to authentication and access control
 
-**Why it matters:** Validates end-to-end automated response workflows including threat detection, event triggers, and account security actions through modern AWS security services and Identity Center integration
+**Why it matters:** Validates comprehensive automated security response from basic CloudWatch alarms to enterprise-grade SOAR and intelligent threat response
 
 ## Validation Method
 
 1. `aws events list-rules --output json`
-   *Check EventBridge rules for automated security response triggers (critical for automation)*
+   *Check EventBridge rules for automated security event responses*
 
 2. `aws guardduty list-detectors --output json`
-   *Validate GuardDuty threat detection service for suspicious activity identification*
+   *Validate GuardDuty for automated threat detection*
 
 3. `aws securityhub describe-hub --output json`
-   *Check Security Hub for centralized security findings and automated response coordination*
+   *Check Security Hub for centralized security event management*
 
 4. `aws configservice describe-config-rules --output json`
-   *Check Config rules for automated compliance monitoring and remediation triggers*
+   *Validate Config rules for automated compliance enforcement*
 
 5. `aws lambda list-functions --output json`
-   *Validate Lambda functions for automated security response and account management workflows*
+   *Check Lambda functions for automated security response actions*
 
 6. `aws sns list-topics --output json`
-   *Check SNS topics for security incident notification and alert distribution*
+   *Validate SNS topics for security event notifications*
 
-7. `aws config describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0:5].ConfigRuleName' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"RemediationConfigurations": []}'`
-   *Check Config remediation for automated account security and compliance enforcement*
+7. `aws configservice describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0].ConfigRuleName' --output text 2>/dev/null || echo 'none') --output json || echo '{"RemediationConfigurations": []}'`
+   *Check automated remediation for security violations*
 
 8. `aws lambda list-functions --output json`
-   *Identify automated response functions for account disabling and security actions*
+   *Validate custom security automation functions*
 
 9. `aws cloudwatch describe-alarms --output json`
-   *Check CloudWatch alarms for suspicious privileged account activity monitoring*
+   *Check CloudWatch alarms for authentication and access monitoring*
 
 ## Latest Results
 
@@ -51,4 +51,4 @@ PASS Strong automated response capabilities (81%): PASS Advanced threat detectio
 - PASS Centralized governance model detected (multi-account architecture)
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

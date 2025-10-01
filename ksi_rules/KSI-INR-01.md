@@ -1,18 +1,18 @@
-# KSI-INR-01: Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
+# KSI-INR-01: Document incident handling procedures
 
 ## Overview
 
 **Category:** Incident Reporting
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
+**What it validates:** Document incident handling procedures
 
-**Why it matters:** Manual evidence required - incident documentation, reporting procedures, analysis frameworks, and regulatory compliance processes
+**Why it matters:** Validates incident handling documentation from basic response procedures to enterprise-grade incident management playbooks and SOAR integration
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-INR-01/ for incident_documentation_procedures.pdf, fedramp_incident_reporting_policy.pdf, incident_analysis_framework.pdf, regulatory_compliance_procedures.pdf, and continuous_improvement_process.pdf
+1. **Manual Review:** Manual review of incident response procedures, escalation paths, and incident handling documentation
 
 ## Latest Results
 
@@ -21,4 +21,4 @@ WARNING Basic incident reporting (ensure FedRAMP compliance): PASS Core reportin
 - FAIL No specific FedRAMP incident reporting compliance found (required)
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

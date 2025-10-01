@@ -1,18 +1,18 @@
-# KSI-PIY-07: Document risk management decisions for software supply chain security
+# KSI-PIY-07: Document the system security policy
 
 ## Overview
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Document risk management decisions for software supply chain security
+**What it validates:** Document the system security policy
 
-**Why it matters:** Manual evidence required - supply chain risk assessments, vendor security evaluations, and risk management decision documentation
+**Why it matters:** Validates comprehensive security policy documentation from basic written policies to enterprise-grade policy as code and automated enforcement
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-PIY-07/ for supply_chain_risk_assessment.pdf, vendor_security_evaluations.xlsx, risk_management_decisions.pdf, and software_supply_chain_policy.pdf
+1. **Manual Review:** Manual review of system security policy documentation, SCPs, and governance frameworks
 
 ## Latest Results
 
@@ -20,4 +20,4 @@ WARNING Basic supply chain risk management (expand coverage): PASS Enhanced supp
 - PASS Supply chain risk documentation: Software Supply Chain Risk Management Framework (KSI-PIY-07).pdf
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

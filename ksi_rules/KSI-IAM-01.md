@@ -1,32 +1,30 @@
-# KSI-IAM-01: Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
+# KSI-IAM-01: Implement phishing-resistant multi-factor authentication for all users
 
 ## Overview
 
 **Category:** Identity and Access Management
 **Status:** FAIL
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
+**What it validates:** Implement phishing-resistant multi-factor authentication for all users
 
-**Why it matters:** Validates MFA enforcement through Identity Center configuration evidence showing always-on MFA requirements, combined with traditional IAM user analysis
+**Why it matters:** Validates phishing-resistant MFA implementation from basic virtual MFA to enterprise-grade hardware tokens and passwordless authentication
 
 ## Validation Method
 
 1. `aws iam list-users --output json`
-   *Get traditional IAM users for MFA analysis*
+   *Check IAM users for MFA configuration requirements*
 
-2. `aws iam list-mfa-devices --output json`
-   *Check traditional IAM MFA devices*
+2. `for user in $(aws iam list-users --query 'Users[].UserName' --output text); do echo "User: $user"; aws iam list-mfa-devices --user-name "$user" --output json; done`
+   *List MFA devices for all IAM users to verify phishing-resistant MFA*
 
-3. `aws sso-admin list-instances --output json`
-   *Get Identity Center instances*
-
-4. `aws identitystore list-users --identity-store-id d-9067ccc0ff --output json`
-   *Get Identity Center users for accurate user count*
+3. `aws identitystore list-users --identity-store-id d-9067ccc0fb --output json || echo '{"Users": []}'`
+   *Check Identity Center users for centralized MFA enforcement*
 
 ## Latest Results
 
-- FAIL No centralized identity management detected: FAIL No active AWS Identity Center - MFA enforcement unclear
+FAIL Insufficient phishing-resistant MFA (0%): INFO Traditional IAM: 2 human user(s)
+- WARNING Traditional IAM users without MFA devices
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

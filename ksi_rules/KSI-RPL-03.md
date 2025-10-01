@@ -1,41 +1,35 @@
-# KSI-RPL-03: Perform system backups aligned with recovery objectives
+# KSI-RPL-03: Back up information regularly per the recovery point objective
 
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Status:** FAIL
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Perform system backups aligned with recovery objectives
+**What it validates:** Back up information regularly per the recovery point objective
 
-**Why it matters:** Validates automated backup systems, retention policies, and backup job performance through AWS Backup service configuration and monitoring
+**Why it matters:** Validates comprehensive backup execution from basic scheduled backups to enterprise-grade continuous data protection and multi-region replication
 
 ## Validation Method
 
 1. `aws backup list-backup-plans --output json`
-   *Verify comprehensive backup plans are configured for system recovery*
+   *Check AWS Backup plans for regular backup schedules*
 
-2. `aws backup get-backup-plan --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"BackupPlan":{}}'`
-   *ADDED: Retrieve details of the primary backup plan to validate retention rules.*
+2. `PLAN_ID=$(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text 2>/dev/null || echo 'none'); if [ "$PLAN_ID" != "none" ]; then aws backup get-backup-plan --backup-plan-id "$PLAN_ID" --output json; else echo '{"BackupPlan": null}'; fi`
+   *Validate backup plan schedules and retention policies*
 
 3. `aws backup list-backup-jobs --by-state COMPLETED --max-results 50 --output json`
-   *Check recent backup job completions and success rates*
+   *Check recent completed backup jobs for RPO compliance*
 
-4. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,BackupRetentionPeriod,DeletionProtection]' --output json`
-   *Confirm RDS automated backup configuration and data protection settings*
+4. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,PreferredBackupWindow,BackupRetentionPeriod]' --output json`
+   *Validate RDS automated backup configurations*
 
 5. `aws ec2 describe-snapshots --owner-ids self --output json`
-   *Validate EBS snapshots for system backup coverage*
+   *Check EBS snapshots for volume backup coverage*
 
 ## Latest Results
 
-PASS Comprehensive system backups with validated operations aligned with recovery objectives: PASS Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan)
-- PASS Excellent retention: 90 days (rule: daily-backup)
-- PASS Regular backup schedule: cron(0 23 * * ? *) (rule: daily-backup)
-- PASS Full retention compliance: 1/1 rules meet requirements
-- PASS Backup operations validated: 50 successful backup jobs prove backups are functioning
-- PASS RDS backup configuration: 1/1 databases with automated backups
-- PASS Additional backup coverage: 570 EBS snapshots
+- Exception during evaluation: '>' not supported between instances of 'str' and 'int'
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

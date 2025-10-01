@@ -1,51 +1,44 @@
-# KSI-CNA-04: Use immutable infrastructure with strictly defined functionality and privileges by default.
+# KSI-CNA-04: Clearly define and deploy security controls as code to enforce the principle of least functionality
 
 ## Overview
 
 **Category:** Cloud Native Architecture
-**Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Status:** FAIL
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Use immutable infrastructure with strictly defined functionality and privileges by default.
+**What it validates:** Clearly define and deploy security controls as code to enforce the principle of least functionality
 
-**Why it matters:** Validates immutable infrastructure patterns (IaC, serverless, Auto Scaling) and performs a context-aware, least-privilege analysis for network and IAM configurations to reduce false positives.
+**Why it matters:** Validates Infrastructure as Code security controls from basic CloudFormation to enterprise-grade policy-driven deployment with automated compliance
 
 ## Validation Method
 
-1. `aws ec2 describe-instances --filters 'Name=instance-state-name,Values=running,pending' --query 'Reservations[].Instances[].[InstanceId, Tags, LaunchTime, ImageId]' --output json`
-   *Query running instances for IaC tags, naming, and age to assess immutability.*
+1. `aws ec2 describe-instances --filters 'Name=instance-state-name,Values=running' --output json`
+   *Check running instances for least functionality and minimal services*
 
-2. `aws ec2 describe-launch-templates --query 'LaunchTemplates[].LaunchTemplateName' --output json`
-   *Validate use of launch templates for standardized, repeatable deployments.*
+2. `aws ec2 describe-launch-templates --query 'LaunchTemplates[].{Name:LaunchTemplateName,Id:LaunchTemplateId}' --output json`
+   *Validate launch templates for codified security configurations*
 
-3. `aws autoscaling describe-auto-scaling-groups --query 'AutoScalingGroups[].AutoScalingGroupName' --output json`
-   *Check Auto Scaling Groups for immutable replacement and scaling patterns.*
+3. `aws autoscaling describe-auto-scaling-groups --query 'AutoScalingGroups[].{Name:AutoScalingGroupName,LaunchTemplate:LaunchTemplate}' --output json`
+   *Check auto-scaling groups using infrastructure as code templates*
 
 4. `aws lambda list-functions --query 'Functions[].FunctionName' --output json`
-   *Check for serverless functions, which are treated as inherently immutable resources.*
+   *Validate Lambda functions deployed with least privilege configurations*
 
-5. `aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)].[Name]' --output json`
-   *Identify S3 buckets used for Terraform state management as direct evidence of IaC.*
+5. `aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `cloudformation`)].Name' --output json`
+   *Check for IaC state storage and deployment automation*
 
-6. `aws dynamodb list-tables --query 'TableNames[?contains(@, `terraform-lock`)]' --output json`
-   *Identify DynamoDB tables used for Terraform state locking, reinforcing IaC evidence.*
+6. `aws dynamodb list-tables --query 'TableNames[?contains(@, `terraform`) || contains(@, `state`)]' --output json`
+   *Validate DynamoDB tables used for IaC state locking*
 
-7. `aws ec2 describe-security-groups --query 'SecurityGroups[?length(IpPermissions[?contains(IpRanges[].CidrIp, `0.0.0.0/0`)]) > `0`].[GroupId, GroupName, IpPermissions]' --output json`
-   *Check for Security Groups with overly permissive ingress rules from the internet (0.0.0.0/0).*
+7. `aws ec2 describe-security-groups --query 'SecurityGroups[?length(IpPermissions) <= `3`].{GroupName:GroupName,Rules:length(IpPermissions)}' --output json`
+   *Check security groups following least functionality principle*
 
-8. `aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess --query '{PolicyRoles: PolicyRoles}' --output json`
-   *Check for any IAM roles using AdministratorAccess for intelligent, exception-based analysis.*
+8. `aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/ReadOnlyAccess --output json`
+   *Validate read-only policy attachments for principle of least privilege*
 
 ## Latest Results
 
-WARNING Minimal evidence of immutable infrastructure or potential gaps in least privilege (42%): PASS Serverless adoption: 12 Lambda function(s) found (inherently immutable).
-- INFO No launch templates found.
-- INFO No Auto Scaling Groups found.
-- PASS Immutable replacement pattern: High percentage of recent instances.
-- PASS IAM Check: AdministratorAccess policy is appropriately restricted.
-- INFO IAM Info: Found 3 protected AWS service role(s) with intended AdminAccess.
-- PASS Network Check: No sensitive ports found exposed to the internet.
-- WARNING IAM Awareness: Human-facing admin role 'AWSReservedSSO_AdministratorAccess_500b4ab3fed23646' is present. Verify assignment and necessity.
+- Exception during evaluation: 1
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

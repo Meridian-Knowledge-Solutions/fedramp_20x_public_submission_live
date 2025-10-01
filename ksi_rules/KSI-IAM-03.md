@@ -1,25 +1,25 @@
-# KSI-IAM-03: Enforce appropriately secure authentication methods for non-user accounts and services
+# KSI-IAM-03: Implement least privilege access via role-based access control policies
 
 ## Overview
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Enforce appropriately secure authentication methods for non-user accounts and services
+**What it validates:** Implement least privilege access via role-based access control policies
 
-**Why it matters:** Validates service accounts use appropriate authentication methods (roles, not long-term keys) and detects insecure patterns
+**Why it matters:** Validates comprehensive RBAC from basic IAM policies to enterprise-grade dynamic permissions and automated access reviews
 
 ## Validation Method
 
 1. `aws iam list-roles --output json`
-   *Check IAM roles for service authentication (primary secure method)*
+   *Check IAM roles for least privilege RBAC implementation*
 
 2. `aws iam list-users --output json`
-   *Identify users to check for insecure patterns (service user names, long-term keys)*
+   *Validate IAM users have minimal direct permissions (prefer roles)*
 
-3. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].IamInstanceProfile' --output json`
-   *Validate EC2 instances use instance profiles for secure service authentication*
+3. `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,IamInstanceProfile.Arn]' --output json`
+   *Check EC2 instances using IAM roles for RBAC*
 
 ## Latest Results
 
@@ -29,4 +29,4 @@ WARNING Basic service authentication security (75%): PASS Secure foundation: 89 
 - PASS EC2 Best Practice: All 6 instance(s) are correctly using IAM Instance Profiles.
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

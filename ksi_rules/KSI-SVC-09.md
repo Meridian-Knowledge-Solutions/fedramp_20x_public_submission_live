@@ -1,37 +1,37 @@
-# KSI-SVC-09: Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
+# KSI-SVC-09: Use TLS 1.2 or higher versions of secure protocols
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
+**What it validates:** Use TLS 1.2 or higher versions of secure protocols
 
-**Why it matters:** Validates continuous communication integrity through comprehensive certificate management, encryption validation, inter-service security, and automated integrity checking covering ACM certificates, TLS configuration, VPC security, and cryptographic validation mechanisms
+**Why it matters:** Validates comprehensive TLS 1.2+ enforcement from basic HTTPS to enterprise-grade cryptographic compliance and certificate management
 
 ## Validation Method
 
 1. `aws acm list-certificates --output json`
-   *Validate TLS certificate management for communication authenticity and integrity*
+   *Check ACM certificates for TLS 1.2+ support and validity*
 
 2. `aws elbv2 describe-ssl-policies --output json`
-   *Check SSL/TLS policies for secure communication configuration*
+   *Validate load balancer SSL policies for TLS 1.2+ enforcement*
 
-3. `for arn in $(aws elbv2 describe-load-balancers --query 'LoadBalancers[].LoadBalancerArn' --output text 2>/dev/null); do aws elbv2 describe-listeners --load-balancer-arn "$arn" --output json; done`
-   *REVISED: Iterates through each load balancer to describe its listeners.*
+3. `for arn in $(aws elbv2 describe-load-balancers --query 'LoadBalancers[].LoadBalancerArn' --output text); do aws elbv2 describe-listeners --load-balancer-arn $arn --output json; done`
+   *Check load balancer listeners for TLS 1.2+ configurations*
 
 4. `aws ec2 describe-vpc-endpoints --output json`
-   *Check VPC endpoints for private and secure inter-service communication*
+   *Validate VPC endpoints using TLS 1.2+ encrypted connections*
 
-5. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,StorageEncrypted]' --output json`
-   *Validate database encryption for data communication integrity*
+5. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,Engine,EngineVersion]' --output json`
+   *Check RDS instances for TLS 1.2+ support in database engines*
 
 6. `aws kms list-keys --output json`
-   *Check cryptographic infrastructure for communication integrity validation*
+   *Validate KMS keys for cryptographic compliance*
 
 7. `aws cloudwatch describe-alarms --output json`
-   *Validate continuous monitoring of certificate and communication integrity*
+   *Check CloudWatch alarms for TLS and certificate monitoring*
 
 ## Latest Results
 
@@ -42,4 +42,4 @@ PASS Good communication integrity (60%): PASS Tls Certificate Management
 - FAIL Automated Certificate Lifecycle
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

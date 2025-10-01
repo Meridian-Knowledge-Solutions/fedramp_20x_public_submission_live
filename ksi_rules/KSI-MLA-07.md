@@ -1,28 +1,25 @@
-# KSI-MLA-07: Maintain a list of information resources and event types that will be monitored, logged, and audited
+# KSI-MLA-07: Use log aggregation services that accept logs from CSO-provided services
 
 ## Overview
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Maintain a list of information resources and event types that will be monitored, logged, and audited
+**What it validates:** Use log aggregation services that accept logs from CSO-provided services
 
-**Why it matters:** Validates comprehensive monitoring inventory management through automated resource discovery, event categorization, audit trail coverage, and documentation maintenance covering log infrastructure, monitoring scope, and automated inventory systems
+**Why it matters:** Validates comprehensive log aggregation from basic CloudWatch to enterprise-grade centralized SIEM and cross-account log collection
 
 ## Validation Method
 
 1. `aws logs describe-log-groups --output json`
-   *Inventory logging resources and analyze event categorization across AWS services*
+   *Check CloudWatch Log Groups for centralized log aggregation*
 
 2. `aws cloudtrail describe-trails --output json`
-   *Validate audit trail coverage and event monitoring scope*
+   *Validate CloudTrail for organization-wide audit log aggregation*
 
-3. `aws config describe-configuration-recorders --output json`
-   *Check automated discovery and continuous monitoring of information resources*
-
-4. `aws cloudwatch describe-alarms --output json`
-   *Validate active monitoring and alerting for tracked resources and events*
+3. `aws cloudwatch describe-alarms --output json`
+   *Check CloudWatch alarms for aggregated log monitoring*
 
 ## Latest Results
 
@@ -31,4 +28,4 @@ PASS Good automated monitoring inventory - enhance coverage (75%): PASS Comprehe
 - PASS Good monitoring configuration: 13 CloudWatch alarms
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

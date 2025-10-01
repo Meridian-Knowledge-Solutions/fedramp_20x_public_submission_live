@@ -1,32 +1,29 @@
-# KSI-TPR-01: Identify all third-party information resources
+# KSI-TPR-01: Document the cloud service provider (CSP) in the system security policy
 
 ## Overview
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Identify all third-party information resources
+**What it validates:** Document the cloud service provider (CSP) in the system security policy
 
-**Why it matters:** Automated discovery via compliance broker logs (dynamic) and Parameter Store whitelist (static)
+**Why it matters:** Validates CSP documentation from basic AWS account details to enterprise-grade shared responsibility model and service integration policies
 
 ## Validation Method
 
-1. `aws lambda list-functions --query 'Functions[?contains(FunctionName, `broker`) || contains(FunctionName, `compliance`)].FunctionName' --output json`
-   *Verify compliance broker is deployed*
+1. `aws lambda list-functions --query 'Functions[?contains(FunctionName, `policy`) || contains(FunctionName, `compliance`)]' --output json`
+   *Check for policy management Lambda functions*
 
-2. `aws logs describe-log-groups --log-group-name-prefix '/aws/lambda/' --query 'logGroups[?contains(logGroupName, `broker`)]' --output json`
-   *Confirm broker logging is active*
+2. `aws logs describe-log-groups --log-group-name-prefix '/aws/lambda/lms-policy' --output json`
+   *Validate policy service logging for documentation tracking*
 
-3. `aws logs get-query-results --query-id $(aws logs start-query --log-group-name '/aws/lambda/lms-compliance-broker' --start-time $(date -d '30 days ago' +%s) --end-time $(date +%s) --query-string 'fields destination_url | parse destination_url /https?:\/\/(?<host>[^\/]+)/ | stats count() by host' --output text --query 'queryId') --output json`
-   *Retrieve third-party hosts from broker logs*
-
-4. `aws ssm get-parameter --name "/lms-compliance/policies" --output json`
-   *Retrieve the static third-party whitelist from Parameter Store (static evidence)*
+3. `aws ssm get-parameter --name '/lms-compliance/policies' --output json || echo '{"Parameter": null}'`
+   *Check SSM Parameter Store for centralized policy storage*
 
 ## Latest Results
 
 - PASS Third-party resources identified via static configuration: PASS Static discovery: 5 third-party services identified from whitelist
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

@@ -1,40 +1,40 @@
-# KSI-SVC-02: Encrypt or secure network traffic
+# KSI-SVC-02: Use encryption in transit with TLS 1.2 or higher
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Encrypt or secure network traffic
+**What it validates:** Use encryption in transit with TLS 1.2 or higher
 
-**Why it matters:** Validates comprehensive network traffic encryption from basic HTTPS enforcement to enterprise-grade multi-protocol encryption...
+**Why it matters:** Validates comprehensive encryption in transit from basic TLS to enterprise-grade certificate management and cryptographic compliance
 
 ## Validation Method
 
-1. `for arn in $(aws elbv2 describe-load-balancers --query 'LoadBalancers[].LoadBalancerArn' --output text 2>/dev/null); do aws elbv2 describe-listeners --load-balancer-arn "$arn" --output json; done`
-   *REVISED: Iterates through each load balancer to describe its listeners.*
+1. `for arn in $(aws elbv2 describe-load-balancers --query 'LoadBalancers[].LoadBalancerArn' --output text); do aws elbv2 describe-listeners --load-balancer-arn $arn --output json; done`
+   *Check load balancer listeners for TLS 1.2+ enforcement*
 
 2. `aws ec2 describe-vpc-endpoints --output json`
-   *Validate VPC endpoints for private AWS service communication.*
+   *Validate VPC endpoints using encrypted connections*
 
 3. `aws cloudfront list-distributions --output json`
-   *Check CloudFront CDN distributions for HTTPS enforcement.*
+   *Check CloudFront distributions for TLS 1.2+ minimum protocol*
 
 4. `aws apigateway get-rest-apis --output json`
-   *Validate API Gateway configurations for API traffic encryption.*
+   *Validate API Gateway TLS configurations*
 
 5. `aws rds describe-db-instances --output json`
-   *Check RDS database instances for SSL/TLS connection encryption.*
+   *Check RDS instances for SSL/TLS enforcement*
 
 6. `aws elasticache describe-cache-clusters --output json`
-   *Analyze ElastiCache clusters for in-transit encryption.*
+   *Validate ElastiCache encryption in transit*
 
 7. `aws acm list-certificates --output json`
-   *Check AWS Certificate Manager for automated TLS certificate management.*
+   *Check ACM certificates for TLS 1.2+ support and validity*
 
 8. `aws organizations describe-organization --output json`
-   *Check enterprise-wide encryption policies and organizational standards.*
+   *Validate organization-wide encryption in transit policies*
 
 ## Latest Results
 
@@ -46,4 +46,4 @@ PASS Network traffic encryption established across multiple services (56%): PASS
 - PASS Advanced organization features: SCPs for encryption policy enforcement enabled.
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

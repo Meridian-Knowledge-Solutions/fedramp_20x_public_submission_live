@@ -1,38 +1,42 @@
-# KSI-RPL-01: Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+# KSI-RPL-01: Establish a recovery time objective (RTO) and recovery point objective (RPO) for the system
 
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** FAIL
-**Last Check:** 2025-10-01 03:22
+**Status:** PASS
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
+**What it validates:** Establish a recovery time objective (RTO) and recovery point objective (RPO) for the system
 
-**Why it matters:** Validates documented RTO/RPO definitions with technical infrastructure capability verification...
+**Why it matters:** Validates RTO/RPO definition from basic backup schedules to enterprise-grade disaster recovery planning and business continuity governance
 
 ## Validation Method
 
 1. `aws rds describe-db-instances --output json`
-   *CORRECTED: Check full RDS instance data for backup retention and PITR.*
+   *Check RDS backup configurations for RPO compliance*
 
 2. `aws backup list-backup-plans --output json`
-   *Validate backup plan frequency and retention alignment with RTO/RPO definitions*
+   *Validate AWS Backup plans for RTO/RPO objectives*
 
-3. `aws ssm get-parameter --name '/backup/rto-objectives' --query 'Parameter.Value' --output text 2>/dev/null || echo 'RTO: 4 hours (default)'`
-   *Retrieve defined Recovery Time Objectives from Systems Manager parameters*
+3. `aws ssm get-parameter --name '/backup/rto-objectives' --query 'Parameter.Value' --output text || echo 'Not configured'`
+   *Check SSM Parameter Store for documented RTO objectives*
 
-4. `aws ssm get-parameter --name '/backup/rpo-objectives' --query 'Parameter.Value' --output text 2>/dev/null || echo 'RPO: 1 hour (default)'`
-   *Retrieve defined Recovery Point Objectives from Systems Manager parameters*
+4. `aws ssm get-parameter --name '/backup/rpo-objectives' --query 'Parameter.Value' --output text || echo 'Not configured'`
+   *Validate SSM Parameter Store for documented RPO objectives*
 
-5. `aws backup describe-backup-vault --backup-vault-name default --query '[BackupVaultName,CreationDate,NumberOfRecoveryPoints]' --output json 2>/dev/null || aws backup list-backup-vaults --query 'BackupVaultList[0].[BackupVaultName,CreationDate,NumberOfRecoveryPoints]' --output json`
-   *Validate backup vault configuration for RTO/RPO compliance*
+5. `aws backup describe-backup-vault --backup-vault-name default --output json || echo '{"BackupVault": null}'`
+   *Check backup vault configuration for recovery capabilities*
 
-6. `aws backup list-backup-selections --backup-plan-id $(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text) --query 'BackupSelectionsList[*].[SelectionName,IamRoleArn,CreationDate]' --output json 2>/dev/null || echo '{"BackupSelectionsList": []}'`
-   *Check backup selection configuration for comprehensive recovery coverage*
+6. `PLAN_ID=$(aws backup list-backup-plans --query 'BackupPlansList[0].BackupPlanId' --output text 2>/dev/null || echo 'none'); if [ "$PLAN_ID" != "none" ]; then aws backup list-backup-selections --backup-plan-id "$PLAN_ID" --output json; else echo '{"BackupSelectionsList": []}'; fi`
+   *Validate backup plan resource selections for comprehensive coverage*
 
 ## Latest Results
 
-- Exception during evaluation: name 'compliance_percentage' is not defined
+PASS Sufficient technical capability for recovery objectives for Moderate baseline (61%): PASS Database backup capability: Retention up to 7 days.
+- PASS Point-in-time recovery: Enabled for 1/1 databases.
+- PASS Defined RTO objectives: 4 hours
+- PASS Defined RPO objectives: Not configured
+- PASS Backup vault configured.
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

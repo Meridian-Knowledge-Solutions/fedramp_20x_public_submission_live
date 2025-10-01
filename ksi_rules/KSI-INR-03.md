@@ -1,28 +1,28 @@
-# KSI-INR-03: Generate after action reports and regularly incorporate lessons learned into operations
+# KSI-INR-03: Implement automated incident response procedures
 
 ## Overview
 
 **Category:** Incident Reporting
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Generate after action reports and regularly incorporate lessons learned into operations
+**What it validates:** Implement automated incident response procedures
 
-**Why it matters:** Automated after-action infrastructure using Lambda functions (after-action-report-generator, lessons-learned-tracker, incident-analysis-summary, security-review-automation) and Security Hub for incident analysis with continuous improvement framework
+**Why it matters:** Validates automated incident response from basic CloudWatch alarms to enterprise-grade SOAR platforms and intelligent threat response
 
 ## Validation Method
 
 1. `aws securityhub get-findings --max-results 50 --output json`
-   *Verify Security Hub incident analysis capability*
+   *Check Security Hub for incident detection and automated response triggers*
 
 2. `aws lambda list-functions --output json`
-   *Verify Lambda functions for automated reporting (need 3+ with report/analysis/lesson keywords)*
+   *Validate Lambda functions for automated incident response actions*
 
 3. `aws securityhub describe-standards --output json`
-   *Verify continuous improvement framework via Security Hub standards*
+   *Check Security Hub standards for automated compliance monitoring*
 
 4. `aws securityhub get-enabled-standards --output json`
-   *Verify enabled Security Hub standards for compliance tracking*
+   *Validate enabled Security Hub standards for continuous monitoring*
 
 ## Latest Results
 
@@ -31,4 +31,4 @@ PASS FULL after-action automation verified (score: 8): PASS Incident analysis: 5
 - PASS 9 security standard definitions available
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

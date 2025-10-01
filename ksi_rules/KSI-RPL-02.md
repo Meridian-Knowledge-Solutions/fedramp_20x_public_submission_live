@@ -1,18 +1,18 @@
-# KSI-RPL-02: Develop and maintain a recovery plan that aligns with defined recovery objectives
+# KSI-RPL-02: Document system recovery procedures
 
 ## Overview
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Develop and maintain a recovery plan that aligns with defined recovery objectives
+**What it validates:** Document system recovery procedures
 
-**Why it matters:** Manual evidence required - comprehensive recovery plans, playbooks, and alignment documentation with defined RTO/RPO
+**Why it matters:** Validates recovery documentation from basic runbooks to enterprise-grade automated recovery playbooks and disaster recovery testing
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-RPL-02/ for contingency_planning_policy.pdf, incident_reponse_policy.pdf
+1. **Manual Review:** Manual review of system recovery procedures, disaster recovery runbooks, and recovery testing documentation
 
 ## Latest Results
 
@@ -20,4 +20,4 @@ PASS Recovery plan documentation is maintained (100%): PASS Found required docum
 - PASS Found required document: incident_reponse_policy.pdf
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

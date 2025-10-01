@@ -1,42 +1,44 @@
-# KSI-RPL-04: Regularly test the capability to recover from incidents and contingencies
+# KSI-RPL-04: Test recovery procedures regularly
 
 ## Overview
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Regularly test the capability to recover from incidents and contingencies
+**What it validates:** Test recovery procedures regularly
 
-**Why it matters:** Validates recovery testing through historical restore operations, backup job performance metrics, and documented test procedures with actual results
+**Why it matters:** Validates comprehensive recovery testing from basic restore validation to enterprise-grade chaos engineering and automated DR drills
 
 ## Validation Method
 
 1. `aws backup list-restore-jobs --max-results 20 --output json`
-   *Document historical restore operations proving actual recovery testing has been performed*
+   *Check restore job history for recovery testing validation*
 
-2. `aws backup list-backup-jobs --by-state COMPLETED --by-created-after 2024-05-01 --output json`
-   *Show recent backup completions with timing data to validate recovery time objectives*
+2. `aws backup list-backup-jobs --by-state COMPLETED --by-created-after $(date -u -d '30 days ago' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-30d +%Y-%m-%dT%H:%M:%SZ) --max-results 50 --output json`
+   *Validate recent backup jobs for recovery readiness*
 
-3. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,LatestRestorableTime,PreferredBackupWindow]' --output json`
-   *Verify point-in-time recovery capability and backup timing for recovery testing validation*
+3. `aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,LatestRestorableTime]' --output json`
+   *Check RDS latest restorable time for point-in-time recovery testing*
 
-4. `aws backup describe-restore-job --restore-job-id $(aws backup list-restore-jobs --query 'RestoreJobs[0].RestoreJobId' --output text) --query '[Status,CreationDate,CompletionDate,RecoveryPointArn]' --output json 2>/dev/null || echo '{"RestoreJobStatus": "NOT_FOUND"}'`
-   *Analyze most recent restore job performance for recovery testing validation*
+4. `RESTORE_JOB_ID=$(aws backup list-restore-jobs --max-results 1 --query 'RestoreJobs[0].RestoreJobId' --output text 2>/dev/null || echo 'none'); if [ "$RESTORE_JOB_ID" != "none" ]; then aws backup describe-restore-job --restore-job-id "$RESTORE_JOB_ID" --output json; else echo '{"RestoreJob": null}'; fi`
+   *Validate recent restore job details for recovery testing documentation*
 
-5. `aws ssm describe-instance-associations --instance-id $(aws ec2 describe-instances --filters 'Name=tag:Environment,Values=test' --query 'Reservations[0].Instances[0].InstanceId' --output text) --query 'Associations[*].[Name,AssociationId,Status.Name,LastExecutionDate]' --output json 2>/dev/null || echo '{"Associations": []}'`
-   *Check Systems Manager associations for automated recovery testing scripts*
+5. `INSTANCE_ID=$(aws ec2 describe-instances --filters 'Name=instance-state-name,Values=running' --query 'Reservations[0].Instances[0].InstanceId' --output text 2>/dev/null || echo 'none'); if [ "$INSTANCE_ID" != "none" ]; then aws ssm describe-instance-associations --instance-id "$INSTANCE_ID" --output json 2>/dev/null || echo '{"Associations": []}'; else echo '{"Associations": []}'; fi`
+   *Check SSM associations for automated recovery testing*
 
-6. `aws lambda invoke --function-name automated-recovery-test --payload '{"test_type":"backup_restore"}' /tmp/response.json --query 'StatusCode' --output text 2>/dev/null && cat /tmp/response.json 2>/dev/null || echo '{"error": "Recovery test function not configured"}'`
-   *Execute automated recovery test function and retrieve results*
+6. `aws lambda invoke --function-name automated-recovery-test --payload '{}' /tmp/recovery-test-result.json 2>&1 || echo 'No automated recovery test function'`
+   *Validate automated recovery testing Lambda function*
 
-7. `aws ssm get-parameter --name '/recovery/last-test-date' --query 'Parameter.[Value,LastModifiedDate]' --output json 2>/dev/null || echo '{"LastTest": "No automated testing configured"}'`
-   *Check last recovery test execution date for regular testing compliance*
+7. `aws ssm get-parameter --name '/recovery/last-test-date' --query 'Parameter.Value' --output text || echo 'Not configured'`
+   *Check SSM Parameter Store for documented recovery test dates*
 
 ## Latest Results
 
-PASS Basic recovery testing infrastructure available (29%): PASS Backup infrastructure validation: 210 recent backup operations prove recovery foundation
+PASS Good recovery testing capability established (57%): PASS Backup infrastructure validation: 50 recent backup operations prove recovery foundation
 - PASS Point-in-time recovery testing capability: 1/1 databases ready for RPO validation
+- PASS Automated recovery testing infrastructure available
+- PASS Recovery test tracking: Last test execution tracked - Not configured
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

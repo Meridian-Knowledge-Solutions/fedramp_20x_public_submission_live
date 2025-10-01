@@ -1,26 +1,26 @@
-# KSI-CMT-04: Have a documented and implemented change management procedure
+# KSI-CMT-04: Use codified change templates with approval rules
 
 ## Overview
 
 **Category:** Change Management
 **Status:** FAIL
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Have a documented and implemented change management procedure
+**What it validates:** Use codified change templates with approval rules
 
-**Why it matters:** Validates that the change management procedure is codified and enforced using AWS Systems Manager Change Manager templates with approval workflows, providing live, auditable evidence of an implemented control.
+**Why it matters:** Validates comprehensive change approval automation from basic templates to enterprise-grade policy-driven approvals and governance
 
 ## Validation Method
 
-1. `aws ssm list-documents --document-filter-list 'key=DocumentType,value=ChangeTemplate' --query 'DocumentIdentifiers[*].{Name:Name}'`
-   *Lists all active SSM Change Manager templates in the account. This is the primary evidence of a codified change procedure.*
+1. `aws ssm list-documents --document-filter-list 'key=DocumentType,value=Automation' --query 'DocumentIdentifiers[?contains(Name, `Change`) || contains(Name, `Template`)].{Name:Name}' --output json`
+   *Check SSM change management templates with approval workflows*
 
-2. `aws ssm get-document --name TEMPLATE_NAME`
-   *Retrieves the content of a specific Change Template. The evaluation logic will call this for each template found to inspect its approval configuration. TEMPLATE_NAME is a placeholder.*
+2. `DOC_NAME=$(aws ssm list-documents --document-filter-list 'key=DocumentType,value=Automation' --query 'DocumentIdentifiers[0].Name' --output text 2>/dev/null || echo 'none'); if [ "$DOC_NAME" != "none" ]; then aws ssm get-document --name "$DOC_NAME" --output json; else echo '{"Content": null}'; fi`
+   *Validate change template content and approval configuration*
 
 ## Latest Results
 
-- FAIL No AWS SSM Change Manager templates were found. The procedure is not implemented as a technical control.
+- FAIL No SSM Change Manager templates found - change procedure not codified
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

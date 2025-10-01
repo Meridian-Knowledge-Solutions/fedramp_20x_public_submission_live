@@ -1,31 +1,28 @@
-# KSI-IAM-02: Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
+# KSI-IAM-02: Implement enterprise-wide identity federation
 
 ## Overview
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
+**What it validates:** Implement enterprise-wide identity federation
 
-**Why it matters:** Validates passwordless authentication (SSO/SAML/temporary credentials) where feasible, otherwise strong password policy with mandatory MFA enforcement
+**Why it matters:** Validates comprehensive identity federation from basic SAML to enterprise-grade SSO and centralized identity management
 
 ## Validation Method
 
 1. `aws iam list-saml-providers --output json`
-   *Check for federated authentication (passwordless method)*
+   *Check SAML identity providers for federated authentication*
 
 2. `aws iam list-virtual-mfa-devices --output json`
-   *Validate MFA device configuration and enforcement*
+   *Validate virtual MFA devices in federated authentication*
 
-3. `aws iam get-account-password-policy --output json`
-   *Check strong password policy enforcement when passwords are used*
+3. `aws iam get-account-password-policy --output json || echo '{"PasswordPolicy": "NotConfigured"}'`
+   *Check password policy for federated identity fallback requirements*
 
-4. `aws iam get-account-password-policy --output json || echo '{"PasswordPolicy": "No custom policy set, using AWS defaults."}'`
-   *RESILIENT: Handles cases where no custom password policy exists by providing a default status.*
-
-5. `aws sts get-caller-identity --output json`
-   *Validate current authentication method (temporary vs permanent credentials)*
+4. `aws sts get-caller-identity --output json`
+   *Validate federated identity assumption and role-based access*
 
 ## Latest Results
 
@@ -34,4 +31,4 @@ PASS Excellent authentication security (passwordless methods): PASS 1 SAML provi
 - PASS Centralized MFA via SAML/IdP (traditional MFA not required)
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

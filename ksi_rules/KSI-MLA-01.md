@@ -1,40 +1,37 @@
-# KSI-MLA-01: Operate a Security Information and Event Management (SIEM) or similar system(s) for centralized, tamper-resistant logging of events, activities, and changes
+# KSI-MLA-01: Implement end-to-end logging to capture security events
 
 ## Overview
 
 **Category:** Monitoring, Logging, and Auditing
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Operate a Security Information and Event Management (SIEM) or similar system(s) for centralized, tamper-resistant logging of events, activities, and changes
+**What it validates:** Implement end-to-end logging to capture security events
 
-**Why it matters:** Validates comprehensive SIEM capabilities from basic centralized logging to enterprise-grade log management, analysis, and compliance
+**Why it matters:** Validates comprehensive security logging from basic CloudTrail to enterprise-grade SIEM integration and centralized log management
 
 ## Validation Method
 
 1. `aws cloudtrail describe-trails --output json`
-   *Check CloudTrail for centralized, tamper-resistant logging foundation*
+   *Check CloudTrail for comprehensive security event logging*
 
 2. `aws logs describe-log-groups --output json`
-   *Validate centralized log collection and retention policies in CloudWatch*
+   *Validate CloudWatch Logs for centralized log collection*
 
 3. `aws cloudwatch describe-alarms --output json`
-   *Check automated log analysis and real-time alerting capabilities*
+   *Check CloudWatch alarms for automated log monitoring*
 
 4. `aws kms list-keys --output json`
-   *Validate cryptographic protection and encryption for sensitive logs*
+   *Validate KMS encryption for secure log storage*
 
-5. `aws config describe-delivery-channels --output json`
-   *Check compliance-grade log delivery and audit trail mechanisms*
+5. `aws s3api list-buckets --output json`
+   *Check S3 buckets for long-term log retention*
 
-6. `aws s3api list-buckets --output json`
-   *Validate log archival, long-term storage, and forensic capabilities*
+6. `aws securityhub get-findings --max-results 20 --output json`
+   *Validate Security Hub for security finding aggregation*
 
-7. `aws securityhub get-findings --max-results 20 --output json`
-   *Check advanced threat detection and security event correlation*
-
-8. `aws organizations describe-organization --output json`
-   *Validate enterprise-wide centralized logging and cross-account capabilities*
+7. `aws organizations describe-organization --output json`
+   *Check organization-wide centralized logging policies*
 
 ## Latest Results
 
@@ -55,4 +52,4 @@ PASS Excellent SIEM with comprehensive logging and analysis (97%): PASS CloudTra
 - PASS Enterprise-wide CloudTrail: Organization-wide audit coverage
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

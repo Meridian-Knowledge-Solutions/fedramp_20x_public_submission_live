@@ -1,30 +1,27 @@
-# KSI-SVC-08: Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
+# KSI-SVC-08: Use infrastructure as code to apply controls to the provisioning and management of resources
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
+**What it validates:** Use infrastructure as code to apply controls to the provisioning and management of resources
 
-**Why it matters:** Validates comprehensive change residual element management through Infrastructure as Code, automated cleanup processes, resource lifecycle management, and change impact tracking covering CloudFormation deployment, automated resource management, and residual element detection
+**Why it matters:** Validates comprehensive IaC implementation from basic CloudFormation to enterprise-grade policy-driven deployment and automated compliance
 
 ## Validation Method
 
 1. `aws cloudformation list-stacks --output json`
-   *Validate Infrastructure as Code for residual element management and clean deployments*
+   *Check CloudFormation stacks for infrastructure as code deployment*
 
 2. `aws lambda list-functions --output json`
-   *Check automated cleanup and residual element management functions*
+   *Validate Lambda functions for IaC automation and deployment*
 
-3. `aws config describe-configuration-recorders --output json`
-   *Validate change impact tracking and configuration management*
+3. `aws events list-rules --output json`
+   *Check EventBridge rules for automated IaC workflows*
 
-4. `aws events list-rules --output json`
-   *Check EventBridge rules for automated lifecycle and cleanup workflows*
-
-5. **Manual Review:** Change management procedures, cleanup processes, and residual element detection documentation
+4. **Manual Review:** Manual review of IaC templates, policies, and deployment pipelines
 
 ## Latest Results
 
@@ -35,4 +32,4 @@ PASS Good change cleanup processes (60%): PASS Infrastructure As Code
 - FAIL Change Impact Tracking
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

@@ -1,39 +1,39 @@
-# KSI-TPR-04: Monitor third party software for upstream vulnerabilities
+# KSI-TPR-04: Conduct vulnerability scans for applications and operating systems
 
 ## Overview
 
 **Category:** Third-Party Information Resources
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Monitor third party software for upstream vulnerabilities
+**What it validates:** Conduct vulnerability scans for applications and operating systems
 
-**Why it matters:** AWS Inspector for EC2 instances provides automated monitoring of third-party application packages and dependencies (Python, NPM, etc.) that process federal information
+**Why it matters:** Validates comprehensive vulnerability scanning from basic Inspector to enterprise-grade continuous scanning and automated remediation
 
 ## Validation Method
 
 1. `aws inspector2 get-configuration --output json`
-   *Inspector configuration status for automated third-party package vulnerability scanning*
+   *Check Inspector configuration for vulnerability scanning*
 
-2. `aws inspector2 list-findings --filter-criteria '{"componentType":[{"value":"PYTHON_PKG","comparison":"EQUALS"}]}' --max-results 20 --output json`
-   *Python package vulnerabilities in third-party dependencies (boto3, requests, etc.)*
+2. `aws inspector2 list-findings --filter-criteria '{"componentType":[{"comparison":"EQUALS","value":"OPERATING_SYSTEM"}]}' --max-results 50 --output json`
+   *Validate OS vulnerability findings from Inspector*
 
-3. `aws inspector2 list-findings --filter-criteria '{"componentType":[{"value":"NPM","comparison":"EQUALS"}]}' --max-results 20 --output json`
-   *NPM package vulnerabilities in third-party JavaScript dependencies*
+3. `aws inspector2 list-findings --filter-criteria '{"componentType":[{"comparison":"EQUALS","value":"APPLICATION"}]}' --max-results 50 --output json`
+   *Check application vulnerability findings from Inspector*
 
-4. `aws inspector2 list-findings --filter-criteria '{"findingStatus":[{"value":"ACTIVE","comparison":"EQUALS"}]}' --max-results 30 --output json`
-   *All active vulnerability findings to verify Inspector scanning capability*
+4. `aws inspector2 list-findings --filter-criteria '{"findingStatus":[{"comparison":"EQUALS","value":"ACTIVE"}]}' --max-results 100 --output json`
+   *Validate active vulnerability findings requiring remediation*
 
-5. `aws inspector2 list-coverage --filter-criteria '{"resourceType":[{"value":"EC2","comparison":"EQUALS"}]}' --output json`
-   *Inspector coverage validation for EC2 instances available for package scanning*
+5. `aws inspector2 list-coverage --filter-criteria '{"resourceType":[{"comparison":"EQUALS","value":"AWS_EC2_INSTANCE"}]}' --max-results 100 --output json`
+   *Check Inspector coverage for EC2 instances*
 
 6. `aws ssm describe-instance-information --output json`
-   *Systems Manager agent status for third-party package inventory and dependency tracking*
+   *Validate SSM agent deployment for vulnerability management*
 
 ## Latest Results
 
-WARNING Basic monitoring infrastructure - deploy third-party packages for full coverage (40%): PASS Inspector coverage service active - verify instances enrolled for package scanning
+PASS Good third-party package monitoring - expand coverage (40%): PASS EC2 Inspector coverage verified: 6 instances available for third-party package scanning
 - PASS Package inventory capability: 6 instances with SSM agent for dependency tracking
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

@@ -1,22 +1,22 @@
-# KSI-PIY-02: Establish and maintain organization-wide information security and technology policies
+# KSI-PIY-02: Maintain an inventory of all software installed on systems
 
 ## Overview
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Establish and maintain organization-wide information security and technology policies
+**What it validates:** Maintain an inventory of all software installed on systems
 
-**Why it matters:** Manual evidence required - organizational security policies, technology governance frameworks, and policy maintenance procedures
+**Why it matters:** Validates comprehensive software inventory from basic SSM to enterprise-grade automated discovery and vulnerability tracking
 
 ## Validation Method
 
-1. **Manual Review:** Check evidence_v2/KSI-PIY-02/ for information_security_policy.pdf, technology_governance_framework.pdf, policy_maintenance_procedures.pdf, and organizational_security_standards.pdf
+1. **Manual Review:** Manual review of SSM Inventory, Inspector findings, and software asset management documentation
 
 ## Latest Results
 
 - PASS Security policies outlining objectives: PASS Core security policies: personnel_security_policy.pdf, data_classification_handling_policy.pdf, security_policy_collection_repository.zip
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

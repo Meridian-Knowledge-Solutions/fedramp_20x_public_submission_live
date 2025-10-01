@@ -1,49 +1,46 @@
-# KSI-SVC-03: Encrypt all federal and sensitive information at rest
+# KSI-SVC-03: Encrypt data at rest
 
 ## Overview
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Encrypt all federal and sensitive information at rest
+**What it validates:** Encrypt data at rest
 
-**Why it matters:** Validates comprehensive at-rest encryption from basic storage service availability to enterprise-grade multi-service encryption...
+**Why it matters:** Validates comprehensive data at rest encryption from basic S3 encryption to enterprise-grade KMS key management and compliance
 
 ## Validation Method
 
 1. `aws s3api list-buckets --output json`
-   *Get S3 buckets for object storage encryption validation.*
+   *Check S3 buckets for default encryption configurations*
 
 2. `aws ec2 describe-volumes --output json`
-   *Check EBS volume encryption status for block storage.*
+   *Validate EBS volume encryption at rest*
 
 3. `aws rds describe-db-instances --output json`
-   *Validate RDS database encryption at rest.*
+   *Check RDS database encryption at rest*
 
 4. `aws rds describe-db-snapshots --output json`
-   *Check RDS snapshot encryption for backups.*
+   *Validate RDS snapshot encryption*
 
 5. `aws dynamodb list-tables --output json`
-   *ADDED: Check for DynamoDB tables (encrypted by default).*
+   *Check DynamoDB tables for encryption at rest*
 
 6. `aws elasticache describe-cache-clusters --output json`
-   *ADDED: Analyze ElastiCache clusters for at-rest encryption.*
+   *Validate ElastiCache encryption at rest*
 
 7. `aws redshift describe-clusters --output json`
-   *ADDED: Check Redshift clusters for data warehouse encryption.*
+   *Check Redshift cluster encryption*
 
-8. `aws efs describe-file-systems --output json`
-   *Check Elastic File System encryption for shared storage.*
+8. `aws backup list-backup-vaults --output json`
+   *Validate AWS Backup vault encryption*
 
-9. `aws backup list-backup-vaults --output json`
-   *Validate AWS Backup vault encryption for centralized backups.*
+9. `aws kms list-keys --output json`
+   *Check KMS key usage for data encryption*
 
-10. `aws kms list-keys --output json`
-   *Check KMS key management for encryption governance.*
-
-11. `aws organizations describe-organization --output json`
-   *ADDED: Check for enterprise-wide encryption policies.*
+10. `aws organizations describe-organization --output json`
+   *Validate organization-wide encryption at rest policies*
 
 ## Latest Results
 
@@ -57,4 +54,4 @@ PASS Production-ready multi-service encryption with advanced key management (70%
 - PASS Advanced organization features: SCPs for encryption policy enforcement enabled.
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

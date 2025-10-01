@@ -4,89 +4,89 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Change Management
 
-- [PASS] [KSI-CMT-01](KSI-CMT-01.md): Log and monitor system modifications
-- [PASS] [KSI-CMT-02](KSI-CMT-02.md): Execute changes through redeployment of version controlled immutable resources rather than direct modification wherever possible
-- [PASS] [KSI-CMT-03](KSI-CMT-03.md): Implement automated testing and validation of changes prior to deployment
-- [FAIL] [KSI-CMT-04](KSI-CMT-04.md): Have a documented and implemented change management procedure
+- [PASS] [KSI-CMT-01](KSI-CMT-01.md): Document a change management policy for all system modifications
+- [PASS] [KSI-CMT-02](KSI-CMT-02.md): Use self-service templates and image repositories for provisioning
+- [PASS] [KSI-CMT-03](KSI-CMT-03.md): Use CI/CD pipelines for deploying changes
+- [FAIL] [KSI-CMT-04](KSI-CMT-04.md): Use codified change templates with approval rules
 - [FAIL] [KSI-CMT-05](KSI-CMT-05.md): Evaluate the risk and potential impact of any change using a generated deployment manifest
 
 ## Cloud Native Architecture
 
-- [PASS] [KSI-CNA-01](KSI-CNA-01.md): Configure ALL information resources to limit inbound and outbound traffic
-- [PASS] [KSI-CNA-02](KSI-CNA-02.md): Design systems to minimize the attack surface and minimize lateral movement if compromised
-- [PASS] [KSI-CNA-03](KSI-CNA-03.md): Use logical networking and related capabilities to enforce traffic flow controls
-- [PASS] [KSI-CNA-04](KSI-CNA-04.md): Use immutable infrastructure with strictly defined functionality and privileges by default.
-- [FAIL] [KSI-CNA-05](KSI-CNA-05.md): Protect against denial of service attacks and unwanted spam
-- [FAIL] [KSI-CNA-06](KSI-CNA-06.md): Design systems for high availability and rapid recovery
-- [PASS] [KSI-CNA-07](KSI-CNA-07.md): Ensure cloud-native information resources are implemented based on host provider's best practices and documented guidance
-- [FAIL] [KSI-CNA-08](KSI-CNA-08.md): Use automated services to persistently assess the security posture of all services and automatically enforce secure operations.
+- [PASS] [KSI-CNA-01](KSI-CNA-01.md): Implement DDoS protection and defense-in-depth network security
+- [PASS] [KSI-CNA-02](KSI-CNA-02.md): Segment network and compute resources into security zones
+- [PASS] [KSI-CNA-03](KSI-CNA-03.md): Restrict public network accessibility except through a limited number of managed access points
+- [FAIL] [KSI-CNA-04](KSI-CNA-04.md): Clearly define and deploy security controls as code to enforce the principle of least functionality
+- [FAIL] [KSI-CNA-05](KSI-CNA-05.md): Use fully qualified domain names and encrypt information in transit
+- [PASS] [KSI-CNA-06](KSI-CNA-06.md): Deploy highly available components and services
+- [PASS] [KSI-CNA-07](KSI-CNA-07.md): Maximize use of managed services and cloud resources
+- [FAIL] [KSI-CNA-08](KSI-CNA-08.md): Use native security capabilities including agent-based security
 
 ## Cybersecurity Education
 
-- [PASS] [KSI-CED-01](KSI-CED-01.md): Ensure all employees receive security awareness training
-- [PASS] [KSI-CED-02](KSI-CED-02.md): Require role-specific training for high risk roles, including at least roles with privileged access
-- [PASS] [KSI-CED-03](KSI-CED-03.md): Require role-specific training for development and engineering staff covering best practices for delivering secure software
+- [PASS] [KSI-CED-01](KSI-CED-01.md): Provide role-based security training for personnel
+- [PASS] [KSI-CED-02](KSI-CED-02.md): Provide specialized security training for privileged users
+- [PASS] [KSI-CED-03](KSI-CED-03.md): Provide security awareness training on risks from social engineering and other attacks
 
 ## Identity and Access Management
 
-- [FAIL] [KSI-IAM-01](KSI-IAM-01.md): Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
-- [PASS] [KSI-IAM-02](KSI-IAM-02.md): Use secure passwordless methods for user authentication and authorization when feasible, otherwise enforce strong passwords with MFA
-- [PASS] [KSI-IAM-03](KSI-IAM-03.md): Enforce appropriately secure authentication methods for non-user accounts and services
-- [PASS] [KSI-IAM-04](KSI-IAM-04.md): Use a least-privileged, role and attribute-based, and just-in-time security authorization model for all user and non-user accounts and services
-- [PASS] [KSI-IAM-05](KSI-IAM-05.md): Apply zero trust design principles
-- [PASS] [KSI-IAM-06](KSI-IAM-06.md): Automatically disable or otherwise secure accounts with privileged access in response to suspicious activity
-- [PASS] [KSI-IAM-07](KSI-IAM-07.md): Securely manage the lifecycle and privileges of all accounts, roles, and groups
+- [FAIL] [KSI-IAM-01](KSI-IAM-01.md): Implement phishing-resistant multi-factor authentication for all users
+- [PASS] [KSI-IAM-02](KSI-IAM-02.md): Implement enterprise-wide identity federation
+- [PASS] [KSI-IAM-03](KSI-IAM-03.md): Implement least privilege access via role-based access control policies
+- [PASS] [KSI-IAM-04](KSI-IAM-04.md): Clearly define user roles and implement user-to-role mapping
+- [PASS] [KSI-IAM-05](KSI-IAM-05.md): Separate duties between users
+- [PASS] [KSI-IAM-06](KSI-IAM-06.md): Implement fine-grained automated actions on security events related to authentication and access control
+- [PASS] [KSI-IAM-07](KSI-IAM-07.md): Implement a consistent identity management process
 
 ## Incident Reporting
 
-- [PASS] [KSI-INR-01](KSI-INR-01.md): Document, report, and analyze security incidents to ensure regulatory compliance and continuous security improvement
-- [PASS] [KSI-INR-02](KSI-INR-02.md): Maintain a log of incidents and periodically review past incidents for patterns or vulnerabilities
-- [PASS] [KSI-INR-03](KSI-INR-03.md): Generate after action reports and regularly incorporate lessons learned into operations
+- [PASS] [KSI-INR-01](KSI-INR-01.md): Document incident handling procedures
+- [PASS] [KSI-INR-02](KSI-INR-02.md): Establish an insider threat program
+- [PASS] [KSI-INR-03](KSI-INR-03.md): Implement automated incident response procedures
 
 ## Monitoring, Logging, and Auditing
 
-- [PASS] [KSI-MLA-01](KSI-MLA-01.md): Operate a Security Information and Event Management (SIEM) or similar system(s) for centralized, tamper-resistant logging of events, activities, and changes
+- [PASS] [KSI-MLA-01](KSI-MLA-01.md): Implement end-to-end logging to capture security events
 - [PASS] [KSI-MLA-02](KSI-MLA-02.md): Regularly review and audit logs
 - [PASS] [KSI-MLA-03](KSI-MLA-03.md): Rapidly detect and remediate or mitigate vulnerabilities
-- [PASS] [KSI-MLA-05](KSI-MLA-05.md): Perform Infrastructure as Code and configuration evaluation and testing
-- [PASS] [KSI-MLA-07](KSI-MLA-07.md): Maintain a list of information resources and event types that will be monitored, logged, and audited
-- [PASS] [KSI-MLA-08](KSI-MLA-08.md): Use a least-privileged, role and attribute-based, and just-in-time access authorization model for access to log data
+- [PASS] [KSI-MLA-05](KSI-MLA-05.md): Use change management tools to enforce, track and report configuration changes
+- [PASS] [KSI-MLA-07](KSI-MLA-07.md): Use log aggregation services that accept logs from CSO-provided services
+- [PASS] [KSI-MLA-08](KSI-MLA-08.md): Protect audit logs to support after-the-fact investigations
 
 ## Policy and Inventory
 
-- [PASS] [KSI-PIY-01](KSI-PIY-01.md): Establish and maintain complete inventories of all information resources
-- [PASS] [KSI-PIY-02](KSI-PIY-02.md): Establish and maintain organization-wide information security and technology policies
-- [PASS] [KSI-PIY-03](KSI-PIY-03.md): Maintain a vulnerability disclosure program
-- [PASS] [KSI-PIY-04](KSI-PIY-04.md): Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles
-- [PASS] [KSI-PIY-05](KSI-PIY-05.md): Document methods used to evaluate information resource implementations
-- [FAIL] [KSI-PIY-06](KSI-PIY-06.md): Have staff and budget for security commensurate with the size, complexity, scope, executive priorities, and risk of the service offering that demonstrates commitment to delivering a secure service
-- [PASS] [KSI-PIY-07](KSI-PIY-07.md): Document risk management decisions for software supply chain security
+- [PASS] [KSI-PIY-01](KSI-PIY-01.md): Maintain an inventory of authorized users
+- [PASS] [KSI-PIY-02](KSI-PIY-02.md): Maintain an inventory of all software installed on systems
+- [PASS] [KSI-PIY-03](KSI-PIY-03.md): Define baselines for approved hardware, software, and firmware components
+- [PASS] [KSI-PIY-04](KSI-PIY-04.md): Maintain an inventory of authorized software
+- [PASS] [KSI-PIY-05](KSI-PIY-05.md): Maintain a data protection policy that addresses data retention requirements
+- [FAIL] [KSI-PIY-06](KSI-PIY-06.md): Maintain policies for incident response and reporting
+- [PASS] [KSI-PIY-07](KSI-PIY-07.md): Document the system security policy
 
 ## Recovery Planning
 
-- [FAIL] [KSI-RPL-01](KSI-RPL-01.md): Define Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)
-- [PASS] [KSI-RPL-02](KSI-RPL-02.md): Develop and maintain a recovery plan that aligns with defined recovery objectives
-- [PASS] [KSI-RPL-03](KSI-RPL-03.md): Perform system backups aligned with recovery objectives
-- [PASS] [KSI-RPL-04](KSI-RPL-04.md): Regularly test the capability to recover from incidents and contingencies
+- [PASS] [KSI-RPL-01](KSI-RPL-01.md): Establish a recovery time objective (RTO) and recovery point objective (RPO) for the system
+- [PASS] [KSI-RPL-02](KSI-RPL-02.md): Document system recovery procedures
+- [FAIL] [KSI-RPL-03](KSI-RPL-03.md): Back up information regularly per the recovery point objective
+- [PASS] [KSI-RPL-04](KSI-RPL-04.md): Test recovery procedures regularly
 
 ## Service Configuration
 
-- [PASS] [KSI-SVC-01](KSI-SVC-01.md): Harden and review network and system configurations
-- [PASS] [KSI-SVC-02](KSI-SVC-02.md): Encrypt or secure network traffic
-- [PASS] [KSI-SVC-03](KSI-SVC-03.md): Encrypt all federal and sensitive information at rest
-- [PASS] [KSI-SVC-04](KSI-SVC-04.md): Manage configuration centrally
-- [PASS] [KSI-SVC-05](KSI-SVC-05.md): Continuously verify information resource integrity
-- [PASS] [KSI-SVC-06](KSI-SVC-06.md): Use automated key management systems to manage, protect, and regularly rotate digital keys and certificates
-- [PASS] [KSI-SVC-07](KSI-SVC-07.md): Use a consistent, risk-informed approach for applying security patches
-- [PASS] [KSI-SVC-08](KSI-SVC-08.md): Ensure that changes do not introduce or leave behind residual elements that could negatively affect confidentiality, integrity, or availability
-- [PASS] [KSI-SVC-09](KSI-SVC-09.md): Use mechanisms that continuously validate the authenticity and integrity of communications between information resources
-- [PASS] [KSI-SVC-10](KSI-SVC-10.md): Remove unwanted information promptly, including from backups if appropriate
+- [PASS] [KSI-SVC-01](KSI-SVC-01.md): Maintain hardened system images and configurations
+- [PASS] [KSI-SVC-02](KSI-SVC-02.md): Use encryption in transit with TLS 1.2 or higher
+- [PASS] [KSI-SVC-03](KSI-SVC-03.md): Encrypt data at rest
+- [PASS] [KSI-SVC-04](KSI-SVC-04.md): Use configuration management systems to manage cloud services and apply configuration as code to CSO-provided cloud services
+- [PASS] [KSI-SVC-05](KSI-SVC-05.md): Use logging and monitoring to detect abnormal changes to configuration
+- [PASS] [KSI-SVC-06](KSI-SVC-06.md): Use centralized key management services
+- [PASS] [KSI-SVC-07](KSI-SVC-07.md): Perform regularly scheduled scans for vulnerabilities and apply patches promptly
+- [PASS] [KSI-SVC-08](KSI-SVC-08.md): Use infrastructure as code to apply controls to the provisioning and management of resources
+- [PASS] [KSI-SVC-09](KSI-SVC-09.md): Use TLS 1.2 or higher versions of secure protocols
+- [PASS] [KSI-SVC-10](KSI-SVC-10.md): Perform regularly scheduled backups
 
 ## Third-Party Information Resources
 
-- [PASS] [KSI-TPR-01](KSI-TPR-01.md): Identify all third-party information resources
-- [PASS] [KSI-TPR-03](KSI-TPR-03.md): Identify and prioritize mitigation of potential supply chain risks
-- [PASS] [KSI-TPR-04](KSI-TPR-04.md): Monitor third party software for upstream vulnerabilities
+- [PASS] [KSI-TPR-01](KSI-TPR-01.md): Document the cloud service provider (CSP) in the system security policy
+- [PASS] [KSI-TPR-03](KSI-TPR-03.md): Document all third-party services used in the system security policy
+- [PASS] [KSI-TPR-04](KSI-TPR-04.md): Conduct vulnerability scans for applications and operating systems
 
 ## Summary
 
@@ -96,4 +96,4 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - **Not Tested:** 0
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*

@@ -1,28 +1,28 @@
-# KSI-PIY-04: Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles
+# KSI-PIY-04: Maintain an inventory of authorized software
 
 ## Overview
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-10-01 03:22
+**Last Check:** 2025-10-01 06:31
 
-**What it validates:** Build security and privacy considerations into the Software Development Lifecycle and align with CISA Secure By Design principles
+**What it validates:** Maintain an inventory of authorized software
 
-**Why it matters:** Validates secure development lifecycle through CodeBuild security testing, CodePipeline security gates, Lambda security automation, and enterprise development governance without container dependencies
+**Why it matters:** Validates comprehensive authorized software management from basic allow-lists to enterprise-grade application control and compliance tracking
 
 ## Validation Method
 
 1. `aws codebuild list-projects --output json`
-   *Check CodeBuild projects for security testing integration in SDLC*
+   *Check CodeBuild for authorized software deployment pipelines*
 
 2. `aws codepipeline list-pipelines --output json`
-   *Validate CodePipeline for security gates and SDLC security integration*
+   *Validate CodePipeline for authorized software deployment*
 
 3. `aws lambda list-functions --output json`
-   *Check Lambda functions for security automation and SDLC integration*
+   *Check Lambda functions for authorized serverless software*
 
 4. `aws organizations describe-organization --output json`
-   *Validate enterprise-wide development governance and security standards*
+   *Validate organization-wide authorized software policies*
 
 ## Latest Results
 
@@ -32,4 +32,4 @@ PASS Comprehensive SDLC security integration with enterprise automation (100%): 
 - PASS Development Governance
 
 ---
-*Generated 2025-10-01 03:22 UTC*
+*Generated 2025-10-01 06:31 UTC*
