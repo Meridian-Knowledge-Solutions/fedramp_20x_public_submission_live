@@ -29,7 +29,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 ## Identity and Access Management
 
-- [FAIL] [KSI-IAM-01](KSI-IAM-01.md): Implement phishing-resistant multi-factor authentication for all users
+- [FAIL] [KSI-IAM-01](KSI-IAM-01.md): Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 - [PASS] [KSI-IAM-02](KSI-IAM-02.md): Implement enterprise-wide identity federation
 - [PASS] [KSI-IAM-03](KSI-IAM-03.md): Implement least privilege access via role-based access control policies
 - [PASS] [KSI-IAM-04](KSI-IAM-04.md): Clearly define user roles and implement user-to-role mapping
@@ -66,7 +66,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 
 - [PASS] [KSI-RPL-01](KSI-RPL-01.md): Establish a recovery time objective (RTO) and recovery point objective (RPO) for the system
 - [PASS] [KSI-RPL-02](KSI-RPL-02.md): Document system recovery procedures
-- [FAIL] [KSI-RPL-03](KSI-RPL-03.md): Back up information regularly per the recovery point objective
+- [PASS] [KSI-RPL-03](KSI-RPL-03.md): Back up information regularly per the recovery point objective
 - [PASS] [KSI-RPL-04](KSI-RPL-04.md): Test recovery procedures regularly
 
 ## Service Configuration
@@ -91,9 +91,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 56
-- **Passing:** 48
-- **Failing:** 8
+- **Passing:** 49
+- **Failing:** 7
 - **Not Tested:** 0
 
 ---
-*Generated 2025-10-01 06:31 UTC*
+*Generated 2025-10-01 08:13 UTC*

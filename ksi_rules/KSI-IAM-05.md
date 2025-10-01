@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-10-01 06:31
+**Last Check:** 2025-10-01 08:13
 
 **What it validates:** Separate duties between users
 
@@ -18,8 +18,8 @@
 2. `aws cloudtrail describe-trails --output json`
    *Validate CloudTrail for audit logging of privileged actions*
 
-3. `aws cloudtrail get-trail-status --name arn:aws:cloudtrail:us-east-1:893894210484:trail/management-events --output json`
-   *Check active CloudTrail monitoring for separation of duties violations*
+3. `aws cloudtrail get-trail-status --name $(aws cloudtrail describe-trails --query 'trailList[0].Name' --output text 2>/dev/null || echo 'none') --output json 2>/dev/null || echo '{"IsLogging": false}'`
+   *Check CloudTrail logging status with dynamic trail selection*
 
 4. `aws ec2 describe-security-groups --output json`
    *Validate network security separation and access controls*
@@ -42,4 +42,4 @@ PASS Good zero trust implementation (58%): WARNING No IAM Identity Center - miss
 - WARNING CloudTrail 'meridianks-Management-events' excellently configured but not actively logging
 
 ---
-*Generated 2025-10-01 06:31 UTC*
+*Generated 2025-10-01 08:13 UTC*

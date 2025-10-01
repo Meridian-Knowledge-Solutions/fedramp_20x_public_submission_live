@@ -4,7 +4,7 @@
 
 **Category:** Cloud Native Architecture
 **Status:** FAIL
-**Last Check:** 2025-10-01 06:31
+**Last Check:** 2025-10-01 08:13
 
 **What it validates:** Use fully qualified domain names and encrypt information in transit
 
@@ -41,6 +41,7 @@
 FAIL Insufficient DDoS and spam protection (43%): PASS Network-layer protection: AWS Shield Standard automatically enabled (all AWS accounts)
 - PASS Application-layer protection: 1 Regional WAF Web ACL(s) configured
 - PASS Service resilience: 1 Multi-AZ load balancer(s) configured
+- WARNING No DNS records retrieved - cannot validate email authentication
 
 ---
-*Generated 2025-10-01 06:31 UTC*
+*Generated 2025-10-01 08:13 UTC*

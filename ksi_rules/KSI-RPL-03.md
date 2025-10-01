@@ -3,8 +3,8 @@
 ## Overview
 
 **Category:** Recovery Planning
-**Status:** FAIL
-**Last Check:** 2025-10-01 06:31
+**Status:** PASS
+**Last Check:** 2025-10-01 08:13
 
 **What it validates:** Back up information regularly per the recovery point objective
 
@@ -29,7 +29,9 @@
 
 ## Latest Results
 
-- Exception during evaluation: '>' not supported between instances of 'str' and 'int'
+PASS System backups with compliant retention aligned with recovery objectives: PASS Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan)
+- PASS Backup operations validated: 50 successful backup jobs prove backups are functioning
+- PASS Additional backup coverage: 570 EBS snapshots
 
 ---
-*Generated 2025-10-01 06:31 UTC*
+*Generated 2025-10-01 08:13 UTC*
