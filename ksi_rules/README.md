@@ -7,8 +7,8 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-CMT-01](KSI-CMT-01.md): Document a change management policy for all system modifications
 - [PASS] [KSI-CMT-02](KSI-CMT-02.md): Use self-service templates and image repositories for provisioning
 - [PASS] [KSI-CMT-03](KSI-CMT-03.md): Use CI/CD pipelines for deploying changes
-- [FAIL] [KSI-CMT-04](KSI-CMT-04.md): Use codified change templates with approval rules
-- [FAIL] [KSI-CMT-05](KSI-CMT-05.md): Evaluate the risk and potential impact of any change using a generated deployment manifest
+- [FAIL] [KSI-CMT-04](KSI-CMT-04.md): Have a documented change management procedure
+- [FAIL] [KSI-CMT-05](KSI-CMT-05.md): Analyze security impact of changes before implementation
 
 ## Cloud Native Architecture
 
@@ -19,7 +19,7 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 - [PASS] [KSI-CNA-05](KSI-CNA-05.md): Protect against denial of service attacks and unwanted spam
 - [PASS] [KSI-CNA-06](KSI-CNA-06.md): Deploy highly available components and services
 - [PASS] [KSI-CNA-07](KSI-CNA-07.md): Maximize use of managed services and cloud resources
-- [FAIL] [KSI-CNA-08](KSI-CNA-08.md): Use native security capabilities including agent-based security
+- [PASS] [KSI-CNA-08](KSI-CNA-08.md): Use automated services to persistently assess the security posture of all services and automatically enforce secure operations
 
 ## Cybersecurity Education
 
@@ -91,9 +91,9 @@ This directory contains documentation for all Key Security Indicators (KSIs).
 ## Summary
 
 - **Total KSIs:** 56
-- **Passing:** 53
-- **Failing:** 3
+- **Passing:** 54
+- **Failing:** 2
 - **Not Tested:** 0
 
 ---
-*Generated 2025-10-01 22:14 UTC*
+*Generated 2025-10-02 03:01 UTC*

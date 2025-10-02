@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-10-01 22:14
+**Last Check:** 2025-10-02 03:01
 
 **What it validates:** Enforce multi-factor authentication (MFA) using methods that are difficult to intercept or impersonate (phishing-resistant MFA) for all user authentication
 
@@ -15,13 +15,10 @@
 1. `aws iam list-users --output json`
    *Get traditional IAM users for MFA analysis*
 
-2. `aws iam list-mfa-devices --output json`
-   *Check traditional IAM MFA devices*
-
-3. `aws sso-admin list-instances --output json`
+2. `aws sso-admin list-instances --output json`
    *Get Identity Center instances*
 
-4. `aws identitystore list-users --identity-store-id d-9067ccc0ff --output json`
+3. `aws identitystore list-users --identity-store-id d-9067ccc0ff --output json`
    *Get Identity Center users for accurate user count*
 
 ## Latest Results
@@ -33,4 +30,4 @@ PASS Sufficient MFA for Moderate baseline (60%): PASS Modern identity platform: 
 - WARNING Traditional IAM users without MFA devices
 
 ---
-*Generated 2025-10-01 22:14 UTC*
+*Generated 2025-10-02 03:01 UTC*

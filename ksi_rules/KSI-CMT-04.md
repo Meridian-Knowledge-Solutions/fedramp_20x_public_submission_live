@@ -1,26 +1,39 @@
-# KSI-CMT-04: Use codified change templates with approval rules
+# KSI-CMT-04: Have a documented change management procedure
 
 ## Overview
 
 **Category:** Change Management
 **Status:** FAIL
-**Last Check:** 2025-10-01 22:14
+**Last Check:** 2025-10-02 03:01
 
-**What it validates:** Use codified change templates with approval rules
+**What it validates:** Have a documented change management procedure
 
-**Why it matters:** Validates comprehensive change approval automation from basic templates to enterprise-grade policy-driven approvals and governance
+**Why it matters:** Validates hybrid change management: Change Manager templates for high-risk operational changes + IaC workflow for infrastructure deployments
 
 ## Validation Method
 
-1. `aws ssm list-documents --document-filter-list 'key=DocumentType,value=Automation' --query 'DocumentIdentifiers[?contains(Name, `Change`) || contains(Name, `Template`) || contains(Name, `Approval`)]' --output json`
-   *List SSM Automation documents for change management*
+1. `aws ssm list-documents --filters 'Key=Owner,Values=Self' 'Key=DocumentType,Values=Automation' --output json`
+   *List custom Change Manager automation templates*
 
-2. `FIRST_DOC=$(aws ssm list-documents --document-filter-list 'key=DocumentType,value=Automation' --query 'DocumentIdentifiers[0].Name' --output text 2>/dev/null); if [ -n "$FIRST_DOC" ] && [ "$FIRST_DOC" != "None" ]; then aws ssm get-document --name "$FIRST_DOC" --document-format JSON --output json 2>/dev/null || echo '{"Content": null, "Name": "'$FIRST_DOC'", "Status": "RetrievalFailed"}'; else echo '{"Content": null, "Status": "NoDocuments"}'; fi`
-   *Retrieve first automation document content to validate approval workflow configuration*
+2. `aws ssm describe-document --name $(aws ssm list-documents --filters 'Key=Owner,Values=Self' 'Key=DocumentType,Values=Automation' --query 'DocumentIdentifiers[0].Name' --output text) --output json 2>/dev/null || echo '{"Document": null}'`
+   *Retrieve first custom template to validate approval configuration*
+
+3. `aws ssm get-change-request-list --filters 'Key=DocumentName,Values=$(aws ssm list-documents --filters Key=Owner,Values=Self --query DocumentIdentifiers[0].Name --output text)' --max-results 50 --output json 2>/dev/null || echo '{"ChangeRequestSummaryItems": []}'`
+   *Check for Change Manager execution history*
+
+4. `aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)].Name' --output json`
+   *Validate terraform state storage (IaC change tracking)*
+
+5. `aws dynamodb list-tables --query 'TableNames[?contains(@, `terraform`) || contains(@, `lock`)]' --output json`
+   *Validate terraform state locking (IaC coordination)*
+
+6. `aws ssm get-parameter --name '/change-management/procedures' --output json || echo '{"Parameter": null}'`
+   *Check for documented change management procedures*
 
 ## Latest Results
 
-- FAIL No SSM Change Manager templates found - change procedure not codified
+FAIL No change management system detected (0%): FAIL No custom Change Manager templates found
+- WARNING No IaC state management detected - verify terraform configuration
 
 ---
-*Generated 2025-10-01 22:14 UTC*
+*Generated 2025-10-02 03:01 UTC*

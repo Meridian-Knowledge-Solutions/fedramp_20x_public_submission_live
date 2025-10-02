@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-10-01 22:14
+**Last Check:** 2025-10-02 03:01
 
 **What it validates:** Maintain a data protection policy that addresses data retention requirements
 
@@ -19,4 +19,4 @@
 - WARNING Basic evaluation procedures (expand coverage): PASS Core evaluation methods: Information Resource Evaluation Methodology (KSI-PIY-05).pdf
 
 ---
-*Generated 2025-10-01 22:14 UTC*
+*Generated 2025-10-02 03:01 UTC*

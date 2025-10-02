@@ -1,42 +1,44 @@
-# KSI-CNA-08: Use native security capabilities including agent-based security
+# KSI-CNA-08: Use automated services to persistently assess the security posture of all services and automatically enforce secure operations
 
 ## Overview
 
 **Category:** Cloud Native Architecture
-**Status:** FAIL
-**Last Check:** 2025-10-01 22:14
+**Status:** PASS
+**Last Check:** 2025-10-02 03:01
 
-**What it validates:** Use native security capabilities including agent-based security
+**What it validates:** Use automated services to persistently assess the security posture of all services and automatically enforce secure operations
 
-**Why it matters:** Validates comprehensive native security from basic Security Hub to enterprise-grade automated remediation and agent-based protection
+**Why it matters:** Validates both continuous security assessment (Config rules) AND automated enforcement (remediation configurations or SSM associations) as required by FedRAMP Moderate baseline
 
 ## Validation Method
 
 1. `aws securityhub get-enabled-standards --output json`
-   *Check Security Hub enabled standards for native security monitoring*
+   *Validate Security Hub standards for persistent assessment framework*
 
 2. `aws configservice describe-config-rules --output json`
-   *Validate AWS Config rules for native compliance automation*
+   *Count Config rules providing persistent security assessment*
 
-3. `aws configservice describe-remediation-configurations --config-rule-names $(aws configservice describe-config-rules --query 'ConfigRules[0].ConfigRuleName' --output text) --output json || echo '{"RemediationConfigurations": []}'`
-   *Check automated remediation configurations for Config rules*
+3. `aws configservice describe-configuration-recorder-status --output json`
+   *Verify Config recorder actively capturing assessment data*
 
-4. `aws lambda list-functions --output json`
-   *Validate custom security automation and remediation functions*
+4. `aws configservice describe-remediation-configurations --output json || echo '{"RemediationConfigurations": []}'`
+   *Validate automated enforcement via Config remediation configurations*
 
-5. `aws securityhub describe-organization-configuration --output json`
-   *Check Security Hub organization-wide configuration*
+5. `aws ssm list-associations --output json || echo '{"Associations": []}'`
+   *Validate automated enforcement via SSM State Manager associations*
 
-6. `aws configservice describe-configuration-aggregators --output json || echo '{"ConfigurationAggregators": []}'`
-   *Validate Config aggregators for centralized compliance monitoring*
+6. `aws securityhub describe-hub --output json`
+   *Confirm Security Hub enabled for assessment aggregation*
+
+7. `aws lambda list-functions --output json`
+   *Identify custom enforcement automation capabilities*
 
 ## Latest Results
 
-FAIL Insufficient automated enforcement for Moderate baseline (31%): Config remediation required. PASS Security Hub: 1 standard(s) enabled - 1.0.0
-- FAIL No AWS Config rules detected - required for compliance automation
-- FAIL No Config remediations - automated enforcement not proven
--   ↳ Moderate baseline requires automated response to non-compliance
-- PASS Custom automation: 2 security Lambda function(s)
+Excellent measurement posture (83%): Basic framework: 1 Security Hub standard(s)
+- Extensive instrumentation: 327 Config rules
+- Active measurement: Config recorder capturing data
+- Centralized visibility: Security Hub enabled
 
 ---
-*Generated 2025-10-01 22:14 UTC*
+*Generated 2025-10-02 03:01 UTC*

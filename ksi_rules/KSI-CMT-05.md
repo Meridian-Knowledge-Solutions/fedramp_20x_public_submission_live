@@ -1,22 +1,37 @@
-# KSI-CMT-05: Evaluate the risk and potential impact of any change using a generated deployment manifest
+# KSI-CMT-05: Analyze security impact of changes before implementation
 
 ## Overview
 
 **Category:** Change Management
 **Status:** FAIL
-**Last Check:** 2025-10-01 22:14
+**Last Check:** 2025-10-02 03:01
 
-**What it validates:** Evaluate the risk and potential impact of any change using a generated deployment manifest
+**What it validates:** Analyze security impact of changes before implementation
 
-**Why it matters:** Validates impact assessment by querying deployment workflow outputs to confirm impact manifests are generated
+**Why it matters:** Validates pre-change impact assessment through terraform plans, patch compliance reports, and Change Manager request documentation
 
 ## Validation Method
 
-1. **Manual Review:** Manual review of Step Functions deployment workflows and impact manifest generation
+1. `aws s3 ls s3://$(aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)].Name | [0]' --output text)/plans/ --recursive 2>/dev/null | tail -20 || echo 'No plans found'`
+   *Terraform plans as evidence of IaC impact assessment*
+
+2. `aws ssm describe-patch-baselines --output json`
+   *Patch baseline definitions showing patching impact scope*
+
+3. `aws ssm describe-instance-patch-states --instance-id $(aws ssm describe-instance-information --query 'InstanceInformationList[0].InstanceId' --output text) --output json 2>/dev/null || echo '{"InstancePatchStates": []}'`
+   *Patch compliance state as pre-patching impact assessment*
+
+4. `aws ssm get-change-request-list --max-results 50 --output json 2>/dev/null || echo '{"ChangeRequestSummaryItems": []}'`
+   *Change Manager requests containing documented change impacts*
+
+5. `aws s3api list-buckets --query 'Buckets[?contains(Name, `terraform`) || contains(Name, `tfstate`)].Name' --output json`
+   *Verify terraform state bucket exists (baseline for plan storage)*
 
 ## Latest Results
 
-- FAIL: No recent successful deployment workflow executions were found.
+FAIL Insufficient impact assessment evidence (20%): FAIL No terraform plan evidence found - IaC impact assessment not documented
+- PASS Patch baselines defined: 17 baseline(s)
+- INFO No Change Manager requests found - may not be actively used yet
 
 ---
-*Generated 2025-10-01 22:14 UTC*
+*Generated 2025-10-02 03:01 UTC*
