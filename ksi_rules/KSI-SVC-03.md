@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-03 02:59
+**Last Check:** 2025-10-03 19:13
 
 **What it validates:** Encrypt data at rest
 
@@ -47,11 +47,11 @@
 PASS Production-ready multi-service encryption with advanced key management (70%): PASS Object storage encryption: 7 S3 buckets configured.
 - PASS Block storage encryption: 10/11 EBS volumes encrypted (91%).
 - PASS Database encryption: 1/1 RDS instances encrypted (100%).
-- PASS Database backup encryption: 185/185 RDS snapshots encrypted.
+- PASS Database backup encryption: 186/186 RDS snapshots encrypted.
 - PASS Backup encryption: 3/3 backup vaults encrypted.
 - PASS Encryption key infrastructure: 17 KMS keys (0 customer-managed, 17 AWS-managed).
 - PASS Enterprise-wide encryption governance: AWS Organizations enables centralized policies.
 - PASS Advanced organization features: SCPs for encryption policy enforcement enabled.
 
 ---
-*Generated 2025-10-03 02:59 UTC*
+*Generated 2025-10-03 19:13 UTC*

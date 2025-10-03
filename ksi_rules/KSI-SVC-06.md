@@ -4,7 +4,7 @@
 
 **Category:** Service Configuration
 **Status:** PASS
-**Last Check:** 2025-10-03 02:59
+**Last Check:** 2025-10-03 19:13
 
 **What it validates:** Use centralized key management services
 
@@ -45,7 +45,7 @@ PASS Enterprise-grade comprehensive automated key management governance with rot
 - PASS Automated certificate management: 1/2 ACM certificates are active.
 - PASS Key governance structure: 6 customer-managed KMS aliases.
 - PASS Automated encryption integration: 4 KMS-encrypted SecureString parameters.
-- PASS Automated credential rotation: 1/1 secrets with automatic rotation (100%).
+- PASS Automated credential rotation: 1/2 secrets with automatic rotation (50%).
 - PASS Modern certificate management: No legacy IAM certificates.
 - PASS Infrastructure as Code key management: 12/12 successful CloudFormation stacks.
 - PASS Key management audit trail: 20 recent key management events tracked.
@@ -53,4 +53,4 @@ PASS Enterprise-grade comprehensive automated key management governance with rot
 - PASS Advanced organization features: SCPs for key management policy enforcement enabled.
 
 ---
-*Generated 2025-10-03 02:59 UTC*
+*Generated 2025-10-03 19:13 UTC*

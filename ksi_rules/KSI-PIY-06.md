@@ -4,7 +4,7 @@
 
 **Category:** Policy and Inventory
 **Status:** PASS
-**Last Check:** 2025-10-03 02:59
+**Last Check:** 2025-10-03 19:13
 
 **What it validates:** Have dedicated security staff and budget with executive support
 
@@ -32,7 +32,7 @@
 
 ## Latest Results
 
-PASS Adequate security commitment (6/10 = 60%): PASS Active engagement: 47 logins, 2 principal(s)
+PASS Adequate security commitment (6/10 = 60%): PASS Active engagement: 46 logins, 2 principal(s)
 - PASS Config deployment activity: 50 rule deployment(s)
 - PASS Alarm deployment activity: 13 alarm deployment(s)
 - PASS Config rules deployed: 327 rules
@@ -40,4 +40,4 @@ PASS Adequate security commitment (6/10 = 60%): PASS Active engagement: 47 login
 - FAIL No security Lambda functions
 
 ---
-*Generated 2025-10-03 02:59 UTC*
+*Generated 2025-10-03 19:13 UTC*
