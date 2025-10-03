@@ -4,7 +4,7 @@
 
 **Category:** Change Management
 **Status:** FAIL
-**Last Check:** 2025-10-03 19:13
+**Last Check:** 2025-10-03 22:39
 
 **What it validates:** Have a documented change management procedure
 
@@ -36,4 +36,4 @@ FAIL No change management system detected (0%): FAIL No custom Change Manager te
 - WARNING No IaC state management detected - verify terraform configuration
 
 ---
-*Generated 2025-10-03 19:13 UTC*
+*Generated 2025-10-03 22:39 UTC*
