@@ -4,7 +4,7 @@
 
 **Category:** Identity and Access Management
 **Status:** PASS
-**Last Check:** 2025-10-02 03:01
+**Last Check:** 2025-10-03 02:59
 
 **What it validates:** Implement least privilege access via role-based access control policies
 
@@ -23,10 +23,10 @@
 
 ## Latest Results
 
-WARNING Basic service authentication security (75%): PASS Secure foundation: 89 IAM roles available for service authentication (38 are service-linked).
+WARNING Basic service authentication security (75%): PASS Secure foundation: 90 IAM roles available for service authentication (39 are service-linked).
 - WARNING High Risk: 1 IAM user(s) found that appear to be service accounts (change_template_approver). These should be converted to IAM Roles.
 - PASS Identity Best Practice: No human IAM users with console passwords detected.
 - PASS EC2 Best Practice: All 6 instance(s) are correctly using IAM Instance Profiles.
 
 ---
-*Generated 2025-10-02 03:01 UTC*
+*Generated 2025-10-03 02:59 UTC*
