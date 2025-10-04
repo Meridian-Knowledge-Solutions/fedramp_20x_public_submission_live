@@ -4,7 +4,7 @@
 
 **Category:** Recovery Planning
 **Status:** PASS
-**Last Check:** 2025-10-03 22:39
+**Last Check:** 2025-10-04 02:56
 
 **What it validates:** Back up information regularly per the recovery point objective
 
@@ -31,7 +31,7 @@
 
 PASS System backups with compliant retention aligned with recovery objectives: PASS Backup infrastructure: 2 AWS Backup plans (rds-backup-plan, complete-backup-plan)
 - PASS Backup operations validated: 50 successful backup jobs prove backups are functioning
-- PASS Additional backup coverage: 586 EBS snapshots
+- PASS Additional backup coverage: 594 EBS snapshots
 
 ---
-*Generated 2025-10-03 22:39 UTC*
+*Generated 2025-10-04 02:56 UTC*
